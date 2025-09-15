@@ -150,24 +150,46 @@
               {% for product_ in product.metafields.custom.list_product.value %}
                 <tr>
                   <td class="cut_td">
-                    <a href="{{ product_.url }}" class="product_title_">{{ product_.title }}</a>
+                    <a
+                      href="{{ product_.url }}"
+                      class="product_title_ product-switch-link"
+                      data-product-url="{{ product_.url }}"
+                      data-product-handle="{{ product_.handle }}"
+                    >
+                      {{- product_.title -}}
+                    </a>
                   </td>
                   <td class="cut_td">
-                    <a href="{{ product_.url }}">
+                    <a
+                      href="{{ product_.url }}"
+                      class="product-switch-link"
+                      data-product-url="{{ product_.url }}"
+                      data-product-handle="{{ product_.handle }}"
+                    >
                       {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
                       {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
                       {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
                     </a>
                   </td>
                   <td class="cut_td">
-                    <a href="{{ product_.url }}">
+                    <a
+                      href="{{ product_.url }}"
+                      class="product-switch-link"
+                      data-product-url="{{ product_.url }}"
+                      data-product-handle="{{ product_.handle }}"
+                    >
                       {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
                       {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
                       {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
                     </a>
                   </td>
                   <td class="cut_td">
-                    <a href="{{ product_.url }}">
+                    <a
+                      href="{{ product_.url }}"
+                      class="product-switch-link"
+                      data-product-url="{{ product_.url }}"
+                      data-product-handle="{{ product_.handle }}"
+                    >
                       {% for variant in product_.variants %}
                         {% if forloop.first %}
                           <span>{{ variant.weight | divided_by: 1000 }} kg</span>
@@ -176,15 +198,18 @@
                     </a>
                   </td>
                   <td class="cut_td">
-                    <a href="{{ product_.url }}"
+                    <a
+                      href="{{ product_.url }}"
+                      class="product-switch-link"
+                      data-product-url="{{ product_.url }}"
+                      data-product-handle="{{ product_.handle }}"
                       >From <span class="price">{{ product_.price | money_with_currency }}</span></a
                     >
                   </td>
-                  {% comment %}<td><a href="javascript:void(0);" id="{{ product_swatch.url }}" pr_handle="{{ product_.handle }}" class="info-btn">CLICK FOR INFO</a></td>{% endcomment %}
                   <td class="cut_td">
                     <a
                       href="javascript:void(0);"
-                      id="{{ product_swatch.url }}"
+                      id="{{ product_.url }}"
                       pr_handle="{{ product_.handle }}"
                       class="info-btn"
                     >
@@ -202,6 +227,7 @@
     </div>
   </div>
 {% endif %}
+
 {% schema %}
 {
   "name": "Size chart",
@@ -214,8 +240,235 @@
 }
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
 {% javascript %}
+  class ProductSwitcher {
+    constructor() {
+      this.init();
+    }
+
+    init() {
+      console.log('[ProductSwitcher] Initialized');
+      document.addEventListener('click', this.handleProductSwitch.bind(this));
+      this.addStyles();
+    }
+
+    addStyles() {
+      var style = document.createElement('style');
+      style.textContent =
+        '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
+      document.head.appendChild(style);
+    }
+
+    async handleProductSwitch(event) {
+      if (!event.target.classList.contains('product-switch-link')) {
+        return;
+      }
+
+      event.preventDefault();
+      event.target.classList.add('loading');
+
+      var productUrl = event.target.dataset.productUrl;
+      var productHandle = event.target.dataset.productHandle;
+
+      if (!productUrl) {
+        event.target.classList.remove('loading');
+        return;
+      }
+
+      console.log('[ProductSwitcher] AJAX switching to:', productUrl);
+
+      try {
+        // Update browser history without page reload
+        window.history.pushState({}, '', productUrl);
+        console.log('[ProductSwitcher] Browser history updated');
+
+        // Update product sections via AJAX
+        await this.updateProductSections(productUrl);
+
+        // Dispatch custom event
+        document.dispatchEvent(
+          new CustomEvent('product:switched', {
+            detail: { productUrl: productUrl, productHandle: productHandle },
+          })
+        );
+
+        console.log('[ProductSwitcher] AJAX product switch completed');
+        event.target.classList.remove('loading');
+      } catch (error) {
+        console.error('[ProductSwitcher] AJAX failed, falling back to page reload:', error);
+        event.target.classList.remove('loading');
+        window.location.href = productUrl;
+      }
+    }
+
+    async updateProductSections(productUrl) {
+      console.log('[ProductSwitcher] Finding product sections...');
+
+      var sectionsToUpdate = this.findProductSections();
+      console.log('[ProductSwitcher] Sections to update:', sectionsToUpdate);
+
+      if (sectionsToUpdate.length === 0) {
+        console.warn('[ProductSwitcher] No sections found, using fallback');
+        throw new Error('No sections to update');
+      }
+
+      var url = new URL(productUrl, window.location.origin);
+
+      for (var i = 0; i < sectionsToUpdate.length; i++) {
+        var sectionId = sectionsToUpdate[i];
+        console.log('[ProductSwitcher] Updating section:', sectionId);
+
+        try {
+          // Try theme section renderer first
+          if (window.sectionRenderer && typeof window.sectionRenderer.renderSection === 'function') {
+            console.log('[ProductSwitcher] Using theme section renderer');
+            await window.sectionRenderer.renderSection(sectionId, {
+              url: url,
+              cache: false,
+            });
+            console.log('[ProductSwitcher] Section updated via renderer:', sectionId);
+          } else {
+            console.log('[ProductSwitcher] Using manual section update');
+            await this.manualUpdateSection(sectionId, url);
+            console.log('[ProductSwitcher] Section updated manually:', sectionId);
+          }
+        } catch (sectionError) {
+          console.error('[ProductSwitcher] Failed to update section:', sectionId, sectionError);
+          // Continue with other sections
+        }
+      }
+    }
+
+    findProductSections() {
+      var sections = [];
+
+      // Look for product-related sections
+      var selectors = [
+        '[id*="product-information"]',
+        '[id*="product-details"]',
+        '[id*="product-media"]',
+        '[id*="shopify-section-product"]',
+        '.product-information',
+        '.product-details',
+      ];
+
+      for (var i = 0; i < selectors.length; i++) {
+        try {
+          var elements = document.querySelectorAll(selectors[i]);
+          for (var j = 0; j < elements.length; j++) {
+            if (elements[j].id && sections.indexOf(elements[j].id) === -1) {
+              sections.push(elements[j].id);
+            }
+          }
+        } catch (e) {
+          console.error('[ProductSwitcher] Selector error:', selectors[i], e);
+        }
+      }
+
+      return sections;
+    }
+
+    async manualUpdateSection(sectionId, url) {
+      var section = document.getElementById(sectionId);
+      if (!section) {
+        throw new Error('Section not found: ' + sectionId);
+      }
+
+      // Extract the actual section name from the full ID
+      var sectionName = sectionId;
+      if (sectionId.includes('template--')) {
+        // Format: "ProductInformation-template--25692738126150__main"
+        // Extract: "template--25692738126150__main"
+        var parts = sectionId.split('-');
+        if (parts.length > 1) {
+          sectionName = parts.slice(1).join('-');
+        }
+      }
+
+      var fetchUrl = new URL(url);
+      fetchUrl.searchParams.append('section_id', sectionName);
+
+      console.log('[ProductSwitcher] Original section ID:', sectionId);
+      console.log('[ProductSwitcher] Using section name:', sectionName);
+      console.log('[ProductSwitcher] Fetching:', fetchUrl.toString());
+
+      var response = await fetch(fetchUrl.toString(), {
+        headers: {
+          Accept: 'text/html',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+      });
+
+      console.log('[ProductSwitcher] Response status:', response.status);
+
+      if (!response.ok) {
+        console.log('[ProductSwitcher] Response headers:', Object.fromEntries(response.headers.entries()));
+        throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+      }
+
+      var html = await response.text();
+      console.log('[ProductSwitcher] Response HTML length:', html.length);
+
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var newSection = doc.getElementById(sectionId);
+
+      if (!newSection) {
+        console.log('[ProductSwitcher] Looking for section with original ID failed, trying alternative selectors');
+        // Try to find section by class or other attributes
+        var alternatives = [
+          doc.querySelector('[class*="product-information"]'),
+          doc.querySelector('[class*="product-details"]'),
+          doc.querySelector('section'),
+          doc.querySelector('div'),
+        ];
+
+        for (var i = 0; i < alternatives.length; i++) {
+          if (alternatives[i]) {
+            console.log(
+              '[ProductSwitcher] Found alternative section:',
+              alternatives[i].tagName,
+              alternatives[i].className
+            );
+            newSection = alternatives[i];
+            newSection.id = sectionId; // Set the correct ID
+            break;
+          }
+        }
+      }
+
+      if (!newSection) {
+        console.log('[ProductSwitcher] Response HTML preview:', html.substring(0, 500));
+        throw new Error('New section not found in response');
+      }
+
+      console.log('[ProductSwitcher] Replacing section HTML');
+      section.outerHTML = newSection.outerHTML;
+
+      // Reinitialize components
+      this.reinitializeComponents();
+    }
+
+    reinitializeComponents() {
+      console.log('[ProductSwitcher] Reinitializing components');
+
+      // Dispatch section load event
+      document.dispatchEvent(new CustomEvent('theme:section:load'));
+
+      // Try common reinitialization patterns
+      if (typeof window.theme !== 'undefined' && window.theme.init) {
+        window.theme.init();
+      }
+    }
+  }
+
+  // Initialize
+  console.log('[ProductSwitcher] Script loaded');
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      new ProductSwitcher();
+    });
+  } else {
+    new ProductSwitcher();
+  }
 {% endjavascript %}
