@@ -1,0 +1,221 @@
+<!-- size-chart-mt -->
+<style>
+  .table-container {
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    background-color: #cbe3ff;
+    color: #000;
+    text-align: left;
+  }
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  td a {
+    text-decoration: none;
+    color: #000;
+  }
+  td .product_title_ {
+    color: #4b81bf;
+    text-decoration: none;
+    /* font-weight:bold; */
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .price {
+    color: #3cc561;
+  }
+  .info-btn {
+    /* background-color: #3CC561; */
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  .custom-size_chart {
+    padding-top: 33px;
+  }
+  .table-container table tr td:first-child {
+    padding-left: 5px;
+  }
+  .custom-product-container .table-container table tr th {
+    font-size: 16px;
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  @media (max-width: 768px) {
+    .custom-product-container .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .custom-product-container .table-container table tr th {
+      width: 100%;
+      font-size: 18px;
+      font-weight: 300;
+      text-align: center;
+      display: inline-block;
+      min-width: 60%;
+    }
+
+    .table-container table tr th:first-child {
+      min-width: 70%;
+    }
+
+    .custom-product-container .table-container table tr th.cust_ve {
+      min-width: 50%;
+    }
+
+    .custom-product-container table {
+      width: 100%;
+      border-collapse: collapse;
+      white-space: nowrap;
+      box-shadow: none;
+    }
+
+    .custom-product-container tbody {
+      /* display: block; */
+      width: 100%;
+      /* overflow:scroll; */
+    }
+
+    .custom-product-container tr {
+      display: flex;
+      width: 100%;
+      margin-bottom: 0px;
+      /* border: 1px solid #ddd; */
+      padding: 0px;
+      background: #fff;
+      max-height: 80px;
+    }
+
+    .custom-product-container td {
+      display: flex;
+      justify-content: flex-start;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .custom-product-container td:last-child {
+      border-bottom: none;
+    }
+
+    .custom-product-container td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+</style>
+{% if product.metafields.custom.list_product != blank %}
+  <div id="custom-product-{{ section.id }}" class="custom-size_chart page-width">
+    <h2 class="table-heading_ title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">
+      Størrelser
+    </h2>
+    <div class="custom-product-wrap">
+      <div class="custom-product-container">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th class="cust_model">Model</th>
+                <th class="cust_hkd">
+                  Udvendige mål <br>
+                  (HxBxD mm)
+                </th>
+                <th class="cust_hkd">
+                  Indvendige mål <br>
+                  (HxBxD mm)
+                </th>
+                <th class="cust_ve">Vægt</th>
+                <th class="cust_price">Pris</th>
+                <th class="cust_hkd"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for product_ in product.metafields.custom.list_product.value %}
+                <tr>
+                  <td class="cut_td">
+                    <a href="{{ product_.url }}" class="product_title_">{{ product_.title }}</a>
+                  </td>
+                  <td class="cut_td">
+                    <a href="{{ product_.url }}">
+                      {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
+                      {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
+                      {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
+                    </a>
+                  </td>
+                  <td class="cut_td">
+                    <a href="{{ product_.url }}">
+                      {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
+                      {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
+                      {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
+                    </a>
+                  </td>
+                  <td class="cut_td">
+                    <a href="{{ product_.url }}">
+                      {% for variant in product_.variants %}
+                        {% if forloop.first %}
+                          <span>{{ variant.weight | divided_by: 1000 }} kg</span>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td class="cut_td">
+                    <a href="{{ product_.url }}"
+                      >From <span class="price">{{ product_.price | money_with_currency }}</span></a
+                    >
+                  </td>
+                  {% comment %}<td><a href="javascript:void(0);" id="{{ product_swatch.url }}" pr_handle="{{ product_.handle }}" class="info-btn">CLICK FOR INFO</a></td>{% endcomment %}
+                  <td class="cut_td">
+                    <a
+                      href="javascript:void(0);"
+                      id="{{ product_swatch.url }}"
+                      pr_handle="{{ product_.handle }}"
+                      class="info-btn"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5163 20.5769C17.6058 22.2418 15.1081 23.25 12.375 23.25C6.3689 23.25 1.5 18.3811 1.5 12.375C1.5 6.3689 6.3689 1.5 12.375 1.5C18.3811 1.5 23.25 6.3689 23.25 12.375C23.25 15.1081 22.2418 17.6058 20.5769 19.5163L29.7803 28.7197L28.7197 29.7803L19.5163 20.5769ZM21.75 12.375C21.75 17.5527 17.5527 21.75 12.375 21.75C7.19733 21.75 3 17.5527 3 12.375C3 7.19733 7.19733 3 12.375 3C17.5527 3 21.75 7.19733 21.75 12.375Z" fill="#3CC561"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Size chart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Size chart"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

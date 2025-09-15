@@ -6,7 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */ {
   "sections": {
     "main": {
       "type": "product-information",
@@ -153,10 +153,7 @@
                   "blocks": {}
                 }
               },
-              "block_order": [
-                "product_title_eYVzTU",
-                "price_tVjtKg"
-              ]
+              "block_order": ["product_title_eYVzTU", "price_tVjtKg"]
             },
             "divider_VJhene": {
               "type": "_divider",
@@ -264,6 +261,10 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "size_chart_mt": {
+      "type": "size-chart-mt",
+      "settings": {}
     },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
@@ -383,9 +384,7 @@
           ]
         }
       },
-      "block_order": [
-        "text_cbcgyb"
-      ],
+      "block_order": ["text_cbcgyb"],
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
@@ -407,8 +406,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "product_recommendations_qggXJq"
-  ]
+  "order": ["main", "size_chart_mt", "product_recommendations_qggXJq"]
 }
