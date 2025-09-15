@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify theme dev --store=f1what-2r.myshopify.com --theme 183331946822",
+    "push": "shopify theme push --store=f1what-2r.myshopify.com --theme 183331946822",
+    "pull": "shopify theme pull --store=f1what-2r.myshopify.com --theme 183331946822"
   },
   "repository": {
     "type": "git",
