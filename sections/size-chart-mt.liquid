@@ -73,7 +73,7 @@
     .custom-product-container table td:first-child {
       position: sticky;
       left: 0;
-      z-index: 10;
+      {% comment %}z-index: 10;{% endcomment %}
       border-right: 2px solid #ddd;
       min-width: 120px;
       max-width: 120px;
@@ -295,7 +295,8 @@
 
     addStyles() {
       var style = document.createElement('style');
-      style.textContent = '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
+      style.textContent =
+        '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
       document.head.appendChild(style);
     }
 
@@ -318,9 +319,11 @@
         await this.updateProductSections(productUrl);
         await this.updateProductImages(productUrl);
 
-        document.dispatchEvent(new CustomEvent('product:switched', {
-          detail: { productUrl, productHandle }
-        }));
+        document.dispatchEvent(
+          new CustomEvent('product:switched', {
+            detail: { productUrl, productHandle },
+          })
+        );
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
         event.target.classList.remove('loading');
@@ -350,15 +353,25 @@
     findProductSections() {
       var sections = [];
       var selectors = [
-        '[id*="product-information"]', '[id*="product-details"]', '[id*="product-media"]',
-        '[id*="product-gallery"]', '[id*="product-images"]', '[id*="shopify-section-product"]',
-        '[id*="ProductMedia"]', '[id*="ProductGallery"]', '[id*="ProductImages"]',
-        '.product-information', '.product-details', '.product-media', '.product-gallery', '.product-images'
+        '[id*="product-information"]',
+        '[id*="product-details"]',
+        '[id*="product-media"]',
+        '[id*="product-gallery"]',
+        '[id*="product-images"]',
+        '[id*="shopify-section-product"]',
+        '[id*="ProductMedia"]',
+        '[id*="ProductGallery"]',
+        '[id*="ProductImages"]',
+        '.product-information',
+        '.product-details',
+        '.product-media',
+        '.product-gallery',
+        '.product-images',
       ];
 
-      selectors.forEach(selector => {
+      selectors.forEach((selector) => {
         try {
-          document.querySelectorAll(selector).forEach(element => {
+          document.querySelectorAll(selector).forEach((element) => {
             if (element.id && !sections.includes(element.id)) {
               sections.push(element.id);
             }
@@ -366,7 +379,7 @@
         } catch (e) {}
       });
 
-      document.querySelectorAll('[class*="product"], [id*="product"]').forEach(el => {
+      document.querySelectorAll('[class*="product"], [id*="product"]').forEach((el) => {
         if (el.id && el.tagName === 'SECTION' && !sections.includes(el.id)) {
           sections.push(el.id);
         }
@@ -378,15 +391,19 @@
     async updateProductImages(productUrl) {
       try {
         var response = await fetch(productUrl, {
-          headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' }
+          headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' },
         });
         if (!response.ok) return;
 
         var html = await response.text();
         var doc = new DOMParser().parseFromString(html, 'text/html');
 
-        var currentImages = document.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
-        var newImages = doc.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
+        var currentImages = document.querySelectorAll(
+          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
+        );
+        var newImages = doc.querySelectorAll(
+          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
+        );
 
         for (var i = 0; i < Math.min(currentImages.length, newImages.length); i++) {
           var currentImg = currentImages[i];
@@ -414,15 +431,13 @@
       var section = document.getElementById(sectionId);
       if (!section) throw new Error('Section not found: ' + sectionId);
 
-      var sectionName = sectionId.includes('template--')
-        ? sectionId.split('-').slice(1).join('-')
-        : sectionId;
+      var sectionName = sectionId.includes('template--') ? sectionId.split('-').slice(1).join('-') : sectionId;
 
       var fetchUrl = new URL(url);
       fetchUrl.searchParams.append('section_id', sectionName);
 
       var response = await fetch(fetchUrl.toString(), {
-        headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' }
+        headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' },
       });
 
       if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + response.statusText);
@@ -436,10 +451,10 @@
           doc.querySelector('[class*="product-information"]'),
           doc.querySelector('[class*="product-details"]'),
           doc.querySelector('section'),
-          doc.querySelector('div')
+          doc.querySelector('div'),
         ];
 
-        newSection = alternatives.find(el => el);
+        newSection = alternatives.find((el) => el);
         if (newSection) newSection.id = sectionId;
       }
 
