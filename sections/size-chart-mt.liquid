@@ -285,6 +285,9 @@
         // Update product sections via AJAX
         await this.updateProductSections(productUrl);
 
+        // Force update of product images if they weren't caught by section updates
+        await this.updateProductImages(productUrl);
+
         // Dispatch custom event
         document.dispatchEvent(
           new CustomEvent('product:switched', {
@@ -293,6 +296,14 @@
         );
 
         console.log('[ProductSwitcher] AJAX product switch completed');
+
+        // Scroll to top of page after successful product switch
+        console.log('[ProductSwitcher] Scrolling to top of page');
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
         event.target.classList.remove('loading');
       } catch (error) {
         console.error('[ProductSwitcher] AJAX failed, falling back to page reload:', error);
@@ -347,17 +358,33 @@
         '[id*="product-information"]',
         '[id*="product-details"]',
         '[id*="product-media"]',
+        '[id*="product-gallery"]',
+        '[id*="product-images"]',
         '[id*="shopify-section-product"]',
+        '[id*="ProductMedia"]',
+        '[id*="ProductGallery"]',
+        '[id*="ProductImages"]',
         '.product-information',
         '.product-details',
+        '.product-media',
+        '.product-gallery',
+        '.product-images'
       ];
+
+      console.log('[ProductSwitcher] Searching for sections with selectors:', selectors);
 
       for (var i = 0; i < selectors.length; i++) {
         try {
           var elements = document.querySelectorAll(selectors[i]);
+          console.log('[ProductSwitcher] Selector "' + selectors[i] + '" found', elements.length, 'elements');
+
           for (var j = 0; j < elements.length; j++) {
-            if (elements[j].id && sections.indexOf(elements[j].id) === -1) {
-              sections.push(elements[j].id);
+            var element = elements[j];
+            console.log('[ProductSwitcher] Element:', element.tagName, 'ID:', element.id, 'Class:', element.className);
+
+            if (element.id && sections.indexOf(element.id) === -1) {
+              sections.push(element.id);
+              console.log('[ProductSwitcher] Added section:', element.id);
             }
           }
         } catch (e) {
@@ -365,7 +392,89 @@
         }
       }
 
+      // Also look for any section with "product" in the class or ID
+      try {
+        var productElements = document.querySelectorAll('[class*="product"], [id*="product"]');
+        console.log('[ProductSwitcher] Found', productElements.length, 'elements with "product" in class/id');
+
+        for (var k = 0; k < productElements.length; k++) {
+          var el = productElements[k];
+          if (el.id && el.tagName === 'SECTION' && sections.indexOf(el.id) === -1) {
+            sections.push(el.id);
+            console.log('[ProductSwitcher] Added product section:', el.id);
+          }
+        }
+      } catch (e) {
+        console.error('[ProductSwitcher] Error finding product elements:', e);
+      }
+
+      console.log('[ProductSwitcher] Final sections to update:', sections);
       return sections;
+    }
+
+    async updateProductImages(productUrl) {
+      console.log('[ProductSwitcher] Updating product images...');
+
+      try {
+        // Fetch the new product page
+        var response = await fetch(productUrl, {
+          headers: {
+            'Accept': 'text/html',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+
+        if (!response.ok) {
+          console.warn('[ProductSwitcher] Could not fetch product page for image update');
+          return;
+        }
+
+        var html = await response.text();
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, 'text/html');
+
+        // Find all product images in both current page and new page
+        var currentImages = document.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
+        var newImages = doc.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
+
+        console.log('[ProductSwitcher] Found', currentImages.length, 'current images and', newImages.length, 'new images');
+
+        // Update image sources
+        for (var i = 0; i < Math.min(currentImages.length, newImages.length); i++) {
+          var currentImg = currentImages[i];
+          var newImg = newImages[i];
+
+          if (currentImg.src !== newImg.src) {
+            console.log('[ProductSwitcher] Updating image:', currentImg.src, '->', newImg.src);
+            currentImg.src = newImg.src;
+
+            // Update srcset if it exists
+            if (newImg.srcset) {
+              currentImg.srcset = newImg.srcset;
+            }
+
+            // Update alt text
+            if (newImg.alt) {
+              currentImg.alt = newImg.alt;
+            }
+          }
+        }
+
+        // Update any picture elements
+        var currentPictures = document.querySelectorAll('picture');
+        var newPictures = doc.querySelectorAll('picture');
+
+        for (var j = 0; j < Math.min(currentPictures.length, newPictures.length); j++) {
+          if (currentPictures[j].outerHTML !== newPictures[j].outerHTML) {
+            console.log('[ProductSwitcher] Updating picture element');
+            currentPictures[j].outerHTML = newPictures[j].outerHTML;
+          }
+        }
+
+        console.log('[ProductSwitcher] Product images update completed');
+      } catch (error) {
+        console.error('[ProductSwitcher] Error updating product images:', error);
+      }
     }
 
     async manualUpdateSection(sectionId, url) {
