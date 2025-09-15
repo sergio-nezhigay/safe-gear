@@ -122,13 +122,19 @@
   }
 </style>
 {% if product.metafields.custom.list_product != blank %}
-  <div id="custom-product-{{ section.id }}" class="custom-size_chart page-width">
-    <h2 class="table-heading_ title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">
-      Størrelser
-    </h2>
-    <div class="custom-product-wrap">
-      <div class="custom-product-container">
-        <div class="table-container">
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <div
+    class="size-chart-section section section--page-width spacing-style color-{{ section.settings.color_scheme | default: 'scheme-1' }} relative"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <div class="page-width">
+      <div id="custom-product-{{ section.id }}" class="custom-size_chart">
+        <h2 class="table-heading_ title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">
+          Størrelser
+        </h2>
+        <div class="custom-product-wrap">
+          <div class="custom-product-container">
+            <div class="table-container">
           <table>
             <thead>
               <tr>
@@ -222,6 +228,8 @@
               {% endfor %}
             </tbody>
           </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -231,7 +239,38 @@
 {% schema %}
 {
   "name": "Size chart",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
   "presets": [
     {
       "name": "Size chart"
