@@ -31,6 +31,7 @@
     font-size: 16px;
     line-height: 20px;
   }
+
   .price {
     color: #3cc561;
   }
@@ -61,63 +62,69 @@
     .custom-product-container .table-container {
       width: 100%;
       overflow-x: auto;
-    }
-
-    .custom-product-container .table-container table tr th {
-      width: 100%;
-      font-size: 18px;
-      font-weight: 300;
-      text-align: center;
-      display: inline-block;
-      min-width: 60%;
-    }
-
-    .table-container table tr th:first-child {
-      min-width: 70%;
-    }
-
-    .custom-product-container .table-container table tr th.cust_ve {
-      min-width: 50%;
+      position: relative;
     }
 
     .custom-product-container table {
       width: 100%;
-      border-collapse: collapse;
-      white-space: nowrap;
-      box-shadow: none;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 600px;
     }
 
-    .custom-product-container tbody {
-      /* display: block; */
-      width: 100%;
-      /* overflow:scroll; */
+    /* Sticky first column */
+    .custom-product-container table th:first-child,
+    .custom-product-container table td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 10;
+      border-right: 2px solid #ddd;
+      min-width: 120px;
+      max-width: 120px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
-    .custom-product-container tr {
-      display: flex;
-      width: 100%;
-      margin-bottom: 0px;
-      /* border: 1px solid #ddd; */
-      padding: 0px;
-      background: #fff;
-      max-height: 80px;
+    .custom-product-container table td:first-child {
+      background-color: #fff;
     }
 
-    .custom-product-container td {
-      display: flex;
-      justify-content: flex-start;
+    .custom-product-container table th:first-child {
+      background-color: #cbe3ff;
+      font-size: 14px;
+      font-weight: 300;
+      text-align: left;
+      padding: 12px 8px;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    /* Other columns */
+    .custom-product-container table th,
+    .custom-product-container table td {
+      min-width: 100px;
       padding: 8px;
-      border-bottom: 1px solid #ddd;
+      border: 1px solid #ddd;
+      text-align: left;
+      font-size: 14px;
     }
 
-    .custom-product-container td:last-child {
-      border-bottom: none;
+    .custom-product-container table th {
+      font-size: 14px;
+      font-weight: 300;
+      text-align: center;
+      background-color: #cbe3ff;
     }
 
-    .custom-product-container td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      text-transform: uppercase;
+    /* Make sure the first column content doesn't overflow */
+    .custom-product-container table td:first-child a,
+    .custom-product-container table th:first-child {
+      display: block;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+    .cust_model {
+      height: 125px !important;
     }
   }
 </style>
@@ -135,99 +142,105 @@
         <div class="custom-product-wrap">
           <div class="custom-product-container">
             <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th class="cust_model">Model</th>
-                <th class="cust_hkd">
-                  Udvendige mål <br>
-                  (HxBxD mm)
-                </th>
-                <th class="cust_hkd">
-                  Indvendige mål <br>
-                  (HxBxD mm)
-                </th>
-                <th class="cust_ve">Vægt</th>
-                <th class="cust_price">Pris</th>
-                <th class="cust_hkd"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for product_ in product.metafields.custom.list_product.value %}
-                <tr>
-                  <td class="cut_td">
-                    <a
-                      href="{{ product_.url }}"
-                      class="product_title_ product-switch-link"
-                      data-product-url="{{ product_.url }}"
-                      data-product-handle="{{ product_.handle }}"
-                    >
-                      {{- product_.title -}}
-                    </a>
-                  </td>
-                  <td class="cut_td">
-                    <a
-                      href="{{ product_.url }}"
-                      class="product-switch-link"
-                      data-product-url="{{ product_.url }}"
-                      data-product-handle="{{ product_.handle }}"
-                    >
-                      {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
-                      {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
-                      {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
-                    </a>
-                  </td>
-                  <td class="cut_td">
-                    <a
-                      href="{{ product_.url }}"
-                      class="product-switch-link"
-                      data-product-url="{{ product_.url }}"
-                      data-product-handle="{{ product_.handle }}"
-                    >
-                      {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
-                      {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
-                      {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
-                    </a>
-                  </td>
-                  <td class="cut_td">
-                    <a
-                      href="{{ product_.url }}"
-                      class="product-switch-link"
-                      data-product-url="{{ product_.url }}"
-                      data-product-handle="{{ product_.handle }}"
-                    >
-                      {% for variant in product_.variants %}
-                        {% if forloop.first %}
-                          <span>{{ variant.weight | divided_by: 1000 }} kg</span>
-                        {% endif %}
-                      {% endfor %}
-                    </a>
-                  </td>
-                  <td class="cut_td">
-                    <a
-                      href="{{ product_.url }}"
-                      class="product-switch-link"
-                      data-product-url="{{ product_.url }}"
-                      data-product-handle="{{ product_.handle }}"
-                      >From <span class="price">{{ product_.price | money_with_currency }}</span></a
-                    >
-                  </td>
-                  <td class="cut_td">
-                    <a
-                      href="javascript:void(0);"
-                      id="{{ product_.url }}"
-                      pr_handle="{{ product_.handle }}"
-                      class="info-btn"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5163 20.5769C17.6058 22.2418 15.1081 23.25 12.375 23.25C6.3689 23.25 1.5 18.3811 1.5 12.375C1.5 6.3689 6.3689 1.5 12.375 1.5C18.3811 1.5 23.25 6.3689 23.25 12.375C23.25 15.1081 22.2418 17.6058 20.5769 19.5163L29.7803 28.7197L28.7197 29.7803L19.5163 20.5769ZM21.75 12.375C21.75 17.5527 17.5527 21.75 12.375 21.75C7.19733 21.75 3 17.5527 3 12.375C3 7.19733 7.19733 3 12.375 3C17.5527 3 21.75 7.19733 21.75 12.375Z" fill="#3CC561"/>
-                      </svg>
-                    </a>
-                  </td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="cust_model">Model</th>
+                    <th class="cust_hkd">
+                      Udvendige mål <br>
+                      (HxBxD mm)
+                    </th>
+                    <th class="cust_hkd">
+                      Indvendige mål <br>
+                      (HxBxD mm)
+                    </th>
+                    <th class="cust_ve">Vægt</th>
+                    <th class="cust_price">Pris</th>
+                    <th class="cust_hkd"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for product_ in product.metafields.custom.list_product.value %}
+                    <tr>
+                      <td class="cut_td">
+                        <a
+                          href="{{ product_.url }}"
+                          class="product_title_ product-switch-link"
+                          data-product-url="{{ product_.url }}"
+                          data-product-handle="{{ product_.handle }}"
+                        >
+                          {{- product_.title -}}
+                        </a>
+                      </td>
+                      <td class="cut_td">
+                        <a
+                          href="{{ product_.url }}"
+                          class="product-switch-link"
+                          data-product-url="{{ product_.url }}"
+                          data-product-handle="{{ product_.handle }}"
+                        >
+                          {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
+                        </a>
+                      </td>
+                      <td class="cut_td">
+                        <a
+                          href="{{ product_.url }}"
+                          class="product-switch-link"
+                          data-product-url="{{ product_.url }}"
+                          data-product-handle="{{ product_.handle }}"
+                        >
+                          {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
+                        </a>
+                      </td>
+                      <td class="cut_td">
+                        <a
+                          href="{{ product_.url }}"
+                          class="product-switch-link"
+                          data-product-url="{{ product_.url }}"
+                          data-product-handle="{{ product_.handle }}"
+                        >
+                          {% for variant in product_.variants %}
+                            {% if forloop.first %}
+                              <span>{{ variant.weight | divided_by: 1000 }} kg</span>
+                            {% endif %}
+                          {% endfor %}
+                        </a>
+                      </td>
+                      <td class="cut_td">
+                        <a
+                          href="{{ product_.url }}"
+                          class="product-switch-link"
+                          data-product-url="{{ product_.url }}"
+                          data-product-handle="{{ product_.handle }}"
+                          >From <span class="price">{{ product_.price | money_with_currency }}</span></a
+                        >
+                      </td>
+                      <td class="cut_td">
+                        <a
+                          href="javascript:void(0);"
+                          id="{{ product_.url }}"
+                          pr_handle="{{ product_.handle }}"
+                          class="info-btn"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="30"
+                            height="30"
+                            viewBox="0 0 30 30"
+                            fill="none"
+                          >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5163 20.5769C17.6058 22.2418 15.1081 23.25 12.375 23.25C6.3689 23.25 1.5 18.3811 1.5 12.375C1.5 6.3689 6.3689 1.5 12.375 1.5C18.3811 1.5 23.25 6.3689 23.25 12.375C23.25 15.1081 22.2418 17.6058 20.5769 19.5163L29.7803 28.7197L28.7197 29.7803L19.5163 20.5769ZM21.75 12.375C21.75 17.5527 17.5527 21.75 12.375 21.75C7.19733 21.75 3 17.5527 3 12.375C3 7.19733 7.19733 3 12.375 3C17.5527 3 21.75 7.19733 21.75 12.375Z" fill="#3CC561"/>
+                          </svg>
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -340,7 +353,7 @@
         console.log('[ProductSwitcher] Scrolling to top of page');
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
 
         event.target.classList.remove('loading');
@@ -407,7 +420,7 @@
         '.product-details',
         '.product-media',
         '.product-gallery',
-        '.product-images'
+        '.product-images',
       ];
 
       console.log('[ProductSwitcher] Searching for sections with selectors:', selectors);
@@ -458,9 +471,9 @@
         // Fetch the new product page
         var response = await fetch(productUrl, {
           headers: {
-            'Accept': 'text/html',
-            'X-Requested-With': 'XMLHttpRequest'
-          }
+            Accept: 'text/html',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
         });
 
         if (!response.ok) {
@@ -473,10 +486,20 @@
         var doc = parser.parseFromString(html, 'text/html');
 
         // Find all product images in both current page and new page
-        var currentImages = document.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
-        var newImages = doc.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
+        var currentImages = document.querySelectorAll(
+          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
+        );
+        var newImages = doc.querySelectorAll(
+          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
+        );
 
-        console.log('[ProductSwitcher] Found', currentImages.length, 'current images and', newImages.length, 'new images');
+        console.log(
+          '[ProductSwitcher] Found',
+          currentImages.length,
+          'current images and',
+          newImages.length,
+          'new images'
+        );
 
         // Update image sources
         for (var i = 0; i < Math.min(currentImages.length, newImages.length); i++) {
