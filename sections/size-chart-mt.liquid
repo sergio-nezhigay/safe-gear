@@ -1,4 +1,3 @@
-<!-- size-chart-mt -->
 <style>
   .table-container {
     width: 100%;
@@ -27,7 +26,6 @@
   td .product_title_ {
     color: #4b81bf;
     text-decoration: none;
-    /* font-weight:bold; */
     font-size: 16px;
     line-height: 20px;
   }
@@ -36,7 +34,6 @@
     color: #3cc561;
   }
   .info-btn {
-    /* background-color: #3CC561; */
     color: white;
     padding: 10px 15px;
     text-align: center;
@@ -72,7 +69,6 @@
       min-width: 600px;
     }
 
-    /* Sticky first column */
     .custom-product-container table th:first-child,
     .custom-product-container table td:first-child {
       position: sticky;
@@ -99,7 +95,6 @@
       vertical-align: top;
     }
 
-    /* Other columns */
     .custom-product-container table th,
     .custom-product-container table td {
       min-width: 100px;
@@ -116,7 +111,6 @@
       background-color: #cbe3ff;
     }
 
-    /* Make sure the first column content doesn't overflow */
     .custom-product-container table td:first-child a,
     .custom-product-container table th:first-child {
       display: block;
@@ -295,26 +289,18 @@
 {% javascript %}
   class ProductSwitcher {
     constructor() {
-      this.init();
-    }
-
-    init() {
-      console.log('[ProductSwitcher] Initialized');
       document.addEventListener('click', this.handleProductSwitch.bind(this));
       this.addStyles();
     }
 
     addStyles() {
       var style = document.createElement('style');
-      style.textContent =
-        '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
+      style.textContent = '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
       document.head.appendChild(style);
     }
 
     async handleProductSwitch(event) {
-      if (!event.target.classList.contains('product-switch-link')) {
-        return;
-      }
+      if (!event.target.classList.contains('product-switch-link')) return;
 
       event.preventDefault();
       event.target.classList.add('loading');
@@ -327,318 +313,147 @@
         return;
       }
 
-      console.log('[ProductSwitcher] AJAX switching to:', productUrl);
-
       try {
-        // Update browser history without page reload
         window.history.pushState({}, '', productUrl);
-        console.log('[ProductSwitcher] Browser history updated');
-
-        // Update product sections via AJAX
         await this.updateProductSections(productUrl);
-
-        // Force update of product images if they weren't caught by section updates
         await this.updateProductImages(productUrl);
 
-        // Dispatch custom event
-        document.dispatchEvent(
-          new CustomEvent('product:switched', {
-            detail: { productUrl: productUrl, productHandle: productHandle },
-          })
-        );
+        document.dispatchEvent(new CustomEvent('product:switched', {
+          detail: { productUrl, productHandle }
+        }));
 
-        console.log('[ProductSwitcher] AJAX product switch completed');
-
-        // Scroll to top of page after successful product switch
-        console.log('[ProductSwitcher] Scrolling to top of page');
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         event.target.classList.remove('loading');
       } catch (error) {
-        console.error('[ProductSwitcher] AJAX failed, falling back to page reload:', error);
         event.target.classList.remove('loading');
         window.location.href = productUrl;
       }
     }
 
     async updateProductSections(productUrl) {
-      console.log('[ProductSwitcher] Finding product sections...');
-
       var sectionsToUpdate = this.findProductSections();
-      console.log('[ProductSwitcher] Sections to update:', sectionsToUpdate);
-
-      if (sectionsToUpdate.length === 0) {
-        console.warn('[ProductSwitcher] No sections found, using fallback');
-        throw new Error('No sections to update');
-      }
+      if (sectionsToUpdate.length === 0) throw new Error('No sections to update');
 
       var url = new URL(productUrl, window.location.origin);
 
-      for (var i = 0; i < sectionsToUpdate.length; i++) {
-        var sectionId = sectionsToUpdate[i];
-        console.log('[ProductSwitcher] Updating section:', sectionId);
-
+      for (var sectionId of sectionsToUpdate) {
         try {
-          // Try theme section renderer first
-          if (window.sectionRenderer && typeof window.sectionRenderer.renderSection === 'function') {
-            console.log('[ProductSwitcher] Using theme section renderer');
-            await window.sectionRenderer.renderSection(sectionId, {
-              url: url,
-              cache: false,
-            });
-            console.log('[ProductSwitcher] Section updated via renderer:', sectionId);
+          if (window.sectionRenderer?.renderSection) {
+            await window.sectionRenderer.renderSection(sectionId, { url, cache: false });
           } else {
-            console.log('[ProductSwitcher] Using manual section update');
             await this.manualUpdateSection(sectionId, url);
-            console.log('[ProductSwitcher] Section updated manually:', sectionId);
           }
-        } catch (sectionError) {
-          console.error('[ProductSwitcher] Failed to update section:', sectionId, sectionError);
-          // Continue with other sections
-        }
+        } catch (error) {}
       }
     }
 
     findProductSections() {
       var sections = [];
-
-      // Look for product-related sections
       var selectors = [
-        '[id*="product-information"]',
-        '[id*="product-details"]',
-        '[id*="product-media"]',
-        '[id*="product-gallery"]',
-        '[id*="product-images"]',
-        '[id*="shopify-section-product"]',
-        '[id*="ProductMedia"]',
-        '[id*="ProductGallery"]',
-        '[id*="ProductImages"]',
-        '.product-information',
-        '.product-details',
-        '.product-media',
-        '.product-gallery',
-        '.product-images',
+        '[id*="product-information"]', '[id*="product-details"]', '[id*="product-media"]',
+        '[id*="product-gallery"]', '[id*="product-images"]', '[id*="shopify-section-product"]',
+        '[id*="ProductMedia"]', '[id*="ProductGallery"]', '[id*="ProductImages"]',
+        '.product-information', '.product-details', '.product-media', '.product-gallery', '.product-images'
       ];
 
-      console.log('[ProductSwitcher] Searching for sections with selectors:', selectors);
-
-      for (var i = 0; i < selectors.length; i++) {
+      selectors.forEach(selector => {
         try {
-          var elements = document.querySelectorAll(selectors[i]);
-          console.log('[ProductSwitcher] Selector "' + selectors[i] + '" found', elements.length, 'elements');
-
-          for (var j = 0; j < elements.length; j++) {
-            var element = elements[j];
-            console.log('[ProductSwitcher] Element:', element.tagName, 'ID:', element.id, 'Class:', element.className);
-
-            if (element.id && sections.indexOf(element.id) === -1) {
+          document.querySelectorAll(selector).forEach(element => {
+            if (element.id && !sections.includes(element.id)) {
               sections.push(element.id);
-              console.log('[ProductSwitcher] Added section:', element.id);
             }
-          }
-        } catch (e) {
-          console.error('[ProductSwitcher] Selector error:', selectors[i], e);
+          });
+        } catch (e) {}
+      });
+
+      document.querySelectorAll('[class*="product"], [id*="product"]').forEach(el => {
+        if (el.id && el.tagName === 'SECTION' && !sections.includes(el.id)) {
+          sections.push(el.id);
         }
-      }
+      });
 
-      // Also look for any section with "product" in the class or ID
-      try {
-        var productElements = document.querySelectorAll('[class*="product"], [id*="product"]');
-        console.log('[ProductSwitcher] Found', productElements.length, 'elements with "product" in class/id');
-
-        for (var k = 0; k < productElements.length; k++) {
-          var el = productElements[k];
-          if (el.id && el.tagName === 'SECTION' && sections.indexOf(el.id) === -1) {
-            sections.push(el.id);
-            console.log('[ProductSwitcher] Added product section:', el.id);
-          }
-        }
-      } catch (e) {
-        console.error('[ProductSwitcher] Error finding product elements:', e);
-      }
-
-      console.log('[ProductSwitcher] Final sections to update:', sections);
       return sections;
     }
 
     async updateProductImages(productUrl) {
-      console.log('[ProductSwitcher] Updating product images...');
-
       try {
-        // Fetch the new product page
         var response = await fetch(productUrl, {
-          headers: {
-            Accept: 'text/html',
-            'X-Requested-With': 'XMLHttpRequest',
-          },
+          headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' }
         });
-
-        if (!response.ok) {
-          console.warn('[ProductSwitcher] Could not fetch product page for image update');
-          return;
-        }
+        if (!response.ok) return;
 
         var html = await response.text();
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(html, 'text/html');
+        var doc = new DOMParser().parseFromString(html, 'text/html');
 
-        // Find all product images in both current page and new page
-        var currentImages = document.querySelectorAll(
-          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
-        );
-        var newImages = doc.querySelectorAll(
-          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
-        );
+        var currentImages = document.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
+        var newImages = doc.querySelectorAll('img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img');
 
-        console.log(
-          '[ProductSwitcher] Found',
-          currentImages.length,
-          'current images and',
-          newImages.length,
-          'new images'
-        );
-
-        // Update image sources
         for (var i = 0; i < Math.min(currentImages.length, newImages.length); i++) {
           var currentImg = currentImages[i];
           var newImg = newImages[i];
 
           if (currentImg.src !== newImg.src) {
-            console.log('[ProductSwitcher] Updating image:', currentImg.src, '->', newImg.src);
             currentImg.src = newImg.src;
-
-            // Update srcset if it exists
-            if (newImg.srcset) {
-              currentImg.srcset = newImg.srcset;
-            }
-
-            // Update alt text
-            if (newImg.alt) {
-              currentImg.alt = newImg.alt;
-            }
+            if (newImg.srcset) currentImg.srcset = newImg.srcset;
+            if (newImg.alt) currentImg.alt = newImg.alt;
           }
         }
 
-        // Update any picture elements
         var currentPictures = document.querySelectorAll('picture');
         var newPictures = doc.querySelectorAll('picture');
 
         for (var j = 0; j < Math.min(currentPictures.length, newPictures.length); j++) {
           if (currentPictures[j].outerHTML !== newPictures[j].outerHTML) {
-            console.log('[ProductSwitcher] Updating picture element');
             currentPictures[j].outerHTML = newPictures[j].outerHTML;
           }
         }
-
-        console.log('[ProductSwitcher] Product images update completed');
-      } catch (error) {
-        console.error('[ProductSwitcher] Error updating product images:', error);
-      }
+      } catch (error) {}
     }
 
     async manualUpdateSection(sectionId, url) {
       var section = document.getElementById(sectionId);
-      if (!section) {
-        throw new Error('Section not found: ' + sectionId);
-      }
+      if (!section) throw new Error('Section not found: ' + sectionId);
 
-      // Extract the actual section name from the full ID
-      var sectionName = sectionId;
-      if (sectionId.includes('template--')) {
-        // Format: "ProductInformation-template--25692738126150__main"
-        // Extract: "template--25692738126150__main"
-        var parts = sectionId.split('-');
-        if (parts.length > 1) {
-          sectionName = parts.slice(1).join('-');
-        }
-      }
+      var sectionName = sectionId.includes('template--')
+        ? sectionId.split('-').slice(1).join('-')
+        : sectionId;
 
       var fetchUrl = new URL(url);
       fetchUrl.searchParams.append('section_id', sectionName);
 
-      console.log('[ProductSwitcher] Original section ID:', sectionId);
-      console.log('[ProductSwitcher] Using section name:', sectionName);
-      console.log('[ProductSwitcher] Fetching:', fetchUrl.toString());
-
       var response = await fetch(fetchUrl.toString(), {
-        headers: {
-          Accept: 'text/html',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
+        headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' }
       });
 
-      console.log('[ProductSwitcher] Response status:', response.status);
-
-      if (!response.ok) {
-        console.log('[ProductSwitcher] Response headers:', Object.fromEntries(response.headers.entries()));
-        throw new Error('HTTP ' + response.status + ': ' + response.statusText);
-      }
+      if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + response.statusText);
 
       var html = await response.text();
-      console.log('[ProductSwitcher] Response HTML length:', html.length);
-
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(html, 'text/html');
+      var doc = new DOMParser().parseFromString(html, 'text/html');
       var newSection = doc.getElementById(sectionId);
 
       if (!newSection) {
-        console.log('[ProductSwitcher] Looking for section with original ID failed, trying alternative selectors');
-        // Try to find section by class or other attributes
         var alternatives = [
           doc.querySelector('[class*="product-information"]'),
           doc.querySelector('[class*="product-details"]'),
           doc.querySelector('section'),
-          doc.querySelector('div'),
+          doc.querySelector('div')
         ];
 
-        for (var i = 0; i < alternatives.length; i++) {
-          if (alternatives[i]) {
-            console.log(
-              '[ProductSwitcher] Found alternative section:',
-              alternatives[i].tagName,
-              alternatives[i].className
-            );
-            newSection = alternatives[i];
-            newSection.id = sectionId; // Set the correct ID
-            break;
-          }
-        }
+        newSection = alternatives.find(el => el);
+        if (newSection) newSection.id = sectionId;
       }
 
-      if (!newSection) {
-        console.log('[ProductSwitcher] Response HTML preview:', html.substring(0, 500));
-        throw new Error('New section not found in response');
-      }
+      if (!newSection) throw new Error('New section not found in response');
 
-      console.log('[ProductSwitcher] Replacing section HTML');
       section.outerHTML = newSection.outerHTML;
-
-      // Reinitialize components
-      this.reinitializeComponents();
-    }
-
-    reinitializeComponents() {
-      console.log('[ProductSwitcher] Reinitializing components');
-
-      // Dispatch section load event
       document.dispatchEvent(new CustomEvent('theme:section:load'));
 
-      // Try common reinitialization patterns
-      if (typeof window.theme !== 'undefined' && window.theme.init) {
-        window.theme.init();
-      }
+      if (window.theme?.init) window.theme.init();
     }
   }
 
-  // Initialize
-  console.log('[ProductSwitcher] Script loaded');
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      new ProductSwitcher();
-    });
+    document.addEventListener('DOMContentLoaded', () => new ProductSwitcher());
   } else {
     new ProductSwitcher();
   }
