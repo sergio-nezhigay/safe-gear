@@ -65,9 +65,9 @@
     or product.metafields.custom.cash_rating != blank
     or product.metafields.custom.fire_duration != blank
   %}
-    <h2 class="product-info__main-title title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">
+    <h3 class="product-info__main-title h4">
       Produktoplysninger
-    </h2>
+    </h3>
   {% endif %}
 
   <div class="product-info__content" data-content>
@@ -378,11 +378,13 @@
   }
 
   .product-info__main-title {
-    text-align: center;
+    font-family: var(--font-primary--family);
+    font-size: var(--font-h4--size);
+    font-weight: var(--font-h4--weight);
+    color: var(--font-h4--color);
+    line-height: var(--font-h4--line-height);
+    text-align: left;
     margin-bottom: clamp(24px, 4vw, 48px);
-    font-size: clamp(24px, 4vw, 36px);
-    color: #1a365d;
-    font-weight: 700;
   }
 
   /* Skeleton Loading States */
