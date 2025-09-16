@@ -266,6 +266,43 @@
       "type": "size-chart-mt",
       "settings": {}
     },
+    "product_info": {
+      "type": "product-info",
+      "settings": {
+        "section_heading": "Dimensioner",
+        "new_height": "Højde - Udvendig (mm)",
+        "new_width": "Bredde - Udvendig (mm)",
+        "new_depth": "Dybde - Udvendig (mm)",
+        "new_height_interior": "Højde - Indvendig (mm)",
+        "new_width_interior": "Bredde - Indvendig (mm)",
+        "new_depth_interior": "Dybde - Indvendig (mm)",
+        "weight_kg": "Vægt - kg",
+        "capacity_liter": "Kapacitet - Liter",
+        "custom_range": "Custom size (mm)",
+        "door_opening_height": "Døråbning - Højde (mm)",
+        "door_opening_width": "Døråbning - Bredde (mm)",
+        "door_opening_angle": "Døråbning - Vinkel",
+        "width_door_open_180": "Bredde (Skab + Dør) - Dør åben 180 grader",
+        "depth_door_open_90": "Dybde (Skab + Dør) - Dør åben 90 grader",
+        "depth_door_open_100": "Custom meta",
+        "key_features": "Nøglefunktioner",
+        "product_name": "Produktnavn",
+        "model": "Model",
+        "model_series": "Modelserie",
+        "safe_kind": "Skabsform",
+        "safe_purpose": "Egnet til",
+        "door_structure": "Dørkonstruktion",
+        "body_structure": "Vægkonstruktion",
+        "bolting": "Fastboltning",
+        "bolts_included": "Bolte Inkluderet",
+        "burglary_protection": "Sikkerhed",
+        "burglary_classification": "Indbrudssikring",
+        "burglary_test_method": "Indbrudssikring Testnorm",
+        "burglary_test_center": "Indbrudssikring Certificering",
+        "cash_rating": "Vejl. Beløbsgrænser",
+        "fire_duration": "Brandsikring"
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -406,5 +443,10 @@
       }
     }
   },
-  "order": ["main", "size_chart_mt", "product_recommendations_qggXJq"]
+  "order": [
+    "main",
+    "size_chart_mt",
+    "product_info",
+    "product_recommendations_qggXJq"
+  ]
 }

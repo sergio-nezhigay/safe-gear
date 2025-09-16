@@ -1,0 +1,630 @@
+<!-- product_info -->
+<style>
+  /* ==== Table Container ==== */
+  .dimensions-table-container {
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  /* ==== Table Heading ==== */
+  h2.table-heading.table-header {
+    font-size: 18px;
+    line-height: unset;
+    margin-bottom: 10px;
+    font-weight: 100;
+  }
+
+  /* ==== Table Styling ==== */
+  .dimensions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+
+  /* ==== Table Header ==== */
+  .table-header {
+    background-color: #cbe3ff;
+    color: black;
+    text-align: left;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 100;
+  }
+
+  /* ==== Table Rows ==== */
+  .dimensions-table td,
+  .key-features-table td {
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+    font-family: sans-serif;
+  }
+
+  .dimensions-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .dimensions-table tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  .key-features-table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .key-features-table-container tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  .table-container_burglary tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .table-container_burglary tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  /* ==== Bold Labels in First Column ==== */
+  .dimensions-table td:first-child {
+    width: 30%;
+  }
+
+  /* ==== Mobile View ==== */
+  @media screen and (max-width: 600px) {
+    .dimensions-table td:first-child {
+      width: 36%;
+    }
+
+    .dimensions-table-container {
+      padding: 0px;
+    }
+
+    .dimensions-table td {
+      /* padding: 8px; */
+      font-size: 14px;
+    }
+
+    .table-heading {
+      font-size: 18px;
+    }
+  }
+  .key-features-table-container {
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-top: 30px;
+  }
+  table.key-features-table td:first-child {
+    width: 30%;
+    /* text-align:center; */
+  }
+  .key-features-table td {
+    border: none;
+  }
+  .table-container_burglary.table-container {
+    border: none;
+    width: 100%;
+    margin: 20px auto;
+    /* padding: 10px; */
+  }
+
+  .table-heading {
+    /* background: #d0e5ff; */
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table th,
+  .info-table td {
+    padding: 10px;
+    border: none;
+  }
+
+  .info-table th {
+    text-align: left;
+    /* background: #f5f5f5; */
+    font-weight: bold;
+  }
+
+  .info-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .key-features-table-container tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  .table-container_burglary tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  .table-container table tr th:first-child {
+    width: 35%;
+    text-align: left;
+  }
+
+  .table-container_burglary table tr th:first-child {
+    width: 30%;
+  }
+
+  .table-container table tr th {
+    font-size: 14px;
+    font-family: sans-serif;
+  }
+  .table-heading_ {
+    padding-top: 30px;
+  }
+</style>
+
+<div class="product_infomt page-width">
+  {% if product.metafields.custom.new_height != blank
+    or product.metafields.custom.new_width != blank
+    or product.metafields.custom.new_depth != blank
+    or product.metafields.custom.new_height_interior != blank
+    or product.metafields.custom.new_width_interior != blank
+    or product.metafields.custom.new_depth_interior != blank
+    or product.metafields.custom.custom_range != blank
+    or product.metafields.custom.door_opening_height != blank
+    or product.metafields.custom.door_opening_angle != blank
+    or product.metafields.custom.width_door_open_180 != blank
+    or product.metafields.custom.depth_door_open_90 != blank
+  %}
+    <div class="dimensions-table-container">
+      <h2 class="table-heading_ title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">
+        Produktoplysninger
+      </h2>
+      <table class="dimensions-table">
+        <thead>
+          <tr>
+            <th colspan="2" class="table-header">{{ section.settings.section_heading }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if product.metafields.custom.new_height != blank %}
+            <tr ddts>
+              <td>
+                <strong>{{ section.settings.new_height }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.new_height.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.new_width != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.new_width }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.new_width.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.new_depth != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.new_depth }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.new_depth.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.new_height_interior != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.new_height_interior }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.new_height_interior.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.new_width_interior != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.new_width_interior }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.new_width_interior.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.new_depth_interior != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.new_depth_interior }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.new_depth_interior.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          <tr>
+            <td>
+              <strong>{{ section.settings.weight_kg }}</strong>
+            </td>
+            <td>
+              {% for variant in product.variants %}
+                {% if forloop.first %}
+                  <span>{{ variant.weight | divided_by: 1000 }} kg</span>
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+          {% if product.metafields.custom.capacity_liter != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.capacity_liter }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.capacity_liter.value }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.custom_range != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.custom_range }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.custom_range }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.door_opening_height != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.door_opening_height }} </strong>
+              </td>
+              <td>{{ product.metafields.custom.door_opening_height.value | split: ' ' | first }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.door_opening_width != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.door_opening_width }}</strong>
+              </td>
+              <td>
+                {{ product.metafields.custom.door_opening_width.value }}
+                {{ product.metafields.custom.door_opening_width.unit }}
+              </td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.door_opening_angle != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.door_opening_angle }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.door_opening_angle }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.width_door_open_180 != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.width_door_open_180 }}</strong>
+              </td>
+              <td>
+                {{ product.metafields.custom.width_door_open_180.value }}
+                {{ product.metafields.custom.width_door_open_180.unit }}
+              </td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.depth_door_open_90 != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.depth_door_open_90 }}</strong>
+              </td>
+              <td>
+                {{ product.metafields.custom.depth_door_open_90.value }}
+                {{ product.metafields.custom.depth_door_open_90.unit }}
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+  {% if product.metafields.custom.model != blank
+    or product.metafields.custom.model_series != blank
+    or product.metafields.custom.safe_kind != blank
+    or product.metafields.custom.safe_purpose != blank
+    or product.metafields.custom.door_structure != blank
+    or product.metafields.custom.body_structure != blank
+    or product.metafields.custom.bolting != blank
+    or product.metafields.custom.bolts_included != blank
+  %}
+    <div class="key-features-table-container">
+      <table class="key-features-table">
+        <thead>
+          <tr>
+            <th colspan="2" class="table-header">{{ section.settings.key_features }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>{{ section.settings.product_name }}</strong>
+            </td>
+            <td>{{ product.title }}</td>
+          </tr>
+          {% if product.metafields.custom.model != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.model }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.model }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.model_series != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.model_series }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.model_series }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.safe_kind != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.safe_kind }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.safe_kind }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.safe_purpose != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.safe_purpose }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.safe_purpose | metafield_text | replace: 'and', ',' }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.door_structure != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.door_structure }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.door_structure }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.body_structure != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.body_structure }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.body_structure }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.bolting != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.bolting }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.bolting | metafield_text | replace: 'and', ',' }}</td>
+            </tr>
+          {% endif %}
+          {% if product.metafields.custom.bolts_included != blank %}
+            <tr>
+              <td>
+                <strong>{{ section.settings.bolts_included }}</strong>
+              </td>
+              <td>{{ product.metafields.custom.bolts_included }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+  {% if product.metafields.custom.burglary_classification != blank
+    or product.metafields.custom.burglary_test_method != blank
+    or product.metafields.custom.burglary_test_center != blank
+    or product.metafields.custom.cash_rating != blank
+    or product.metafields.custom.fire_duration != blank
+  %}
+    <div class="table-container table-container_burglary">
+      <h2 class="table-heading table-header">{{ section.settings.burglary_protection }}</h2>
+      <table class="info-table">
+        {% if product.metafields.custom.burglary_classification != blank %}
+          <tr>
+            <th>{{ section.settings.burglary_classification }}</th>
+            <td>{{ product.metafields.custom.burglary_classification }}</td>
+          </tr>
+        {% endif %}
+        {% if product.metafields.custom.burglary_test_method != blank %}
+          <tr>
+            <th>{{ section.settings.burglary_test_method }}</th>
+            <td>{{ product.metafields.custom.burglary_test_method }}</td>
+          </tr>
+        {% endif %}
+        {% if product.metafields.custom.burglary_test_center != blank %}
+          <tr>
+            <th>{{ section.settings.burglary_test_center }}</th>
+            <td>{{ product.metafields.custom.burglary_test_center }}</td>
+          </tr>
+        {% endif %}
+        {% if product.metafields.custom.cash_rating != blank %}
+          <tr>
+            <th>{{ section.settings.cash_rating }}</th>
+            <td>{{ product.metafields.custom.cash_rating }}</td>
+          </tr>
+        {% endif %}
+        {% if product.metafields.custom.fire_duration != blank %}
+          <tr>
+            <th>{{ section.settings.fire_duration }}</th>
+            <td>{{ product.metafields.custom.fire_duration }}</td>
+          </tr>
+        {% endif %}
+      </table>
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Product Info",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_height",
+      "label": "New Height"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_width",
+      "label": "New Width"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_depth",
+      "label": "New Depth"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_height_interior",
+      "label": "New Height Interior"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_width_interior",
+      "label": "New Width Interior"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "new_depth_interior",
+      "label": "New Depth Interior"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "weight_kg",
+      "label": "Weight Kg"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "capacity_liter",
+      "label": "Capacity_liter"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "custom_range",
+      "label": "Custom Range"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "door_opening_height",
+      "label": "Door Opening Height"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "door_opening_width",
+      "label": "Door Opening Width"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "door_opening_angle",
+      "label": "Door Opening Angle"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "width_door_open_180",
+      "label": "Width Door Open 180"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "depth_door_open_90",
+      "label": "Width Door Open 90"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "depth_door_open_100",
+      "label": "Width Door Open 100"
+    },
+    {
+      "type": "header",
+      "content": "Key Features"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "key_features",
+      "label": "Key Features"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "product_name",
+      "label": "Product Name"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "model",
+      "label": "Model"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "model_series",
+      "label": "Model Series"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "safe_kind",
+      "label": "Safe Kind"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "safe_purpose",
+      "label": "Safe Purpose"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "door_structure",
+      "label": "Door Structure"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "body_structure",
+      "label": "Body Structure"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "bolting",
+      "label": "Bolting"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "bolts_included",
+      "label": "Bolts Included"
+    },
+    {
+      "type": "header",
+      "content": "Burglary Protection"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "burglary_protection",
+      "label": "Burglary Protection"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "burglary_classification",
+      "label": "Burglary Classification"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "burglary_test_method",
+      "label": "Burglary Test Method"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "burglary_test_center",
+      "label": "Burglary Test Center"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cash_rating",
+      "label": "Cash Rating"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "fire_duration",
+      "label": "Fire Dusration"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Info"
+    }
+  ]
+}
+{% endschema %}
