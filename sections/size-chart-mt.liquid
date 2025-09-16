@@ -287,189 +287,357 @@
 {% endschema %}
 
 {% javascript %}
-  class ProductSwitcher {
-    constructor() {
-      document.addEventListener('click', this.handleProductSwitch.bind(this));
-      this.addStyles();
+  // Immediate execution to test if JavaScript is working
+  console.log('[ProductSwitcher] Script executing at:', new Date().toISOString());
+
+  // Performance optimization: Cache for fetched pages
+  const pageCache = new Map();
+  const prefetchQueue = new Set();
+
+  // Simple function to handle clicks
+  function handleProductSwitchClick(event) {
+    const target = event.target.closest('.product-switch-link');
+
+    if (!target) {
+      return;
     }
 
-    addStyles() {
-      var style = document.createElement('style');
-      style.textContent =
-        '.product-switch-link { transition: opacity 0.2s ease; } .product-switch-link:hover { opacity: 0.8; } .product-switch-link.loading { opacity: 0.5; pointer-events: none; }';
-      document.head.appendChild(style);
+    console.log('[ProductSwitcher] Product link clicked:', target);
+    event.preventDefault();
+
+    const productUrl = target.dataset.productUrl;
+    const productHandle = target.dataset.productHandle;
+
+    if (!productUrl) {
+      console.warn('[ProductSwitcher] No product URL found');
+      return;
     }
 
-    async handleProductSwitch(event) {
-      if (!event.target.classList.contains('product-switch-link')) return;
+    console.log('[ProductSwitcher] Switching to product:', productUrl);
 
-      event.preventDefault();
-      event.target.classList.add('loading');
+    // Add loading state
+    target.classList.add('loading');
 
-      var productUrl = event.target.dataset.productUrl;
-      var productHandle = event.target.dataset.productHandle;
+    // Update URL
+    window.history.pushState({}, '', productUrl);
 
-      if (!productUrl) {
-        event.target.classList.remove('loading');
-        return;
+    // Use optimized manual update with caching
+    console.log('[ProductSwitcher] Using optimized manual section update');
+    updateWithOptimizedApproach(productUrl, target);
+  }
+
+  // Prefetch product pages on hover for instant loading
+  function handleProductHover(event) {
+    const target = event.target.closest('.product-switch-link');
+    if (!target) return;
+
+    const productUrl = target.dataset.productUrl;
+    if (!productUrl || pageCache.has(productUrl) || prefetchQueue.has(productUrl)) {
+      return;
+    }
+
+    prefetchQueue.add(productUrl);
+
+    // Prefetch after a short delay to avoid excessive requests
+    setTimeout(() => {
+      if (prefetchQueue.has(productUrl)) {
+        console.log('[ProductSwitcher] Prefetching:', productUrl);
+        prefetchProductPage(productUrl);
       }
+    }, 300);
+  }
 
-      try {
-        window.history.pushState({}, '', productUrl);
-        await this.updateProductSections(productUrl);
-        await this.updateProductImages(productUrl);
+  // Prefetch function for hover optimization
+  async function prefetchProductPage(productUrl) {
+    try {
+      if (pageCache.has(productUrl)) return;
 
-        document.dispatchEvent(
-          new CustomEvent('product:switched', {
-            detail: { productUrl, productHandle },
-          })
-        );
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        event.target.classList.remove('loading');
-      } catch (error) {
-        event.target.classList.remove('loading');
-        window.location.href = productUrl;
-      }
-    }
-
-    async updateProductSections(productUrl) {
-      var sectionsToUpdate = this.findProductSections();
-      if (sectionsToUpdate.length === 0) throw new Error('No sections to update');
-
-      var url = new URL(productUrl, window.location.origin);
-
-      for (var sectionId of sectionsToUpdate) {
-        try {
-          if (window.sectionRenderer?.renderSection) {
-            await window.sectionRenderer.renderSection(sectionId, { url, cache: false });
-          } else {
-            await this.manualUpdateSection(sectionId, url);
-          }
-        } catch (error) {}
-      }
-    }
-
-    findProductSections() {
-      var sections = [];
-      var selectors = [
-        '[id*="product-information"]',
-        '[id*="product-details"]',
-        '[id*="product-media"]',
-        '[id*="product-gallery"]',
-        '[id*="product-images"]',
-        '[id*="shopify-section-product"]',
-        '[id*="ProductMedia"]',
-        '[id*="ProductGallery"]',
-        '[id*="ProductImages"]',
-        '.product-information',
-        '.product-details',
-        '.product-media',
-        '.product-gallery',
-        '.product-images',
-      ];
-
-      selectors.forEach((selector) => {
-        try {
-          document.querySelectorAll(selector).forEach((element) => {
-            if (element.id && !sections.includes(element.id)) {
-              sections.push(element.id);
-            }
-          });
-        } catch (e) {}
-      });
-
-      document.querySelectorAll('[class*="product"], [id*="product"]').forEach((el) => {
-        if (el.id && el.tagName === 'SECTION' && !sections.includes(el.id)) {
-          sections.push(el.id);
+      const response = await fetch(productUrl, {
+        headers: {
+          'Accept': 'text/html',
+          'X-Requested-With': 'XMLHttpRequest'
         }
       });
 
-      return sections;
-    }
+      if (response.ok) {
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const mainSection = doc.querySelector('[id*="template--"][id*="__main"]');
 
-    async updateProductImages(productUrl) {
-      try {
-        var response = await fetch(productUrl, {
-          headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' },
-        });
-        if (!response.ok) return;
-
-        var html = await response.text();
-        var doc = new DOMParser().parseFromString(html, 'text/html');
-
-        var currentImages = document.querySelectorAll(
-          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
-        );
-        var newImages = doc.querySelectorAll(
-          'img[src*="product"], img[src*="files"], .product-media img, .product-gallery img, [class*="product"] img'
-        );
-
-        for (var i = 0; i < Math.min(currentImages.length, newImages.length); i++) {
-          var currentImg = currentImages[i];
-          var newImg = newImages[i];
-
-          if (currentImg.src !== newImg.src) {
-            currentImg.src = newImg.src;
-            if (newImg.srcset) currentImg.srcset = newImg.srcset;
-            if (newImg.alt) currentImg.alt = newImg.alt;
-          }
+        if (mainSection) {
+          pageCache.set(productUrl, mainSection.cloneNode(true));
+          console.log('[ProductSwitcher] Prefetched and cached:', productUrl);
         }
-
-        var currentPictures = document.querySelectorAll('picture');
-        var newPictures = doc.querySelectorAll('picture');
-
-        for (var j = 0; j < Math.min(currentPictures.length, newPictures.length); j++) {
-          if (currentPictures[j].outerHTML !== newPictures[j].outerHTML) {
-            currentPictures[j].outerHTML = newPictures[j].outerHTML;
-          }
-        }
-      } catch (error) {}
-    }
-
-    async manualUpdateSection(sectionId, url) {
-      var section = document.getElementById(sectionId);
-      if (!section) throw new Error('Section not found: ' + sectionId);
-
-      var sectionName = sectionId.includes('template--') ? sectionId.split('-').slice(1).join('-') : sectionId;
-
-      var fetchUrl = new URL(url);
-      fetchUrl.searchParams.append('section_id', sectionName);
-
-      var response = await fetch(fetchUrl.toString(), {
-        headers: { Accept: 'text/html', 'X-Requested-With': 'XMLHttpRequest' },
-      });
-
-      if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + response.statusText);
-
-      var html = await response.text();
-      var doc = new DOMParser().parseFromString(html, 'text/html');
-      var newSection = doc.getElementById(sectionId);
-
-      if (!newSection) {
-        var alternatives = [
-          doc.querySelector('[class*="product-information"]'),
-          doc.querySelector('[class*="product-details"]'),
-          doc.querySelector('section'),
-          doc.querySelector('div'),
-        ];
-
-        newSection = alternatives.find((el) => el);
-        if (newSection) newSection.id = sectionId;
       }
-
-      if (!newSection) throw new Error('New section not found in response');
-
-      section.outerHTML = newSection.outerHTML;
-      document.dispatchEvent(new CustomEvent('theme:section:load'));
-
-      if (window.theme?.init) window.theme.init();
+    } catch (error) {
+      console.warn('[ProductSwitcher] Prefetch failed:', error);
+    } finally {
+      prefetchQueue.delete(productUrl);
     }
   }
 
+  // Optimized update with caching and better DOM handling
+  async function updateWithOptimizedApproach(productUrl, target) {
+    try {
+      let newMainSection;
+
+      // Check cache first
+      if (pageCache.has(productUrl)) {
+        console.log('[ProductSwitcher] Using cached content for:', productUrl);
+        newMainSection = pageCache.get(productUrl).cloneNode(true);
+      } else {
+        console.log('[ProductSwitcher] Fetching and caching:', productUrl);
+
+        const response = await fetch(productUrl, {
+          headers: {
+            'Accept': 'text/html',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        newMainSection = doc.querySelector('[id*="template--"][id*="__main"]');
+
+        if (newMainSection) {
+          // Cache for future use
+          pageCache.set(productUrl, newMainSection.cloneNode(true));
+        }
+      }
+
+      const currentMainSection = document.querySelector('[id*="template--"][id*="__main"]');
+
+      if (newMainSection && currentMainSection) {
+        console.log('[ProductSwitcher] Updating main product section');
+
+        // Use more efficient DOM update with animation frame
+        requestAnimationFrame(() => {
+          currentMainSection.outerHTML = newMainSection.outerHTML;
+
+          // Dispatch events for any JavaScript re-initialization
+          document.dispatchEvent(new CustomEvent('theme:section:load'));
+          document.dispatchEvent(new CustomEvent('product:switched', {
+            detail: { productUrl, productHandle: target.dataset.productHandle }
+          }));
+
+          console.log('[ProductSwitcher] Optimized update completed successfully');
+        });
+
+        // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      } else {
+        console.warn('[ProductSwitcher] Could not find main section, falling back to navigation');
+        window.location.href = productUrl;
+      }
+
+    } catch (error) {
+      console.error('[ProductSwitcher] Optimized update failed:', error);
+      window.location.href = productUrl;
+    } finally {
+      target.classList.remove('loading');
+    }
+  }
+
+  // Keep the original function for backward compatibility
+  async function updateWithManualApproach(productUrl, target) {
+    // Delegate to optimized approach
+    return updateWithOptimizedApproach(productUrl, target);
+  }
+
+  async function updateSection(sectionId, url) {
+    try {
+      if (window.sectionRenderer?.renderSection) {
+        // Use the project's section renderer
+        await window.sectionRenderer.renderSection(sectionId, { url, cache: false });
+      } else {
+        // Manual fallback
+        await manualUpdateSection(sectionId, url);
+      }
+    } catch (error) {
+      console.error(`[ProductSwitcher] Section update failed for ${sectionId}:`, error);
+      throw error;
+    }
+  }
+
+  async function manualUpdateSection(sectionId, url) {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      throw new Error(`Section ${sectionId} not found in DOM`);
+    }
+
+    // Extract section name from ID (remove shopify-section- prefix if present)
+    const sectionName = sectionId.replace(/^shopify-section-/, '');
+
+    const fetchUrl = new URL(url);
+    fetchUrl.searchParams.set('section_id', sectionName);
+
+    console.log('[ProductSwitcher] Fetching section:', fetchUrl.toString());
+
+    const response = await fetch(fetchUrl.toString(), {
+      headers: {
+        'Accept': 'text/html',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const newSection = doc.getElementById(sectionId);
+
+    if (!newSection) {
+      console.warn(`[ProductSwitcher] Section ${sectionId} not found in response, trying alternatives`);
+      // Try to find any section in the response
+      const anySection = doc.querySelector('.shopify-section');
+      if (anySection) {
+        anySection.id = sectionId;
+        section.outerHTML = anySection.outerHTML;
+      } else {
+        throw new Error(`No section content found in response`);
+      }
+    } else {
+      section.outerHTML = newSection.outerHTML;
+    }
+
+    // Trigger section load event
+    document.dispatchEvent(new CustomEvent('theme:section:load'));
+  }
+
+  async function updateWithSectionRenderer(productUrl, target) {
+    try {
+      const url = new URL(productUrl, window.location.origin);
+
+      // Find product sections to update - use actual section patterns
+      const productSections = document.querySelectorAll(`
+        [id*="template--"][id*="__main"],
+        [id*="template--"][id*="__product"],
+        [id*="shopify-section-template--"][id*="main"]
+      `);
+
+      console.log('[ProductSwitcher] Found sections to update:', productSections.length);
+
+      // Also try to find any sections that might contain product info
+      const allSections = document.querySelectorAll('.shopify-section[id*="template--"]');
+      console.log('[ProductSwitcher] All template sections found:', allSections.length);
+
+      // Filter to likely product-related sections, exclude header/footer
+      const relevantSections = Array.from(allSections).filter(section => {
+        const id = section.id.toLowerCase();
+        // Include main product sections, exclude header/footer/announcements
+        return (id.includes('main') ||
+               id.includes('product') ||
+               id.includes('media') ||
+               id.includes('gallery')) &&
+               !id.includes('header') &&
+               !id.includes('footer') &&
+               !id.includes('announcement');
+      });
+
+      console.log('[ProductSwitcher] Relevant sections:', relevantSections.map(s => s.id));
+
+      // Update sections in parallel
+      const updatePromises = relevantSections.map(section => {
+        if (section.id) {
+          console.log('[ProductSwitcher] Updating section:', section.id);
+          return updateSection(section.id, url).catch(error => {
+            console.warn(`[ProductSwitcher] Failed to update ${section.id}:`, error);
+            return null; // Don't fail the whole operation
+          });
+        }
+      }).filter(Boolean);
+
+      await Promise.allSettled(updatePromises);
+
+      // Dispatch custom event
+      document.dispatchEvent(new CustomEvent('product:switched', {
+        detail: { productUrl, productHandle: target.dataset.productHandle }
+      }));
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (error) {
+      console.error('[ProductSwitcher] Update failed:', error);
+      window.location.href = productUrl;
+    } finally {
+      target.classList.remove('loading');
+    }
+  }
+
+  // Add styles
+  function addProductSwitcherStyles() {
+    if (document.getElementById('product-switcher-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'product-switcher-styles';
+    style.textContent = `
+      .product-switch-link {
+        transition: opacity 0.2s ease;
+      }
+      .product-switch-link:hover {
+        opacity: 0.8;
+      }
+      .product-switch-link.loading {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Cache management
+  function clearPageCache() {
+    pageCache.clear();
+    prefetchQueue.clear();
+    console.log('[ProductSwitcher] Cache cleared');
+  }
+
+  // Limit cache size to prevent memory issues
+  function manageCacheSize() {
+    const MAX_CACHE_SIZE = 10;
+    if (pageCache.size > MAX_CACHE_SIZE) {
+      const firstKey = pageCache.keys().next().value;
+      pageCache.delete(firstKey);
+    }
+  }
+
+  // Initialize
+  function initProductSwitcher() {
+    console.log('[ProductSwitcher] Initializing optimized version...');
+
+    // Remove any existing listeners
+    document.removeEventListener('click', handleProductSwitchClick);
+    document.removeEventListener('mouseover', handleProductHover);
+
+    // Add new listeners
+    document.addEventListener('click', handleProductSwitchClick);
+    document.addEventListener('mouseover', handleProductHover);
+
+    // Add styles
+    addProductSwitcherStyles();
+
+    // Clear cache on page visibility change (user switches tabs)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        manageCacheSize();
+      }
+    });
+
+    console.log('[ProductSwitcher] Optimized version initialized successfully');
+  }
+
+  // Start immediately if DOM is ready, otherwise wait
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new ProductSwitcher());
+    document.addEventListener('DOMContentLoaded', initProductSwitcher);
   } else {
-    new ProductSwitcher();
+    initProductSwitcher();
   }
 {% endjavascript %}
