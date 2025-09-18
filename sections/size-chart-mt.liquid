@@ -218,7 +218,7 @@
     will-change: auto;
   }
 {% endstylesheet %}
-{% if product.metafields.custom.list_product != blank %}
+{% if product.metafields.custom.list_product != blank or request.design_mode %}
   <div class="section-background color-{{ section.settings.color_scheme }}"></div>
   <div
     class="size-chart-section section section--page-width spacing-style color-{{ section.settings.color_scheme | default: 'scheme-1' }} relative"
@@ -229,88 +229,103 @@
       <div id="custom-product-{{ section.id }}" class="custom-size_chart">
         <div class="custom-product-wrap">
           <div class="custom-product-container">
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th class="cust_model">Model</th>
-                    <th class="cust_hkd">
-                      Udvendige mål <br>
-                      (HxBxD mm)
-                    </th>
-                    <th class="cust_hkd">
-                      Indvendige mål <br>
-                      (HxBxD mm)
-                    </th>
-                    <th class="cust_ve">Vægt</th>
-                    <th class="cust_price">Pris</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for product_ in product.metafields.custom.list_product.value %}
+            {% if product.metafields.custom.list_product != blank %}
+              <div class="table-container">
+                <table>
+                  <thead>
                     <tr>
-                      <td class="cut_td">
-                        <a
-                          href="{{ product_.url }}"
-                          class="product_title_ product-switch-link"
-                          data-product-url="{{ product_.url }}"
-                          data-product-handle="{{ product_.handle }}"
-                        >
-                          {{- product_.title -}}
-                        </a>
-                      </td>
-                      <td class="cut_td">
-                        <a
-                          href="{{ product_.url }}"
-                          class="product-switch-link"
-                          data-product-url="{{ product_.url }}"
-                          data-product-handle="{{ product_.handle }}"
-                        >
-                          {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
-                        </a>
-                      </td>
-                      <td class="cut_td">
-                        <a
-                          href="{{ product_.url }}"
-                          class="product-switch-link"
-                          data-product-url="{{ product_.url }}"
-                          data-product-handle="{{ product_.handle }}"
-                        >
-                          {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
-                        </a>
-                      </td>
-                      <td class="cut_td">
-                        <a
-                          href="{{ product_.url }}"
-                          class="product-switch-link"
-                          data-product-url="{{ product_.url }}"
-                          data-product-handle="{{ product_.handle }}"
-                        >
-                          {% for variant in product_.variants %}
-                            {% if forloop.first %}
-                              <span>{{ variant.weight | divided_by: 1000 }} kg</span>
-                            {% endif %}
-                          {% endfor %}
-                        </a>
-                      </td>
-                      <td class="cut_td">
-                        <a
-                          href="{{ product_.url }}"
-                          class="product-switch-link"
-                          data-product-url="{{ product_.url }}"
-                          data-product-handle="{{ product_.handle }}"
-                          >From <span class="price">{{ product_.price | money_with_currency }}</span></a
-                        >
-                      </td>
+                      <th class="cust_model">Model</th>
+                      <th class="cust_hkd">
+                        Udvendige mål <br>
+                        (HxBxD mm)
+                      </th>
+                      <th class="cust_hkd">
+                        Indvendige mål <br>
+                        (HxBxD mm)
+                      </th>
+                      <th class="cust_ve">Vægt</th>
+                      <th class="cust_price">Pris</th>
                     </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {% for product_ in product.metafields.custom.list_product.value %}
+                      <tr>
+                        <td class="cut_td">
+                          <a
+                            href="{{ product_.url }}"
+                            class="product_title_ product-switch-link"
+                            data-product-url="{{ product_.url }}"
+                            data-product-handle="{{ product_.handle }}"
+                          >
+                            {{- product_.title -}}
+                          </a>
+                        </td>
+                        <td class="cut_td">
+                          <a
+                            href="{{ product_.url }}"
+                            class="product-switch-link"
+                            data-product-url="{{ product_.url }}"
+                            data-product-handle="{{ product_.handle }}"
+                          >
+                            {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
+                            {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
+                            {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
+                          </a>
+                        </td>
+                        <td class="cut_td">
+                          <a
+                            href="{{ product_.url }}"
+                            class="product-switch-link"
+                            data-product-url="{{ product_.url }}"
+                            data-product-handle="{{ product_.handle }}"
+                          >
+                            {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
+                            {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
+                            {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
+                          </a>
+                        </td>
+                        <td class="cut_td">
+                          <a
+                            href="{{ product_.url }}"
+                            class="product-switch-link"
+                            data-product-url="{{ product_.url }}"
+                            data-product-handle="{{ product_.handle }}"
+                          >
+                            {% for variant in product_.variants %}
+                              {% if forloop.first %}
+                                <span>{{ variant.weight | divided_by: 1000 }} kg</span>
+                              {% endif %}
+                            {% endfor %}
+                          </a>
+                        </td>
+                        <td class="cut_td">
+                          <a
+                            href="{{ product_.url }}"
+                            class="product-switch-link"
+                            data-product-url="{{ product_.url }}"
+                            data-product-handle="{{ product_.handle }}"
+                            >From <span class="price">{{ product_.price | money_with_currency }}</span></a
+                          >
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% else %}
+              {% comment %} Editor placeholder content {% endcomment %}
+              <div class="table-container" style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center;">
+                <div style="color: #6c757d; font-size: 16px; line-height: 1.5;">
+                  <h4 style="color: #495057; margin: 0 0 16px 0;">Size Chart Preview</h4>
+                  <p style="margin: 0 0 8px 0;">This section will display a size comparison table when:</p>
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin: 4px 0;">• Product has related products in the "list_product" metafield</li>
+                    <li style="margin: 4px 0;">• Product dimensions are configured via metafields</li>
+                  </ul>
+                  <p style="margin: 16px 0 0 0; font-size: 14px; color: #868e96;">Configure product metafields to see the actual size chart</p>
+                </div>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
