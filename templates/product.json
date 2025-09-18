@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */ {
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -70,6 +71,7 @@
               "type": "group",
               "name": "Header",
               "settings": {
+                "link": "",
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -153,7 +155,10 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["product_title_eYVzTU", "price_tVjtKg"]
+              "block_order": [
+                "product_title_eYVzTU",
+                "price_tVjtKg"
+              ]
             },
             "divider_VJhene": {
               "type": "_divider",
@@ -264,43 +269,23 @@
     },
     "size_chart_mt": {
       "type": "size-chart-mt",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     },
     "product_info": {
       "type": "product-info",
       "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "enable_lazy_loading": true,
+        "padding-block-start": 48,
+        "padding-block-end": 48,
         "section_heading": "Dimensioner",
-        "new_height": "Højde - Udvendig (mm)",
-        "new_width": "Bredde - Udvendig (mm)",
-        "new_depth": "Dybde - Udvendig (mm)",
-        "new_height_interior": "Højde - Indvendig (mm)",
-        "new_width_interior": "Bredde - Indvendig (mm)",
-        "new_depth_interior": "Dybde - Indvendig (mm)",
-        "weight_kg": "Vægt - kg",
-        "capacity_liter": "Kapacitet - Liter",
-        "custom_range": "Custom size (mm)",
-        "door_opening_height": "Døråbning - Højde (mm)",
-        "door_opening_width": "Døråbning - Bredde (mm)",
-        "door_opening_angle": "Døråbning - Vinkel",
-        "width_door_open_180": "Bredde (Skab + Dør) - Dør åben 180 grader",
-        "depth_door_open_90": "Dybde (Skab + Dør) - Dør åben 90 grader",
-        "depth_door_open_100": "Custom meta",
         "key_features": "Nøglefunktioner",
-        "product_name": "Produktnavn",
-        "model": "Model",
-        "model_series": "Modelserie",
-        "safe_kind": "Skabsform",
-        "safe_purpose": "Egnet til",
-        "door_structure": "Dørkonstruktion",
-        "body_structure": "Vægkonstruktion",
-        "bolting": "Fastboltning",
-        "bolts_included": "Bolte Inkluderet",
-        "burglary_protection": "Sikkerhed",
-        "burglary_classification": "Indbrudssikring",
-        "burglary_test_method": "Indbrudssikring Testnorm",
-        "burglary_test_center": "Indbrudssikring Certificering",
-        "cash_rating": "Vejl. Beløbsgrænser",
-        "fire_duration": "Brandsikring"
+        "burglary_protection": "Sikkerhed"
       }
     },
     "product_recommendations_qggXJq": {
@@ -421,7 +406,9 @@
           ]
         }
       },
-      "block_order": ["text_cbcgyb"],
+      "block_order": [
+        "text_cbcgyb"
+      ],
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
@@ -441,12 +428,276 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "product_metafields_tables_YBCXG8": {
+      "type": "product-metafields-tables",
+      "blocks": {
+        "metafield_row_UVBKFB": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Højde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_FQXYLj": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Bredde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_Hk3EtB": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Dybde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_tDHPQT": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Højde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_qpzggw": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Bredde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_B8Mdk8": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Dybde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_9VPpC8": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Model",
+            "metafield_namespace": "custom",
+            "metafield_key": "model",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_YfeTLq": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Model Serie",
+            "metafield_namespace": "custom",
+            "metafield_key": "model_series",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_pgVyHX": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Pengeskabstype",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_kind",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_TEzEpx": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Formål",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_purpose",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_wW6BNM": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Konstruktion",
+            "label": "Dørstruktur",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_structure",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_mxBHFz": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Konstruktion",
+            "label": "Korpusstruktur",
+            "metafield_namespace": "custom",
+            "metafield_key": "body_structure",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_CDaLjk": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Installation",
+            "label": "Fastgørelse",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolting",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_chPWq7": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Installation",
+            "label": "Bolte inkluderet",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolts_included",
+            "unit": "",
+            "true_text": "Ja",
+            "false_text": "Nej"
+          }
+        },
+        "metafield_row_y8Dgbt": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Indbrudsklassifikation",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_classification",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_ApyNh8": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Testmetode",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_method",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_YtipRh": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Testcenter",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_center",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_jLxiad": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Kontantrating",
+            "metafield_namespace": "custom",
+            "metafield_key": "cash_rating",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
+        "metafield_row_TiGTw9": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Brandvarighed",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_duration",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        }
+      },
+      "block_order": [
+        "metafield_row_UVBKFB",
+        "metafield_row_FQXYLj",
+        "metafield_row_Hk3EtB",
+        "metafield_row_tDHPQT",
+        "metafield_row_qpzggw",
+        "metafield_row_B8Mdk8",
+        "metafield_row_9VPpC8",
+        "metafield_row_YfeTLq",
+        "metafield_row_pgVyHX",
+        "metafield_row_TEzEpx",
+        "metafield_row_wW6BNM",
+        "metafield_row_mxBHFz",
+        "metafield_row_CDaLjk",
+        "metafield_row_chPWq7",
+        "metafield_row_y8Dgbt",
+        "metafield_row_ApyNh8",
+        "metafield_row_YtipRh",
+        "metafield_row_jLxiad",
+        "metafield_row_TiGTw9"
+      ],
+      "name": "Product Metafields Tables",
+      "settings": {
+        "section_title": "Produktoplysninger",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "enable_lazy_loading": true,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
     "main",
     "size_chart_mt",
     "product_info",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "product_metafields_tables_YBCXG8"
   ]
 }
