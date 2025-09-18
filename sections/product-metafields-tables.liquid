@@ -20,9 +20,7 @@
   aria-labelledby="metafields-heading-{{ section.id }}"
   {{ section.shopify_attributes }}
 >
-  <h2 id="metafields-heading-{{ section.id }}" class="sr-only">
-    Product Metafields Information
-  </h2>
+  <h2 id="metafields-heading-{{ section.id }}" class="sr-only">Product Metafields Information</h2>
 
   <!-- Skeleton Loading State -->
   <div class="metafields__skeleton" data-skeleton aria-hidden="true">
@@ -41,13 +39,13 @@
     {% endfor %}
   </div>
 
-  <div class="metafields__content" data-content>
-    {% if section.settings.section_title != blank %}
-      <h3 class="metafields__main-title h4">
-        {{ section.settings.section_title }}
-      </h3>
-    {% endif %}
+  {% if section.settings.section_title != blank %}
+    <h3 class="metafields__main-title h4">
+      {{ section.settings.section_title }}
+    </h3>
+  {% endif %}
 
+  <div class="metafields__content" data-content>
     {% comment %} Group metafields by creating separate tables {% endcomment %}
 
     {% comment %} Ydre dimensioner group {% endcomment %}
@@ -80,10 +78,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -129,10 +130,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -178,10 +182,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -227,10 +234,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -276,10 +286,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -325,10 +338,13 @@
                 {% assign metafield_value = product.metafields[namespace][key] %}
                 {% if metafield_value != blank %}
                   <tr {{ block.shopify_attributes }}>
-                    <td><strong>{{ block.settings.label }}</strong></td>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
                     <td>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }} {{ metafield_value.value.unit }}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
                       {% elsif metafield_value.value %}
                         {{ metafield_value.value }}
                       {% else %}
@@ -424,6 +440,10 @@
     line-height: var(--font-h4--line-height);
     text-align: left;
     margin-bottom: clamp(24px, 4vw, 48px);
+    max-width: 1200px;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 0 var(--padding-inline-start, 20px);
   }
 
   /* URL styling */
