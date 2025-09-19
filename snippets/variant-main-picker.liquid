@@ -109,8 +109,55 @@
                     mode: 'unscaled'
                   %}
                 {% else %}
-                  {% if product_option_value.swatch %}
+                  {% liquid
+                    assign has_swatch = false
+                    assign has_lock_image = false
+                    assign lock_image_url = ''
+
+                    # Check for regular swatches first
+                    if product_option_value.swatch
+                      assign has_swatch = true
+                    endif
+
+                    # Check for lock images in metafields
+                    if product_resource.metafields.custom.lock_type_test.value
+                      for type_lock in product_resource.metafields.custom.lock_type_test.value
+                        # Create mapping between Danish variant names and English metafield names
+                        assign match_found = false
+
+                        # Direct match first
+                        if product_option_value == type_lock.name
+                          assign match_found = true
+                        endif
+
+                        # Danish to English mapping
+                        if product_option_value == "Nøglelås" and type_lock.name == "Key lock"
+                          assign match_found = true
+                        endif
+
+                        if product_option_value == "Kodelås med 1 brugerkode (S&G Spartan)" and type_lock.name == "Code lock with 1 user code (S&G Spartan)"
+                          assign match_found = true
+                        endif
+
+                        if product_option_value == "Kodelås med nødnøgle og 90 brugerkoder (Combi B90)" and type_lock.name == "Code lock with emergency key and 90 user codes (Combi B90)"
+                          assign match_found = true
+                        endif
+
+                        if match_found
+                          assign lock_image_url = type_lock.image | image_url: width: 50
+                          assign has_lock_image = true
+                          break
+                        endif
+                      endfor
+                    endif
+                  %}
+
+
+                  {% if has_swatch %}
                     {% render 'swatch', swatch: product_option_value.swatch %}
+                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  {% elsif has_lock_image %}
+                    <span class="swatch" style="--swatch-background: url('{{ lock_image_url }}'); background-image: var(--swatch-background); background-size: cover; background-position: center;"></span>
                     <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
                   {% else %}
                     <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
