@@ -9,7 +9,11 @@
 
 {% unless product_resource.has_only_default_variant %}
   {% liquid
-    assign button_background_brightness = section.settings.color_scheme.settings.foreground | color_brightness
+    if block_settings.color_scheme.settings.foreground
+      assign button_background_brightness = block_settings.color_scheme.settings.foreground | color_brightness
+    else
+      assign button_background_brightness = 128
+    endif
     if button_background_brightness < 105
       assign strikethrough_color_mix = '#000'
     else
@@ -19,7 +23,7 @@
   <variant-picker
     class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
     style="--color-strikethrough-mix: {{ strikethrough_color_mix }}; {% render 'spacing-style', settings: block_settings %}"
-    data-section-id="{{ section.id }}"
+    data-section-id="{{ block.id }}"
     data-product-id="{{ product_resource.id }}"
     data-block-id="{{ block.id }}"
     data-product-url="{{ product_resource.url }}"
@@ -47,7 +51,7 @@
           endif
 
           if variant_style == 'buttons' and settings.variant_button_width == 'equal-width-buttons'
-            assign fieldset_id = section.id | append: '-' | append: product_resource.id | append: '-' | append: product_option.name | handleize
+            assign fieldset_id = block.id | append: '-' | append: product_resource.id | append: '-' | append: product_option.name | handleize
             assign option_id_attribute = 'data-option-id="' | append: fieldset_id | append: '"'
             assign longest_value = 0
           endif
@@ -105,7 +109,12 @@
                     mode: 'unscaled'
                   %}
                 {% else %}
-                  <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  {% if product_option_value.swatch %}
+                    {% render 'swatch', swatch: product_option_value.swatch %}
+                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  {% else %}
+                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  {% endif %}
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
@@ -508,5 +517,42 @@
   .variant-picker--right .variant-option {
     text-align: right;
     justify-content: right;
+  }
+
+  /* Styles for variant buttons with swatches */
+  .variant-option__button-label:has(.swatch) {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    justify-content: flex-start;
+    padding: var(--padding-sm) var(--padding-md);
+  }
+
+  .variant-option__button-label:has(.swatch) .swatch {
+    --swatch-width: 24px;
+    --swatch-height: 24px;
+    flex-shrink: 0;
+  }
+
+  .variant-option__button-label:has(.swatch) .variant-option__button-label__text {
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+
+  /* Hover and selected states for swatch buttons */
+  .variant-option__button-label:has(.swatch):hover {
+    background-color: var(--color-variant-hover-background);
+    border-color: var(--color-variant-hover-border);
+  }
+
+  .variant-option__button-label:has(.swatch):has(:checked) {
+    background-color: var(--color-selected-variant-background);
+    border-color: var(--color-selected-variant-border);
+    color: var(--color-selected-variant-text);
+  }
+
+  .variant-option__button-label:has(.swatch):has(:checked) .swatch {
+    outline: 2px solid var(--color-selected-variant-border);
+    outline-offset: 2px;
   }
 {% endstylesheet %}
