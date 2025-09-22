@@ -65,7 +65,7 @@
           >
             <legend>
               {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' -%}
+              {%- if variant_style == 'swatch' or product_option.name == 'Color' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
@@ -132,15 +132,15 @@
                         endif
 
                         # Danish to English mapping
-                        if product_option_value == "Nøglelås" and type_lock.name == "Key lock"
+                        if product_option_value == 'Nøglelås' and type_lock.name == 'Key lock'
                           assign match_found = true
                         endif
 
-                        if product_option_value == "Kodelås med 1 brugerkode (S&G Spartan)" and type_lock.name == "Code lock with 1 user code (S&G Spartan)"
+                        if product_option_value == 'Kodelås med 1 brugerkode (S&G Spartan)' and type_lock.name == 'Code lock with 1 user code (S&G Spartan)'
                           assign match_found = true
                         endif
 
-                        if product_option_value == "Kodelås med nødnøgle og 90 brugerkoder (Combi B90)" and type_lock.name == "Code lock with emergency key and 90 user codes (Combi B90)"
+                        if product_option_value == 'Kodelås med nødnøgle og 90 brugerkoder (Combi B90)' and type_lock.name == 'Code lock with emergency key and 90 user codes (Combi B90)'
                           assign match_found = true
                         endif
 
@@ -153,15 +153,22 @@
                     endif
                   %}
 
-
                   {% if has_swatch %}
                     {% render 'swatch', swatch: product_option_value.swatch %}
-                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                    {% unless product_option.name == 'Color' %}
+                      <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                    {% endunless %}
                   {% elsif has_lock_image %}
-                    <span class="variant-lock-image" style="background-image: url('{{ lock_image_url }}'); background-size: contain; background-position: center; background-repeat: no-repeat;" data-image-url="{{ lock_image_url }}"></span>
+                    <span
+                      class="variant-lock-image"
+                      style="background-image: url('{{ lock_image_url }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"
+                      data-image-url="{{ lock_image_url }}"
+                    ></span>
                     <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
                   {% else %}
-                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                    {% unless product_option.name == 'Color' %}
+                      <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                    {% endunless %}
                   {% endif %}
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
@@ -357,6 +364,20 @@
       text-align: center;
       text-wrap: balance;
     }
+  }
+
+  /* Override grid layout for color swatches to maintain circular shape */
+  .variant-option--equal-width-buttons:has(.variant-option__button-label .swatch) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    grid-template-columns: none;
+  }
+
+  .variant-option--equal-width-buttons .variant-option__button-label:has(.swatch) {
+    min-width: 48px;
+    max-width: 48px;
+    flex: 0 0 48px;
   }
 
   .variant-option__button-label:has(:focus-visible) {
@@ -567,42 +588,7 @@
     justify-content: right;
   }
 
-  /* Styles for variant buttons with swatches */
-  .variant-option__button-label:has(.swatch) {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-xs);
-    justify-content: flex-start;
-    padding: 0 var(--padding-md);
-  }
-
-  .variant-option__button-label:has(.swatch) .swatch {
-    --swatch-width: 24px;
-    --swatch-height: 24px;
-    flex-shrink: 0;
-  }
-
-  .variant-option__button-label:has(.swatch) .variant-option__button-label__text {
-    font-size: 0.875rem;
-    line-height: 1.2;
-  }
-
-  /* Hover and selected states for swatch buttons */
-  .variant-option__button-label:has(.swatch):hover {
-    background-color: var(--color-variant-hover-background);
-    border-color: var(--color-variant-hover-border);
-  }
-
-  .variant-option__button-label:has(.swatch):has(:checked) {
-    background-color: var(--color-selected-variant-background);
-    border-color: var(--color-selected-variant-border);
-    color: var(--color-selected-variant-text);
-  }
-
-  .variant-option__button-label:has(.swatch):has(:checked) .swatch {
-    outline: 2px solid var(--color-selected-variant-border);
-    outline-offset: 2px;
-  }
+  /* Remove old swatch button styles - these are now handled by the new color button styles below */
 
   /* Styles for variant images - Square 50x50 format */
   .variant-lock-image {
@@ -632,16 +618,69 @@
     flex: 1;
   }
 
-  /* Update color swatches to round format */
+  /* Color buttons - round 40px format for Color options only */
   .variant-option__button-label:has(.swatch) .swatch {
-    --swatch-width: 50px;
-    --swatch-height: 50px;
+    --swatch-width: 40px;
+    --swatch-height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
   }
 
   .variant-option__button-label:has(.swatch) {
-    min-height: 60px;
+    min-height: auto;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Active/selected state for color swatches */
+  .variant-option__button-label:has(.swatch):has(:checked) .swatch {
+    border: 3px solid var(--color-selected-variant-border, #333);
+    box-shadow: 0 0 0 2px rgba(var(--color-selected-variant-border-rgb, 51 51 51), 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.15);
+    position: relative;
+  }
+
+  /* Checkmark icon for selected color swatches */
+  .variant-option__button-label:has(.swatch):has(:checked) .swatch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    z-index: 1;
+  }
+
+  /* Hover state for color swatches */
+  .variant-option__button-label:has(.swatch):hover:not(:has(:checked)) .swatch {
+    transform: scale(1.08);
+    border: 2px solid rgba(var(--color-foreground-rgb, 0 0 0), 0.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Override focus styles for color swatches */
+  .variant-option__button-label:has(.swatch):has(:focus-visible) {
+    outline: none;
+  }
+
+  .variant-option__button-label:has(.swatch):has(:focus-visible) .swatch {
+    border: 2px solid var(--color-foreground, #333);
+    box-shadow: 0 0 0 2px rgba(var(--color-foreground-rgb, 51 51 51), 0.3);
   }
 
   /* Hover and selected states */
