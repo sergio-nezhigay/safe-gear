@@ -1,0 +1,544 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --header-bg: {{ section.settings.header_background }};
+    --header-text: {{ section.settings.text_color }};
+    --header-accent: {{ section.settings.accent_color }};
+    --header-border: {{ section.settings.border_color }};
+    --nav-hover: {{ section.settings.nav_hover_color }};
+    --phone-color: {{ section.settings.phone_color }};
+    --help-color: {{ section.settings.help_color }};
+    --help-bg: {{ section.settings.help_background }};
+    --search-bg: {{ section.settings.search_background }};
+    --search-border: {{ section.settings.search_border }};
+    --logo-width: {{ section.settings.logo_width }}px;
+  }
+</style>
+
+<header id="{{ section.id }}" class="site-header {{ section.settings.custom_classes }}">
+  <div class="header-container">
+    <div class="header-main">
+      <div class="header-logo">
+        {% if section.settings.logo != blank %}
+          <a href="{{ routes.root_url }}" class="logo-link">
+            <img 
+              src="{{ section.settings.logo | img_url: '300x100' }}"
+              alt="{{ shop.name }}"
+              loading="lazy"
+              class="logo-image"
+            >
+          </a>
+        {% else %}
+          <a href="{{ routes.root_url }}" class="logo-text">
+            {{ section.settings.logo_text | default: shop.name }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_search %}
+        <div class="header-search">
+          <form action="{{ routes.search_url }}" method="get" class="search-form">
+            <input 
+              type="search" 
+              name="q" 
+              placeholder="{{ section.settings.search_placeholder }}"
+              value="{{ search.terms | escape }}"
+              class="search-input"
+              autocomplete="off"
+            >
+            <button type="submit" class="search-button" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      {% endif %}
+
+      {% if section.settings.header_image != blank %}
+        <div class="header-image desktop-only">
+          <img 
+            src="{{ section.settings.header_image | img_url: '150x60' }}"
+            alt="{{ section.settings.header_image_alt | default: 'Header Image' }}"
+            loading="lazy"
+            class="header-img"
+          >
+        </div>
+      {% endif %}
+
+
+      <div class="header-actions">
+
+        {% if section.settings.show_account %}
+          <a href="{{ routes.account_url }}" class="header-account" aria-label="Account">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.show_cart %}
+          <a href="{{ routes.cart_url }}" class="header-cart" aria-label="Cart">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+              <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            {% if cart.item_count > 0 %}
+              <span class="cart-count">{{ cart.item_count }}</span>
+            {% endif %}
+          </a>
+        {% endif %}
+
+        {% if section.settings.show_search %}
+          <button class="header-search-mobile mobile-only" aria-label="Toggle search">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        {% endif %}
+
+        <button class="mobile-menu-toggle mobile-only" aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    {% if section.settings.show_navigation %}
+      <nav class="header-nav">
+        <div class="nav-container">
+          <div class="nav-main">
+            {% for link in linklists[section.settings.menu].links %}
+              <div class="nav-item{% if link.links.size > 0 %} has-dropdown{% endif %}">
+                <a href="{{ link.url }}" class="nav-link">
+                  {{ link.title }}
+                  {% if link.links.size > 0 %}
+                    <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  {% endif %}
+                </a>
+                {% if link.links.size > 0 %}
+                  <div class="nav-dropdown">
+                    {% for child_link in link.links %}
+                      <a href="{{ child_link.url }}" class="dropdown-link">{{ child_link.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="nav-contact">
+            {% if section.settings.phone_number != blank %}
+              <a href="tel:{{ section.settings.phone_number | replace: ' ', '' }}" class="contact-phone">
+                {{ section.settings.phone_number }}
+              </a>
+            {% endif %}
+            
+            {% if section.settings.help_text != blank %}
+              <a href='{{ section.settings.main_url }}' class="contact-help">{{ section.settings.help_text }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    {% endif %}
+
+    <div class="mobile-nav">
+      <div class="mobile-nav-overlay"></div>
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="mobile-logo">
+            {% if section.settings.logo != blank %}
+              <img src="{{ section.settings.logo | img_url: '120x60' }}" alt="{{ shop.name }}" class="mobile-logo-img">
+            {% else %}
+              <span class="mobile-logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
+            {% endif %}
+          </div>
+          <button class="mobile-nav-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mobile-nav-menu">
+          {% for link in linklists[section.settings.menu].links %}
+            <div class="mobile-nav-item{% if link.links.size > 0 %} has-submenu{% endif %}">
+              <a href="{{ link.url }}" class="mobile-nav-link">
+                {{ link.title }}
+                {% if link.links.size > 0 %}
+                  <svg class="mobile-dropdown-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                {% endif %}
+              </a>
+              {% if link.links.size > 0 %}
+                <div class="mobile-submenu">
+                  {% for child_link in link.links %}
+                    <a href="{{ child_link.url }}" class="mobile-submenu-link">{{ child_link.title }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          
+        </div>
+
+        <div class="mobile-nav-contact">
+          {% if section.settings.phone_number != blank %}
+            <a href="tel:{{ section.settings.phone_number | replace: ' ', '' }}" class="mobile-contact-phone">
+              {{ section.settings.phone_number }}
+            </a>
+          {% endif %}
+          
+          {% if section.settings.help_text != blank %}
+            <a href='{{ section.settings.main_url }}' class="mobile-contact-help">{{ section.settings.help_text }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+(function() {
+  'use strict';
+  
+  const header = document.getElementById('{{ section.id }}');
+  if (!header) return;
+  
+  const searchToggle = header.querySelector('.header-search-mobile');
+  const searchBar = header.querySelector('.header-search');
+  const mobileMenuToggle = header.querySelector('.mobile-menu-toggle');
+  const mobileNavClose = header.querySelector('.mobile-nav-close');
+  const mobileNavOverlay = header.querySelector('.mobile-nav-overlay');
+  const mobileNav = header.querySelector('.mobile-nav');
+  const body = document.body;
+  
+  function toggleMobileSearch() {
+    const isOpen = searchBar.classList.contains('is-open');
+    searchBar.classList.toggle('is-open');
+    searchToggle.classList.toggle('is-active');
+    
+    if (!isOpen) {
+      const searchInput = searchBar.querySelector('.search-input');
+      if (searchInput) {
+        setTimeout(() => searchInput.focus(), 300);
+      }
+    }
+  }
+  
+  function toggleMobileMenu() {
+    const isOpen = mobileNav.classList.contains('is-open');
+    mobileNav.classList.toggle('is-open');
+    mobileMenuToggle.classList.toggle('is-active');
+    body.classList.toggle('mobile-menu-open', !isOpen);
+    
+    if (!isOpen) {
+      mobileNav.setAttribute('aria-hidden', 'false');
+    } else {
+      mobileNav.setAttribute('aria-hidden', 'true');
+    }
+  }
+  
+  function closeMobileMenu() {
+    mobileNav.classList.remove('is-open');
+    mobileMenuToggle.classList.remove('is-active');
+    body.classList.remove('mobile-menu-open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  }
+  
+  
+  if (searchToggle && searchBar) {
+    searchToggle.addEventListener('click', toggleMobileSearch);
+  }
+  
+  if (mobileMenuToggle && mobileNav) {
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+  }
+  
+  if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', closeMobileMenu);
+  }
+  
+  if (mobileNavOverlay) {
+    mobileNavOverlay.addEventListener('click', closeMobileMenu);
+  }
+  
+  
+  const mobileNavItems = header.querySelectorAll('.mobile-nav-item.has-submenu');
+  
+  mobileNavItems.forEach(item => {
+    const link = item.querySelector('.mobile-nav-link');
+    const submenu = item.querySelector('.mobile-submenu');
+    
+    if (link && submenu) {
+      link.addEventListener('click', function(e) {
+        if (item.classList.contains('has-submenu')) {
+          e.preventDefault();
+          item.classList.toggle('is-open');
+          
+          const isOpen = item.classList.contains('is-open');
+          link.setAttribute('aria-expanded', isOpen);
+        }
+      });
+    }
+  });
+  
+  const navItems = header.querySelectorAll('.nav-item.has-dropdown');
+  
+  navItems.forEach(item => {
+    const dropdown = item.querySelector('.nav-dropdown');
+    
+    if (dropdown) {
+      let timeoutId;
+      
+      item.addEventListener('mouseenter', function() {
+        clearTimeout(timeoutId);
+        item.classList.add('menu-open');
+        dropdown.style.display = 'block';
+        requestAnimationFrame(() => {
+          dropdown.classList.add('is-open');
+        });
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        dropdown.classList.remove('is-open');
+        item.classList.remove('menu-open');
+        timeoutId = setTimeout(() => {
+          dropdown.style.display = 'none';
+        }, 300);
+      });
+    }
+  });
+  
+  document.addEventListener('click', function(e) {
+    if (!header.contains(e.target)) {
+      if (searchBar && searchBar.classList.contains('is-open')) {
+        searchBar.classList.remove('is-open');
+        searchToggle.classList.remove('is-active');
+      }
+    }
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (mobileNav && mobileNav.classList.contains('is-open')) {
+        closeMobileMenu();
+      }
+      if (searchBar && searchBar.classList.contains('is-open')) {
+        searchBar.classList.remove('is-open');
+        searchToggle.classList.remove('is-active');
+      }
+    }
+  });
+  
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 768 && mobileNav.classList.contains('is-open')) {
+      closeMobileMenu();
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "header",
+  "class": "site-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text (if no image)",
+      "default": "SafeGear"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Søg"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation menu",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Header Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Header image (next to search)"
+    },
+    {
+      "type": "text",
+      "id": "header_image_alt",
+      "label": "Header image alt text"
+    },
+    {
+      "type": "header",
+      "content": "Header Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Contact Info"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "default": "+34 660 543 515"
+    },
+    {
+      "type": "text",
+      "id": "help_text",
+      "label": "Help text",
+      "default": "HELP"
+    },
+    {
+      "type": "url",
+      "id": "main_url",
+      "label": "Url button"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Header background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_color",
+      "label": "Navigation hover color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "phone_color",
+      "label": "Phone number color",
+      "default": "#22c55e"
+    },
+    {
+      "type": "color",
+      "id": "help_color",
+      "label": "Help text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "help_background",
+      "label": "Help background color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "search_background",
+      "label": "Search background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "search_border",
+      "label": "Search border",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

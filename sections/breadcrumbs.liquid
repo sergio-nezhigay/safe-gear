@@ -1,0 +1,355 @@
+{{ 'breadcrumbs.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --breadcrumb-bg: {{ section.settings.background_color }};
+    --breadcrumb-text: {{ section.settings.text_color }};
+    --breadcrumb-accent: {{ section.settings.accent_color }};
+    --breadcrumb-separator: {{ section.settings.separator_color }};
+    --breadcrumb-hover: {{ section.settings.hover_background }};
+    --breadcrumb-border: {{ section.settings.border_color }};
+  }
+</style>
+
+{% unless template == 'index' or template.name == 'cart' %}
+<nav id="{{ section.id }}" class="breadcrumbs {{ section.settings.custom_classes }}" aria-label="Breadcrumb">
+  <div class="breadcrumb-container">
+    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      
+      
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ routes.root_url }}" class="breadcrumb-link breadcrumb-home" itemprop="item">
+          {% if section.settings.show_home_icon %}
+            <svg class="breadcrumb-home-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+            </svg>
+          {% endif %}
+          <span itemprop="name">{{ section.settings.home_text | default: 'Home' }}</span>
+        </a>
+        <meta itemprop="position" content="1" />
+      </li>
+
+      {% assign breadcrumb_position = 2 %}
+      
+      
+      {% if template.name == 'list-collections' %}
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+      
+      {% elsif template.name == 'collection' %}
+        {% if section.settings.show_collections_link %}
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+            <a href="{{ routes.collections_url }}" class="breadcrumb-link" itemprop="item">
+              <span itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+            </a>
+            <meta itemprop="position" content="{{ breadcrumb_position }}" />
+          </li>
+          {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
+        {% endif %}
+        
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ collection.title }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+      
+      {% elsif template.name == 'product' %}
+        {% if product.collections.size > 0 %}
+          {% assign main_collection = product.collections.first %}
+          {% if section.settings.show_collections_link %}
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+              <a href="{{ routes.collections_url }}" class="breadcrumb-link" itemprop="item">
+                <span itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+              </a>
+              <meta itemprop="position" content="{{ breadcrumb_position }}" />
+            </li>
+            {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
+          {% endif %}
+          
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+            <a href="{{ main_collection.url }}" class="breadcrumb-link" itemprop="item">
+              <span itemprop="name">{{ main_collection.title }}</span>
+            </a>
+            <meta itemprop="position" content="{{ breadcrumb_position }}" />
+          </li>
+          {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
+        {% endif %}
+        
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ product.title | truncate: 50 }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+     
+      {% elsif template.name == 'blog' %}
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ blog.title }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+     
+      {% elsif template.name == 'article' %}
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <a href="{{ blog.url }}" class="breadcrumb-link" itemprop="item">
+            <span itemprop="name">{{ blog.title }}</span>
+          </a>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+        {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
+        
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ article.title | truncate: 50 }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+     
+      {% elsif template.name == 'page' %}
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ page.title }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+      
+      {% elsif template.name == 'search' %}
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">
+            {{ section.settings.search_text | default: 'Search' }}
+            {% if search.terms != blank %}
+              : "{{ search.terms }}"
+            {% endif %}
+          </span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+
+      
+      {% elsif template.directory == 'customers' %}
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <a href="{{ routes.account_url }}" class="breadcrumb-link" itemprop="item">
+            <span itemprop="name">{{ section.settings.account_text | default: 'Account' }}</span>
+          </a>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+        {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
+        
+        {% if template.name != 'account' %}
+          <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+            <span class="breadcrumb-text" itemprop="name">
+              {% case template.name %}
+                {% when 'addresses' %}{{ section.settings.addresses_text | default: 'Addresses' }}
+                {% when 'order' %}{{ section.settings.order_text | default: 'Order' }} #{{ order.name }}
+                {% else %}{{ template.name | capitalize }}
+              {% endcase %}
+            </span>
+            <meta itemprop="position" content="{{ breadcrumb_position }}" />
+          </li>
+        {% endif %}
+
+      
+      {% else %}
+        <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ page_title }}</span>
+          <meta itemprop="position" content="{{ breadcrumb_position }}" />
+        </li>
+      {% endif %}
+
+    </ol>
+
+    {% if section.settings.show_back_button %}
+      <button class="breadcrumb-back" onclick="history.back()" aria-label="Go back">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span>{{ section.settings.back_text | default: 'Back' }}</span>
+      </button>
+    {% endif %}
+
+  </div>
+</nav>
+
+<script>
+(function() {
+  'use strict';
+  
+
+  const breadcrumbLinks = document.querySelectorAll('.breadcrumb-link');
+  breadcrumbLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'breadcrumb_click', {
+          'event_category': 'navigation',
+          'event_label': this.textContent.trim(),
+          'value': 1
+        });
+      }
+    });
+  });
+
+
+  document.addEventListener('keydown', function(e) {
+    if (e.altKey && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const backButton = document.querySelector('.breadcrumb-back');
+      if (backButton) {
+        backButton.click();
+      }
+    }
+  });
+
+
+  const currentItem = document.querySelector('.breadcrumb-current');
+  if (currentItem) {
+    currentItem.setAttribute('aria-current', 'page');
+  }
+})();
+</script>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Breadcrumbs",
+  "class": "breadcrumbs",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Display Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_home_icon",
+      "label": "Show home icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collections_link",
+      "label": "Show Collections link in product/collection pages",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_back_button",
+      "label": "Show back button",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home text",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "collections_text",
+      "label": "Collections text",
+      "default": "Collections"
+    },
+    {
+      "type": "text",
+      "id": "search_text",
+      "label": "Search text",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "account_text",
+      "label": "Account text",
+      "default": "Account"
+    },
+    {
+      "type": "text",
+      "id": "addresses_text",
+      "label": "Addresses text",
+      "default": "Addresses"
+    },
+    {
+      "type": "text",
+      "id": "order_text",
+      "label": "Order text",
+      "default": "Order"
+    },
+    {
+      "type": "text",
+      "id": "back_text",
+      "label": "Back button text",
+      "default": "Back"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator character",
+      "default": "/"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Link color",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "hover_background",
+      "label": "Hover background",
+      "default": "#e9ecef"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumbs"
+    }
+  ]
+}
+{% endschema %}

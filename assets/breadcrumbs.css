@@ -1,0 +1,163 @@
+.breadcrumbs {
+  background: var(--breadcrumb-bg);
+  border-bottom: 1px solid var(--breadcrumb-border);
+  color: var(--breadcrumb-text);
+}
+
+.breadcrumbs .breadcrumb-container {
+  max-width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.breadcrumbs .breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.breadcrumbs .breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.breadcrumbs .breadcrumb-separator {
+  color: var(--breadcrumb-separator);
+  user-select: none;
+}
+
+.breadcrumbs .breadcrumb-link,
+.breadcrumbs .breadcrumb-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--breadcrumb-accent);
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.breadcrumbs .breadcrumb-link:hover,
+.breadcrumbs .breadcrumb-home:hover {
+  background: var(--breadcrumb-hover);
+  color: var(--breadcrumb-accent);
+}
+
+.breadcrumbs .breadcrumb-link:focus-visible,
+.breadcrumbs .breadcrumb-home:focus-visible,
+.breadcrumbs .breadcrumb-back:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--breadcrumb-accent) 30%, white);
+}
+
+.breadcrumbs .breadcrumb-home-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbs .breadcrumb-text,
+.breadcrumbs [itemprop="name"] {
+  display: inline-block;
+  max-width: 44ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  color: var(--breadcrumb-text);
+}
+
+.breadcrumbs .breadcrumb-current .breadcrumb-text,
+.breadcrumbs .breadcrumb-current [itemprop="name"],
+.breadcrumbs .breadcrumb-item[aria-current="page"] .breadcrumb-text {
+  font-weight: 600;
+  color: var(--breadcrumb-text);
+  background: color-mix(in oklab, var(--breadcrumb-hover) 60%, transparent);
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.breadcrumbs .breadcrumb-back {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--breadcrumb-accent);
+  border: 1px solid color-mix(in oklab, var(--breadcrumb-accent) 25%, var(--breadcrumb-border));
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.breadcrumbs .breadcrumb-back:hover {
+  background: var(--breadcrumb-hover);
+  border-color: var(--breadcrumb-accent);
+}
+
+.breadcrumbs .breadcrumb-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+@media (max-width: 767px) {
+  .breadcrumbs .breadcrumb-container {
+    padding: 8px 0;
+  }
+  .breadcrumbs .breadcrumb-list {
+    gap: 6px;
+    font-size: 13px;
+  }
+  .breadcrumbs .breadcrumb-text,
+  .breadcrumbs [itemprop="name"] {
+    max-width: 28ch;
+  }
+  .breadcrumbs .breadcrumb-back {
+    padding: 6px 8px;
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .breadcrumbs {
+    border-bottom-color: color-mix(in oklab, var(--breadcrumb-border) 60%, black);
+  }
+  .breadcrumbs .breadcrumb-current .breadcrumb-text {
+    background: color-mix(in oklab, var(--breadcrumb-hover) 30%, black);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .breadcrumbs .breadcrumb-link,
+  .breadcrumbs .breadcrumb-home,
+  .breadcrumbs .breadcrumb-back {
+    transition: none;
+  }
+}
+
+
+.breadcrumbs .breadcrumb-container {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.breadcrumbs .breadcrumb-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.breadcrumbs .breadcrumb-container::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--breadcrumb-separator) 60%, transparent);
+  border-radius: 10px;
+}

@@ -35,7 +35,7 @@
     endif
   endcapture
 %}
-
+    
 <product-price
   class="text-block {{ text_block_classes }} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
   data-block-id="{{ block.id }}"
@@ -47,12 +47,8 @@
   "
   {{ block.shopify_attributes }}
 >
-  {% render 'price',
-    show_unit_price: true,
-    product_resource: product_resource,
-    show_sale_price_first: block_settings.show_sale_price_first
-  %}
-
+  {% render 'price-custom',product: product_resource, price_class: '', show_compare_at_price: true %} <div class="bss-qb-collection-table"></div><div class="bss-b2b-qb-table"></div>
+  
   {% if block_settings.show_tax_info %}
     <div class="tax-note">
       {%- if cart.duties_included and cart.taxes_included -%}

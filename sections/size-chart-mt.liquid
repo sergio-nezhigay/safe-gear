@@ -264,7 +264,7 @@
                   </thead>
                   <tbody>
                     {% for product_ in product.metafields.custom.list_product.value %}
-                      <tr class="product-row" data-product-url="{{ product_.url }}" data-product-handle="{{ product_.handle }}">
+                      <tr class="product-row" data-product-url="{{ product_.url }}?variant={{ product_.variants[0].id }}"  data-product-handle="{{ product_.handle }}">
                         <td class="cut_td">
                           <span class="product_title_">{{- product_.title -}}</span>
                         </td>

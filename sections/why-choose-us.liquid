@@ -1,0 +1,418 @@
+{{ 'why-choose-us.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --why-choose-max-width: {{ section.settings.max_width }}px;
+    --why-choose-padding-vertical: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    --why-choose-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+    --why-choose-gap: {{ section.settings.grid_gap }}px;
+    --why-choose-title-color: {{ section.settings.title_color }};
+    --why-choose-subtitle-color: {{ section.settings.subtitle_color }};
+    --why-choose-item-title-color: {{ section.settings.item_title_color }};
+    --why-choose-item-text-color: {{ section.settings.item_text_color }};
+    --why-choose-card-bg: {{ section.settings.card_background }};
+    --why-choose-card-border: {{ section.settings.card_border_color }};
+    --why-choose-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --why-choose-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --why-choose-item-title-size-mobile: {{ section.settings.item_title_size_mobile }}px;
+    --why-choose-item-text-size-mobile: {{ section.settings.item_text_size_mobile }}px;
+    --why-choose-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --why-choose-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --why-choose-item-title-size-desktop: {{ section.settings.item_title_size_desktop }}px;
+    --why-choose-item-text-size-desktop: {{ section.settings.item_text_size_desktop }}px;
+    background-color: {{ section.settings.section_background }};
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} {
+      --why-choose-padding-vertical: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+      --why-choose-padding-horizontal: {{ section.settings.padding_horizontal_desktop }}px;
+    }
+  }
+
+  #{{ section.id }} .why-choose-title {
+    color: var(--why-choose-title-color);
+    font-size: var(--why-choose-title-size-mobile);
+    text-align: center;
+  }
+
+  #{{ section.id }} .why-choose-subtitle {
+    color: var(--why-choose-subtitle-color);
+    font-size: var(--why-choose-subtitle-size-mobile);
+    text-align: center;
+  }
+
+  #{{ section.id }} .why-choose-item-title {
+    color: var(--why-choose-item-title-color);
+    font-size: var(--why-choose-item-title-size-mobile);
+  }
+
+  #{{ section.id }} .why-choose-item-text {
+    color: var(--why-choose-item-text-color);
+    font-size: var(--why-choose-item-text-size-mobile);
+  }
+
+  #{{ section.id }} .why-choose-item {
+    background-color: var(--why-choose-card-bg);
+    border: 1px solid var(--why-choose-card-border);
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .why-choose-title {
+      font-size: var(--why-choose-title-size-desktop);
+    }
+
+    #{{ section.id }} .why-choose-subtitle {
+      font-size: var(--why-choose-subtitle-size-desktop);
+    }
+
+    #{{ section.id }} .why-choose-item-title {
+      font-size: var(--why-choose-item-title-size-desktop);
+    }
+
+    #{{ section.id }} .why-choose-item-text {
+      font-size: var(--why-choose-item-text-size-desktop);
+    }
+  }
+</style>
+
+<div id="{{ section.id }}" class="why-choose-wrapper {{ section.settings.custom_classes }}">
+  <div class="why-choose-container">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="why-choose-header">
+        {% if section.settings.title != blank %}
+          <h2 class="why-choose-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <div class="why-choose-subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="why-choose-grid">
+        {% for block in section.blocks %}
+          <div class="why-choose-item" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <div class="why-choose-icon">
+                {{ block.settings.icon }}
+              </div>
+            {% endif %}
+            
+            <div class="why-choose-content">
+              {% if block.settings.title != blank %}
+                <h3 class="why-choose-item-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              
+              {% if block.settings.text != blank %}
+                <div class="why-choose-item-text">{{ block.settings.text }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "tag": "section",
+  "class": "why-choose-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size desktop",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size mobile",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "<p>Discover what makes us the trusted choice for protection solutions across industries</p>"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Item settings"
+    },
+    {
+      "type": "range",
+      "id": "item_title_size_desktop",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Item title size desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_title_size_mobile",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Item title size mobile",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "item_title_color",
+      "label": "Item title color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "item_text_size_desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Item text size desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_text_size_mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Item text size mobile",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "item_text_color",
+      "label": "Item text color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Card design"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section max width (px)",
+      "default": "1250"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG code)",
+          "default": "<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Certified Quality"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>All our products meet international certification standards</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Certified Quality",
+            "text": "<p>All our products meet international certification standards</p>",
+            "icon": "<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "European Standards",
+            "text": "<p>We comply with all European safety and quality regulations</p>",
+            "icon": "<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "24/7 Support",
+            "text": "<p>Our expert team is always ready to help you find the right solution</p>",
+            "icon": "<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Fast Delivery",
+            "text": "<p>Quick and reliable shipping across all regions</p>",
+            "icon": "<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16 3h5v5M4 20L21 3m0 11v6a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h6\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

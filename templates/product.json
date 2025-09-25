@@ -9,6 +9,30 @@
  */
 {
   "sections": {
+    "breadcrumbs_UaYrXQ": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "show_home_icon": true,
+        "show_collections_link": true,
+        "show_back_button": false,
+        "home_text": "Home",
+        "collections_text": "Collections",
+        "search_text": "Search",
+        "account_text": "Account",
+        "addresses_text": "Addresses",
+        "order_text": "Order",
+        "back_text": "Back",
+        "separator": "/",
+        "background_color": "#fafafa",
+        "text_color": "#666666",
+        "accent_color": "#0a3d62",
+        "separator_color": "#cccccc",
+        "hover_background": "#e9ecef",
+        "border_color": "#e5e7eb",
+        "custom_classes": ""
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -262,23 +286,24 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     },
-    "size_chart_mt": {
+    "size_chart_mt_A4BzFV": {
       "type": "size-chart-mt",
+      "name": "Size chart",
       "settings": {
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 0
       }
     },
-    "product_metafields_tables_YBCXG8": {
+    "product_metafields_tables_4E7YC9": {
       "type": "product-metafields-tables",
       "blocks": {
-        "metafield_row_UVBKFB": {
+        "metafield_row_W3wjGB": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -290,7 +315,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_FQXYLj": {
+        "metafield_row_ritY68": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -302,7 +327,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_Hk3EtB": {
+        "metafield_row_hd3UAJ": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -314,7 +339,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_tDHPQT": {
+        "metafield_row_QNRafQ": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -326,7 +351,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_qpzggw": {
+        "metafield_row_EW3jMP": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -338,7 +363,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_B8Mdk8": {
+        "metafield_row_KJtRUm": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -350,7 +375,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_9VPpC8": {
+        "metafield_row_r4wrLd": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -362,7 +387,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_YfeTLq": {
+        "metafield_row_DN4At6": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -374,7 +399,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_pgVyHX": {
+        "metafield_row_w7yYn6": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -386,7 +411,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_TEzEpx": {
+        "metafield_row_NcNPcE": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -398,7 +423,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_wW6BNM": {
+        "metafield_row_yGcech": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Konstruktion",
@@ -410,7 +435,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_mxBHFz": {
+        "metafield_row_BdTqJc": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Konstruktion",
@@ -422,7 +447,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_CDaLjk": {
+        "metafield_row_AALDcz": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Installation",
@@ -434,7 +459,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_chPWq7": {
+        "metafield_row_D38CA6": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Installation",
@@ -446,7 +471,7 @@
             "false_text": "Nej"
           }
         },
-        "metafield_row_y8Dgbt": {
+        "metafield_row_K7wVjK": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -458,7 +483,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_ApyNh8": {
+        "metafield_row_tYLeVK": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -470,7 +495,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_YtipRh": {
+        "metafield_row_PRiBAM": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -482,7 +507,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_jLxiad": {
+        "metafield_row_AU9WHc": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -494,7 +519,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_TiGTw9": {
+        "metafield_row_RDU7E3": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -508,25 +533,25 @@
         }
       },
       "block_order": [
-        "metafield_row_UVBKFB",
-        "metafield_row_FQXYLj",
-        "metafield_row_Hk3EtB",
-        "metafield_row_tDHPQT",
-        "metafield_row_qpzggw",
-        "metafield_row_B8Mdk8",
-        "metafield_row_9VPpC8",
-        "metafield_row_YfeTLq",
-        "metafield_row_pgVyHX",
-        "metafield_row_TEzEpx",
-        "metafield_row_wW6BNM",
-        "metafield_row_mxBHFz",
-        "metafield_row_CDaLjk",
-        "metafield_row_chPWq7",
-        "metafield_row_y8Dgbt",
-        "metafield_row_ApyNh8",
-        "metafield_row_YtipRh",
-        "metafield_row_jLxiad",
-        "metafield_row_TiGTw9"
+        "metafield_row_W3wjGB",
+        "metafield_row_ritY68",
+        "metafield_row_hd3UAJ",
+        "metafield_row_QNRafQ",
+        "metafield_row_EW3jMP",
+        "metafield_row_KJtRUm",
+        "metafield_row_r4wrLd",
+        "metafield_row_DN4At6",
+        "metafield_row_w7yYn6",
+        "metafield_row_NcNPcE",
+        "metafield_row_yGcech",
+        "metafield_row_BdTqJc",
+        "metafield_row_AALDcz",
+        "metafield_row_D38CA6",
+        "metafield_row_K7wVjK",
+        "metafield_row_tYLeVK",
+        "metafield_row_PRiBAM",
+        "metafield_row_AU9WHc",
+        "metafield_row_RDU7E3"
       ],
       "name": "Product Metafields Tables",
       "settings": {
@@ -536,6 +561,20 @@
         "enable_lazy_loading": true,
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "configuration_section_WLp8Hh": {
+      "type": "configuration-section",
+      "name": "Section configuration",
+      "settings": {
+        "heading": "Knowledge Base"
+      }
+    },
+    "table_product_ptaMiG": {
+      "type": "table-product",
+      "name": "Table product",
+      "settings": {
+        "title": "<p>Produktoplysninger</p>"
       }
     },
     "product_recommendations_qggXJq": {
@@ -589,7 +628,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -674,16 +713,25 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "section_lock_Gkj8UT": {
+      "type": "section-lock",
+      "name": "Section lock",
+      "settings": {}
     }
   },
   "order": [
+    "breadcrumbs_UaYrXQ",
     "main",
-    "size_chart_mt",
-    "product_metafields_tables_YBCXG8",
+    "section_lock_Gkj8UT",
+    "size_chart_mt_A4BzFV",
+    "product_metafields_tables_4E7YC9",
+    "configuration_section_WLp8Hh",
+    "table_product_ptaMiG",
     "product_recommendations_qggXJq"
   ]
 }

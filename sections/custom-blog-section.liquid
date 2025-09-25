@@ -1,0 +1,232 @@
+{% assign blog = section.settings.custom_blog %}
+<section class="ctm_blog">
+  <div class="custom-blog-section custom-blog-section-main page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="custom-blog-title">{{ section.settings.heading }}</h2>
+    {% elsif blog != blank %}
+      <h2 class="custom-blog-title">{{ blog.title }}</h2>
+    {% endif %}
+    {% if blog != blank and blog.articles.size > 0 %}
+      {% assign first_article = blog.articles.first %}
+      <div class="custom-blog-img-content">
+        <div class="custom-left-block">
+          <div class="custom-blog-img">
+            {% if section.settings.custom_blog_img != blank %}
+              <img
+                src="{{ section.settings.custom_blog_img | img_url: 'master' }}"
+                width="100%"
+                height="auto"
+                loading="lazy"
+              >
+            {% else %}
+              {% if first_article.image %}
+                <img src="{{ first_article.image | img_url: 'master' }}" width="100%" height="auto" loading="lazy">
+              {% else %}
+                <p>No image available</p>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+       
+        <div class="custom-right-block">
+          <div>
+            {% if blog != blank and blog.articles.size > 0 %}
+              {% assign limit = 5 %}
+               
+                <div class="custom-article-block">
+                  {% for article in blog.articles  %}
+                  <div class="custom-article-title">
+                    <a href="{{ article.url }}" class="custom-article-link"> {{ article.title }} </a>
+                    <span class="custom-content-toggle-btn">
+                      <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48078 15.3252L0.291016 14.1354L6.42646 7.99998L0.291016 1.86453L1.48078 0.674765L8.806 7.99998L1.48078 15.3252Z" fill="black"/>
+                      </svg>
+                    </span>
+                  </div>
+                     {% endfor %}
+                  <div class="custom-article-description">
+                    <p>{{ article.content | truncate: 300 }}</p>
+                  </div>
+                </div>
+                
+              
+
+              {% if blog.articles.size > limit %}
+                <div class="view-all-container">
+                  <a href="{{ blog.url }}" class="view-all-link">View All</a>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <p>No articles found</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom BlogSection",
+  "settings": [
+     {
+    "type": "inline_richtext",
+    "id": "heading",
+    "label": "Heading"
+    },
+    {
+      "type": "blog",
+      "id":"custom_blog",
+      "label":"Select Blog"
+    },
+    {
+      "type":"image_picker",
+      "id":"custom_blog_img",
+      "label":"Image"
+    }
+  ],
+  "presets":[
+    {
+      "name":"Custom BlogSection"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+@media screen and (min-width: 750px) {
+.custom-blog-section.custom-blog-section-main{
+        padding: 0 3rem;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    div.custom-blog-section.custom-blog-section-main .custom-blog-img{
+      width: 100%;
+      max-width: 180px;
+      margin: 0 auto;
+    }
+}
+@media(max-width: 767px){
+    .custom-blog-section.custom-blog-section-main  .custom-left-block{
+        display: none;
+    }
+    .custom-blog-section.custom-blog-section-main .custom-blog-img-content{
+        width: 100%;
+        margin: 0; 
+    }
+    div.custom-blog-section.custom-blog-section-main .custom-right-block{
+        width: 100%;
+        padding: 0;
+    }
+    div.custom-blog-section.custom-blog-section-main .custom-article-block{
+        padding: 0 10px;
+    }
+     div.custom-blog-section.custom-blog-section-main .custom-article-title{
+        gap: 22px;
+        display: grid;
+        grid-template-columns: 1fr 12px;
+     }
+     div.custom-blog-section.custom-blog-section-main .custom-content-toggle-btn{
+        width: 20px; 
+     }
+}
+    .custom-blog-section.custom-blog-section-main .custom-blog-title{
+      background: #CBE3FF;
+      color: #121212;
+      font-size: 24px;
+      margin-bottom: 6px;
+      margin-top: 6px;
+      font-weight: 400;
+      padding: 12px 10px;
+    }
+    section.ctm_blog {
+      padding-top: 30px;
+  }
+    .custom-blog-section .custom-article-block{
+        padding: 10px 15px 10px 1px;
+    }
+    /* .custom-blog-section .custom-article-block:not(last-child){
+      border-bottom:1px solid #00000078;
+    } */
+  .custom-article-title {
+    border-bottom: 1px solid #00000078;
+    padding: 10px 15px 10px 1px;
+  }
+  
+    .custom-blog-section .custom-blog-img-content .custom-blog-img{
+      width: 200px;
+      height: 200px;
+    }
+    .custom-blog-section .custom-blog-img-content{
+      display:flex;
+      margin-left:-10px;
+      margin-right:-10px;
+    }
+    .custom-blog-section .custom-blog-img-content .custom-left-block{
+      width:25%;
+    }
+    .custom-blog-section .custom-blog-img-content .custom-right-block{
+      width:75%;
+    }
+    .custom-blog-section .custom-blog-img-content .custom-left-block,
+    .custom-blog-section .custom-blog-img-content .custom-right-block{
+      padding-left:10px;
+      padding-right:10px;
+    }
+     .custom-blog-section .custom-blog-img-content .custom-article-title{
+       display:flex;
+       justify-content:space-between;
+       align-items:center;
+     }
+    .custom-blog-section .custom-blog-img-content .custom-article-title .custom-article-link{
+      color:#4B81BF;
+      text-decoration:none;
+    }
+     .custom-blog-section .custom-blog-img-content .custom-article-description{
+       transition:0.4s;
+       transition-timing-function: linear;
+       max-height:0;
+       overflow:hidden;
+       opacity:0;
+     }
+    .custom-blog-section .custom-blog-img-content .custom-article-description.active{
+      trnasition:0.4s;
+      transition-timing-function: linear;
+      max-height:500px;
+      opacity:1;
+    }
+    .custom-blog-section .custom-right-block .view-all-container .view-all-link{
+      text-decoration:none;
+      color:#0074D9;
+      font-weight:bold;
+      font-size:18px;
+    }
+    .custom-blog-section .custom-blog-img-content .custom-right-block .view-all-container{
+      padding: 12px 0 5px 0;
+    }
+{% endstyle %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButtons = document.querySelectorAll('.custom-content-toggle-btn');
+  const articleContents = document.querySelectorAll('.custom-article-description');
+
+  toggleButtons.forEach((button, index) => {
+    button.addEventListener('click', function () {
+      if (articleContents[index].classList.contains("active")) {
+        articleContents[index].classList.remove("active");
+        button.innerHTML = `<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48078 15.3252L0.291016 14.1354L6.42646 7.99998L0.291016 1.86453L1.48078 0.674765L8.806 7.99998L1.48078 15.3252Z" fill="black"/>
+        </svg>`;
+      } else {
+        articleContents[index].classList.add("active");
+        button.innerHTML = `<svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.39726L1.21815 0L7.5 7.20548L13.7818 0L15 1.39726L7.5 10L0 1.39726Z" fill="black"/>
+        </svg>`;
+      }
+      console.log('Clicked on article:', index);
+    });
+  });
+});
+</script>

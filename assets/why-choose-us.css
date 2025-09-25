@@ -1,0 +1,126 @@
+.why-choose-wrapper {
+  width: 100%;
+}
+
+.why-choose-container {
+  max-width: var(--why-choose-max-width);
+  margin: 0 auto;
+  padding: var(--why-choose-padding-vertical) var(--why-choose-padding-horizontal);
+}
+
+.why-choose-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.why-choose-title {
+  margin-bottom: 1rem;
+}
+
+.why-choose-subtitle {
+  margin-bottom: 0;
+}
+
+.why-choose-subtitle p {
+  margin: 0;
+}
+
+.why-choose-grid {
+  display: flex;
+  gap: var(--why-choose-gap);
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.why-choose-grid::-webkit-scrollbar {
+  height: 4px;
+}
+
+.why-choose-grid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.why-choose-grid::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.why-choose-item {
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+}
+
+.why-choose-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.why-choose-icon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.why-choose-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.why-choose-content {
+  text-align: center;
+}
+
+.why-choose-item-title {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.why-choose-item-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.why-choose-item-text p {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  
+  .why-choose-item {
+    flex: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .why-choose-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .why-choose-item {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+.why-choose-container {
+padding: 20px !important;
+}
+}

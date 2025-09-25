@@ -1,0 +1,526 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --footer-bg: {{ section.settings.footer_background }};
+    --footer-text: {{ section.settings.text_color }};
+    --footer-accent: {{ section.settings.accent_color }};
+    --footer-border: {{ section.settings.border_color }};
+    --input-bg: {{ section.settings.input_background }};
+    --input-border: {{ section.settings.input_border }};
+    --hover-bg: {{ section.settings.hover_background }};
+  }
+</style>
+
+<footer id="{{ section.id }}" class="site-footer {{ section.settings.custom_classes }}">
+  <div class="footer-container">
+    <div class="footer-content">
+      
+      {% if section.settings.show_contact %}
+        <div class="footer-contact">
+          <h3 class="footer-title">{{ section.settings.contact_title | default: 'Contact' }}</h3>
+          
+          {% if section.settings.company_address != blank %}
+            <div class="contact-item">
+              <h4 class="contact-label">{{ section.settings.address_title | default: 'Address' }}</h4>
+              <div class="contact-info">{{ section.settings.company_address }}</div>
+            </div>
+          {% endif %}
+          
+          {% if section.settings.company_phone != blank %}
+            <div class="contact-item">
+              <h4 class="contact-label">{{ section.settings.phone_title | default: 'Phone' }}</h4>
+              <a href="tel:{{ section.settings.company_phone | replace: ' ', '' }}" class="contact-link">
+                {{ section.settings.company_phone }}
+              </a>
+            </div>
+          {% endif %}
+          
+          {% if section.settings.company_email != blank %}
+            <div class="contact-item">
+              <h4 class="contact-label">{{ section.settings.email_title | default: 'Email' }}</h4>
+              <a href="mailto:{{ section.settings.company_email }}" class="contact-link">
+                {{ section.settings.company_email }}
+              </a>
+            </div>
+          {% endif %}
+          
+          {% if section.settings.contact_description != blank %}
+            <div class="contact-description">
+              {{ section.settings.contact_description }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'menu_column' %}
+            <div class="footer-menu" {{ block.shopify_attributes }}>
+              <h3 class="footer-title">{{ block.settings.title }}</h3>
+              {% if block.settings.menu != blank %}
+                <ul class="footer-links">
+                  {% for link in linklists[block.settings.menu].links %}
+                    <li class="footer-link-item">
+                      <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+      {% if section.settings.show_contact_form %}
+        <div class="footer-form">
+          <h3 class="footer-title">{{ section.settings.form_title | default: 'Get in Touch' }}</h3>
+          
+          {% form 'contact', class: 'contact-form' %}
+            {% if form.posted_successfully? %}
+              <div class="form-success">
+                <p>{{ section.settings.success_message | default: 'Thank you for your message! We will get back to you soon.' }}</p>
+              </div>
+            {% endif %}
+            
+            {% if form.errors %}
+              <div class="form-errors">
+                {% for field in form.errors %}
+                  <p class="form-error">{{ field | capitalize }} {{ form.errors.messages[field] }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+            
+            <div class="form-row">
+              <div class="form-field">
+                <input 
+                  type="text" 
+                  name="contact[name]" 
+                  id="contact-name"
+                  placeholder="{{ section.settings.name_placeholder | default: 'Name' }}"
+                  class="form-input{% if form.errors contains 'name' %} form-input--error{% endif %}"
+                  value="{{ form.name }}"
+                  required
+                >
+              </div>
+              <div class="form-field">
+                <input 
+                  type="email" 
+                  name="contact[email]" 
+                  id="contact-email"
+                  placeholder="{{ section.settings.email_placeholder | default: 'Email' }}"
+                  class="form-input{% if form.errors contains 'email' %} form-input--error{% endif %}"
+                  value="{{ form.email }}"
+                  required
+                >
+              </div>
+            </div>
+            
+            <div class="form-field">
+              <textarea 
+                name="contact[body]" 
+                id="contact-body"
+                placeholder="{{ section.settings.comment_placeholder | default: 'Message' }}"
+                class="form-textarea{% if form.errors contains 'body' %} form-input--error{% endif %}"
+                rows="4"
+                required
+              >{{ form.body }}</textarea>
+            </div>
+            
+            <button type="submit" class="form-submit" {% if form.posted_successfully? %}disabled{% endif %}>
+              {% if form.posted_successfully? %}
+                {{ section.settings.sent_text | default: 'Message Sent!' }}
+              {% else %}
+                {{ section.settings.submit_text | default: 'Send Message' }}
+              {% endif %}
+            </button>
+          {% endform %}
+        </div>
+      {% endif %}
+
+    </div>
+
+    {% if section.settings.show_payment_icons or section.settings.show_copyright %}
+      <div class="footer-bottom">
+        {% if section.settings.show_payment_icons %}
+          <div class="payment-icons">
+            {% if section.settings.show_visa %}
+              <div class="payment-icon visa">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#1A1F36"/>
+                  <path d="M16.1 8.5l-2.8 7h-1.7l-1.4-5.4c-.1-.3-.2-.5-.4-.6-.4-.2-1.1-.4-1.7-.5l0-.5h2.9c.4 0 .7.3.8.6l.7 3.8 1.7-4.4h1.9zm7.5 4.7c0-1.8-2.5-1.9-2.5-2.7 0-.2.2-.5.7-.6.3 0 1.1-.1 1.9.3l.3-1.4c-.5-.2-1.1-.3-1.9-.3-2 0-3.4 1.1-3.4 2.6 0 1.1.9 1.8 1.7 2.1.8.4 1.1.6 1.1 1 0 .6-.7.8-1.4.8-.9 0-1.5-.2-2.3-.5l-.4 1.5c.5.2 1.5.4 2.5.4 2.1 0 3.5-1 3.5-2.6l.2-.6zm5.5 2.3h1.7l-1.5-7h-1.6c-.3 0-.6.2-.7.5l-2.5 6.5h2l.4-1.1h2.4l.2 1.1zm-2.1-2.6l1-2.7.6 2.7h-1.6zm-6.9-4.4l-1.5 7h-1.9l1.5-7h1.9z" fill="white"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_mastercard %}
+              <div class="payment-icon mastercard">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#000000"/>
+                  <circle cx="15" cy="12" r="6" fill="#EB001B"/>
+                  <circle cx="25" cy="12" r="6" fill="#F79E1B"/>
+                  <path d="M20 7.5c1.4 1.2 2.3 3 2.3 5s-.9 3.8-2.3 5c-1.4-1.2-2.3-3-2.3-5s.9-3.8 2.3-5z" fill="#FF5F00"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_amex %}
+              <div class="payment-icon amex">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#006FCF"/>
+                  <path d="M8 8h2l1.5 2L13 8h2v8h-1.5v-5L12 13.5h-1L9.5 11v5H8V8zm10 0h4v1.5h-2.5v1h2.3v1.5h-2.3v1.5h2.5V16h-4V8zm6 0h2l1.5 2.5L29 8h2l-2.5 4L31 16h-2l-1.5-2.5L26 16h-2l2.5-4L24 8z" fill="white"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_paypal %}
+              <div class="payment-icon paypal">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#003087"/>
+                  <path d="M12 8c2.2 0 3.5 1.2 3.2 3.5-.4 2.8-2.2 4.5-4.7 4.5H8.5L7.5 21H6l2-13h4zm16 0c2.2 0 3.5 1.2 3.2 3.5-.4 2.8-2.2 4.5-4.7 4.5H24.5L23.5 21H22l2-13h4zm-18 2h-1.5l-.5 3h1.5c1.2 0 2-.6 2.2-1.8.1-.7-.2-1.2-1.7-1.2zm16 0h-1.5l-.5 3h1.5c1.2 0 2-.6 2.2-1.8.1-.7-.2-1.2-1.7-1.2z" fill="#0070BA"/>
+                  <path d="M14 8c1.8 0 2.9 1 2.6 2.9-.3 2.3-1.8 3.7-3.9 3.7H11.2l-.4 2.4H10l1.7-9h2.3zm16 0c1.8 0 2.9 1 2.6 2.9-.3 2.3-1.8 3.7-3.9 3.7H27.2l-.4 2.4H26l1.7-9h2.3z" fill="#009CDE"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_apple_pay %}
+              <div class="payment-icon apple-pay">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#000000"/>
+                  <path d="M12.2 8.2c-.8 0-2.1.7-2.1 2.1s1.2 2.1 2.1 2.1c.8 0 2.1-.7 2.1-2.1s-1.2-2.1-2.1-2.1zm.8-2.2c1.4 0 2.4.9 2.7 2.2h-1c-.2-.7-.8-1.2-1.7-1.2s-1.5.5-1.7 1.2h-1c.3-1.3 1.3-2.2 2.7-2.2zm7.5 0c.9 0 1.6.4 2 1v-.8h.9V16h-.9v-.8c-.4.6-1.1 1-2 1-1.6 0-2.8-1.3-2.8-2.9s1.2-2.9 2.8-2.9zm.1 4.9c1.1 0 1.9-.8 1.9-1.9s-.8-1.9-1.9-1.9-1.9.8-1.9 1.9.8 1.9 1.9 1.9zm4.9-4.7h.9v.8c.3-.6.9-1 1.6-1 1.3 0 2.1.9 2.1 2.2V16h-.9v-4.7c0-.8-.5-1.3-1.3-1.3s-1.4.5-1.4 1.3V16h-.9V6.2z" fill="white"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_google_pay %}
+              <div class="payment-icon google-pay">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#ffffff" stroke="#dadce0"/>
+                  <path d="M16 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm2 0c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2z" fill="#EA4335"/>
+                  <path d="M24 8v8h-2V8h2z" fill="#34A853"/>
+                  <path d="M8 10c0-.6.4-1 1-1h6v2H9c-.6 0-1-.4-1-1zm0 4c0-.6.4-1 1-1h4v2H9c-.6 0-1-.4-1-1z" fill="#FBBC05"/>
+                  <path d="M28 10v2h2v2h-2v2h-2v-2h-2v-2h2v-2h2z" fill="#EA4335"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            {% if section.settings.show_shop_pay %}
+              <div class="payment-icon shop-pay">
+                <svg viewBox="0 0 40 24" fill="none">
+                  <rect width="40" height="24" rx="4" fill="#5A31F4"/>
+                  <path d="M12 10c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm-2 0c0 2.2 1.8 4 4 4s4-1.8 4-4-1.8-4-4-4-4 1.8-4 4zm10-2h2l1 4 1-4h2l-2 8h-2l-2-8zm6 0h2v1.5c.5-.9 1.3-1.5 2.3-1.5.1 0 .2 0 .3 0v2c-.1 0-.2 0-.3 0-1.1 0-2 .9-2 2V16h-2V8z" fill="white"/>
+                </svg>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.show_copyright %}
+          <div class="footer-copyright">
+            <p>
+              © {{ 'now' | date: '%Y' }}, {{ shop.name }}
+              {% if section.settings.powered_by_shopify %}
+                {{ 'Powered by' | append: ' ' | append: '<a href="https://shopify.com" target="_blank" rel="noopener">Shopify</a>' }}
+              {% endif %}
+              {% if section.settings.privacy_policy_link != blank %}
+                • <a href="{{ section.settings.privacy_policy_link }}">{{ section.settings.privacy_text | default: 'Privacy Policy' }}</a>
+              {% endif %}
+            </p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</footer>
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "site-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contact Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show contact section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact title",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "address_title", 
+      "label": "Address title",
+      "default": "Address"
+    },
+    {
+      "type": "textarea",
+      "id": "company_address",
+      "label": "Company address",
+      "default": "123 Business Street\nCity, State 12345"
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Phone title", 
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "company_phone",
+      "label": "Company phone",
+      "default": "+1 (555) 123-4567"
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Email title",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "company_email",
+      "label": "Company email",
+      "default": "info@company.com"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_description",
+      "label": "Contact description",
+      "default": "We strive to respond to all inquiries within 24 hours on business days."
+    },
+    {
+      "type": "header",
+      "content": "Contact Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_form",
+      "label": "Show contact form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form title",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder", 
+      "label": "Email placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "comment_placeholder",
+      "label": "Message placeholder", 
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "submit_text",
+      "label": "Submit button text",
+      "default": "Send Message"
+    },
+    {
+      "type": "text",
+      "id": "sent_text",
+      "label": "Button text after sending",
+      "default": "Message Sent!"
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you for your message! We will get back to you soon."
+    },
+    {
+      "type": "header",
+      "content": "Payment Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_visa",
+      "label": "Show Visa",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mastercard",
+      "label": "Show Mastercard", 
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_amex",
+      "label": "Show American Express",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_paypal",
+      "label": "Show PayPal",
+      "default": true
+    },
+    {
+      "type": "checkbox", 
+      "id": "show_apple_pay",
+      "label": "Show Apple Pay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_google_pay",
+      "label": "Show Google Pay", 
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_pay",
+      "label": "Show Shop Pay",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show copyright",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "powered_by_shopify",
+      "label": "Show 'Powered by Shopify'",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "privacy_policy_link",
+      "label": "Privacy policy link"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy policy text",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "footer_background",
+      "label": "Footer background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color", 
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color", 
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "hover_background",
+      "label": "Hover background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border",
+      "label": "Input border",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column title",
+          "default": "Information"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {
+          "type": "menu_column",
+          "settings": {
+            "title": "Information",
+            "menu": "footer"
+          }
+        },
+        {
+          "type": "menu_column", 
+          "settings": {
+            "title": "About Us",
+            "menu": "footer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

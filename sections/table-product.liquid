@@ -1,0 +1,83 @@
+<style>
+.product_infomt .title-wrapper--no-top-margin p{
+    font-size: 28px;
+    padding-top: 30px;
+}
+.product_infomt .table-header{
+    background-color: #CBE3FF;
+    color: black;
+    text-align: left;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 100;
+}
+.product_infomt .dimensions-table td:first-child{
+    width: 30%;
+}
+.product_infomt .dimensions-table td,
+.product_infomt .key-features-table td{
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+}
+.product_infomt .dimensions-table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+.dimensions-table{
+    margin-top: 30px;
+}
+@media(max-width: 1439px){
+    .product_infomt .dimensions-table td:first-child{
+        width: 47%;
+    }
+}
+</style>
+<section class="product_infomt page-width">
+    <div class="dimensions-table-container">
+        {% if section.settings.title != blank and product.metafields.custom.table.value != blank %}
+            <div class="table-heading_ title title-wrapper--no-top-margin inline-richtext h1 scroll-trigger animate--slide-in">{{ section.settings.title }}</div>
+        {% endif %}
+        
+        {% if product.metafields.custom.table.value != blank %}
+            {% assign table_names = product.metafields.custom.table.value | map: 'name_table' | uniq %}
+            
+            {% for name in table_names %}
+                <table class="dimensions-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="table-header">{{ name }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for table in product.metafields.custom.table.value %}
+                            {% if table.name_table == name %}
+                                <tr>
+                                    <td><strong>{{ table.title }}</strong></td>
+                                    <td>{{ table.text }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Table product",
+  "settings": [
+    {
+        "type": "richtext",
+        "id": "title",
+        "label": "Title"
+    },
+  ],
+  "presets": [
+    {
+        "name": "Table product"
+    }
+  ]
+}
+{% endschema %}

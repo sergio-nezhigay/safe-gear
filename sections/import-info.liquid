@@ -1,0 +1,971 @@
+{{ 'important-info.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign faq_items = section.blocks | where: 'type', 'faq_item'
+  assign article_items = section.blocks | where: 'type', 'article_item'
+  assign blog_blocks = section.blocks | where: 'type', 'blog_block'
+  assign valid_faq_count = 0
+  
+  for item in faq_items
+    assign question_text = item.settings.question | strip
+    assign answer_text = item.settings.answer | strip_html | strip
+    if question_text != blank and answer_text != blank
+      assign valid_faq_count = valid_faq_count | plus: 1
+    endif
+  endfor
+%}
+
+{% if valid_faq_count > 0 %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- assign item_index = 0 -%}
+      {%- for block in faq_items -%}
+        {%- assign question_text = block.settings.question | strip -%}
+        {%- assign answer_text = block.settings.answer | strip_html | strip -%}
+        {%- if question_text != blank and answer_text != blank -%}
+          {%- assign item_index = item_index | plus: 1 -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | json }}
+            },
+        {
+          "type": "blog_block",
+          "settings": {
+            "blog_title": "Related Articles",
+            "posts_limit": 6,
+            "show_excerpt": true,
+            "excerpt_length": 100,
+            "show_date": false
+          }
+        }
+          }{%- unless item_index == valid_faq_count -%},{%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{% endif %}
+
+<style>
+  #{{ section.id }} {
+    --info-max-width: {{ section.settings.max_width }}px;
+    --info-padding-vertical: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    --info-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+    --info-gap: {{ section.settings.content_gap }}px;
+    --info-title-color: {{ section.settings.title_color }};
+    --info-subtitle-color: {{ section.settings.subtitle_color }};
+    --info-faq-title-color: {{ section.settings.faq_title_color }};
+    --info-articles-title-color: {{ section.settings.articles_title_color }};
+    --info-question-color: {{ section.settings.question_color }};
+    --info-answer-color: {{ section.settings.answer_color }};
+    --info-article-title-color: {{ section.settings.article_title_color }};
+    --info-article-text-color: {{ section.settings.article_text_color }};
+    --info-faq-bg: {{ section.settings.faq_background }};
+    --info-faq-border: {{ section.settings.faq_border_color }};
+    --info-article-bg: {{ section.settings.article_background }};
+    --info-article-border: {{ section.settings.article_border_color }};
+    --info-accent-color: {{ section.settings.accent_color }};
+    --info-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --info-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --info-section-title-size-mobile: {{ section.settings.section_title_size_mobile }}px;
+    --info-question-size-mobile: {{ section.settings.question_size_mobile }}px;
+    --info-answer-size-mobile: {{ section.settings.answer_size_mobile }}px;
+    --info-article-title-size-mobile: {{ section.settings.article_title_size_mobile }}px;
+    --info-article-text-size-mobile: {{ section.settings.article_text_size_mobile }}px;
+    --info-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --info-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --info-section-title-size-desktop: {{ section.settings.section_title_size_desktop }}px;
+    --info-question-size-desktop: {{ section.settings.question_size_desktop }}px;
+    --info-answer-size-desktop: {{ section.settings.answer_size_desktop }}px;
+    --info-article-title-size-desktop: {{ section.settings.article_title_size_desktop }}px;
+    --info-article-text-size-desktop: {{ section.settings.article_text_size_desktop }}px;
+    background-color: {{ section.settings.section_background }};
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} {
+      --info-padding-vertical: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+      --info-padding-horizontal: {{ section.settings.padding_horizontal_desktop }}px;
+    }
+  }
+
+  #{{ section.id }} .info-title {
+    color: var(--info-title-color);
+    font-size: var(--info-title-size-mobile);
+  }
+
+  #{{ section.id }} .info-subtitle {
+    color: var(--info-subtitle-color);
+    font-size: var(--info-subtitle-size-mobile);
+  }
+
+  #{{ section.id }} .info-section-title {
+    color: var(--info-faq-title-color);
+    font-size: var(--info-section-title-size-mobile);
+  }
+
+  #{{ section.id }} .info-articles-title {
+    color: var(--info-articles-title-color);
+    font-size: var(--info-section-title-size-mobile);
+  }
+
+  #{{ section.id }} .info-question-text {
+    color: var(--info-question-color);
+    font-size: var(--info-question-size-mobile);
+  }
+
+  #{{ section.id }} .info-answer-content {
+    color: var(--info-answer-color);
+    font-size: var(--info-answer-size-mobile);
+  }
+
+  #{{ section.id }} .info-article-title {
+    color: var(--info-article-title-color);
+    font-size: var(--info-article-title-size-mobile);
+  }
+
+  #{{ section.id }} .info-article-text {
+    color: var(--info-article-text-color);
+    font-size: var(--info-article-text-size-mobile);
+  }
+
+  #{{ section.id }} .info-faq-item {
+    background-color: var(--info-faq-bg);
+    border: 1px solid var(--info-faq-border);
+  }
+
+  #{{ section.id }} .info-article-item {
+    background-color: var(--info-article-bg);
+    border: 1px solid var(--info-article-border);
+  }
+
+  #{{ section.id }} .info-toggle-icon {
+    color: var(--info-accent-color);
+  }
+
+  #{{ section.id }} .info-article-icon {
+    color: var(--info-accent-color);
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .info-title {
+      font-size: var(--info-title-size-desktop);
+    }
+
+    #{{ section.id }} .info-subtitle {
+      font-size: var(--info-subtitle-size-desktop);
+    }
+
+    #{{ section.id }} .info-section-title {
+      font-size: var(--info-section-title-size-desktop);
+    }
+
+    #{{ section.id }} .info-articles-title {
+      font-size: var(--info-section-title-size-desktop);
+    }
+
+    #{{ section.id }} .info-question-text {
+      font-size: var(--info-question-size-desktop);
+    }
+
+    #{{ section.id }} .info-answer-content {
+      font-size: var(--info-answer-size-desktop);
+    }
+
+    #{{ section.id }} .info-article-title {
+      font-size: var(--info-article-title-size-desktop);
+    }
+
+    #{{ section.id }} .info-article-text {
+      font-size: var(--info-article-text-size-desktop);
+    }
+  }
+</style>
+
+<div id="{{ section.id }}" class="important-info-wrapper {{ section.settings.custom_classes }}">
+  <div class="important-info-container">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="important-info-header">
+        {% if section.settings.title != blank %}
+          <h2 class="info-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <div class="info-subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="important-info-content">
+      {% if faq_items.size > 0 %}
+        <div class="info-faq-section">
+          <div class="info-faq-wrapper">
+            {% if section.settings.faq_section_title != blank %}
+              <div class="info-faq-sidebar">
+                <h3 class="info-section-title">{{ section.settings.faq_section_title }}</h3>
+              </div>
+            {% endif %}
+            
+            <div class="info-faq-items">
+              {% assign item_counter = 0 %}
+              {% for block in faq_items %}
+                {% assign question_text = block.settings.question | strip %}
+                {% assign answer_text = block.settings.answer | strip_html | strip %}
+                {% if question_text != blank and answer_text != blank %}
+                  {% assign item_counter = item_counter | plus: 1 %}
+                  <div class="info-faq-item{% if block.settings.default_open %} is-open{% endif %}" {{ block.shopify_attributes }}>
+                    <button 
+                      class="info-faq-question" 
+                      type="button"
+                      aria-expanded="{{ block.settings.default_open | default: false }}"
+                      aria-controls="info-faq-answer-{{ section.id }}-{{ item_counter }}"
+                      id="info-faq-question-{{ section.id }}-{{ item_counter }}"
+                    >
+                      {% if block.settings.icon_html != blank %}
+                        <span class="info-question-icon">{{ block.settings.icon_html }}</span>
+                      {% endif %}
+                      <span class="info-question-text">{{ block.settings.question }}</span>
+                      <span class="info-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 14.5L12 9.5L17 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </button>
+                    <div 
+                      class="info-faq-answer" 
+                      id="info-faq-answer-{{ section.id }}-{{ item_counter }}"
+                      role="region"
+                      aria-labelledby="info-faq-question-{{ section.id }}-{{ item_counter }}"
+                    >
+                      <div class="info-answer-content">{{ block.settings.answer }}</div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if blog_blocks.size > 0 %}
+        {% for block in blog_blocks %}
+          {% if block.settings.blog != blank %}
+            {% assign blog = blogs[block.settings.blog] %}
+            {% if blog.articles.size > 0 %}
+              <div class="info-blog-section" {{ block.shopify_attributes }}>
+                {% if block.settings.blog_title != blank %}
+                  <h3 class="info-articles-title">{{ block.settings.blog_title }}</h3>
+                {% endif %}
+                
+                <div class="info-articles-grid">
+                  {% for article in blog.articles limit: block.settings.posts_limit %}
+                    <a href="{{ article.url }}" class="info-article-item blog-article-item">
+                      {% if article.image %}
+                        <div class="info-blog-image">
+                          <img 
+                            src="{{ article.image | img_url: '300x200' }}" 
+                            alt="{{ article.image.alt | default: article.title | escape }}"
+                            loading="lazy"
+                            class="info-blog-img"
+                          >
+                        </div>
+                      {% endif %}
+                      
+                      <div class="info-article-content">
+                        {% if article.title != blank %}
+                          <h4 class="info-article-title">{{ article.title }}</h4>
+                        {% endif %}
+                        
+                        {% if block.settings.show_excerpt %}
+                          <div class="info-article-text">
+                            {% if article.excerpt != blank %}
+                              {{ article.excerpt | strip_html | truncate: block.settings.excerpt_length }}
+                            {% else %}
+                              {{ article.content | strip_html | truncate: block.settings.excerpt_length }}
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        
+                        {% if block.settings.show_date %}
+                          <div class="info-blog-date">
+                            {{ article.published_at | date: block.settings.date_format }}
+                          </div>
+                        {% endif %}
+                      </div>
+                      
+                      <div class="info-article-link">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if article_items.size > 0 %}
+        <div class="info-articles-section">
+          {% if section.settings.articles_section_title != blank %}
+            <h3 class="info-articles-title">{{ section.settings.articles_section_title }}</h3>
+          {% endif %}
+          
+          <div class="info-articles-grid">
+            {% for block in article_items %}
+              {% if block.settings.title != blank %}
+                {% if block.settings.link != blank %}
+                  <a href="{{ block.settings.link }}" class="info-article-item" {{ block.shopify_attributes }}>
+                {% else %}
+                  <div class="info-article-item" {{ block.shopify_attributes }}>
+                {% endif %}
+                  {% if block.settings.icon_html != blank %}
+                    <div class="info-article-icon">
+                      {{ block.settings.icon_html }}
+                    </div>
+                  {% endif %}
+                  
+                  <div class="info-article-content">
+                    <h4 class="info-article-title">{{ block.settings.title }}</h4>
+                    {% if block.settings.description != blank %}
+                      <div class="info-article-text">{{ block.settings.description }}</div>
+                    {% endif %}
+                  </div>
+                  
+                  {% if block.settings.link != blank %}
+                    <div class="info-article-link">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                {% if block.settings.link != blank %}
+                  </a>
+                {% else %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  const section = document.getElementById('{{ section.id }}');
+  if (!section) return;
+  
+  function initializeFAQ() {
+    const faqItems = section.querySelectorAll('.info-faq-item');
+    
+    function toggleFAQ(item, forceOpen = null) {
+      const isOpen = forceOpen !== null ? forceOpen : !item.classList.contains('is-open');
+      const question = item.querySelector('.info-faq-question');
+      const answer = item.querySelector('.info-faq-answer');
+      
+      if (!question || !answer) return;
+      
+      item.classList.toggle('is-open', isOpen);
+      question.setAttribute('aria-expanded', isOpen.toString());
+      
+      if (isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.offsetHeight;
+      } else {
+        answer.style.maxHeight = '0';
+      }
+    }
+    
+    function handleResize() {
+      faqItems.forEach((item) => {
+        if (item.classList.contains('is-open')) {
+          const answer = item.querySelector('.info-faq-answer');
+          if (answer) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        }
+      });
+    }
+    
+    faqItems.forEach((item, index) => {
+      const question = item.querySelector('.info-faq-question');
+      const answer = item.querySelector('.info-faq-answer');
+      const isDefaultOpen = item.classList.contains('is-open');
+      
+      if (!question || !answer) return;
+      
+      // Remove existing event listeners
+      const newQuestion = question.cloneNode(true);
+      question.parentNode.replaceChild(newQuestion, question);
+      
+      requestAnimationFrame(() => {
+        toggleFAQ(item, isDefaultOpen);
+      });
+      
+      newQuestion.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFAQ(item);
+      });
+      
+      newQuestion.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFAQ(item);
+        }
+      });
+    });
+    
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 100);
+    });
+  }
+  
+  // Initialize on load
+  initializeFAQ();
+  
+  // Re-initialize when new blocks are added (Shopify theme editor)
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:block:select', function(event) {
+      if (event.target.closest('#{{ section.id }}')) {
+        setTimeout(initializeFAQ, 100);
+      }
+    });
+    
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.target.id === '{{ section.id }}') {
+        setTimeout(initializeFAQ, 100);
+      }
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Important Information",
+  "tag": "section",
+  "class": "important-info-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Important Information"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size desktop",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size mobile",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "<p>Find answers to common questions and explore helpful articles</p>"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Section"
+    },
+    {
+      "type": "text",
+      "id": "faq_section_title",
+      "label": "FAQ section title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "range",
+      "id": "section_title_size_desktop",
+      "min": 20,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Section title size desktop",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_title_size_mobile",
+      "min": 18,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Section title size mobile",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "faq_title_color",
+      "label": "FAQ section title color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "question_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Question size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "question_size_mobile",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Question size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "answer_size_desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer size desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "answer_size_mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer size mobile",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "faq_background",
+      "label": "FAQ item background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "faq_border_color",
+      "label": "FAQ item border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Articles Section"
+    },
+    {
+      "type": "text",
+      "id": "articles_section_title",
+      "label": "Articles section title",
+      "default": "Helpful Articles"
+    },
+    {
+      "type": "color",
+      "id": "articles_title_color",
+      "label": "Articles section title color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "article_title_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Article title size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "article_title_size_mobile",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Article title size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "article_title_color",
+      "label": "Article title color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "article_text_size_desktop",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Article text size desktop",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "article_text_size_mobile",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Article text size mobile",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "article_text_color",
+      "label": "Article text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "article_background",
+      "label": "Article card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "article_border_color",
+      "label": "Article card border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Design"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "label": "Gap between sections",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section max width (px)",
+      "default": "1250"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "placeholder": "Enter your question here"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        },
+        {
+          "type": "html",
+          "id": "icon_html",
+          "label": "Custom icon HTML (optional)",
+          "info": "Leave empty to use default icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "article_item",
+      "name": "Article Card",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_html",
+          "label": "Icon HTML",
+          "default": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article title",
+          "default": "What types of locks exist?"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Article description",
+          "default": "<p>Learn about different types of security locks and their applications</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Article link",
+          "info": "Link to Help Center or article page"
+        }
+      ]
+    },
+    {
+      "type": "blog_block",
+      "name": "Blog Articles",
+      "settings": [
+        {
+          "type": "text",
+          "id": "blog_title",
+          "label": "Blog section title",
+          "default": "Related Articles"
+        },
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Select blog"
+        },
+        {
+          "type": "range",
+          "id": "posts_limit",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "label": "Number of posts to show",
+          "default": 6
+        },
+        {
+          "type": "checkbox",
+          "id": "show_excerpt",
+          "label": "Show excerpt",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "excerpt_length",
+          "min": 50,
+          "max": 200,
+          "step": 10,
+          "label": "Excerpt length (characters)",
+          "default": 100
+        },
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "label": "Show publish date",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "date_format",
+          "label": "Date format",
+          "default": "%B %d, %Y",
+          "info": "Example: %B %d, %Y = January 01, 2024"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Important Information",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does shipping work?",
+            "answer": "<p>We ship worldwide with tracking. Orders typically dispatch within 1-2 business days.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>You can return unused items within 30 days for a full refund.</p>"
+          }
+        },
+        {
+          "type": "article_item",
+          "settings": {
+            "title": "What types of locks exist?",
+            "description": "<p>Learn about different types of security locks and their applications</p>",
+            "icon_html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\" stroke=\"currentColor\" stroke-width=\"2\"/><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\" ry=\"1\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>"
+          }
+        },
+        {
+          "type": "article_item",
+          "settings": {
+            "title": "How to install a safe?",
+            "description": "<p>Step-by-step guide for proper safe installation and mounting</p>",
+            "icon_html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M9 12l2 2 4-4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "article_item",
+          "settings": {
+            "title": "Security protection levels",
+            "description": "<p>Understanding different security grades and certification standards</p>",
+            "icon_html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 1l3 6 6 .75-4.12 4.62L18 19l-6-3-6 3 1.13-6.63L3 7.75 9 7l3-6z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

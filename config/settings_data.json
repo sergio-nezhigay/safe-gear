@@ -75,6 +75,103 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "content_for_index": [],
+    "blocks": {
+      "7870687481494312845": {
+        "type": "shopify://apps/wishlist-hero/blocks/app-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "customThemeName": "~",
+          "additionalWLButtonCssClasses": "",
+          "additionalWLCartBubbleCssClasses": "",
+          "extraHTMLToAppend": "",
+          "disableAutomaticButtonAddition": false
+        }
+      },
+      "1366455014531238847": {
+        "type": "shopify://apps/wishlist-hero/blocks/customize-style-block/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "Btn_color": "",
+          "WishlistButtonTextColor": "",
+          "Ico_color": "",
+          "HeaderFontSize": 30,
+          "HeaderColor": "",
+          "ProductNameFontSize": 18,
+          "PriceFontSize": 16,
+          "PriceColor": ""
+        }
+      },
+      "10486658301671024706": {
+        "type": "shopify://apps/wishlist-hero/blocks/collection-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "customThemeName": "~",
+          "wlIconPlacementInCard": "auto",
+          "iconHorizontalOffset": 0,
+          "iconVerticalOffset": 0,
+          "iconBackgroundSize": 40,
+          "iconFontSize": 0,
+          "enableCustomColors": false,
+          "wishlistIconColor": "",
+          "wishlistIconBgColor": "",
+          "wishlistIconBgColorAlpha": 100,
+          "addedWishlistIconColor": "",
+          "addedWishlistIconBgColor": "",
+          "addedWishlistIconBgColorAlpha": 100,
+          "wlCollectionCardSelectorClass": "",
+          "wlIconPlacementInCardSelector": "",
+          "wlIconPlacementInCardMode": "I",
+          "wlProductHandleExtractor": "",
+          "searchAndFilterApp": "none"
+        }
+      },
+      "12793297677437526120": {
+        "type": "shopify://apps/t-lab-ai-language-translate/blocks/custom_translations/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+        "disabled": true,
+        "settings": {}
+      },
+      "8765772171712610185": {
+        "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_switcher/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+        "disabled": true,
+        "settings": {
+          "enable_language_switcher": true,
+          "enable_country_region_switcher": false,
+          "use_currency_for_region": false,
+          "switcher_position": "custom",
+          "show_flags": true,
+          "switcher_appearance": "language-name",
+          "invert_switcher_icon_colors": false,
+          "dropdown_appearance": "language-name",
+          "use_modal_dialog": false,
+          "language_country_mapping": "",
+          "countries_filter": "",
+          "custom_css": "",
+          "header_switcher_reference_element": "",
+          "header_switcher_relative_position": "before",
+          "mobile_menu_switcher_reference_element": "",
+          "mobile_switcher_relative_position": "before",
+          "header_switcher_border_width": 0,
+          "switcher_viewport_position": "top-right",
+          "custom_position_spacing": "55,20,20,20",
+          "custom_switcher_font_size": "14px",
+          "custom_switcher_border_width": 1,
+          "custom_switcher_text_color": "#5c5c5c",
+          "custom_switcher_background_color": "#ffffff",
+          "custom_switcher_border_color": "#000000"
+        }
+      },
+      "2140405073069974119": {
+        "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_detection/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+        "disabled": true,
+        "settings": {}
+      },
+      "13969055170449783870": {
+        "type": "shopify://apps/bss-b2b-solution/blocks/config-header/451233f2-9631-4c49-8b6f-057e4ebcde7f",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -117,12 +214,12 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#f5f5f5",
+          "background": "#fafafa",
           "foreground_heading": "#000000",
           "foreground": "#000000cf",
           "primary": "#000000cf",
           "primary_hover": "#ffffff",
-          "border": "#DFDFDF",
+          "border": "#dfdfdf",
           "shadow": "#000000",
           "primary_button_background": "#000000",
           "primary_button_text": "#ffffff",

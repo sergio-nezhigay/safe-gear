@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "collection_list_Wfgh3m": {
       "type": "main-collection-list",
@@ -15,6 +16,7 @@
           "type": "group",
           "name": "t:names.header",
           "settings": {
+            "link": "",
             "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -39,6 +41,7 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
+            "placeholder": "",
             "toggle_overlay": false,
             "overlay_color": "#00000026",
             "overlay_style": "solid",
@@ -148,6 +151,7 @@
       "block_order": [
         "group_4FtiAg"
       ],
+      "disabled": true,
       "name": "Collection list",
       "settings": {
         "layout_type": "grid",
@@ -166,9 +170,36 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "collection_list_new_J4MTEN": {
+      "type": "collection-list-new",
+      "name": "Collection List",
+      "settings": {
+        "heading": "Keep Your Valuables Secure with the Perfect Safe!",
+        "description": "<p>A safe helps prevent unauthorized access to your valuables. SafeGear offers high-quality safes in security levels according to European Norm EN-1143-1. Ideal for storing documents, jewelry and cash at home or in a business.</p>",
+        "show_more_link": "",
+        "show_more_text": "Click here for more...",
+        "fire_insulated_icon": "shopify://shop_images/fire_insulated_small_9.jpg",
+        "fire_30_icon": "shopify://shop_images/fire-30-min-small_1.png",
+        "fire_60_icon": "shopify://shop_images/fire-60-min-small_4.png",
+        "grade_s1_icon": "shopify://shop_images/burglar-icon-s1-small_1_b561fa8a-d111-4701-88e0-e33c01bbf020.png",
+        "grade_s2_icon": "shopify://shop_images/burglar-icon-s2-small_6d23d57b-12b7-47b6-81a0-24b6f6791b57.png",
+        "grade_0_icon": "shopify://shop_images/burglar-icon-grade-0-small_12_2a9d0264-5f15-4be4-880d-888cbfaf8cd7.png",
+        "grade_1_icon": "shopify://shop_images/burglar-icon-grade-i-small_b27fedcc-5f6d-47fd-829f-5e02c0fee5d9.png",
+        "grade_2_icon": "shopify://shop_images/burglar-icon-grade-ii-small_383c2530-2757-43ec-9eab-fa60d249f14a.png",
+        "grade_3_icon": "shopify://shop_images/burglar-icon-grade-iii-small_3cabb889-01b2-418c-90a9-e979953950da.png",
+        "grade_4_icon": "shopify://shop_images/burglar-icon-grade-iv-small_9caf82ea-a55d-4ca6-a1eb-02f7f2247238.png",
+        "grade_5_icon": "shopify://shop_images/burglar-icon-v-small_0600f9ae-f614-49df-9457-48ddc362dc4c.png",
+        "collections_per_page": 10,
+        "price_label": "from",
+        "show_button": true,
+        "button_text": "View Collection",
+        "empty_text": "No collections found"
+      }
     }
   },
   "order": [
-    "collection_list_Wfgh3m"
+    "collection_list_Wfgh3m",
+    "collection_list_new_J4MTEN"
   ]
 }

@@ -1,0 +1,90 @@
+.hero-protection-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-protection-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  width: 100%;
+}
+
+.hero-protection-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-protection-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-protection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.hero-protection-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: var(--hero-protection-max-width);
+  margin: 0 auto;
+  padding: var(--hero-protection-padding-vertical) var(--hero-protection-padding-horizontal);
+}
+
+.hero-protection-title {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-protection-subtitle {
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
+}
+
+.hero-protection-subtitle p {
+  margin: 0;
+}
+
+.hero-protection-cta {
+  margin-top: 2rem;
+}
+
+.hero-protection-button {
+  border: 2px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .hero-protection-container {
+    min-height: 600px;
+  }
+
+  .hero-protection-button {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-protection-container {
+    min-height: 400px;
+  }
+.hero-protection-button {
+      white-space: nowrap;
+}
+  }
+  

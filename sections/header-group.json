@@ -31,6 +31,7 @@
       "block_order": [
         "announcement_BxgCk9"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -87,6 +88,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "logo_position": "left",
         "menu_position": "left",
@@ -117,10 +119,41 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "new_header_LbYACt": {
+      "type": "new-header",
+      "name": " NEW Header",
+      "settings": {
+        "logo": "shopify://shop_images/Safegear_logo_1000x500_54c4e06d-c080-453e-a60a-98610432d47d.png",
+        "logo_text": "SafeGear",
+        "logo_width": 120,
+        "show_search": true,
+        "search_placeholder": "Søg",
+        "show_navigation": true,
+        "menu": "main-menu-mt",
+        "header_image_alt": "",
+        "show_account": true,
+        "show_cart": true,
+        "phone_number": "+34 660 543 515",
+        "help_text": "HELP",
+        "main_url": "shopify://pages/center-help",
+        "header_background": "#ffffff",
+        "text_color": "#111111",
+        "accent_color": "#0a3d62",
+        "nav_hover_color": "#f8f9fa",
+        "phone_color": "#22c55e",
+        "help_color": "#ffffff",
+        "help_background": "#3b82f6",
+        "border_color": "#e5e7eb",
+        "search_background": "#f9fafb",
+        "search_border": "#d1d5db",
+        "custom_classes": ""
+      }
     }
   },
   "order": [
     "header_announcements_9jGBFp",
-    "header_section"
+    "header_section",
+    "new_header_LbYACt"
   ]
 }

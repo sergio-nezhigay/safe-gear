@@ -1,4 +1,31 @@
 
+<style>
+.container-ring-pris{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.in-stock-main-product-title{
+  font-size: 20px;
+  color: #3cc561;
+  font-weight: bold;
+}
+.in-stock-main-product{
+  text-align: end;
+}
+@media (max-width: 749px) {
+    .container-ring-pris {
+        flex-direction: row;
+    }
+    .in-stock-main-product-content{
+      font-size: 11px;
+    }
+    .in-stock-main-product-title{
+      font-size: 18px
+    }
+}
+</style>
 {% liquid
   assign block_settings = block.settings
   assign product = closest.product
@@ -36,7 +63,7 @@
     endif
   endif
 %}
-
+{% if product.metafields.custom.call_for_price == false  %}
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {{ block.shopify_attributes }}
@@ -215,7 +242,17 @@
     {% endif %}
   </local-pickup>
 {% endif %}
-
+{% else %}
+  <div class="container-ring-pris">
+    <div class="in-stock-main-product-title">Ring for pris</div>
+      <div>
+        <div class="in-stock-main-product">IN STOCK</div>
+        <div class="in-stock-main-product-content"><span>Varenummer#: </span>{{ product.variants.first.sku }}</div>
+      </div>
+    </div>
+  </div>
+{%endif %}
+  
 {% stylesheet %}
   .buy-buttons-block {
     width: 100%;

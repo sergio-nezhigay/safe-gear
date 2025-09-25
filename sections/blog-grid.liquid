@@ -1,0 +1,474 @@
+{{ 'blog-grid.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --blog-grid-max-width: {{ section.settings.max_width }}px;
+    --blog-grid-padding-vertical: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    --blog-grid-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+    --blog-grid-gap: {{ section.settings.grid_gap }}px;
+    --blog-grid-title-color: {{ section.settings.title_color }};
+    --blog-grid-subtitle-color: {{ section.settings.subtitle_color }};
+    --blog-grid-post-title-color: {{ section.settings.post_title_color }};
+    --blog-grid-excerpt-color: {{ section.settings.excerpt_color }};
+    --blog-grid-card-bg: {{ section.settings.card_background }};
+    --blog-grid-card-border: {{ section.settings.card_border_color }};
+    --blog-grid-button-bg: {{ section.settings.button_background }};
+    --blog-grid-button-text: {{ section.settings.button_text_color }};
+    --blog-grid-button-hover-bg: {{ section.settings.button_hover_background }};
+    --blog-grid-button-hover-text: {{ section.settings.button_hover_text_color }};
+    --blog-grid-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --blog-grid-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --blog-grid-post-title-size-mobile: {{ section.settings.post_title_size_mobile }}px;
+    --blog-grid-excerpt-size-mobile: {{ section.settings.excerpt_size_mobile }}px;
+    --blog-grid-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --blog-grid-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --blog-grid-post-title-size-desktop: {{ section.settings.post_title_size_desktop }}px;
+    --blog-grid-excerpt-size-desktop: {{ section.settings.excerpt_size_desktop }}px;
+    background-color: {{ section.settings.section_background }};
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} {
+      --blog-grid-padding-vertical: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+      --blog-grid-padding-horizontal: {{ section.settings.padding_horizontal_desktop }}px;
+    }
+  }
+
+  #{{ section.id }} .blog-grid-title {
+    color: var(--blog-grid-title-color);
+    font-size: var(--blog-grid-title-size-mobile);
+    text-align: center;
+  }
+
+  #{{ section.id }} .blog-grid-subtitle {
+    color: var(--blog-grid-subtitle-color);
+    font-size: var(--blog-grid-subtitle-size-mobile);
+    text-align: center;
+  }
+
+  #{{ section.id }} .blog-grid-post-title {
+    color: var(--blog-grid-post-title-color);
+    font-size: var(--blog-grid-post-title-size-mobile);
+  }
+
+  #{{ section.id }} .blog-grid-post-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #{{ section.id }} .blog-grid-post-title a:hover {
+    color: var(--color-primary);
+  }
+
+  #{{ section.id }} .blog-grid-excerpt {
+    color: var(--blog-grid-excerpt-color);
+    font-size: var(--blog-grid-excerpt-size-mobile);
+  }
+
+  #{{ section.id }} .blog-grid-item {
+    background-color: var(--blog-grid-card-bg);
+    border: 1px solid var(--blog-grid-card-border);
+  }
+
+  #{{ section.id }} .blog-grid-button {
+    background-color: var(--blog-grid-button-bg) !important;
+    color: var(--blog-grid-button-text) !important;
+    border-color: var(--blog-grid-button-bg) !important;
+  }
+
+  #{{ section.id }} .blog-grid-button:hover {
+    background-color: var(--blog-grid-button-hover-bg) !important;
+    color: var(--blog-grid-button-hover-text) !important;
+    border-color: var(--blog-grid-button-hover-bg) !important;
+    text-decoration: none !important;
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .blog-grid-title {
+      font-size: var(--blog-grid-title-size-desktop);
+    }
+
+    #{{ section.id }} .blog-grid-subtitle {
+      font-size: var(--blog-grid-subtitle-size-desktop);
+    }
+
+    #{{ section.id }} .blog-grid-post-title {
+      font-size: var(--blog-grid-post-title-size-desktop);
+    }
+
+    #{{ section.id }} .blog-grid-excerpt {
+      font-size: var(--blog-grid-excerpt-size-desktop);
+    }
+  }
+</style>
+
+<div id="{{ section.id }}" class="blog-grid-wrapper {{ section.settings.custom_classes }}">
+  <div class="blog-grid-container">
+    {% if section.settings.title != blank %}
+      <div class="blog-grid-header">
+        <h2 class="blog-grid-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <div class="blog-grid-subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% assign blog = blogs[section.settings.blog] %}
+    {% assign posts_limit = section.settings.posts_limit %}
+    
+    {% if blog.articles.size > 0 %}
+      <div class="blog-grid">
+        {% for article in blog.articles limit: posts_limit %}
+          <article class="blog-grid-item">
+            {% if article.image %}
+              <div class="blog-grid-image">
+                <a href="{{ article.url }}" class="blog-grid-image-link">
+                  <img 
+                    src="{{ article.image | img_url: '600x600' }}" 
+                    alt="{{ article.image.alt | default: article.title | escape }}"
+                    loading="lazy"
+                    class="blog-grid-img"
+                  >
+                </a>
+              </div>
+            {% endif %}
+            
+            <div class="blog-grid-content">
+              {% if article.title != blank %}
+                <h3 class="blog-grid-post-title">
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </h3>
+              {% endif %}
+              
+              {% if section.settings.show_excerpt %}
+                <div class="blog-grid-excerpt">
+                  {% if article.excerpt != blank %}
+                    {{ article.excerpt | strip_html | truncate: section.settings.excerpt_length }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: section.settings.excerpt_length }}
+                  {% endif %}
+                </div>
+              {% endif %}
+              
+              {% if section.settings.read_more_text != blank %}
+                <div class="blog-grid-cta">
+                  <a href="{{ article.url }}" class="btn btn-secondary blog-grid-button">
+                    {{ section.settings.read_more_text }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="blog-grid-empty">
+        {% if section.settings.blog == blank %}
+          <p>Please select a blog in the section settings.</p>
+        {% else %}
+          <p>No blog posts found in "{{ blogs[section.settings.blog].title }}" blog.</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog Grid",
+  "tag": "section",
+  "class": "blog-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Latest Blog Posts"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size desktop",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size mobile",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Section subtitle"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "posts_limit",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Number of posts to show",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Post settings"
+    },
+    {
+      "type": "range",
+      "id": "post_title_size_desktop",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Post title size desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "post_title_size_mobile",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Post title size mobile",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "post_title_color",
+      "label": "Post title color",
+      "default": "#111111"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "excerpt_length",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "label": "Excerpt length (characters)",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "excerpt_size_desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Excerpt size desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "excerpt_size_mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Excerpt size mobile",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "excerpt_color",
+      "label": "Excerpt color",
+      "default": "#333333"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read more button text",
+      "default": "Read More"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#082c49"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Card design"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section max width (px)",
+      "default": "1250"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Grid"
+    }
+  ]
+}
+{% endschema %}

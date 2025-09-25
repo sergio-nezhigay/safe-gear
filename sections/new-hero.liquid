@@ -1,0 +1,360 @@
+{{ 'hero-protection.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #{{ section.id }} {
+    --hero-protection-max-width: {{ section.settings.max_width }}px;
+    --hero-protection-padding-vertical: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    --hero-protection-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+    --hero-protection-title-color: {{ section.settings.title_color }};
+    --hero-protection-subtitle-color: {{ section.settings.subtitle_color }};
+    --hero-protection-button-bg: {{ section.settings.button_background }};
+    --hero-protection-button-text: {{ section.settings.button_text_color }};
+    --hero-protection-button-hover-bg: {{ section.settings.button_hover_background }};
+    --hero-protection-button-hover-text: {{ section.settings.button_hover_text_color }};
+    --hero-protection-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --hero-protection-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --hero-protection-button-size-mobile: {{ section.settings.button_size_mobile }}px;
+    --hero-protection-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --hero-protection-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --hero-protection-button-size-desktop: {{ section.settings.button_size_desktop }}px;
+    --hero-protection-overlay-color: {{ section.settings.overlay_color }};
+    --hero-protection-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    background-color: {{ section.settings.section_background }};
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} {
+      --hero-protection-padding-vertical: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+      --hero-protection-padding-horizontal: {{ section.settings.padding_horizontal_desktop }}px;
+    }
+  }
+
+  #{{ section.id }} .hero-protection-title {
+    color: var(--hero-protection-title-color);
+    font-size: var(--hero-protection-title-size-mobile);
+  }
+
+  #{{ section.id }} .hero-protection-subtitle {
+    color: var(--hero-protection-subtitle-color);
+    font-size: var(--hero-protection-subtitle-size-mobile);
+  }
+
+  #{{ section.id }} .hero-protection-button {
+    background-color: var(--hero-protection-button-bg) !important;
+    color: var(--hero-protection-button-text) !important;
+    border-color: var(--hero-protection-button-bg) !important;
+    font-size: var(--hero-protection-button-size-mobile);
+  }
+
+  #{{ section.id }} .hero-protection-button:hover {
+    background-color: var(--hero-protection-button-hover-bg) !important;
+    color: var(--hero-protection-button-hover-text) !important;
+    border-color: var(--hero-protection-button-hover-bg) !important;
+  }
+
+  #{{ section.id }} .hero-protection-overlay {
+    background-color: var(--hero-protection-overlay-color);
+    opacity: var(--hero-protection-overlay-opacity);
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .hero-protection-title {
+      font-size: var(--hero-protection-title-size-desktop);
+    }
+
+    #{{ section.id }} .hero-protection-subtitle {
+      font-size: var(--hero-protection-subtitle-size-desktop);
+    }
+
+    #{{ section.id }} .hero-protection-button {
+      font-size: var(--hero-protection-button-size-desktop);
+    }
+  }
+</style>
+
+<div id="{{ section.id }}" class="hero-protection-wrapper {{ section.settings.custom_classes }}">
+  <div class="hero-protection-container">
+    {% if section.settings.background_image != blank %}
+      <div class="hero-protection-background">
+        <img 
+          src="{{ section.settings.background_image | img_url: '1920x1080' }}" 
+          alt="{{ section.settings.background_image.alt | escape }}"
+          loading="lazy"
+          class="hero-protection-bg-image"
+        >
+        {% if section.settings.overlay_enable %}
+          <div class="hero-protection-overlay"></div>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="hero-protection-content">
+      {% if section.settings.title != blank %}
+        <h1 class="hero-protection-title">{{ section.settings.title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.subtitle != blank %}
+        <div class="hero-protection-subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      
+      {% if section.settings.cta_text != blank %}
+        <div class="hero-protection-cta">
+          {% if section.settings.cta_url != blank %}
+            <a href="{{ section.settings.cta_url }}" class="btn btn-primary hero-protection-button">
+              {{ section.settings.cta_text }}
+            </a>
+          {% else %}
+            <span class="btn btn-primary hero-protection-button">{{ section.settings.cta_text }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Hero Protection",
+  "tag": "section",
+  "class": "hero-protection-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Protection for any industry"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size desktop",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size mobile",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Reliable protection solutions with wide selection for your business needs. Trust our expertise to keep your industry secure.</p>"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size desktop",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size mobile",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button text",
+      "default": "Find solutions for your industry"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button link"
+    },
+    {
+      "type": "range",
+      "id": "button_size_desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button text size desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Button text size mobile",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#0A3D62"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#082c49"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Background overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_enable",
+      "label": "Enable overlay",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Section max width (px)",
+      "default": "1200"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding horizontal mobile",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom CSS classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Protection"
+    }
+  ]
+}
+{% endschema %}

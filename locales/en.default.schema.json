@@ -663,6 +663,25 @@
     "wide": "Wide",
     "youtube": "YouTube"
   },
+  "search_input": {
+      "name": "Search behavior",
+      "settings": {
+        "header": {
+          "content": "Search suggestions"
+        },
+        "predictive_search_enabled": {
+          "label": "Enable search suggestions"
+        },
+        "predictive_search_show_vendor": {
+          "label": "Show product vendor",
+          "info": "Visible when search suggestions enabled."
+        },
+        "predictive_search_show_price": {
+          "label": "Show product price",
+          "info": "Visible when search suggestions enabled."
+        }
+      }
+    },
   "settings": {
     "accordion": "Accordion",
     "account": "Account",
