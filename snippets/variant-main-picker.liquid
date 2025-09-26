@@ -65,8 +65,8 @@
           >
             <legend>
               {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' or product_option.name == 'Color' -%}
-                : <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
+              {%- if variant_style == 'swatch' or product_option.name == 'Color' or product_option.name == 'Locks' -%}
+                :<span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
             {%- for product_option_value in product_option.values -%}
@@ -164,7 +164,6 @@
                       style="background-image: url('{{ lock_image_url }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"
                       data-image-url="{{ lock_image_url }}"
                     ></span>
-                    <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
                   {% else %}
                     {% unless product_option.name == 'Color' %}
                       <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
@@ -305,6 +304,10 @@
   .variant-option--buttons legend {
     padding: 0;
     margin-block-end: var(--margin-xs);
+    display: -webkit-box; /* create a flexible box */
+    -webkit-box-orient: vertical; /* set box orientation */
+    -webkit-line-clamp: 1; /* limit to 1 line */
+    overflow: hidden;
   }
 
   .variant-option__swatch-value {
@@ -339,6 +342,7 @@
       background-color: var(--color-variant-hover-background);
       border-color: var(--color-variant-hover-border);
       color: var(--color-variant-hover-text);
+      cursor: pointer;
     }
 
     @media screen and (min-width: 750px) {
@@ -375,10 +379,24 @@
     grid-template-columns: none;
   }
 
+  /* Override grid layout for lock buttons to show in a row */
+  .variant-option--equal-width-buttons:has(.variant-option__button-label .variant-lock-image) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    grid-template-columns: none;
+  }
+
   .variant-option--equal-width-buttons .variant-option__button-label:has(.swatch) {
     min-width: 49px;
     max-width: 49px;
     flex: 0 0 49px;
+  }
+
+  .variant-option--equal-width-buttons .variant-option__button-label:has(.variant-lock-image) {
+    min-width: auto;
+    max-width: none;
+    flex: 0 0 auto;
   }
 
   .variant-option__button-label:has(:focus-visible) {
@@ -607,10 +625,11 @@
   .variant-option__button-label:has(.variant-lock-image) {
     display: flex;
     align-items: center;
-    gap: var(--gap-sm);
-    justify-content: flex-start;
-    padding: 0 var(--padding-sm);
-    min-height: 60px;
+    justify-content: center;
+    padding: var(--padding-sm);
+    min-height: auto;
+    width: auto;
+    flex: 0 0 auto;
   }
 
   .variant-option__button-label:has(.variant-lock-image) .variant-option__button-label__text {
@@ -625,14 +644,14 @@
     --swatch-height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     transition: all 0.2s ease;
   }
 
   .variant-option__button-label:has(.swatch) {
     min-height: auto;
     padding: 1px;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     background: transparent;
     border-radius: 50%;
     width: 49px;
@@ -653,7 +672,7 @@
   }
 
   .variant-option__button-label:has(.swatch):has(:checked) .swatch {
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     position: relative;
   }
 
@@ -672,7 +691,7 @@
 
   /* Simple hover state for unselected color swatches */
   .variant-option__button-label:has(.swatch):hover:not(:has(:checked)) .swatch {
-    border: 3px solid #666;
+    border: 1px solid #666;
   }
 
   /* Simple focus state for color swatches */
