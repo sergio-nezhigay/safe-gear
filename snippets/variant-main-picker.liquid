@@ -682,9 +682,10 @@
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
 
-  /* Simple hover state for unselected color swatches */
+  /* Modern hover state for unselected color swatches */
   .variant-option__button-label:has(.swatch):hover:not(:has(:checked)) .swatch {
-    border: 1px solid #666;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
   /* Simple focus state for color swatches */
