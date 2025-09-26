@@ -388,9 +388,8 @@
   }
 
   .variant-option--equal-width-buttons .variant-option__button-label:has(.swatch) {
-    min-width: 49px;
-    max-width: 49px;
-    flex: 0 0 49px;
+    min-width: fit-content;
+    max-width: fit-content;
   }
 
   .variant-option--equal-width-buttons .variant-option__button-label:has(.variant-lock-image) {
@@ -527,13 +526,7 @@
   }
 
   .variant-option__button-label svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    pointer-events: none;
-    stroke-width: var(--style-border-width);
-    stroke: var(--variant-picker-stroke-color);
+    display: none;
   }
 
   .variant-option__select-wrapper {
@@ -654,8 +647,8 @@
     border: 1px solid transparent;
     background: transparent;
     border-radius: 50%;
-    width: 49px;
-    height: 49px;
+    width: fit-content;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
