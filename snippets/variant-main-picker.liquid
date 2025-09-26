@@ -66,7 +66,7 @@
             <legend>
               {{ product_option.name | escape -}}
               {%- if variant_style == 'swatch' or product_option.name == 'Color' -%}
-                <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
+                : <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
             {%- for product_option_value in product_option.values -%}
@@ -310,6 +310,7 @@
   .variant-option__swatch-value {
     padding-inline-start: var(--padding-xs);
     color: rgb(var(--color-foreground-rgb) / var(--opacity-70));
+    font-size: 0.875rem;
   }
 
   .variant-option__button-label {
@@ -375,9 +376,9 @@
   }
 
   .variant-option--equal-width-buttons .variant-option__button-label:has(.swatch) {
-    min-width: 48px;
-    max-width: 48px;
-    flex: 0 0 48px;
+    min-width: 49px;
+    max-width: 49px;
+    flex: 0 0 49px;
   }
 
   .variant-option__button-label:has(:focus-visible) {
@@ -630,12 +631,12 @@
 
   .variant-option__button-label:has(.swatch) {
     min-height: auto;
-    padding: 4px;
-    border: none;
+    padding: 1px;
+    border: 3px solid transparent;
     background: transparent;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 49px;
+    height: 49px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -646,8 +647,13 @@
   }
 
   /* Simple active/selected state for color swatches */
+  .variant-option__button-label:has(.swatch):has(:checked) {
+    border-color: #333;
+    position: relative;
+  }
+
   .variant-option__button-label:has(.swatch):has(:checked) .swatch {
-    border: 3px solid #333;
+    border: 3px solid transparent;
     position: relative;
   }
 
