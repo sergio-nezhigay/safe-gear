@@ -1,0 +1,717 @@
+{% stylesheet %}
+  .size-chart-section {
+    max-width: 1350px;
+    margin: 0 auto;
+    --section-padding: var(--spacing-md, 16px);
+    --table-border-radius: 8px;
+    --table-gap: var(--spacing-lg, 24px);
+    --table-header-bg: #f0f8ff;
+    --table-row-even-bg: #fafafa;
+    --table-row-odd-bg: #ffffff;
+    --table-border-color: #eee;
+    padding-block-start: var(--padding-block-start, clamp(24px, 5vw, 48px));
+    padding-block-end: var(--padding-block-end, clamp(24px, 5vw, 48px));
+  }
+
+  .product-info__main-title {
+    margin: 0 0 clamp(24px, 4vw, 48px) 0 !important;
+  }
+
+  @media (min-width: 990px) {
+    .size-chart-section {
+      --table-gap: clamp(32px, 4vw, 48px);
+      padding-block-start: var(--padding-block-start, clamp(48px, 6vw, 72px));
+      padding-block-end: var(--padding-block-end, clamp(48px, 6vw, 72px));
+    }
+  }
+
+  .custom-size_chart {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .size-chart-section > .product-info__main-title.h4 {
+    max-width: 1200px;
+    margin: 0 auto clamp(24px, 4vw, 48px) auto;
+    padding: 0 var(--spacing-md, 0);
+    text-align: left !important;
+  }
+
+
+ 
+  .product-info__main-title {
+    font-family: var(--font-primary--family);
+    font-size: var(--font-h4--size);
+    font-weight: var(--font-h4--weight);
+    color: var(--font-h4--color);
+    line-height: var(--font-h4--line-height);
+    text-align: left !important;
+    margin-bottom: clamp(24px, 4vw, 48px);
+  }
+
+  .size-chart-section .table-container {
+    width: 100%;
+    margin: 0 auto 24px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .size-chart-section table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .size-chart-section thead {
+    background: #f0f8ff;
+    color: #333;
+    text-align: left;
+  }
+
+  .size-chart-section th,
+  .size-chart-section td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .size-chart-section th {
+    background: #f0f8ff;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .size-chart-section th:first-child {
+    width: 20%;
+    font-weight: 600;
+  }
+
+  .size-chart-section tr:nth-child(even) {
+    background: #fafafa;
+  }
+
+  .size-chart-section tr:last-child td {
+    border-bottom: none;
+  }
+
+  .size-chart-section td a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.2s ease;
+  }
+
+  .size-chart-section td .product_title_ {
+    color: #4b81bf;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  /* Row hover styling */
+  .size-chart-section .product-row {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .size-chart-section .product-row:hover {
+    background-color: #f0f8ff !important;
+    box-shadow: 0 2px 8px rgba(75, 129, 191, 0.15);
+    transform: translateY(-1px);
+  }
+
+  .size-chart-section .price {
+    color: #3cc561;
+    font-weight: 600;
+  }
+
+  .size-chart-section .info-btn {
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #3cc561;
+    transition: background-color 0.2s ease;
+  }
+
+  .size-chart-section .info-btn:hover {
+    background: #2ea84d;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .size-chart-section .table-container {
+      width: 100%;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .size-chart-section table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 600px;
+    }
+
+    .size-chart-section table th:first-child,
+    .size-chart-section table td:first-child {
+      position: sticky;
+      left: 0;
+      border-right: 2px solid #eee;
+      min-width: 120px;
+      max-width: 120px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .size-chart-section table td:first-child {
+      background-color: #fff;
+    }
+
+    .size-chart-section table th:first-child {
+      background-color: #f0f8ff;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 8px;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    .size-chart-section table th,
+    .size-chart-section table td {
+      min-width: 100px;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .size-chart-section table th {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      background-color: #f0f8ff;
+    }
+
+    .size-chart-section table td:first-child a,
+    .size-chart-section table th:first-child {
+      display: block;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    .size-chart-section .cust_model {
+      height: 125px !important;
+    }
+  }
+
+  /* Accessibility improvements */
+  .size-chart-section .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Performance optimizations */
+  .size-chart-section {
+    contain: layout;
+  }
+
+  .size-chart-section .table-container {
+    will-change: auto;
+  }
+{% endstylesheet %}
+
+{% if product.metafields.custom.list_product != blank or request.design_mode %}
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <div
+    class="size-chart-section section section--page-width spacing-style color-{{ section.settings.color_scheme | default: 'scheme-1' }} relative"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    <h3 class="product-info__main-title h4">{{ section.settings.section_title }}</h3>
+    <div class="page-width">
+      <div id="custom-product-{{ section.id }}" class="custom-size_chart">
+        <div class="custom-product-wrap">
+          <div class="custom-product-container">
+            {% if product.metafields.custom.list_product != blank %}
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="cust_model">{{ section.settings.header_model }}</th>
+                      <th class="cust_hkd">
+                        {{ section.settings.header_external }}<br>
+                        ({{ section.settings.dimensions_unit }})
+                      </th>
+                      <th class="cust_hkd">
+                        {{ section.settings.header_internal }}<br>
+                        ({{ section.settings.dimensions_unit }})
+                      </th>
+                      <th class="cust_ve">{{ section.settings.header_weight }}</th>
+                      <th class="cust_price">{{ section.settings.header_price }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for product_ in product.metafields.custom.list_product.value %}
+                      <tr class="product-row" data-product-url="{{ product_.url }}?variant={{ product_.variants[0].id }}" data-product-handle="{{ product_.handle }}">
+                        <td class="cut_td">
+                          <span class="product_title_">{{- product_.title -}}</span>
+                        </td>
+                        <td class="cut_td">
+                          {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
+                        </td>
+                        <td class="cut_td">
+                          {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
+                          {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
+                        </td>
+                        <td class="cut_td">
+                          {% for variant in product_.variants %}
+                            {% if forloop.first %}
+                              <span>{{ variant.weight | divided_by: 1000 }} {{ section.settings.weight_unit }}</span>
+                            {% endif %}
+                          {% endfor %}
+                        </td>
+                        <td class="cut_td">
+                          {{ section.settings.price_prefix }} <span class="price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ product_.price | money_with_currency }}</span></span>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% else %}
+              {% comment %} Editor placeholder content {% endcomment %}
+              <div class="table-container" style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center;">
+                <div style="color: #6c757d; font-size: 16px; line-height: 1.5;">
+                  <h4 style="color: #495057; margin: 0 0 16px 0;">{{ section.settings.placeholder_title }}</h4>
+                  <p style="margin: 0 0 8px 0;">{{ section.settings.placeholder_description }}</p>
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_1 }}</li>
+                    <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_2 }}</li>
+                  </ul>
+                  <p style="margin: 16px 0 0 0; font-size: 14px; color: #868e96;">{{ section.settings.placeholder_hint }}</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+
+{% javascript %}
+
+  const pageCache = new Map();
+  const prefetchQueue = new Set();
+
+  function handleProductSwitchClick(event) {
+    const target = event.target.closest('.product-row');
+    if (!target) return;
+
+    event.preventDefault();
+
+    const productUrl = target.dataset.productUrl;
+    const productHandle = target.dataset.productHandle;
+
+    if (!productUrl) {
+        return;
+    }
+
+    target.classList.add('loading');
+    window.history.pushState({}, '', productUrl);
+    updateWithOptimizedApproach(productUrl, target);
+  }
+
+  function handleProductHover(event) {
+    const target = event.target.closest('.product-row');
+    if (!target) return;
+
+    const productUrl = target.dataset.productUrl;
+    if (!productUrl || pageCache.has(productUrl) || prefetchQueue.has(productUrl)) {
+      return;
+    }
+
+    prefetchQueue.add(productUrl);
+
+    setTimeout(() => {
+      if (prefetchQueue.has(productUrl)) {
+        prefetchProductPage(productUrl);
+      }
+    }, 300);
+  }
+
+  async function prefetchProductPage(productUrl) {
+    try {
+      if (pageCache.has(productUrl)) return;
+
+      const response = await fetch(productUrl, {
+        headers: {
+          Accept: 'text/html',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+      });
+
+      if (response.ok) {
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const mainSection = doc.querySelector('[id*="template--"][id*="__main"]');
+        const addonsSection = doc.querySelector('.product-addons-section');
+
+        if (mainSection) {
+          pageCache.set(productUrl, {
+            mainSection: mainSection.cloneNode(true),
+            addonsSection: addonsSection ? addonsSection.cloneNode(true) : null
+          });
+        }
+      }
+    } catch (error) {
+      } finally {
+      prefetchQueue.delete(productUrl);
+    }
+  }
+
+  async function updateWithOptimizedApproach(productUrl, target) {
+    try {
+      let newContent;
+
+      if (pageCache.has(productUrl)) {
+        newContent = pageCache.get(productUrl);
+      } else {
+
+        const response = await fetch(productUrl, {
+          headers: {
+            Accept: 'text/html',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        
+        // Знаходимо як основну секцію, так і секцію addons
+        const mainSection = doc.querySelector('[id*="template--"][id*="__main"]');
+        const addonsSection = doc.querySelector('.product-addons-section');
+        
+        
+        newContent = {
+          mainSection: mainSection,
+          addonsSection: addonsSection
+        };
+
+        if (newContent.mainSection) {
+          pageCache.set(productUrl, {
+            mainSection: newContent.mainSection.cloneNode(true),
+            addonsSection: newContent.addonsSection ? newContent.addonsSection.cloneNode(true) : null
+          });
+        }
+      }
+
+      const currentMainSection = document.querySelector('[id*="template--"][id*="__main"]');
+
+      if (newContent.mainSection && currentMainSection) {
+
+        // Замінюємо основну секцію  
+        currentMainSection.outerHTML = newContent.mainSection.outerHTML;
+
+        // Знищуємо старий ProductAddons перед заміною addons секції
+        if (window.currentProductAddons && typeof window.currentProductAddons.destroy === 'function') {
+          window.currentProductAddons.destroy();
+          window.currentProductAddons = null;
+        }
+
+        // Замінюємо addons секцію, якщо вона є
+        const currentAddonsSection = document.querySelector('.product-addons-section');
+        if (newContent.addonsSection) {
+          if (currentAddonsSection) {
+            // Видаляємо стару секцію повністю
+            currentAddonsSection.remove();
+          }
+          
+          // Додаємо нову секцію після основної секції
+          const newMainSection = document.querySelector('[id*="template--"][id*="__main"]');
+          if (newMainSection) {
+            newMainSection.insertAdjacentHTML('afterend', newContent.addonsSection.outerHTML);
+          }
+        } else if (currentAddonsSection) {
+          // Якщо в новому продукті немає addons, видаляємо стару секцію
+          currentAddonsSection.remove();
+        }
+
+        // Чекаємо і створюємо новий ProductAddons
+        setTimeout(() => {
+          const newAddonsSection = document.querySelector('.product-addons-section');
+          
+          if (newAddonsSection && window.ProductAddons) {
+            window.currentProductAddons = new window.ProductAddons();
+          }
+          
+          // Переініціалізуємо всі скрипти продукту
+          const scripts = document.querySelectorAll('script[src*="product"], script:not([src])');
+          scripts.forEach(script => {
+            if (script.textContent && (
+              script.textContent.includes('ProductAddons') || 
+              script.textContent.includes('variant') ||
+              script.textContent.includes('product')
+            )) {
+              try {
+                eval(script.textContent);
+              } catch (e) {
+                // Silent script execution
+              }
+            }
+          });
+          
+          // Події для theme та Horizon
+          const events = [
+            'theme:section:load',
+            'horizon:product:loaded',
+            'horizon:page:changed',
+            'product:loaded',
+            'product:switched',
+            'addons:reinit'
+          ];
+          
+          events.forEach(eventName => {
+            document.dispatchEvent(new CustomEvent(eventName, {
+              detail: { 
+                productUrl, 
+                productHandle: target.dataset.productHandle,
+                source: 'product-switcher'
+              }
+            }));
+          });
+        }, 150);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.location.href = productUrl;
+      }
+    } catch (error) {
+      window.location.href = productUrl;
+    } finally {
+      target.classList.remove('loading');
+    }
+  }
+
+  function addProductSwitcherStyles() {
+    if (document.getElementById('product-switcher-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'product-switcher-styles';
+    style.textContent = `
+      .product-switch-link {
+        transition: opacity 0.2s ease;
+      }
+      .product-switch-link:hover {
+        opacity: 0.8;
+      }
+      .product-switch-link.loading {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function clearPageCache() {
+    pageCache.clear();
+    prefetchQueue.clear();
+  }
+
+  function manageCacheSize() {
+    const MAX_CACHE_SIZE = 10;
+    if (pageCache.size > MAX_CACHE_SIZE) {
+      const firstKey = pageCache.keys().next().value;
+      pageCache.delete(firstKey);
+    }
+  }
+
+  function initProductSwitcher() {
+
+    document.removeEventListener('click', handleProductSwitchClick);
+    document.removeEventListener('mouseover', handleProductHover);
+
+    document.addEventListener('click', handleProductSwitchClick);
+    document.addEventListener('mouseover', handleProductHover);
+
+    addProductSwitcherStyles();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        manageCacheSize();
+      }
+    });
+
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProductSwitcher);
+  } else {
+    initProductSwitcher();
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Size chart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Størrelser"
+    },
+    {
+      "type": "header",
+      "content": "Table Headers"
+    },
+    {
+      "type": "text",
+      "id": "header_model",
+      "label": "Model Header",
+      "default": "Model"
+    },
+    {
+      "type": "text",
+      "id": "header_external",
+      "label": "External Dimensions Header",
+      "default": "Udvendige mål"
+    },
+    {
+      "type": "text",
+      "id": "header_internal",
+      "label": "Internal Dimensions Header",
+      "default": "Indvendige mål"
+    },
+    {
+      "type": "text",
+      "id": "header_weight",
+      "label": "Weight Header",
+      "default": "Vægt"
+    },
+    {
+      "type": "text",
+      "id": "header_price",
+      "label": "Price Header",
+      "default": "Pris"
+    },
+    {
+      "type": "text",
+      "id": "dimensions_unit",
+      "label": "Dimensions Unit",
+      "default": "HxBxD mm"
+    },
+    {
+      "type": "text",
+      "id": "weight_unit",
+      "label": "Weight Unit",
+      "default": "kg"
+    },
+    {
+      "type": "text",
+      "id": "price_prefix",
+      "label": "Price Prefix",
+      "default": "From"
+    },
+    {
+      "type": "header",
+      "content": "Placeholder Text (Editor Mode)"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_title",
+      "label": "Placeholder Title",
+      "default": "Size Chart Preview"
+    },
+    {
+      "type": "textarea",
+      "id": "placeholder_description",
+      "label": "Placeholder Description",
+      "default": "This section will display a size comparison table when:"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_requirement_1",
+      "label": "Requirement 1",
+      "default": "Product has related products in the \"list_product\" metafield"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_requirement_2",
+      "label": "Requirement 2",
+      "default": "Product dimensions are configured via metafields"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_hint",
+      "label": "Placeholder Hint",
+      "default": "Configure product metafields to see the actual size chart"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size chart"
+    }
+  ]
+}
+{% endschema %}{% comment %}<!-- ymq b2b done -->{% endcomment %}

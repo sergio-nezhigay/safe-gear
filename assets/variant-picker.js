@@ -36,7 +36,6 @@ export default class VariantPicker extends Component {
     if (!selectedOption) return;
 
     this.updateSelectedOption(event.target);
-    this.updateLegendValues(event.target);
     this.dispatchEvent(new VariantSelectedEvent({ id: selectedOption.dataset.optionValueId ?? '' }));
 
     const isOnProductPage =
@@ -104,37 +103,6 @@ export default class VariantPicker extends Component {
       }
 
       newSelectedOption.setAttribute('selected', 'selected');
-    }
-  }
-
-  /**
-   * Updates the legend values for color options when selection changes.
-   * @param {Element} target - The target element.
-   */
-  updateLegendValues(target) {
-    if (!(target instanceof HTMLInputElement || target instanceof HTMLSelectElement)) return;
-
-    // Find the fieldset containing this option
-    const fieldset = target.closest('fieldset.variant-option');
-    if (!fieldset) return;
-
-    // Find the legend and its value span
-    const legend = fieldset.querySelector('legend');
-    const valueSpan = legend?.querySelector('.variant-option__swatch-value');
-
-    if (!legend || !valueSpan) return;
-
-    // Get the selected value
-    let selectedValue = '';
-    if (target instanceof HTMLInputElement) {
-      selectedValue = target.value;
-    } else if (target instanceof HTMLSelectElement) {
-      selectedValue = target.value;
-    }
-
-    // Update the value span with the new selection
-    if (selectedValue) {
-      valueSpan.textContent = selectedValue;
     }
   }
 

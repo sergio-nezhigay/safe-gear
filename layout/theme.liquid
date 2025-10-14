@@ -34,7 +34,6 @@
 
     {{ content_for_header }}
   </head>
-  
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
@@ -67,5 +66,58 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    
+    <script>
+      document.querySelectorAll('p').forEach(p => {
+  if (p.innerHTML.trim() === '&nbsp;' || p.innerHTML.trim() === '') {
+    p.remove();
+  }
+});
+
+    </script>
+
+    <script>
+{% if customer %}
+  window.CUSTOMER = {
+    logged_in: true,
+    id: {{ customer.id | json }},
+    email: {{ customer.email | json }},
+    tags: {{ customer.tags | json }}
+  };
+{% else %}
+  window.CUSTOMER = {
+    logged_in: false,
+    id: null,
+    email: null,
+    tags: []
+  };
+{% endif %}
+</script>
+
+<script>
+/* Додати всередину вашого AvailabilityEnforcer — замість поточної enforce() */
+async function enforce(container, reason) {
+  // 1-й кадр — перебиваємо тему
+  requestAnimationFrame(async () => {
+    let pd = getPD(container);
+    if (!pd) pd = await getFallbackJSON();
+    const vid = getSelectedVariantId(container) || getSelectedVariantId(document);
+    if (!pd || !vid) return;
+    const variant = getVariantById(pd, vid);
+    renderAvailability(container, variant);
+    console.info('[AvailEnforcer]', new Date().toISOString(), '→', vid, 'available:', !!variant?.available, 'reason:', reason);
+
+    // 2-га хвиля — після можливого повторного перерендеру/класів теми
+    setTimeout(() => {
+      const pd2 = getPD(container) || pd;
+      const v2id = getSelectedVariantId(container) || vid;
+      const v2 = getVariantById(pd2, v2id);
+      renderAvailability(container, v2);
+      console.info('[AvailEnforcer][2nd]', new Date().toISOString(), '→', v2id, 'available:', !!v2?.available, 'reason:', reason);
+    }, 80); // 60–120мс — підлаштуйте якщо треба
+  });
+}
+</script>
+
   </body>
 </html>

@@ -79,8 +79,9 @@
             </svg>
           </a>
         {% endif %}
-
-        {% if section.settings.show_cart %}
+        {% if section.settings.show_drawer %}
+          {%- render 'cart-drawer.liquid' -%}
+        {% elsif section.settings.show_cart %}
           <a href="{{ routes.cart_url }}" class="header-cart" aria-label="Cart">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
@@ -146,7 +147,11 @@
             {% endif %}
             
             {% if section.settings.help_text != blank %}
-              <a href='{{ section.settings.main_url }}' class="contact-help">{{ section.settings.help_text }}</a>
+              {% if section.settings.help_link != blank %}
+                <a href="{{ section.settings.help_link }}" class="contact-help">{{ section.settings.help_text }}</a>
+              {% else %}
+                <span class="contact-help">{{ section.settings.help_text }}</span>
+              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -202,7 +207,11 @@
           {% endif %}
           
           {% if section.settings.help_text != blank %}
-            <a href='{{ section.settings.main_url }}' class="mobile-contact-help">{{ section.settings.help_text }}</a>
+            {% if section.settings.help_link != blank %}
+              <a href="{{ section.settings.help_link }}" class="mobile-contact-help">{{ section.settings.help_text }}</a>
+            {% else %}
+              <span class="mobile-contact-help">{{ section.settings.help_text }}</span>
+            {% endif %}
           {% endif %}
         </div>
       </div>
@@ -344,7 +353,7 @@
   });
   
   window.addEventListener('resize', function() {
-    if (window.innerWidth >= 768 && mobileNav.classList.contains('is-open')) {
+    if (window.innerWidth >= 1250 && mobileNav.classList.contains('is-open')) {
       closeMobileMenu();
     }
   });
@@ -445,6 +454,12 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "show_drawer",
+      "label": "Show drawer icon",
+      "default": true
+    },
+    {
       "type": "header",
       "content": "Contact Info"
     },
@@ -462,8 +477,8 @@
     },
     {
       "type": "url",
-      "id": "main_url",
-      "label": "Url button"
+      "id": "help_link",
+      "label": "Help link URL"
     },
     {
       "type": "header",

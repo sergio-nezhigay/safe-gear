@@ -53,7 +53,7 @@
             role="caption"
           >
             {{ 'content.cart_total' | t }}
-            <span>{{ cart.total_price | money_with_currency }}</span>
+            <span><span class='ymq-b2b-price-hidden' ymq-b2b-item-key='' ymq-b2b-cart-total-price>{{ cart.total_price | money_with_currency }}</span></span>
           </caption>
 
           <thead
@@ -223,13 +223,13 @@
                   <div>
                     {% if item.original_price != item.final_price %}
                       <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
-                      <span>{{ item.final_price | money }}</span>
+                      <span><span class='ymq-b2b-price-hidden' ymq-b2b-item-key='{{ forloop.index0 }}-{{ item.key }}' ymq-b2b-item-final-price>{{ item.final_price | money }}</span></span>
                       <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
                       <s class="compare-at-price">
                         {% if item.variant.compare_at_price > item.original_price %}
                           {{ item.variant.compare_at_price | money }}
                         {% else %}
-                          {{ item.original_price | money }}
+                          <span class='ymq-b2b-price-hidden' ymq-b2b-item-key='{{ forloop.index0 }}-{{ item.key }}' ymq-b2b-item-original-price>{{ item.original_price | money }}</span>
                         {% endif %}
                       </s>
                     {% else %}
@@ -239,7 +239,7 @@
                         <span class="visually-hidden">{{ 'content.price' | t }}</span>
                       {% endif %}
 
-                      <span>{{ item.original_price | money }}</span>
+                      <span><span class='ymq-b2b-price-hidden' ymq-b2b-item-key='{{ forloop.index0 }}-{{ item.key }}' ymq-b2b-item-original-price>{{ item.original_price | money }}</span></span>
 
                       {% if item.variant.compare_at_price > item.original_price %}
                         <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
@@ -762,3 +762,4 @@
     display: inline;
   }
 {% endstylesheet %}
+{% comment %}<!-- ymq b2b done -->{% endcomment %}

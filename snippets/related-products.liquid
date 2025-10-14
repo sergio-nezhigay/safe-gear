@@ -1,0 +1,823 @@
+
+
+<div class="related-products-section" id="related-products-section" style="display: none;">
+  <div class="section-header">
+    <h2 class="section-heading">{{ related_products_title | default: 'Matching Products' }}</h2>
+    {% if section_description != blank %}
+      <p class="section-description">{{ section_description }}</p>
+    {% endif %}
+  </div>
+  
+  <div class="related-products-grid" id="related-products-grid" 
+       data-max-products="{{ max_products | default: 8 }}"
+       data-max-collections="{{ max_collections | default: 4 }}"
+       data-sort-order="{{ sort_order | default: 'price_asc' }}"
+       data-show-collection-name="{{ show_collection_name | default: true }}"
+       data-show-dimensions="{{ show_dimensions | default: true }}"
+       data-button-text="{{ button_text | default: 'View Product' }}"
+       data-desktop-columns="{{ grid_columns_desktop | default: '4' }}"
+       data-mobile-columns="{{ grid_columns_mobile | default: '2' }}">
+  </div>
+  
+  <div class="related-products-loading" id="related-products-loading" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>{{ loading_text | default: 'Loading matching products...' }}</p>
+  </div>
+  
+  <div class="related-products-empty" id="related-products-empty" style="display: none;">
+    <p>{{ empty_text | default: 'No products match your current filter selection.' }}</p>
+  </div>
+</div>
+
+<style>
+.related-products-section {
+  padding-top: 20px;
+  border-top: 2px solid var(--border-color);
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 1280px) {
+  .related-products-section {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .related-products-section {
+    max-width: 1600px;
+  }
+}
+
+.related-products-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Dynamic grid columns based on settings */
+.related-products-grid[data-desktop-columns="2"] { grid-template-columns: repeat(2, 1fr); }
+.related-products-grid[data-desktop-columns="3"] { grid-template-columns: repeat(3, 1fr); }
+.related-products-grid[data-desktop-columns="4"] { grid-template-columns: repeat(4, 1fr); }
+
+.related-product-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: 350px;
+}
+
+.related-product-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(10, 61, 98, 0.1);
+}
+
+.related-product-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-sm);
+  aspect-ratio: 1;
+}
+
+.related-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.related-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.related-product-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-product-info h4 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.related-product-info h4 a:hover {
+  color: var(--primary-hover);
+}
+
+.related-product-collection {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+.related-product-dimensions {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+
+.related-product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--success-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.related-product-btn {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+  text-align: center;
+  transition: all var(--transition-normal);
+  border: none;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.related-product-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.related-products-loading {
+  text-align: center;
+  padding: 40px var(--spacing-lg);
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--spacing-md) auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .related-products-grid[data-mobile-columns="1"] { grid-template-columns: 1fr !important; }
+  .related-products-grid[data-mobile-columns="2"] { grid-template-columns: repeat(2, 1fr) !important; }
+  .related-products-grid {
+    gap: var(--spacing-sm);
+  }
+  
+  .related-product-card {
+    height: 280px;
+    padding: var(--spacing-xs);
+  }
+  
+  .related-product-image {
+    height: 160px;
+  }
+  
+  .related-product-info h4 {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .related-product-price {
+    font-size: 0.9rem;
+  }
+  
+  .related-product-btn {
+    font-size: 0.7rem;
+    padding: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .related-products-section {
+    margin-top: 40px;
+    padding-top: 30px;
+  }
+  
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+  }
+  
+  .related-product-card {
+    height: 260px;
+  }
+  
+  .related-product-image {
+    height: 140px;
+  }
+  
+  .related-product-info h4 {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .related-product-collection,
+  .related-product-dimensions {
+    font-size: 0.65rem;
+  }
+  
+  .related-product-price {
+    font-size: 0.85rem;
+  }
+  
+  .related-product-btn {
+    font-size: 0.65rem;
+  }
+}
+</style>
+
+<script>
+class RelatedProducts {
+  constructor() {
+    this.section = document.getElementById('related-products-section');
+    this.grid = document.getElementById('related-products-grid');
+    this.loading = document.getElementById('related-products-loading');
+    this.allProducts = [];
+    this.currentFilters = {};
+    
+    // Load settings from data attributes
+    this.settings = {
+      maxProducts: parseInt(this.grid?.getAttribute('data-max-products')) || 8,
+      maxCollections: parseInt(this.grid?.getAttribute('data-max-collections')) || 4,
+      sortOrder: this.grid?.getAttribute('data-sort-order') || 'price_asc',
+      showCollectionName: this.grid?.getAttribute('data-show-collection-name') === 'true',
+      showDimensions: this.grid?.getAttribute('data-show-dimensions') === 'true',
+      buttonText: this.grid?.getAttribute('data-button-text') || 'View Product'
+    };
+    
+    // Add caching
+    this.productCache = new Map();
+    this.cacheTimeout = 15 * 60 * 1000; // 15 minutes
+    
+    this.init();
+  }
+  
+  init() {
+    document.addEventListener('filtersApplied', (e) => {
+      this.currentFilters = e.detail;
+      this.loadMatchingProducts();
+    });
+    
+    // Також запускаємо при кожній зміні фільтрів в колекціях
+    document.addEventListener('collectionsFiltered', () => {
+      this.loadMatchingProducts();
+    });
+    
+    this.preloadProducts();
+  }
+  
+  preloadProducts() {
+  }
+  
+  async fetchCollectionProducts(collectionHandle) {
+    const cacheKey = `collection_${collectionHandle}`;
+    const cached = this.productCache.get(cacheKey);
+    
+    // Check if cache is valid
+    if (cached && (Date.now() - cached.timestamp) < this.cacheTimeout) {
+      return cached.data;
+    }
+    
+    try {
+      const response = await fetch(`/collections/${collectionHandle}/products.json?limit=12`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch collection products: ${response.status}`);
+      }
+      const data = await response.json();
+      const products = data.products || [];
+      
+      // Cache the result
+      this.productCache.set(cacheKey, {
+        data: products,
+        timestamp: Date.now()
+      });
+      
+      // Clean old cache entries
+      this.cleanCache();
+      
+      return products;
+    } catch (error) {
+      console.warn(`Could not fetch products for collection ${collectionHandle}:`, error);
+      return [];
+    }
+  }
+  
+  cleanCache() {
+    const now = Date.now();
+    for (const [key, value] of this.productCache.entries()) {
+      if ((now - value.timestamp) > this.cacheTimeout) {
+        this.productCache.delete(key);
+      }
+    }
+  }
+  
+  async loadMatchingProducts() {
+    // Показуємо related products тільки коли є активні фільтри
+    if (!this.hasActiveFilters()) {
+      this.hideSection();
+      return;
+    }
+
+    // Показуємо продукти з видимих колекцій
+    const visibleCollections = Array.from(document.querySelectorAll('.collection-card'))
+      .filter(card => card.style.display !== 'none');
+    
+    if (visibleCollections.length === 0) {
+      // Fallback: якщо немає видимих колекцій, беремо всі наявні
+      const allCollections = Array.from(document.querySelectorAll('.collection-card'));
+      if (allCollections.length === 0) {
+        this.hideSection();
+        return;
+      }
+      // Використовуємо всі колекції як видимі
+      visibleCollections.length = 0;
+      visibleCollections.push(...allCollections);
+    }
+    
+    this.showLoading();
+    
+    try {
+      const allProducts = [];
+      const maxCollections = Math.min(visibleCollections.length, this.settings.maxCollections);
+      const productsPerCollection = Math.ceil(this.settings.maxProducts / maxCollections);
+      
+      for (const collection of visibleCollections.slice(0, maxCollections)) {
+        const collectionLink = collection.querySelector('.collection-title a');
+        if (collectionLink) {
+          const collectionUrl = collectionLink.href;
+          const collectionHandle = collectionUrl.split('/collections/')[1]?.split('?')[0];
+          
+          if (collectionHandle) {
+            const products = await this.fetchCollectionProducts(collectionHandle);
+            
+            // Просто беремо перші N продуктів без додаткової фільтрації
+            const selectedProducts = products.slice(0, productsPerCollection);
+            
+            // Add collection name to products for better display
+            selectedProducts.forEach(product => {
+              product.collection_title = collection.querySelector('.collection-title a')?.textContent?.trim();
+            });
+            
+            allProducts.push(...selectedProducts);
+          }
+        }
+      }
+      
+      // Sort products based on settings
+      this.sortProducts(allProducts);
+      
+      this.renderProducts(allProducts.slice(0, this.settings.maxProducts));
+      this.hideLoading();
+      
+      if (allProducts.length > 0) {
+        this.showSection();
+      } else {
+        this.showEmpty();
+      }
+    } catch (error) {
+      console.error('Error loading matching products:', error);
+      this.hideLoading();
+      this.hideSection();
+    }
+  }
+  
+  matchesCurrentFilters(product) {
+    if (!product) return false;
+    
+    // Burglary grade filter
+    if (this.currentFilters.burglary_grade && this.currentFilters.burglary_grade.length > 0) {
+      const productGrade = product.metafields?.custom?.burglary_grade?.value || 
+                          product.metafields?.custom?.burglary_classification?.value;
+      if (!productGrade || !this.currentFilters.burglary_grade.includes(productGrade)) {
+        return false;
+      }
+    }
+    
+    // Fire resistance filter
+    if (this.currentFilters.fire_resistance && this.currentFilters.fire_resistance.length > 0) {
+      const productFireResistance = product.metafields?.custom?.fire_resistance?.value || 
+                                   product.metafields?.custom?.fire_duration?.value;
+      if (!productFireResistance || !this.currentFilters.fire_resistance.includes(productFireResistance)) {
+        return false;
+      }
+    }
+    
+    // Category filter
+    if (this.currentFilters.category && this.currentFilters.category.length > 0) {
+      if (!this.currentFilters.category.includes(product.collection_title || '')) {
+        return false;
+      }
+    }
+    
+    // Price range filter
+    if (this.currentFilters.price_range) {
+      const productPrice = (product.variants?.[0]?.price || product.price || 0) / 100; // Convert to currency units
+      if (this.currentFilters.price_range.min !== null && productPrice > 0 && productPrice < this.currentFilters.price_range.min) {
+        return false;
+      }
+      if (this.currentFilters.price_range.max !== null && productPrice > 0 && productPrice > this.currentFilters.price_range.max) {
+        return false;
+      }
+    }
+    
+    // Dimension filters
+    const dimensions = ['depth', 'width', 'height', 'weight'];
+    for (const dim of dimensions) {
+      const filter = this.currentFilters[`${dim}_range`];
+      if (filter && (filter.min !== null || filter.max !== null)) {
+        const productValue = this.getProductDimension(product, dim);
+        if (productValue > 0) {
+          if (filter.min !== null && productValue < filter.min) return false;
+          if (filter.max !== null && productValue > filter.max) return false;
+        }
+      }
+    }
+    
+    return true;
+  }
+  
+  getProductDimension(product, dimension) {
+    let value = 0;
+    const metafield = product.metafields?.custom;
+    
+    switch (dimension) {
+      case 'depth':
+        value = metafield?.new_depth?.value || metafield?.depth?.value;
+        break;
+      case 'width':
+        value = metafield?.new_width?.value || metafield?.width?.value;
+        break;
+      case 'height':
+        value = metafield?.new_height?.value || metafield?.height?.value;
+        break;
+      case 'weight':
+        value = metafield?.weight?.value;
+        break;
+    }
+    
+    if (typeof value === 'string') {
+      value = value.replace(/\s*(mm|kg)\s*/gi, '');
+      value = parseFloat(value) || 0;
+    }
+    
+    return value || 0;
+  }
+  
+  sortProducts(products) {
+    switch (this.settings.sortOrder) {
+      case 'price_desc':
+        products.sort((a, b) => {
+          const priceA = a.variants?.[0]?.price || a.price || 0;
+          const priceB = b.variants?.[0]?.price || b.price || 0;
+          return priceB - priceA;
+        });
+        break;
+      case 'title_asc':
+        products.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        break;
+      case 'relevance':
+        // Keep original order from API
+        break;
+      case 'price_asc':
+      default:
+        products.sort((a, b) => {
+          const priceA = a.variants?.[0]?.price || a.price || 0;
+          const priceB = b.variants?.[0]?.price || b.price || 0;
+          return priceA - priceB;
+        });
+        break;
+    }
+  }
+  
+  hasActiveFilters() {
+    return Object.values(this.currentFilters).some(filter => {
+      if (Array.isArray(filter)) {
+        return filter.length > 0;
+      }
+      if (typeof filter === 'object' && filter !== null) {
+        return filter.min !== null || filter.max !== null;
+      }
+      return false;
+    });
+  }
+  
+  filterProducts() {
+    return this.allProducts.filter(product => {
+      if (this.currentFilters.burglary_grade && this.currentFilters.burglary_grade.length > 0) {
+        if (!this.currentFilters.burglary_grade.includes(product.burglary_grade)) {
+          return false;
+        }
+      }
+      
+      if (this.currentFilters.fire_resistance && this.currentFilters.fire_resistance.length > 0) {
+        if (!this.currentFilters.fire_resistance.includes(product.fire_resistance)) {
+          return false;
+        }
+      }
+      
+      if (this.currentFilters.price_range) {
+        const priceInCents = product.price * 100;
+        if (this.currentFilters.price_range.min !== null && priceInCents < this.currentFilters.price_range.min * 100) {
+          return false;
+        }
+        if (this.currentFilters.price_range.max !== null && priceInCents > this.currentFilters.price_range.max * 100) {
+          return false;
+        }
+      }
+      
+      const dimensions = ['depth', 'width', 'height'];
+      for (const dim of dimensions) {
+        const filter = this.currentFilters[`${dim}_range`];
+        if (filter) {
+          const value = product.dimensions[dim];
+          if (filter.min !== null && value < filter.min) {
+            return false;
+          }
+          if (filter.max !== null && value > filter.max) {
+            return false;
+          }
+        }
+      }
+      
+      const weightFilter = this.currentFilters.weight_range;
+      if (weightFilter) {
+        const weight = product.weight || 0;
+        if (weightFilter.min !== null && weight < weightFilter.min) {
+          return false;
+        }
+        if (weightFilter.max !== null && weight > weightFilter.max) {
+          return false;
+        }
+      }
+      
+      return true;
+    }).slice(0, 8);
+  }
+  
+  renderProducts(products) {
+    if (products.length === 0) {
+      this.grid.innerHTML = '<p class="no-products">No products match your current filters.</p>';
+      return;
+    }
+    
+    const productsHTML = products.map(product => this.renderProduct(product)).join('');
+    this.grid.innerHTML = productsHTML;
+  }
+  
+  renderProduct(product) {
+    if (!product || typeof product !== 'object') {
+      console.error('Invalid product data:', product);
+      return '';
+    }
+    
+    let price = 0;
+    if (product.variants && Array.isArray(product.variants) && product.variants.length > 0) {
+      const variant = product.variants[0];
+      price = variant.price || 0;
+    }
+    
+    if (!price && product.price) {
+      price = product.price;
+    }
+    
+    const formattedPrice = this.formatPrice(price);
+    const productTitle = product.title || 'Unknown Product';
+    const productHandle = product.handle || '';
+    const collectionTitle = product.collection_title || '';
+    
+    let imageUrl = 'https://cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_grande.gif';
+    
+    if (product.featured_image) {
+      imageUrl = product.featured_image;
+    } else if (product.images && Array.isArray(product.images) && product.images.length > 0) {
+      const firstImage = product.images[0];
+      imageUrl = (typeof firstImage === 'object' ? firstImage.src : firstImage) || imageUrl;
+    }
+    
+    if (imageUrl && !imageUrl.startsWith('http')) {
+      imageUrl = imageUrl.startsWith('//') ? 'https:' + imageUrl : imageUrl;
+    }
+    
+    const productUrl = `/products/${productHandle}`;
+    const dimensions = this.extractDimensions(product);
+    
+    return `
+      <div class="related-product-card">
+        <div class="related-product-image">
+          <a href="${productUrl}">
+            <img src="${imageUrl}" alt="${productTitle}" loading="lazy" onerror="this.src='https://cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_grande.gif'">
+          </a>
+        </div>
+        <div class="related-product-info">
+          ${this.settings.showCollectionName && collectionTitle ? `<div class="related-product-collection">${collectionTitle}</div>` : ''}
+          <h4><a href="${productUrl}">${productTitle}</a></h4>
+          ${this.settings.showDimensions && dimensions ? `<div class="related-product-dimensions">${dimensions}</div>` : ''}
+          <div class="related-product-price">${formattedPrice}</div>
+          <a href="${productUrl}" class="related-product-btn">${this.settings.buttonText}</a>
+        </div>
+      </div>
+    `;
+  }
+  
+  showSection() {
+    if (this.section) {
+      this.section.style.display = 'block';
+    }
+  }
+  
+  hideSection() {
+    if (this.section) {
+      this.section.style.display = 'none';
+    }
+  }
+  
+  showEmpty() {
+    if (this.section) {
+      this.section.style.display = 'block';
+    }
+    const emptyElement = document.getElementById('related-products-empty');
+    if (emptyElement) {
+      emptyElement.style.display = 'block';
+    }
+    if (this.grid) {
+      this.grid.style.display = 'none';
+    }
+  }
+  
+  showLoading() {
+    if (this.loading) {
+      this.loading.style.display = 'block';
+    }
+    if (this.grid) {
+      this.grid.style.display = 'none';
+    }
+    const emptyElement = document.getElementById('related-products-empty');
+    if (emptyElement) {
+      emptyElement.style.display = 'none';
+    }
+  }
+  
+  hideLoading() {
+    if (this.loading) {
+      this.loading.style.display = 'none';
+    }
+    if (this.grid) {
+      this.grid.style.display = 'grid';
+    }
+  }
+  
+  extractDimensions(product) {
+    if (!this.settings.showDimensions) return '';
+    
+    const dimensions = [];
+    const metafield = product.metafields?.custom;
+    
+    if (metafield) {
+      const width = this.getProductDimension(product, 'width');
+      const height = this.getProductDimension(product, 'height');
+      const depth = this.getProductDimension(product, 'depth');
+      
+      if (width || height || depth) {
+        const dimensionStr = [width, height, depth]
+          .filter(d => d && d > 0)
+          .map(d => `${d}mm`)
+          .join(' × ');
+        if (dimensionStr) dimensions.push(dimensionStr);
+      }
+      
+      const weight = this.getProductDimension(product, 'weight');
+      if (weight > 0) {
+        dimensions.push(`${weight}kg`);
+      }
+    }
+    
+    return dimensions.length > 0 ? dimensions.join(', ') : '';
+  }
+  
+  formatPrice(priceInCents) {
+    if (!priceInCents && priceInCents !== 0) {
+      return '';
+    }
+    
+    let price = typeof priceInCents === 'string' ? parseInt(priceInCents) : priceInCents;
+    
+    if (isNaN(price) || price < 0) {
+      return '';
+    }
+    
+    if (typeof Shopify !== 'undefined' && Shopify.formatMoney) {
+      try {
+        return Shopify.formatMoney(price);
+      } catch (e) {
+      }
+    }
+    
+    const existingPriceElement = document.querySelector('.price-value');
+    if (existingPriceElement) {
+      const text = existingPriceElement.textContent || existingPriceElement.innerText;
+      
+      if (text.includes('kr')) {
+        const amount = price.toLocaleString('da-DK', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).replace('.', ',');
+        return `${amount} kr`;
+      }
+      
+      if (text.includes('£')) {
+        const amount = (price / 100).toFixed(2);
+        return `£${amount}`;
+      }
+      
+      if (text.includes('$')) {
+        const amount = (price / 100).toFixed(2);
+        return `$${amount}`;
+      }
+      
+      if (text.includes('€')) {
+        const amount = (price / 100).toFixed(2);
+        return `€${amount}`;
+      }
+    }
+    
+    const amount = price.toLocaleString('da-DK', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).replace('.', ',');
+    return `${amount} kr`;
+  }
+  
+  extractDimensions(product) {
+    if (!product || !product.metafields || !product.metafields.custom) {
+      return null;
+    }
+    
+    try {
+      const height = product.metafields.custom.new_height?.value;
+      const width = product.metafields.custom.new_width?.value;
+      const depth = product.metafields.custom.new_depth?.value;
+      
+      if (height || width || depth) {
+        const dimensions = [];
+        if (height) dimensions.push(`${height}H`);
+        if (width) dimensions.push(`${width}W`);
+        if (depth) dimensions.push(`${depth}D`);
+        
+        return dimensions.join(' × ');
+      }
+    } catch (error) {
+      return null;
+    }
+    
+    return null;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('related-products-section')) {
+    new RelatedProducts();
+  }
+});
+</script>
+

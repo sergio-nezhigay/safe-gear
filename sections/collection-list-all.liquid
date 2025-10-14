@@ -1,0 +1,675 @@
+{{ 'collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'collection-filters.js' | asset_url | script_tag }}
+
+{%- liquid
+  assign is_valid_context = true
+
+  assign child_handles_csv = ''
+  assign seen_child = ''
+
+  assign global_min_price = 999999999
+  assign global_max_price = 0
+
+  assign min_depth = 999999
+  assign max_depth = 0
+  assign min_width = 999999
+  assign max_width = 0
+  assign min_height = 999999
+  assign max_height = 0
+  assign min_weight = 999999
+  assign max_weight = 0
+
+  assign has_depth_data = false
+  assign has_width_data = false
+  assign has_height_data = false
+  assign has_weight_data = false
+
+  assign fallback_burglary_csv = ''
+  assign fallback_fire_csv = ''
+
+  assign mode = section.settings.source_mode | default: 'all'
+-%}
+
+{%- comment -%}
+  1) Збір списку колекцій для відображення:
+     - all: показуємо всі колекції магазину (крім frontpage)
+     - children: колекції, в яких одночасно лежать товари з поточної колекції
+{%- endcomment -%}
+{%- if mode == 'all' -%}
+  {%- paginate collections by 1000 -%}
+    {%- for c in collections -%}
+      {%- if c and c.handle != 'frontpage' -%}
+        {%- unless seen_child contains c.handle -%}
+          {%- assign seen_child = seen_child | append: ',' | append: c.handle -%}
+          {%- assign child_handles_csv = child_handles_csv | append: ',' | append: c.handle -%}
+        {%- endunless -%}
+
+        {%- comment -%} Паралельно збираємо глобальні межі цін і габаритів {%- endcomment -%}
+        {%- assign first_product = c.products.first -%}
+        {%- if first_product -%}
+          {%- assign d = first_product.metafields.custom.new_depth.value  | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+          {%- assign w = first_product.metafields.custom.new_width.value  | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+          {%- assign h = first_product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+          {%- assign kg = first_product.metafields.custom.weight.value     | remove: ' kg' | remove: 'kg' | plus: 0 -%}
+
+          {%- if d > 0 -%}
+            {%- assign has_depth_data = true -%}
+            {%- if d < min_depth -%}{% assign min_depth = d %}{%- endif -%}
+            {%- if d > max_depth -%}{% assign max_depth = d %}{%- endif -%}
+          {%- endif -%}
+          {%- if w > 0 -%}
+            {%- assign has_width_data = true -%}
+            {%- if w < min_width -%}{% assign min_width = w %}{%- endif -%}
+            {%- if w > max_width -%}{% assign max_width = w %}{%- endif -%}
+          {%- endif -%}
+          {%- if h > 0 -%}
+            {%- assign has_height_data = true -%}
+            {%- if h < min_height -%}{% assign min_height = h %}{%- endif -%}
+            {%- if h > max_height -%}{% assign max_height = h %}{%- endif -%}
+          {%- endif -%}
+          {%- if kg > 0 -%}
+            {%- assign has_weight_data = true -%}
+            {%- if kg < min_weight -%}{% assign min_weight = kg %}{%- endif -%}
+            {%- if kg > max_weight -%}{% assign max_weight = kg %}{%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- for p in c.products -%}
+          {%- if p.price > 0 -%}
+            {%- if p.price < global_min_price -%}{% assign global_min_price = p.price %}{%- endif -%}
+            {%- if p.price > global_max_price -%}{% assign global_max_price = p.price %}{%- endif -%}
+          {%- endif -%}
+
+          {%- assign fb_b = p.metafields.custom.burglary_grade.value -%}
+          {%- if fb_b != blank -%}
+            {%- unless fallback_burglary_csv contains fb_b -%}
+              {%- assign fallback_burglary_csv = fallback_burglary_csv | append: ',' | append: fb_b -%}
+            {%- endunless -%}
+          {%- endif -%}
+
+          {%- assign fb_f = p.metafields.custom.fire_resistance.value -%}
+          {%- if fb_f != blank -%}
+            {%- unless fallback_fire_csv contains fb_f -%}
+              {%- assign fallback_fire_csv = fallback_fire_csv | append: ',' | append: fb_f -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- else -%}
+  {%- liquid
+    assign is_valid_context = false
+    if collection
+      assign is_valid_context = true
+    endif
+  -%}
+  {%- if is_valid_context -%}
+    {%- paginate collection.products by 1000 -%}
+      {%- for p in collection.products -%}
+        {%- for c in p.collections -%}
+          {%- if c.handle != collection.handle and c.handle != 'frontpage' -%}
+            {%- unless seen_child contains c.handle -%}
+              {%- assign seen_child = seen_child | append: ',' | append: c.handle -%}
+              {%- assign child_handles_csv = child_handles_csv | append: ',' | append: c.handle -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if p.price > 0 -%}
+          {%- if p.price < global_min_price -%}{% assign global_min_price = p.price %}{%- endif -%}
+          {%- if p.price > global_max_price -%}{% assign global_max_price = p.price %}{%- endif -%}
+        {%- endif -%}
+
+        {%- assign d = p.metafields.custom.new_depth.value  | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+        {%- assign w = p.metafields.custom.new_width.value  | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+        {%- assign h = p.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 -%}
+        {%- assign kg = p.metafields.custom.weight.value     | remove: ' kg' | remove: 'kg' | plus: 0 -%}
+
+        {%- if d > 0 -%}
+          {%- assign has_depth_data = true -%}
+          {%- if d < min_depth -%}{% assign min_depth = d %}{%- endif -%}
+          {%- if d > max_depth -%}{% assign max_depth = d %}{%- endif -%}
+        {%- endif -%}
+        {%- if w > 0 -%}
+          {%- assign has_width_data = true -%}
+          {%- if w < min_width -%}{% assign min_width = w %}{%- endif -%}
+          {%- if w > max_width -%}{% assign max_width = w %}{%- endif -%}
+        {%- endif -%}
+        {%- if h > 0 -%}
+          {%- assign has_height_data = true -%}
+          {%- if h < min_height -%}{% assign min_height = h %}{%- endif -%}
+          {%- if h > max_height -%}{% assign max_height = h %}{%- endif -%}
+        {%- endif -%}
+        {%- if kg > 0 -%}
+          {%- assign has_weight_data = true -%}
+          {%- if kg < min_weight -%}{% assign min_weight = kg %}{%- endif -%}
+          {%- if kg > max_weight -%}{% assign max_weight = kg %}{%- endif -%}
+        {%- endif -%}
+
+        {%- assign fb_b = p.metafields.custom.burglary_grade.value -%}
+        {%- if fb_b != blank -%}
+          {%- unless fallback_burglary_csv contains fb_b -%}
+            {%- assign fallback_burglary_csv = fallback_burglary_csv | append: ',' | append: fb_b -%}
+          {%- endunless -%}
+        {%- endif -%}
+
+        {%- assign fb_f = p.metafields.custom.fire_resistance.value -%}
+        {%- if fb_f != blank -%}
+          {%- unless fallback_fire_csv contains fb_f -%}
+            {%- assign fallback_fire_csv = fallback_fire_csv | append: ',' | append: fb_f -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- assign child_handles = child_handles_csv | remove_first: ',' | split: ',' | uniq -%}
+
+{%- assign all_burglary_csv = '' -%}
+{%- assign all_fire_csv = '' -%}
+{%- assign all_categories_csv = '' -%}
+
+{%- if child_handles and child_handles.size > 0 -%}
+  {%- for h in child_handles -%}
+    {%- assign col = collections[h] -%}
+    {%- if col -%}
+      {%- assign category_name = col.title -%}
+      {%- unless all_categories_csv contains category_name -%}
+        {%- assign all_categories_csv = all_categories_csv | append: ',' | append: category_name -%}
+      {%- endunless -%}
+
+      {%- assign c_b = col.metafields.custom.burglary_grade.value -%}
+      {%- if c_b != blank -%}
+        {%- unless all_burglary_csv contains c_b -%}
+          {%- assign all_burglary_csv = all_burglary_csv | append: ',' | append: c_b -%}
+        {%- endunless -%}
+      {%- endif -%}
+
+      {%- assign c_f = col.metafields.custom.fire_resistance.value -%}
+      {%- if c_f != blank -%}
+        {%- unless all_fire_csv contains c_f -%}
+          {%- assign all_fire_csv = all_fire_csv | append: ',' | append: c_f -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if all_burglary_csv == '' -%}{% assign all_burglary_csv = fallback_burglary_csv %}{%- endif -%}
+{%- if all_fire_csv == '' -%}{% assign all_fire_csv = fallback_fire_csv %}{%- endif -%}
+
+{%- assign all_burglary_grades = all_burglary_csv | remove_first: ',' | split: ',' | uniq -%}
+{%- assign all_fire_resistance = all_fire_csv | remove_first: ',' | split: ',' | uniq -%}
+{%- assign all_categories = all_categories_csv | remove_first: ',' | split: ',' | uniq -%}
+
+{%- if global_min_price == 999999999 or global_max_price == 0 -%}
+  {%- assign global_min_price = 0 -%}
+  {%- assign global_max_price = 0 -%}
+{%- endif -%}
+
+<div class="collection-list-section page-width">
+  {% if section.settings.heading != blank %}
+    <div class="section-header">
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.description != blank %}
+        <div class="section-description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_more_link != blank %}
+    <div class="show-more-wrapper">
+      <a href="{{ section.settings.show_more_link }}" class="show-more-btn">
+        {{ section.settings.show_more_text | default: 'Click here for more...' }}
+      </a>
+    </div>
+  {% endif %}
+
+  <div class="collections-container" 
+       data-collections-per-page="{{ section.settings.collections_per_page | default: 12 }}"
+       data-show-pagination="{{ section.settings.show_pagination | default: true }}">
+    
+    <div class="mobile-filter-toggle">
+      <button type="button" id="mobile-filter-btn" class="mobile-filter-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 7H21L19 9V16C19 17.1 18.1 18 17 18H7C5.9 18 5 17.1 5 16V9L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ section.settings.mobile_filter_text | default: 'Filters' }}
+        <span class="filter-count" id="active-filter-count" style="display:none;">0</span>
+      </button>
+    </div>
+    
+    <div class="mobile-filter-overlay" id="mobile-filter-overlay">
+      <div class="mobile-filter-drawer" id="mobile-filter-drawer">
+        <div class="mobile-filter-header">
+          <h3>{{ section.settings.mobile_filter_title | default: 'Filters' }}</h3>
+          <button type="button" id="mobile-filter-close" class="mobile-filter-close" aria-label="Close">×</button>
+        </div>
+        <div class="mobile-filter-content"></div>
+        <div class="mobile-filter-footer">
+          <button type="button" id="mobile-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'Clear All' }}</button>
+          <button type="button" id="mobile-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'Apply Filters' }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters-sidebar">
+      <div class="filters-container">
+        <h3 class="filters-title">{{ section.settings.filters_title | default: 'Filters' }}</h3>
+
+        {% if all_burglary_grades.size > 0 %}
+          <div class="filter-group">
+            <h4 class="filter-group-title" data-accordion="burglary">
+              {{ section.settings.burglary_grade_label | default: 'Burglary Grade' }}
+              <span class="accordion-icon">−</span>
+            </h4>
+            <div class="filter-options" data-accordion-content="burglary">
+              {% assign sorted_burglary = all_burglary_grades | sort %}
+              {% for grade in sorted_burglary %}
+                <label class="filter-checkbox">
+                  <input type="checkbox" name="burglary_grade" value="{{ grade }}" data-filter-type="burglary_grade">
+                  <span class="checkmark"></span>
+                  {{ grade }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if all_fire_resistance.size > 0 %}
+          <div class="filter-group">
+            <h4 class="filter-group-title" data-accordion="fire">
+              {{ section.settings.fire_resistance_label | default: 'Fire Resistance' }}
+              <span class="accordion-icon">−</span>
+            </h4>
+            <div class="filter-options" data-accordion-content="fire">
+              {% assign sorted_fire = all_fire_resistance | sort %}
+              {% for resistance in sorted_fire %}
+                <label class="filter-checkbox">
+                  <input type="checkbox" name="fire_resistance" value="{{ resistance }}" data-filter-type="fire_resistance">
+                  <span class="checkmark"></span>
+                  {{ resistance }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if global_max_price > 0 and global_min_price < global_max_price %}
+          <div class="filter-group price-filter-group">
+            <h4 class="filter-group-title" data-accordion="price">
+              {{ section.settings.price_range_label | default: 'Price Range' }}
+              <span class="accordion-icon">−</span>
+            </h4>
+            <div class="filter-options" data-accordion-content="price">
+              <div class="price-range-container">
+                <div class="price-range-slider-container">
+                  <div class="price-range-slider">
+                    <div class="price-range-track"></div>
+                    <input type="range" id="price-min" class="price-slider price-slider-min"
+                           min="{{ global_min_price | divided_by: 100 }}" 
+                           max="{{ global_max_price | divided_by: 100 }}" 
+                           value="{{ global_min_price | divided_by: 100 }}"
+                           step="1" data-filter-type="price_range" aria-label="Minimum price">
+                    <input type="range" id="price-max" class="price-slider price-slider-max"
+                           min="{{ global_min_price | divided_by: 100 }}" 
+                           max="{{ global_max_price | divided_by: 100 }}" 
+                           value="{{ global_max_price | divided_by: 100 }}"
+                           step="1" data-filter-type="price_range" aria-label="Maximum price">
+                  </div>
+                  <div class="price-range-labels">
+                    <span class="price-min-label">{{ global_min_price | money }}</span>
+                    <span class="price-max-label">{{ global_max_price | money }}</span>
+                  </div>
+                  <div class="price-range-inputs">
+                    <input type="number" id="price-min-input" class="price-input price-min-input"
+                           min="{{ global_min_price | divided_by: 100 }}" max="{{ global_max_price | divided_by: 100 }}"
+                           value="{{ global_min_price | divided_by: 100 }}" placeholder="Min">
+                    <span class="range-separator">-</span>
+                    <input type="number" id="price-max-input" class="price-input price-max-input"
+                           min="{{ global_min_price | divided_by: 100 }}" max="{{ global_max_price | divided_by: 100 }}"
+                           value="{{ global_max_price | divided_by: 100 }}" placeholder="Max">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% assign dimensions = 'depth,width,height,weight' | split: ',' %}
+        {% for dimension in dimensions %}
+          {% assign has_data = false %}
+          {% assign min_val = 0 %}
+          {% assign max_val = 0 %}
+          {% assign unit = 'mm' %}
+          {% assign title = '' %}
+
+          {% case dimension %}
+            {% when 'depth' %}
+              {% assign has_data = has_depth_data %}
+              {% assign min_val = min_depth %}
+              {% assign max_val = max_depth %}
+              {% assign title = section.settings.depth_label | default: 'Exterior Depth' %}
+            {% when 'width' %}
+              {% assign has_data = has_width_data %}
+              {% assign min_val = min_width %}
+              {% assign max_val = max_width %}
+              {% assign title = section.settings.width_label | default: 'Exterior Width' %}
+            {% when 'height' %}
+              {% assign has_data = has_height_data %}
+              {% assign min_val = min_height %}
+              {% assign max_val = max_height %}
+              {% assign title = section.settings.height_label | default: 'External Height' %}
+            {% when 'weight' %}
+              {% assign has_data = has_weight_data %}
+              {% assign min_val = min_weight %}
+              {% assign max_val = max_weight %}
+              {% assign title = section.settings.weight_label | default: 'Weight' %}
+              {% assign unit = 'kg' %}
+          {% endcase %}
+
+          {% if has_data and max_val > min_val %}
+            <div class="filter-group dimension-filter-group">
+              <h4 class="filter-group-title" data-accordion="{{ dimension }}">
+                {{ title }} ({{ unit }})
+                <span class="accordion-icon">−</span>
+              </h4>
+              <div class="filter-options" data-accordion-content="{{ dimension }}">
+                <div class="dimension-range-container">
+                  <div class="dimension-range-slider-container">
+                    <div class="dimension-range-slider">
+                      <div class="{{ dimension }}-range-track"></div>
+                      <input type="range" id="{{ dimension }}-min" class="dimension-slider {{ dimension }}-slider-min"
+                             min="{{ min_val }}" max="{{ max_val }}" value="{{ min_val }}"
+                             step="1" data-filter-type="{{ dimension }}_range" aria-label="Minimum {{ dimension }}">
+                      <input type="range" id="{{ dimension }}-max" class="dimension-slider {{ dimension }}-slider-max"
+                             min="{{ min_val }}" max="{{ max_val }}" value="{{ max_val }}"
+                             step="1" data-filter-type="{{ dimension }}_range" aria-label="Maximum {{ dimension }}">
+                    </div>
+                    
+                    <div class="dimension-range-labels">
+                      <span class="{{ dimension }}-min-label">{{ min_val }}</span>
+                      <span class="{{ dimension }}-max-label">{{ max_val }}</span>
+                    </div>
+                    
+                    <div class="dimension-range-inputs">
+                      <input type="number" id="{{ dimension }}-min-input" class="dimension-input {{ dimension }}-min-input"
+                             min="{{ min_val }}" max="{{ max_val }}" value="{{ min_val }}" placeholder="Min">
+                      <span class="range-separator">-</span>
+                      <input type="number" id="{{ dimension }}-max-input" class="dimension-input {{ dimension }}-max-input"
+                             min="{{ min_val }}" max="{{ max_val }}" value="{{ max_val }}" placeholder="Max">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if all_categories.size > 0 %}
+          <div class="filter-group">
+            <h4 class="filter-group-title" data-accordion="category">
+              {{ section.settings.category_label | default: 'Category' }}
+              <span class="accordion-icon">−</span>
+            </h4>
+            <div class="filter-options" data-accordion-content="category">
+              <div class="category-options-container">
+                {% assign sorted_categories = all_categories | sort %}
+                {% for category in sorted_categories %}
+                  <label class="filter-checkbox category-checkbox {% if forloop.index > 8 %}category-hidden{% endif %}" {% if forloop.index > 8 %}style="display:none;"{% endif %}>
+                    <input type="checkbox" name="category" value="{{ category }}" data-filter-type="category">
+                    <span class="checkmark"></span>
+                    {{ category }}
+                  </label>
+                {% endfor %}
+                {% if all_categories.size > 8 %}
+                  <button type="button" class="show-more-categories" data-show-less-text="{{ section.settings.show_less_categories_text | default: 'Show Less Categories' }}">
+                    {{ section.settings.show_more_categories_text | default: 'Show More Categories' }}
+                  </button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="filter-actions">
+          <button type="button" id="clear-filters" class="clear-filters-btn">{{ section.settings.clear_filters_text | default: 'Clear All Filters' }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="collections-content">
+      <div class="results-info" style="display:none;">
+        <div class="results-count">{{ section.settings.results_count_text | default: 'Showing all collections' }}</div>
+      </div>
+      
+      <div class="collections-grid" id="collections-grid">
+        {% if child_handles and child_handles.size > 0 %}
+          {% for h in child_handles %}
+            {% assign col = collections[h] %}
+            {% if col %}
+              {% liquid
+                assign collection_min_price = 0
+                assign first_product = col.products.first
+
+                if first_product
+                  for p in col.products
+                    if collection_min_price == 0 or p.price_min < collection_min_price
+                      assign collection_min_price = p.price_min
+                    endif
+                  endfor
+
+                  assign first_depth  = first_product.metafields.custom.new_depth.value  | remove: ' mm' | remove: 'mm' | plus: 0
+                  assign first_width  = first_product.metafields.custom.new_width.value  | remove: ' mm' | remove: 'mm' | plus: 0
+                  assign first_height = first_product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0
+                  assign first_weight = first_product.metafields.custom.weight.value     | remove: ' kg' | remove: 'kg' | plus: 0
+                endif
+              %}
+
+              <div class="collection-card" 
+                   data-burglary-grade="{{ col.metafields.custom.burglary_grade.value | default: '' | escape }}"
+                   data-fire-resistance="{{ col.metafields.custom.fire_resistance.value | default: '' | escape }}"
+                   data-category="{{ col.title | escape }}"
+                   data-price="{{ collection_min_price | divided_by: 100 }}"
+                   data-depth="{{ first_depth | default: '0' }}"
+                   data-width="{{ first_width | default: '0' }}"
+                   data-height="{{ first_height | default: '0' }}"
+                   data-weight="{{ first_weight | default: '0' }}">
+                
+                <div class="collection-card-top">
+                  <div class="collection-image">
+                    <a href="{{ col.url }}" aria-label="{{ col.title | escape }}">
+                      {% if col.featured_image %}
+                        <img src="{{ col.featured_image | img_url: '290x178' }}" 
+                             alt="{{ col.title | escape }}"
+                             loading="lazy" width="290" height="178">
+                      {% else %}
+                        <div class="placeholder-image" role="img" aria-label="Placeholder image for {{ col.title | escape }}">
+                          {{ 'collection-1' | placeholder_svg_tag }}
+                        </div>
+                      {% endif %}
+                    </a>
+                  </div>
+                  
+                  <div class="collection-info">
+                    <h3 class="collection-title">
+                      <a href="{{ col.url }}">{{ col.title | escape }}</a>
+                    </h3>
+                    
+                    {% if col.description != blank %}
+                      <div class="collection-description">
+                        {{ col.description | strip_html | truncate: 120 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <div class="collection-card-bottom">
+                  <div class="collection-badges">
+                    {% assign fire_resistance = col.metafields.custom.fire_resistance.value %}
+                    {% assign burglary_grade = col.metafields.custom.burglary_grade.value %}
+                    
+                    {% if fire_resistance != blank %}
+                      <div class="badge fire-badge" data-badge-type="fire" data-badge-value="{{ fire_resistance | escape }}" title="Fire Resistance: {{ fire_resistance | escape }}">
+                        {% case fire_resistance %}
+                          {% when 'Fire Insulated' %}
+                            {% if settings.icon_fire_insulated != blank %}
+                              <img src="{{ settings.icon_fire_insulated | img_url: '45x45' }}" alt="Fire Insulated" width="45" height="45" loading="lazy">
+                            {% else %}<div class="badge-placeholder" aria-label="Fire Insulated">FI</div>{% endif %}
+                          {% when '30 Minutes' %}
+                            {% if settings.icon_fire_30_minutes != blank %}
+                              <img src="{{ settings.icon_fire_30_minutes | img_url: '45x45' }}" alt="30 Minutes Fire Resistance" width="45" height="45" loading="lazy">
+                            {% else %}<div class="badge-placeholder" aria-label="30 Minutes Fire Resistance">30</div>{% endif %}
+                          {% when '60 Minutes' %}
+                            {% if settings.icon_fire_60_minutes != blank %}
+                              <img src="{{ settings.icon_fire_60_minutes | img_url: '45x45' }}" alt="60 Minutes Fire Resistance" width="45" height="45" loading="lazy">
+                            {% else %}<div class="badge-placeholder" aria-label="60 Minutes Fire Resistance">60</div>{% endif %}
+                          {% else %}
+                            <div class="badge-placeholder" aria-label="{{ fire_resistance | escape }}">{{ fire_resistance | escape | truncate: 2, '' }}</div>
+                        {% endcase %}
+                      </div>
+                    {% endif %}
+
+                    {% if burglary_grade != blank %}
+                      <div class="badge burglary-badge" data-badge-type="burglary" data-badge-value="{{ burglary_grade | escape }}" title="Burglary Grade: {{ burglary_grade | escape }}">
+                        {% case burglary_grade %}
+                          {% when 'S1' %}{% if settings.icon_burglary_s1 != blank %}<img src="{{ settings.icon_burglary_s1 | img_url: '45x45' }}" alt="Security Grade S1" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S1">S1</div>{% endif %}
+                          {% when 'S2' %}{% if settings.icon_burglary_s2 != blank %}<img src="{{ settings.icon_burglary_s2 | img_url: '45x45' }}" alt="Security Grade S2" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S2">S2</div>{% endif %}
+                          {% when 'GRADE 0' %}{% if settings.icon_burglary_grade_0 != blank %}<img src="{{ settings.icon_burglary_grade_0 | img_url: '45x45' }}" alt="Burglary Grade 0" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>{% endif %}
+                          {% when 'GRADE I' %}{% if settings.icon_burglary_grade_i != blank %}<img src="{{ settings.icon_burglary_grade_i | img_url: '45x45' }}" alt="Burglary Grade I" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>{% endif %}
+                          {% when 'GRADE II' %}{% if settings.icon_burglary_grade_ii != blank %}<img src="{{ settings.icon_burglary_grade_ii | img_url: '45x45' }}" alt="Burglary Grade II" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>{% endif %}
+                          {% when 'GRADE III' %}{% if settings.icon_burglary_grade_iii != blank %}<img src="{{ settings.icon_burglary_grade_iii | img_url: '45x45' }}" alt="Burglary Grade III" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>{% endif %}
+                          {% when 'GRADE IV' %}{% if settings.icon_burglary_grade_iv != blank %}<img src="{{ settings.icon_burglary_grade_iv | img_url: '45x45' }}" alt="Burglary Grade IV" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>{% endif %}
+                          {% when 'GRADE V' %}{% if settings.icon_burglary_grade_v != blank %}<img src="{{ settings.icon_burglary_grade_v | img_url: '45x45' }}" alt="Burglary Grade V" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>{% endif %}
+                          {% when 'GRADE VI' %}{% if settings.icon_burglary_grade_vi != blank %}<img src="{{ settings.icon_burglary_grade_vi | img_url: '45x45' }}" alt="Burglary Grade VI" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>{% endif %}
+                          {% when 'GRADE VII' %}{% if settings.icon_burglary_grade_vii != blank %}<img src="{{ settings.icon_burglary_grade_vii | img_url: '45x45' }}" alt="Burglary Grade VII" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>{% endif %}
+                          {% else %}
+                            <div class="badge-placeholder" aria-label="{{ burglary_grade | escape }}">{{ burglary_grade | escape | truncate: 3, '' }}</div>
+                        {% endcase %}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <div class="collection-details">
+                    {% if first_depth > 0 or first_width > 0 or first_height > 0 %}
+                      <div class="collection-dimensions">
+                        {% if first_height > 0 %}<div class="dimension-line">{{ section.settings.height_display_label | default: 'Height' }}: {{ first_height }}mm</div>{% endif %}
+                        {% if first_width > 0 %}<div class="dimension-line">{{ section.settings.width_display_label | default: 'Width' }}: {{ first_width }}mm</div>{% endif %}
+                        {% if first_depth > 0 %}<div class="dimension-line">{{ section.settings.depth_display_label | default: 'Depth' }}: {{ first_depth }}mm</div>{% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if collection_min_price > 0 %}
+                      <div class="collection-price">
+                        <span class="price-label">{{ section.settings.price_label | default: 'from' }}</span>
+                        <span class="price-value">{{ collection_min_price | money }}</span>
+                      </div>
+                    {% endif %}
+
+                    {% if section.settings.show_button %}
+                      <div class="collection-action">
+                        <a href="{{ col.url }}" class="collection-btn" aria-label="View {{ col.title | escape }} collection">
+                          {{ section.settings.button_text | default: 'View Collection' }}
+                        </a>
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  {% assign safe_view_file = col.metafields.custom.safe_view_file.value %}
+                  {% if safe_view_file %}
+                    <div class="safe-view-image">
+                      <img src="{{ safe_view_file | img_url: '290x178' }}" alt="{{ col.title | escape }} Safe View" width="290" height="178" loading="lazy">
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <div class="empty-state">
+            {{ section.settings.empty_text | default: 'No collections found' }}
+          </div>
+        {% endif %}
+      </div>
+      
+      <div class="pagination" id="pagination-container"></div>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.show_related_products %}
+  {% render 'related-products' %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection List",
+  "tag": "section",
+  "class": "collection-list-section",
+  "settings": [
+    { "type": "header", "content": "Data Source" },
+    {
+      "type": "select",
+      "id": "source_mode",
+      "label": "Collections to show",
+      "options": [
+        { "value": "all", "label": "All collections" },
+        { "value": "children", "label": "Collections related to current collection" }
+      ],
+      "default": "all"
+    },
+
+    { "type": "header", "content": "Section Settings" },
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "Our Safe Collections" },
+    { "type": "textarea", "id": "description", "label": "Section Description", "default": "Explore our comprehensive range of security solutions" },
+    { "type": "url", "id": "show_more_link", "label": "Show More Link URL" },
+    { "type": "text", "id": "show_more_text", "label": "Show More Button Text", "default": "Click here for more..." },
+
+    { "type": "header", "content": "Collection Display Settings" },
+    { "type": "checkbox", "id": "show_button", "label": "Show Collection Button", "default": true },
+    { "type": "text", "id": "button_text", "label": "Collection Button Text", "default": "View Collection" },
+    { "type": "text", "id": "price_label", "label": "Price Label", "default": "from" },
+    { "type": "text", "id": "empty_text", "label": "No Results Text", "default": "No collections found" },
+
+    { "type": "header", "content": "Related Products" },
+    { "type": "checkbox", "id": "show_related_products", "label": "Show Related Products Section", "default": true, "info": "Show products that match selected filters below collections" },
+
+    { "type": "header", "content": "Filter Labels" },
+    { "type": "text", "id": "filters_title", "label": "Filters Title", "default": "Filters" },
+    { "type": "text", "id": "burglary_grade_label", "label": "Burglary Grade Filter Label", "default": "Burglary Grade" },
+    { "type": "text", "id": "fire_resistance_label", "label": "Fire Resistance Filter Label", "default": "Fire Resistance" },
+    { "type": "text", "id": "price_range_label", "label": "Price Range Filter Label", "default": "Price Range" },
+    { "type": "text", "id": "depth_label", "label": "Depth Filter Label", "default": "Exterior Depth" },
+    { "type": "text", "id": "width_label", "label": "Width Filter Label", "default": "Exterior Width" },
+    { "type": "text", "id": "height_label", "label": "Height Filter Label", "default": "External Height" },
+    { "type": "text", "id": "weight_label", "label": "Weight Filter Label", "default": "Weight" },
+
+    { "type": "header", "content": "Mobile Filter Labels" },
+    { "type": "text", "id": "mobile_filter_text", "label": "Mobile Filter Button Text", "default": "Filters" },
+    { "type": "text", "id": "mobile_filter_title", "label": "Mobile Filter Title", "default": "Filters" },
+    { "type": "text", "id": "mobile_apply_text", "label": "Mobile Apply Button Text", "default": "Apply Filters" },
+    { "type": "text", "id": "mobile_clear_text", "label": "Mobile Clear Button Text", "default": "Clear All" },
+
+    { "type": "header", "content": "Action Labels" },
+    { "type": "text", "id": "clear_filters_text", "label": "Clear Filters Button Text", "default": "Clear All Filters" },
+    { "type": "text", "id": "show_more_categories_text", "label": "Show More Categories Button Text", "default": "Show More Categories" },
+    { "type": "text", "id": "show_less_categories_text", "label": "Show Less Categories Button Text", "default": "Show Less Categories" },
+    { "type": "text", "id": "results_count_text", "label": "Results Count Text", "default": "Showing all collections" },
+
+    { "type": "header", "content": "Display Labels" },
+    { "type": "text", "id": "height_display_label", "label": "Height Display Label", "default": "Height" },
+    { "type": "text", "id": "width_display_label", "label": "Width Display Label", "default": "Width" },
+    { "type": "text", "id": "depth_display_label", "label": "Depth Display Label", "default": "Depth" },
+
+    { "type": "header", "content": "Pagination Settings" },
+    { "type": "range", "id": "collections_per_page", "min": 3, "max": 24, "step": 3, "label": "Collections per page", "default": 12 },
+    { "type": "checkbox", "id": "show_pagination", "label": "Show pagination", "default": true }
+  ],
+  "presets": [{ "name": "Collection List ALL" }]
+}
+{% endschema %}

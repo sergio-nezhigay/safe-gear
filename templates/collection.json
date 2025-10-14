@@ -39,37 +39,44 @@
       "settings": {
         "title": "Keep Your Valuables Secure with the Perfect Safe!",
         "description": "{{ collection.description }}",
-        "burglary_title": "Certified Burglary Resistance",
-        "burglary_description": "Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards.",
-        "s1_icon": "shopify://shop_images/burglar-icon-s1-small_1_b561fa8a-d111-4701-88e0-e33c01bbf020.png",
-        "s1_text": "<p>Tested according to European standard EN-1143-1. <strong>S1</strong> level provides basic burglary resistance for home and small business use.</p>",
-        "s2_icon": "shopify://shop_images/burglar-icon-s2-small_6d23d57b-12b7-47b6-81a0-24b6f6791b57.png",
-        "s2_text": "<p>Tested according to European standard EN-1143-1. <strong>S2</strong> level offers enhanced burglary resistance with improved security features.</p>",
-        "grade_0_icon": "shopify://shop_images/burglar-icon-grade-0-small_12_2a9d0264-5f15-4be4-880d-888cbfaf8cd7.png",
-        "grade_0_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade 0</strong> certification provides professional-level burglary resistance.</p>",
-        "grade_i_icon": "shopify://shop_images/burglar-icon-grade-i-small_b27fedcc-5f6d-47fd-829f-5e02c0fee5d9.png",
-        "grade_i_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade I</strong> offers high-security burglary resistance for valuable assets.</p>",
-        "grade_ii_icon": "shopify://shop_images/burglar-icon-grade-ii-small_383c2530-2757-43ec-9eab-fa60d249f14a.png",
-        "grade_ii_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade II</strong> provides superior burglary resistance for high-value storage.</p>",
-        "grade_iii_icon": "shopify://shop_images/burglar-icon-grade-iii-small_3cabb889-01b2-418c-90a9-e979953950da.png",
-        "grade_iii_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade III</strong> delivers maximum burglary resistance for premium security needs.</p>",
-        "grade_iv_icon": "shopify://shop_images/burglar-icon-grade-iv-small_9caf82ea-a55d-4ca6-a1eb-02f7f2247238.png",
-        "grade_iv_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade IV</strong> represents the highest standard of burglary resistance available.</p>",
-        "grade_v_icon": "shopify://shop_images/burglar-icon-v-small_0600f9ae-f614-49df-9457-48ddc362dc4c.png",
-        "grade_v_text": "<p>Tested according to European standard EN-1143-1. <strong>Grade V</strong> offers ultra-high security for the most demanding applications.</p>",
-        "fire_title": "Certified Fire Protection",
-        "fire_description": "Tested according to European Standards. Safes can have certified fire protection for 30 min, 60 min, 90 min. or 120 min.",
-        "fire_30_icon": "shopify://shop_images/fire-30-min-small_1.png",
-        "fire_30_text": "<p>Tested according to European Standards. <strong>30 Minutes</strong> fire protection safeguards your valuables against fire damage.</p>",
-        "fire_60_icon": "shopify://shop_images/fire-60-min-small_4.png",
-        "fire_60_text": "<p>Tested according to European Standards. <strong>60 Minutes</strong> fire protection provides extended fire resistance for important documents.</p>",
-        "fire_90_text": "<p>Tested according to European Standards. <strong>90 Minutes</strong> fire protection offers superior fire resistance for critical storage.</p>",
-        "fire_120_text": "<p>Tested according to European Standards. <strong>120 Minutes</strong> fire protection delivers maximum fire resistance for premium security.</p>",
-        "fire_insulated_icon": "shopify://shop_images/fire_insulated_small_9.jpg",
-        "fire_insulated_text": "<p>Tested according to European Standards. <strong>Fire Insulated</strong> design provides comprehensive thermal protection.</p>",
         "show_more_text": "Read more",
         "show_less_text": "Show Less",
         "hidden_text": "{{ collection.metafields.custom.read_more_text | metafield_tag }}"
+      }
+    },
+    "collection_grid_Vn9Gbi": {
+      "type": "collection-grid",
+      "name": "Product Grid",
+      "settings": {
+        "filters_title": "Produktfiltre",
+        "show_section_header": false,
+        "section_title": "produkter",
+        "section_description": "",
+        "burglary_label": "Indbrudssikringens niveau",
+        "fire_label": "Brandmodstand",
+        "price_label": "Prisklasse",
+        "product_type_label": "Product Type",
+        "depth_label": "Udvendig dybde",
+        "width_label": "Udvendig bredde",
+        "height_label": "Udvendig højde",
+        "weight_label": "Vægt",
+        "show_burglary_grade_filter": true,
+        "show_fire_resistance_filter": true,
+        "show_product_type_filter": true,
+        "show_price_filter": true,
+        "show_dimension_filters": true,
+        "show_weight_filter": true,
+        "products_per_page": 12,
+        "show_product_badges": true,
+        "show_product_specs": true,
+        "show_compare_price": true,
+        "clear_filters_text": "Ryd alle filtre",
+        "mobile_filters_text": "filtre",
+        "mobile_clear_text": "Ryd alle filtre",
+        "mobile_apply_text": "Anvend filtre",
+        "no_results_text": "Ingen produkter fundet, der matcher dine kriterier. Prøv at justere dine filtre.",
+        "show_more_collections_link": false,
+        "more_collections_text": "Viser alle kollektioner"
       }
     },
     "main": {
@@ -185,6 +192,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "medium",
@@ -204,6 +212,7 @@
   "order": [
     "breadcrumbs_xQ93jA",
     "new_collection_grid_6AzmDC",
+    "collection_grid_Vn9Gbi",
     "main"
   ]
 }

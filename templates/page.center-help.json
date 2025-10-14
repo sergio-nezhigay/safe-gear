@@ -57,27 +57,27 @@
         "padding-block-end": 80
       }
     },
-    "banner_help_center_Fmzf4t": {
+    "banner_help_center_chdfx3": {
       "type": "banner-help-center",
       "name": "Banner search",
       "settings": {
-        "main_image": "shopify://shop_images/svgviewer-output_1.svg",
+        "main_image": "shopify://shop_images/svgviewer-output_1_0685a513-7fc0-435d-84bb-5066e5681779.svg",
         "title": ""
       }
     },
-    "custom_blog_section_tA6Uhn": {
+    "custom_blog_section_KhjMDg": {
       "type": "custom-blog-section",
       "name": "Custom BlogSection",
       "settings": {
         "heading": "Bestillingsproces og Levering",
         "custom_blog": "bestillingsproces-og-levering",
-        "custom_blog_img": "shopify://shop_images/express-delivery_2107708c-f323-4f9c-92a6-4ade32519676.png"
+        "custom_blog_img": "shopify://shop_images/express-delivery_078abeee-e40d-4bbb-82bd-09698d277c46.png"
       }
     }
   },
   "order": [
     "main",
-    "banner_help_center_Fmzf4t",
-    "custom_blog_section_tA6Uhn"
+    "banner_help_center_chdfx3",
+    "custom_blog_section_KhjMDg"
   ]
 }

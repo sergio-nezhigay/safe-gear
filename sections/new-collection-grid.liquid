@@ -1,496 +1,321 @@
 {% liquid
-  assign current_collection = collection
-  assign show_more_text = section.settings.show_more_text
-  assign hidden_text = section.settings.hidden_text
+    assign current_collection = collection
+    assign show_more_text = section.settings.show_more_text
+    assign hidden_text = section.settings.hidden_text
+    
+    assign burglary_grade = current_collection.metafields.custom.burglary_grade.value
+    assign fire_resistance = current_collection.metafields.custom.fire_resistance.value
+  %}
   
-  assign burglary_grade = current_collection.metafields.custom.burglary_grade.value
-  assign fire_resistance = current_collection.metafields.custom.fire_resistance.value
-%}
-
-{{ 'collection-header.css' | asset_url | stylesheet_tag }}
-
-<section class="collection-header-section" data-section-id="{{ section.id }}">
-  <div class="container">
-    <header class="collection-header">
-      <h1 class="collection-header__title">
-        {% if current_collection.title != blank %}
-          {{ current_collection.title | escape }}
-        {% else %}
-          {{ section.settings.title | escape }}
-        {% endif %}
-      </h1>
-      
-      <div class="collection-header__description">
-        {% if current_collection.description != blank %}
-          {{ current_collection.description }}
-        {% else %}
-          {{ section.settings.description }}
-        {% endif %}
-      </div>
-
-      {% if burglary_grade != blank or fire_resistance != blank or section.blocks.size > 0 %}
-        <div class="collection-header__features">
-          {% comment %} Auto-generated Burglary Resistance feature {% endcomment %}
-          {% if burglary_grade != blank %}
-            <div class="feature-item feature-item--auto">
-              <div class="feature-item__icon">
-                {% case burglary_grade %}
-                  {% when 'S1' %}
-                    {% if section.settings.s1_icon != blank %}
-                      <img src="{{ section.settings.s1_icon | image_url: width: 48 }}" alt="S1 Grade" width="24" height="24">
-                    {% endif %}
-                  {% when 'S2' %}
-                    {% if section.settings.s2_icon != blank %}
-                      <img src="{{ section.settings.s2_icon | image_url: width: 48 }}" alt="S2 Grade" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade 0' %}
-                    {% if section.settings.grade_0_icon != blank %}
-                      <img src="{{ section.settings.grade_0_icon | image_url: width: 48 }}" alt="Grade 0" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade I' %}
-                    {% if section.settings.grade_i_icon != blank %}
-                      <img src="{{ section.settings.grade_i_icon | image_url: width: 48 }}" alt="Grade I" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade II' or 'GRADE II' %}
-                    {% if section.settings.grade_ii_icon != blank %}
-                      <img src="{{ section.settings.grade_ii_icon | image_url: width: 48 }}" alt="Grade II" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade III' or 'GRADE III' %}
-                    {% if section.settings.grade_iii_icon != blank %}
-                      <img src="{{ section.settings.grade_iii_icon | image_url: width: 48 }}" alt="Grade III" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade IV' or 'GRADE IV' %}
-                    {% if section.settings.grade_iv_icon != blank %}
-                      <img src="{{ section.settings.grade_iv_icon | image_url: width: 48 }}" alt="Grade IV" width="24" height="24">
-                    {% endif %}
-                  {% when 'Grade V' or 'GRADE V' %}
-                    {% if section.settings.grade_v_icon != blank %}
-                      <img src="{{ section.settings.grade_v_icon | image_url: width: 48 }}" alt="Grade V" width="24" height="24">
-                    {% endif %}
-                {% endcase %}
-              </div>
-              <div class="feature-item__content">
-                <h3 class="feature-item__title">{{ section.settings.burglary_title | default: 'Certified Burglary Resistance' | escape }}</h3>
-                <div class="feature-item__text">
+  {{ 'collection-header.css' | asset_url | stylesheet_tag }}
+  
+  <section class="collection-header-section" data-section-id="{{ section.id }}">
+    <div class="container">
+      <header class="collection-header">
+        <h1 class="collection-header__title">
+          {% if current_collection.title != blank %}
+            {{ current_collection.title | escape }}
+          {% else %}
+            {{ section.settings.title | escape }}
+          {% endif %}
+        </h1>
+        
+        <div class="collection-header__description">
+          {% if current_collection.description != blank %}
+            {{ current_collection.description }}
+          {% else %}
+            {{ section.settings.description }}
+          {% endif %}
+        </div>
+  
+        {% if burglary_grade != blank or fire_resistance != blank or section.blocks.size > 0 %}
+          <div class="collection-header__features">
+            {% comment %} Auto-generated Burglary Resistance feature {% endcomment %}
+            {% if burglary_grade != blank %}
+              <div class="feature-item feature-item--auto">
+                <div class="feature-item__icon">
                   {% case burglary_grade %}
                     {% when 'S1' %}
-                      {{ section.settings.s1_text | default: 'Tested according to European standard EN-1143-1. S1 certified.' }}
+                      {% if settings.icon_burglary_s1 != blank %}
+                        <img src="{{ settings.icon_burglary_s1 | image_url: width: 48 }}" alt="S1 Grade" width="24" height="24">
+                      {% endif %}
                     {% when 'S2' %}
-                      {{ section.settings.s2_text | default: 'Tested according to European standard EN-1143-1. S2 certified.' }}
+                      {% if settings.icon_burglary_s2 != blank %}
+                        <img src="{{ settings.icon_burglary_s2 | image_url: width: 48 }}" alt="S2 Grade" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade 0' %}
-                      {{ section.settings.grade_0_text | default: 'Tested according to European standard EN-1143-1. Grade 0 certified.' }}
+                      {% if settings.icon_burglary_grade_0 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_0 | image_url: width: 48 }}" alt="Grade 0" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade I' %}
-                      {{ section.settings.grade_i_text | default: 'Tested according to European standard EN-1143-1. Grade I certified.' }}
+                      {% if settings.icon_burglary_grade_1 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_1 | image_url: width: 48 }}" alt="Grade I" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade II' or 'GRADE II' %}
-                      {{ section.settings.grade_ii_text | default: 'Tested according to European standard EN-1143-1. Grade II certified.' }}
+                      {% if settings.icon_burglary_grade_2 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_2 | image_url: width: 48 }}" alt="Grade II" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade III' or 'GRADE III' %}
-                      {{ section.settings.grade_iii_text | default: 'Tested according to European standard EN-1143-1. Grade III certified.' }}
+                      {% if settings.icon_burglary_grade_3 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_3 | image_url: width: 48 }}" alt="Grade III" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade IV' or 'GRADE IV' %}
-                      {{ section.settings.grade_iv_text | default: 'Tested according to European standard EN-1143-1. Grade IV certified.' }}
+                      {% if settings.icon_burglary_grade_4 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_4 | image_url: width: 48 }}" alt="Grade IV" width="24" height="24">
+                      {% endif %}
                     {% when 'Grade V' or 'GRADE V' %}
-                      {{ section.settings.grade_v_text | default: 'Tested according to European standard EN-1143-1. Grade V certified.' }}
-                    {% else %}
-                      <p>{{ section.settings.burglary_description | default: 'Tested according to European standard EN-1143-1.' }} <strong>{{ burglary_grade }}</strong> certified.</p>
+                      {% if settings.icon_burglary_grade_5 != blank %}
+                        <img src="{{ settings.icon_burglary_grade_5 | image_url: width: 48 }}" alt="Grade V" width="24" height="24">
+                      {% endif %}
                   {% endcase %}
                 </div>
+                <div class="feature-item__content">
+                  <h3 class="feature-item__title">Certified Burglary Resistance</h3>
+                  <div class="feature-item__text">
+                    {% case burglary_grade %}
+                      {% when 'S1' %}
+                        {{ settings.icon_burglary_s1_description | default: 'Tested according to European standard EN-1143-1. S1 certified.' }}
+                      {% when 'S2' %}
+                        {{ settings.icon_burglary_s2_description | default: 'Tested according to European standard EN-1143-1. S2 certified.' }}
+                      {% when 'Grade 0' %}
+                        {{ settings.icon_burglary_grade_0_description | default: 'Tested according to European standard EN-1143-1. Grade 0 certified.' }}
+                      {% when 'Grade I' %}
+                        {{ settings.icon_burglary_grade_1_description | default: 'Tested according to European standard EN-1143-1. Grade I certified.' }}
+                      {% when 'Grade II' or 'GRADE II' %}
+                        {{ settings.icon_burglary_grade_2_description | default: 'Tested according to European standard EN-1143-1. Grade II certified.' }}
+                      {% when 'Grade III' or 'GRADE III' %}
+                        {{ settings.icon_burglary_grade_3_description | default: 'Tested according to European standard EN-1143-1. Grade III certified.' }}
+                      {% when 'Grade IV' or 'GRADE IV' %}
+                        {{ settings.icon_burglary_grade_4_description | default: 'Tested according to European standard EN-1143-1. Grade IV certified.' }}
+                      {% when 'Grade V' or 'GRADE V' %}
+                        {{ settings.icon_burglary_grade_5_description | default: 'Tested according to European standard EN-1143-1. Grade V certified.' }}
+                      {% else %}
+                        <p>{{ section.settings.burglary_description | default: 'Tested according to European standard EN-1143-1.' }} <strong>{{ burglary_grade }}</strong> certified.</p>
+                    {% endcase %}
+                  </div>
+                </div>
               </div>
-            </div>
-          {% endif %}
-
-          {% comment %} Auto-generated Fire Resistance feature {% endcomment %}
-          {% if fire_resistance != blank %}
-            <div class="feature-item feature-item--auto">
-              <div class="feature-item__icon">
-                {% case fire_resistance %}
-                  {% when '30 Minutes' %}
-                    {% if section.settings.fire_30_icon != blank %}
-                      <img src="{{ section.settings.fire_30_icon | image_url: width: 48 }}" alt="30 Minutes Fire Protection" width="24" height="24">
-                    {% endif %}
-                  {% when '60 Minutes' %}
-                    {% if section.settings.fire_60_icon != blank %}
-                      <img src="{{ section.settings.fire_60_icon | image_url: width: 48 }}" alt="60 Minutes Fire Protection" width="24" height="24">
-                    {% endif %}
-                  {% when '90 Minutes' %}
-                    {% if section.settings.fire_90_icon != blank %}
-                      <img src="{{ section.settings.fire_90_icon | image_url: width: 48 }}" alt="90 Minutes Fire Protection" width="24" height="24">
-                    {% endif %}
-                  {% when '120 Minutes' %}
-                    {% if section.settings.fire_120_icon != blank %}
-                      <img src="{{ section.settings.fire_120_icon | image_url: width: 48 }}" alt="120 Minutes Fire Protection" width="24" height="24">
-                    {% endif %}
-                  {% when 'Fire Insulated' %}
-                    {% if section.settings.fire_insulated_icon != blank %}
-                      <img src="{{ section.settings.fire_insulated_icon | image_url: width: 48 }}" alt="Fire Insulated" width="24" height="24">
-                    {% endif %}
-                {% endcase %}
-              </div>
-              <div class="feature-item__content">
-                <h3 class="feature-item__title">{{ section.settings.fire_title | default: 'Certified Fire Protection' | escape }}</h3>
-                <div class="feature-item__text">
+            {% endif %}
+  
+            {% comment %} Auto-generated Fire Resistance feature {% endcomment %}
+            {% if fire_resistance != blank %}
+              <div class="feature-item feature-item--auto">
+                <div class="feature-item__icon">
                   {% case fire_resistance %}
                     {% when '30 Minutes' %}
-                      {{ section.settings.fire_30_text | default: 'Tested according to European Standards. 30 Minutes fire protection certified.' }}
+                      {% if settings.icon_fire_30_minutes != blank %}
+                        <img src="{{ settings.icon_fire_30_minutes | image_url: width: 48 }}" alt="30 Minutes Fire Protection" width="24" height="24">
+                      {% endif %}
                     {% when '60 Minutes' %}
-                      {{ section.settings.fire_60_text | default: 'Tested according to European Standards. 60 Minutes fire protection certified.' }}
+                      {% if settings.icon_fire_60_minutes != blank %}
+                        <img src="{{ settings.icon_fire_60_minutes | image_url: width: 48 }}" alt="60 Minutes Fire Protection" width="24" height="24">
+                      {% endif %}
                     {% when '90 Minutes' %}
-                      {{ section.settings.fire_90_text | default: 'Tested according to European Standards. 90 Minutes fire protection certified.' }}
+                      {% if settings.icon_fire_90_minutes != blank %}
+                        <img src="{{ settings.icon_fire_90_minutes | image_url: width: 48 }}" alt="90 Minutes Fire Protection" width="24" height="24">
+                      {% endif %}
                     {% when '120 Minutes' %}
-                      {{ section.settings.fire_120_text | default: 'Tested according to European Standards. 120 Minutes fire protection certified.' }}
+                      {% if settings.icon_fire_120_minutes != blank %}
+                        <img src="{{ settings.icon_fire_120_minutes | image_url: width: 48 }}" alt="120 Minutes Fire Protection" width="24" height="24">
+                      {% endif %}
                     {% when 'Fire Insulated' %}
-                      {{ section.settings.fire_insulated_text | default: 'Tested according to European Standards. Fire Insulated protection certified.' }}
-                    {% else %}
-                      <p>{{ section.settings.fire_description | default: 'Tested according to European Standards.' }} <strong>{{ fire_resistance }}</strong> protection.</p>
+                      {% if settings.icon_fire_insulated != blank %}
+                        <img src="{{ settings.icon_fire_insulated | image_url: width: 48 }}" alt="Fire Insulated" width="24" height="24">
+                      {% endif %}
                   {% endcase %}
                 </div>
-              </div>
-            </div>
-          {% endif %}
-
-          {% comment %} Manual feature items from blocks {% endcomment %}
-          {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'feature_item' %}
-                <div class="feature-item" {{ block.shopify_attributes }}>
-                  <div class="feature-item__icon">
-                    {% if block.settings.icon_image != blank %}
-                      <img src="{{ block.settings.icon_image | image_url: width: 48 }}" 
-                           alt="{{ block.settings.title | escape }}"
-                           width="24" 
-                           height="24">
-                    {% elsif block.settings.icon != blank %}
-                      {{ block.settings.icon }}
-                    {% endif %}
-                  </div>
-                  <div class="feature-item__content">
-                    {% if block.settings.title != blank %}
-                      <h3 class="feature-item__title">{{ block.settings.title | escape }}</h3>
-                    {% endif %}
-                    {% if block.settings.text != blank %}
-                      <div class="feature-item__text">{{ block.settings.text }}</div>
-                    {% endif %}
+                <div class="feature-item__content">
+                  <h3 class="feature-item__title">Certified Fire Protection</h3>
+                  <div class="feature-item__text">
+                    {% case fire_resistance %}
+                      {% when '30 Minutes' %}
+                        {{ settings.icon_fire_30_minutes_description | default: 'Tested according to European Standards. 30 Minutes fire protection certified.' }}
+                      {% when '60 Minutes' %}
+                        {{ settings.icon_fire_60_minutes_description | default: 'Tested according to European Standards. 60 Minutes fire protection certified.' }}
+                      {% when '90 Minutes' %}
+                        {{ settings.icon_fire_90_minutes_description | default: 'Tested according to European Standards. 90 Minutes fire protection certified.' }}
+                      {% when '120 Minutes' %}
+                        {{ settings.icon_fire_120_minutes_description | default: 'Tested according to European Standards. 120 Minutes fire protection certified.' }}
+                      {% when 'Fire Insulated' %}
+                        {{ settings.icon_fire_insulated_description | default: 'Tested according to European Standards. Fire Insulated protection certified.' }}
+                      {% else %}
+                        <p>{{ section.settings.fire_description | default: 'Tested according to European Standards.' }} <strong>{{ fire_resistance }}</strong> protection.</p>
+                    {% endcase %}
                   </div>
                 </div>
-            {% endcase %}
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {% if show_more_text != blank and hidden_text != blank %}
-        <div class="collection-header__expandable">
-          <button type="button" class="collection-header__show-more" aria-expanded="false">
-            <span class="show-more-text">{{ show_more_text | escape }}</span>
-            <span class="show-less-text" style="display: none;">{{ section.settings.show_less_text | default: 'Show Less' | escape }}</span>
-            <svg class="icon icon--chevron" viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M4 6l4 4 4-4H4z"/>
-            </svg>
-          </button>
-          <div class="collection-header__hidden-content" style="display: none;">
-            {{ hidden_text }}
+              </div>
+            {% endif %}
+  
+            {% comment %} Manual feature items from blocks {% endcomment %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'feature_item' %}
+                  <div class="feature-item" {{ block.shopify_attributes }}>
+                    <div class="feature-item__icon">
+                      {% if block.settings.icon_image != blank %}
+                        <img src="{{ block.settings.icon_image | image_url: width: 48 }}" 
+                             alt="{{ block.settings.title | escape }}"
+                             width="24" 
+                             height="24">
+                      {% elsif block.settings.icon != blank %}
+                        {{ block.settings.icon }}
+                      {% endif %}
+                    </div>
+                    <div class="feature-item__content">
+                      {% if block.settings.title != blank %}
+                        <h3 class="feature-item__title">{{ block.settings.title | escape }}</h3>
+                      {% endif %}
+                      {% if block.settings.text != blank %}
+                        <div class="feature-item__text">{{ block.settings.text }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+              {% endcase %}
+            {% endfor %}
           </div>
-        </div>
-      {% endif %}
-    </header>
-  </div>
-</section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const showMoreBtn = document.querySelector('.collection-header__show-more');
-  const hiddenContent = document.querySelector('.collection-header__hidden-content');
-  const showMoreText = document.querySelector('.show-more-text');
-  const showLessText = document.querySelector('.show-less-text');
-
-  if (showMoreBtn && hiddenContent) {
-    showMoreBtn.addEventListener('click', function() {
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      
-      if (isExpanded) {
-        hiddenContent.style.display = 'none';
-        showMoreText.style.display = 'inline';
-        showLessText.style.display = 'none';
-        this.setAttribute('aria-expanded', 'false');
-        this.classList.remove('expanded');
-      } else {
-        hiddenContent.style.display = 'block';
-        showMoreText.style.display = 'none';
-        showLessText.style.display = 'inline';
-        this.setAttribute('aria-expanded', 'true');
-        this.classList.add('expanded');
+        {% endif %}
+  
+        {% if show_more_text != blank and hidden_text != blank %}
+          <div class="collection-header__expandable">
+            <button type="button" class="collection-header__show-more" aria-expanded="false">
+              <span class="show-more-text">{{ show_more_text | escape }}</span>
+              <span class="show-less-text" style="display: none;">{{ section.settings.show_less_text | default: 'Show Less' | escape }}</span>
+              <svg class="icon icon--chevron" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M4 6l4 4 4-4H4z"/>
+              </svg>
+            </button>
+            <div class="collection-header__hidden-content" style="display: none;">
+              {{ hidden_text }}
+            </div>
+          </div>
+        {% endif %}
+      </header>
+    </div>
+  </section>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const showMoreBtn = document.querySelector('.collection-header__show-more');
+    const hiddenContent = document.querySelector('.collection-header__hidden-content');
+    const showMoreText = document.querySelector('.show-more-text');
+    const showLessText = document.querySelector('.show-less-text');
+  
+    if (showMoreBtn && hiddenContent) {
+      showMoreBtn.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+          hiddenContent.style.display = 'none';
+          showMoreText.style.display = 'inline';
+          showLessText.style.display = 'none';
+          this.setAttribute('aria-expanded', 'false');
+          this.classList.remove('expanded');
+        } else {
+          hiddenContent.style.display = 'block';
+          showMoreText.style.display = 'none';
+          showLessText.style.display = 'inline';
+          this.setAttribute('aria-expanded', 'true');
+          this.classList.add('expanded');
+        }
+      });
+    }
+  });
+  </script>
+  
+  {% schema %}
+  {
+    "name": "Collection Header",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Fallback Title",
+        "default": "Keep Your Valuables Secure with the Perfect Safe!",
+        "info": "Used only if collection has no title"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Fallback Description",
+        "default": "<p>A safe helps prevent unauthorized access to your valuables. SafeGear offers high-quality safes in security levels according to European Norm EN-1143-1. Ideal for storing documents, jewelry and cash at home or in a business.</p>",
+        "info": "Used only if collection has no description"
+      },
+      {
+        "type": "header",
+        "content": "Show More Section"
+      },
+      {
+        "type": "text",
+        "id": "show_more_text",
+        "label": "Show More Button Text",
+        "default": "Click here for more..."
+      },
+      {
+        "type": "text",
+        "id": "show_less_text",
+        "label": "Show Less Button Text",
+        "default": "Show Less"
+      },
+      {
+        "type": "richtext",
+        "id": "hidden_text",
+        "label": "Hidden Content",
+        "info": "Content that will be shown when 'Show More' is clicked"
       }
-    });
+    ],
+    "blocks": [
+      {
+        "type": "feature_item",
+        "name": "Feature Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon_image",
+            "label": "Icon Image"
+          },
+          {
+            "type": "html",
+            "id": "icon",
+            "label": "Icon SVG Code",
+            "info": "Add your SVG icon code here (used if no image selected)"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Feature Title",
+            "default": "Certified Burglary Resistance"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Feature Text",
+            "default": "<p>Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards. The blue icons indicate the burglary certification.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Header",
+        "blocks": [
+          {
+            "type": "feature_item",
+            "settings": {
+              "title": "Certified Burglary Resistance",
+              "text": "<p>Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards. The blue icons indicate the burglary certification.</p>"
+            }
+          },
+          {
+            "type": "feature_item",
+            "settings": {
+              "title": "Certified Fire Protection",
+              "text": "<p>Tested according to European Standards. Safes can have certified fire protection for 30 min, 60 min, 90 min. or 120 min. The red icons indicate fire certification.</p>"
+            }
+          }
+        ]
+      }
+    ]
   }
-});
-</script>
-
-{% schema %}
-{
-  "name": "Collection Header",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Fallback Title",
-      "default": "Keep Your Valuables Secure with the Perfect Safe!",
-      "info": "Used only if collection has no title"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Fallback Description",
-      "default": "<p>A safe helps prevent unauthorized access to your valuables. SafeGear offers high-quality safes in security levels according to European Norm EN-1143-1. Ideal for storing documents, jewelry and cash at home or in a business.</p>",
-      "info": "Used only if collection has no description"
-    },
-    {
-      "type": "header",
-      "content": "Burglary Resistance Configuration"
-    },
-    {
-      "type": "text",
-      "id": "burglary_title",
-      "label": "Burglary Feature Title",
-      "default": "Certified Burglary Resistance"
-    },
-    {
-      "type": "textarea",
-      "id": "burglary_description",
-      "label": "Burglary Feature Description",
-      "default": "Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards."
-    },
-    {
-      "type": "image_picker",
-      "id": "s1_icon",
-      "label": "S1 Grade Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "s1_text",
-      "label": "S1 Grade Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>S1</strong> level provides basic burglary resistance for home and small business use.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "s2_icon",
-      "label": "S2 Grade Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "s2_text",
-      "label": "S2 Grade Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>S2</strong> level offers enhanced burglary resistance with improved security features.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_0_icon",
-      "label": "Grade 0 Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_0_text",
-      "label": "Grade 0 Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade 0</strong> certification provides professional-level burglary resistance.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_i_icon",
-      "label": "Grade I Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_i_text",
-      "label": "Grade I Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade I</strong> offers high-security burglary resistance for valuable assets.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_ii_icon",
-      "label": "Grade II Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_ii_text",
-      "label": "Grade II Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade II</strong> provides superior burglary resistance for high-value storage.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_iii_icon",
-      "label": "Grade III Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_iii_text",
-      "label": "Grade III Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade III</strong> delivers maximum burglary resistance for premium security needs.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_iv_icon",
-      "label": "Grade IV Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_iv_text",
-      "label": "Grade IV Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade IV</strong> represents the highest standard of burglary resistance available.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "grade_v_icon",
-      "label": "Grade V Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "grade_v_text",
-      "label": "Grade V Text",
-      "default": "<p>Tested according to European standard EN-1143-1. <strong>Grade V</strong> offers ultra-high security for the most demanding applications.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Fire Resistance Configuration"
-    },
-    {
-      "type": "text",
-      "id": "fire_title",
-      "label": "Fire Feature Title",
-      "default": "Certified Fire Protection"
-    },
-    {
-      "type": "textarea",
-      "id": "fire_description",
-      "label": "Fire Feature Description",
-      "default": "Tested according to European Standards. Safes can have certified fire protection for 30 min, 60 min, 90 min. or 120 min."
-    },
-    {
-      "type": "image_picker",
-      "id": "fire_30_icon",
-      "label": "30 Minutes Fire Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "fire_30_text",
-      "label": "30 Minutes Fire Text",
-      "default": "<p>Tested according to European Standards. <strong>30 Minutes</strong> fire protection safeguards your valuables against fire damage.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "fire_60_icon",
-      "label": "60 Minutes Fire Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "fire_60_text",
-      "label": "60 Minutes Fire Text",
-      "default": "<p>Tested according to European Standards. <strong>60 Minutes</strong> fire protection provides extended fire resistance for important documents.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "fire_90_icon",
-      "label": "90 Minutes Fire Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "fire_90_text",
-      "label": "90 Minutes Fire Text",
-      "default": "<p>Tested according to European Standards. <strong>90 Minutes</strong> fire protection offers superior fire resistance for critical storage.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "fire_120_icon",
-      "label": "120 Minutes Fire Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "fire_120_text",
-      "label": "120 Minutes Fire Text",
-      "default": "<p>Tested according to European Standards. <strong>120 Minutes</strong> fire protection delivers maximum fire resistance for premium security.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "fire_insulated_icon",
-      "label": "Fire Insulated Icon"
-    },
-    {
-      "type": "richtext",
-      "id": "fire_insulated_text",
-      "label": "Fire Insulated Text",
-      "default": "<p>Tested according to European Standards. <strong>Fire Insulated</strong> design provides comprehensive thermal protection.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Show More Section"
-    },
-    {
-      "type": "text",
-      "id": "show_more_text",
-      "label": "Show More Button Text",
-      "default": "Click here for more..."
-    },
-    {
-      "type": "text",
-      "id": "show_less_text",
-      "label": "Show Less Button Text",
-      "default": "Show Less"
-    },
-    {
-      "type": "richtext",
-      "id": "hidden_text",
-      "label": "Hidden Content",
-      "info": "Content that will be shown when 'Show More' is clicked"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "feature_item",
-      "name": "Feature Item",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon_image",
-          "label": "Icon Image"
-        },
-        {
-          "type": "html",
-          "id": "icon",
-          "label": "Icon SVG Code",
-          "info": "Add your SVG icon code here (used if no image selected)"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Feature Title",
-          "default": "Certified Burglary Resistance"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Feature Text",
-          "default": "<p>Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards. The blue icons indicate the burglary certification.</p>"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Collection Header",
-      "blocks": [
-        {
-          "type": "feature_item",
-          "settings": {
-            "title": "Certified Burglary Resistance",
-            "text": "<p>Tested according to European standard EN-1143-1. Security levels increase from S1, S2, Grade 0, Grade I, Grade II, Grade III, Grade IV and upwards. The blue icons indicate the burglary certification.</p>"
-          }
-        },
-        {
-          "type": "feature_item",
-          "settings": {
-            "title": "Certified Fire Protection",
-            "text": "<p>Tested according to European Standards. Safes can have certified fire protection for 30 min, 60 min, 90 min. or 120 min. The red icons indicate fire certification.</p>"
-          }
-        }
-      ]
-    }
-  ]
-}
-{% endschema %}
+  {% endschema %}

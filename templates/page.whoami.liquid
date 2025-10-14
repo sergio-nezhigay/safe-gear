@@ -1,0 +1,7 @@
+{%- layout none -%}
+{
+  "logged_in": {% if customer %}true{% else %}false{% endif %},
+  "id": {% if customer %}{{ customer.id | json }}{% else %}null{% endif %},
+  "email": {% if customer %}{{ customer.email | json }}{% else %}null{% endif %},
+  "tags": {% if customer %}{{ customer.tags | json }}{% else %}[] {% endif %}
+}

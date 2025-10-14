@@ -1,3 +1,11 @@
+p:has(> br:only-child),
+p:has(> [data-empty]),
+p:has(> &nbsp;),
+p:empty {
+  display: none;
+}
+
+
 :root {
   --font-primary: 'Inter', sans-serif;
 }
@@ -2161,7 +2169,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
 .sticky-content {
   position: sticky;
-  top: var(--sticky-header-offset, 0);
+  top: 50px;
   z-index: var(--layer-flat);
 }
 

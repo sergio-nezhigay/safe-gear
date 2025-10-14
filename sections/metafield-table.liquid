@@ -1,0 +1,915 @@
+<script
+  src="{{ 'product-metafields-tables.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<product-metafields-section
+  class="
+    product-metafields-section
+    section
+    section--{{ section.settings.section_width | default: 'page-width' }}
+    color-{{ section.settings.color_scheme }}
+    spacing-style
+  "
+  style="{% render 'spacing-style', settings: section.settings %}"
+  data-section-id="{{ section.id }}"
+  data-lazy-load="{{ section.settings.enable_lazy_loading | default: true }}"
+  role="region"
+  aria-labelledby="metafields-heading-{{ section.id }}"
+  {{ section.shopify_attributes }}
+>
+  <h2 id="metafields-heading-{{ section.id }}" class="sr-only">Product Metafields Information</h2>
+
+  <!-- Skeleton Loading State -->
+  <div class="metafields__skeleton" data-skeleton aria-hidden="true">
+    {% for i in (1..3) %}
+      <div class="skeleton-table">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-rows">
+          {% for j in (1..4) %}
+            <div class="skeleton-row">
+              <div class="skeleton-cell skeleton-cell--label"></div>
+              <div class="skeleton-cell skeleton-cell--value"></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.section_title != blank %}
+    <h3 class="metafields__main-title h4">
+      {{ section.settings.section_title }}
+    </h3>
+  {% endif %}
+
+  <div class="metafields__content" data-content>
+    {% comment %} Group metafields by creating separate tables {% endcomment %}
+
+    {% comment %} Ydre dimensioner group {% endcomment %}
+    {% assign has_ydre_dim = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Ydre dimensioner' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_ydre_dim = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_ydre_dim %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Ydre dimensioner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Ydre dimensioner' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% comment %} Indre dimensioner group {% endcomment %}
+    {% assign has_indre_dim = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Indre dimensioner' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_indre_dim = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_indre_dim %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Indre dimensioner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Indre dimensioner' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% comment %} Produktspecifikationer group {% endcomment %}
+    {% assign has_produktspec = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_produktspec = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_produktspec %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Produktspecifikationer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% comment %} Konstruktion group {% endcomment %}
+    {% assign has_konstruktion = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Konstruktion' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_konstruktion = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_konstruktion %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Konstruktion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Konstruktion' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% comment %} Installation group {% endcomment %}
+    {% assign has_installation = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Installation' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_installation = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_installation %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Installation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Installation' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+
+    {% comment %} Sikkerhed & Certifikater group {% endcomment %}
+    {% assign has_sikkerhed = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Sikkerhed & Certifikater' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_sikkerhed = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_sikkerhed %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Sikkerhed & Certifikater</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Sikkerhed & Certifikater' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td>
+                      {% if metafield_value.value.value and metafield_value.value.unit %}
+                        {{ metafield_value.value.value }}
+                        {{ metafield_value.value.unit }}
+                      {% elsif metafield_value.value %}
+                        {{ metafield_value.value }}
+                      {% else %}
+                        {{ metafield_value }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+  </div>
+</product-metafields-section>
+
+{% stylesheet %}
+  .product-metafields-section {
+    max-width: 1350px;
+    margin: 0 auto;
+    --section-padding: var(--spacing-md, 16px);
+    --table-border-radius: 12px;
+    --table-gap: var(--spacing-lg, 24px);
+    --table-header-bg: #cbe3ff;
+    --table-row-even-bg: #f8fafc;
+    --table-row-odd-bg: #ffffff;
+    --table-border-color: #e2e8f0;
+    --skeleton-opacity: 0.1;
+  }
+
+  .metafields__content {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
+
+  .table-container {
+    width: 100%;
+    margin-bottom: 24px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .metafields-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-header {
+    background: #f0f8ff;
+    color: #333;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .metafields-table td,
+  .metafields-table th {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .metafields-table td:first-child,
+  .metafields-table th:first-child {
+    width: 40%;
+    font-weight: 600;
+  }
+
+  .metafields-table tr:nth-child(even) {
+    background: #fafafa;
+  }
+
+  .metafields-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .metafields__main-title {
+    font-family: var(--font-primary--family);
+    font-size: var(--font-h4--size);
+    font-weight: var(--font-h4--weight);
+    color: var(--font-h4--color);
+    line-height: var(--font-h4--line-height);
+    text-align: left;
+    margin-bottom: clamp(24px, 4vw, 48px);
+    max-width: 1200px;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 0 12px !important;
+
+  }
+
+
+
+
+  /* URL styling */
+  .metafields-table a {
+    color: var(--color-link, #1e40af);
+    text-decoration: underline;
+    text-decoration-color: rgba(30, 64, 175, 0.3);
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .metafields-table a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Code styling for JSON */
+  .metafields-table code {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.875em;
+    word-break: break-all;
+  }
+
+  /* Skeleton Loading States */
+  .metafields__skeleton {
+    display: grid;
+    gap: var(--table-gap);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 990px) {
+    .metafields__skeleton {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+  }
+
+  .skeleton-table {
+    border-radius: var(--table-border-radius);
+    overflow: hidden;
+    background: white;
+  }
+
+  .skeleton-header {
+    height: 48px;
+    background-color: var(--table-header-bg);
+    opacity: var(--skeleton-opacity);
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 12px;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .skeleton-row:nth-child(even) {
+    background-color: var(--table-row-even-bg);
+  }
+
+  .skeleton-cell {
+    height: 16px;
+    background-color: var(--color-foreground, #000);
+    opacity: var(--skeleton-opacity);
+    border-radius: 2px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-cell--label {
+    animation-delay: 0.1s;
+  }
+
+  .skeleton-cell--value {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes skeleton-loading {
+    0%,
+    100% {
+      opacity: var(--skeleton-opacity);
+    }
+    50% {
+      opacity: calc(var(--skeleton-opacity) * 2);
+    }
+  }
+
+  /* Hide skeleton when content is loaded */
+  product-metafields-section[data-loaded] .metafields__skeleton {
+    display: none;
+  }
+
+  /* Initially hide content until loaded */
+  .metafields__content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  product-metafields-section[data-loaded] .metafields__content {
+    opacity: 1;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 600px) {
+    .metafields-table td:first-child,
+    .metafields-table th:first-child {
+      width: 36%;
+    }
+
+    .table-container {
+      padding: 0;
+    }
+
+    .metafields-table td,
+    .metafields-table th {
+      font-size: 14px;
+    }
+
+    .table-header {
+      font-size: 16px;
+    }
+
+    .metafields__content {
+      gap: var(--spacing-md, 16px);
+    }
+  }
+
+  /* Performance optimizations */
+  .product-metafields-section {
+    contain: layout;
+  }
+
+  .table-container {
+    will-change: auto;
+  }
+
+  /* Accessibility improvements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product Metafields Tables",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "metafield_row",
+      "name": "Metafield Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "group_name",
+          "label": "Group Name",
+          "default": "Product Information",
+          "info": "Rows with the same group name will be grouped together in a table"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Property",
+          "info": "Display name for this metafield"
+        },
+        {
+          "type": "text",
+          "id": "metafield_namespace",
+          "label": "Metafield Namespace",
+          "default": "custom",
+          "info": "The namespace of the metafield (e.g., 'custom', 'global')"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield Key",
+          "placeholder": "metafield_key",
+          "info": "The key of the metafield to display"
+        },
+        {
+          "type": "text",
+          "id": "unit",
+          "label": "Unit (optional)",
+          "placeholder": "cm, kg, etc.",
+          "info": "Unit to display after numeric values"
+        },
+        {
+          "type": "text",
+          "id": "true_text",
+          "label": "Text for True (boolean fields)",
+          "default": "Yes",
+          "info": "Text to show when boolean metafield is true"
+        },
+        {
+          "type": "text",
+          "id": "false_text",
+          "label": "Text for False (boolean fields)",
+          "default": "No",
+          "info": "Text to show when boolean metafield is false"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "placeholder": "Product Information"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page"
+        },
+        {
+          "value": "full-width",
+          "label": "Full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lazy_loading",
+      "label": "Enable lazy loading",
+      "info": "Improves page performance by loading content only when visible",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Metafields Tables",
+      "category": "Product",
+      "settings": {
+        "section_title": "Produktoplysninger",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "enable_lazy_loading": true,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      },
+      "blocks": [
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Højde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Bredde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Dybde",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Højde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height_interior"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Bredde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width_interior"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Indre dimensioner",
+            "label": "Dybde (indre)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_interior"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Model",
+            "metafield_namespace": "custom",
+            "metafield_key": "model"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Model Serie",
+            "metafield_namespace": "custom",
+            "metafield_key": "model_series"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Pengeskabstype",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_kind"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Formål",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_purpose"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Konstruktion",
+            "label": "Dørstruktur",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_structure"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Konstruktion",
+            "label": "Korpusstruktur",
+            "metafield_namespace": "custom",
+            "metafield_key": "body_structure"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Installation",
+            "label": "Fastgørelse",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolting"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Installation",
+            "label": "Bolte inkluderet",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolts_included",
+            "true_text": "Ja",
+            "false_text": "Nej"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Indbrudsklassifikation",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_classification"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Testmetode",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_method"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Testcenter",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_center"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Kontantrating",
+            "metafield_namespace": "custom",
+            "metafield_key": "cash_rating"
+          }
+        },
+        {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Sikkerhed & Certifikater",
+            "label": "Brandvarighed",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_duration"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -55,8 +55,7 @@
     "button_font_weight_secondary": "default",
     "cart_type": "drawer",
     "cart_price_font": "secondary",
-    "auto_open_cart_drawer": true,
-    "show_cart_note": true,
+    "show_cart_note": false,
     "show_add_discount_code": true,
     "drawer_drop_shadow": true,
     "icon_stroke": "default",
@@ -76,6 +75,23 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "icon_burglary_SSF-3492": "shopify://shop_images/ssf-3492-small.png",
+    "icon_burglary_s1": "shopify://shop_images/burglar-icon-s1-small_1_b561fa8a-d111-4701-88e0-e33c01bbf020.png",
+    "icon_burglary_s1_description": "<p>Tested according to European standard EN-1143-1. S1 level provides basic burglary resistance for home and small business use.</p>",
+    "icon_burglary_s2": "shopify://shop_images/burglar-icon-s2-small_6d23d57b-12b7-47b6-81a0-24b6f6791b57.png",
+    "icon_burglary_grade_0": "shopify://shop_images/burglar-icon-grade-0-small_12_2a9d0264-5f15-4be4-880d-888cbfaf8cd7.png",
+    "icon_burglary_grade_1": "shopify://shop_images/burglar-icon-grade-i-small_b27fedcc-5f6d-47fd-829f-5e02c0fee5d9.png",
+    "icon_burglary_grade_2": "shopify://shop_images/burglar-icon-grade-ii-small_383c2530-2757-43ec-9eab-fa60d249f14a.png",
+    "icon_burglary_grade_3": "shopify://shop_images/burglar-icon-grade-iii-small_3cabb889-01b2-418c-90a9-e979953950da.png",
+    "icon_burglary_grade_4": "shopify://shop_images/burglar-icon-grade-iv-small_9caf82ea-a55d-4ca6-a1eb-02f7f2247238.png",
+    "icon_burglary_grade_5": "shopify://shop_images/burglar-icon-v-small_0600f9ae-f614-49df-9457-48ddc362dc4c.png",
+    "icon_burglary_grade_6": "shopify://shop_images/grade_6.png",
+    "icon_burglary_grade_7": "shopify://shop_images/grade_7.png",
+    "icon_fire_insulated": "shopify://shop_images/fire_insulated_small_9.jpg",
+    "icon_fire_30_minutes": "shopify://shop_images/fire-30-min-small_1.png",
+    "icon_fire_60_minutes": "shopify://shop_images/fire-60-min-small_4.png",
+    "icon_fire_90_minutes": "shopify://shop_images/90min.png",
+    "icon_fire_120_minutes": "shopify://shop_images/fire-120-min-small_6.png",
     "content_for_index": [],
     "blocks": {
       "7870687481494312845": {
@@ -132,14 +148,19 @@
         "disabled": true,
         "settings": {}
       },
+      "2140405073069974119": {
+        "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_detection/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+        "disabled": true,
+        "settings": {}
+      },
       "8765772171712610185": {
         "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_switcher/b5b83690-efd4-434d-8c6a-a5cef4019faf",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "enable_language_switcher": true,
-          "enable_country_region_switcher": false,
+          "enable_country_region_switcher": true,
           "use_currency_for_region": false,
-          "switcher_position": "custom",
+          "switcher_position": "header",
           "show_flags": true,
           "switcher_appearance": "language-name",
           "invert_switcher_icon_colors": false,
@@ -148,10 +169,10 @@
           "language_country_mapping": "",
           "countries_filter": "",
           "custom_css": "",
-          "header_switcher_reference_element": "",
-          "header_switcher_relative_position": "before",
-          "mobile_menu_switcher_reference_element": "",
-          "mobile_switcher_relative_position": "before",
+          "header_switcher_reference_element": ".header-image.desktop-only",
+          "header_switcher_relative_position": "after",
+          "mobile_menu_switcher_reference_element": ".mobile-nav-contact",
+          "mobile_switcher_relative_position": "after",
           "header_switcher_border_width": 0,
           "switcher_viewport_position": "top-right",
           "custom_position_spacing": "55,20,20,20",
@@ -162,14 +183,9 @@
           "custom_switcher_border_color": "#000000"
         }
       },
-      "2140405073069974119": {
-        "type": "shopify://apps/t-lab-ai-language-translate/blocks/language_detection/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+      "5254461746450177899": {
+        "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/app-embed/ef8663e7-9d07-4952-bb17-2e62f084164e",
         "disabled": true,
-        "settings": {}
-      },
-      "13969055170449783870": {
-        "type": "shopify://apps/bss-b2b-solution/blocks/config-header/451233f2-9631-4c49-8b6f-057e4ebcde7f",
-        "disabled": false,
         "settings": {}
       }
     },

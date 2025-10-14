@@ -1,0 +1,237 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_xQ93jA": {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "show_home_icon": true,
+        "show_collections_link": true,
+        "show_back_button": false,
+        "home_text": "Home",
+        "collections_text": "Collections",
+        "search_text": "Search",
+        "account_text": "Account",
+        "addresses_text": "Addresses",
+        "order_text": "Order",
+        "back_text": "Back",
+        "separator": "/",
+        "background_color": "#fafafa",
+        "text_color": "#666666",
+        "accent_color": "#0a3d62",
+        "separator_color": "#cccccc",
+        "hover_background": "#e9ecef",
+        "border_color": "#e5e7eb",
+        "custom_classes": ""
+      }
+    },
+    "new_collection_grid_6AzmDC": {
+      "type": "new-collection-grid",
+      "name": "Collection Header",
+      "settings": {
+        "title": "Keep Your Valuables Secure with the Perfect Safe!",
+        "description": "{{ collection.description }}",
+        "show_more_text": "Read more",
+        "show_less_text": "Show Less",
+        "hidden_text": "{{ collection.metafields.custom.read_more_text | metafield_tag }}"
+      }
+    },
+    "collection_list_new_i6N3fD": {
+      "type": "collection-list-new",
+      "name": "Collection List with Filters",
+      "settings": {
+        "heading": "Gennemse vores sikkerhedsløsninger",
+        "description": "Udforsk vores omfattende udvalg af sikkerhedsprodukter designet til at beskytte dine værdigenstande.",
+        "show_more_link": "",
+        "show_more_text": "Klik her for mere...",
+        "show_button": true,
+        "button_text": "Se kollektion",
+        "product_button_text": "Se produkter",
+        "price_label": "fra",
+        "empty_text": "Ingen kollektioner fundet",
+        "show_products_section": true,
+        "products_per_page": 16,
+        "show_collection_name_on_products": true,
+        "show_product_button": true,
+        "products_button_text": "Se produkt",
+        "show_related_products": true,
+        "related_products_title": "Matchende produkter",
+        "related_section_description": "",
+        "related_max_products": 8,
+        "related_max_collections": 6,
+        "related_show_collection_name": false,
+        "related_show_dimensions": true,
+        "related_sort_order": "price_asc",
+        "related_loading_text": "Indlæser matchende produkter...",
+        "related_empty_text": "Ingen produkter matcher dit nuværende filtervalg.",
+        "related_button_text": "Se produkt",
+        "related_grid_columns_desktop": "4",
+        "related_grid_columns_mobile": "2",
+        "filters_title": "Filtre",
+        "burglary_grade_label": "Indbrudssikringens niveau",
+        "fire_resistance_label": "Brandmodstand",
+        "price_range_label": "Prisklasse",
+        "depth_label": "Udvendig dybde",
+        "width_label": "Udvendig bredde",
+        "height_label": "Udvendig højde",
+        "weight_label": "Vægt",
+        "mobile_filter_text": "Filtre",
+        "mobile_filter_title": "Filtre",
+        "mobile_apply_text": "Anvend filtre",
+        "mobile_clear_text": "Ryd alt",
+        "clear_filters_text": "Ryd alle filtre",
+        "show_more_categories_text": "Vis flere kategorier",
+        "show_less_categories_text": "Vis færre kategorier",
+        "results_count_text": "Viser alle kollektioner",
+        "height_display_label": "Højde",
+        "width_display_label": "Bredde",
+        "depth_display_label": "Dybde",
+        "collections_per_page": 12,
+        "show_pagination": true
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 24,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-2",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_xQ93jA",
+    "new_collection_grid_6AzmDC",
+    "collection_list_new_i6N3fD",
+    "main"
+  ]
+}

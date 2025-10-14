@@ -1,0 +1,163 @@
+
+<div class="collection-badges">
+  {% assign fire_resistance = collection.metafields.custom.fire_resistance.value %}
+  {% assign burglary_grade = collection.metafields.custom.burglary_grade.value %}
+  
+  {% if fire_resistance != blank %}
+    <div class="badge fire-badge" 
+         data-badge-type="fire" 
+         data-badge-value="{{ fire_resistance | escape }}"
+         title="Fire Resistance: {{ fire_resistance | escape }}">
+      {% case fire_resistance %}
+        {% when 'Fire Insulated' %}
+          {% if section.settings.fire_insulated_icon != blank %}
+            <img src="{{ section.settings.fire_insulated_icon | img_url: '45x45' }}" 
+                 alt="Fire Insulated"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Fire Insulated">FI</div>
+          {% endif %}
+        {% when '30 Minutes' %}
+          {% if section.settings.fire_30_icon != blank %}
+            <img src="{{ section.settings.fire_30_icon | img_url: '45x45' }}" 
+                 alt="30 Minutes Fire Resistance"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="30 Minutes Fire Resistance">30</div>
+          {% endif %}
+        {% when '60 Minutes' %}
+          {% if section.settings.fire_60_icon != blank %}
+            <img src="{{ section.settings.fire_60_icon | img_url: '45x45' }}" 
+                 alt="60 Minutes Fire Resistance"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="60 Minutes Fire Resistance">60</div>
+          {% endif %}
+        {% else %}
+          <div class="badge-placeholder" aria-label="{{ fire_resistance | escape }}">
+            {{ fire_resistance | escape | truncate: 2, '' }}
+          </div>
+      {% endcase %}
+    </div>
+  {% endif %}
+
+  {% if burglary_grade != blank %}
+    <div class="badge burglary-badge" 
+         data-badge-type="burglary" 
+         data-badge-value="{{ burglary_grade | escape }}"
+         title="Burglary Grade: {{ burglary_grade | escape }}">
+      {% case burglary_grade %}
+        {% when 'S1' %}
+          {% if section.settings.grade_s1_icon != blank %}
+            <img src="{{ section.settings.grade_s1_icon | img_url: '45x45' }}" 
+                 alt="Security Grade S1"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Security Grade S1">S1</div>
+          {% endif %}
+        {% when 'S2' %}
+          {% if section.settings.grade_s2_icon != blank %}
+            <img src="{{ section.settings.grade_s2_icon | img_url: '45x45' }}" 
+                 alt="Security Grade S2"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Security Grade S2">S2</div>
+          {% endif %}
+        {% when 'GRADE 0' %}
+          {% if section.settings.grade_0_icon != blank %}
+            <img src="{{ section.settings.grade_0_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade 0"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>
+          {% endif %}
+        {% when 'GRADE I' %}
+          {% if section.settings.grade_1_icon != blank %}
+            <img src="{{ section.settings.grade_1_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade I"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>
+          {% endif %}
+        {% when 'GRADE II' %}
+          {% if section.settings.grade_2_icon != blank %}
+            <img src="{{ section.settings.grade_2_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade II"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>
+          {% endif %}
+        {% when 'GRADE III' %}
+          {% if section.settings.grade_3_icon != blank %}
+            <img src="{{ section.settings.grade_3_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade III"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>
+          {% endif %}
+        {% when 'GRADE IV' %}
+          {% if section.settings.grade_4_icon != blank %}
+            <img src="{{ section.settings.grade_4_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade IV"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>
+          {% endif %}
+        {% when 'GRADE V' %}
+          {% if section.settings.grade_5_icon != blank %}
+            <img src="{{ section.settings.grade_5_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade V"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>
+          {% endif %}
+        {% when 'GRADE VI' %}
+          {% if section.settings.grade_6_icon != blank %}
+            <img src="{{ section.settings.grade_6_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade VI"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>
+          {% endif %}
+        {% when 'GRADE VII' %}
+          {% if section.settings.grade_7_icon != blank %}
+            <img src="{{ section.settings.grade_7_icon | img_url: '45x45' }}" 
+                 alt="Burglary Grade VII"
+                 width="45"
+                 height="45"
+                 loading="lazy">
+          {% else %}
+            <div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>
+          {% endif %}
+        {% else %}
+          <div class="badge-placeholder" aria-label="{{ burglary_grade | escape }}">
+            {{ burglary_grade | escape | truncate: 3, '' }}
+          </div>
+      {% endcase %}
+    </div>
+  {% endif %}
+</div>

@@ -155,34 +155,46 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "price_tVjtKg": {
-                  "type": "price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "color": "var(--color-foreground)",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
-                "product_title_eYVzTU",
-                "price_tVjtKg"
+                "product_title_eYVzTU"
               ]
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "security_badges_JFj4zL": {
+              "type": "security-badges",
+              "name": "Security Badges",
+              "settings": {
+                "heading": "",
+                "show_heading": false
+              },
+              "blocks": {}
             },
             "divider_VJhene": {
               "type": "_divider",
@@ -202,6 +214,31 @@
                 "variant_style": "buttons",
                 "show_swatches": false,
                 "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_Amgf6J": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": true,
+                "show_tax_info": false,
+                "currency_code_enabled_product_pages": true,
+                "currency_code_enabled_product_cards": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "2.5rem",
+                "line_height": "tight",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "color": "var(--color-foreground)",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -244,66 +281,100 @@
               },
               "block_order": []
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "Product description",
+            "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
+              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/qb-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
               "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "product": "{{closest.product}}"
+              }
+            },
+            "ymq_b2b_wholesale_solution_ol_notification_VJpCFm": {
+              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ol-notification/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "settings": {
+                "product": "{{closest.product}}"
+              }
+            },
+            "ymq_b2b_wholesale_solution_ef_table_qiwFcb": {
+              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ef-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "settings": {
+                "product": "{{closest.product}}"
+              }
             }
           },
           "block_order": [
             "group_icgrde",
+            "text_aEtTtq",
+            "security_badges_JFj4zL",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "price_Amgf6J",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "ymq_b2b_wholesale_solution_qb_table_ac89pa",
+            "ymq_b2b_wholesale_solution_ol_notification_VJpCFm",
+            "ymq_b2b_wholesale_solution_ef_table_qiwFcb"
           ]
         }
       },
+      "custom_css": [
+        ".wishlisthero-product-page-button-container {display: none !important;}"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": false,
+        "equal_columns": true,
         "limit_details_width": false,
         "gap": 48,
-        "color_scheme": "scheme-2",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "size_chart_mt_A4BzFV": {
-      "type": "size-chart-mt",
-      "name": "Size chart",
-      "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 0
       }
     },
-    "product_metafields_tables_4E7YC9": {
-      "type": "product-metafields-tables",
+    "addons_product_EU3Fbt": {
+      "type": "addons-product",
+      "name": "Product Add-ons with Sticky Cart",
+      "settings": {
+        "section_title": "Fuldfør din opsætning",
+        "section_description": "Forbedr din sikkerhed med disse anbefalede tilføjelser",
+        "products_limit": 6,
+        "cart_title": "Dit valg",
+        "main_product_label": "Hovedprodukt",
+        "total_label": "Samlet beløb",
+        "add_button_text": "Læg i kurv",
+        "remove_button_text": "Fjern",
+        "main_add_button": "Læg i kurv",
+        "checkout_button": "Gå til betaling",
+        "clear_button": "Ryd tilføjelser",
+        "sold_out_text": "Udsolgt",
+        "loading_text": "Lægger i kurven...",
+        "empty_text": "Ingen tilføjelsesprodukter er konfigureret. Angiv venligst metafeltet 'addon_products' for dette produkt."
+      }
+    },
+    "size_chart_deqbKr": {
+      "type": "size-chart",
+      "name": "Size chart",
+      "settings": {
+        "color_scheme": "",
+        "section_title": "Størrelser",
+        "header_model": "Model",
+        "header_external": "Udvendige mål",
+        "header_internal": "Indvendige mål",
+        "header_weight": "Vægt",
+        "header_price": "Pris",
+        "dimensions_unit": "HxBxD mm",
+        "weight_unit": "kg",
+        "price_prefix": "From",
+        "placeholder_title": "Size Chart Preview",
+        "placeholder_description": "This section will display a size comparison table when:",
+        "placeholder_requirement_1": "Product has related products in the \"list_product\" metafield",
+        "placeholder_requirement_2": "Product dimensions are configured via metafields",
+        "placeholder_hint": "Configure product metafields to see the actual size chart",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "metafield_table_JUaEGX": {
+      "type": "metafield-table",
       "blocks": {
-        "metafield_row_W3wjGB": {
+        "metafield_row_KP9hYt": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -315,7 +386,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_ritY68": {
+        "metafield_row_FPNB83": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -327,7 +398,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_hd3UAJ": {
+        "metafield_row_pjnLhe": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
@@ -339,7 +410,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_QNRafQ": {
+        "metafield_row_zx9YUx": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -351,7 +422,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_EW3jMP": {
+        "metafield_row_CEbTPL": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -363,7 +434,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_KJtRUm": {
+        "metafield_row_AATKW3": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Indre dimensioner",
@@ -375,7 +446,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_r4wrLd": {
+        "metafield_row_RPmccX": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -387,7 +458,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_DN4At6": {
+        "metafield_row_mtCWr6": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -399,7 +470,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_w7yYn6": {
+        "metafield_row_rjRfCY": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -411,7 +482,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_NcNPcE": {
+        "metafield_row_HDT3UM": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Produktspecifikationer",
@@ -423,7 +494,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_yGcech": {
+        "metafield_row_TtLyni": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Konstruktion",
@@ -435,7 +506,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_BdTqJc": {
+        "metafield_row_AWKmbN": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Konstruktion",
@@ -447,7 +518,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_AALDcz": {
+        "metafield_row_V4U3tF": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Installation",
@@ -459,7 +530,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_D38CA6": {
+        "metafield_row_mWAUUV": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Installation",
@@ -471,7 +542,7 @@
             "false_text": "Nej"
           }
         },
-        "metafield_row_K7wVjK": {
+        "metafield_row_npk77M": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -483,7 +554,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_tYLeVK": {
+        "metafield_row_BWyAMi": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -495,7 +566,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_PRiBAM": {
+        "metafield_row_EjK4NL": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -507,7 +578,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_AU9WHc": {
+        "metafield_row_JDxeKd": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -519,7 +590,7 @@
             "false_text": "No"
           }
         },
-        "metafield_row_RDU7E3": {
+        "metafield_row_3yQHj7": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
@@ -533,25 +604,25 @@
         }
       },
       "block_order": [
-        "metafield_row_W3wjGB",
-        "metafield_row_ritY68",
-        "metafield_row_hd3UAJ",
-        "metafield_row_QNRafQ",
-        "metafield_row_EW3jMP",
-        "metafield_row_KJtRUm",
-        "metafield_row_r4wrLd",
-        "metafield_row_DN4At6",
-        "metafield_row_w7yYn6",
-        "metafield_row_NcNPcE",
-        "metafield_row_yGcech",
-        "metafield_row_BdTqJc",
-        "metafield_row_AALDcz",
-        "metafield_row_D38CA6",
-        "metafield_row_K7wVjK",
-        "metafield_row_tYLeVK",
-        "metafield_row_PRiBAM",
-        "metafield_row_AU9WHc",
-        "metafield_row_RDU7E3"
+        "metafield_row_KP9hYt",
+        "metafield_row_FPNB83",
+        "metafield_row_pjnLhe",
+        "metafield_row_zx9YUx",
+        "metafield_row_CEbTPL",
+        "metafield_row_AATKW3",
+        "metafield_row_RPmccX",
+        "metafield_row_mtCWr6",
+        "metafield_row_rjRfCY",
+        "metafield_row_HDT3UM",
+        "metafield_row_TtLyni",
+        "metafield_row_AWKmbN",
+        "metafield_row_V4U3tF",
+        "metafield_row_mWAUUV",
+        "metafield_row_npk77M",
+        "metafield_row_BWyAMi",
+        "metafield_row_EjK4NL",
+        "metafield_row_JDxeKd",
+        "metafield_row_3yQHj7"
       ],
       "name": "Product Metafields Tables",
       "settings": {
@@ -559,22 +630,8 @@
         "section_width": "page-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "configuration_section_WLp8Hh": {
-      "type": "configuration-section",
-      "name": "Section configuration",
-      "settings": {
-        "heading": "Knowledge Base"
-      }
-    },
-    "table_product_ptaMiG": {
-      "type": "table-product",
-      "name": "Table product",
-      "settings": {
-        "title": "<p>Produktoplysninger</p>"
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_recommendations_qggXJq": {
@@ -671,6 +728,8 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
+                "currency_code_enabled_product_pages": true,
+                "currency_code_enabled_product_cards": false,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
@@ -717,21 +776,14 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "section_lock_Gkj8UT": {
-      "type": "section-lock",
-      "name": "Section lock",
-      "settings": {}
     }
   },
   "order": [
     "breadcrumbs_UaYrXQ",
     "main",
-    "section_lock_Gkj8UT",
-    "size_chart_mt_A4BzFV",
-    "product_metafields_tables_4E7YC9",
-    "configuration_section_WLp8Hh",
-    "table_product_ptaMiG",
+    "addons_product_EU3Fbt",
+    "size_chart_deqbKr",
+    "metafield_table_JUaEGX",
     "product_recommendations_qggXJq"
   ]
 }

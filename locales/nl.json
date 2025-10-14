@@ -297,5 +297,12 @@
       "success_moderated": "Reactie geplaatst, in afwachting van moderatie",
       "success": "Reactie geplaatst"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "general": {
+        "page_title": "Betalingsproces"
+      }
+    }
   }
 }

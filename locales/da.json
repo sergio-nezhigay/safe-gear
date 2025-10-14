@@ -8,7 +8,6 @@
  * ------------------------------------------------------------
  */
 {
-  
   "blocks": {
     "load_video": "Indlæs video: {{ description }}",
     "sold_out": "Udsolgt",
@@ -298,21 +297,5 @@
       "success_moderated": "Kommentaren blev indsendt og afventer moderering",
       "success": "Kommentaren blev indsendt"
     }
-  },
-  "sections": {
-    "quick_order_list": {
-      "each": "Hver" 
-    }
-  },
-  "products": {
-  "product": {
-    "price": {
-      "from_price_html": "Fra {{ price }}",
-        "regular_price": "Normalpris",
-        "sale_price": "Udsalgspris",
-        "unit_price": "Stykpris"
-    }
   }
-}
-
 }

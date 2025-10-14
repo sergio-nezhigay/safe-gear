@@ -1,9 +1,23 @@
 {%- doc -%}
   Renders the cart icon, which displays the number of items in the cart via a bubble.
 {%- enddoc -%}
+<style>
+.main-drawer-header-top .cart-bubble__background{
+  background: none;
+}
+.main-drawer-header-top.header-actions__cart-icon .cart-bubble__text{
+  background: black;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.main-drawer-header-top.header-actions__cart-icon .cart-bubble__text-count{
+  font-size: 11px;
+}
+</style>
 <cart-icon
   class="
-    header-actions__cart-icon
+    header-actions__cart-icon main-drawer-header-top
     {% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}
   "
   data-testid="cart-icon"
@@ -12,7 +26,12 @@
     class="svg-wrapper"
     aria-hidden="true"
   >
-    {{ 'icon-cart.svg' | inline_asset_content }}
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+      <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    {% comment %} {{ 'icon-cart.svg' | inline_asset_content }} {% endcomment %}
   </span>
 
   {% render 'cart-bubble', limit: 100, live_region: true, test_id: test_id %}

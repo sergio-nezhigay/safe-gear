@@ -9,7 +9,7 @@
       <span class="cart__summary-item cart__original-total">
         <span class="cart__original-total-label">{{ 'content.cart_subtotal' | t }}</span>
         <span class="cart__original-total-value cart-secondary-typography">
-          {{- cart.original_total_price | money -}}
+          <span class='ymq-b2b-price-hidden' ymq-b2b-item-key='' ymq-b2b-cart-total-price>{{- cart.original_total_price | money -}}</span>
         </span>
       </span>
       <div class="cart__summary-discounts">
@@ -69,7 +69,7 @@
         {% comment %} Used by payment_terms web component {% endcomment %}
         data-cart-subtotal
       >
-        {{ total_price }}
+        <span class='ymq-b2b-price-hidden' ymq-b2b-item-key='' ymq-b2b-cart-total-price>{{ total_price }}</span>
       </text-component>
     </span>
     {% if settings.show_installments %}
@@ -130,3 +130,4 @@
     color: var(--color-foreground);
   }
 {% endstylesheet %}
+{% comment %}<!-- ymq b2b done -->{% endcomment %}
