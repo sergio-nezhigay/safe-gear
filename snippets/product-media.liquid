@@ -17,7 +17,7 @@
 {%- enddoc -%}
 
 {% liquid
-  assign widths = widths | default: '240, 352, 832, 1200, 1600, 1920, 2560, 3840'
+  assign widths = widths | default: '240, 352, 480, 640, 832, 1200, 1600, 1920'
 %}
 
 <div
@@ -26,7 +26,7 @@
   data-media-id="{{ media.id }}"
 >
   {% liquid
-    assign high_res_url = media.preview_image | image_url: width: 3840
+    assign high_res_url = media.preview_image | image_url: width: 1920
     assign fetch_priority = 'auto'
     if is_main_product_media
       assign fetch_priority = 'high'
@@ -35,7 +35,7 @@
   %}
   {{
     media.preview_image
-    | image_url: width: 3840
+    | image_url: width: 1920
     | image_tag:
       widths: widths,
       alt: media.alt,
@@ -62,7 +62,7 @@
           >
             {{
               media.preview_image
-              | image_url: width: 3840
+              | image_url: width: 1920
               | image_tag:
                 widths: widths,
                 alt: media.alt,
