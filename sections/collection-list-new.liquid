@@ -139,28 +139,21 @@
         
         if col.products.size > 0
           for p in col.products
-            if c_b == blank
-              assign c_b = p.metafields.custom.burglary_classification.value
+            assign p_b = p.metafields.custom.burglary_classification.value
+            assign p_f = p.metafields.custom.fire_duration.value
+            
+            if p_b != blank
+              unless all_burglary_csv contains p_b
+                assign all_burglary_csv = all_burglary_csv | append: ',' | append: p_b
+              endunless
             endif
-            if c_f == blank
-              assign c_f = p.metafields.custom.fire_duration.value
-            endif
-            if c_b != blank and c_f != blank
-              break
+            
+            if p_f != blank
+              unless all_fire_csv contains p_f
+                assign all_fire_csv = all_fire_csv | append: ',' | append: p_f
+              endunless
             endif
           endfor
-        endif
-
-        if c_b != blank
-          unless all_burglary_csv contains c_b
-            assign all_burglary_csv = all_burglary_csv | append: ',' | append: c_b
-          endunless
-        endif
-
-        if c_f != blank
-          unless all_fire_csv contains c_f
-            assign all_fire_csv = all_fire_csv | append: ',' | append: c_f
-          endunless
         endif
         
         assign collection_min_price = 0
@@ -182,6 +175,23 @@
         endif
       endif
     endfor
+  endif
+
+  if is_valid_context
+    paginate collection.products by 1000
+      for product in collection.products
+        assign prod_burglary = product.metafields.custom.burglary_classification.value
+        assign prod_fire = product.metafields.custom.fire_duration.value
+        
+        if prod_burglary != blank
+          assign all_burglary_csv = all_burglary_csv | append: ',' | append: prod_burglary
+        endif
+        
+        if prod_fire != blank
+          assign all_fire_csv = all_fire_csv | append: ',' | append: prod_fire
+        endif
+      endfor
+    endpaginate
   endif
 
   if all_burglary_csv == ''
@@ -214,40 +224,15 @@
     </div>
   {% endif %}
 
+
   <div class="collections-container" 
        data-collections-per-page="{{ section.settings.collections_per_page | default: 12 }}"
        data-show-pagination="{{ section.settings.show_pagination | default: true }}">
     
-    <div class="mobile-filter-toggle">
-      <button type="button" id="mobile-filter-btn" class="mobile-filter-button">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M3 7H21L19 9V16C19 17.1 18.1 18 17 18H7C5.9 18 5 17.1 5 16V9L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        {{ section.settings.mobile_filter_text | default: 'Filters' }}
-        <span class="filter-count" id="active-filter-count" style="display: none;">0</span>
-      </button>
-    </div>
-    
-    <div class="mobile-filter-overlay" id="mobile-filter-overlay">
-      <div class="mobile-filter-drawer" id="mobile-filter-drawer">
-        <div class="mobile-filter-header">
-          <h3>{{ section.settings.mobile_filter_title | default: 'Filters' }}</h3>
-          <button type="button" id="mobile-filter-close" class="mobile-filter-close">×</button>
-        </div>
-        <div class="mobile-filter-content"></div>
-        <div class="mobile-filter-footer">
-          <button type="button" id="mobile-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'Clear All' }}</button>
-          <button type="button" id="mobile-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'Apply Filters' }}</button>
-        </div>
-      </div>
-    </div>
-
     <div class="filters-sidebar">
       <div class="filters-container">
         <h3 class="filters-title">{{ section.settings.filters_title | default: 'Filters' }}</h3>
         
-
         {% if all_burglary_grades.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="burglary">
@@ -257,16 +242,26 @@
             <div class="filter-options" data-accordion-content="burglary">
               {% assign sorted_burglary = all_burglary_grades | sort %}
               {% for grade in sorted_burglary %}
-                <label class="filter-checkbox">
-                  <input type="checkbox" name="burglary_grade" value="{{ grade }}" data-filter-type="burglary_grade">
-                  <span class="checkmark"></span>
-                  {{ grade }}
-                </label>
+                {% if grade == 'Ingen klassificering' %}
+                  <label class="filter-checkbox">
+                    <input type="checkbox" name="burglary_grade" value="{{ grade }}" data-filter-type="burglary_grade">
+                    <span class="checkmark"></span>
+                    {{ grade }}
+                  </label>
+                {% endif %}
+              {% endfor %}
+              {% for grade in sorted_burglary %}
+                {% unless grade == 'Ingen klassificering' %}
+                  <label class="filter-checkbox">
+                    <input type="checkbox" name="burglary_grade" value="{{ grade }}" data-filter-type="burglary_grade">
+                    <span class="checkmark"></span>
+                    {{ grade }}
+                  </label>
+                {% endunless %}
               {% endfor %}
             </div>
           </div>
         {% endif %}
-
 
         {% if all_fire_resistance.size > 0 %}
           <div class="filter-group">
@@ -276,17 +271,32 @@
             </h4>
             <div class="filter-options" data-accordion-content="fire">
               {% assign sorted_fire = all_fire_resistance | sort %}
+              <!-- Show fire resistance in specific order based on content -->
+              {% assign fire_order = '30minutter,60minutter,90minutter,120minutter' | split: ',' %}
+              {% for target_duration in fire_order %}
+                {% for resistance in sorted_fire %}
+                  {% if resistance == target_duration %}
+                    <label class="filter-checkbox">
+                      <input type="checkbox" name="fire_resistance" value="{{ resistance }}" data-filter-type="fire_resistance">
+                      <span class="checkmark"></span>
+                      {{ resistance }}
+                    </label>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+              <!-- Show any other fire resistance values not in the main order -->
               {% for resistance in sorted_fire %}
-                <label class="filter-checkbox">
-                  <input type="checkbox" name="fire_resistance" value="{{ resistance }}" data-filter-type="fire_resistance">
-                  <span class="checkmark"></span>
-                  {{ resistance }}
-                </label>
+                {% unless fire_order contains resistance %}
+                  <label class="filter-checkbox">
+                    <input type="checkbox" name="fire_resistance" value="{{ resistance }}" data-filter-type="fire_resistance">
+                    <span class="checkmark"></span>
+                    {{ resistance }}
+                  </label>
+                {% endunless %}
               {% endfor %}
             </div>
           </div>
         {% endif %}
-
 
         {% if max_price > 0 and min_price < max_price %}
           <div class="filter-group price-filter-group">
@@ -330,7 +340,6 @@
             </div>
           </div>
         {% endif %}
-
 
         {% assign dimensions = 'depth,width,height,weight' | split: ',' %}
         {% for dimension in dimensions %}
@@ -402,7 +411,6 @@
           {% endif %}
         {% endfor %}
 
-
         {% if all_categories.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="category">
@@ -434,8 +442,45 @@
         </div>
       </div>
     </div>
+    
+    <div class="mobile-filter-toggle">
+      <button type="button" id="mobile-filter-btn" class="mobile-filter-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M3 7H21L19 9V16C19 17.1 18.1 18 17 18H7C5.9 18 5 17.1 5 16V9L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ section.settings.mobile_filter_text | default: 'Filters' }}
+        <span class="filter-count" id="active-filter-count" style="display: none;">0</span>
+      </button>
+    </div>
+    
+    <div class="mobile-filter-overlay" id="mobile-filter-overlay">
+      <div class="mobile-filter-drawer" id="mobile-filter-drawer">
+        <div class="mobile-filter-header">
+          <h3>{{ section.settings.mobile_filter_title | default: 'Filters' }}</h3>
+          <button type="button" id="mobile-filter-close" class="mobile-filter-close">×</button>
+        </div>
+        <div class="mobile-filter-content"></div>
+        <div class="mobile-filter-footer">
+          <button type="button" id="mobile-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'Clear All' }}</button>
+          <button type="button" id="mobile-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'Apply Filters' }}</button>
+        </div>
+      </div>
+    </div>
+
 
     <div class="collections-content">
+      {% if collection.title != blank or collection.description != blank %}
+        <div class="collection-header">
+          {% if collection.title != blank %}
+            <h1 class="collection-title">{{ collection.title }}</h1>
+          {% endif %}
+          {% if collection.description != blank %}
+            <div class="collection-description">{{ collection.description | strip_html }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      
       <div class="results-info" style="display: none;">
         <div class="results-count">{{ section.settings.results_count_text | default: 'Showing all collections' }}</div>
       </div>
@@ -567,7 +612,7 @@
                       
                       {% if col.description != blank %}
                         <div class="collection-description">
-                          {{ col.description | strip_html | truncate: 120 }}
+                          {{ col.description | strip_html }}
                         </div>
                       {% endif %}
                     </div>
@@ -586,25 +631,25 @@
                           {% case fire_resistance %}
                             {% when 'Fire Insulated' or 'Brandisoleret' or 'Fireproof'%}
                               {% if settings.icon_fire_insulated %}
-                                <img src="{{ settings.icon_fire_insulated | img_url: '45x45' }}" alt="{{ settings.icon_fire_insulated_description | default: 'Fire Insulated' }}" width="45" height="45" loading="lazy">
+                                <img src="{{ settings.icon_fire_insulated | img_url: '60x60' }}" alt="{{ settings.icon_fire_insulated_description | default: 'Fire Insulated' }}" width="60" height="60" loading="lazy">
                               {% else %}<div class="badge-placeholder" aria-label="Fire Insulated">FI</div>{% endif %}
                             {% else %}
                               {% assign fire_number = fire_resistance | remove: ' Minutes' | remove: 'Minutes' | remove: ' ' | plus: 0 %}
                               {% if fire_number == 30 %}
                                 {% if settings.icon_fire_30_minutes %}
-                                  <img src="{{ settings.icon_fire_30_minutes | img_url: '45x45' }}" alt="{{ settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' }}" width="45" height="45" loading="lazy">
+                                  <img src="{{ settings.icon_fire_30_minutes | img_url: '60x60' }}" alt="{{ settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' }}" width="60" height="60" loading="lazy">
                                 {% else %}<div class="badge-placeholder" aria-label="30 Minutes Fire Resistance">30</div>{% endif %}
                               {% elsif fire_number == 60 %}
                                 {% if settings.icon_fire_60_minutes %}
-                                  <img src="{{ settings.icon_fire_60_minutes | img_url: '45x45' }}" alt="{{ settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' }}" width="45" height="45" loading="lazy">
+                                  <img src="{{ settings.icon_fire_60_minutes | img_url: '60x60' }}" alt="{{ settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' }}" width="60" height="60" loading="lazy">
                                 {% else %}<div class="badge-placeholder" aria-label="60 Minutes Fire Resistance">60</div>{% endif %}
                               {% elsif fire_number == 90 %}
                                 {% if settings.icon_fire_90_minutes %}
-                                  <img src="{{ settings.icon_fire_90_minutes | img_url: '45x45' }}" alt="{{ settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' }}" width="45" height="45" loading="lazy">
+                                  <img src="{{ settings.icon_fire_90_minutes | img_url: '60x60' }}" alt="{{ settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' }}" width="60" height="60" loading="lazy">
                                 {% else %}<div class="badge-placeholder" aria-label="90 Minutes Fire Resistance">90</div>{% endif %}
                               {% elsif fire_number == 120 %}
                                 {% if settings.icon_fire_120_minutes %}
-                                  <img src="{{ settings.icon_fire_120_minutes | img_url: '45x45' }}" alt="{{ settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' }}" width="45" height="45" loading="lazy">
+                                  <img src="{{ settings.icon_fire_120_minutes | img_url: '60x60' }}" alt="{{ settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' }}" width="60" height="60" loading="lazy">
                                 {% else %}<div class="badge-placeholder" aria-label="120 Minutes Fire Resistance">120</div>{% endif %}
                               {% else %}
                                 <div class="badge-placeholder" aria-label="{{ fire_resistance | escape }}">{{ fire_resistance | escape | truncate: 2, '' }}</div>
@@ -616,16 +661,16 @@
                       {% if burglary_grade != blank and burglary_grade != 'Ingen klassificering' and burglary_grade != 'No classification' %}
                         <div class="badge burglary-badge" data-badge-type="burglary" data-badge-value="{{ burglary_grade | escape }}" title="Burglary Grade: {{ burglary_grade | escape }}">
                           {% case burglary_grade %}
-                            {% when 'S1' %}{% if settings.icon_burglary_s1 %}<img src="{{ settings.icon_burglary_s1 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_s1_description | default: 'Security Grade S1' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S1">S1</div>{% endif %}
-                            {% when 'S2', 'S2 (YELLOW Cabinet)' %}{% if settings.icon_burglary_s2 %}<img src="{{ settings.icon_burglary_s2 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_s2_description | default: 'Security Grade S2' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S2">S2</div>{% endif %}
-                            {% when 'GRADE 0' %}{% if settings.icon_burglary_grade_0 %}<img src="{{ settings.icon_burglary_grade_0 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>{% endif %}
-                            {% when 'GRADE I', 'GRADE I (RED Skafor)' %}{% if settings.icon_burglary_grade_1 %}<img src="{{ settings.icon_burglary_grade_1 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>{% endif %}
-                            {% when 'GRADE II' %}{% if settings.icon_burglary_grade_2 %}<img src="{{ settings.icon_burglary_grade_2 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>{% endif %}
-                            {% when 'GRADE III' %}{% if settings.icon_burglary_grade_3 %}<img src="{{ settings.icon_burglary_grade_3 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>{% endif %}
-                            {% when 'GRADE IV' %}{% if settings.icon_burglary_grade_4 %}<img src="{{ settings.icon_burglary_grade_4 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>{% endif %}
-                            {% when 'GRADE V' %}{% if settings.icon_burglary_grade_5 %}<img src="{{ settings.icon_burglary_grade_5 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_5_description | default: 'Burglary Grade V' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>{% endif %}
-                            {% when 'GRADE VI' %}{% if settings.icon_burglary_grade_6 %}<img src="{{ settings.icon_burglary_grade_6 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_6_description | default: 'Burglary Grade VI' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>{% endif %}
-                            {% when 'GRADE VII' %}{% if settings.icon_burglary_grade_7 %}<img src="{{ settings.icon_burglary_grade_7 | img_url: '45x45' }}" alt="{{ settings.icon_burglary_grade_7_description | default: 'Burglary Grade VII' }}" width="45" height="45" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>{% endif %}
+                            {% when 'S1' %}{% if settings.icon_burglary_s1 %}<img src="{{ settings.icon_burglary_s1 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_s1_description | default: 'Security Grade S1' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S1">S1</div>{% endif %}
+                            {% when 'S2', 'S2 (YELLOW Cabinet)' %}{% if settings.icon_burglary_s2 %}<img src="{{ settings.icon_burglary_s2 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_s2_description | default: 'Security Grade S2' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Security Grade S2">S2</div>{% endif %}
+                            {% when 'GRADE 0' %}{% if settings.icon_burglary_grade_0 %}<img src="{{ settings.icon_burglary_grade_0 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>{% endif %}
+                            {% when 'GRADE I', 'GRADE I (RED Skafor)' %}{% if settings.icon_burglary_grade_1 %}<img src="{{ settings.icon_burglary_grade_1 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>{% endif %}
+                            {% when 'GRADE II' %}{% if settings.icon_burglary_grade_2 %}<img src="{{ settings.icon_burglary_grade_2 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>{% endif %}
+                            {% when 'GRADE III' %}{% if settings.icon_burglary_grade_3 %}<img src="{{ settings.icon_burglary_grade_3 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>{% endif %}
+                            {% when 'GRADE IV' %}{% if settings.icon_burglary_grade_4 %}<img src="{{ settings.icon_burglary_grade_4 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>{% endif %}
+                            {% when 'GRADE V' %}{% if settings.icon_burglary_grade_5 %}<img src="{{ settings.icon_burglary_grade_5 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_5_description | default: 'Burglary Grade V' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>{% endif %}
+                            {% when 'GRADE VI' %}{% if settings.icon_burglary_grade_6 %}<img src="{{ settings.icon_burglary_grade_6 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_6_description | default: 'Burglary Grade VI' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>{% endif %}
+                            {% when 'GRADE VII' %}{% if settings.icon_burglary_grade_7 %}<img src="{{ settings.icon_burglary_grade_7 | img_url: '60x60' }}" alt="{{ settings.icon_burglary_grade_7_description | default: 'Burglary Grade VII' }}" width="60" height="60" loading="lazy">{% else %}<div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>{% endif %}
                             {% else %}
                               <div class="badge-placeholder" aria-label="{{ burglary_grade | escape }}">{{ burglary_grade | escape | truncate: 3, '' }}</div>
                           {% endcase %}

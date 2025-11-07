@@ -50,6 +50,12 @@
             assign is_color_option = true
           endif
 
+          # Визначаємо чи це опція замка (підтримка різних мов)
+          assign is_lock_option = false
+          if option_name_lower == 'lock' or option_name_lower == 'lås' or option_name_lower == 'замок' or option_name_lower contains 'lock' or option_name_lower contains 'lås'
+            assign is_lock_option = true
+          endif
+
           if swatch_count > 0 and block_settings.show_swatches
             if block_settings.variant_style == 'dropdown'
               assign variant_style = 'swatch_dropdown'
@@ -72,7 +78,7 @@
           >
             <legend>
               {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' or is_color_option -%}
+              {%- if variant_style == 'swatch' or is_color_option or is_lock_option -%}
                 :<span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
@@ -80,7 +86,7 @@
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
-              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}">
+              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}{% if is_lock_option %} variant-option__button-label--lock{% endif %}">
                 <input
                   type="radio"
                   name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
@@ -432,6 +438,12 @@
     }
   }
 
+  /* Lighter border for selected lock variants */
+  .variant-option__button-label--lock:has(:checked) {
+    border-width: 1px;
+    border-color: rgba(var(--color-foreground-rgb), 0.3);
+  }
+
   .variant-option__button-label:has([data-option-available='false']) {
     color: rgb(var(--color-variant-text-rgb) / var(--opacity-60));
   }
@@ -521,6 +533,8 @@
     width: 100%;
     height: 100%;
   }
+  
+  
 
   .variant-option__button-label svg {
     display: none;
@@ -702,6 +716,13 @@
 
   .variant-option__button-label:has(.variant-lock-image):has(:checked) .variant-lock-image {
     border-color: var(--color-selected-variant-border);
-    box-shadow: 0 2px 4px rgba(var(--color-foreground-rgb), 0.1);
   }
+
+  .variant-option__button-label--lock:has(:checked) {
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
 {% endstylesheet %}

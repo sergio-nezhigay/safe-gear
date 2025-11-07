@@ -35,6 +35,7 @@
     },
     "new_collection_grid_6AzmDC": {
       "type": "new-collection-grid",
+      "disabled": true,
       "name": "Collection Header",
       "settings": {
         "title": "Keep Your Valuables Secure with the Perfect Safe!",

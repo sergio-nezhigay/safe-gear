@@ -1,3 +1,15 @@
+.site-header__icon span.wishlist-hero-items-count {
+    position: absolute;
+    width: 1rem !important;
+    height: 1rem !important;
+    top: 8px;
+    left: 20px;
+}
+
+.site-header__icon span.wishlist-hero-items-count.wishlist-hero-items-count-exists {
+    display: unset !important;
+}
+
 p:has(> br:only-child),
 p:has(> [data-empty]),
 p:has(> &nbsp;),

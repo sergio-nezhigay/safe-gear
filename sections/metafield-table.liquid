@@ -364,7 +364,7 @@
 
 {% stylesheet %}
   .product-metafields-section {
-    max-width: 1350px;
+    max-width: 100%;
     margin: 0 auto;
     --section-padding: var(--spacing-md, 16px);
     --table-border-radius: 12px;
@@ -377,10 +377,11 @@
   }
 
   .metafields__content {
-    max-width: 1250px;
+    max-width: 100%;
     margin: 0 auto;
     display: block;
     width: 100%;
+    padding: 0 30px;
   }
 
   .table-container {
@@ -438,7 +439,7 @@
     max-width: 1200px;
     margin-left: 0;
     margin-right: auto;
-    padding: 0 12px !important;
+    padding: 0 36px !important;
 
   }
 
@@ -548,6 +549,9 @@
 
   /* Mobile Responsive */
   @media screen and (max-width: 600px) {
+    .metafields__content {
+      padding: 0;
+    }
     .metafields-table td:first-child,
     .metafields-table th:first-child {
       width: 36%;

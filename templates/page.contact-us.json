@@ -98,7 +98,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h2>Our offices in Copenhagen:</h2><p>Safegear ApS<br/>Hørkær 14<br/>DK-2730 Herlev</p><p>As we are offering services in most of the European countries, we also have offices in Barcelona in Spain, and in Zurich, in Switzerland.</p><p>Do not hesitate to call us or contact us by e-mail so that we can help you.</p>",
+            "text": "<h2>Vores kontorer i  København:</h2><p>Safegear ApS<br/>Hørkær 14<br/>DK-2730 Herlev</p><p>Da vi tilbyder tjenester i de fleste europæiske lande, har vi også kontorer i Barcelona i Spanien og i Zürich i Schweiz.<br/><br/>Tøv ikke med at ringe til os eller kontakte os via e-mail, så vi kan hjælpe dig.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -248,7 +248,7 @@
                 "text_nGftL4": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Message us on WhatsApp</h2>",
+                    "text": "<h2>Skriv til os på WhatsApp</h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -399,7 +399,7 @@
                 "text_ENqhGP": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Message us on Facebook</h2>",
+                    "text": "<h2>Skriv til os på Facebook</h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",

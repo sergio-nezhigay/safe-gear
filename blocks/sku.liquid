@@ -1,0 +1,141 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  
+  if product.has_only_default_variant
+    assign display_sku = product.variants.first.sku
+  else
+    assign display_sku = current_variant.sku
+  endif
+-%}
+
+{%- if display_sku != blank -%}
+  <div class="product-sku-wrapper" data-sku-wrapper {{ block.shopify_attributes }}>
+    <div class="product-sku" data-product-sku>
+      {%- if block.settings.show_label -%}
+        {%- if block.settings.label != blank -%}
+          <span class="product-sku__label">{{ block.settings.label }}</span>
+        {%- else -%}
+          <span class="product-sku__label">SKU:</span>
+        {%- endif -%}
+      {%- endif -%}
+      <span class="product-sku__value" data-sku-value>{{ display_sku }}</span>
+    </div>
+  </div>
+
+  {%- unless product.has_only_default_variant -%}
+    <script>
+      (function() {
+        const variants = {{ product.variants | json }};
+        const skuValue = document.querySelector('[data-sku-value]');
+        const skuContainer = document.querySelector('[data-product-sku]');
+
+        function updateSKU(variantId) {
+          const variant = variants.find(v => v.id === variantId);
+          
+          if (variant && variant.sku && skuValue) {
+            skuValue.textContent = variant.sku;
+            if (skuContainer) skuContainer.style.display = '';
+          } else {
+            if (skuContainer) skuContainer.style.display = 'none';
+          }
+        }
+
+        function getCurrentVariantId() {
+          const form = document.querySelector('form[action*="/cart/add"]');
+          if (form) {
+            const variantInput = form.querySelector('[name="id"]');
+            if (variantInput) {
+              return parseInt(variantInput.value);
+            }
+          }
+          return null;
+        }
+
+        document.addEventListener('change', (e) => {
+          if (e.target.name === 'id') {
+            updateSKU(parseInt(e.target.value));
+            return;
+          }
+          
+          if (e.target.name && e.target.name.includes('option')) {
+            setTimeout(() => {
+              const currentId = getCurrentVariantId();
+              if (currentId) updateSKU(currentId);
+            }, 100);
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          const isVariantOption = e.target.matches('input[type="radio"][name*="option"]') ||
+                                  e.target.closest('.product-form__input') ||
+                                  e.target.closest('[data-option-selector]');
+          
+          if (isVariantOption) {
+            setTimeout(() => {
+              const currentId = getCurrentVariantId();
+              if (currentId) updateSKU(currentId);
+            }, 150);
+          }
+        });
+
+        let lastUrl = location.href;
+        new MutationObserver(() => {
+          const url = location.href;
+          if (url !== lastUrl) {
+            lastUrl = url;
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlVariantId = urlParams.get('variant');
+            if (urlVariantId) updateSKU(parseInt(urlVariantId));
+          }
+        }).observe(document, {subtree: true, childList: true});
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlVariantId = urlParams.get('variant');
+        if (urlVariantId) updateSKU(parseInt(urlVariantId));
+      })();
+    </script>
+  {%- endunless -%}
+{%- endif -%}
+
+<style>
+  .product-sku-wrapper {
+    display: block;
+  }
+
+  .product-sku {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .product-sku__label {
+    font-weight: 500;
+  }
+
+  .product-sku__value {
+    font-family: var(--font-body-family);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product SKU",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "SKU Label",
+      "default": "SKU:",
+      "info": "Text before SKU number"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

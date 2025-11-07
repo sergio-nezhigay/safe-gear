@@ -40,15 +40,15 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
+            "media_presentation": "carousel",
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
             "icons_style": "none",
-            "slideshow_controls_style": "counter",
+            "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 72,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -161,6 +161,15 @@
                 "product_title_eYVzTU"
               ]
             },
+            "sku_CdgQtF": {
+              "type": "sku",
+              "name": "Product SKU",
+              "settings": {
+                "label": "SKU:",
+                "show_label": true
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -208,6 +217,23 @@
               },
               "blocks": {}
             },
+            "wishlist_hero_custom_product_button_FGXkRM": {
+              "type": "shopify://apps/wishlist-hero/blocks/custom-product-button/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+              "settings": {
+                "displayButtonMode": "icon_only",
+                "contentAlignment": "center",
+                "buttonAlignment": "flex-end",
+                "buttonFontSize": 26,
+                "overrideFont": false,
+                "customFont": "sans_serif_n4",
+                "buttonFullwidth": true,
+                "removeBoxShadowAndBorder": false,
+                "horizontalPadding": 20,
+                "iconTopOffset": 0,
+                "addedCssClassNames": "",
+                "addedContainerStyles": "position: absolute;    top: 73%;    left: 85%;    scale: 1.5; max-width: fit-content;"
+              }
+            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -228,8 +254,6 @@
                 "show_sale_price_first": true,
                 "show_installments": true,
                 "show_tax_info": false,
-                "currency_code_enabled_product_pages": true,
-                "currency_code_enabled_product_cards": false,
                 "type_preset": "",
                 "width": "100%",
                 "alignment": "left",
@@ -274,6 +298,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -302,9 +327,11 @@
           },
           "block_order": [
             "group_icgrde",
+            "sku_CdgQtF",
             "text_aEtTtq",
             "security_badges_JFj4zL",
             "divider_VJhene",
+            "wishlist_hero_custom_product_button_FGXkRM",
             "variant_picker_R3rGDr",
             "price_Amgf6J",
             "buy_buttons_eYQEYi",
@@ -314,9 +341,7 @@
           ]
         }
       },
-      "custom_css": [
-        ".wishlisthero-product-page-button-container {display: none !important;}"
-      ],
+      "custom_css": [],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -350,6 +375,7 @@
     },
     "size_chart_deqbKr": {
       "type": "size-chart",
+      "custom_css": [],
       "name": "Size chart",
       "settings": {
         "color_scheme": "",
@@ -402,9 +428,9 @@
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "Dybde",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth",
+            "label": "Height - Exterior (mm)",
+            "metafield_namespace": "",
+            "metafield_key": "custom.height_exterior_mm",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No"
@@ -627,7 +653,7 @@
       "name": "Product Metafields Tables",
       "settings": {
         "section_title": "Produktoplysninger",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
         "padding-block-start": 48,
@@ -728,8 +754,6 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
-                "currency_code_enabled_product_pages": true,
-                "currency_code_enabled_product_cards": false,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",

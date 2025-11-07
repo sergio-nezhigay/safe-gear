@@ -1,74 +1,75 @@
 {% liquid
-  assign current_product = product
-  assign addon_products = current_product.metafields.custom.addon_products.value
-%}
-
-{% if addon_products != blank %}
-
-{{ 'product-addons.css' | asset_url | stylesheet_tag }}
-
-<section class="product-addons-section" data-section-id="{{ section.id }}" data-product-id="{{ current_product.id }}" data-product-handle="{{ current_product.handle }}" data-selected-variant-id="{{ current_product.selected_or_first_available_variant.id }}" data-selected-variant-price="{{ current_product.selected_or_first_available_variant.price }}" data-money-format="{{ shop.money_format | strip_html | escape }}" data-shop-currency="{{ shop.currency }}">
-  <div class="container">
-    
-    {% if section.settings.section_title != blank %}
-      <div class="addons-header">
-        <h2 class="addons-title">{{ section.settings.section_title }}</h2>
-        {% if section.settings.section_description != blank %}
-          <div class="addons-description">{{ section.settings.section_description }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    <div class="addons-layout">
+    assign current_product = product
+    assign addon_products = current_product.metafields.custom.addon_products.value
+  %}
+  
+  {% if addon_products != blank %}
+  
+  {{ 'product-addons.css' | asset_url | stylesheet_tag }}
+  
+  <section class="product-addons-section" data-section-id="{{ section.id }}" data-product-id="{{ current_product.id }}" data-product-handle="{{ current_product.handle }}" data-selected-variant-id="{{ current_product.selected_or_first_available_variant.id }}" data-selected-variant-price="{{ current_product.selected_or_first_available_variant.price }}" data-money-format="{{ shop.money_format | strip_html | escape }}" data-shop-currency="{{ shop.currency }}">
+    <div class="container">
       
-      <div class="addons-content">
-
-        <div class="addons-grid" id="addons-grid">
-          {% if addon_products != blank %}
-            {% for addon_product in addon_products limit: section.settings.products_limit %}
-              {% if addon_product != blank %}
-                <div class="addon-card" 
-                     data-product-id="{{ addon_product.id }}" 
-                     data-product-handle="{{ addon_product.handle }}"
-                     data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
-                     data-price="{{ addon_product.selected_or_first_available_variant.price }}">
-                  
-                  <div class="addon-image">
-                    {% if addon_product.featured_media %}
-                      <img src="{{ addon_product.featured_media.preview_image | img_url: '240x180', crop: 'center' }}" 
-                           alt="{{ addon_product.title | escape }}"
-                           width="120" height="90" loading="lazy">
-                    {% elsif addon_product.featured_image %}
-                      <img src="{{ addon_product.featured_image | img_url: '240x180', crop: 'center' }}" 
-                           alt="{{ addon_product.title | escape }}"
-                           width="120" height="90" loading="lazy">
-                    {% elsif addon_product.images and addon_product.images.size > 0 %}
-                      {% assign first_image = addon_product.images | first %}
-                      <img src="{{ first_image | img_url: '240x180', crop: 'center' }}" 
-                           alt="{{ addon_product.title | escape }}"
-                           width="120" height="90" loading="lazy">
-                    {% else %}
-                      <div class="addon-placeholder">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                        </svg>
-                      </div>
-                    {% endif %}
-                  </div>
-
-                    <div class="addon-info">
-                      {% assign addon_variant = addon_product.selected_or_first_available_variant %}
-                      <div class="addon-main">
-                        <h3 class="addon-title">{{ addon_product.title }}</h3>
-                        <div class="addon-price">
-                          {% if addon_variant.compare_at_price > addon_variant.price %}
-                            <span class="addon-compare-price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' ymq-b2b-product-compare-price>{{ addon_variant.compare_at_price | money }}</span></span>
-                          {% endif %}
-                          <span class="addon-current-price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ addon_variant.price | money }}</span></span>
+      {% if section.settings.section_title != blank %}
+        <div class="addons-header">
+          <h2 class="addons-title">{{ section.settings.section_title }}</h2>
+          {% if section.settings.section_description != blank %}
+            <div class="addons-description">{{ section.settings.section_description }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      <div class="addons-layout">
+        
+        <div class="addons-content">
+  
+          <div class="addons-grid" id="addons-grid">
+            {% if addon_products != blank %}
+              {% for addon_product in addon_products limit: section.settings.products_limit %}
+                {% if addon_product != blank %}
+                  <div class="addon-card" 
+                       data-product-id="{{ addon_product.id }}" 
+                       data-product-handle="{{ addon_product.handle }}"
+                       data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
+                       data-price="{{ addon_product.selected_or_first_available_variant.price }}">
+                    
+                    <div class="addon-content-row">
+                      <div class="addon-image">
+                      {% if addon_product.featured_media %}
+                        <img src="{{ addon_product.featured_media.preview_image | img_url: '240x180', crop: 'center' }}" 
+                             alt="{{ addon_product.title | escape }}"
+                             width="120" height="90" loading="lazy">
+                      {% elsif addon_product.featured_image %}
+                        <img src="{{ addon_product.featured_image | img_url: '240x180', crop: 'center' }}" 
+                             alt="{{ addon_product.title | escape }}"
+                             width="120" height="90" loading="lazy">
+                      {% elsif addon_product.images and addon_product.images.size > 0 %}
+                        {% assign first_image = addon_product.images | first %}
+                        <img src="{{ first_image | img_url: '240x180', crop: 'center' }}" 
+                             alt="{{ addon_product.title | escape }}"
+                             width="120" height="90" loading="lazy">
+                      {% else %}
+                        <div class="addon-placeholder">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                          </svg>
                         </div>
-                      </div>
-                      <div class="addon-actions">
-                        <div class="addon-add-price">+ <span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ addon_variant.price | money }}</span></div>
+                      {% endif %}
+                    </div>
+  
+                      <div class="addon-info">
+                        {% assign addon_variant = addon_product.selected_or_first_available_variant %}
+                        <div class="addon-main">
+                          <h3 class="addon-title">{{ addon_product.title }}</h3>
+                          <div class="addon-price">
+                            {% if addon_variant.compare_at_price > addon_variant.price %}
+                              <span class="addon-compare-price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' ymq-b2b-product-compare-price>{{ addon_variant.compare_at_price | money }}</span></span>
+                            {% endif %}
+                            <span class="addon-current-price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ addon_variant.price | money }}</span></span>
+                          </div>
+                        </div>
+                        <div class="addon-actions">
+                          <div class="addon-add-price">+ <span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ addon_variant.price | money }}</span></div>
                           <label class="addon-checkbox-wrapper" 
                                  data-variant-id="{{ addon_variant.id }}"
                                  data-product-title="{{ addon_product.title | escape }}"
@@ -78,209 +79,221 @@
                                    value="{{ addon_variant.id }}">
                             <span class="checkbox-checkmark"></span>
                           </label>
+                        </div>
                       </div>
                     </div>
-                </div>
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            <div class="addons-empty">
-              <p>{{ section.settings.empty_text | default: 'No add-on products available.' }}</p>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-
-      <div class="sticky-cart-sidebar">
-        <div class="sticky-cart" id="sticky-cart">
-          <div class="cart-header">
-            <h3 class="cart-title">{{ section.settings.cart_title | default: 'Your Selection' }}</h3>
-          </div>
-
-          <div class="cart-content">
-            <div class="cart-section-title">{{ section.settings.main_product_label | default: 'Main' }}</div>
-            <div class="cart-main-product">
-              <div class="cart-product-image">
-                {% if current_product.featured_image %}
-                  <img src="{{ current_product.featured_image | img_url: '80x80' }}" 
-                       alt="{{ current_product.title | escape }}"
-                       width="60" height="60">
-                {% else %}
-                  <div class="cart-product-placeholder">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
+                    
+                    <div class="addon-quantity-controls">
+                      <button type="button" class="quantity-btn quantity-minus" data-variant-id="{{ addon_variant.id }}">-</button>
+                      <input type="number" 
+                             class="addon-quantity-input" 
+                             value="1" 
+                             min="1" 
+                             max="10"
+                             data-variant-id="{{ addon_variant.id }}">
+                      <button type="button" class="quantity-btn quantity-plus" data-variant-id="{{ addon_variant.id }}">+</button>
+                    </div>
                   </div>
                 {% endif %}
+              {% endfor %}
+            {% else %}
+              <div class="addons-empty">
+                <p>{{ section.settings.empty_text | default: 'No add-on products available.' }}</p>
               </div>
-              <div class="cart-product-info">
-                <div class="cart-product-title">{{ current_product.title }}</div>
-                <div class="cart-product-price" data-price="{{ current_product.selected_or_first_available_variant.price }}"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></div>
-              </div>
-            </div>
-
-            <div class="cart-section-title">Add-ons</div>
-            <div class="cart-addons-list" id="cart-addons-list">
-            </div>
-
-            <div class="cart-summary">
-              <div class="summary-line total-line">
-                <span class="summary-label">{{ section.settings.total_label | default: 'Total' }}:</span>
-                <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
-              </div>
-            </div>
-
-            <div class="cart-actions">
-              <!-- Прихане поле для addons configuration -->
-              <input type="hidden" 
-                     id="selected_addons_config" 
-                     name="properties[Additional Items]"
-                     value="">
-              
-              <button type="button" 
-                      class="cart-add-btn" 
-                      id="main-add-to-cart"
-                      data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
-                      data-product-id="{{ current_product.id }}">
-                <span class="btn-text-add">{{ section.settings.main_add_button | default: 'Add to Cart' }}</span>
-                <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'Checkout' }}</span>
-              </button>
-              
-              <button type="button" 
-                      class="cart-clear-btn" 
-                      id="clear-addons"
-                      style="display: none;">
-                {{ section.settings.clear_button | default: 'Clear Add-ons' }}
-              </button>
-            </div>
-          </div>
-
-          <div class="cart-loading" id="cart-loading" style="display: none;">
-            <div class="loading-spinner"></div>
-            <span>{{ section.settings.loading_text | default: 'Adding to cart...' }}</span>
+            {% endif %}
           </div>
         </div>
+  
+        <div class="sticky-cart-sidebar">
+          <div class="sticky-cart" id="sticky-cart">
+            <div class="cart-header">
+              <h3 class="cart-title">{{ section.settings.cart_title | default: 'Your Selection' }}</h3>
+            </div>
+  
+            <div class="cart-content">
+              <div class="cart-section-title">{{ section.settings.main_product_label | default: 'Main' }}</div>
+              <div class="cart-main-product">
+                <div class="cart-product-image">
+                  {% if current_product.featured_image %}
+                    <img src="{{ current_product.featured_image | img_url: '80x80' }}" 
+                         alt="{{ current_product.title | escape }}"
+                         width="60" height="60">
+                  {% else %}
+                    <div class="cart-product-placeholder">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="cart-product-info">
+                  <div class="cart-product-title">{{ current_product.title }}</div>
+                  <div class="cart-product-price" data-price="{{ current_product.selected_or_first_available_variant.price }}"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></div>
+                </div>
+              </div>
+  
+              <div class="cart-section-title">Add-ons</div>
+              <div class="cart-addons-list" id="cart-addons-list">
+              </div>
+  
+              <div class="cart-summary">
+                <div class="summary-line total-line">
+                  <span class="summary-label">{{ section.settings.total_label | default: 'Total' }}:</span>
+                  <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
+                </div>
+              </div>
+  
+              <div class="cart-actions">
+                <!-- Прихане поле для addons configuration -->
+                <input type="hidden" 
+                       id="selected_addons_config" 
+                       name="properties[Additional Items]"
+                       value="">
+                
+                <button type="button" 
+                        class="cart-add-btn" 
+                        id="main-add-to-cart"
+                        data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
+                        data-product-id="{{ current_product.id }}">
+                  <span class="btn-text-add">{{ section.settings.main_add_button | default: 'Add to Cart' }}</span>
+                  <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'Checkout' }}</span>
+                </button>
+                
+                <button type="button" 
+                        class="cart-clear-btn" 
+                        id="clear-addons"
+                        style="display: none;">
+                  {{ section.settings.clear_button | default: 'Clear Add-ons' }}
+                </button>
+              </div>
+            </div>
+  
+            <div class="cart-loading" id="cart-loading" style="display: none;">
+              <div class="loading-spinner"></div>
+              <span>{{ section.settings.loading_text | default: 'Adding to cart...' }}</span>
+            </div>
+          </div>
+        </div>
+  
       </div>
-
     </div>
-  </div>
-</section>
-
-{{ 'product-addons.js' | asset_url | script_tag }}
-
-{% endif %}
-
-{% schema %}
-{
-  "name": "Product Add-ons",
-  "tag": "section",
-  "class": "product-addons-section",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Section Settings"
-    },
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Section Title",
-      "default": "Complete Your Setup"
-    },
-    {
-      "type": "textarea",
-      "id": "section_description",
-      "label": "Section Description",
-      "default": "Enhance your security with these recommended add-ons"
-    },
-    {
-      "type": "range",
-      "id": "products_limit",
-      "min": 3,
-      "max": 12,
-      "step": 1,
-      "label": "Maximum Products to Show",
-      "default": 6,
-      "info": "Maximum number of add-on products from product metafield"
-    },
-    {
-      "type": "header",
-      "content": "Cart Settings"
-    },
-    {
-      "type": "text",
-      "id": "cart_title",
-      "label": "Cart Title",
-      "default": "Your Selection"
-    },
-    {
-      "type": "text",
-      "id": "main_product_label",
-      "label": "Main Product Label",
-      "default": "Main"
-    },
-    {
-      "type": "text",
-      "id": "total_label",
-      "label": "Total Label",
-      "default": "Total"
-    },
-    {
-      "type": "header",
-      "content": "Button Text"
-    },
-    {
-      "type": "text",
-      "id": "add_button_text",
-      "label": "Add Button Text",
-      "default": "Add to Cart"
-    },
-    {
-      "type": "text",
-      "id": "remove_button_text",
-      "label": "Remove Button Text", 
-      "default": "Remove"
-    },
-    {
-      "type": "text",
-      "id": "main_add_button",
-      "label": "Main Add to Cart Button",
-      "default": "Add to Cart"
-    },
-    {
-      "type": "text",
-      "id": "checkout_button",
-      "label": "Checkout Button Text",
-      "default": "Checkout"
-    },
-    {
-      "type": "text",
-      "id": "clear_button",
-      "label": "Clear Add-ons Button",
-      "default": "Clear Add-ons"
-    },
-    {
-      "type": "text",
-      "id": "sold_out_text",
-      "label": "Sold Out Text",
-      "default": "Sold Out"
-    },
-    {
-      "type": "text",
-      "id": "loading_text",
-      "label": "Loading Text",
-      "default": "Adding to cart..."
-    },
-    {
-      "type": "text",
-      "id": "empty_text",
-      "label": "No Products Text",
-      "default": "No add-on products configured. Please set the 'addon_products' metafield for this product."
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Add-ons with Sticky Cart"
-    }
-  ]
-}
-{% endschema %}
+  </section>
+  
+  {{ 'product-addons.js' | asset_url | script_tag }}
+  
+  {% endif %}
+  
+  {% schema %}
+  {
+    "name": "Product Add-ons",
+    "tag": "section",
+    "class": "product-addons-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Complete Your Setup"
+      },
+      {
+        "type": "textarea",
+        "id": "section_description",
+        "label": "Section Description",
+        "default": "Enhance your security with these recommended add-ons"
+      },
+      {
+        "type": "range",
+        "id": "products_limit",
+        "min": 3,
+        "max": 12,
+        "step": 1,
+        "label": "Maximum Products to Show",
+        "default": 6,
+        "info": "Maximum number of add-on products from product metafield"
+      },
+      {
+        "type": "header",
+        "content": "Cart Settings"
+      },
+      {
+        "type": "text",
+        "id": "cart_title",
+        "label": "Cart Title",
+        "default": "Your Selection"
+      },
+      {
+        "type": "text",
+        "id": "main_product_label",
+        "label": "Main Product Label",
+        "default": "Main"
+      },
+      {
+        "type": "text",
+        "id": "total_label",
+        "label": "Total Label",
+        "default": "Total"
+      },
+      {
+        "type": "header",
+        "content": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "add_button_text",
+        "label": "Add Button Text",
+        "default": "Add to Cart"
+      },
+      {
+        "type": "text",
+        "id": "remove_button_text",
+        "label": "Remove Button Text", 
+        "default": "Remove"
+      },
+      {
+        "type": "text",
+        "id": "main_add_button",
+        "label": "Main Add to Cart Button",
+        "default": "Add to Cart"
+      },
+      {
+        "type": "text",
+        "id": "checkout_button",
+        "label": "Checkout Button Text",
+        "default": "Checkout"
+      },
+      {
+        "type": "text",
+        "id": "clear_button",
+        "label": "Clear Add-ons Button",
+        "default": "Clear Add-ons"
+      },
+      {
+        "type": "text",
+        "id": "sold_out_text",
+        "label": "Sold Out Text",
+        "default": "Sold Out"
+      },
+      {
+        "type": "text",
+        "id": "loading_text",
+        "label": "Loading Text",
+        "default": "Adding to cart..."
+      },
+      {
+        "type": "text",
+        "id": "empty_text",
+        "label": "No Products Text",
+        "default": "No add-on products configured. Please set the 'addon_products' metafield for this product."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Add-ons with Sticky Cart"
+      }
+    ]
+  }
+  {% endschema %}
