@@ -811,3 +811,9 @@ body.mobile-menu-open {
     padding: 0 100px;
   }
 }
+
+/* Language Switcher - Active Language Bold */
+.tl-option.active,
+.tl-option.active .tl-label {
+  font-weight: 700 !important;
+}
