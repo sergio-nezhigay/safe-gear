@@ -324,7 +324,7 @@
   }
 
   .variant-option__button-label {
-    max-width: fit-content !important; 
+    max-width: fit-content !important;
     --variant-picker-stroke-color: var(--color-variant-border);
 
     display: flex;
@@ -533,8 +533,6 @@
     width: 100%;
     height: 100%;
   }
-  
-  
 
   .variant-option__button-label svg {
     display: none;
@@ -674,7 +672,8 @@
 
   /* Simple active/selected state for color swatches */
   .variant-option__button-label:has(.swatch):has(:checked) {
-    border-color: #333;
+    border-color: #16f33b;
+    border-width: 1px;
     position: relative;
   }
 
@@ -719,10 +718,8 @@
   }
 
   .variant-option__button-label--lock:has(:checked) {
-  border-color: transparent !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-
+    border-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
 {% endstylesheet %}
