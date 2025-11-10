@@ -413,7 +413,8 @@
             "metafield_key": "new_height",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_FPNB83": {
@@ -425,7 +426,8 @@
             "metafield_key": "new_width",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_pjnLhe": {
@@ -437,7 +439,8 @@
             "metafield_key": "custom.height_exterior_mm",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_zx9YUx": {
@@ -449,7 +452,8 @@
             "metafield_key": "new_height_interior",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_CEbTPL": {
@@ -461,7 +465,8 @@
             "metafield_key": "new_width_interior",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_AATKW3": {
@@ -473,7 +478,8 @@
             "metafield_key": "new_depth_interior",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_RPmccX": {
@@ -485,7 +491,8 @@
             "metafield_key": "model",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_mtCWr6": {
@@ -497,7 +504,8 @@
             "metafield_key": "model_series",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_rjRfCY": {
@@ -509,7 +517,8 @@
             "metafield_key": "safe_kind",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_HDT3UM": {
@@ -521,7 +530,8 @@
             "metafield_key": "safe_purpose",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_weight_variant": {
@@ -533,7 +543,8 @@
             "metafield_key": "weight",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_TtLyni": {
@@ -545,7 +556,8 @@
             "metafield_key": "door_structure",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_AWKmbN": {
@@ -557,7 +569,8 @@
             "metafield_key": "body_structure",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_V4U3tF": {
@@ -569,7 +582,8 @@
             "metafield_key": "bolting",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_mWAUUV": {
@@ -581,7 +595,8 @@
             "metafield_key": "bolts_included",
             "unit": "",
             "true_text": "Ja",
-            "false_text": "Nej"
+            "false_text": "Nej",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_npk77M": {
@@ -593,7 +608,8 @@
             "metafield_key": "burglary_classification",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_BWyAMi": {
@@ -605,7 +621,8 @@
             "metafield_key": "burglary_test_method",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_EjK4NL": {
@@ -617,7 +634,8 @@
             "metafield_key": "burglary_test_center",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_JDxeKd": {
@@ -629,7 +647,8 @@
             "metafield_key": "cash_rating",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_3yQHj7": {
@@ -641,7 +660,47 @@
             "metafield_key": "fire_duration",
             "unit": "",
             "true_text": "Yes",
-            "false_text": "No"
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_JxVaQr": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_3ET4YB": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Door Light Width - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_width_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_door_light_height": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "Door Light Height - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_height_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         }
       },
@@ -665,7 +724,10 @@
         "metafield_row_BWyAMi",
         "metafield_row_EjK4NL",
         "metafield_row_JDxeKd",
-        "metafield_row_3yQHj7"
+        "metafield_row_3yQHj7",
+        "metafield_row_JxVaQr",
+        "metafield_row_3ET4YB",
+        "metafield_row_door_light_height"
       ],
       "name": "Product Metafields Tables",
       "settings": {

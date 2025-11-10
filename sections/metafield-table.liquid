@@ -75,13 +75,28 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Ydre dimensioner' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                {% comment %} Get metafield value from variant or product {% endcomment %}
+                {% if is_variant_metafield %}
+                  {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                {% else %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                {% endif %}
+
                 {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
+                  <tr
+                    {{ block.shopify_attributes }}
+                    {% if is_variant_metafield %}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                    {% endif %}
+                  >
                     <td>
                       <strong>{{ block.settings.label }}</strong>
                     </td>
-                    <td>
+                    <td data-metafield-value>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
                         {{ metafield_value.value.value }}
                         {{ metafield_value.value.unit }}
@@ -91,6 +106,20 @@
                         {{ metafield_value }}
                       {% endif %}
                     </td>
+                  </tr>
+                {% elsif is_variant_metafield %}
+                  {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                  <tr
+                    {{ block.shopify_attributes }}
+                    data-variant-metafield="true"
+                    data-metafield-key="{{ namespace }}.{{ key }}"
+                    data-variant-row
+                    style="display: none;"
+                  >
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td data-metafield-value></td>
                   </tr>
                 {% endif %}
               {% endif %}
@@ -127,13 +156,28 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Indre dimensioner' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                {% comment %} Get metafield value from variant or product {% endcomment %}
+                {% if is_variant_metafield %}
+                  {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                {% else %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                {% endif %}
+
                 {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
+                  <tr
+                    {{ block.shopify_attributes }}
+                    {% if is_variant_metafield %}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                    {% endif %}
+                  >
                     <td>
                       <strong>{{ block.settings.label }}</strong>
                     </td>
-                    <td>
+                    <td data-metafield-value>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
                         {{ metafield_value.value.value }}
                         {{ metafield_value.value.unit }}
@@ -143,6 +187,20 @@
                         {{ metafield_value }}
                       {% endif %}
                     </td>
+                  </tr>
+                {% elsif is_variant_metafield %}
+                  {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                  <tr
+                    {{ block.shopify_attributes }}
+                    data-variant-metafield="true"
+                    data-metafield-key="{{ namespace }}.{{ key }}"
+                    data-variant-row
+                    style="display: none;"
+                  >
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td data-metafield-value></td>
                   </tr>
                 {% endif %}
               {% endif %}
@@ -229,13 +287,28 @@
                   {% endif %}
                 {% else %}
                   {% comment %} Regular metafield handling {% endcomment %}
-                  {% assign metafield_value = product.metafields[namespace][key] %}
+                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                  {% comment %} Get metafield value from variant or product {% endcomment %}
+                  {% if is_variant_metafield %}
+                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                  {% else %}
+                    {% assign metafield_value = product.metafields[namespace][key] %}
+                  {% endif %}
+
                   {% if metafield_value != blank %}
-                    <tr {{ block.shopify_attributes }}>
+                    <tr
+                      {{ block.shopify_attributes }}
+                      {% if is_variant_metafield %}
+                        data-variant-metafield="true"
+                        data-metafield-key="{{ namespace }}.{{ key }}"
+                        data-variant-row
+                      {% endif %}
+                    >
                       <td>
                         <strong>{{ block.settings.label }}</strong>
                       </td>
-                      <td>
+                      <td data-metafield-value>
                         {% if metafield_value.value.value and metafield_value.value.unit %}
                           {{ metafield_value.value.value }}
                           {{ metafield_value.value.unit }}
@@ -245,6 +318,20 @@
                           {{ metafield_value }}
                         {% endif %}
                       </td>
+                    </tr>
+                  {% elsif is_variant_metafield %}
+                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                    <tr
+                      {{ block.shopify_attributes }}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                      style="display: none;"
+                    >
+                      <td>
+                        <strong>{{ block.settings.label }}</strong>
+                      </td>
+                      <td data-metafield-value></td>
                     </tr>
                   {% endif %}
                 {% endif %}
@@ -282,13 +369,28 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Konstruktion' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                {% comment %} Get metafield value from variant or product {% endcomment %}
+                {% if is_variant_metafield %}
+                  {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                {% else %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                {% endif %}
+
                 {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
+                  <tr
+                    {{ block.shopify_attributes }}
+                    {% if is_variant_metafield %}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                    {% endif %}
+                  >
                     <td>
                       <strong>{{ block.settings.label }}</strong>
                     </td>
-                    <td>
+                    <td data-metafield-value>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
                         {{ metafield_value.value.value }}
                         {{ metafield_value.value.unit }}
@@ -298,6 +400,20 @@
                         {{ metafield_value }}
                       {% endif %}
                     </td>
+                  </tr>
+                {% elsif is_variant_metafield %}
+                  {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                  <tr
+                    {{ block.shopify_attributes }}
+                    data-variant-metafield="true"
+                    data-metafield-key="{{ namespace }}.{{ key }}"
+                    data-variant-row
+                    style="display: none;"
+                  >
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td data-metafield-value></td>
                   </tr>
                 {% endif %}
               {% endif %}
@@ -334,13 +450,28 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Installation' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                {% comment %} Get metafield value from variant or product {% endcomment %}
+                {% if is_variant_metafield %}
+                  {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                {% else %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                {% endif %}
+
                 {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
+                  <tr
+                    {{ block.shopify_attributes }}
+                    {% if is_variant_metafield %}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                    {% endif %}
+                  >
                     <td>
                       <strong>{{ block.settings.label }}</strong>
                     </td>
-                    <td>
+                    <td data-metafield-value>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
                         {{ metafield_value.value.value }}
                         {{ metafield_value.value.unit }}
@@ -350,6 +481,20 @@
                         {{ metafield_value }}
                       {% endif %}
                     </td>
+                  </tr>
+                {% elsif is_variant_metafield %}
+                  {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                  <tr
+                    {{ block.shopify_attributes }}
+                    data-variant-metafield="true"
+                    data-metafield-key="{{ namespace }}.{{ key }}"
+                    data-variant-row
+                    style="display: none;"
+                  >
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td data-metafield-value></td>
                   </tr>
                 {% endif %}
               {% endif %}
@@ -386,13 +531,28 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Sikkerhed & Certifikater' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
+                {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+                {% comment %} Get metafield value from variant or product {% endcomment %}
+                {% if is_variant_metafield %}
+                  {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+                {% else %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                {% endif %}
+
                 {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
+                  <tr
+                    {{ block.shopify_attributes }}
+                    {% if is_variant_metafield %}
+                      data-variant-metafield="true"
+                      data-metafield-key="{{ namespace }}.{{ key }}"
+                      data-variant-row
+                    {% endif %}
+                  >
                     <td>
                       <strong>{{ block.settings.label }}</strong>
                     </td>
-                    <td>
+                    <td data-metafield-value>
                       {% if metafield_value.value.value and metafield_value.value.unit %}
                         {{ metafield_value.value.value }}
                         {{ metafield_value.value.unit }}
@@ -402,6 +562,20 @@
                         {{ metafield_value }}
                       {% endif %}
                     </td>
+                  </tr>
+                {% elsif is_variant_metafield %}
+                  {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+                  <tr
+                    {{ block.shopify_attributes }}
+                    data-variant-metafield="true"
+                    data-metafield-key="{{ namespace }}.{{ key }}"
+                    data-variant-row
+                    style="display: none;"
+                  >
+                    <td>
+                      <strong>{{ block.settings.label }}</strong>
+                    </td>
+                    <td data-metafield-value></td>
                   </tr>
                 {% endif %}
               {% endif %}
@@ -647,6 +821,25 @@
     white-space: nowrap;
     border: 0;
   }
+
+  /* Variant metafield row transitions */
+  tr[data-variant-row] {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    opacity: 1;
+    max-height: 100px;
+  }
+
+  tr[data-variant-row].hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  tr[data-variant-row].hidden td {
+    padding: 0;
+    border: none;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -708,6 +901,13 @@
           "label": "Text for False (boolean fields)",
           "default": "No",
           "info": "Text to show when boolean metafield is false"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_variant_metafield",
+          "label": "Variant metafield (updates on variant change)",
+          "default": false,
+          "info": "Enable this if the metafield belongs to variants, not the product. Row will show/hide based on selected variant."
         }
       ]
     }

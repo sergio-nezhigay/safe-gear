@@ -80,6 +80,9 @@ class ProductMetafieldsSection extends HTMLElement {
   connectedCallback() {
     // Add event listeners for any interactive elements
     this.addEventListener('click', this.handleClick.bind(this));
+
+    // Listen for variant changes to update variant metafields
+    document.addEventListener('variant:update', this.handleVariantUpdate.bind(this));
   }
 
   disconnectedCallback() {
@@ -87,6 +90,7 @@ class ProductMetafieldsSection extends HTMLElement {
       this.observer.disconnect();
     }
     this.removeEventListener('click', this.handleClick.bind(this));
+    document.removeEventListener('variant:update', this.handleVariantUpdate.bind(this));
   }
 
   handleClick(event) {
@@ -162,6 +166,86 @@ class ProductMetafieldsSection extends HTMLElement {
         notification.parentNode.removeChild(notification);
       }
     }, 2000);
+  }
+
+  /**
+   * Handle variant change events and update variant-specific metafields
+   * @param {CustomEvent} event - The variant:update event
+   */
+  handleVariantUpdate(event) {
+    if (!event.detail || !event.detail.data || !event.detail.data.html) {
+      return;
+    }
+
+    // Parse the HTML response to extract variant metafield values
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(event.detail.data.html, 'text/html');
+
+    // Find the metafields section in the parsed HTML
+    const updatedSection = doc.querySelector(`product-metafields-section[data-section-id="${this.sectionId}"]`);
+
+    if (!updatedSection) {
+      return;
+    }
+
+    // Get all variant metafield rows in the current DOM
+    const variantRows = this.querySelectorAll('tr[data-variant-metafield="true"]');
+
+    variantRows.forEach(row => {
+      const metafieldKey = row.dataset.metafieldKey;
+
+      if (!metafieldKey) {
+        return;
+      }
+
+      // Find the corresponding row in the updated HTML
+      const updatedRow = updatedSection.querySelector(`tr[data-metafield-key="${metafieldKey}"]`);
+
+      if (updatedRow && updatedRow.style.display !== 'none') {
+        // Variant has this metafield - update and show
+        const updatedValue = updatedRow.querySelector('[data-metafield-value]');
+        const currentValue = row.querySelector('[data-metafield-value]');
+
+        if (updatedValue && currentValue) {
+          currentValue.innerHTML = updatedValue.innerHTML;
+        }
+
+        // Show the row with transition
+        this.showRow(row);
+      } else {
+        // Variant doesn't have this metafield - hide it
+        this.hideRow(row);
+      }
+    });
+  }
+
+  /**
+   * Show a row with smooth transition
+   * @param {HTMLElement} row - The row element to show
+   */
+  showRow(row) {
+    row.style.display = '';
+
+    // Remove hidden class to trigger transition
+    requestAnimationFrame(() => {
+      row.classList.remove('hidden');
+    });
+  }
+
+  /**
+   * Hide a row with smooth transition
+   * @param {HTMLElement} row - The row element to hide
+   */
+  hideRow(row) {
+    // Add hidden class to start transition
+    row.classList.add('hidden');
+
+    // After transition completes, set display none
+    setTimeout(() => {
+      if (row.classList.contains('hidden')) {
+        row.style.display = 'none';
+      }
+    }, 300); // Match the CSS transition duration
   }
 }
 
