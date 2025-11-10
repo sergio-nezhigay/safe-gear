@@ -422,21 +422,24 @@
 
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, 'text/html');
-        
-        // Знаходимо як основну секцію, так і секцію addons
+
+        // Знаходимо як основну секцію, так і секцію addons та metafield table
         const mainSection = doc.querySelector('[id*="template--"][id*="__main"]');
         const addonsSection = doc.querySelector('.product-addons-section');
-        
-        
+        const metafieldSection = doc.querySelector('product-metafields-section');
+
+
         newContent = {
           mainSection: mainSection,
-          addonsSection: addonsSection
+          addonsSection: addonsSection,
+          metafieldSection: metafieldSection
         };
 
         if (newContent.mainSection) {
           pageCache.set(productUrl, {
             mainSection: newContent.mainSection.cloneNode(true),
-            addonsSection: newContent.addonsSection ? newContent.addonsSection.cloneNode(true) : null
+            addonsSection: newContent.addonsSection ? newContent.addonsSection.cloneNode(true) : null,
+            metafieldSection: newContent.metafieldSection ? newContent.metafieldSection.cloneNode(true) : null
           });
         }
       }
@@ -461,7 +464,7 @@
             // Видаляємо стару секцію повністю
             currentAddonsSection.remove();
           }
-          
+
           // Додаємо нову секцію після основної секції
           const newMainSection = document.querySelector('[id*="template--"][id*="__main"]');
           if (newMainSection) {
@@ -470,6 +473,13 @@
         } else if (currentAddonsSection) {
           // Якщо в новому продукті немає addons, видаляємо стару секцію
           currentAddonsSection.remove();
+        }
+
+        // Замінюємо metafield section з новими даними продукту
+        const currentMetafieldSection = document.querySelector('product-metafields-section');
+        if (newContent.metafieldSection && currentMetafieldSection) {
+          currentMetafieldSection.outerHTML = newContent.metafieldSection.outerHTML;
+          console.log('[ProductSwitcher] Metafield section replaced with new product data');
         }
 
         // Чекаємо і створюємо новий ProductAddons

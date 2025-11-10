@@ -524,6 +524,18 @@
             "false_text": "No"
           }
         },
+        "metafield_row_weight_variant": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Produktspecifikationer",
+            "label": "Vægt",
+            "metafield_namespace": "variant",
+            "metafield_key": "weight",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No"
+          }
+        },
         "metafield_row_TtLyni": {
           "type": "metafield_row",
           "settings": {
@@ -644,6 +656,7 @@
         "metafield_row_mtCWr6",
         "metafield_row_rjRfCY",
         "metafield_row_HDT3UM",
+        "metafield_row_weight_variant",
         "metafield_row_TtLyni",
         "metafield_row_AWKmbN",
         "metafield_row_V4U3tF",

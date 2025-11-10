@@ -158,10 +158,19 @@
       {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
         {% assign namespace = block.settings.metafield_namespace %}
         {% assign key = block.settings.metafield_key %}
-        {% assign metafield_value = product.metafields[namespace][key] %}
-        {% if metafield_value != blank %}
-          {% assign has_produktspec = true %}
-          {% break %}
+
+        {% comment %} Check for variant weight special case {% endcomment %}
+        {% if namespace == 'variant' and key == 'weight' %}
+          {% if product.variants.size > 0 %}
+            {% assign has_produktspec = true %}
+            {% break %}
+          {% endif %}
+        {% else %}
+          {% assign metafield_value = product.metafields[namespace][key] %}
+          {% if metafield_value != blank %}
+            {% assign has_produktspec = true %}
+            {% break %}
+          {% endif %}
         {% endif %}
       {% endif %}
     {% endfor %}
@@ -179,23 +188,65 @@
               {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
                 {% assign namespace = block.settings.metafield_namespace %}
                 {% assign key = block.settings.metafield_key %}
-                {% assign metafield_value = product.metafields[namespace][key] %}
-                {% if metafield_value != blank %}
-                  <tr {{ block.shopify_attributes }}>
-                    <td>
-                      <strong>{{ block.settings.label }}</strong>
-                    </td>
-                    <td>
-                      {% if metafield_value.value.value and metafield_value.value.unit %}
-                        {{ metafield_value.value.value }}
-                        {{ metafield_value.value.unit }}
-                      {% elsif metafield_value.value %}
-                        {{ metafield_value.value }}
-                      {% else %}
-                        {{ metafield_value }}
+
+                {% comment %} Handle variant weight special case {% endcomment %}
+                {% if namespace == 'variant' and key == 'weight' %}
+                  {% if product.variants.size > 0 %}
+                    {% comment %} Calculate min and max weight across all variants {% endcomment %}
+                    {% assign min_weight = nil %}
+                    {% assign max_weight = nil %}
+
+                    {% for variant in product.variants %}
+                      {% if variant.weight > 0 %}
+                        {% if min_weight == nil or variant.weight < min_weight %}
+                          {% assign min_weight = variant.weight %}
+                        {% endif %}
+                        {% if max_weight == nil or variant.weight > max_weight %}
+                          {% assign max_weight = variant.weight %}
+                        {% endif %}
                       {% endif %}
-                    </td>
-                  </tr>
+                    {% endfor %}
+
+                    {% if min_weight != nil %}
+                      <tr {{ block.shopify_attributes }}>
+                        <td>
+                          <strong>{{ block.settings.label }}</strong>
+                        </td>
+                        <td>
+                          {% if min_weight == max_weight %}
+                            {% comment %} All variants have same weight {% endcomment %}
+                            {% assign weight_kg = min_weight | divided_by: 1000.0 %}
+                            {{ weight_kg }} kg
+                          {% else %}
+                            {% comment %} Show weight range {% endcomment %}
+                            {% assign min_kg = min_weight | divided_by: 1000.0 %}
+                            {% assign max_kg = max_weight | divided_by: 1000.0 %}
+                            {{ min_kg }} - {{ max_kg }} kg
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endif %}
+                  {% endif %}
+                {% else %}
+                  {% comment %} Regular metafield handling {% endcomment %}
+                  {% assign metafield_value = product.metafields[namespace][key] %}
+                  {% if metafield_value != blank %}
+                    <tr {{ block.shopify_attributes }}>
+                      <td>
+                        <strong>{{ block.settings.label }}</strong>
+                      </td>
+                      <td>
+                        {% if metafield_value.value.value and metafield_value.value.unit %}
+                          {{ metafield_value.value.value }}
+                          {{ metafield_value.value.unit }}
+                        {% elsif metafield_value.value %}
+                          {{ metafield_value.value }}
+                        {% else %}
+                          {{ metafield_value }}
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endif %}
                 {% endif %}
               {% endif %}
             {% endfor %}
