@@ -1,0 +1,98 @@
+Metafield Key,Display Name,Data Population,Code References,Risk Level,Action,File Locations,Notes
+product.metafields.custom.fire_extinguisher_cartridge,Fire Extinguisher Cartridge,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_cert,Fire Extinguisher Certification 3,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_cert_add1,Fire Extinguisher Certification,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_cert_add2,Fire Extinguisher Certification 2,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_effective_ra,Fire Extinguisher Effective Range,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_operation_ty,Fire Extinguisher Operation Type,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_extinguisher_type,Fire Extinguisher Type,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_blanket_certification,Fire Blanket Certification,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_protection_product,Fire Protection Product,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu,Fire Class_2,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_a,Fire Class A,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_a_rating,Fire Class A - Rating,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_b,Fire Class B,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_b_rating,Fire Class B - Rating,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_c,Fire Class C,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_d,Fire Class D,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_e,Fire Class E,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.fire_class_eu_f,Fire Class F,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.delivery_curbside,Delivery - Curbside,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.delivery_to_final_location,Delivery to final location,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.delivery_with_bolting,Delivery with bolting,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.collection_from_safegear_warehouse_price,content_delivery price,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.extra_key_product,Extra Key product,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.drawers_product,Drawers Product,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.hinges_product,Hinges Product,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.capacity_data_lto,Capacity Data - LTO tapes,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.capacity_guns,Capacity - Guns,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.capacity_keys,Capacity - Keys,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.capacity_laptops,Capacity - Laptops,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.audit_record,Audit Record,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.bolt_type,Lock Bolt Type,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.bracket,Bracket,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.burglary_custom,Burglary Custom,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.ce_marking,CE Marking,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.configurations,Configurations,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.ctm_pdf_url,CTM PDF URL,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.custom_included,Custom Included,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.custom_product_meta,Custom Product Meta,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.door_type,Door Type,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.frame_type,Frame Type,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.inner_safe_,Inner Safe,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.ip_classification,IP Classification,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.location,Location,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.locks,locks,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.more_about_delivery_and_installation,More about delivery and installation,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.more_about_delivery_and_installation_url,More about delivery and installation Url,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_heading_first,Product PDF heading First,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_heading_second,Product PDF heading Second,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_heading_third,Product PDF heading Third,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_url_first,Product PDF URL  First,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_url_second,Product PDF URL Second,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.product_pdf_url_third,Product PDF URL Third,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.safe_depth,Safe Depth,0%,0,Low,DELETE,,Replaced by new_depth_interior
+product.metafields.custom.table,Table,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.table_height,Table Dimensions,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.what_is_included,What is included?,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.lock_product,Lock,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.silent_duress_alarm,Silent / Duress Alarm,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.these_prices,These Prices,0%,0,Low,DELETE,,No data or code references
+product.metafields.custom.mirror_classification,Mirror Classification,0%,0,Low,DELETE,,No data or code references
+shopify.light-color,Light color,0%,0,Low,DELETE,,Shopify standard metafield not in use
+shopify.lock-type,Lock type,0%,0,Low,DELETE,,Shopify standard metafield not in use
+shopify--discovery--product_recommendation.complementary_products,Complementary products,0%,0,Low,DELETE,,Shopify product recommendations not in use
+shopify--discovery--product_recommendation.related_products,Related products,0%,0,Low,DELETE,,Shopify product recommendations not in use
+shopify--discovery--product_recommendation.related_products_display,Related products settings,0%,0,Low,DELETE,,Shopify product recommendations not in use
+shopify--discovery--product_search_boost.queries,Search product boosts,0%,0,Low,DELETE,,Shopify search boost not in use
+product.metafields.custom.new_depth,Depth - Exterior (mm),Unknown,10,High,KEEP - VERIFY DATA,"collection-list-new.liquid, collection-list-all.liquid, collection-grid.liquid, size-chart.liquid, L1-collection.liquid, new-collection-grid.liquid",Critical for filtering and display - verify has data in Shopify Admin
+product.metafields.custom.new_width,Width - Exterior (mm),Unknown,10,High,KEEP - VERIFY DATA,"collection-list-new.liquid, collection-list-all.liquid, collection-grid.liquid, size-chart.liquid, L1-collection.liquid, new-collection-grid.liquid",Critical for filtering and display - verify has data in Shopify Admin
+product.metafields.custom.new_height,Height - Exterior (mm),Unknown,10,High,KEEP - VERIFY DATA,"collection-list-new.liquid, collection-list-all.liquid, collection-grid.liquid, size-chart.liquid, L1-collection.liquid, new-collection-grid.liquid",Critical for filtering and display - verify has data in Shopify Admin
+product.metafields.custom.weight,Weight,Unknown,8,High,KEEP - VERIFY DATA,"collection-list-new.liquid, collection-list-all.liquid, collection-grid.liquid, size-chart.liquid, L1-collection.liquid, new-collection-grid.liquid",Important for specifications - verify has data in Shopify Admin
+product.metafields.custom.burglary_classification,Burglary Classification,0.1%,15+,High,KEEP - VERIFY DATA,"Multiple files including collection badges, product pages, filters",Core business differentiator - needs data population
+product.metafields.custom.fire_duration,Fire Duration,0.1%,15+,High,KEEP - VERIFY DATA,"Multiple files including collection badges, product pages, filters",Core business differentiator - needs data population
+product.metafields.custom.addon_products,Addon Products,0.0%,2,Medium,REVIEW,"addons-product.liquid",Only 1 product uses this - keep if add-ons feature is important
+product.metafields.custom.list_product,List product,0.0%,2,Medium,REVIEW,"size-chart.liquid",Only 6 products use this - keep if comparison tables are important
+product.metafields.custom.lock_type_test,Lock Type Test,0.0%,2,Medium,REVIEW,"variant-main-picker.liquid",Only 7 products use this - keep if lock images are important
+product.metafields.custom.new_depth_interior,Depth - Interior (mm),0.2%,2,Medium,REVIEW,"metafield-table.liquid, size-chart.liquid",Only 36 products have data - keep if interior dimensions are needed
+product.metafields.custom.new_width_interior,Width - Interior (mm),0.2%,2,Medium,REVIEW,"metafield-table.liquid, size-chart.liquid",Only 36 products have data - keep if interior dimensions are needed
+product.metafields.custom.new_height_interior,Height - Interior,0.2%,2,Medium,REVIEW,"metafield-table.liquid, size-chart.liquid",Only 36 products have data - keep if interior dimensions are needed
+product.metafields.custom.model,Model,0.2%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.model_series,Safe Series,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.safe_kind,Safe Kind,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.safe_purpose,Safe Purpose,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.door_structure,Door Structure,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.body_structure,Body structure,0.0%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.bolting,Bolting,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.bolts_included,Bolts Included,0.0%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.burglary_test_method,Burglary Test Method,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.burglary_test_center,Burglary Test Center,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+product.metafields.custom.cash_rating,Cash Rating,0.1%,1,Medium,REVIEW,metafield-table.liquid,Dynamic rendering - check if specification table is used
+collection.metafields.custom.read_more_text,Collection Read More,Unknown,4,Medium,REVIEW,"collection.json, collection.l1-collection.json, collection.l2-collection.json, collection.collection-listing.json",Check if collections use expandable descriptions
+collection.metafields.custom.l1_subcategory,L1 Subcategory,Unknown,1,Medium,REVIEW,L1-collection.liquid,Keep if using hierarchical collection navigation
+collection.metafields.custom.safe_view_file,Safe View File,Unknown,2,Medium,REVIEW,"collection-list-new.liquid, collection-list-all.liquid",Keep if collections have visualization files
+collection.metafields.custom.burglary_grade,Burglary Grade (Collection),Unknown,3,Medium,REVIEW,"collection-badges.liquid, collection-list-all.liquid",Remove if only showing product-level badges
+collection.metafields.custom.fire_resistance,Fire Resistance (Collection),Unknown,3,Medium,REVIEW,"collection-badges.liquid, collection-list-all.liquid",Remove if only showing product-level badges
+reviews.rating.value.rating,Review Rating,Unknown,1,Medium,KEEP IF APP INSTALLED,blocks/review.liquid,Only if using reviews app (Judge.me/Loox/Yotpo)
+reviews.rating.value.scale_max,Review Scale Max,Unknown,1,Medium,KEEP IF APP INSTALLED,blocks/review.liquid,Only if using reviews app
+reviews.rating_count,Review Count,Unknown,1,Medium,KEEP IF APP INSTALLED,blocks/review.liquid,Only if using reviews app
