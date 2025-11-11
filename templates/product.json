@@ -703,6 +703,19 @@
             "false_text": "No",
             "is_variant_metafield": true
           }
+        },
+        "metafield_row_pdf_document": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Dokumenter",
+            "label": "Produktdokumentation (PDF)",
+            "metafield_namespace": "custom",
+            "metafield_key": "product_document",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
         }
       },
       "block_order": [
@@ -728,7 +741,8 @@
         "metafield_row_3yQHj7",
         "metafield_row_3ET4YB",
         "metafield_row_door_light_height",
-        "metafield_row_Cyac6k"
+        "metafield_row_Cyac6k",
+        "metafield_row_pdf_document"
       ],
       "name": "Product Metafields Tables",
       "settings": {

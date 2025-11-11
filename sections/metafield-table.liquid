@@ -584,6 +584,69 @@
         </table>
       </div>
     {% endif %}
+
+    {% comment %} Dokumenter group - PDF documents {% endcomment %}
+    {% assign has_dokumenter = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'metafield_row' and block.settings.group_name == 'Dokumenter' %}
+        {% assign namespace = block.settings.metafield_namespace %}
+        {% assign key = block.settings.metafield_key %}
+        {% assign metafield_value = product.metafields[namespace][key] %}
+        {% if metafield_value != blank %}
+          {% assign has_dokumenter = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_dokumenter %}
+      <div class="table-container">
+        <table class="metafields-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="table-header">Dokumenter</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'metafield_row' and block.settings.group_name == 'Dokumenter' %}
+                {% assign namespace = block.settings.metafield_namespace %}
+                {% assign key = block.settings.metafield_key %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+
+                {% if metafield_value != blank %}
+                  <tr {{ block.shopify_attributes }}>
+                    <td colspan="2" class="pdf-document-cell">
+                      <a
+                        href="{{ metafield_value }}"
+                        class="pdf-download-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                      >
+                        <svg class="pdf-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        <span class="pdf-label">{{ block.settings.label }}</span>
+                        <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="7 10 12 15 17 10"></polyline>
+                          <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                      </a>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
   </div>
 </product-metafields-section>
 
@@ -681,6 +744,75 @@
 
   .metafields-table a:hover {
     text-decoration-color: currentColor;
+  }
+
+  /* PDF Document Cell */
+  .pdf-document-cell {
+    padding: 16px !important;
+  }
+
+  /* PDF Download Button */
+  .pdf-download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pdf-download-button:hover {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .pdf-download-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2);
+  }
+
+  .pdf-icon {
+    flex-shrink: 0;
+    stroke: white;
+  }
+
+  .pdf-label {
+    flex: 1;
+    text-align: center;
+  }
+
+  .download-icon {
+    flex-shrink: 0;
+    stroke: white;
+    opacity: 0.9;
+  }
+
+  /* Mobile responsive for PDF button */
+  @media screen and (max-width: 600px) {
+    .pdf-download-button {
+      font-size: 14px;
+      padding: 10px 16px;
+      gap: 8px;
+    }
+
+    .pdf-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .download-icon {
+      width: 14px;
+      height: 14px;
+    }
   }
 
   /* Code styling for JSON */
