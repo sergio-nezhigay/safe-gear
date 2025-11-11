@@ -27,11 +27,13 @@
             {% if addon_products != blank %}
               {% for addon_product in addon_products limit: section.settings.products_limit %}
                 {% if addon_product != blank %}
-                  <div class="addon-card" 
-                       data-product-id="{{ addon_product.id }}" 
+                  {% assign addon_type = addon_product.metafields.custom.addon_type.value | default: 'quantity' %}
+                  <div class="addon-card addon-card--{{ addon_type }}"
+                       data-product-id="{{ addon_product.id }}"
                        data-product-handle="{{ addon_product.handle }}"
                        data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
-                       data-price="{{ addon_product.selected_or_first_available_variant.price }}">
+                       data-price="{{ addon_product.selected_or_first_available_variant.price }}"
+                       data-addon-type="{{ addon_type }}">
                     
                     <div class="addon-content-row">
                       <div class="addon-image">
@@ -82,17 +84,19 @@
                         </div>
                       </div>
                     </div>
-                    
-                    <div class="addon-quantity-controls">
-                      <button type="button" class="quantity-btn quantity-minus" data-variant-id="{{ addon_variant.id }}">-</button>
-                      <input type="number" 
-                             class="addon-quantity-input" 
-                             value="1" 
-                             min="1" 
-                             max="10"
-                             data-variant-id="{{ addon_variant.id }}">
-                      <button type="button" class="quantity-btn quantity-plus" data-variant-id="{{ addon_variant.id }}">+</button>
-                    </div>
+
+                    {% if addon_type == 'quantity' %}
+                      <div class="addon-quantity-controls">
+                        <button type="button" class="quantity-btn quantity-minus" data-variant-id="{{ addon_variant.id }}">-</button>
+                        <input type="number"
+                               class="addon-quantity-input"
+                               value="1"
+                               min="1"
+                               max="10"
+                               data-variant-id="{{ addon_variant.id }}">
+                        <button type="button" class="quantity-btn quantity-plus" data-variant-id="{{ addon_variant.id }}">+</button>
+                      </div>
+                    {% endif %}
                   </div>
                 {% endif %}
               {% endfor %}

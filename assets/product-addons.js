@@ -245,26 +245,30 @@ async handleAddonCheckboxChange(checkbox) {
       const variantId = button.dataset.variantId;
       const card = button.closest(this.selectors.addonCard);
       const quantityInput = card.querySelector(this.selectors.quantityInput);
-      
+
       if (!quantityInput) return;
-      
+
+      // Skip quantity changes for yes/no addons
+      const addonType = card.dataset.addonType || 'quantity';
+      if (addonType === 'yes_no') return;
+
       let currentQuantity = parseInt(quantityInput.value) || 1;
       const min = parseInt(quantityInput.getAttribute('min')) || 1;
       const max = parseInt(quantityInput.getAttribute('max')) || 10;
-      
+
       if (action === 'plus' && currentQuantity < max) {
         currentQuantity++;
       } else if (action === 'minus' && currentQuantity > min) {
         currentQuantity--;
       }
-      
+
       quantityInput.value = currentQuantity;
       this.updateAddonQuantity(variantId, currentQuantity, card);
-      
+
       // Update button states
       const minusBtn = card.querySelector(this.selectors.quantityMinus);
       const plusBtn = card.querySelector(this.selectors.quantityPlus);
-      
+
       if (minusBtn) minusBtn.disabled = currentQuantity <= min;
       if (plusBtn) plusBtn.disabled = currentQuantity >= max;
     }
@@ -272,22 +276,27 @@ async handleAddonCheckboxChange(checkbox) {
     handleQuantityInputChange(input) {
       const variantId = input.dataset.variantId;
       const card = input.closest(this.selectors.addonCard);
+
+      // Skip quantity changes for yes/no addons
+      const addonType = card.dataset.addonType || 'quantity';
+      if (addonType === 'yes_no') return;
+
       const min = parseInt(input.getAttribute('min')) || 1;
       const max = parseInt(input.getAttribute('max')) || 10;
-      
+
       let quantity = parseInt(input.value) || min;
-      
+
       // Ensure quantity is within bounds
       if (quantity < min) quantity = min;
       if (quantity > max) quantity = max;
-      
+
       input.value = quantity;
       this.updateAddonQuantity(variantId, quantity, card);
-      
+
       // Update button states
       const minusBtn = card.querySelector(this.selectors.quantityMinus);
       const plusBtn = card.querySelector(this.selectors.quantityPlus);
-      
+
       if (minusBtn) minusBtn.disabled = quantity <= min;
       if (plusBtn) plusBtn.disabled = quantity >= max;
     }
@@ -344,13 +353,15 @@ async handleAddonCheckboxChange(checkbox) {
       if (!variantId || !title || !card || !element) {
         return;
       }
-  
+
       const imageEl = card.querySelector('.addon-image img');
       const image = imageEl ? imageEl.src : null;
-  
+
       // Get quantity from input, default to 1
+      // For yes/no addons, always use quantity 1
+      const addonType = card.dataset.addonType || 'quantity';
       const quantityInput = card.querySelector(this.selectors.quantityInput);
-      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+      const quantity = addonType === 'yes_no' ? 1 : (quantityInput ? parseInt(quantityInput.value) || 1 : 1);
 
       if (this.cart.addons.has(variantId)) {
         const existing = this.cart.addons.get(variantId);
@@ -437,10 +448,12 @@ async handleAddonCheckboxChange(checkbox) {
           this.showNotification('Main product not found in cart', 'error');
           return;
         }
-  
+
         // Get quantity from input, default to 1
+        // For yes/no addons, always use quantity 1
+        const addonType = card.dataset.addonType || 'quantity';
         const quantityInput = card.querySelector(this.selectors.quantityInput);
-        const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+        const quantity = addonType === 'yes_no' ? 1 : (quantityInput ? parseInt(quantityInput.value) || 1 : 1);
 
         // Додаємо addon без parent_id (додамо після)
         const addResponse = await fetch('/cart/add.js', {

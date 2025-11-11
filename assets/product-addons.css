@@ -1133,3 +1133,8 @@
   outline: none;
   border-color: #666;
 }
+
+/* Hide quantity controls for yes/no addon types */
+.addon-card--yes_no .addon-quantity-controls {
+  display: none !important;
+}
