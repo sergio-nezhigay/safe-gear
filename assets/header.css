@@ -1,10 +1,28 @@
 .site-header {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  position: sticky;
+  /*position: fixed;*/
   top: 0;
+  width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
+}
+
+/* NEW: fixed-only state applied via JS */
+.site-header.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* higher than normal header layers */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  /* keep transition smooth */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* optional fallback so content doesn't jump if JS didn't set inline margin */
+.site-header.is-fixed + * {
+  margin-top: var(--site-header-height, 0px);
 }
 
 .header-container {
@@ -266,6 +284,22 @@
   background-color: var(--header-bg);
   border-top: 1px solid var(--header-border);
   padding: 0.75rem 0;
+
+  /* enable smooth collapse/expand */
+  max-height: 800px; /* large enough for expanded nav */
+  overflow: hidden;
+  transition: max-height 160ms cubic-bezier(0.4, 0, 0.2, 1), padding 100ms ease,
+    opacity 50ms ease;
+  opacity: 1;
+}
+
+/* when header becomes fixed, smoothly collapse the nav */
+.site-header.is-fixed .header-nav {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none; /* prevents accidental interaction while collapsed */
 }
 
 .nav-container {

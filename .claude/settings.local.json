@@ -23,7 +23,10 @@
       "Bash(nul)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(more:*)"
+      "Bash(more:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_evaluate"
     ],
     "deny": [],
     "ask": []

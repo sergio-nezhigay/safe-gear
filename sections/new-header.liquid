@@ -22,7 +22,7 @@
       <div class="header-logo">
         {% if section.settings.logo != blank %}
           <a href="{{ routes.root_url }}" class="logo-link">
-            <img 
+            <img
               src="{{ section.settings.logo | img_url: '300x100' }}"
               alt="{{ shop.name }}"
               loading="lazy"
@@ -39,9 +39,9 @@
       {% if section.settings.show_search %}
         <div class="header-search">
           <form action="{{ routes.search_url }}" method="get" class="search-form">
-            <input 
-              type="search" 
-              name="q" 
+            <input
+              type="search"
+              name="q"
               placeholder="{{ section.settings.search_placeholder }}"
               value="{{ search.terms | escape }}"
               class="search-input"
@@ -60,8 +60,13 @@
       {% if section.settings.header_image != blank %}
         <div class="header-image desktop-only">
           {% if section.settings.header_image_link != blank %}
-            <a href="{{ section.settings.header_image_link }}" class="header-image-link" target="_blank" rel="noopener noreferrer">
-              <img 
+            <a
+              href="{{ section.settings.header_image_link }}"
+              class="header-image-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
                 src="{{ section.settings.header_image | img_url: '150x60' }}"
                 alt="{{ section.settings.header_image_alt | default: 'Header Image' }}"
                 loading="lazy"
@@ -69,7 +74,7 @@
               >
             </a>
           {% else %}
-            <img 
+            <img
               src="{{ section.settings.header_image | img_url: '150x60' }}"
               alt="{{ section.settings.header_image_alt | default: 'Header Image' }}"
               loading="lazy"
@@ -79,9 +84,7 @@
         </div>
       {% endif %}
 
-
       <div class="header-actions">
-
         {% if section.settings.show_account %}
           <a href="{{ routes.account_url }}" class="header-account" aria-label="Account">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,12 +95,30 @@
         {% endif %}
 
         {%- comment -%} Wishlist Hero Button {%- endcomment -%}
-        <div id="shopify-block-AWjBhVkdaYlhFNlRUd__wishlist_hero_header_icon_nc6Xkk" class="shopify-block shopify-app-block wishlisthero-header-block" style='padding-top: 10px;'>
-          <a class="site-header__icon header__icon link link--text focus-inset wishlist-hero-header-icon" style="position: relative;" href="#hero-wishlist" aria-label="Open Wishlist">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="wlh-svg-Icon wlh-svg-icon-heart-empty wlh-theme-Horizon" style="width:1em;font-size:22px;">
+        <div
+          id="shopify-block-AWjBhVkdaYlhFNlRUd__wishlist_hero_header_icon_nc6Xkk"
+          class="shopify-block shopify-app-block wishlisthero-header-block"
+          style="padding-top: 10px;"
+        >
+          <a
+            class="site-header__icon header__icon link link--text focus-inset wishlist-hero-header-icon"
+            style="position: relative;"
+            href="#hero-wishlist"
+            aria-label="Open Wishlist"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              class="wlh-svg-Icon wlh-svg-icon-heart-empty wlh-theme-Horizon"
+              style="width:1em;font-size:22px;"
+            >
               <path d="M29.728 10.656q0-1.472-0.384-2.56t-0.992-1.76-1.472-1.056-1.664-0.576-1.76-0.128-1.984 0.448-1.984 1.152-1.536 1.28-1.088 1.088q-0.32 0.416-0.864 0.416t-0.864-0.416q-0.448-0.48-1.088-1.088t-1.536-1.28-1.984-1.152-1.984-0.448-1.76 0.128-1.664 0.576-1.472 1.056-0.992 1.76-0.384 2.56q0 2.976 3.36 6.336l10.368 9.984 10.368-9.984q3.36-3.36 3.36-6.336zM32 10.656q0 3.936-4.096 8.032l-11.104 10.72q-0.32 0.32-0.8 0.32t-0.8-0.32l-11.136-10.752q-0.16-0.16-0.48-0.48t-0.992-1.184-1.216-1.728-0.96-2.144-0.416-2.464q0-3.936 2.272-6.144t6.272-2.24q1.088 0 2.24 0.384t2.144 1.056 1.728 1.216 1.344 1.216q0.64-0.64 1.344-1.216t1.728-1.216 2.144-1.056 2.24-0.384q4 0 6.272 2.24t2.272 6.144z"></path>
             </svg>
-            <span class="wishlist-hero-items-count wishlist-hero-items-count-text-plain cart-count-bubble wishlist-hero-items-count-exists" style="display: inline-block;">1</span>
+            <span
+              class="wishlist-hero-items-count wishlist-hero-items-count-text-plain cart-count-bubble wishlist-hero-items-count-exists"
+              style="display: inline-block;"
+              >1</span
+            >
           </a>
         </div>
 
@@ -167,7 +188,7 @@
                 {{ section.settings.phone_number }}
               </a>
             {% endif %}
-            
+
             {% if section.settings.help_text != blank %}
               {% if section.settings.help_link != blank %}
                 <a href="{{ section.settings.help_link }}" class="contact-help">{{ section.settings.help_text }}</a>
@@ -218,7 +239,6 @@
               {% endif %}
             </div>
           {% endfor %}
-          
         </div>
 
         <div class="mobile-nav-contact">
@@ -227,10 +247,12 @@
               {{ section.settings.phone_number }}
             </a>
           {% endif %}
-          
+
           {% if section.settings.help_text != blank %}
             {% if section.settings.help_link != blank %}
-              <a href="{{ section.settings.help_link }}" class="mobile-contact-help">{{ section.settings.help_text }}</a>
+              <a href="{{ section.settings.help_link }}" class="mobile-contact-help">
+                {{- section.settings.help_text -}}
+              </a>
             {% else %}
               <span class="mobile-contact-help">{{ section.settings.help_text }}</span>
             {% endif %}
@@ -242,135 +264,160 @@
 </header>
 
 <script>
-(function() {
-  'use strict';
-  
-  const header = document.getElementById('{{ section.id }}');
-  if (!header) return;
-  
-  const searchToggle = header.querySelector('.header-search-mobile');
-  const searchBar = header.querySelector('.header-search');
-  const mobileMenuToggle = header.querySelector('.mobile-menu-toggle');
-  const mobileNavClose = header.querySelector('.mobile-nav-close');
-  const mobileNavOverlay = header.querySelector('.mobile-nav-overlay');
-  const mobileNav = header.querySelector('.mobile-nav');
-  const body = document.body;
-  
-  function toggleMobileSearch() {
-    const isOpen = searchBar.classList.contains('is-open');
-    searchBar.classList.toggle('is-open');
-    searchToggle.classList.toggle('is-active');
-    
-    if (!isOpen) {
-      const searchInput = searchBar.querySelector('.search-input');
-      if (searchInput) {
-        setTimeout(() => searchInput.focus(), 300);
+  (function () {
+    'use strict';
+
+    const header = document.getElementById('{{ section.id }}');
+    if (!header) return;
+
+    const searchToggle = header.querySelector('.header-search-mobile');
+    const searchBar = header.querySelector('.header-search');
+    const mobileMenuToggle = header.querySelector('.mobile-menu-toggle');
+    const mobileNavClose = header.querySelector('.mobile-nav-close');
+    const mobileNavOverlay = header.querySelector('.mobile-nav-overlay');
+    const mobileNav = header.querySelector('.mobile-nav');
+    const body = document.body;
+
+    function toggleMobileSearch() {
+      const isOpen = searchBar.classList.contains('is-open');
+      searchBar.classList.toggle('is-open');
+      searchToggle.classList.toggle('is-active');
+
+      if (!isOpen) {
+        const searchInput = searchBar.querySelector('.search-input');
+        if (searchInput) {
+          setTimeout(() => searchInput.focus(), 300);
+        }
       }
     }
-  }
-  
-  function toggleMobileMenu() {
-    const isOpen = mobileNav.classList.contains('is-open');
-    mobileNav.classList.toggle('is-open');
-    body.classList.toggle('mobile-menu-open');
-    
-    if (!isOpen) {
-      setTimeout(() => body.style.overflow = 'hidden', 300);
-    } else {
+
+    function toggleMobileMenu() {
+      const isOpen = mobileNav.classList.contains('is-open');
+      mobileNav.classList.toggle('is-open');
+      body.classList.toggle('mobile-menu-open');
+
+      if (!isOpen) {
+        setTimeout(() => (body.style.overflow = 'hidden'), 300);
+      } else {
+        body.style.overflow = '';
+      }
+    }
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove('is-open');
+      body.classList.remove('mobile-menu-open');
       body.style.overflow = '';
     }
-  }
-  
-  function closeMobileMenu() {
-    mobileNav.classList.remove('is-open');
-    body.classList.remove('mobile-menu-open');
-    body.style.overflow = '';
-  }
-  
-  if (searchToggle && searchBar) {
-    searchToggle.addEventListener('click', toggleMobileSearch);
-  }
-  
-  if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-  }
-  
-  if (mobileNavClose) {
-    mobileNavClose.addEventListener('click', closeMobileMenu);
-  }
-  
-  if (mobileNavOverlay) {
-    mobileNavOverlay.addEventListener('click', closeMobileMenu);
-  }
-  
-  const mobileNavItems = header.querySelectorAll('.mobile-nav-item.has-submenu');
-  
-  mobileNavItems.forEach(item => {
-    const link = item.querySelector('.mobile-nav-link');
-    const submenu = item.querySelector('.mobile-submenu');
-    
-    if (link && submenu) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        item.classList.toggle('is-open');
-      });
+
+    if (searchToggle && searchBar) {
+      searchToggle.addEventListener('click', toggleMobileSearch);
     }
-  });
-  
-  const navItems = header.querySelectorAll('.nav-item');
-  
-  navItems.forEach(item => {
-    const dropdown = item.querySelector('.nav-dropdown');
-    
-    if (dropdown) {
-      let timeoutId;
-      
-      item.addEventListener('mouseenter', function() {
-        clearTimeout(timeoutId);
-        item.classList.add('menu-open');
-        dropdown.style.display = 'block';
-        requestAnimationFrame(() => {
-          dropdown.classList.add('is-open');
+
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (mobileNavClose) {
+      mobileNavClose.addEventListener('click', closeMobileMenu);
+    }
+
+    if (mobileNavOverlay) {
+      mobileNavOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    const mobileNavItems = header.querySelectorAll('.mobile-nav-item.has-submenu');
+
+    mobileNavItems.forEach((item) => {
+      const link = item.querySelector('.mobile-nav-link');
+      const submenu = item.querySelector('.mobile-submenu');
+
+      if (link && submenu) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          item.classList.toggle('is-open');
         });
-      });
-      
-      item.addEventListener('mouseleave', function() {
-        dropdown.classList.remove('is-open');
-        item.classList.remove('menu-open');
-        timeoutId = setTimeout(() => {
-          dropdown.style.display = 'none';
-        }, 300);
-      });
-    }
-  });
-  
-  document.addEventListener('click', function(e) {
-    if (!header.contains(e.target)) {
-      if (searchBar && searchBar.classList.contains('is-open')) {
-        searchBar.classList.remove('is-open');
-        searchToggle.classList.remove('is-active');
       }
-    }
-  });
-  
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      if (mobileNav && mobileNav.classList.contains('is-open')) {
+    });
+
+    const navItems = header.querySelectorAll('.nav-item');
+
+    navItems.forEach((item) => {
+      const dropdown = item.querySelector('.nav-dropdown');
+
+      if (dropdown) {
+        let timeoutId;
+
+        item.addEventListener('mouseenter', function () {
+          clearTimeout(timeoutId);
+          item.classList.add('menu-open');
+          dropdown.style.display = 'block';
+          requestAnimationFrame(() => {
+            dropdown.classList.add('is-open');
+          });
+        });
+
+        item.addEventListener('mouseleave', function () {
+          dropdown.classList.remove('is-open');
+          item.classList.remove('menu-open');
+          timeoutId = setTimeout(() => {
+            dropdown.style.display = 'none';
+          }, 300);
+        });
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!header.contains(e.target)) {
+        if (searchBar && searchBar.classList.contains('is-open')) {
+          searchBar.classList.remove('is-open');
+          searchToggle.classList.remove('is-active');
+        }
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        if (mobileNav && mobileNav.classList.contains('is-open')) {
+          closeMobileMenu();
+        }
+        if (searchBar && searchBar.classList.contains('is-open')) {
+          searchBar.classList.remove('is-open');
+          searchToggle.classList.remove('is-active');
+        }
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1250 && mobileNav.classList.contains('is-open')) {
         closeMobileMenu();
       }
-      if (searchBar && searchBar.classList.contains('is-open')) {
-        searchBar.classList.remove('is-open');
-        searchToggle.classList.remove('is-active');
+    });
+
+    /* NEW: make .site-header fixed only after scrolling 100px and avoid layout jump */
+    const FIXED_SCROLL_Y = 100;
+    const applyFixedHeader = () => {
+      const scrolled = window.scrollY >= FIXED_SCROLL_Y;
+      const next = header.nextElementSibling;
+
+      if (scrolled) {
+        if (!header.classList.contains('is-fixed')) {
+          header.classList.add('is-fixed');
+          const h = Math.ceil(header.getBoundingClientRect().height);
+          document.documentElement.style.setProperty('--site-header-height', `${h}px`);
+          if (next) next.style.marginTop = `${h}px`;
+        }
+      } else {
+        if (header.classList.contains('is-fixed')) {
+          header.classList.remove('is-fixed');
+          if (next) next.style.marginTop = '';
+        }
       }
-    }
-  });
-  
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 1250 && mobileNav.classList.contains('is-open')) {
-      closeMobileMenu();
-    }
-  });
-})();
+    };
+
+    window.addEventListener('scroll', applyFixedHeader, { passive: true });
+    // ensure correct state on load
+    applyFixedHeader();
+  })();
 </script>
 
 {% schema %}
