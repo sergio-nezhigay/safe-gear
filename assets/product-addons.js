@@ -779,7 +779,7 @@ async handleAddonCheckboxChange(checkbox) {
         addonsListElement.innerHTML = '';
         return;
       }
-  
+
       const addonsHTML = Array.from(this.cart.addons.values()).map(addon => `
         <div class="cart-addon-item" data-variant-id="${addon.variantId}">
           <div class="cart-addon-image">

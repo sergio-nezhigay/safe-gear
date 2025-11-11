@@ -2,7 +2,7 @@
     assign current_product = product
     assign addon_products = current_product.metafields.custom.addon_products.value
   %}
-  
+
   {% if addon_products != blank %}
   
   {{ 'product-addons.css' | asset_url | stylesheet_tag }}
