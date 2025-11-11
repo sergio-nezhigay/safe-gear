@@ -18,7 +18,12 @@
       "mcp__shopify-dev__introspect_graphql_schema",
       "Read(//c/projects/live-locks/**)",
       "Bash(shopify theme:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(taskkill:*)",
+      "Bash(nul)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(more:*)"
     ],
     "deny": [],
     "ask": []

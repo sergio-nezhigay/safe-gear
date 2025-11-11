@@ -173,50 +173,61 @@ class ProductMetafieldsSection extends HTMLElement {
    * @param {CustomEvent} event - The variant:update event
    */
   handleVariantUpdate(event) {
-    if (!event.detail || !event.detail.data || !event.detail.data.html) {
-      return;
-    }
+    if (!event.detail?.resource) return;
 
-    // Parse the HTML response to extract variant metafield values
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(event.detail.data.html, 'text/html');
-
-    // Find the metafields section in the parsed HTML
-    const updatedSection = doc.querySelector(`product-metafields-section[data-section-id="${this.sectionId}"]`);
-
-    if (!updatedSection) {
-      return;
-    }
-
-    // Get all variant metafield rows in the current DOM
+    const variant = event.detail.resource;
     const variantRows = this.querySelectorAll('tr[data-variant-metafield="true"]');
 
     variantRows.forEach(row => {
       const metafieldKey = row.dataset.metafieldKey;
+      if (!metafieldKey) return;
 
-      if (!metafieldKey) {
-        return;
-      }
+      const [namespace, key] = metafieldKey.split('.');
+      const metafieldValue = variant.metafields?.[namespace]?.[key];
+      const currentValueCell = row.querySelector('[data-metafield-value]');
 
-      // Find the corresponding row in the updated HTML
-      const updatedRow = updatedSection.querySelector(`tr[data-metafield-key="${metafieldKey}"]`);
-
-      if (updatedRow && updatedRow.style.display !== 'none') {
-        // Variant has this metafield - update and show
-        const updatedValue = updatedRow.querySelector('[data-metafield-value]');
-        const currentValue = row.querySelector('[data-metafield-value]');
-
-        if (updatedValue && currentValue) {
-          currentValue.innerHTML = updatedValue.innerHTML;
+      if (metafieldValue) {
+        const displayValue = this.extractMetafieldValue(metafieldValue);
+        if (currentValueCell) {
+          currentValueCell.textContent = displayValue;
         }
-
-        // Show the row with transition
         this.showRow(row);
       } else {
-        // Variant doesn't have this metafield - hide it
         this.hideRow(row);
       }
     });
+  }
+
+  /**
+   * Extract display value from metafield object
+   * @param {*} metafieldValue - The metafield value to extract
+   * @returns {string} The display value
+   */
+  extractMetafieldValue(metafieldValue) {
+    if (typeof metafieldValue === 'object' && metafieldValue !== null) {
+      // Handle Shopify dimension/weight/volume format: {type, value: {value, unit}}
+      if (metafieldValue.type && metafieldValue.value) {
+        if (typeof metafieldValue.value === 'object' && metafieldValue.value.value !== undefined) {
+          const val = metafieldValue.value.value;
+          const unit = metafieldValue.value.unit;
+          return unit ? `${val} ${unit}` : val;
+        }
+        return metafieldValue.value;
+      }
+      // Handle simple {value, unit} format
+      if (metafieldValue.value !== undefined) {
+        if (typeof metafieldValue.value === 'object' && metafieldValue.value.value !== undefined) {
+          const val = metafieldValue.value.value;
+          const unit = metafieldValue.value.unit;
+          return unit ? `${val} ${unit}` : val;
+        }
+        const val = metafieldValue.value;
+        const unit = metafieldValue.unit;
+        return unit ? `${val} ${unit}` : val;
+      }
+      return JSON.stringify(metafieldValue);
+    }
+    return String(metafieldValue);
   }
 
   /**

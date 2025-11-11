@@ -158,7 +158,7 @@ export default class VariantPicker extends Component {
         // Defer is only useful for the initial rendering of the page. Remove it here.
         html.querySelector('overflow-list[defer]')?.removeAttribute('defer');
 
-        const textContent = html.querySelector(`variant-picker script[type="application/json"]`)?.textContent;
+        const textContent = html.querySelector(`variant-picker script[type="application/json"]:not([data-variant-metafields])`)?.textContent;
         if (!textContent) return;
 
         if (shouldMorphMain) {
@@ -168,8 +168,20 @@ export default class VariantPicker extends Component {
 
           // We grab the variant object from the response and dispatch an event with it.
           if (this.selectedOptionId) {
+            const variant = JSON.parse(textContent);
+
+            // Merge variant metafields from separate script tag if available
+            const metafieldsContent = html.querySelector(`variant-picker script[data-variant-metafields]`)?.textContent;
+            if (metafieldsContent) {
+              try {
+                variant.metafields = JSON.parse(metafieldsContent);
+              } catch (e) {
+                console.error('Failed to parse variant metafields:', e);
+              }
+            }
+
             this.dispatchEvent(
-              new VariantUpdateEvent(JSON.parse(textContent), this.selectedOptionId, {
+              new VariantUpdateEvent(variant, this.selectedOptionId, {
                 html,
                 productId: this.dataset.productId ?? '',
                 newProduct,

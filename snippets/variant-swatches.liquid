@@ -153,7 +153,27 @@
       </fieldset>
     {%- endfor -%}
     <script type="application/json">
-      {{ product_resource.selected_or_first_available_variant | json }}
+{{- product_resource.selected_or_first_available_variant | json -}}
+    </script>
+    <script type="application/json" data-variant-metafields>
+{
+  "custom": {
+    {%- assign height_ext = product_resource.selected_or_first_available_variant.metafields.custom.height_exterior_mm -%}
+    {%- if height_ext != blank -%}
+    {%- if height_ext.type == 'dimension' or height_ext.type == 'weight' or height_ext.type == 'volume' -%}
+    "height_exterior_mm": {
+      "type": "{{ height_ext.type }}",
+      "value": {
+        "value": {{ height_ext.value.value }},
+        "unit": "{{ height_ext.value.unit }}"
+      }
+    }
+    {%- else -%}
+    "height_exterior_mm": {{ height_ext.value | json }}
+    {%- endif -%}
+    {%- endif -%}
+  }
+}
     </script>
   </form>
 </swatches-variant-picker-component>

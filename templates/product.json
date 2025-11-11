@@ -664,24 +664,12 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_JxVaQr": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Product Information",
-            "label": "Property",
-            "metafield_namespace": "custom",
-            "metafield_key": "",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
         "metafield_row_3ET4YB": {
           "type": "metafield_row",
+          "disabled": true,
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "Door Light Width - (mm)",
+            "label": "door_light_width_mm",
             "metafield_namespace": "custom",
             "metafield_key": "door_light_width_mm",
             "unit": "",
@@ -692,11 +680,25 @@
         },
         "metafield_row_door_light_height": {
           "type": "metafield_row",
+          "disabled": true,
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "Door Light Height - (mm)",
+            "label": "door_light_height_mm",
             "metafield_namespace": "custom",
             "metafield_key": "door_light_height_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_Cyac6k": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Ydre dimensioner",
+            "label": "custom.height_exterior_mm",
+            "metafield_namespace": "custom",
+            "metafield_key": "height_exterior_mm",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
@@ -725,9 +727,9 @@
         "metafield_row_EjK4NL",
         "metafield_row_JDxeKd",
         "metafield_row_3yQHj7",
-        "metafield_row_JxVaQr",
         "metafield_row_3ET4YB",
-        "metafield_row_door_light_height"
+        "metafield_row_door_light_height",
+        "metafield_row_Cyac6k"
       ],
       "name": "Product Metafields Tables",
       "settings": {
