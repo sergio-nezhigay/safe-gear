@@ -252,35 +252,35 @@
       {%- endfor -%}
 
       <script type="application/json">
-{{- product_resource.selected_or_first_available_variant | json -}}
+        {{- product_resource.selected_or_first_available_variant | json -}}
       </script>
       <script type="application/json" data-variant-metafields>
-{
-  "custom": {
-    {%- assign variant_custom_metafields = product_resource.selected_or_first_available_variant.metafields.custom -%}
-    {%- assign first_item = true -%}
-    {%- for metafield_entry in variant_custom_metafields -%}
-      {%- assign metafield_key = metafield_entry[0] -%}
-      {%- assign metafield_value = metafield_entry[1] -%}
-      {%- if metafield_value != blank -%}
-        {%- unless first_item -%},{%- endunless -%}
-        {%- assign first_item = false -%}
-    "{{ metafield_key }}": {
-      {%- if metafield_value.type == 'dimension' or metafield_value.type == 'weight' or metafield_value.type == 'volume' -%}
-      "type": "{{ metafield_value.type }}",
-      "value": {
-        "value": {{ metafield_value.value.value }},
-        "unit": "{{ metafield_value.value.unit }}"
-      }
-      {%- else -%}
-      "type": "{{ metafield_value.type }}",
-      "value": {{ metafield_value.value | json }}
-      {%- endif -%}
-    }
-      {%- endif -%}
-    {%- endfor -%}
-  }
-}
+        {
+          "custom": {
+            {%- assign variant_custom_metafields = product_resource.selected_or_first_available_variant.metafields.custom -%}
+            {%- assign first_item = true -%}
+            {%- for metafield_entry in variant_custom_metafields -%}
+              {%- assign metafield_key = metafield_entry[0] -%}
+              {%- assign metafield_value = metafield_entry[1] -%}
+              {%- if metafield_value != blank -%}
+                {%- unless first_item -%},{%- endunless -%}
+                {%- assign first_item = false -%}
+            "{{ metafield_key }}": {
+              {%- if metafield_value.type == 'dimension' or metafield_value.type == 'weight' or metafield_value.type == 'volume' -%}
+              "type": "{{ metafield_value.type }}",
+              "value": {
+                "value": {{ metafield_value.value.value }},
+                "unit": "{{ metafield_value.value.unit }}"
+              }
+              {%- else -%}
+              "type": "{{ metafield_value.type }}",
+              "value": {{ metafield_value.value | json }}
+              {%- endif -%}
+            }
+              {%- endif -%}
+            {%- endfor -%}
+          }
+        }
       </script>
     </form>
   </variant-picker>
@@ -548,7 +548,7 @@
 
     background-color: inherit;
     color: rgb(var(--color-variant-text-rgb) / var(--opacity-60));
-    border-color: var(--color-selected-variant-border);
+    border-color: rgb(22, 243, 59);
   }
 
   .variant-option__button-label input,
