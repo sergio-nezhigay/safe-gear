@@ -1,4 +1,11 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
 
 <style>
   #{{ section.id }} {
@@ -13,6 +20,47 @@
     --search-bg: {{ section.settings.search_background }};
     --search-border: {{ section.settings.search_border }};
     --logo-width: {{ section.settings.logo_width }}px;
+  }
+
+  /* Sticky Header Styles */
+  #{{ section.id }} {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #{{ section.id }}.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease-out;
+  }
+
+  /* Hide navigation when sticky */
+  #{{ section.id }}.is-sticky .header-nav {
+    display: none;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Placeholder to prevent content jump when header becomes fixed */
+  .header-placeholder {
+    display: none;
+  }
+
+  .header-placeholder.is-active {
+    display: block;
   }
 </style>
 
@@ -36,30 +84,30 @@
         {% endif %}
       </div>
 
-      <div class="desktop-menu desktop-only">
-        <button
-          class="desktop-menu-toggle"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="header-nav-{{ section.id }}"
-          type="button"
-        >
-          <!-- hamburger icon -->
-          <svg
-            class="desktop-hamburger"
-            width="20"
-            height="14"
-            viewBox="0 0 20 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <rect y="1" width="20" height="2" rx="1" fill="currentColor"></rect>
-            <rect y="6" width="20" height="2" rx="1" fill="currentColor"></rect>
-            <rect y="11" width="20" height="2" rx="1" fill="currentColor"></rect>
+      <div class="menu-dropdown-wrapper desktop-only">
+        <button class="menu-dropdown-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-          <span class="desktop-menu-label">Menu</span>
+          <span class="menu-text">Menu</span>
         </button>
+
+        <div class="mega-menu-dropdown">
+          <div class="mega-menu-content">
+            {% for link in linklists[section.settings.menu].links %}
+              <div class="mega-menu-column{% if link.links.size > 0 %} has-submenu{% endif %}">
+                <a href="{{ link.url }}" class="mega-menu-title">{{ link.title }}</a>
+                {% if link.links.size > 0 %}
+                  <div class="mega-menu-links">
+                    {% for child_link in link.links %}
+                      <a href="{{ child_link.url }}" class="mega-menu-link">{{ child_link.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
       </div>
 
       {% if section.settings.show_search %}
@@ -80,6 +128,113 @@
               </svg>
             </button>
           </form>
+        </div>
+      {% endif %}
+
+      {% if section.settings.help_text != blank %}
+        <div class="header-help-dropdown desktop-only">
+          <button class="help-button" aria-label="Help">
+            {{ section.settings.help_text }}
+          </button>
+          <div class="help-dropdown-menu">
+            <div class="help-dropdown-content">
+              {% if section.settings.help_section1_title != blank %}
+                <div class="help-section">
+                  <h3 class="help-section-title">{{ section.settings.help_section1_title }}</h3>
+                  <div class="help-section-links">
+                    {% if section.settings.help_section1_link1_text != blank %}
+                      <a href="{{ section.settings.help_section1_link1_url }}" class="help-link-item">
+                        {% if section.settings.help_section1_link1_icon != blank %}
+                          <i class="{{ section.settings.help_section1_link1_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section1_link1_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section1_link2_text != blank %}
+                      <a href="tel:{{ section.settings.help_phone_number }}" class="help-link-item">
+                        {% if section.settings.help_section1_link2_icon != blank %}
+                          <i class="{{ section.settings.help_section1_link2_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section1_link2_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section1_link3_text != blank %}
+                      <a href="mailto:{{ section.settings.help_email }}" class="help-link-item">
+                        {% if section.settings.help_section1_link3_icon != blank %}
+                          <i class="{{ section.settings.help_section1_link3_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section1_link3_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section1_link4_text != blank %}
+                      <a href="{{ section.settings.help_section1_link4_url }}" class="help-link-item">
+                        {% if section.settings.help_section1_link4_icon != blank %}
+                          <i class="{{ section.settings.help_section1_link4_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section1_link4_text }}</span>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.help_section2_title != blank %}
+                <div class="help-section">
+                  <h3 class="help-section-title">{{ section.settings.help_section2_title }}</h3>
+                  <div class="help-section-links">
+                    {% if section.settings.help_section2_link1_text != blank %}
+                      <a href="{{ section.settings.help_section2_link1_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link1_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link1_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link1_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section2_link2_text != blank %}
+                      <a href="{{ section.settings.help_section2_link2_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link2_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link2_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link2_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section2_link3_text != blank %}
+                      <a href="{{ section.settings.help_section2_link3_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link3_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link3_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link3_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section2_link4_text != blank %}
+                      <a href="{{ section.settings.help_section2_link4_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link4_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link4_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link4_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section2_link5_text != blank %}
+                      <a href="{{ section.settings.help_section2_link5_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link5_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link5_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link5_text }}</span>
+                      </a>
+                    {% endif %}
+                    {% if section.settings.help_section2_link6_text != blank %}
+                      <a href="{{ section.settings.help_section2_link6_url }}" class="help-link-item">
+                        {% if section.settings.help_section2_link6_icon != blank %}
+                          <i class="{{ section.settings.help_section2_link6_icon }}"></i>
+                        {% endif %}
+                        <span>{{ section.settings.help_section2_link6_text }}</span>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
       {% endif %}
 
@@ -184,7 +339,7 @@
     </div>
 
     {% if section.settings.show_navigation %}
-      <nav id="header-nav-{{ section.id }}" class="header-nav">
+      <nav class="header-nav">
         <div class="nav-container">
           <div class="nav-main">
             {% for link in linklists[section.settings.menu].links %}
@@ -213,14 +368,6 @@
               <a href="tel:{{ section.settings.phone_number | replace: ' ', '' }}" class="contact-phone">
                 {{ section.settings.phone_number }}
               </a>
-            {% endif %}
-
-            {% if section.settings.help_text != blank %}
-              {% if section.settings.help_link != blank %}
-                <a href="{{ section.settings.help_link }}" class="contact-help">{{ section.settings.help_text }}</a>
-              {% else %}
-                <span class="contact-help">{{ section.settings.help_text }}</span>
-              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -289,14 +436,15 @@
   </div>
 </header>
 
+<div class="header-placeholder" id="header-placeholder-{{ section.id }}"></div>
+
 <script>
   (function () {
     'use strict';
 
     const header = document.getElementById('{{ section.id }}');
     if (!header) return;
-    const desktopToggle = header.querySelector('.desktop-menu-toggle');
-    const desktopNav = header.querySelector('#header-nav-{{ section.id }}');
+
     const searchToggle = header.querySelector('.header-search-mobile');
     const searchBar = header.querySelector('.header-search');
     const mobileMenuToggle = header.querySelector('.mobile-menu-toggle');
@@ -343,6 +491,20 @@
     if (mobileMenuToggle) {
       mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     }
+
+    // Mega Menu Dropdown Toggle
+    const megaMenuColumns = header.querySelectorAll('.mega-menu-column.has-submenu');
+
+    megaMenuColumns.forEach((column) => {
+      const title = column.querySelector('.mega-menu-title');
+
+      if (title) {
+        title.addEventListener('click', function (e) {
+          e.preventDefault();
+          column.classList.toggle('is-open');
+        });
+      }
+    });
 
     if (mobileNavClose) {
       mobileNavClose.addEventListener('click', closeMobileMenu);
@@ -411,11 +573,6 @@
           searchBar.classList.remove('is-open');
           searchToggle.classList.remove('is-active');
         }
-        // close desktop nav on Escape
-        if (desktopNav && desktopNav.classList.contains('is-open')) {
-          desktopNav.classList.remove('is-open');
-          if (desktopToggle) desktopToggle.setAttribute('aria-expanded', 'false');
-        }
       }
     });
 
@@ -423,61 +580,59 @@
       if (window.innerWidth >= 1250 && mobileNav.classList.contains('is-open')) {
         closeMobileMenu();
       }
-      // close desktop nav if resizing smaller/larger
-      if (desktopNav && desktopNav.classList.contains('is-open') && window.innerWidth < 1250) {
-        desktopNav.classList.remove('is-open');
-        if (desktopToggle) desktopToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    // Sticky Header Functionality
+    const headerPlaceholder = document.getElementById('header-placeholder-{{ section.id }}');
+    let lastScroll = 0;
+    let headerHeight = 0;
+    let scrollThreshold = 100;
+
+    function updateHeaderHeight() {
+      headerHeight = header.offsetHeight;
+      if (headerPlaceholder) {
+        headerPlaceholder.style.height = headerHeight + 'px';
+      }
+    }
+
+    function handleStickyHeader() {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > scrollThreshold) {
+        if (!header.classList.contains('is-sticky')) {
+          header.classList.add('is-sticky');
+          if (headerPlaceholder) {
+            headerPlaceholder.classList.add('is-active');
+          }
+        }
+      } else {
+        if (header.classList.contains('is-sticky')) {
+          header.classList.remove('is-sticky');
+          if (headerPlaceholder) {
+            headerPlaceholder.classList.remove('is-active');
+          }
+        }
+      }
+
+      lastScroll = currentScroll;
+    }
+
+    updateHeaderHeight();
+
+    let ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          handleStickyHeader();
+          ticking = false;
+        });
+        ticking = true;
       }
     });
 
-    /* Desktop menu toggle behavior */
-    if (desktopToggle && desktopNav) {
-      const closeDesktopNav = () => {
-        desktopNav.classList.remove('is-open');
-        desktopToggle.setAttribute('aria-expanded', 'false');
-      };
-
-      desktopToggle.addEventListener('click', function (e) {
-        const isOpen = desktopNav.classList.contains('is-open');
-        desktopNav.classList.toggle('is-open');
-        desktopToggle.setAttribute('aria-expanded', String(!isOpen));
-      });
-
-      document.addEventListener(
-        'click',
-        function (e) {
-          if (!header.contains(e.target) && desktopNav.classList.contains('is-open')) {
-            closeDesktopNav();
-          }
-        },
-        { passive: true }
-      );
-    }
-
-    /* NEW: make .site-header fixed only after scrolling 100px and avoid layout jump */
-    const FIXED_SCROLL_Y = 100;
-    const applyFixedHeader = () => {
-      const scrolled = window.scrollY >= FIXED_SCROLL_Y;
-      const next = header.nextElementSibling;
-
-      if (scrolled) {
-        if (!header.classList.contains('is-fixed')) {
-          header.classList.add('is-fixed');
-          const h = Math.ceil(header.getBoundingClientRect().height);
-          document.documentElement.style.setProperty('--site-header-height', `${h}px`);
-          if (next) next.style.marginTop = `${h}px`;
-        }
-      } else {
-        if (header.classList.contains('is-fixed')) {
-          header.classList.remove('is-fixed');
-          if (next) next.style.marginTop = '';
-        }
-      }
-    };
-
-    window.addEventListener('scroll', applyFixedHeader, { passive: true });
-    // ensure correct state on load
-    applyFixedHeader();
+    window.addEventListener('resize', function () {
+      updateHeaderHeight();
+    });
   })();
 </script>
 
@@ -605,6 +760,376 @@
       "type": "url",
       "id": "help_link",
       "label": "Help link URL"
+    },
+    {
+      "type": "header",
+      "content": "Help Button Dropdown"
+    },
+    {
+      "type": "text",
+      "id": "help_phone_number",
+      "label": "Phone Number (for tel: link)",
+      "default": "+4536964353",
+      "info": "Phone number without spaces for tel: link"
+    },
+    {
+      "type": "text",
+      "id": "help_email",
+      "label": "Email Address (for mailto: link)",
+      "default": "info@safegear.com",
+      "info": "Email address for mailto: link"
+    },
+    {
+      "type": "text",
+      "id": "help_section1_title",
+      "label": "Section 1 Title",
+      "default": "Kontakt"
+    },
+    {
+      "type": "select",
+      "id": "help_section1_link1_icon",
+      "label": "Section 1 - Link 1 Icon",
+      "default": "fa-solid fa-comments",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section1_link1_text",
+      "label": "Section 1 - Link 1 Text",
+      "default": "Live Chat"
+    },
+    {
+      "type": "url",
+      "id": "help_section1_link1_url",
+      "label": "Section 1 - Link 1 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section1_link2_icon",
+      "label": "Section 1 - Link 2 Icon",
+      "default": "fa-solid fa-phone",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section1_link2_text",
+      "label": "Section 1 - Link 2 Text",
+      "default": "+45 36 96 43 53"
+    },
+    {
+      "type": "url",
+      "id": "help_section1_link2_url",
+      "label": "Section 1 - Link 2 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section1_link3_icon",
+      "label": "Section 1 - Link 3 Icon",
+      "default": "fa-solid fa-envelope",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section1_link3_text",
+      "label": "Section 1 - Link 3 Text",
+      "default": "info@safegear.com"
+    },
+    {
+      "type": "url",
+      "id": "help_section1_link3_url",
+      "label": "Section 1 - Link 3 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section1_link4_icon",
+      "label": "Section 1 - Link 4 Icon",
+      "default": "fa-solid fa-file-lines",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section1_link4_text",
+      "label": "Section 1 - Link 4 Text",
+      "default": "Kontaktformular"
+    },
+    {
+      "type": "url",
+      "id": "help_section1_link4_url",
+      "label": "Section 1 - Link 4 URL"
+    },
+    {
+      "type": "text",
+      "id": "help_section2_title",
+      "label": "Section 2 Title",
+      "default": "FAQ"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link1_icon",
+      "label": "Section 2 - Link 1 Icon",
+      "default": "fa-solid fa-shield-halved",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link1_text",
+      "label": "Section 2 - Link 1 Text",
+      "default": "Security Safes"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link1_url",
+      "label": "Section 2 - Link 1 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link2_icon",
+      "label": "Section 2 - Link 2 Icon",
+      "default": "fa-solid fa-fire-extinguisher",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link2_text",
+      "label": "Section 2 - Link 2 Text",
+      "default": "Fire Safety"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link2_url",
+      "label": "Section 2 - Link 2 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link3_icon",
+      "label": "Section 2 - Link 3 Icon",
+      "default": "fa-solid fa-circle",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link3_text",
+      "label": "Section 2 - Link 3 Text",
+      "default": "Safety Mirrors"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link3_url",
+      "label": "Section 2 - Link 3 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link4_icon",
+      "label": "Section 2 - Link 4 Icon",
+      "default": "fa-solid fa-user-shield",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link4_text",
+      "label": "Section 2 - Link 4 Text",
+      "default": "Retail Security"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link4_url",
+      "label": "Section 2 - Link 4 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link5_icon",
+      "label": "Section 2 - Link 5 Icon",
+      "default": "fa-solid fa-lock",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link5_text",
+      "label": "Section 2 - Link 5 Text",
+      "default": "Safe Lock"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link5_url",
+      "label": "Section 2 - Link 5 URL"
+    },
+    {
+      "type": "select",
+      "id": "help_section2_link6_icon",
+      "label": "Section 2 - Link 6 Icon",
+      "default": "fa-solid fa-truck",
+      "options": [
+        { "value": "fa-solid fa-comments", "label": "Chat" },
+        { "value": "fa-solid fa-phone", "label": "Phone" },
+        { "value": "fa-solid fa-envelope", "label": "Email" },
+        { "value": "fa-solid fa-file-lines", "label": "Document" },
+        { "value": "fa-solid fa-shield-halved", "label": "Shield" },
+        { "value": "fa-solid fa-fire-extinguisher", "label": "Fire Extinguisher" },
+        { "value": "fa-solid fa-circle", "label": "Circle" },
+        { "value": "fa-solid fa-user-shield", "label": "User Shield" },
+        { "value": "fa-solid fa-lock", "label": "Lock" },
+        { "value": "fa-solid fa-truck", "label": "Truck" },
+        { "value": "fa-solid fa-headset", "label": "Headset" },
+        { "value": "fa-solid fa-question-circle", "label": "Question" },
+        { "value": "fa-solid fa-info-circle", "label": "Info" },
+        { "value": "fa-solid fa-map-marker-alt", "label": "Location" },
+        { "value": "fa-solid fa-clock", "label": "Clock" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "help_section2_link6_text",
+      "label": "Section 2 - Link 6 Text",
+      "default": "Order process"
+    },
+    {
+      "type": "url",
+      "id": "help_section2_link6_url",
+      "label": "Section 2 - Link 6 URL"
     },
     {
       "type": "header",

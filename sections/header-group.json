@@ -28,9 +28,7 @@
           "blocks": {}
         }
       },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
+      "block_order": ["announcement_BxgCk9"],
       "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
@@ -128,7 +126,7 @@
         "logo_text": "SafeGear",
         "logo_width": 160,
         "show_search": true,
-        "search_placeholder": "Søg",
+        "search_placeholder": "",
         "show_navigation": true,
         "menu": "main-menu-mt",
         "header_image": "shopify://shop_images/e-maerket-06_1_a73aa563-ea1c-4848-a920-68d736d47202.png",
@@ -137,7 +135,7 @@
         "show_account": true,
         "show_cart": true,
         "show_drawer": true,
-        "phone_number": "+34 660 543 515",
+        "phone_number": "",
         "help_text": "HJÆLP",
         "help_link": "shopify://pages/center-help",
         "header_background": "#ffffff",
