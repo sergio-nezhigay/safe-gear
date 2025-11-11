@@ -35,7 +35,32 @@
           </a>
         {% endif %}
       </div>
-      menu icon ----- menu text
+
+      <div class="desktop-menu desktop-only">
+        <button
+          class="desktop-menu-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="header-nav-{{ section.id }}"
+          type="button"
+        >
+          <!-- hamburger icon -->
+          <svg
+            class="desktop-hamburger"
+            width="20"
+            height="14"
+            viewBox="0 0 20 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect y="1" width="20" height="2" rx="1" fill="currentColor"></rect>
+            <rect y="6" width="20" height="2" rx="1" fill="currentColor"></rect>
+            <rect y="11" width="20" height="2" rx="1" fill="currentColor"></rect>
+          </svg>
+          <span class="desktop-menu-label">Menu</span>
+        </button>
+      </div>
 
       {% if section.settings.show_search %}
         <div class="header-search">
@@ -159,7 +184,7 @@
     </div>
 
     {% if section.settings.show_navigation %}
-      <nav class="header-nav">
+      <nav id="header-nav-{{ section.id }}" class="header-nav">
         <div class="nav-container">
           <div class="nav-main">
             {% for link in linklists[section.settings.menu].links %}
@@ -270,7 +295,8 @@
 
     const header = document.getElementById('{{ section.id }}');
     if (!header) return;
-
+    const desktopToggle = header.querySelector('.desktop-menu-toggle');
+    const desktopNav = header.querySelector('#header-nav-{{ section.id }}');
     const searchToggle = header.querySelector('.header-search-mobile');
     const searchBar = header.querySelector('.header-search');
     const mobileMenuToggle = header.querySelector('.mobile-menu-toggle');
@@ -385,6 +411,11 @@
           searchBar.classList.remove('is-open');
           searchToggle.classList.remove('is-active');
         }
+        // close desktop nav on Escape
+        if (desktopNav && desktopNav.classList.contains('is-open')) {
+          desktopNav.classList.remove('is-open');
+          if (desktopToggle) desktopToggle.setAttribute('aria-expanded', 'false');
+        }
       }
     });
 
@@ -392,7 +423,36 @@
       if (window.innerWidth >= 1250 && mobileNav.classList.contains('is-open')) {
         closeMobileMenu();
       }
+      // close desktop nav if resizing smaller/larger
+      if (desktopNav && desktopNav.classList.contains('is-open') && window.innerWidth < 1250) {
+        desktopNav.classList.remove('is-open');
+        if (desktopToggle) desktopToggle.setAttribute('aria-expanded', 'false');
+      }
     });
+
+    /* Desktop menu toggle behavior */
+    if (desktopToggle && desktopNav) {
+      const closeDesktopNav = () => {
+        desktopNav.classList.remove('is-open');
+        desktopToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      desktopToggle.addEventListener('click', function (e) {
+        const isOpen = desktopNav.classList.contains('is-open');
+        desktopNav.classList.toggle('is-open');
+        desktopToggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener(
+        'click',
+        function (e) {
+          if (!header.contains(e.target) && desktopNav.classList.contains('is-open')) {
+            closeDesktopNav();
+          }
+        },
+        { passive: true }
+      );
+    }
 
     /* NEW: make .site-header fixed only after scrolling 100px and avoid layout jump */
     const FIXED_SCROLL_Y = 100;

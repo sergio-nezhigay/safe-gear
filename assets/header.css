@@ -293,6 +293,13 @@
   opacity: 1;
 }
 
+.desktop-menu-toggle {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* when header becomes fixed, smoothly collapse the nav */
 .site-header.is-fixed .header-nav {
   max-height: 0;
