@@ -1,10 +1,28 @@
 .site-header {
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
-  position: sticky;
+  /*position: fixed;*/
   top: 0;
+  width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
+}
+
+/* NEW: fixed-only state applied via JS */
+.site-header.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* higher than normal header layers */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  /* keep transition smooth */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* optional fallback so content doesn't jump if JS didn't set inline margin */
+.site-header.is-fixed + * {
+  margin-top: var(--site-header-height, 0px);
 }
 
 .header-container {
@@ -266,6 +284,29 @@
   background-color: var(--header-bg);
   border-top: 1px solid var(--header-border);
   padding: 0.75rem 0;
+
+  /* enable smooth collapse/expand */
+  max-height: 800px; /* large enough for expanded nav */
+  overflow: hidden;
+  transition: max-height 160ms cubic-bezier(0.4, 0, 0.2, 1), padding 100ms ease,
+    opacity 50ms ease;
+  opacity: 1;
+}
+
+.desktop-menu-toggle {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* when header becomes fixed, smoothly collapse the nav */
+.site-header.is-fixed .header-nav {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none; /* prevents accidental interaction while collapsed */
 }
 
 .nav-container {
@@ -817,249 +858,3 @@ body.mobile-menu-open {
 .tl-option.active .tl-label {
   font-weight: 700 !important;
 }
-
-/* Menu Dropdown Wrapper */
-.menu-dropdown-wrapper {
-  position: relative;
-  margin-left: 0;
-  margin-right: 1rem;
-}
-
-/* Menu Dropdown Toggle Button */
-.menu-dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: none;
-  border: none;
-  border-radius: 4px;
-  color: var(--header-text);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.menu-dropdown-toggle:hover {
-  background-color: var(--nav-hover);
-}
-
-.menu-dropdown-wrapper:hover .menu-dropdown-toggle {
-  background-color: var(--nav-hover);
-}
-
-.menu-dropdown-toggle svg {
-  flex-shrink: 0;
-}
-
-.menu-text {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* Mega Menu Dropdown */
-.mega-menu-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  width: 350px;
-  background-color: #fff;
-  border: 1px solid var(--header-border);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.menu-dropdown-wrapper:hover .mega-menu-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.mega-menu-content {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 0;
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-.mega-menu-column {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid var(--header-border);
-}
-
-.mega-menu-column:last-child {
-  border-bottom: none;
-}
-
-.mega-menu-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--header-text);
-  text-decoration: none;
-  padding: 1rem 1.5rem;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.mega-menu-title:hover {
-  background-color: var(--nav-hover);
-  color: var(--header-accent);
-}
-
-.mega-menu-column.has-submenu .mega-menu-title::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid currentColor;
-  transition: transform 0.2s ease;
-}
-
-.mega-menu-column.is-open .mega-menu-title::after {
-  transform: rotate(180deg);
-}
-
-.mega-menu-links {
-  display: none;
-  flex-direction: column;
-  background-color: var(--search-bg);
-  padding: 0.5rem 0;
-}
-
-.mega-menu-column.is-open .mega-menu-links {
-  display: flex;
-}
-
-.mega-menu-link {
-  display: block;
-  padding: 0.75rem 2.5rem;
-  color: var(--header-text);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.mega-menu-link:hover {
-  background-color: #fff;
-  color: var(--header-accent);
-  padding-left: 3rem;
-}
-
-/* Header Help Dropdown */
-.header-help-dropdown {
-  position: relative;
-  flex-shrink: 0;
-  margin-left: 1rem;
-}
-
-.help-button {
-  display: inline-block;
-  background-color: var(--help-bg);
-  color: var(--help-color);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.help-button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.header-help-dropdown:hover .help-button {
-  opacity: 0.9;
-}
-
-.help-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 280px;
-  background-color: #fff;
-  border: 1px solid var(--header-border);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.header-help-dropdown:hover .help-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.help-dropdown-content {
-  padding: 0.25rem 0;
-}
-
-.help-section {
-  padding: 0.35rem 0;
-}
-
-.help-section + .help-section {
-  border-top: 1px solid var(--header-border);
-}
-
-.help-section-title {
-  padding: 0.35rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--header-text);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.help-section-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0.25rem 0;
-}
-
-.help-link-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1rem;
-  color: var(--header-text);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: all 0.2s ease;
-}
-
-.help-link-item:hover {
-  background-color: var(--nav-hover);
-  color: var(--header-accent);
-}
-
-.help-link-item i {
-  width: 16px;
-  text-align: center;
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-
-.help-link-item span {
-  flex: 1;
-}
-

@@ -16,7 +16,7 @@
           "type": "text",
           "name": "Title",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}<\/h1>",
+            "text": "<h1>{{ closest.page.title }}</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -61,7 +61,7 @@
       "type": "banner-help-center",
       "name": "Banner search",
       "settings": {
-        "main_image": "shopify:\/\/shop_images\/svgviewer-output_1_0685a513-7fc0-435d-84bb-5066e5681779.svg",
+        "main_image": "shopify://shop_images/svgviewer-output_1_0685a513-7fc0-435d-84bb-5066e5681779.svg",
         "title": ""
       }
     },
@@ -71,7 +71,7 @@
       "settings": {
         "heading": "Bestillingsproces og Levering",
         "custom_blog": "bestillingsproces-og-levering",
-        "custom_blog_img": "shopify:\/\/shop_images\/express-delivery_078abeee-e40d-4bbb-82bd-09698d277c46.png"
+        "custom_blog_img": "shopify://shop_images/express-delivery_078abeee-e40d-4bbb-82bd-09698d277c46.png"
       }
     }
   },

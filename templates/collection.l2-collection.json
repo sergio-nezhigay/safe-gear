@@ -23,7 +23,7 @@
         "addresses_text": "Addresses",
         "order_text": "Order",
         "back_text": "Back",
-        "separator": "\/",
+        "separator": "/",
         "background_color": "#fafafa",
         "text_color": "#666666",
         "accent_color": "#0a3d62",

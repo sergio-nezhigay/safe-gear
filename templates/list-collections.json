@@ -56,7 +56,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Collections<\/h3>",
+                "text": "<h3>Collections</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -177,7 +177,7 @@
       "name": "Collection List",
       "settings": {
         "heading": "Keep Your Valuables Secure with the Perfect Safe!",
-        "description": "<p>A safe helps prevent unauthorized access to your valuables. SafeGear offers high-quality safes in security levels according to European Norm EN-1143-1. Ideal for storing documents, jewelry and cash at home or in a business.<\/p>",
+        "description": "<p>A safe helps prevent unauthorized access to your valuables. SafeGear offers high-quality safes in security levels according to European Norm EN-1143-1. Ideal for storing documents, jewelry and cash at home or in a business.</p>",
         "show_more_link": "",
         "show_more_text": "Click here for more...",
         "show_button": true,

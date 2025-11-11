@@ -17,19 +17,19 @@
         "title_size_desktop": 56,
         "title_size_mobile": 36,
         "title_color": "#ffffff",
-        "subtitle": "<p>Pålidelige beskyttelsesløsninger med et bredt udvalg til din virksomheds behov. Stol på vores ekspertise til at holde din branche sikker.<\/p>",
+        "subtitle": "<p>Pålidelige beskyttelsesløsninger med et bredt udvalg til din virksomheds behov. Stol på vores ekspertise til at holde din branche sikker.</p>",
         "subtitle_size_desktop": 18,
         "subtitle_size_mobile": 16,
         "subtitle_color": "#ffffff",
         "cta_text": "Find løsninger til din branche",
-        "cta_url": "\/collections",
+        "cta_url": "/collections",
         "button_size_desktop": 16,
         "button_size_mobile": 14,
         "button_background": "#0a3d62",
         "button_text_color": "#ffffff",
         "button_hover_background": "#082c49",
         "button_hover_text_color": "#ffffff",
-        "background_image": "shopify:\/\/shop_images\/ChatGPT_Image_16_._2025_._18_25_33.png",
+        "background_image": "shopify://shop_images/ChatGPT_Image_16_._2025_._18_25_33.png",
         "overlay_enable": true,
         "overlay_color": "#000000",
         "overlay_opacity": 45,
@@ -91,33 +91,33 @@
         "feature_LdJAYD": {
           "type": "feature",
           "settings": {
-            "icon": "<svg viewbox=\"0 0 1024 1024\" fill=\"#0A3D62\" class=\"icon\" version=\"1.1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"><\/g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/g><g id=\"SVGRepo_iconCarrier\"><path d=\"M678.584675 765.172506v157.995691l75.697852 31.505938V723.768586a429.379161 429.379161 0 0 1-75.697852 41.40392zM269.717473 723.768586V953.098138l75.697852-31.505938v-156.419694a429.309162 429.309162 0 0 1-75.697852-41.40392zM511.999 798.78444a428.955162 428.955162 0 0 1-105.993793-13.241974v238.457534L511.999 979.886086 617.992793 1023.998V785.542466A429.025162 429.025162 0 0 1 511.999 798.78444zM511.999 0C308.479398 0 142.903721 165.575677 142.903721 369.097279S308.479398 738.192558 511.999 738.192558s369.097279-165.575677 369.097279-369.097279S715.520602 0 511.999 0z m0 660.198711c-161.345685 0-292.611428-131.265744-292.611428-292.611429 0-161.347685 131.265744-292.613428 292.611428-292.613428s292.611428 131.265744 292.611428 292.613428c0 161.347685-131.263744 292.611428-292.611428 292.611429zM511.999 135.563735c-127.93575 0-232.021547 104.083797-232.021547 232.023547S384.06325 599.606829 511.999 599.606829s232.021547-104.083797 232.021547-232.021547c0-127.93775-104.083797-232.021547-232.021547-232.021547zM607.360814 502.999018L511.999 452.865115 416.639186 502.999018l18.211965-106.183793-77.14785-75.199853 106.617792-15.49397L511.999 209.509591l47.679907 96.611811 106.617792 15.49397-77.14785 75.199853 18.211965 106.183793z\"><\/path><\/g><\/svg>",
+            "icon": "<svg viewbox=\"0 0 1024 1024\" fill=\"#0A3D62\" class=\"icon\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"><path d=\"M678.584675 765.172506v157.995691l75.697852 31.505938V723.768586a429.379161 429.379161 0 0 1-75.697852 41.40392zM269.717473 723.768586V953.098138l75.697852-31.505938v-156.419694a429.309162 429.309162 0 0 1-75.697852-41.40392zM511.999 798.78444a428.955162 428.955162 0 0 1-105.993793-13.241974v238.457534L511.999 979.886086 617.992793 1023.998V785.542466A429.025162 429.025162 0 0 1 511.999 798.78444zM511.999 0C308.479398 0 142.903721 165.575677 142.903721 369.097279S308.479398 738.192558 511.999 738.192558s369.097279-165.575677 369.097279-369.097279S715.520602 0 511.999 0z m0 660.198711c-161.345685 0-292.611428-131.265744-292.611428-292.611429 0-161.347685 131.265744-292.613428 292.611428-292.613428s292.611428 131.265744 292.611428 292.613428c0 161.347685-131.263744 292.611428-292.611428 292.611429zM511.999 135.563735c-127.93575 0-232.021547 104.083797-232.021547 232.023547S384.06325 599.606829 511.999 599.606829s232.021547-104.083797 232.021547-232.021547c0-127.93775-104.083797-232.021547-232.021547-232.021547zM607.360814 502.999018L511.999 452.865115 416.639186 502.999018l18.211965-106.183793-77.14785-75.199853 106.617792-15.49397L511.999 209.509591l47.679907 96.611811 106.617792 15.49397-77.14785 75.199853 18.211965 106.183793z\"></path></g></svg>",
             "title": "Certificeret kvalitet",
-            "text": "<p>Alle vores produkter opfylder internationale certificeringsstandarder.<\/p>"
+            "text": "<p>Alle vores produkter opfylder internationale certificeringsstandarder.</p>"
           }
         },
         "feature_6RbGq8": {
           "type": "feature",
           "settings": {
-            "icon": "<svg fill=\"#0A3D62\" viewbox=\"0 0 64 64\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" stroke=\"#0A3D62\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"><\/g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/g><g id=\"SVGRepo_iconCarrier\"> <g data-name=\"17 quality\" id=\"_17_quality\"> <path d=\"M40.4,20.57a1.009,1.009,0,0,0-.95-.69H34.48l-1.53-4.72a1,1,0,0,0-1.9,0l-1.53,4.72H24.55a1.009,1.009,0,0,0-.95.69.991.991,0,0,0,.37,1.12l4.01,2.92-1.53,4.72a1,1,0,0,0,.36,1.12,1.022,1.022,0,0,0,1.18,0L32,27.53l4.01,2.92a1.086,1.086,0,0,0,.59.19,1.036,1.036,0,0,0,.59-.19,1,1,0,0,0,.36-1.12l-1.53-4.72,4.01-2.92A.991.991,0,0,0,40.4,20.57Zm-6.14,2.85a1.006,1.006,0,0,0-.37,1.12l.81,2.48-2.11-1.54a1.011,1.011,0,0,0-1.18,0L29.3,27.02l.81-2.48a1.006,1.006,0,0,0-.37-1.12l-2.11-1.54h2.61a.991.991,0,0,0,.95-.69L32,18.71l.81,2.48a.991.991,0,0,0,.95.69h2.61Z\"><\/path> <path d=\"M32,10.26a13.239,13.239,0,0,0-1.13,26.43c.38.03.75.05,1.13.05.34,0,.69-.02,1.03-.05h.1v-.01A13.234,13.234,0,0,0,32,10.26Zm9.81,18.72a.01.01,0,0,0-.01.01,11.191,11.191,0,0,1-8.85,5.7l-.01.01h-.01a9.1,9.1,0,0,1-1.88-.01,11.236,11.236,0,1,1,10.76-5.71Z\"><\/path> <path d=\"M58.88,52.73,55.12,46.9q-4.035-6.225-8.06-12.47c.21-.08.45-.17.69-.25a4.179,4.179,0,0,0,2.67-1.8,4.179,4.179,0,0,0-.25-3.19,4.06,4.06,0,0,1-.37-1.63,3.96,3.96,0,0,1,1.01-1.25,4.234,4.234,0,0,0,1.64-2.81,4.19,4.19,0,0,0-1.64-2.8,4.091,4.091,0,0,1-1.01-1.26,4.06,4.06,0,0,1,.37-1.63,4.157,4.157,0,0,0,.25-3.18,4.2,4.2,0,0,0-2.67-1.8,4.218,4.218,0,0,1-1.49-.71,4.362,4.362,0,0,1-.36-1.61,4.191,4.191,0,0,0-1.15-3,4.2,4.2,0,0,0-3.17-.45,4.081,4.081,0,0,1-1.65,0,4.051,4.051,0,0,1-1.01-1.27,4.212,4.212,0,0,0-2.37-2.23,4.132,4.132,0,0,0-3.02.96A4.143,4.143,0,0,1,32,5.25a4.143,4.143,0,0,1-1.53-.73,4.122,4.122,0,0,0-3.01-.96,4.2,4.2,0,0,0-2.38,2.23,4.2,4.2,0,0,1-1,1.27,4.136,4.136,0,0,1-1.66,0,4.174,4.174,0,0,0-3.16.45,4.164,4.164,0,0,0-1.16,3.01,3.961,3.961,0,0,1-.37,1.6,3.944,3.944,0,0,1-1.47.7,4.226,4.226,0,0,0-2.68,1.8,4.179,4.179,0,0,0,.25,3.19,4.06,4.06,0,0,1,.37,1.63,4.091,4.091,0,0,1-1.01,1.26,4.19,4.19,0,0,0-1.64,2.8,4.234,4.234,0,0,0,1.64,2.81,3.96,3.96,0,0,1,1.01,1.25,4.06,4.06,0,0,1-.37,1.63,4.157,4.157,0,0,0-.25,3.18,4.142,4.142,0,0,0,2.67,1.8c.23.09.47.17.69.26Q12.905,40.67,8.88,46.9L5.12,52.73a.981.981,0,0,0,.01,1.1.992.992,0,0,0,1.01.42l6.83-1.27,1.66,6.76a1,1,0,0,0,.81.74.875.875,0,0,0,.16.02.985.985,0,0,0,.84-.46L27.22,43.35c.08.02.15.07.23.09a2.2,2.2,0,0,0,.5.06,5.009,5.009,0,0,0,2.52-1.02A4.143,4.143,0,0,1,32,41.75a4.143,4.143,0,0,1,1.53.73,4.1,4.1,0,0,0,3.03.96c.08-.02.15-.07.22-.09L47.56,60.04a.985.985,0,0,0,.84.46.875.875,0,0,0,.16-.02,1,1,0,0,0,.81-.74l1.66-6.76,6.83,1.27a1,1,0,0,0,1.01-.42A.981.981,0,0,0,58.88,52.73ZM16.02,57l-1.33-5.41a1,1,0,0,0-1.15-.75L8.06,51.86l2.5-3.87q3.75-5.82,7.52-11.64a.784.784,0,0,1,.02.14,4.191,4.191,0,0,0,1.15,3,4.205,4.205,0,0,0,3.17.45,4.081,4.081,0,0,1,1.65,0,3.935,3.935,0,0,1,1.01,1.27c.19.29.38.58.58.86ZM36.4,41.29a.7.7,0,0,1-.3.2c-.28.06-1.02-.39-1.5-.7A5.071,5.071,0,0,0,32,39.75a5.071,5.071,0,0,0-2.6,1.04c-.48.31-1.22.77-1.49.71a.828.828,0,0,1-.32-.22,6.488,6.488,0,0,1-.81-1.13,5.026,5.026,0,0,0-1.83-2.01,3.246,3.246,0,0,0-1.45-.29,11.376,11.376,0,0,0-1.3.1c-.62.07-1.46.17-1.7-.02s-.34-1.04-.41-1.66a5.025,5.025,0,0,0-.79-2.64,1.7,1.7,0,0,0-.27-.27,1.249,1.249,0,0,0-.12-.09l-.01-.01h-.01a6.3,6.3,0,0,0-1.98-.97c-.59-.21-1.39-.49-1.53-.79-.14-.28.14-1.07.34-1.65a4.932,4.932,0,0,0,.43-2.73,4.848,4.848,0,0,0-1.55-2.23c-.44-.44-1.05-1.05-1.05-1.39s.61-.95,1.05-1.39a4.848,4.848,0,0,0,1.55-2.23,4.932,4.932,0,0,0-.43-2.73c-.2-.58-.48-1.37-.34-1.66s.95-.57,1.54-.78a4.864,4.864,0,0,0,2.37-1.34,4.91,4.91,0,0,0,.8-2.63c.07-.62.16-1.46.41-1.66s1.08-.1,1.7-.03a5.007,5.007,0,0,0,2.75-.19,4.956,4.956,0,0,0,1.83-2.01c.33-.54.79-1.27,1.12-1.34.28-.07,1.02.4,1.5.7A5.071,5.071,0,0,0,32,7.25a5.071,5.071,0,0,0,2.6-1.04c.48-.3,1.21-.76,1.5-.7.33.07.79.8,1.12,1.34a4.956,4.956,0,0,0,1.83,2.01,5.007,5.007,0,0,0,2.75.19c.62-.07,1.46-.17,1.7.02s.34,1.04.41,1.66a5.025,5.025,0,0,0,.79,2.64,5.024,5.024,0,0,0,2.39,1.35c.59.2,1.39.48,1.53.78.14.28-.14,1.07-.34,1.65a4.932,4.932,0,0,0-.43,2.73,4.848,4.848,0,0,0,1.55,2.23c.44.44,1.05,1.05,1.05,1.39s-.61.95-1.05,1.39a4.848,4.848,0,0,0-1.55,2.23,4.932,4.932,0,0,0,.43,2.73c.2.58.48,1.37.34,1.66s-.95.58-1.53.78a6.074,6.074,0,0,0-2.07,1.02,3.107,3.107,0,0,0-.31.32,4.91,4.91,0,0,0-.8,2.63c-.07.62-.16,1.46-.41,1.66s-1.08.1-1.7.03a4.916,4.916,0,0,0-2.75.19,5.026,5.026,0,0,0-1.83,2.01A6.464,6.464,0,0,1,36.4,41.29Zm14.06,9.55a1,1,0,0,0-1.15.75L47.98,57,38.34,42.07c.2-.28.39-.57.58-.86a4.07,4.07,0,0,1,1-1.27,4.136,4.136,0,0,1,1.66,0,4.174,4.174,0,0,0,3.16-.45,4.157,4.157,0,0,0,1.16-3,.675.675,0,0,1,.02-.14q3.765,5.82,7.52,11.64l2.5,3.87Z\"><\/path> <\/g> <\/g><\/svg>",
+            "icon": "<svg fill=\"#0A3D62\" viewbox=\"0 0 64 64\" xmlns=\"http://www.w3.org/2000/svg\" stroke=\"#0A3D62\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <g data-name=\"17 quality\" id=\"_17_quality\"> <path d=\"M40.4,20.57a1.009,1.009,0,0,0-.95-.69H34.48l-1.53-4.72a1,1,0,0,0-1.9,0l-1.53,4.72H24.55a1.009,1.009,0,0,0-.95.69.991.991,0,0,0,.37,1.12l4.01,2.92-1.53,4.72a1,1,0,0,0,.36,1.12,1.022,1.022,0,0,0,1.18,0L32,27.53l4.01,2.92a1.086,1.086,0,0,0,.59.19,1.036,1.036,0,0,0,.59-.19,1,1,0,0,0,.36-1.12l-1.53-4.72,4.01-2.92A.991.991,0,0,0,40.4,20.57Zm-6.14,2.85a1.006,1.006,0,0,0-.37,1.12l.81,2.48-2.11-1.54a1.011,1.011,0,0,0-1.18,0L29.3,27.02l.81-2.48a1.006,1.006,0,0,0-.37-1.12l-2.11-1.54h2.61a.991.991,0,0,0,.95-.69L32,18.71l.81,2.48a.991.991,0,0,0,.95.69h2.61Z\"></path> <path d=\"M32,10.26a13.239,13.239,0,0,0-1.13,26.43c.38.03.75.05,1.13.05.34,0,.69-.02,1.03-.05h.1v-.01A13.234,13.234,0,0,0,32,10.26Zm9.81,18.72a.01.01,0,0,0-.01.01,11.191,11.191,0,0,1-8.85,5.7l-.01.01h-.01a9.1,9.1,0,0,1-1.88-.01,11.236,11.236,0,1,1,10.76-5.71Z\"></path> <path d=\"M58.88,52.73,55.12,46.9q-4.035-6.225-8.06-12.47c.21-.08.45-.17.69-.25a4.179,4.179,0,0,0,2.67-1.8,4.179,4.179,0,0,0-.25-3.19,4.06,4.06,0,0,1-.37-1.63,3.96,3.96,0,0,1,1.01-1.25,4.234,4.234,0,0,0,1.64-2.81,4.19,4.19,0,0,0-1.64-2.8,4.091,4.091,0,0,1-1.01-1.26,4.06,4.06,0,0,1,.37-1.63,4.157,4.157,0,0,0,.25-3.18,4.2,4.2,0,0,0-2.67-1.8,4.218,4.218,0,0,1-1.49-.71,4.362,4.362,0,0,1-.36-1.61,4.191,4.191,0,0,0-1.15-3,4.2,4.2,0,0,0-3.17-.45,4.081,4.081,0,0,1-1.65,0,4.051,4.051,0,0,1-1.01-1.27,4.212,4.212,0,0,0-2.37-2.23,4.132,4.132,0,0,0-3.02.96A4.143,4.143,0,0,1,32,5.25a4.143,4.143,0,0,1-1.53-.73,4.122,4.122,0,0,0-3.01-.96,4.2,4.2,0,0,0-2.38,2.23,4.2,4.2,0,0,1-1,1.27,4.136,4.136,0,0,1-1.66,0,4.174,4.174,0,0,0-3.16.45,4.164,4.164,0,0,0-1.16,3.01,3.961,3.961,0,0,1-.37,1.6,3.944,3.944,0,0,1-1.47.7,4.226,4.226,0,0,0-2.68,1.8,4.179,4.179,0,0,0,.25,3.19,4.06,4.06,0,0,1,.37,1.63,4.091,4.091,0,0,1-1.01,1.26,4.19,4.19,0,0,0-1.64,2.8,4.234,4.234,0,0,0,1.64,2.81,3.96,3.96,0,0,1,1.01,1.25,4.06,4.06,0,0,1-.37,1.63,4.157,4.157,0,0,0-.25,3.18,4.142,4.142,0,0,0,2.67,1.8c.23.09.47.17.69.26Q12.905,40.67,8.88,46.9L5.12,52.73a.981.981,0,0,0,.01,1.1.992.992,0,0,0,1.01.42l6.83-1.27,1.66,6.76a1,1,0,0,0,.81.74.875.875,0,0,0,.16.02.985.985,0,0,0,.84-.46L27.22,43.35c.08.02.15.07.23.09a2.2,2.2,0,0,0,.5.06,5.009,5.009,0,0,0,2.52-1.02A4.143,4.143,0,0,1,32,41.75a4.143,4.143,0,0,1,1.53.73,4.1,4.1,0,0,0,3.03.96c.08-.02.15-.07.22-.09L47.56,60.04a.985.985,0,0,0,.84.46.875.875,0,0,0,.16-.02,1,1,0,0,0,.81-.74l1.66-6.76,6.83,1.27a1,1,0,0,0,1.01-.42A.981.981,0,0,0,58.88,52.73ZM16.02,57l-1.33-5.41a1,1,0,0,0-1.15-.75L8.06,51.86l2.5-3.87q3.75-5.82,7.52-11.64a.784.784,0,0,1,.02.14,4.191,4.191,0,0,0,1.15,3,4.205,4.205,0,0,0,3.17.45,4.081,4.081,0,0,1,1.65,0,3.935,3.935,0,0,1,1.01,1.27c.19.29.38.58.58.86ZM36.4,41.29a.7.7,0,0,1-.3.2c-.28.06-1.02-.39-1.5-.7A5.071,5.071,0,0,0,32,39.75a5.071,5.071,0,0,0-2.6,1.04c-.48.31-1.22.77-1.49.71a.828.828,0,0,1-.32-.22,6.488,6.488,0,0,1-.81-1.13,5.026,5.026,0,0,0-1.83-2.01,3.246,3.246,0,0,0-1.45-.29,11.376,11.376,0,0,0-1.3.1c-.62.07-1.46.17-1.7-.02s-.34-1.04-.41-1.66a5.025,5.025,0,0,0-.79-2.64,1.7,1.7,0,0,0-.27-.27,1.249,1.249,0,0,0-.12-.09l-.01-.01h-.01a6.3,6.3,0,0,0-1.98-.97c-.59-.21-1.39-.49-1.53-.79-.14-.28.14-1.07.34-1.65a4.932,4.932,0,0,0,.43-2.73,4.848,4.848,0,0,0-1.55-2.23c-.44-.44-1.05-1.05-1.05-1.39s.61-.95,1.05-1.39a4.848,4.848,0,0,0,1.55-2.23,4.932,4.932,0,0,0-.43-2.73c-.2-.58-.48-1.37-.34-1.66s.95-.57,1.54-.78a4.864,4.864,0,0,0,2.37-1.34,4.91,4.91,0,0,0,.8-2.63c.07-.62.16-1.46.41-1.66s1.08-.1,1.7-.03a5.007,5.007,0,0,0,2.75-.19,4.956,4.956,0,0,0,1.83-2.01c.33-.54.79-1.27,1.12-1.34.28-.07,1.02.4,1.5.7A5.071,5.071,0,0,0,32,7.25a5.071,5.071,0,0,0,2.6-1.04c.48-.3,1.21-.76,1.5-.7.33.07.79.8,1.12,1.34a4.956,4.956,0,0,0,1.83,2.01,5.007,5.007,0,0,0,2.75.19c.62-.07,1.46-.17,1.7.02s.34,1.04.41,1.66a5.025,5.025,0,0,0,.79,2.64,5.024,5.024,0,0,0,2.39,1.35c.59.2,1.39.48,1.53.78.14.28-.14,1.07-.34,1.65a4.932,4.932,0,0,0-.43,2.73,4.848,4.848,0,0,0,1.55,2.23c.44.44,1.05,1.05,1.05,1.39s-.61.95-1.05,1.39a4.848,4.848,0,0,0-1.55,2.23,4.932,4.932,0,0,0,.43,2.73c.2.58.48,1.37.34,1.66s-.95.58-1.53.78a6.074,6.074,0,0,0-2.07,1.02,3.107,3.107,0,0,0-.31.32,4.91,4.91,0,0,0-.8,2.63c-.07.62-.16,1.46-.41,1.66s-1.08.1-1.7.03a4.916,4.916,0,0,0-2.75.19,5.026,5.026,0,0,0-1.83,2.01A6.464,6.464,0,0,1,36.4,41.29Zm14.06,9.55a1,1,0,0,0-1.15.75L47.98,57,38.34,42.07c.2-.28.39-.57.58-.86a4.07,4.07,0,0,1,1-1.27,4.136,4.136,0,0,1,1.66,0,4.174,4.174,0,0,0,3.16-.45,4.157,4.157,0,0,0,1.16-3,.675.675,0,0,1,.02-.14q3.765,5.82,7.52,11.64l2.5,3.87Z\"></path> </g> </g></svg>",
             "title": "Europæiske standarder",
-            "text": "<p>Vi overholder alle europæiske sikkerheds- og kvalitetsforskrifter.<\/p>"
+            "text": "<p>Vi overholder alle europæiske sikkerheds- og kvalitetsforskrifter.</p>"
           }
         },
         "feature_tUVTmD": {
           "type": "feature",
           "settings": {
-            "icon": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path><\/svg>",
-            "title": "24\/7 support",
-            "text": "<p>Vores ekspertteam er altid klar til at hjælpe dig med at finde den rigtige løsning.<\/p>"
+            "icon": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z\" stroke=\"#0A3D62\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
+            "title": "24/7 support",
+            "text": "<p>Vores ekspertteam er altid klar til at hjælpe dig med at finde den rigtige løsning.</p>"
           }
         },
         "feature_EPiERa": {
           "type": "feature",
           "settings": {
-            "icon": "<svg version=\"1.1\" id=\"Icons\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 32 32\" fill=\"#082c49\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"><\/g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/g><g id=\"SVGRepo_iconCarrier\"> <style type=\"text\/css\"> .st0{fill:none;stroke:#082c49;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#082c49;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3;} .st2{fill:none;stroke:#082c49;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .st3{fill:none;} <\/style> <polyline class=\"st0\" points=\"2,9 19,9 19,24 10,24 \"><\/polyline> <circle class=\"st0\" cx=\"24\" cy=\"24\" r=\"2\"><\/circle> <circle class=\"st0\" cx=\"8\" cy=\"24\" r=\"2\"><\/circle> <polyline class=\"st0\" points=\"19,24 19,13 25,13 29,18 29,24 26,24 \"><\/polyline> <line class=\"st0\" x1=\"4\" y1=\"13\" x2=\"13\" y2=\"13\"><\/line> <line class=\"st0\" x1=\"2\" y1=\"17\" x2=\"11\" y2=\"17\"><\/line> <rect x=\"-288\" y=\"-432\" class=\"st3\" width=\"536\" height=\"680\"><\/rect> <\/g><\/svg>",
+            "icon": "<svg version=\"1.1\" id=\"Icons\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 32 32\" fill=\"#082c49\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <style type=\"text/css\"> .st0{fill:none;stroke:#082c49;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st1{fill:none;stroke:#082c49;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3;} .st2{fill:none;stroke:#082c49;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .st3{fill:none;} </style> <polyline class=\"st0\" points=\"2,9 19,9 19,24 10,24 \"></polyline> <circle class=\"st0\" cx=\"24\" cy=\"24\" r=\"2\"></circle> <circle class=\"st0\" cx=\"8\" cy=\"24\" r=\"2\"></circle> <polyline class=\"st0\" points=\"19,24 19,13 25,13 29,18 29,24 26,24 \"></polyline> <line class=\"st0\" x1=\"4\" y1=\"13\" x2=\"13\" y2=\"13\"></line> <line class=\"st0\" x1=\"2\" y1=\"17\" x2=\"11\" y2=\"17\"></line> <rect x=\"-288\" y=\"-432\" class=\"st3\" width=\"536\" height=\"680\"></rect> </g></svg>",
             "title": "Hurtig levering",
-            "text": "<p>Hurtig og pålidelig forsendelse til alle regioner.<\/p>"
+            "text": "<p>Hurtig og pålidelig forsendelse til alle regioner.</p>"
           }
         }
       },
@@ -133,7 +133,7 @@
         "title_size_desktop": 32,
         "title_size_mobile": 28,
         "title_color": "#111111",
-        "subtitle": "<p>Opdag, hvad der gør os til det betroede valg for beskyttelsesløsninger på tværs af brancher.<\/p>",
+        "subtitle": "<p>Opdag, hvad der gør os til det betroede valg for beskyttelsesløsninger på tværs af brancher.</p>",
         "subtitle_size_desktop": 18,
         "subtitle_size_mobile": 16,
         "subtitle_color": "#666666",
@@ -164,7 +164,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Hvordan vælger jeg den rigtige værdiboks til mine behov?",
-            "answer": "<p>Den rigtige værdiboks afhænger af, hvad du skal beskytte – kontanter, dokumenter, elektronik eller værdigenstande. Overvej niveauet af brand- og indbrudssikring, det indvendige rum og låsesystemet. Du kan altid kontakte vores team for personlig rådgivning.<\/p>",
+            "answer": "<p>Den rigtige værdiboks afhænger af, hvad du skal beskytte – kontanter, dokumenter, elektronik eller værdigenstande. Overvej niveauet af brand- og indbrudssikring, det indvendige rum og låsesystemet. Du kan altid kontakte vores team for personlig rådgivning.</p>",
             "icon_html": "",
             "default_open": false
           }
@@ -173,7 +173,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Er jeres pengeskabe certificeret efter europæiske standarder?",
-            "answer": "<p>Ja. Alle vores pengeskabe er testet og certificeret i henhold til de gældende europæiske EN-standarder for brand- og indbrudssikring<\/p>",
+            "answer": "<p>Ja. Alle vores pengeskabe er testet og certificeret i henhold til de gældende europæiske EN-standarder for brand- og indbrudssikring</p>",
             "icon_html": "",
             "default_open": false
           }
@@ -182,7 +182,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Hvad er den gennemsnitlige leveringstid?",
-            "answer": "<p>Vi sender normalt inden for 2–5 hverdage, afhængigt af produktet og din placering. Du modtager et sporingsnummer, når din ordre er afsendt.<\/p>",
+            "answer": "<p>Vi sender normalt inden for 2–5 hverdage, afhængigt af produktet og din placering. Du modtager et sporingsnummer, når din ordre er afsendt.</p>",
             "icon_html": "",
             "default_open": false
           }
@@ -191,7 +191,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Tilbyder I installationsservice?",
-            "answer": "<p>Ja, i mange regioner kan vi arrangere professionel installation af din værdiboks eller sikkerhedsskab. Kontakt os for at høre, om det er muligt i dit område.<\/p>",
+            "answer": "<p>Ja, i mange regioner kan vi arrangere professionel installation af din værdiboks eller sikkerhedsskab. Kontakt os for at høre, om det er muligt i dit område.</p>",
             "icon_html": "",
             "default_open": false
           }
@@ -222,7 +222,7 @@
         "title_size_desktop": 32,
         "title_size_mobile": 28,
         "title_color": "#111111",
-        "subtitle": "<p>Find svar på almindelige spørgsmål og udforsk nyttige artikler.<\/p>",
+        "subtitle": "<p>Find svar på almindelige spørgsmål og udforsk nyttige artikler.</p>",
         "subtitle_size_desktop": 18,
         "subtitle_size_mobile": 16,
         "subtitle_color": "#666666",

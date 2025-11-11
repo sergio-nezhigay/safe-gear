@@ -173,103 +173,61 @@ class ProductMetafieldsSection extends HTMLElement {
    * @param {CustomEvent} event - The variant:update event
    */
   handleVariantUpdate(event) {
-    console.log('🔄 [Variant Update] Event received', {
-      hasDetail: !!event.detail,
-      hasData: !!(event.detail && event.detail.data),
-      hasHtml: !!(event.detail && event.detail.data && event.detail.data.html),
-      variantId: event.detail?.resource?.id,
-      variantTitle: event.detail?.resource?.title
-    });
+    if (!event.detail?.resource) return;
 
-    if (!event.detail || !event.detail.data || !event.detail.data.html) {
-      console.warn('⚠️ [Variant Update] Missing event data or HTML');
-      return;
-    }
-
-    // Parse the HTML response to extract variant metafield values
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(event.detail.data.html, 'text/html');
-
-    // Find the metafields section in the parsed HTML
-    const updatedSection = doc.querySelector(`product-metafields-section[data-section-id="${this.sectionId}"]`);
-
-    console.log('🔍 [Variant Update] Section lookup', {
-      sectionId: this.sectionId,
-      sectionFound: !!updatedSection
-    });
-
-    if (!updatedSection) {
-      console.warn('⚠️ [Variant Update] Updated section not found in HTML response');
-      return;
-    }
-
-    // Get all variant metafield rows in the current DOM
+    const variant = event.detail.resource;
     const variantRows = this.querySelectorAll('tr[data-variant-metafield="true"]');
-
-    console.log('📊 [Variant Update] Current variant metafield rows', {
-      count: variantRows.length,
-      metafieldKeys: Array.from(variantRows).map(r => r.dataset.metafieldKey)
-    });
-
-    // Get all variant rows in the updated HTML for comparison
-    const updatedVariantRows = updatedSection.querySelectorAll('tr[data-variant-metafield="true"]');
-    console.log('📄 [Variant Update] Updated HTML variant rows', {
-      count: updatedVariantRows.length,
-      metafieldKeys: Array.from(updatedVariantRows).map(r => ({
-        key: r.dataset.metafieldKey,
-        visible: r.style.display !== 'none',
-        value: r.querySelector('[data-metafield-value]')?.textContent?.trim().substring(0, 50)
-      }))
-    });
 
     variantRows.forEach(row => {
       const metafieldKey = row.dataset.metafieldKey;
+      if (!metafieldKey) return;
 
-      if (!metafieldKey) {
-        console.warn('⚠️ [Variant Update] Row missing metafield-key attribute', row);
-        return;
-      }
+      const [namespace, key] = metafieldKey.split('.');
+      const metafieldValue = variant.metafields?.[namespace]?.[key];
+      const currentValueCell = row.querySelector('[data-metafield-value]');
 
-      const currentValue = row.querySelector('[data-metafield-value]');
-      const currentValueText = currentValue?.textContent?.trim();
-
-      // Find the corresponding row in the updated HTML
-      const updatedRow = updatedSection.querySelector(`tr[data-metafield-key="${metafieldKey}"]`);
-
-      console.log(`🔎 [Variant Update] Processing ${metafieldKey}`, {
-        updatedRowFound: !!updatedRow,
-        updatedRowVisible: updatedRow && updatedRow.style.display !== 'none',
-        currentValue: currentValueText?.substring(0, 50),
-        updatedValue: updatedRow?.querySelector('[data-metafield-value]')?.textContent?.trim().substring(0, 50)
-      });
-
-      if (updatedRow && updatedRow.style.display !== 'none') {
-        // Variant has this metafield - update and show
-        const updatedValue = updatedRow.querySelector('[data-metafield-value]');
-
-        if (updatedValue && currentValue) {
-          const newValue = updatedValue.innerHTML;
-          const oldValue = currentValue.innerHTML;
-
-          console.log(`✅ [Variant Update] Updating ${metafieldKey}`, {
-            oldValue: oldValue.substring(0, 50),
-            newValue: newValue.substring(0, 50),
-            changed: oldValue !== newValue
-          });
-
-          currentValue.innerHTML = newValue;
+      if (metafieldValue) {
+        const displayValue = this.extractMetafieldValue(metafieldValue);
+        if (currentValueCell) {
+          currentValueCell.textContent = displayValue;
         }
-
-        // Show the row with transition
         this.showRow(row);
       } else {
-        console.log(`❌ [Variant Update] Hiding ${metafieldKey} (variant doesn't have this metafield)`);
-        // Variant doesn't have this metafield - hide it
         this.hideRow(row);
       }
     });
+  }
 
-    console.log('✨ [Variant Update] Complete');
+  /**
+   * Extract display value from metafield object
+   * @param {*} metafieldValue - The metafield value to extract
+   * @returns {string} The display value
+   */
+  extractMetafieldValue(metafieldValue) {
+    if (typeof metafieldValue === 'object' && metafieldValue !== null) {
+      // Handle Shopify dimension/weight/volume format: {type, value: {value, unit}}
+      if (metafieldValue.type && metafieldValue.value) {
+        if (typeof metafieldValue.value === 'object' && metafieldValue.value.value !== undefined) {
+          const val = metafieldValue.value.value;
+          const unit = metafieldValue.value.unit;
+          return unit ? `${val} ${unit}` : val;
+        }
+        return metafieldValue.value;
+      }
+      // Handle simple {value, unit} format
+      if (metafieldValue.value !== undefined) {
+        if (typeof metafieldValue.value === 'object' && metafieldValue.value.value !== undefined) {
+          const val = metafieldValue.value.value;
+          const unit = metafieldValue.value.unit;
+          return unit ? `${val} ${unit}` : val;
+        }
+        const val = metafieldValue.value;
+        const unit = metafieldValue.unit;
+        return unit ? `${val} ${unit}` : val;
+      }
+      return JSON.stringify(metafieldValue);
+    }
+    return String(metafieldValue);
   }
 
   /**

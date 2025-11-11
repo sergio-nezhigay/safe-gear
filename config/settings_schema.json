@@ -1,11 +1,13 @@
+
+
 [
   {
     "name": "theme_info",
     "theme_name": "Horizon",
     "theme_version": "2.1.6",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:names.logo_and_favicon",
@@ -32,6 +34,7 @@
       }
     ]
   },
+  
   {
     "name": "t:names.colors",
     "settings": [
@@ -2334,7 +2337,7 @@
         "type": "header",
         "content": "Burglary Grade Icons"
       },
-      {
+       {
         "type": "image_picker",
         "id": "icon_burglary_SSF-3492",
         "label": "Security SSF 3492 Icon"
@@ -2348,7 +2351,7 @@
         "type": "richtext",
         "id": "icon_burglary_s1_description",
         "label": "S1 Description",
-        "default": "<p><strong>Security Grade S1<\/strong> - Basic security level safe, suitable for protection against opportunistic theft. Offers fundamental security features for home and small office use.<\/p>"
+        "default": "<p><strong>Security Grade S1</strong> - Basic security level safe, suitable for protection against opportunistic theft. Offers fundamental security features for home and small office use.</p>"
       },
       {
         "type": "image_picker",
@@ -2359,7 +2362,7 @@
         "type": "richtext",
         "id": "icon_burglary_s2_description",
         "label": "S2 Description",
-        "default": "<p><strong>Security Grade S2<\/strong> - Enhanced security level safe with improved resistance to break-in attempts. Recommended for valuable documents and small valuables.<\/p>"
+        "default": "<p><strong>Security Grade S2</strong> - Enhanced security level safe with improved resistance to break-in attempts. Recommended for valuable documents and small valuables.</p>"
       },
       {
         "type": "image_picker",
@@ -2370,7 +2373,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_0_description",
         "label": "Grade 0 Description",
-        "default": "<p><strong>Burglary Grade 0<\/strong> - Entry level burglary protection according to European standards. Provides basic security against simple break-in attempts.<\/p>"
+        "default": "<p><strong>Burglary Grade 0</strong> - Entry level burglary protection according to European standards. Provides basic security against simple break-in attempts.</p>"
       },
       {
         "type": "image_picker",
@@ -2381,7 +2384,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_1_description",
         "label": "Grade I Description",
-        "default": "<p><strong>Burglary Grade I<\/strong> - Standard protection level tested against simple tools and limited time attacks. Suitable for home safes and small business applications.<\/p>"
+        "default": "<p><strong>Burglary Grade I</strong> - Standard protection level tested against simple tools and limited time attacks. Suitable for home safes and small business applications.</p>"
       },
       {
         "type": "image_picker",
@@ -2392,7 +2395,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_2_description",
         "label": "Grade II Description",
-        "default": "<p><strong>Burglary Grade II<\/strong> - Medium security level with resistance to common burglary tools. Recommended for valuable items and small commercial use.<\/p>"
+        "default": "<p><strong>Burglary Grade II</strong> - Medium security level with resistance to common burglary tools. Recommended for valuable items and small commercial use.</p>"
       },
       {
         "type": "image_picker",
@@ -2403,7 +2406,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_3_description",
         "label": "Grade III Description",
-        "default": "<p><strong>Burglary Grade III<\/strong> - High security level tested against advanced tools and extended attack time. Ideal for cash storage and high-value items.<\/p>"
+        "default": "<p><strong>Burglary Grade III</strong> - High security level tested against advanced tools and extended attack time. Ideal for cash storage and high-value items.</p>"
       },
       {
         "type": "image_picker",
@@ -2414,7 +2417,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_4_description",
         "label": "Grade IV Description",
-        "default": "<p><strong>Burglary Grade IV<\/strong> - Very high security level with exceptional resistance to professional burglary attempts. Suitable for commercial and banking applications.<\/p>"
+        "default": "<p><strong>Burglary Grade IV</strong> - Very high security level with exceptional resistance to professional burglary attempts. Suitable for commercial and banking applications.</p>"
       },
       {
         "type": "image_picker",
@@ -2425,7 +2428,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_5_description",
         "label": "Grade V Description",
-        "default": "<p><strong>Burglary Grade V<\/strong> - Premium security level offering maximum protection against sophisticated attack methods. Designed for high-security commercial environments.<\/p>"
+        "default": "<p><strong>Burglary Grade V</strong> - Premium security level offering maximum protection against sophisticated attack methods. Designed for high-security commercial environments.</p>"
       },
       {
         "type": "image_picker",
@@ -2436,7 +2439,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_6_description",
         "label": "Grade VI Description",
-        "default": "<p><strong>Burglary Grade VI<\/strong> - Ultra-high security level with extreme resistance to advanced burglary techniques. Used in banking and high-security facilities.<\/p>"
+        "default": "<p><strong>Burglary Grade VI</strong> - Ultra-high security level with extreme resistance to advanced burglary techniques. Used in banking and high-security facilities.</p>"
       },
       {
         "type": "image_picker",
@@ -2447,7 +2450,7 @@
         "type": "richtext",
         "id": "icon_burglary_grade_7_description",
         "label": "Grade VII Description",
-        "default": "<p><strong>Burglary Grade VII<\/strong> - Maximum security level providing the highest available protection against all known burglary methods. Reserved for critical security applications.<\/p>"
+        "default": "<p><strong>Burglary Grade VII</strong> - Maximum security level providing the highest available protection against all known burglary methods. Reserved for critical security applications.</p>"
       },
       {
         "type": "header",
@@ -2462,7 +2465,7 @@
         "type": "richtext",
         "id": "icon_fire_insulated_description",
         "label": "Fire Insulated Description",
-        "default": "<p><strong>Fire Insulated<\/strong> - Basic fire protection providing insulation against heat transfer. Protects contents from fire damage without specific time rating certification.<\/p>"
+        "default": "<p><strong>Fire Insulated</strong> - Basic fire protection providing insulation against heat transfer. Protects contents from fire damage without specific time rating certification.</p>"
       },
       {
         "type": "image_picker",
@@ -2473,7 +2476,7 @@
         "type": "richtext",
         "id": "icon_fire_30_minutes_description",
         "label": "30 Minutes Description",
-        "default": "<p><strong>30 Minutes Fire Resistance<\/strong> - Tested and certified to protect contents for 30 minutes in fire conditions up to 1700°F (927°C). Suitable for documents and media storage.<\/p>"
+        "default": "<p><strong>30 Minutes Fire Resistance</strong> - Tested and certified to protect contents for 30 minutes in fire conditions up to 1700°F (927°C). Suitable for documents and media storage.</p>"
       },
       {
         "type": "image_picker",
@@ -2484,7 +2487,7 @@
         "type": "richtext",
         "id": "icon_fire_60_minutes_description",
         "label": "60 Minutes Description",
-        "default": "<p><strong>60 Minutes Fire Resistance<\/strong> - Certified fire protection for 1 hour at temperatures up to 1700°F (927°C). Recommended for important documents and valuables.<\/p>"
+        "default": "<p><strong>60 Minutes Fire Resistance</strong> - Certified fire protection for 1 hour at temperatures up to 1700°F (927°C). Recommended for important documents and valuables.</p>"
       },
       {
         "type": "image_picker",
@@ -2495,7 +2498,7 @@
         "type": "richtext",
         "id": "icon_fire_90_minutes_description",
         "label": "90 Minutes Description",
-        "default": "<p><strong>90 Minutes Fire Resistance<\/strong> - Extended fire protection for 1.5 hours maintaining internal temperature below critical levels. Ideal for business-critical documents.<\/p>"
+        "default": "<p><strong>90 Minutes Fire Resistance</strong> - Extended fire protection for 1.5 hours maintaining internal temperature below critical levels. Ideal for business-critical documents.</p>"
       },
       {
         "type": "image_picker",
@@ -2506,7 +2509,7 @@
         "type": "richtext",
         "id": "icon_fire_120_minutes_description",
         "label": "120 Minutes Description",
-        "default": "<p><strong>120 Minutes Fire Resistance<\/strong> - Maximum fire protection rating of 2 hours at extreme temperatures. Premium protection for irreplaceable documents and valuable items.<\/p>"
+        "default": "<p><strong>120 Minutes Fire Resistance</strong> - Maximum fire protection rating of 2 hours at extreme temperatures. Premium protection for irreplaceable documents and valuable items.</p>"
       }
     ]
   }

@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.title",
           "settings": {
-            "text": "<h2>{{ closest.page.title }}<\/h2>",
+            "text": "<h2>{{ closest.page.title }}</h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",

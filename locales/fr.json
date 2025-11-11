@@ -55,7 +55,7 @@
     "cart": "Panier d'achat",
     "cart_count": "Articles au total dans le panier",
     "menu": "Menu",
-    "country_region": "Pays\/région",
+    "country_region": "Pays/région",
     "slide_status": "Diapositive {{ index }} sur {{ length }}",
     "scroll_to": "Faites défiler jusqu'à {{ title }}",
     "loading_product_recommendations": "Chargement des recommandations de produits",
@@ -82,7 +82,7 @@
     "show_filters": "Filtrer",
     "clear": "Effacer",
     "continue_shopping": "Retour au magasin",
-    "log_in_html": "Avez-vous un compte ? <a href=\"{{ link }}\">Connectez-vous<\/a> pour payer plus rapidement.",
+    "log_in_html": "Avez-vous un compte ? <a href=\"{{ link }}\">Connectez-vous</a> pour payer plus rapidement.",
     "see_items": {
       "one": "Voir {{ count }} article",
       "other": "Voir {{ count }} articles",
@@ -130,13 +130,13 @@
     "seller_note": "Instructions particulières",
     "cart_subtotal": "Sous-total",
     "discounts": "Réductions",
-    "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Taxes et droits de douane inclus. Les remises et la <a href=\"{{ link }}\">livraison<\/a> sont calculées lors du paiement.",
+    "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Taxes et droits de douane inclus. Les remises et la <a href=\"{{ link }}\">livraison</a> sont calculées lors du paiement.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Taxes et droits de douane inclus. Les remises et la livraison sont calculées lors du paiement.",
-    "taxes_included_shipping_at_checkout_with_policy_html": "Taxes incluses. Les remises et la <a href=\"{{ link }}\">livraison<\/a> sont calculées lors du paiement.",
+    "taxes_included_shipping_at_checkout_with_policy_html": "Taxes incluses. Les remises et la <a href=\"{{ link }}\">livraison</a> sont calculées lors du paiement.",
     "taxes_included_shipping_at_checkout_without_policy": "Taxes incluses. Les remises et la livraison sont calculées lors du paiement.",
-    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes incluses. Les impôts, remises et <a href=\"{{ link }}\">livraison<\/a> sont calculés lors du paiement.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes incluses. Les impôts, remises et <a href=\"{{ link }}\">livraison</a> sont calculés lors du paiement.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes incluses. Les impôts, remises et frais de livraison sont calculés lors du paiement.",
-    "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, remises et <a href=\"{{ link }}\">livraison<\/a> sont calculées lors du paiement.",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, remises et <a href=\"{{ link }}\">livraison</a> sont calculées lors du paiement.",
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, remises et livraison sont calculées lors du paiement.",
     "checkout": "Aller au paiement",
     "cart_title": "Panier d'achat",
@@ -146,7 +146,7 @@
     "price_sale": "Prix soldé",
     "duties_and_taxes_included": "Incl. droits de douane et taxes.",
     "duties_included": "Incl. douane.",
-    "shipping_policy_html": "<a href=\"{{ link }}\">Frais de port<\/a> calculés lors du paiement.",
+    "shipping_policy_html": "<a href=\"{{ link }}\">Frais de port</a> calculés lors du paiement.",
     "taxes_included": "Taxes incluses.",
     "product_badge_sold_out": "Épuisé",
     "product_badge_sale": "Soldes",
@@ -188,7 +188,7 @@
     "search": "Chercher",
     "search_results_no_results_check_spelling": "Aucun résultat trouvé pour “{{ terms }}”. Vérifiez l'orthographe ou utilisez un autre mot ou une autre expression.",
     "no_products_found": "Aucun produit trouvé.",
-    "use_fewer_filters_html": "Essayez d'utiliser moins de filtres, ou <a class=\"{{ class }}\" href=\"{{ link }}\">effacez tous les filtres<\/a>.",
+    "use_fewer_filters_html": "Essayez d'utiliser moins de filtres, ou <a class=\"{{ class }}\" href=\"{{ link }}\">effacez tous les filtres</a>.",
     "featured_products": "Produits sélectionnés",
     "filters": "Filtres",
     "price_filter_html": "Le prix le plus élevé est {{ price }}",
@@ -204,11 +204,11 @@
     "duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts": "Taxes et droits de douane inclus. La livraison est calculée lors du paiement.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Taxes incluses. Livraison calculée lors du paiement.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Taxes incluses. Livraison calculée lors du paiement.",
-    "pickup_available_at_html": "Le retrait est disponible ici : <b>{{ location }}<\/b>",
+    "pickup_available_at_html": "Le retrait est disponible ici : <b>{{ location }}</b>",
     "pickup_available_in": "Le retrait est disponible {{ pickup_time }}",
     "pickup_not_available": "Le ramassage n'est pas disponible pour le moment",
     "pickup_ready_in": "{{ pickup_time }}",
-    "taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Les taxes et la <a href=\"{{ link }}\">livraison<\/a> sont calculées lors du paiement.",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Les taxes et la <a href=\"{{ link }}\">livraison</a> sont calculées lors du paiement.",
     "taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Les taxes et la livraison sont calculées lors du paiement.",
     "taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Taxes incluses. La livraison est calculée lors du paiement.",
     "taxes_included_shipping_at_checkout_without_policy_without_discounts": "Taxes incluses. La livraison est calculée lors du paiement.",
@@ -226,7 +226,7 @@
     },
     "shipping_policy": "La livraison est calculée lors du paiement.",
     "powered_by": "Ce magasin sera exploité par",
-    "store_owner_link_html": "Êtes-vous le propriétaire du magasin ? <a href=\"{{ link }}\">Connectez-vous ici<\/a>",
+    "store_owner_link_html": "Êtes-vous le propriétaire du magasin ? <a href=\"{{ link }}\">Connectez-vous ici</a>",
     "shipping_discount_error": "Les remises sur les frais d'expédition sont affichées lors du paiement après l'ajout d'une adresse",
     "discount_code_error": "Le code de réduction ne peut pas être utilisé dans votre panier",
     "discount": "Remise",
@@ -236,13 +236,13 @@
     "recipient_form_email_address": "Adresse e-mail du destinataire",
     "recipient_form_name_label": "Nom du destinataire (facultatif)",
     "recipient_form_message": "Message (optionnel)",
-    "recipient_form_characters_used": "{{ used_chars }}\/{{ max_chars }} caractères utilisés",
+    "recipient_form_characters_used": "{{ used_chars }}/{{ max_chars }} caractères utilisés",
     "recipient_form_send_on": "AAAA-MM-JJ",
     "recipient_form_send_on_label": "Envoyer (facultatif)",
     "recipient_form_fields_visible": "Les champs du formulaire de réception sont maintenant visibles",
     "recipient_form_fields_hidden": "Les champs du formulaire de réception sont maintenant cachés",
     "recipient_form_error": "Une erreur s'est produite lors de la soumission du formulaire",
-    "product_custom_property_character_count": "{{ used_chars }}\/{{ max_chars }} caractères utilisés",
+    "product_custom_property_character_count": "{{ used_chars }}/{{ max_chars }} caractères utilisés",
     "terms_and_policies": "Conditions et politiques"
   },
   "gift_cards": {
@@ -594,15 +594,15 @@
         "address2_label": "Appartement, étage, etc.",
         "optional_address2_label": "Appartement, étage, etc. (facultatif)",
         "city_label": "Par",
-        "country_code": "Code pays\/région",
+        "country_code": "Code pays/région",
         "county_label": "Région",
         "county_placeholder": "Région",
         "state_label": "Stat",
         "state_placeholder": "Stat",
         "governorate_label": "Gouvernement",
         "governorate_placeholder": "Gouvernement",
-        "state_and_territory_label": "État\/région",
-        "state_and_territory_placeholder": "État\/région",
+        "state_and_territory_label": "État/région",
+        "state_and_territory_placeholder": "État/région",
         "phone_tooltip": "Si nous avons besoin de vous contacter concernant votre commande",
         "zip_code_label": "Code postal",
         "zip_code_placeholder": "Code postal",
@@ -617,8 +617,8 @@
         "change_location_link_label": "Changer de localisation",
         "ship_to_company": "Envoyer à {{companyName}}",
         "shipping_used_as_billing_notice": "Celle-ci est également utilisée comme votre adresse de facturation pour cette commande.",
-        "company_attention_label": "Société\/att.",
-        "optional_company_attention_label": "Société\/att. (facultatif)",
+        "company_attention_label": "Société/att.",
+        "optional_company_attention_label": "Société/att. (facultatif)",
         "optional_pincode_label": "Code postal (facultatif)",
         "email_rollup_accessibility_label": "Options pour l'adresse e-mail",
         "phone_rollup_accessibility_label": "Options pour téléphone"
@@ -718,7 +718,7 @@
           "title": "Mise à jour du prix et de la quantité",
           "description": "Les prix et les quantités disponibles de ces articles ont changé et ont été mis à jour dans votre panier."
         },
-        "out_of_stock_in_context_label": "Ce produit n'est pas disponible dans votre pays\/région."
+        "out_of_stock_in_context_label": "Ce produit n'est pas disponible dans votre pays/région."
       },
       "order_summary": {
         "title": "Aperçu de la commande",
@@ -742,11 +742,11 @@
         "gift_card_has_been_applied": "Les cartes-cadeaux ont été utilisées",
         "gift_card_has_been_removed": "Les cartes-cadeaux ont été supprimées",
         "discount_already_applied": "Une remise a été appliquée à cette commande. Vous ne pouvez pas utiliser une autre remise.",
-        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-le code de réduction ne s'applique pas aux articles que vous avez dans votre panier",
-        "discount_requires_customer_notice": "Saisissez vos informations de livraison pour utiliser le code de réduction <strong style=\"text-transform:uppercase\">%{code}<\/strong>",
-        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-le code de réduction ne peut pas être utilisé pour le moment",
-        "shipping_information_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-le code de réduction ne peut pas être utilisé à votre adresse de livraison",
-        "customer_already_used_once_per_customer_discount_notice": "Le code de réduction <strong style=\"text-transform:uppercase\">%{code}<\/strong> a déjà été utilisé",
+        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-le code de réduction ne s'applique pas aux articles que vous avez dans votre panier",
+        "discount_requires_customer_notice": "Saisissez vos informations de livraison pour utiliser le code de réduction <strong style=\"text-transform:uppercase\">%{code}</strong>",
+        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-le code de réduction ne peut pas être utilisé pour le moment",
+        "shipping_information_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-le code de réduction ne peut pas être utilisé à votre adresse de livraison",
+        "customer_already_used_once_per_customer_discount_notice": "Le code de réduction <strong style=\"text-transform:uppercase\">%{code}</strong> a déjà été utilisé",
         "shipping_label": "Livraison",
         "tip_label": "Astuce",
         "shipping_default_value": "Calculé à l'étape suivante",
@@ -811,10 +811,10 @@
           "due_today_next": "Échoit aujourd'hui",
           "due_on_fulfillment_next": "Échoit lors de la préparation"
         },
-        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ne pouvait pas être utilisé avec vos remises existantes.",
-        "maximum_discount_code_limit_reached": "Vous avez atteint le nombre maximal de codes de réduction. Supprimez un code existant pour utiliser <strong style=\"text-transform:uppercase\">%{code}<\/strong>",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> ne pouvait pas être utilisé avec vos remises existantes.",
+        "maximum_discount_code_limit_reached": "Vous avez atteint le nombre maximal de codes de réduction. Supprimez un code existant pour utiliser <strong style=\"text-transform:uppercase\">%{code}</strong>",
         "order_total_label": "Commande au total",
-        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> ne fonctionne pas pour le moment. Contactez-nous pour obtenir de l'aide.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> ne fonctionne pas pour le moment. Contactez-nous pour obtenir de l'aide.",
         "due_on_fulfillment": "Échoit lors de la préparation",
         "duties_label": "Douane",
         "duties_and_taxes_label": "Douanes et taxes",
@@ -851,7 +851,7 @@
           "other": "Remises sur les commandes"
         },
         "price_per_item": {
-          "label": "%{price}\/pièce."
+          "label": "%{price}/pièce."
         },
         "updated_shipping_method": "Méthode de livraison mise à jour : %{shipping_method}",
         "discount_not_found": "Impossible de trouver un code de réduction valide correspondant au code saisi",
@@ -866,7 +866,7 @@
           "title": "Le solde de {{amount_due}} doit être payé {{due_at}}",
           "due_on_fulfillment_title": "Le solde de {{amount_due}} doit être payé après préparation"
         },
-        "eligible_customer_missing_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-code de réduction nécessite un client qualifié",
+        "eligible_customer_missing_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-code de réduction nécessite un client qualifié",
         "subtotal_label_with_quantity": {
           "one": "Sous-total · %{count} article",
           "other": "Sous-total · %{count} articles"
@@ -896,7 +896,7 @@
         "deposit_label": "Dépôt",
         "total_due_today_label": "Paiement total aujourd'hui",
         "total_due_later_label": "Paiement total ultérieur",
-        "discount_code_allocations_mismatch": "Le code de réduction <strong style=\"text-transform:uppercase\">%{code}<\/strong> a été modifié. Vérifiez votre panier et réessayez.",
+        "discount_code_allocations_mismatch": "Le code de réduction <strong style=\"text-transform:uppercase\">%{code}</strong> a été modifié. Vérifiez votre panier et réessayez.",
         "deferred_total_due_date_label_next": "Échoit le %{date}",
         "total_due_label": "Montant à payer",
         "for_add_on": "Pour : %{group_title}",
@@ -1106,14 +1106,14 @@
         "card_security_notice": "Toutes les transactions sont sécurisées et cryptées.",
         "name_on_card_label": "Nom de la carte",
         "name_on_card_placeholder": "Nom de la carte",
-        "card_expiry_label": "Date d'expiration (MM\/AA)",
-        "card_expiry_placeholder": "Date d'expiration (MM\/AA)",
+        "card_expiry_label": "Date d'expiration (MM/AA)",
+        "card_expiry_placeholder": "Date d'expiration (MM/AA)",
         "card_expiry_date_explanation": "Date d'expiration de la carte de crédit au format : mois, mois, année, année",
         "card_verification_value_explanation": "Code de sécurité à 3 chiffres que vous trouverez normalement au dos de votre carte. Les cartes American Express ont un code à 4 chiffres sur le devant de la carte.",
         "card_verification_value_explanation_amex": "Code de sécurité à 4 chiffres que vous trouverez normalement sur le devant de votre carte.",
         "card_verification_value_explanation_other": "Code de sécurité à 3 chiffres que vous trouverez normalement au dos de votre carte",
-        "card_start_label": "Date d'émission (MM \/ AA",
-        "card_start_placeholder": "Date d'émission (MM \/ AA",
+        "card_start_label": "Date d'émission (MM / AA",
+        "card_start_placeholder": "Date d'émission (MM / AA",
         "card_issue_number_label": "Numéro d'émission",
         "card_issue_number_placeholder": "Numéro d'émission",
         "card_change_label": "Changer",
@@ -1121,7 +1121,7 @@
         "saved_by_payment_method": "Économisé avec %{payment_method}",
         "same_billing_address_label": "Même adresse que l'adresse de livraison",
         "different_billing_address_label": "Utilisez une autre adresse de facturation",
-        "free_order_notice_html": "Votre commande est <strong>gratuite<\/strong>. Aucun paiement nécessaire.",
+        "free_order_notice_html": "Votre commande est <strong>gratuite</strong>. Aucun paiement nécessaire.",
         "order_covered_by_gift_cards_notice": {
           "one": "Votre commande a été payée avec votre carte cadeau.",
           "other": "Votre commande a été payée avec vos cartes-cadeaux."
@@ -1132,8 +1132,8 @@
         "no_js_credit_card_fields_redirect_hint": "Vous serez redirigé afin que vous puissiez ajouter vos informations de paiement.",
         "card_fields_container_prefix": "Contenu du champ pour :",
         "card_fields_unavailable_html": {
-          "one": "Les paiements par carte de crédit et de débit ne sont pas disponibles pour le moment.<br><a href=\"%{current_url}\">Rechargez cette page<\/a> ou réessayez plus tard.",
-          "other": "Les paiements par carte de crédit et de débit ne sont pas disponibles pour le moment.<br><a href=\"%{current_url}\">Rechargez cette page<\/a> ou essayez une autre méthode de paiement."
+          "one": "Les paiements par carte de crédit et de débit ne sont pas disponibles pour le moment.<br><a href=\"%{current_url}\">Rechargez cette page</a> ou réessayez plus tard.",
+          "other": "Les paiements par carte de crédit et de débit ne sont pas disponibles pour le moment.<br><a href=\"%{current_url}\">Rechargez cette page</a> ou essayez une autre méthode de paiement."
         },
         "card_fields_processing_error": "Une erreur s'est produite lors du traitement du paiement. Actualisez la page ou vérifiez votre connexion Internet.",
         "technical_error": "En raison de problèmes techniques, les paiements ne peuvent pas être effectués pour le moment. Veuillez réessayer dans quelques minutes.",
@@ -1153,7 +1153,7 @@
         "billing_address_not_supported_for_payment_method_error": "Cette méthode de paiement n'est pas disponible pour votre adresse de facturation et votre devise. Essayez une autre méthode de paiement.",
         "change_currency_section_description": "Choisissez un paramètre de devise",
         "no_real_orders_dev_store": "Ce magasin ne peut pas recevoir de vraies commandes ni de vrais paiements.",
-        "subscription_agreement_label_html": "Je comprends que j'accepte un abonnement. Il est renouvelé au prix et à la fréquence indiqués, jusqu'à ce qu'il prenne fin ou \n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">annulé<\/a>.\n",
+        "subscription_agreement_label_html": "Je comprends que j'accepte un abonnement. Il est renouvelé au prix et à la fréquence indiqués, jusqu'à ce qu'il prenne fin ou \n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">annulé</a>.\n",
         "waiting_on_payment_methods": "Chargement des méthodes de paiement disponibles ...",
         "apple_pay_payment_error": "Votre paiement n'a pas pu être effectué. Veuillez réessayer ou utiliser un autre mode de paiement.",
         "subscription_card_update_agreement_label": "Si vous modifiez le mode de paiement, le paiement de votre abonnement ainsi que les paiements récurrents futurs seront mis à jour.",
@@ -1175,8 +1175,8 @@
         "billing_address_associated_with_mandate_info": "Si vous souhaitez modifier votre adresse de facturation, vous devez supprimer et saisir à nouveau vos informations de carte de crédit",
         "credit_card_vaulting_sign_in_banner_info": "Connectez-vous ou créez un compte pour enregistrer votre carte de crédit pour des achats futurs.",
         "credit_card_vaulting_sign_in_banner_button_label": "Connectez-vous",
-        "expiry_long": "(Expire %{month}\/%{year})",
-        "expiry_short": "(Expiration %{month}\/%{year})",
+        "expiry_long": "(Expire %{month}/%{year})",
+        "expiry_short": "(Expiration %{month}/%{year})",
         "ftd_vault_credit_card_label": "Enregistrez cette carte de crédit sur mon compte pour un paiement plus rapide",
         "delete_customer_mandate_modal_title": "Voulez-vous supprimer cette carte de paiement ?",
         "delete_customer_mandate_modal_body": "Si vous retirez cette carte, vous devrez la rajouter avant de pouvoir l'utiliser pour les paiements.",
@@ -1185,8 +1185,8 @@
           "connect": "Cliquez pour vous connecter à votre compte Google Pay",
           "error_authorizing": "Une erreur s'est produite lors de l'approbation du paiement"
         },
-        "mor_disclaimer_html": "En cliquant ci-dessous et en finalisant votre commande, vous acceptez d'acheter vos articles auprès de Global-e en tant que propriétaire de boutique enregistré\npour cette transaction conformément aux <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">conditions générales<\/a>\net à la <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">politique de protection des données personnelles<\/a> de Global-e. Global-e est un prestataire international\nde services de distribution pour %{shop_name}",
-        "purchase_options_card_update_agreement_label_html": "En mettant à jour votre méthode de paiement, vous autorisez les paiements pour tout achat récurrent ou différé conformément à la <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">politique d'annulation<\/a> de ce magasin.",
+        "mor_disclaimer_html": "En cliquant ci-dessous et en finalisant votre commande, vous acceptez d'acheter vos articles auprès de Global-e en tant que propriétaire de boutique enregistré\npour cette transaction conformément aux <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">conditions générales</a>\net à la <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">politique de protection des données personnelles</a> de Global-e. Global-e est un prestataire international\nde services de distribution pour %{shop_name}",
+        "purchase_options_card_update_agreement_label_html": "En mettant à jour votre méthode de paiement, vous autorisez les paiements pour tout achat récurrent ou différé conformément à la <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">politique d'annulation</a> de ce magasin.",
         "receiver_payment_experience_hint": "Vous recevrez les informations de paiement une fois votre commande passée. Effectuez le paiement chez Multibanco ou en ligne dans les %{due_days} jours.",
         "pending_payment": {
           "due_notice": "Votre paiement de %{amount_due} est dû le %{due_date}.",
@@ -1202,7 +1202,7 @@
         "paypal_modal": {
           "order_contains_fixed_selling_plans": "Le montant total n'inclut peut-être pas les taxes, la livraison, les débits différés et certaines remises. Continuez vers la page de paiement pour payer le montant dû aujourd'hui."
         },
-        "purchase_options_agreement_label_html": "Je comprends qu'un ou plusieurs articles dans mon panier sont un achat différé ou récurrent. En continuant, j'accepte\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">la %{subscription_policy}<\/a>\net me donne la permission de débiter ma méthode de paiement aux prix, avec la fréquence et aux dates indiquées sur cette page, jusqu'à ce que ma commande soit préparée, ou jusqu'à ce que je résilie, si cela est autorisé.\n",
+        "purchase_options_agreement_label_html": "Je comprends qu'un ou plusieurs articles dans mon panier sont un achat différé ou récurrent. En continuant, j'accepte\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">la %{subscription_policy}</a>\net me donne la permission de débiter ma méthode de paiement aux prix, avec la fréquence et aux dates indiquées sur cette page, jusqu'à ce que ma commande soit préparée, ou jusqu'à ce que je résilie, si cela est autorisé.\n",
         "payment_method_saved": "La méthode de paiement est enregistrée",
         "card_vaulted_company_location": "La carte est enregistrée pour cet emplacement",
         "order_covered_by_store_credit_notice": "Votre commande a été payée avec votre bon d'achat.",
@@ -1385,9 +1385,9 @@
         "address_address1_blank": "Entrez l'adresse",
         "address_address2_blank": "Entrez l'appartement, le numéro de la chambre, etc.",
         "address_city_blank": "Entrez la ville",
-        "address_country_blank": "Choisissez un code pays\/région",
+        "address_country_blank": "Choisissez un code pays/région",
         "address_country_not_supported": "Nous n'envoyons pas vers ce pays ou cette région. Veuillez indiquer une autre adresse de livraison et réessayer.",
-        "address_province_blank": "Entrez l'état\/province",
+        "address_province_blank": "Entrez l'état/province",
         "address_company_blank": "Entrez le nom de l'entreprise",
         "address_zip_blank": "Entrez le code postal",
         "credit_card_name_blank": "Entrez votre nom exactement comme il est indiqué sur votre carte",
@@ -1447,11 +1447,11 @@
         "payment_gateway_unsupported_for_deferred_purchase_options": "Cette méthode de paiement n'est pas disponible pour les options d'achat différé.",
         "reduction_code_gift_cards_not_supported_with_deferred_purchase_options": "Les cartes-cadeaux ne sont pas prises en charge avec les options d'achat différé.",
         "delivery_zone_not_found": "La zone spécifiée n'a pas été trouvée dans le pays spécifié.",
-        "payment_gateway_unsupported_for_development_store_html": "Si vous souhaitez passer une commande de test, vous devez utiliser une passerelle de paiement pour test. En savoir plus sur <a href=\"%{docs_link}\">test des commandes dans les boutiques de développement<\/a>.",
-        "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Vous avez atteint la limite des commandes dans les boutiques de développement avec ce processeur de paiement. Si vous souhaitez passer une nouvelle commande, vous devez utiliser une passerelle de paiement pour les tests. En savoir plus sur <a href=\"%{docs_link}\">les tests de commandes dans les boutiques de développement<\/a>.",
+        "payment_gateway_unsupported_for_development_store_html": "Si vous souhaitez passer une commande de test, vous devez utiliser une passerelle de paiement pour test. En savoir plus sur <a href=\"%{docs_link}\">test des commandes dans les boutiques de développement</a>.",
+        "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Vous avez atteint la limite des commandes dans les boutiques de développement avec ce processeur de paiement. Si vous souhaitez passer une nouvelle commande, vous devez utiliser une passerelle de paiement pour les tests. En savoir plus sur <a href=\"%{docs_link}\">les tests de commandes dans les boutiques de développement</a>.",
         "email_blank": "Indiquez une adresse e-mail",
         "phone_blank": "Indiquez un numéro de téléphone",
-        "address_country_invalid": "Choisissez un pays\/région dans la liste",
+        "address_country_invalid": "Choisissez un pays/région dans la liste",
         "address_zip_invalid": "Indiquez un code postal valide",
         "gift_card_invalid": "La carte-cadeau \"••••%{last_four_characters}\" n'est plus valide",
         "vaulting_agreement_blank": "Votre carte doit être enregistrée, car le paiement de cette commande en attente est dû plus tard.",
@@ -1468,7 +1468,7 @@
         "address_city_contains_mathematical_symbols": "La ville ne doit pas contenir de symboles mathématiques",
         "address_company_contains_mathematical_symbols": "L'entreprise ne doit pas contenir de symboles mathématiques",
         "address_zip_contains_mathematical_symbols": "Le code postal ne doit pas contenir de symboles mathématiques",
-        "address_province_invalid": "Choisissez un état\/province valide",
+        "address_province_invalid": "Choisissez un état/province valide",
         "address_generic_invalid": "Entrée invalide",
         "payment_gateway_missing": "Choisissez un mode de paiement.",
         "split_cart_international_shipping_not_supported": "Tous les articles doivent avoir la même méthode de livraison pour la livraison internationale. Mettez à jour la méthode de livraison ou créez plusieurs commandes.",
@@ -2009,14 +2009,14 @@
           "tax_credential_it": "Code Fiscal (optionnel)",
           "tax_email_it": "PEC (optionnel)",
           "shipping_credential_type_co": "Type de Cédula",
-          "tax_credential_cr": "Numéro d'identification\/RUT",
-          "shipping_credential_cr": "Numéro d'identification\/RUT",
-          "tax_credential_my": "N° TIN\/numéro d'enregistrement",
-          "shipping_credential_my": "N° TIN\/numéro d'enregistrement",
+          "tax_credential_cr": "Numéro d'identification/RUT",
+          "shipping_credential_cr": "Numéro d'identification/RUT",
+          "tax_credential_my": "N° TIN/numéro d'enregistrement",
+          "shipping_credential_my": "N° TIN/numéro d'enregistrement",
           "tax_credential_use_mx": "Utilisation de CFDI",
-          "shipping_credential_tw": "Numéro d'identification national\/TVA",
-          "tax_credential_tr": "Numéro d'identification de la République de Turquie\/TVA",
-          "shipping_credential_tr": "Numéro d'identification de la République de Turquie\/TVA"
+          "shipping_credential_tw": "Numéro d'identification national/TVA",
+          "tax_credential_tr": "Numéro d'identification de la République de Turquie/TVA",
+          "shipping_credential_tr": "Numéro d'identification de la République de Turquie/TVA"
         }
       },
       "post_purchase": {
@@ -2078,16 +2078,16 @@
       },
       "contextual_availability": {
         "products_not_available": {
-          "one": "Ce produit sera retiré du panier car il n'est pas disponible dans votre pays\/région.",
-          "other": "Ces produits seront retirés de votre panier car ils ne sont pas disponibles dans votre pays\/région."
+          "one": "Ce produit sera retiré du panier car il n'est pas disponible dans votre pays/région.",
+          "other": "Ces produits seront retirés de votre panier car ils ne sont pas disponibles dans votre pays/région."
         },
         "all_products_in_cart_unavailable": {
-          "one": "Ce produit n'est pas disponible dans votre pays\/région."
+          "one": "Ce produit n'est pas disponible dans votre pays/région."
         },
         "unavailable_label": "Indisponible"
       },
       "change_cart_localization": {
-        "verify_shipping_address": "Votre pays\/région a été mis à jour. Saisissez votre adresse de livraison pour passer au paiement."
+        "verify_shipping_address": "Votre pays/région a été mis à jour. Saisissez votre adresse de livraison pour passer au paiement."
       },
       "throttle": {
         "line_to_check_out": "Vous êtes en train de faire la queue pour payer",
@@ -2183,7 +2183,7 @@
           }
         },
         "no_business_hours": "Il n'y a pas d'horaires d'ouverture disponibles",
-        "open_twenty_four_hours": "Ouvert 24h\/24",
+        "open_twenty_four_hours": "Ouvert 24h/24",
         "pickup_unavailable_banner_title": {
           "one": "Il n'y a aucun point de retrait pour votre article",
           "other": "Il n'y a aucun point de retrait pour vos articles"
@@ -2323,13 +2323,13 @@
             "shipping_address": "Entrez une adresse de livraison valide",
             "billing_address": "Entrez une adresse de facturation valide",
             "shipping_option": "Choisissez une option de livraison valide",
-            "zone": "Indiquez un état\/province valide",
+            "zone": "Indiquez un état/province valide",
             "postal_code": "Indiquez un code postal valide",
             "reduction_code": "Entrez un code de réduction valide ou une carte-cadeau valide",
             "billing_must_match_shipping": "Doit correspondre à l'adresse de livraison",
             "phone": "Entrez un numéro de téléphone valide",
             "emirate": "Indiquez un émirat valide",
-            "billing_zone": "Indiquez un état\/province valide pour l'adresse de facturation",
+            "billing_zone": "Indiquez un état/province valide pour l'adresse de facturation",
             "billing_phone": "Indiquez un numéro de téléphone valide pour l'adresse de facturation",
             "billing_zip": "Indiquez un code postal valide pour l'adresse de facturation"
           },
@@ -2339,15 +2339,15 @@
             "address1": "Entrez l'adresse",
             "address2": "Entrez l'appartement, le numéro de la chambre, etc.",
             "city": "Entrez la ville",
-            "province": "Entrez l'état\/province",
-            "country": "Choisissez un pays\/une région",
+            "province": "Entrez l'état/province",
+            "country": "Choisissez un pays/une région",
             "zip": "Entrez le code postal",
             "phone": "Indiquez un numéro de téléphone",
             "billing_first_name": "Indiquez un prénom pour l'adresse de facturation",
             "billing_address1": "Indiquez une adresse de facturation",
             "billing_address2": "Indiquez l'appartement, l'étage, etc. pour l'adresse de facturation",
             "billing_city": "Indiquez une ville pour l'adresse de facturation",
-            "billing_province": "Sélectionnez l'état\/province pour l'adresse de facturation",
+            "billing_province": "Sélectionnez l'état/province pour l'adresse de facturation",
             "billing_zip": "Indiquez le code postal de l'adresse de facturation",
             "contact_info": "Indiquez les coordonnées"
           },
@@ -2521,7 +2521,7 @@
       "zip_code": "Code postal",
       "pincode": "Code postal",
       "state": "Stat",
-      "state_and_territory": "État\/région",
+      "state_and_territory": "État/région",
       "county": "Région",
       "governorate": "Gouvernement",
       "confirm": "Êtes-vous sûr de vouloir supprimer cette adresse ?"
@@ -2564,7 +2564,7 @@
       "invalid_format": "le format n'est pas valide",
       "expired": "a expiré",
       "invalid_start_date_or_issue_number_for_debit": "une date de début valide ou un numéro d'émission est requis",
-      "reset_password_html": "Cette adresse e-mail est déjà liée à un compte. Si ce compte est le vôtre, vous pouvez <a href=\"\/account\/login#recover\">réinitialiser votre mot de passe<\/a>",
+      "reset_password_html": "Cette adresse e-mail est déjà liée à un compte. Si ce compte est le vôtre, vous pouvez <a href=\"/account/login#recover\">réinitialiser votre mot de passe</a>",
       "verify_email": "Nous avons envoyé un e-mail à %{customer_email}, cliquez sur le lien ci-joint pour confirmer votre adresse e-mail.",
       "blocked_address": "Cet emplacement n'est pas pris en charge",
       "product_not_available": "le produit n'est pas publié pour ce client.",
@@ -2650,7 +2650,7 @@
         "cancel_reason": {
           "inventory": "Les articles ne sont pas disponibles",
           "fraud": "Ordre frauduleuse",
-          "customer": "Le client a modifié\/annulé sa commande",
+          "customer": "Le client a modifié/annulé sa commande",
           "staff": "Erreur de l'employé"
         },
         "cash_on_delivery": "Paiement à la livraison (COD)"
@@ -2664,7 +2664,7 @@
         "generic_error": "Erreur dans le panier d'achat",
         "too_many_line_items_error": "Votre panier ne peut pas contenir plus de %{max} article.",
         "link_expired": "Lien expiré",
-        "stock_problems_html": "Un ou plusieurs éléments ne sont plus disponibles. Nous avons créé un <a href='%{link}'>panier mis à jour<\/a>.",
+        "stock_problems_html": "Un ou plusieurs éléments ne sont plus disponibles. Nous avons créé un <a href='%{link}'>panier mis à jour</a>.",
         "changed": "Panier modifié",
         "items_changed": "Un ou plusieurs articles ne sont plus disponibles.",
         "product_sold_out": "Le produit '%{name}' est déjà en rupture de stock.",
@@ -2742,29 +2742,29 @@
       },
       "open_tracking": {
         "opt_in": {
-          "opted_in_html": "<b>Vous vous êtes inscrit au suivi des ouvertures d'e-mails.<\/b>",
+          "opted_in_html": "<b>Vous vous êtes inscrit au suivi des ouvertures d'e-mails.</b>",
           "visibility": "Les taux d'ouverture des mails sont rapportés de manière anonyme. Nous pouvons seulement voir si vous avez ouvert un mail dans le cadre d'un taux d'ouverture global des mails.",
-          "opt_out_html": "Vous pouvez <a style='text-decoration:underline;' href='%{link}'>vous désinscrire<\/a> du suivi des ouvertures d'e-mails si vous ne souhaitez pas partager ces informations.",
+          "opt_out_html": "Vous pouvez <a style='text-decoration:underline;' href='%{link}'>vous désinscrire</a> du suivi des ouvertures d'e-mails si vous ne souhaitez pas partager ces informations.",
           "preview_bar": "Vous voyez un exemple de ce que vos clients voient lorsqu'ils s'inscrivent au suivi des ouvertures."
         },
         "opt_out": {
-          "opted_out_html": "<b>Vous avez désactivé le suivi des ouvertures des e-mails.<\/b>",
+          "opted_out_html": "<b>Vous avez désactivé le suivi des ouvertures des e-mails.</b>",
           "visibility": "Nous ne pourrons pas voir si vous avez ouvert nos e-mails.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Inscrivez-vous<\/a> au suivi des ouvertures des mails.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Inscrivez-vous</a> au suivi des ouvertures des mails.",
           "preview_bar": "Vous voyez un exemple de ce que vos clients voient lorsqu'ils se désabonnent du suivi des ouvertures."
         },
         "no_longer_track": {
-          "status_html": "<b>Nous ne suivons plus les ouvertures des e-mails.<\/b>",
+          "status_html": "<b>Nous ne suivons plus les ouvertures des e-mails.</b>",
           "privacy_policy": "Nous avons mis à jour notre politique de protection des données personnelles après l'envoi de ce mail, et nous ne suivons plus les ouvertures de mails."
         },
         "track": {
-          "status_html": "<b>Le suivi des ouvertures d'e-mails est signalé.<\/b>",
+          "status_html": "<b>Le suivi des ouvertures d'e-mails est signalé.</b>",
           "visibility": "Nous pouvons seulement voir si vous avez ouvert le mail dans le cadre d'un taux d'ouverture global des mails."
         },
         "updated_policy": {
-          "status_html": "<b>Le suivi des ouvertures d'e-mails est signalé.<\/b>",
+          "status_html": "<b>Le suivi des ouvertures d'e-mails est signalé.</b>",
           "visibility": "Nous avons mis à jour notre politique et suivons désormais les ouvertures des mails. Les taux d'ouverture des mails sont rapportés de manière anonyme. Nous pouvons seulement voir si vous avez ouvert un mail dans le cadre d'un taux d'ouverture global des mails.",
-          "opt_out_html": "Vous pouvez <a style='text-decoration:underline;' href='%{link}'>vous désabonner<\/a>, si vous ne souhaitez pas partager ces informations."
+          "opt_out_html": "Vous pouvez <a style='text-decoration:underline;' href='%{link}'>vous désabonner</a>, si vous ne souhaitez pas partager ces informations."
         }
       }
     },
@@ -3126,8 +3126,8 @@
       "summary_totals_title_accessibility_label": "Commande au total",
       "taxes": "Impôts",
       "total": "En tout",
-      "unit_price": "{{price}}\/pièce.",
-      "not_applicable": "I\/R",
+      "unit_price": "{{price}}/pièce.",
+      "not_applicable": "I/R",
       "partially_refunded_label": "PARTIELLEMENT REMBOURSÉ",
       "discount": "Remise",
       "pagination": {
@@ -3274,7 +3274,7 @@
       "attention": "Remarque",
       "attention_help_text": "Le nom d'une personne ou d'un département",
       "loading_form_accessibility_message": "Chargement du formulaire d'adresse",
-      "attention_company": "Société\/att."
+      "attention_company": "Société/att."
     },
     "B2B": {
       "account_information": {
@@ -3289,7 +3289,7 @@
         "tax_exemptions": "Exemptions fiscales",
         "multiple_tax_exemptions": "{{taxExemptionsCount}} de plus",
         "taxes_none": "Aucun",
-        "tax_exemption_not_applicable": "I\/R",
+        "tax_exemption_not_applicable": "I/R",
         "tax_exemptions_modal_button_accessibility_label": "Voir toutes les exonérations fiscales",
         "own_role_contact_name": "Creuser",
         "staff_and_permissions_title": "Employés et autorisations",
@@ -3541,10 +3541,10 @@
       "card_fields": {
         "name_on_card_label": "Nom de la carte",
         "name_on_card_placeholder": "Nom de la carte",
-        "card_expiry_label": "Date d'expiration (MM\/AA)",
-        "card_expiry_placeholder": "Date d'expiration (MM\/AA)",
-        "card_start_label": "Date d'émission (MM \/ AA",
-        "card_start_placeholder": "Date d'émission (MM \/ AA",
+        "card_expiry_label": "Date d'expiration (MM/AA)",
+        "card_expiry_placeholder": "Date d'expiration (MM/AA)",
+        "card_start_label": "Date d'émission (MM / AA",
+        "card_start_placeholder": "Date d'émission (MM / AA",
         "tooltip": {
           "tooltip_accessibility_label": "Pour plus d'informations",
           "card_verification_value_explanation_amex": "Code de sécurité à 4 chiffres au recto de votre carte",
@@ -3558,7 +3558,7 @@
           "credit_card_verification_value_blank": "Saisissez le CVV ou le code de sécurité de votre carte"
         },
         "unavailable": {
-          "text": "Les paiements par carte de crédit\/débit ne sont pas disponibles pour le moment.",
+          "text": "Les paiements par carte de crédit/débit ne sont pas disponibles pour le moment.",
           "link_text": "Actualiser cette page",
           "suffix": "ou réessayez plus tard"
         }
