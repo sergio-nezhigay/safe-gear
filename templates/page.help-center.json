@@ -60,7 +60,7 @@
       "type": "banner-help-center",
       "name": "Banner search",
       "settings": {
-        "main_image": "shopify://shop_images/svgviewer-output_1.svg",
+        "main_image": "shopify:\/\/shop_images\/svgviewer-output_1.svg",
         "title": ""
       }
     }

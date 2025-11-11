@@ -23,7 +23,7 @@
         "addresses_text": "Addresses",
         "order_text": "Order",
         "back_text": "Back",
-        "separator": "/",
+        "separator": "\/",
         "background_color": "#fafafa",
         "text_color": "#666666",
         "accent_color": "#0a3d62",
@@ -54,7 +54,7 @@
       "name": "L1 Main Category",
       "settings": {
         "title": "Gennemse vores sikkerhedsløsninger",
-        "description": "<p>Udforsk vores omfattende udvalg af sikkerhedsprodukter designet til at beskytte dine værdigenstande.</p>",
+        "description": "<p>Udforsk vores omfattende udvalg af sikkerhedsprodukter designet til at beskytte dine værdigenstande.<\/p>",
         "show_more_text": "Klik her for mere...",
         "show_less_text": "Vis færre",
         "hidden_text": "",

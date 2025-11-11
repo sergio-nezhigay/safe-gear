@@ -16,7 +16,7 @@
           "type": "text",
           "name": "Title",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
+            "text": "<h1>{{ closest.page.title }}<\/h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -72,7 +72,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
+            "text": "<h1>{{ closest.page.title }}<\/h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -98,7 +98,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h2>Vores kontorer i  København:</h2><p>Safegear ApS<br/>Hørkær 14<br/>DK-2730 Herlev</p><p>Da vi tilbyder tjenester i de fleste europæiske lande, har vi også kontorer i Barcelona i Spanien og i Zürich i Schweiz.<br/><br/>Tøv ikke med at ringe til os eller kontakte os via e-mail, så vi kan hjælpe dig.</p>",
+            "text": "<h2>Vores kontorer i  København:<\/h2><p>Safegear ApS<br\/>Hørkær 14<br\/>DK-2730 Herlev<\/p><p>Da vi tilbyder tjenester i de fleste europæiske lande, har vi også kontorer i Barcelona i Spanien og i Zürich i Schweiz.<br\/><br\/>Tøv ikke med at ringe til os eller kontakte os via e-mail, så vi kan hjælpe dig.<\/p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -160,7 +160,7 @@
         "group_byB4wf": {
           "type": "group",
           "settings": {
-            "link": "https://api.whatsapp.com/send?phone=34660543515\\",
+            "link": "https:\/\/api.whatsapp.com\/send?phone=34660543515\\",
             "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -248,7 +248,7 @@
                 "text_nGftL4": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Skriv til os på WhatsApp</h2>",
+                    "text": "<h2>Skriv til os på WhatsApp<\/h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -274,7 +274,7 @@
                   "type": "text",
                   "disabled": true,
                   "settings": {
-                    "text": "<p>We believe in building better</p>",
+                    "text": "<p>We believe in building better<\/p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -311,7 +311,7 @@
         "group_Acihc6": {
           "type": "group",
           "settings": {
-            "link": "https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F129459487112534%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0",
+            "link": "https:\/\/www.messenger.com\/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F129459487112534%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink%26source_id%3D1441792%26recurring_notification%3D0",
             "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -399,7 +399,7 @@
                 "text_ENqhGP": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Skriv til os på Facebook</h2>",
+                    "text": "<h2>Skriv til os på Facebook<\/h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -425,7 +425,7 @@
                   "type": "text",
                   "disabled": true,
                   "settings": {
-                    "text": "<p>Real people making great products</p>",
+                    "text": "<p>Real people making great products<\/p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",

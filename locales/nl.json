@@ -54,7 +54,7 @@
     "cart": "Winkelwagen",
     "cart_count": "Artikelen in totaal in de winkelwagen",
     "menu": "Menu",
-    "country_region": "Land/gebied",
+    "country_region": "Land\/gebied",
     "slide_status": "Dia {{ index }} van {{ length }}",
     "scroll_to": "Scroll naar {{ title }}",
     "loading_product_recommendations": "Productaanbevelingen laden",
@@ -81,7 +81,7 @@
     "show_filters": "Filteren",
     "clear": "Wissen",
     "continue_shopping": "Terug naar de winkel",
-    "log_in_html": "Heb je een account? <a href=\"{{ link }}\">Log in</a> om sneller te betalen.",
+    "log_in_html": "Heb je een account? <a href=\"{{ link }}\">Log in<\/a> om sneller te betalen.",
     "see_items": {
       "one": "Zie {{ count }} artikel",
       "other": "Zie {{ count }} artikelen"
@@ -129,13 +129,13 @@
     "cart_subtotal": "Subtotaal",
     "discounts": "Kortingen",
     "discount": "Korting",
-    "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inclusief douane en belastingen. Kortingen en <a href=\"{{ link }}\">levering</a> worden berekend bij betaling.",
+    "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inclusief douane en belastingen. Kortingen en <a href=\"{{ link }}\">levering<\/a> worden berekend bij betaling.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Inclusief douane en belastingen. Kortingen en levering worden berekend bij betaling.",
-    "taxes_included_shipping_at_checkout_with_policy_html": "Inclusief belastingen. Kortingen en <a href=\"{{ link }}\">levering</a> worden berekend bij betaling.",
+    "taxes_included_shipping_at_checkout_with_policy_html": "Inclusief belastingen. Kortingen en <a href=\"{{ link }}\">levering<\/a> worden berekend bij betaling.",
     "taxes_included_shipping_at_checkout_without_policy": "Inclusief belastingen. Kortingen en levering worden berekend bij betaling.",
-    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Inclusief douane. Belastingen, kortingen en <a href=\"{{ link }}\">levering</a> worden bij betaling berekend.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Inclusief douane. Belastingen, kortingen en <a href=\"{{ link }}\">levering<\/a> worden bij betaling berekend.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Inclusief douane. Belastingen, kortingen en levering worden bij betaling berekend.",
-    "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Belastingen, kortingen en <a href=\"{{ link }}\">levering</a> worden bij betaling berekend.",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Belastingen, kortingen en <a href=\"{{ link }}\">levering<\/a> worden bij betaling berekend.",
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Belastingen, kortingen en levering worden berekend bij betaling.",
     "checkout": "Ga naar betaling",
     "cart_title": "Winkelwagen",
@@ -145,7 +145,7 @@
     "price_sale": "Verkoopprijs",
     "duties_and_taxes_included": "Inclusief douane en belastingen.",
     "duties_included": "Inclusief douane.",
-    "shipping_policy_html": "<a href=\"{{ link }}\">Verzending</a> wordt berekend bij betaling.",
+    "shipping_policy_html": "<a href=\"{{ link }}\">Verzending<\/a> wordt berekend bij betaling.",
     "taxes_included": "Inclusief belastingen.",
     "product_badge_sold_out": "Uitverkocht",
     "product_badge_sale": "Uitverkoop",
@@ -188,7 +188,7 @@
     "filters": "Filters",
     "no_products_found": "Er werden geen producten gevonden.",
     "price_filter_html": "De hoogste prijs is {{ price }}",
-    "use_fewer_filters_html": "Probeer minder filters te gebruiken, of <a class=\"{{ class }}\" href=\"{{ link }}\">verwijder alle filters</a>.",
+    "use_fewer_filters_html": "Probeer minder filters te gebruiken, of <a class=\"{{ class }}\" href=\"{{ link }}\">verwijder alle filters<\/a>.",
     "blog_details_separator": "|",
     "read_more": "Lees meer ...",
     "account_title": "Account",
@@ -200,11 +200,11 @@
     "duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts": "Inclusief douane en belastingen. Levering wordt berekend bij betaling.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Inclusief douane. Levering wordt berekend bij betaling.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Inclusief douane. Levering wordt berekend bij betaling.",
-    "pickup_available_at_html": "Afhaling is beschikbaar hier: <b>{{ location }}</b>",
+    "pickup_available_at_html": "Afhaling is beschikbaar hier: <b>{{ location }}<\/b>",
     "pickup_available_in": "Ophalen is beschikbaar {{ pickup_time }}",
     "pickup_not_available": "Ophalen is momenteel niet beschikbaar",
     "pickup_ready_in": "{{ pickup_time }}",
-    "taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Belastingen en <a href=\"{{ link }}\">levering</a> worden berekend bij betaling.",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Belastingen en <a href=\"{{ link }}\">levering<\/a> worden berekend bij betaling.",
     "taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Belastingen en levering worden berekend bij betaling.",
     "taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Inclusief belastingen. Levering wordt berekend bij betaling.",
     "taxes_included_shipping_at_checkout_without_policy_without_discounts": "Inclusief belastingen. Levering wordt berekend bij betaling.",
@@ -224,20 +224,20 @@
     "shipping_discount_error": "Verzendkortingen worden weergegeven bij betaling na het toevoegen van een adres",
     "discount_code_error": "De kortingscode kan niet worden gebruikt in je winkelwagen",
     "powered_by": "Deze winkel zal worden gerund door",
-    "store_owner_link_html": "Bent u de winkelier? <a href=\"{{ link }}\">Log hier in</a>",
+    "store_owner_link_html": "Bent u de winkelier? <a href=\"{{ link }}\">Log hier in<\/a>",
     "recipient_form_send_to": "Verzenden naar",
     "recipient_form_email_label": "Ontvanger's mail",
     "recipient_form_email_label_my_email": "Mijn mail",
     "recipient_form_email_address": "E-mailadres van de ontvanger",
     "recipient_form_name_label": "Naam van de ontvanger (optioneel)",
     "recipient_form_message": "Bericht (optioneel)",
-    "recipient_form_characters_used": "{{ used_chars }}/{{ max_chars }} tekens gebruikt",
+    "recipient_form_characters_used": "{{ used_chars }}\/{{ max_chars }} tekens gebruikt",
     "recipient_form_send_on": "JJJJ-MM-DD",
     "recipient_form_send_on_label": "Verzenden (optioneel)",
     "recipient_form_fields_visible": "De ontvangerformulier velden zijn nu zichtbaar",
     "recipient_form_fields_hidden": "De ontvangerformulier velden zijn nu verborgen",
     "recipient_form_error": "Er is een fout opgetreden bij het indienen van het formulier",
-    "product_custom_property_character_count": "{{ used_chars }}/{{ max_chars }} tekens gebruikt",
+    "product_custom_property_character_count": "{{ used_chars }}\/{{ max_chars }} tekens gebruikt",
     "terms_and_policies": "Voorwaarden en beleid"
   },
   "gift_cards": {
@@ -585,12 +585,12 @@
         "address2_label": "Appartement, verdieping enz.",
         "optional_address2_label": "Appartement, verdieping enz. (optioneel)",
         "city_label": "Bij",
-        "country_label": "Land/gebied",
-        "country_code": "Land-/gebiedscode",
+        "country_label": "Land\/gebied",
+        "country_code": "Land-\/gebiedscode",
         "county_label": "Regio",
         "county_placeholder": "Regio",
-        "state_and_territory_label": "Staat/gebied",
-        "state_and_territory_placeholder": "Staat/gebied",
+        "state_and_territory_label": "Staat\/gebied",
+        "state_and_territory_placeholder": "Staat\/gebied",
         "phone_tooltip": "Als we contact met je moeten opnemen over je bestelling",
         "region_none": "Niemand is geselecteerd",
         "civic_number_warning": "Voeg eventueel een huisnummer toe",
@@ -686,7 +686,7 @@
           "title": "Bijwerken van prijs en aantal",
           "description": "De prijzen en de beschikbare aantallen van deze artikelen zijn gewijzigd en bijgewerkt in je winkelwagen."
         },
-        "out_of_stock_in_context_label": "Dit product is niet beschikbaar in jouw land/regio."
+        "out_of_stock_in_context_label": "Dit product is niet beschikbaar in jouw land\/regio."
       },
       "order_summary": {
         "remove_gift_card_label": "Verwijder cadeaubon",
@@ -699,10 +699,10 @@
         "gift_card_has_been_applied": "Cadeaubonnen zijn gebruikt",
         "gift_card_has_been_removed": "Cadeaubonnen zijn verwijderd",
         "discount_already_applied": "Er is een korting toegepast op deze bestelling. Je kunt geen extra korting gebruiken.",
-        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-kortingscode is niet geldig voor de artikelen die je in je winkelwagen hebt.",
-        "discount_requires_customer_notice": "Voer uw bezorggegevens in om de kortingscode <strong style=\"text-transform:uppercase\">%{code}</strong> te gebruiken",
-        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-kortingscode kan momenteel niet worden gebruikt",
-        "shipping_information_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-kortingscode kan niet worden gebruikt op uw afleveradres",
+        "cart_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-kortingscode is niet geldig voor de artikelen die je in je winkelwagen hebt.",
+        "discount_requires_customer_notice": "Voer uw bezorggegevens in om de kortingscode <strong style=\"text-transform:uppercase\">%{code}<\/strong> te gebruiken",
+        "customer_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-kortingscode kan momenteel niet worden gebruikt",
+        "shipping_information_does_not_meet_discount_requirements_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-kortingscode kan niet worden gebruikt op uw afleveradres",
         "shipping_label": "Levering",
         "tip_label": "Tip",
         "shipping_policy_link": "Leveringskosten",
@@ -758,10 +758,10 @@
           "due_today_next": "Vervalt vandaag",
           "due_on_fulfillment_next": "Vervalt bij voorbereiding"
         },
-        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> kon niet worden gebruikt met je bestaande kortingen.",
-        "maximum_discount_code_limit_reached": "Je hebt het maximale aantal kortingscodes bereikt. Verwijder een bestaande code om <strong style=\"text-transform:uppercase\">%{code}</strong> te gebruiken",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> kon niet worden gebruikt met je bestaande kortingen.",
+        "maximum_discount_code_limit_reached": "Je hebt het maximale aantal kortingscodes bereikt. Verwijder een bestaande code om <strong style=\"text-transform:uppercase\">%{code}<\/strong> te gebruiken",
         "order_total_label": "Bestelling in totaal",
-        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> werkt momenteel niet. Neem contact met ons op voor hulp.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> werkt momenteel niet. Neem contact met ons op voor hulp.",
         "due_on_fulfillment": "Vervalt bij voorbereiding",
         "duties_label": "Douane",
         "duties_and_taxes_label": "Douane en belastingen",
@@ -790,7 +790,7 @@
           "other": "Kortingen op bestellingen"
         },
         "price_per_item": {
-          "label": "%{price}/stuk."
+          "label": "%{price}\/stuk."
         },
         "discount_not_found": "Kon geen geldige kortingscode vinden die overeenkomt met de ingevoerde code",
         "total_savings": "Totale besparingen",
@@ -805,7 +805,7 @@
           "title": "Saldo van {{amount_due}} moet worden betaald op {{due_at}}",
           "due_on_fulfillment_title": "Saldo van {{amount_due}} moet na voorbereiding worden betaald"
         },
-        "eligible_customer_missing_notice": "<strong style=\"text-transform:uppercase\">%{code}</strong>-kortingscode vereist een gekwalificeerde klant",
+        "eligible_customer_missing_notice": "<strong style=\"text-transform:uppercase\">%{code}<\/strong>-kortingscode vereist een gekwalificeerde klant",
         "more_items_modal": {
           "clear_search": "Zoekopdracht wissen",
           "empty_results": "Er zijn geen resultaten gevonden voor “%{searchText}”. Controleer de spelling of gebruik een ander woord of uitdrukking."
@@ -823,7 +823,7 @@
         "deposit_label": "Borgtocht",
         "total_due_today_label": "Totale betaling vandaag",
         "total_due_later_label": "Totale betaling later",
-        "discount_code_allocations_mismatch": "De kortingscode<strong style=\"text-transform:uppercase\">%{code}</strong> is gewijzigd. Controleer je winkelwagen en probeer het opnieuw.",
+        "discount_code_allocations_mismatch": "De kortingscode<strong style=\"text-transform:uppercase\">%{code}<\/strong> is gewijzigd. Controleer je winkelwagen en probeer het opnieuw.",
         "deferred_total_due_date_label_next": "Vervalt op %{date}",
         "total_due_label": "Bedrag te betalen",
         "add_discount_or_gift_card": "Voeg kortingscode of cadeaubon toe",
@@ -1027,7 +1027,7 @@
         "saved_by_payment_method": "Bespaard met %{payment_method}",
         "same_billing_address_label": "Zelfde adres als het afleveradres",
         "different_billing_address_label": "Gebruik een ander factuuradres",
-        "free_order_notice_html": "Je bestelling is <strong>gratis</strong>. Betaling niet nodig.",
+        "free_order_notice_html": "Je bestelling is <strong>gratis<\/strong>. Betaling niet nodig.",
         "express_checkout_free_order": "Je wordt niet gefactureerd voor een gratis bestelling",
         "order_covered_by_gift_cards_notice": {
           "one": "Je bestelling is betaald met je cadeaubon.",
@@ -1039,8 +1039,8 @@
         "no_js_credit_card_fields_redirect_hint": "Je wordt doorgestuurd zodat je je betalingsgegevens kunt toevoegen.",
         "card_fields_container_prefix": "Inhoud van veld voor:",
         "card_fields_unavailable_html": {
-          "one": "Credit- en debetkaartbetalingen zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Deze pagina opnieuw laden</a> of probeer het later opnieuw.",
-          "other": "Credit- en debetkaartbetalingen zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Deze pagina opnieuw laden</a> of probeer een andere betaalmethode."
+          "one": "Credit- en debetkaartbetalingen zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Deze pagina opnieuw laden<\/a> of probeer het later opnieuw.",
+          "other": "Credit- en debetkaartbetalingen zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Deze pagina opnieuw laden<\/a> of probeer een andere betaalmethode."
         },
         "card_fields_processing_error": "Er is een fout opgetreden bij het verwerken van de betaling. Vernieuw de pagina of controleer uw internetverbinding.",
         "technical_error": "Vanwege technische problemen kunnen betalingen momenteel niet worden voltooid. Probeer het over een paar minuten opnieuw.",
@@ -1058,7 +1058,7 @@
         "billing_address_not_supported_for_payment_method_error": "Deze betaalmethode is niet beschikbaar voor uw factuuradres en valuta. Probeer een andere betaalmethode.",
         "change_currency_section_description": "Kies een valuta-instelling",
         "no_real_orders_dev_store": "Deze winkel kan geen echte bestellingen of echte betalingen ontvangen.",
-        "subscription_agreement_label_html": "Ik begrijp dat ik een abonnement accepteer. Dit wordt verlengd tegen de prijs en met de frequentie die is opgegeven, totdat het wordt stopgezet of \n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">geannuleerd</a>.\n",
+        "subscription_agreement_label_html": "Ik begrijp dat ik een abonnement accepteer. Dit wordt verlengd tegen de prijs en met de frequentie die is opgegeven, totdat het wordt stopgezet of \n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">geannuleerd<\/a>.\n",
         "waiting_on_payment_methods": "Ophalen van beschikbare betaalmethoden ...",
         "apple_pay_payment_error": "Uw betaling kon niet worden voltooid. Probeer het opnieuw, of gebruik een andere betaalmethode.",
         "subscription_card_update_agreement_label": "Als je de betaalmethode wijzigt, wordt de betaling van je abonnement en toekomstige terugkerende betalingen bijgewerkt.",
@@ -1091,8 +1091,8 @@
           "connect": "Klik om verbinding te maken met uw Google Pay-account",
           "error_authorizing": "Er is een fout opgetreden bij het goedkeuren van de betaling"
         },
-        "mor_disclaimer_html": "Door hieronder te klikken en uw bestelling te voltooien, gaat u akkoord met het kopen van uw goederen van Global-e als geregistreerde winkelier\nvoor deze transactie volgens de <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">algemene voorwaarden</a>\nen het <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">privacybeleid</a> van Global-e. Global-e is een internationale\ndistributiedienstverlener voor %{shop_name}",
-        "purchase_options_card_update_agreement_label_html": "Door je betaalmethode bij te werken, ga je akkoord met betalingen voor eventuele terugkerende of uitgestelde aankopen volgens het <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">annuleringsbeleid</a> van deze winkel.",
+        "mor_disclaimer_html": "Door hieronder te klikken en uw bestelling te voltooien, gaat u akkoord met het kopen van uw goederen van Global-e als geregistreerde winkelier\nvoor deze transactie volgens de <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">algemene voorwaarden<\/a>\nen het <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">privacybeleid<\/a> van Global-e. Global-e is een internationale\ndistributiedienstverlener voor %{shop_name}",
+        "purchase_options_card_update_agreement_label_html": "Door je betaalmethode bij te werken, ga je akkoord met betalingen voor eventuele terugkerende of uitgestelde aankopen volgens het <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">annuleringsbeleid<\/a> van deze winkel.",
         "receiver_payment_experience_hint": "U ontvangt de betalingsgegevens zodra u uw bestelling heeft geplaatst. Voer de betaling uit bij Multibanco of online binnen %{due_days} dagen.",
         "pending_payment": {
           "due_notice": "Uw betaling van %{amount_due} is vervallen op %{due_date}.",
@@ -1107,7 +1107,7 @@
         "paypal_modal": {
           "order_contains_fixed_selling_plans": "Het totale bedrag omvat mogelijk geen belastingen, levering, uitgestelde afschrijvingen en bepaalde kortingen. Ga door naar de betaalpagina om het bedrag te betalen dat vandaag verschuldigd is."
         },
-        "purchase_options_agreement_label_html": "Ik begrijp dat één of meer van de artikelen in mijn winkelwagen een uitgestelde of terugkerende aankoop zijn. Door door te gaan accepteer ik\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">opsigelsespolitikken</a>\nen geeft u toestemming om mijn betaalmethode te belasten tegen de prijzen, met de frequentie en op de data die op deze pagina zijn vermeld, totdat mijn bestelling is klaargemaakt, of totdat ik opzegg, indien dit is toegestaan.\n",
+        "purchase_options_agreement_label_html": "Ik begrijp dat één of meer van de artikelen in mijn winkelwagen een uitgestelde of terugkerende aankoop zijn. Door door te gaan accepteer ik\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">opsigelsespolitikken<\/a>\nen geeft u toestemming om mijn betaalmethode te belasten tegen de prijzen, met de frequentie en op de data die op deze pagina zijn vermeld, totdat mijn bestelling is klaargemaakt, of totdat ik opzegg, indien dit is toegestaan.\n",
         "payment_method_saved": "De betaalmethode is opgeslagen",
         "card_vaulted_company_location": "De kaart is opgeslagen voor deze locatie",
         "order_covered_by_store_credit_notice": "Je bestelling is betaald met je tegoedbon.",
@@ -1292,9 +1292,9 @@
         "address_address1_blank": "Voer adres in",
         "address_address2_blank": "Voer appartement, kamernummer enz. in.",
         "address_city_blank": "Voer stad in",
-        "address_country_blank": "Kies een land-/gebiedscode",
+        "address_country_blank": "Kies een land-\/gebiedscode",
         "address_country_not_supported": "We verzenden niet naar dit land of gebied. Geef een ander afleveradres op en probeer het opnieuw.",
-        "address_province_blank": "Voer staat/provincie in",
+        "address_province_blank": "Voer staat\/provincie in",
         "address_company_blank": "Voer bedrijfsnaam in",
         "address_zip_blank": "Voer postcode in",
         "address_zip_invalid_for_country": "Voer een geldige postcode in voor %{country}",
@@ -1340,11 +1340,11 @@
         "payment_gateway_unsupported_for_deferred_purchase_options": "Deze betaalmethode is niet beschikbaar voor uitgestelde aankoopopties.",
         "reduction_code_gift_cards_not_supported_with_deferred_purchase_options": "Cadeaubonnen worden niet ondersteund met uitgestelde aankoopmogelijkheden.",
         "delivery_zone_not_found": "De opgegeven zone werd niet gevonden in het opgegeven land.",
-        "payment_gateway_unsupported_for_development_store_html": "Als u een testbestelling wilt plaatsen, moet u een betalingsgateway voor tests gebruiken. Lees meer over <a href=\"%{docs_link}\">testen van bestellingen in ontwikkelingswinkels</a>.",
-        "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Je hebt de limiet voor bestellingen in ontwikkelwinkels met deze betalingsverwerker bereikt. Als je een nieuwe bestelling wilt plaatsen, moet je een testbetalingsgateway gebruiken. Lees meer over <a href=\"%{docs_link}\">testen van bestellingen in ontwikkelwinkels</a>.",
+        "payment_gateway_unsupported_for_development_store_html": "Als u een testbestelling wilt plaatsen, moet u een betalingsgateway voor tests gebruiken. Lees meer over <a href=\"%{docs_link}\">testen van bestellingen in ontwikkelingswinkels<\/a>.",
+        "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Je hebt de limiet voor bestellingen in ontwikkelwinkels met deze betalingsverwerker bereikt. Als je een nieuwe bestelling wilt plaatsen, moet je een testbetalingsgateway gebruiken. Lees meer over <a href=\"%{docs_link}\">testen van bestellingen in ontwikkelwinkels<\/a>.",
         "email_blank": "Geef een e-mailadres op",
         "phone_blank": "Voer een telefoonnummer in",
-        "address_country_invalid": "Kies een land/gebied uit de lijst",
+        "address_country_invalid": "Kies een land\/gebied uit de lijst",
         "address_zip_invalid": "Voer een geldige postcode in",
         "gift_card_invalid": "De cadeaubon \"••••%{last_four_characters}\" is niet langer geldig",
         "vaulting_agreement_blank": "Uw kaart moet worden opgeslagen, omdat de betaling van deze bestelling later verschuldigd is.",
@@ -1358,7 +1358,7 @@
         "address_city_contains_mathematical_symbols": "De stad mag geen wiskundige symbolen bevatten",
         "address_company_contains_mathematical_symbols": "Het bedrijf mag geen wiskundige symbolen bevatten",
         "address_zip_contains_mathematical_symbols": "De postcode mag geen wiskundige symbolen bevatten",
-        "address_province_invalid": "Kies een geldige staat/provincie",
+        "address_province_invalid": "Kies een geldige staat\/provincie",
         "address_generic_blank": "Vereist veld",
         "split_cart_international_shipping_not_supported": "Alle artikelen moeten dezelfde leveringsmethode hebben bij internationale levering. Werk de leveringsmethode bij, of maak meerdere bestellingen aan.",
         "invalid_delivery_address_reference_handle": "Referentiehandle voor afleveradres kon niet worden gekoppeld aan beschikbare afleveradressen.",
@@ -1914,15 +1914,15 @@
           "shipping_credential_cn": "Resident ID-nummer",
           "tax_credential_type_co": "Type Identiteitskaart",
           "shipping_credential_type_co": "Type Identiteitskaart",
-          "tax_credential_cr": "Identificatienummer/RUT",
-          "shipping_credential_cr": "Identificatienummer/RUT",
-          "tax_credential_my": "TIN/registratienummer",
-          "shipping_credential_my": "TIN/registratienummer",
+          "tax_credential_cr": "Identificatienummer\/RUT",
+          "shipping_credential_cr": "Identificatienummer\/RUT",
+          "tax_credential_my": "TIN\/registratienummer",
+          "shipping_credential_my": "TIN\/registratienummer",
           "tax_credential_type_mx": "Fiscaal Regime",
           "tax_credential_use_mx": "Gebruik van CFDI",
-          "shipping_credential_tw": "Nationaal id-nummer/btw",
-          "tax_credential_tr": "Turkije Republiek Identificatienummer/BTW",
-          "shipping_credential_tr": "Turkije Republiek Identificatienummer/BTW"
+          "shipping_credential_tw": "Nationaal id-nummer\/btw",
+          "tax_credential_tr": "Turkije Republiek Identificatienummer\/BTW",
+          "shipping_credential_tr": "Turkije Republiek Identificatienummer\/BTW"
         }
       },
       "post_purchase": {
@@ -1966,16 +1966,16 @@
       },
       "contextual_availability": {
         "products_not_available": {
-          "one": "Dit product wordt uit de winkelwagen verwijderd omdat het niet beschikbaar is in jouw land/regio.",
-          "other": "Deze producten worden uit je winkelwagen verwijderd omdat ze niet beschikbaar zijn in jouw land/regio."
+          "one": "Dit product wordt uit de winkelwagen verwijderd omdat het niet beschikbaar is in jouw land\/regio.",
+          "other": "Deze producten worden uit je winkelwagen verwijderd omdat ze niet beschikbaar zijn in jouw land\/regio."
         },
         "all_products_in_cart_unavailable": {
-          "one": "Dit product is niet beschikbaar in jouw land/regio.",
-          "other": "Deze producten zijn niet beschikbaar in jouw land/regio."
+          "one": "Dit product is niet beschikbaar in jouw land\/regio.",
+          "other": "Deze producten zijn niet beschikbaar in jouw land\/regio."
         }
       },
       "change_cart_localization": {
-        "verify_shipping_address": "Dit land/gebied is bijgewerkt. Voer uw afleveradres in om naar de betaling te gaan."
+        "verify_shipping_address": "Dit land\/gebied is bijgewerkt. Voer uw afleveradres in om naar de betaling te gaan."
       },
       "throttle": {
         "line_to_check_out": "Je staat in de rij om te betalen",
@@ -2200,11 +2200,11 @@
           "invalid": {
             "shipping_address": "Voer een geldig afleveradres in",
             "shipping_option": "Kies een geldige leveringsoptie",
-            "zone": "Geef een geldige staat/provincie op",
+            "zone": "Geef een geldige staat\/provincie op",
             "postal_code": "Voer een geldige postcode in",
             "reduction_code": "Voer een geldige kortingscode of een geldig cadeaubon in",
             "billing_must_match_shipping": "Moet overeenkomen met het afleveradres",
-            "billing_zone": "Geef een geldige staat/provincie op voor het factuuradres",
+            "billing_zone": "Geef een geldige staat\/provincie op voor het factuuradres",
             "billing_phone": "Voer een geldig telefoonnummer in voor het factuuradres",
             "billing_zip": "Voer een geldige postcode in voor het factuuradres"
           },
@@ -2214,14 +2214,14 @@
             "address1": "Voer adres in",
             "address2": "Voer appartement, kamernummer enz. in.",
             "city": "Voer stad in",
-            "province": "Voer staat/provincie in",
-            "country": "Kies een land/gebied",
+            "province": "Voer staat\/provincie in",
+            "country": "Kies een land\/gebied",
             "zip": "Voer postcode in",
             "billing_first_name": "Geef een voornaam op voor het factuuradres",
             "billing_address1": "Geef een factuuradres op",
             "billing_address2": "Geef appartement, verdieping enz. op voor het factuuradres",
             "billing_city": "Geef een stad op voor het factuuradres",
-            "billing_province": "Kies staat/provincie voor het factuuradres",
+            "billing_province": "Kies staat\/provincie voor het factuuradres",
             "billing_zip": "Voer de postcode in voor het factuuradres",
             "contact_info": "Geef contactgegevens op"
           },
@@ -2391,7 +2391,7 @@
       "body": "lichaam"
     },
     "addresses": {
-      "state_and_territory": "Staat/gebied",
+      "state_and_territory": "Staat\/gebied",
       "county": "Regio"
     },
     "collections": {
@@ -2430,7 +2430,7 @@
       "invalid_type": "sorry, we accepteren geen kaarten van dit type",
       "invalid_format": "het formaat is niet geldig",
       "invalid_start_date_or_issue_number_for_debit": "een geldige startdatum of uitgiftenummer is vereist",
-      "reset_password_html": "Dit e-mailadres is al gekoppeld aan een account. Als dit account van jou is, kun je <a href=\"/account/login#recover\">je wachtwoord opnieuw instellen</a>",
+      "reset_password_html": "Dit e-mailadres is al gekoppeld aan een account. Als dit account van jou is, kun je <a href=\"\/account\/login#recover\">je wachtwoord opnieuw instellen<\/a>",
       "verify_email": "We hebben een e-mail gestuurd naar %{customer_email}, Klik op de bijgevoegde link om uw e-mailadres te bevestigen.",
       "shop_404": {
         "title": "Maak een e-commercewebsite en verkoop online! E-commerce software van Shopify",
@@ -2508,7 +2508,7 @@
         "cancel_reason": {
           "inventory": "De goederen zijn niet beschikbaar",
           "fraud": "Verraderlijk bevel",
-          "customer": "De klant wijzigde/annuleerde zijn bestelling",
+          "customer": "De klant wijzigde\/annuleerde zijn bestelling",
           "staff": "Medewerkerfout"
         },
         "cash_on_delivery": "Contant bij levering (COD)"
@@ -2522,7 +2522,7 @@
         "generic_error": "Fout in winkelwagen",
         "too_many_line_items_error": "Je winkelwagen kan niet meer dan %{max} artikel bevatten.",
         "link_no_longer_exists": "De link bestaat niet meer.",
-        "stock_problems_html": "Een of meer items zijn niet langer beschikbaar. We hebben een <a href='%{link}'>bijgewerkte winkelwagen</a> gemaakt.",
+        "stock_problems_html": "Een of meer items zijn niet langer beschikbaar. We hebben een <a href='%{link}'>bijgewerkte winkelwagen<\/a> gemaakt.",
         "items_changed": "Eén of meer artikelen zijn niet langer beschikbaar.",
         "variant_not_found": "Kan niet variant vinden",
         "variant_requires_selling_plan": "Varianten kan alleen worden gekocht met een verkoopplan.",
@@ -2605,29 +2605,29 @@
       },
       "open_tracking": {
         "opt_in": {
-          "opted_in_html": "<b>Je hebt je aangemeld voor het volgen van het openen van e-mails.</b>",
+          "opted_in_html": "<b>Je hebt je aangemeld voor het volgen van het openen van e-mails.<\/b>",
           "visibility": "Openingspercentages voor e-mails worden anoniem gerapporteerd. We kunnen alleen zien of je een e-mail hebt geopend als onderdeel van een totale openingspercentage voor e-mails.",
-          "opt_out_html": "Je kunt <a style='text-decoration:underline;' href='%{link}'>uitschrijven</a> voor het volgen van het openen van e-mails, als je deze informatie niet wilt delen.",
+          "opt_out_html": "Je kunt <a style='text-decoration:underline;' href='%{link}'>uitschrijven<\/a> voor het volgen van het openen van e-mails, als je deze informatie niet wilt delen.",
           "preview_bar": "Je ziet een voorbeeld van wat je klanten zien wanneer ze zich aanmelden voor het volgen van openingen."
         },
         "opt_out": {
-          "opted_out_html": "<b>Je hebt het volgen van het openen van e-mails uitgeschakeld.</b>",
+          "opted_out_html": "<b>Je hebt het volgen van het openen van e-mails uitgeschakeld.<\/b>",
           "visibility": "We zullen niet kunnen zien of je onze e-mails hebt geopend.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Meld je aan</a> voor het volgen van het openen van e-mails.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Meld je aan<\/a> voor het volgen van het openen van e-mails.",
           "preview_bar": "Je ziet een voorbeeld van wat je klanten zien wanneer ze het volgen van openingen uitschakelen."
         },
         "no_longer_track": {
-          "status_html": "<b>We volgen geen e-mailopeningen meer.</b>",
+          "status_html": "<b>We volgen geen e-mailopeningen meer.<\/b>",
           "privacy_policy": "We hebben ons privacybeleid bijgewerkt na het verzenden van deze e-mail, en we volgen niet langer het openen van e-mails."
         },
         "track": {
-          "status_html": "<b>Tracking van het openen van e-mails wordt gerapporteerd.</b>",
+          "status_html": "<b>Tracking van het openen van e-mails wordt gerapporteerd.<\/b>",
           "visibility": "We kunnen alleen zien of je de mail hebt geopend als onderdeel van een totale openingspercentage voor mails."
         },
         "updated_policy": {
-          "status_html": "<b>Tracking van het openen van e-mails wordt gerapporteerd.</b>",
+          "status_html": "<b>Tracking van het openen van e-mails wordt gerapporteerd.<\/b>",
           "visibility": "We hebben ons beleid bijgewerkt en volgen nu het openen van e-mails. Openingspercentages van e-mails worden anoniem gerapporteerd. We kunnen alleen zien of je een e-mail hebt geopend als onderdeel van een totale openingspercentage voor e-mails.",
-          "opt_out_html": "Je kunt <a style='text-decoration:underline;' href='%{link}'>uitschrijven</a> als je deze gegevens niet wilt delen."
+          "opt_out_html": "Je kunt <a style='text-decoration:underline;' href='%{link}'>uitschrijven<\/a> als je deze gegevens niet wilt delen."
         }
       }
     },
@@ -3014,8 +3014,8 @@
       "summary_list_title_accessibility_label": "Bestelartikelen",
       "summary_totals_title_accessibility_label": "Bestelling in totaal",
       "total": "In totaal",
-      "unit_price": "{{price}}/stuk.",
-      "not_applicable": "I/R",
+      "unit_price": "{{price}}\/stuk.",
+      "not_applicable": "I\/R",
       "partially_refunded_label": "DEELS TERUGBETAALD",
       "pagination": {
         "load_more": "Laad meer in",
@@ -3184,7 +3184,7 @@
         "permissions_title": "Toestemmingen",
         "shipping_address_required": "Voeg een afleveradres toe aan deze locatie om bestellingen te beginnen plaatsen.",
         "multiple_tax_exemptions": "{{taxExemptionsCount}} meer",
-        "tax_exemption_not_applicable": "I/R",
+        "tax_exemption_not_applicable": "I\/R",
         "tax_exemptions_modal_button_accessibility_label": "Bekijk alle belastingvrijstellingen",
         "pagination": {
           "load_more": "Laad meer in",
@@ -3459,8 +3459,8 @@
         "card_number_placeholder": "Kortnummer",
         "name_on_card_label": "Naam van de kaart",
         "name_on_card_placeholder": "Naam van de kaart",
-        "card_start_label": "Uitgiftedatum (MM / JJ)",
-        "card_start_placeholder": "Uitgiftedatum (MM / JJ)",
+        "card_start_label": "Uitgiftedatum (MM \/ JJ)",
+        "card_start_placeholder": "Uitgiftedatum (MM \/ JJ)",
         "tooltip": {
           "tooltip_accessibility_label": "Voor meer informatie",
           "card_verification_value_explanation_amex": "4-cijferige beveiligingscode aan de voorkant van uw kaart",
@@ -3474,7 +3474,7 @@
           "credit_card_verification_value_blank": "Voer CVV of beveiligingscode van uw kaart in"
         },
         "unavailable": {
-          "text": "Betalingen met creditcard/debetkaart zijn momenteel niet beschikbaar.",
+          "text": "Betalingen met creditcard\/debetkaart zijn momenteel niet beschikbaar.",
           "link_text": "Werk deze pagina bij",
           "suffix": "of probeer het later opnieuw"
         }

@@ -23,7 +23,7 @@
         "addresses_text": "Addresses",
         "order_text": "Order",
         "back_text": "Back",
-        "separator": "/",
+        "separator": "\/",
         "background_color": "#fafafa",
         "text_color": "#666666",
         "accent_color": "#0a3d62",
@@ -218,7 +218,7 @@
               "blocks": {}
             },
             "wishlist_hero_custom_product_button_FGXkRM": {
-              "type": "shopify://apps/wishlist-hero/blocks/custom-product-button/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+              "type": "shopify:\/\/apps\/wishlist-hero\/blocks\/custom-product-button\/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
               "settings": {
                 "displayButtonMode": "icon_only",
                 "contentAlignment": "center",
@@ -311,19 +311,19 @@
               "block_order": []
             },
             "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/qb-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "type": "shopify:\/\/apps\/ymq-b2b-wholesale-solution\/blocks\/qb-table\/ef8663e7-9d07-4952-bb17-2e62f084164e",
               "settings": {
                 "product": "{{closest.product}}"
               }
             },
             "ymq_b2b_wholesale_solution_ol_notification_VJpCFm": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ol-notification/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "type": "shopify:\/\/apps\/ymq-b2b-wholesale-solution\/blocks\/ol-notification\/ef8663e7-9d07-4952-bb17-2e62f084164e",
               "settings": {
                 "product": "{{closest.product}}"
               }
             },
             "ymq_b2b_wholesale_solution_ef_table_qiwFcb": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ef-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "type": "shopify:\/\/apps\/ymq-b2b-wholesale-solution\/blocks\/ef-table\/ef8663e7-9d07-4952-bb17-2e62f084164e",
               "settings": {
                 "product": "{{closest.product}}"
               }
@@ -664,12 +664,24 @@
             "is_variant_metafield": false
           }
         },
+        "metafield_row_JxVaQr": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
         "metafield_row_3ET4YB": {
           "type": "metafield_row",
-          "disabled": true,
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "door_light_width_mm",
+            "label": "Door Light Width - (mm)",
             "metafield_namespace": "custom",
             "metafield_key": "door_light_width_mm",
             "unit": "",
@@ -680,10 +692,9 @@
         },
         "metafield_row_door_light_height": {
           "type": "metafield_row",
-          "disabled": true,
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "door_light_height_mm",
+            "label": "Door Light Height - (mm)",
             "metafield_namespace": "custom",
             "metafield_key": "door_light_height_mm",
             "unit": "",
@@ -692,11 +703,11 @@
             "is_variant_metafield": true
           }
         },
-        "metafield_row_Cyac6k": {
+        "metafield_row_YkKaWW": {
           "type": "metafield_row",
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "custom.height_exterior_mm",
+            "label": "Height - Exterior (mm)",
             "metafield_namespace": "custom",
             "metafield_key": "height_exterior_mm",
             "unit": "",
@@ -727,9 +738,10 @@
         "metafield_row_EjK4NL",
         "metafield_row_JDxeKd",
         "metafield_row_3yQHj7",
+        "metafield_row_JxVaQr",
         "metafield_row_3ET4YB",
         "metafield_row_door_light_height",
-        "metafield_row_Cyac6k"
+        "metafield_row_YkKaWW"
       ],
       "name": "Product Metafields Tables",
       "settings": {
@@ -748,7 +760,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>You may also like </h3>",
+            "text": "<h3>You may also like <\/h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
