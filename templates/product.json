@@ -680,12 +680,11 @@
         },
         "metafield_row_door_light_height": {
           "type": "metafield_row",
-          "disabled": true,
           "settings": {
             "group_name": "Ydre dimensioner",
-            "label": "door_light_height_mm",
+            "label": "custom.width_exterior_mm",
             "metafield_namespace": "custom",
-            "metafield_key": "door_light_height_mm",
+            "metafield_key": "width_exterior_mm",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
