@@ -101,20 +101,28 @@
   <script type="application/json" data-variant-metafields>
 {
   "custom": {
-    {%- assign height_ext = product_resource.selected_or_first_available_variant.metafields.custom.height_exterior_mm -%}
-    {%- if height_ext != blank -%}
-    {%- if height_ext.type == 'dimension' or height_ext.type == 'weight' or height_ext.type == 'volume' -%}
-    "height_exterior_mm": {
-      "type": "{{ height_ext.type }}",
+    {%- assign variant_custom_metafields = product_resource.selected_or_first_available_variant.metafields.custom -%}
+    {%- assign first_item = true -%}
+    {%- for metafield_entry in variant_custom_metafields -%}
+      {%- assign metafield_key = metafield_entry[0] -%}
+      {%- assign metafield_value = metafield_entry[1] -%}
+      {%- if metafield_value != blank -%}
+        {%- unless first_item -%},{%- endunless -%}
+        {%- assign first_item = false -%}
+    "{{ metafield_key }}": {
+      {%- if metafield_value.type == 'dimension' or metafield_value.type == 'weight' or metafield_value.type == 'volume' -%}
+      "type": "{{ metafield_value.type }}",
       "value": {
-        "value": {{ height_ext.value.value }},
-        "unit": "{{ height_ext.value.unit }}"
+        "value": {{ metafield_value.value.value }},
+        "unit": "{{ metafield_value.value.unit }}"
       }
+      {%- else -%}
+      "type": "{{ metafield_value.type }}",
+      "value": {{ metafield_value.value | json }}
+      {%- endif -%}
     }
-    {%- else -%}
-    "height_exterior_mm": {{ height_ext.value | json }}
-    {%- endif -%}
-    {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
   }
 }
   </script>
