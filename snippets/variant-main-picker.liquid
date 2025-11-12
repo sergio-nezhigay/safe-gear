@@ -56,6 +56,12 @@
             assign is_lock_option = true
           endif
 
+          # Detect frame type options (support multiple languages)
+          assign is_frame_option = false
+          if option_name_lower == 'frame type' or option_name_lower == 'rammetype' or option_name_lower contains 'frame' or option_name_lower contains 'ramme'
+            assign is_frame_option = true
+          endif
+
           if swatch_count > 0 and block_settings.show_swatches
             if block_settings.variant_style == 'dropdown'
               assign variant_style = 'swatch_dropdown'
@@ -78,7 +84,7 @@
           >
             <legend>
               {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' or is_color_option or is_lock_option -%}
+              {%- if variant_style == 'swatch' or is_color_option or is_lock_option or is_frame_option -%}
                 :<span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
@@ -86,7 +92,7 @@
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
-              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}{% if is_lock_option %} variant-option__button-label--lock{% endif %}">
+              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}{% if is_lock_option or is_frame_option %} variant-option__button-label--lock{% endif %}">
                 <input
                   type="radio"
                   name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
@@ -159,6 +165,28 @@
 
                         if match_found
                           assign lock_image_url = type_lock.image | image_url: width: 80
+                          assign has_lock_image = true
+                          break
+                        endif
+                      endfor
+                    endif
+
+                    # Check for frame type images in metafields
+                    if product_resource.metafields.custom.frame_type.value
+                      for type_frame in product_resource.metafields.custom.frame_type.value
+                        assign frame_match_found = false
+
+                        # Convert variant option value to handle format for matching
+                        # "Corner Frame" -> "corner-frame"
+                        assign option_handle = product_option_value | handleize
+
+                        # Match using system.handle
+                        if option_handle == type_frame.system.handle
+                          assign frame_match_found = true
+                        endif
+
+                        if frame_match_found
+                          assign lock_image_url = type_frame.picture | image_url: width: 80
                           assign has_lock_image = true
                           break
                         endif

@@ -1,79 +1,96 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) and other AI coding assistants when working with code in this repository.
 
 ## Project Overview
 
-This is a Shopify theme called "Safe Gear" based on the Horizon theme (v2.1.6). It's a complete e-commerce theme with modern JavaScript components and Liquid templating.
+This is the "Safe Gear" Shopify theme, originally based on Horizon (v2.1.6), now heavily customized. It is a modern, modular e-commerce theme using advanced Liquid, ES6+ JavaScript, and CSS custom properties. The codebase is organized for maintainability, performance, and accessibility.
 
 ## Development Commands
 
 ```bash
-# Start development server with live preview
+# Start local development server with live preview and hot reload
 npm run dev
 
-# Push theme to Shopify store
+# Push theme to Shopify store (see .env for store config)
 npm run push
 
 # Pull latest theme from Shopify store
 npm run pull
 ```
 
-Store configuration: f1what-2r.myshopify.com (theme ID: 183334175046)
+Store: f1what-2r.myshopify.com
+Theme ID: 183334175046
 
 ## Architecture
 
 ### File Structure
-- **`layout/theme.liquid`** - Main theme layout with head/body structure
-- **`sections/`** - Reusable theme sections (header, footer, product sections, etc.)
-- **`snippets/`** - Reusable Liquid components and utilities
-- **`templates/`** - Page templates (JSON files that reference sections)
-- **`assets/`** - JavaScript, CSS, and SVG assets
-- **`config/`** - Theme configuration and settings schema
 
-### JavaScript Architecture
-- Modular ES6+ JavaScript with TypeScript definitions in `assets/global.d.ts`
-- Component-based architecture with custom elements and event-driven patterns
+- **`layout/theme.liquid`** — Main HTML structure, loads global assets and sections
+- **`sections/`** — Modular, reusable theme sections (header, footer, product, collection, etc.)
+- **`snippets/`** — Small, composable Liquid components and utilities
+- **`blocks/`** — Block-level components for section composition
+- **`templates/`** — Page templates (JSON, reference sections/blocks)
+- **`assets/`** — JavaScript, CSS, SVG, and other static assets
+- **`config/`** — Theme settings schema and presets
+
+### JavaScript
+
+- Modular ES6+ code, organized by feature/component
+- Uses custom elements (Web Components) for UI (e.g., `<media-gallery>`, `<deferred-media>`)
+- Event-driven architecture for interactivity (see `assets/events.js`)
 - Key modules:
-  - `critical.js` - Critical path JavaScript loaded synchronously
-  - `component.js` - Base component class for custom elements
-  - Individual component files (e.g., `cart-drawer.js`, `product-form.js`)
+  - `critical.js` — Synchronously loaded, essential for page rendering
+  - `media.js` — Handles product media, deferred loading, 3D models
+  - `cart-drawer.js`, `product-form.js`, `variant-picker.js` — Cart and product logic
+  - `component.js` — Base class for custom elements
+- TypeScript types in `assets/global.d.ts` (for editor support)
 
-### CSS Architecture
-- `base.css` - Core styles and design system
-- Component-specific styles embedded in JavaScript modules
-- CSS custom properties for theming and responsive design
+### CSS
+
+- Design system based on CSS custom properties (variables)
+- `base.css` — Core styles, typography, layout, utility classes
+- Component styles are modular, often colocated with JS or Liquid
+- Responsive, mobile-first, with accessibility and focus states
+- Uses modern CSS features (container queries, aspect-ratio, etc.)
 
 ### Liquid Template System
-- Section-based architecture using Shopify's section groups
-- Template inheritance through `layout/theme.liquid`
-- Snippet system for reusable components
+
+- Section-based, block-driven architecture
+- Snippets for reusable UI and logic
 - Settings schema in `config/settings_schema.json` for theme customization
+- Extensive use of Shopify's dynamic sources, metafields, and localization
 
-## Key Components
+## Key Features
 
-### E-commerce Features
-- Cart drawer with live updates (`cart-drawer.js`, `component-cart-items.js`)
-- Product forms with variant selection (`product-form.js`, `variant-picker.js`)
-- Quick add functionality (`quick-add.js`)
-- Predictive search (`predictive-search.js`)
-- Product recommendations (`product-recommendations.js`)
+### E-commerce
 
-### UI Components
-- Media gallery with zoom (`media-gallery.js`, `drag-zoom-wrapper.js`)
-- Header with drawer navigation (`header.js`, `header-drawer.js`)
-- Slideshow component (`slideshow.js`)
-- Disclosure/accordion components (`disclosure-custom.js`)
+- Cart drawer with live updates and AJAX add-to-cart
+- Product forms with variant selection, dynamic pricing, and availability
+- Quick add modal for fast shopping
+- Predictive search and product recommendations
+- Add-ons and upsell support (see `addons-product.liquid`)
 
-### Performance Features
-- View transitions support (`view-transitions.js`)
-- Section rendering and hydration (`section-renderer.js`, `section-hydration.js`)
-- Performance monitoring (`performance.js`)
+### UI/UX
+
+- Media gallery with zoom, video, and 3D model support
+- Header with sticky/fixed options, drawer navigation, and localization
+- Slideshow and marquee components
+- Disclosure/accordion, skip-to-content, and accessibility helpers
+
+### Performance & Modern Web
+
+- View transitions for smooth navigation
+- Section rendering and hydration for dynamic content
+- Performance monitoring and lazy loading
+- Uses Shopify's latest theme features (section groups, blocks, dynamic sources)
 
 ## Theme Development Notes
 
-- Uses Shopify CLI for theme development workflow
-- Supports theme editor live preview mode
-- Implements modern web standards (custom elements, ES modules)
-- Mobile-first responsive design approach
-- Accessibility features with skip-to-content links
+- Uses Shopify CLI for local development and deployment
+- Supports theme editor live preview and design mode
+- Follows best practices for accessibility (ARIA, keyboard nav, skip links)
+- Modular, maintainable codebase — prefer small, composable snippets and blocks
+- All metafields and custom data are documented in `METAFIELD_CLEANUP_REPORT.md`
+
+---
