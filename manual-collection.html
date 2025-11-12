@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Adding Products to Collections Using Tags</title>
+    <style>
+      @media print {
+        body {
+          margin: 0;
+        }
+        .page-break {
+          page-break-after: always;
+        }
+      }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 20mm;
+        background: white;
+      }
+      .header {
+        text-align: center;
+        border-bottom: 3px solid #2c5aa0;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      h1 {
+        color: #2c5aa0;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+      h2 {
+        color: #2c5aa0;
+        font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-left: 4px solid #2c5aa0;
+        padding-left: 15px;
+      }
+      h3 {
+        color: #4a4a4a;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .overview-box {
+        background: #f0f4f8;
+        border-left: 4px solid #2c5aa0;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      .step {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .step-number {
+        background: #2c5aa0;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .example-box {
+        background: #fff9e6;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .warning-box {
+        background: #fff3f3;
+        border-left: 4px solid #dc3545;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+      }
+      th {
+        background: #2c5aa0;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+      ul,
+      ol {
+        margin: 10px 0;
+        padding-left: 30px;
+      }
+      li {
+        margin: 8px 0;
+      }
+      code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        color: #c7254e;
+      }
+      .button {
+        background: #2c5aa0;
+        color: white;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        display: block;
+        margin: 30px auto;
+        text-align: center;
+      }
+      .button:hover {
+        background: #1e3a6f;
+      }
+      .troubleshoot-item {
+        margin: 20px 0;
+        padding-left: 20px;
+      }
+      .checkmark {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .crossmark {
+        color: #dc3545;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Tutorial: Adding Products to Collections Using Tags</h1>
+      <p style="color: #666; font-size: 16px">
+        Automated Collection Management Guide
+      </p>
+    </div>
+
+    <h2>Overview</h2>
+    <div class="overview-box">
+      <p>
+        Your store uses <strong>automated (smart) collections</strong> that
+        automatically include products based on tags. When you add a specific
+        tag to a product, it will automatically appear in the corresponding
+        collection—no manual assignment needed.
+      </p>
+    </div>
+
+    <h2>How It Works</h2>
+    <h3>Current Setup:</h3>
+    <ul>
+      <li>
+        Collection "Brandsikring" → automatically includes products tagged
+        <code>Brandsikring</code>
+      </li>
+      <li>
+        Collection "Værdiskabe" → automatically includes products tagged
+        <code>Værdiskabe</code>
+      </li>
+      <li>
+        Collection "Brandslukkere" → automatically includes products tagged
+        <code>Brandslukkere</code>
+      </li>
+      <li>
+        Collection "Nøgleskabe" → automatically includes products tagged
+        <code>Nøgleskabe</code>
+      </li>
+      <li>And so on for all your collections.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2>Step-by-Step: Adding Products to Collections</h2>
+
+    <h3>Method 1: Single Product</h3>
+    <div class="step">
+      <p>
+        <span class="step-number">1</span> Navigate to
+        <strong>Products</strong> in your admin
+      </p>
+    </div>
+    <div class="step">
+      <p>
+        <span class="step-number">2</span> Click on the product you want to add
+        to a collection
+      </p>
+    </div>
+    <div class="step">
+      <p>
+        <span class="step-number">3</span> Scroll to the
+        <strong>Tags</strong> field
+      </p>
+    </div>
+    <div class="step">
+      <p>
+        <span class="step-number">4</span> Add the exact tag name
+        (case-sensitive):
+      </p>
+      <ul>
+        <li>For Brandsikring collection → add tag <code>Brandsikring</code></li>
+        <li>For Værdiskabe collection → add tag <code>Værdiskabe</code></li>
+        <li>
+          For Computerskabe collection → add tag <code>Computerskabe</code>
+        </li>
+      </ul>
+    </div>
+    <div class="step">
+      <p><span class="step-number">5</span> Click <strong>Save</strong></p>
+    </div>
+    <div class="step">
+      <p>
+        <span class="step-number">6</span> The product will automatically appear
+        in the matching collection within seconds
+      </p>
+    </div>
+
+    <div class="example-box">
+      <h4>Example:</h4>
+      <p>
+        <strong>Product:</strong> "Phoenix Data Commander Safe"<br />
+        <strong>Add tag:</strong> <code>Brandskabe</code><br />
+        <strong>Result:</strong> Product automatically appears in "Brandskabe"
+        collection
+      </p>
+    </div>
+
+    <h3>Method 2: Bulk Tagging (Multiple Products)</h3>
+    <ol>
+      <li>Go to <strong>Products</strong></li>
+      <li>Select multiple products using checkboxes</li>
+      <li>Click <strong>More actions</strong> → <strong>Add tags</strong></li>
+      <li>Enter the collection tag (e.g., <code>Nøgleskabe</code>)</li>
+      <li>Click <strong>Add tags</strong></li>
+      <li>All selected products now appear in that collection</li>
+    </ol>
+
+    <h3>Method 3: CSV Import (Large Scale)</h3>
+    <ol>
+      <li>
+        Export products via <strong>Products</strong> → <strong>Export</strong>
+      </li>
+      <li>Add tags in the "Tags" column (comma-separated if multiple)</li>
+      <li>Import via <strong>Products</strong> → <strong>Import</strong></li>
+      <li>Products automatically populate collections based on tags</li>
+    </ol>
+
+    <div class="page-break"></div>
+
+    <h2>Important Notes</h2>
+
+    <h3>Tag Matching Rules:</h3>
+    <div class="warning-box">
+      <ul>
+        <li>Tags must match exactly (including capitalization)</li>
+        <li>
+          <code>Brandsikring</code> <span class="checkmark">≠</span>
+          <code>brandsikring</code> <span class="checkmark">≠</span>
+          <code>BRANDSIKRING</code>
+        </li>
+        <li>No extra spaces before/after the tag</li>
+      </ul>
+    </div>
+
+    <h3>Multiple Collections:</h3>
+    <ul>
+      <li>Products can belong to multiple collections</li>
+      <li>
+        Just add multiple tags: <code>Brandsikring</code>,
+        <code>Værdiskabe</code>, <code>Nøgleskabe</code>
+      </li>
+    </ul>
+
+    <h3>Removing Products:</h3>
+    <ul>
+      <li>Remove the tag from the product</li>
+      <li>Product automatically disappears from that collection</li>
+    </ul>
+
+    <h2>Tag Reference (Your Current Collections)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Collection Name</th>
+          <th>Required Tag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Brandsikring</td>
+          <td><code>Brandsikring</code></td>
+        </tr>
+        <tr>
+          <td>Værdiskabe</td>
+          <td><code>Værdiskabe</code></td>
+        </tr>
+        <tr>
+          <td>Brandslukkere</td>
+          <td><code>Brandslukkere</code></td>
+        </tr>
+        <tr>
+          <td>Vandslukker</td>
+          <td><code>Vandslukker</code></td>
+        </tr>
+        <tr>
+          <td>Brandtæppe</td>
+          <td><code>Brandtæppe</code></td>
+        </tr>
+        <tr>
+          <td>Brandstiger</td>
+          <td><code>Brandstiger</code></td>
+        </tr>
+        <tr>
+          <td>Forsikringsgodkendte pengeskabe og værdiskabe</td>
+          <td><code>Pengeskabe</code></td>
+        </tr>
+        <tr>
+          <td>Brandskabe</td>
+          <td><code>Brandskabe</code></td>
+        </tr>
+        <tr>
+          <td>Nøgleskabe</td>
+          <td><code>Nøgleskabe</code></td>
+        </tr>
+        <tr>
+          <td>Computerskabe</td>
+          <td><code>Computerskabe</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Troubleshooting</h2>
+
+    <h3>Product not appearing in collection?</h3>
+    <p>Check these common issues in order:</p>
+
+    <div class="troubleshoot-item">
+      <h4>1. Tag spelling mismatch</h4>
+      <ul>
+        <li>Verify tag matches exactly (case-sensitive)</li>
+        <li>Check for extra spaces before/after tag</li>
+        <li>
+          Example: <code>Brandsikring</code> ≠ <code>brandsikring</code> ≠
+          <code>BRANDSIKRING</code>
+        </li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>2. Product status</h4>
+      <ul>
+        <li>Product must be set to "Active" (not Draft or Archived)</li>
+        <li>Go to product → check Status field at top</li>
+        <li>Archived products never appear in collections</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>3. Sales channel availability</h4>
+      <ul>
+        <li>Product must be published to "Online Store" sales channel</li>
+        <li>Go to product → scroll to "Sales channels and apps" section</li>
+        <li>Ensure "Online Store" is checked</li>
+        <li>Collections only show products available on that channel</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>4. Product availability date</h4>
+      <ul>
+        <li>Check if product has a future "Available" date set</li>
+        <li>
+          Go to product → "Online Store" section → check availability schedule
+        </li>
+        <li>Products scheduled for future won't appear until that date</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>5. Collection visibility settings</h4>
+      <ul>
+        <li>Verify collection itself is published to Online Store</li>
+        <li>Go to collection → check "Sales channels and apps"</li>
+        <li>Hidden collections won't display products on storefront</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>6. Inventory/stock status</h4>
+      <ul>
+        <li>
+          If "Continue selling when out of stock" is disabled AND inventory = 0
+        </li>
+        <li>
+          Product may be hidden from collection on storefront (but visible in
+          admin)
+        </li>
+        <li>Check product → Inventory section</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>7. Cache delay</h4>
+      <ul>
+        <li>Wait 30-60 seconds after adding tag</li>
+        <li>Refresh the collection page</li>
+        <li>Clear browser cache if needed</li>
+      </ul>
+    </div>
+
+    <div class="troubleshoot-item">
+      <h4>8. Collection conditions conflict</h4>
+      <ul>
+        <li>
+          Some collections may have additional automated rules beyond tags
+        </li>
+        <li>Go to collection → "Products" section → check "Conditions"</li>
+        <li>Product must match ALL conditions to appear</li>
+      </ul>
+    </div>
+
+    <h3>Product appearing in wrong collection?</h3>
+    <ul>
+      <li>Review all tags assigned to the product</li>
+      <li>Remove any incorrect/outdated tags</li>
+      <li>Cross-reference with tag reference table above</li>
+    </ul>
+
+    <h3>Product appears in admin but not on storefront?</h3>
+    <ul>
+      <li>Confirm product is published to Online Store channel</li>
+      <li>Check theme settings for collection display filters</li>
+      <li>
+        Verify product inventory settings allow display when out of stock (if
+        applicable)
+      </li>
+    </ul>
+
+    <div style="text-align: center; margin: 40px 0">
+      <button class="button" onclick="printToPDF()">
+        📄 Print / Save as PDF
+      </button>
+      <p style="color: #666; margin-top: 10px; font-size: 14px">
+        Click the button above, then select "Save as PDF" in the print dialog
+      </p>
+    </div>
+
+    <script>
+      function printToPDF() {
+        window.print();
+      }
+
+      // Auto-adjust for printing
+      window.onbeforeprint = function () {
+        document.body.style.padding = '10mm';
+      };
+      window.onafterprint = function () {
+        document.body.style.padding = '20mm';
+      };
+    </script>
+  </body>
+</html>
