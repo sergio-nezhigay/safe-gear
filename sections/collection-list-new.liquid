@@ -45,7 +45,6 @@
 
   if is_valid_context
     paginate collection.products by 1000
-      assign debug_products_data = ''
       for p in collection.products
         for c in p.collections
           assign excluded_handles = 'pengeskabe,vaerdiskabe,dokumentskabe,dataskabe,computerskabe,indmuringsboks,deponeringsskabe,noegleskabe,vaabenskabe,kemiskabe,batteriopbevaring,medicinskab,alle-vaerdiskabe,alle_vaerdiskabe,brandskabe'
@@ -62,17 +61,11 @@
         assign h = p.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0
         assign kg = p.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0
 
-        assign raw_height_value = p.metafields.custom.new_height.value
-        assign raw_metafield_weight = p.metafields.custom.weight.value
         assign variant_weight = ''
-        assign variant_weight_unit = ''
         if p.variants.size > 0
           assign first_variant = p.variants.first
           assign variant_weight = first_variant.weight
-          assign variant_weight_unit = first_variant.weight_unit
         endif
-        assign debug_entry = p.title | append: '|' | append: raw_height_value | append: '|' | append: h | append: '|' | append: raw_metafield_weight | append: '|' | append: kg | append: '|' | append: variant_weight | append: '|' | append: variant_weight_unit | append: ','
-        assign debug_products_data = debug_products_data | append: debug_entry
 
         if d > 0
           assign has_depth_data = true
@@ -230,8 +223,6 @@
   assign all_burglary_grades = all_burglary_csv | remove_first: ',' | split: ',' | uniq
   assign all_fire_resistance = all_fire_csv | remove_first: ',' | split: ',' | uniq
   assign all_categories = all_categories_csv | remove_first: ',' | split: ',' | uniq
-
-  assign debug_products_array = debug_products_data | split: ','
 
   if min_price == 999999999 or max_price == 0
     assign min_price = 0
@@ -1212,72 +1203,6 @@
     </div>
   </div>
 </div>
-
-<script>
-(function() {
-  console.log('%c=== FILTER DEBUG: Udvendig højde (mm) & Weight ===', 'background: #222; color: #bada55; font-size: 16px; font-weight: bold; padding: 5px;');
-
-  console.log('%c1. Filter Range Calculated from All Products:', 'color: #4CAF50; font-weight: bold;');
-  console.log('  Min Height: {{ min_height }} mm');
-  console.log('  Max Height: {{ max_height }} mm');
-  console.log('  Has Height Data: {{ has_height_data }}');
-  console.log('  Min Weight (metafield): {{ min_weight }} kg');
-  console.log('  Max Weight (metafield): {{ max_weight }} kg');
-  console.log('  Has Weight Data: {{ has_weight_data }}');
-
-  console.log('%c2. Individual Product Height & Weight Data:', 'color: #2196F3; font-weight: bold;');
-  console.log('  Columns: Title | Raw Height | Height (mm) | Metafield Weight | Weight (kg) | Variant Weight | Unit');
-
-  const productsData = [
-    {% for product_entry in debug_products_array %}
-      {% if product_entry != blank %}
-        {% assign parts = product_entry | split: '|' %}
-        {% if parts.size == 7 %}
-          {
-            title: {{ parts[0] | json }},
-            rawHeight: {{ parts[1] | json }},
-            heightMm: {{ parts[2] | json }},
-            rawMetafieldWeight: {{ parts[3] | json }},
-            metafieldWeightKg: {{ parts[4] | json }},
-            variantWeight: {{ parts[5] | json }},
-            variantWeightUnit: {{ parts[6] | json }}
-          }{% unless forloop.last %},{% endunless %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  ];
-
-  console.table(productsData);
-
-  console.log('%c3. Products with Height Data:', 'color: #FF9800; font-weight: bold;');
-  const withHeight = productsData.filter(p => p.heightMm && parseFloat(p.heightMm) > 0);
-  console.log(`  ${withHeight.length} out of ${productsData.length} products have height data`);
-
-  console.log('%c4. Height Value Distribution:', 'color: #9C27B0; font-weight: bold;');
-  const heights = withHeight.map(p => parseFloat(p.heightMm)).sort((a, b) => a - b);
-  if (heights.length > 0) {
-    console.log('  Unique Heights:', [...new Set(heights)].join(', '));
-    console.log('  Min:', Math.min(...heights), 'mm');
-    console.log('  Max:', Math.max(...heights), 'mm');
-  }
-
-  console.log('%c5. Weight Comparison:', 'color: #E91E63; font-weight: bold;');
-  const withWeights = productsData.filter(p => (p.metafieldWeightKg && parseFloat(p.metafieldWeightKg) > 0) || (p.variantWeight && parseFloat(p.variantWeight) > 0));
-  console.log(`  ${withWeights.length} products have weight data`);
-
-  const weightComparison = withWeights.map(p => ({
-    title: p.title,
-    metafieldWeight: p.metafieldWeightKg ? parseFloat(p.metafieldWeightKg) + ' kg' : 'N/A',
-    variantWeight: p.variantWeight ? p.variantWeight + ' ' + p.variantWeightUnit : 'N/A'
-  }));
-
-  if (weightComparison.length > 0) {
-    console.table(weightComparison);
-  }
-
-  console.log('%c=== END FILTER DEBUG ===', 'background: #222; color: #bada55; font-size: 16px; font-weight: bold; padding: 5px;');
-})();
-</script>
 
 {% schema %}
 {
