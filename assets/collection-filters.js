@@ -396,8 +396,8 @@ class CollectionFilters {
 
     if (!minSlider || !maxSlider) return;
 
-    let minVal = parseInt(minSlider.value);
-    let maxVal = parseInt(maxSlider.value);
+    let minVal = parseFloat(minSlider.value);
+    let maxVal = parseFloat(maxSlider.value);
 
     if (minVal >= maxVal) {
       if (type === 'min') {
@@ -526,10 +526,10 @@ class CollectionFilters {
 
     if (!minSlider || !maxSlider || !track) return;
 
-    const min = parseInt(minSlider.min);
-    const max = parseInt(minSlider.max);
-    const minVal = parseInt(minSlider.value);
-    const maxVal = parseInt(maxSlider.value);
+    const min = parseFloat(minSlider.min);
+    const max = parseFloat(minSlider.max);
+    const minVal = parseFloat(minSlider.value);
+    const maxVal = parseFloat(maxSlider.value);
 
     const minPercent = ((minVal - min) / (max - min)) * 100;
     const maxPercent = ((maxVal - min) / (max - min)) * 100;

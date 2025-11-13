@@ -271,12 +271,12 @@ class L1MainCategoryFilters {
       const maxSlider = document.getElementById(`${dimension}-max`);
       const minInput = document.getElementById(`${dimension}-min-input`);
       const maxInput = document.getElementById(`${dimension}-max-input`);
-      
+
       if (!minSlider || !maxSlider) return;
-      
-      let minVal = parseInt(minSlider.value);
-      let maxVal = parseInt(maxSlider.value);
-      
+
+      let minVal = parseFloat(minSlider.value);
+      let maxVal = parseFloat(maxSlider.value);
+
       if (minVal >= maxVal) {
         if (type === 'min') {
           minVal = maxVal - 1;
@@ -402,13 +402,13 @@ class L1MainCategoryFilters {
       const minSlider = document.getElementById(`${dimension}-min`);
       const maxSlider = document.getElementById(`${dimension}-max`);
       const track = document.querySelector(`.${dimension}-range-track`);
-      
+
       if (!minSlider || !maxSlider || !track) return;
-      
-      const min = parseInt(minSlider.min);
-      const max = parseInt(maxSlider.max);
-      const minVal = parseInt(minSlider.value);
-      const maxVal = parseInt(maxSlider.value);
+
+      const min = parseFloat(minSlider.min);
+      const max = parseFloat(maxSlider.max);
+      const minVal = parseFloat(minSlider.value);
+      const maxVal = parseFloat(maxSlider.value);
       
       const minPercent = ((minVal - min) / (max - min)) * 100;
       const maxPercent = ((maxVal - min) / (max - min)) * 100;

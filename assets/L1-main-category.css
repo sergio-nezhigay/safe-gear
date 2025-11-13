@@ -316,7 +316,8 @@
   .depth-range-track,
   .width-range-track,
   .height-range-track,
-  .weight-range-track {
+  .weight-range-track,
+  .variant_weight-range-track {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
