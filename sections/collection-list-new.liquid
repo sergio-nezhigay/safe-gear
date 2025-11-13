@@ -394,7 +394,7 @@
           </div>
         {% endif %}
 
-        {% assign dimensions = 'depth,width,height,weight' | split: ',' %}
+        {% assign dimensions = 'depth,width,height' | split: ',' %}
         {% for dimension in dimensions %}
           {% assign has_data = false %}
           {% assign min_val = 0 %}
