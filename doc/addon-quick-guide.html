@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Add-ons Quick Guide</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 20mm;
+        color: #333;
+        background: #fff;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+        margin-top: 30px;
+      }
+      h2 {
+        color: #34495e;
+        margin-top: 25px;
+        border-left: 4px solid #3498db;
+        padding-left: 15px;
+      }
+      h3 {
+        color: #555;
+        margin-top: 20px;
+      }
+      .overview {
+        background: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .metafield-box {
+        background: #fff;
+        border: 2px solid #3498db;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .metafield-box h3 {
+        margin-top: 0;
+        color: #3498db;
+      }
+      .metafield-detail {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .metafield-detail strong {
+        color: #555;
+      }
+      code {
+        background: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        color: #e74c3c;
+      }
+      .flow-diagram {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        font-family: monospace;
+        white-space: pre;
+        font-size: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background: #3498db;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+      .step-box {
+        background: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .step-box h4 {
+        margin-top: 0;
+        color: #3498db;
+      }
+      ol {
+        line-height: 1.8;
+      }
+      .result-box {
+        background: #d5f4e6;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        margin: 10px 0;
+      }
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 10px 15px;
+        margin: 10px 0;
+      }
+      .tip-box {
+        background: #d1ecf1;
+        border-left: 4px solid #17a2b8;
+        padding: 10px 15px;
+        margin: 10px 0;
+      }
+      .comparison-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .comparison-item {
+        border: 2px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .comparison-item h4 {
+        margin-top: 0;
+        color: #3498db;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      @media print {
+        body {
+          padding: 10mm;
+        }
+        .page-break {
+          page-break-after: always;
+        }
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        border: none;
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+      .header p {
+        color: #7f8c8d;
+        font-size: 14px;
+      }
+      .highlight {
+        background: #fff3cd;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+      .quick-steps {
+        background: #e8f5e9;
+        border: 2px solid #4caf50;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .quick-steps h3 {
+        margin-top: 0;
+        color: #2e7d32;
+      }
+      ul.compact {
+        margin: 5px 0;
+        padding-left: 20px;
+      }
+      ul.compact li {
+        margin: 3px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Product Add-ons Quick Guide</h1>
+      <p>5-Minute Setup Guide</p>
+      <p style="font-size: 12px; color: #95a5a6">
+        SafeGear E-commerce Platform
+      </p>
+    </div>
+
+    <div class="overview">
+      <p>
+        <strong>What it does:</strong> Lets customers add accessories, services,
+        and warranties to their purchase.
+      </p>
+      <p>
+        <strong>Two types:</strong> Quantity (for physical items) and Yes/No
+        (for services).
+      </p>
+    </div>
+
+    <h1>🎯 Two Metafields, That's It</h1>
+
+    <div class="metafield-box">
+      <h3>1. addon_products (Main Product)</h3>
+      <div class="metafield-detail">
+        <strong>Where:</strong>
+        <span>Main product metafields</span>
+      </div>
+      <div class="metafield-detail">
+        <strong>Type:</strong>
+        <span>List of products</span>
+      </div>
+      <div class="metafield-detail">
+        <strong>What:</strong>
+        <span>Which products show as add-ons</span>
+      </div>
+    </div>
+
+    <div class="metafield-box">
+      <h3>2. addon_type (Each Add-on Product)</h3>
+      <div class="metafield-detail">
+        <strong>Where:</strong>
+        <span>Each add-on product metafields</span>
+      </div>
+      <div class="metafield-detail">
+        <strong>Values:</strong>
+        <span>
+          <code>"quantity"</code> = Shows +/- buttons<br />
+          <code>"yes_no"</code> = Shows checkbox only
+        </span>
+      </div>
+      <div class="metafield-detail">
+        <strong>Default:</strong>
+        <span><code>"quantity"</code></span>
+      </div>
+    </div>
+
+    <h1>⚡ Quick Setup</h1>
+
+    <div class="quick-steps">
+      <h3>For Accessories (Shelves, Locks, etc.)</h3>
+      <ol>
+        <li>
+          Open add-on product → Metafields → Set
+          <code>addon_type</code> = <code>"quantity"</code>
+        </li>
+        <li>
+          Open main product → Metafields → Add to
+          <code>addon_products</code> list
+        </li>
+        <li>Save. Done.</li>
+      </ol>
+      <p><strong>Result:</strong> Checkbox + quantity controls (- 1 +)</p>
+    </div>
+
+    <div class="quick-steps">
+      <h3>For Services (Warranty, Installation, etc.)</h3>
+      <ol>
+        <li>
+          Open add-on product → Metafields → Set
+          <code>addon_type</code> = <code>"yes_no"</code>
+        </li>
+        <li>
+          Open main product → Metafields → Add to
+          <code>addon_products</code> list
+        </li>
+        <li>Save. Done.</li>
+      </ol>
+      <p><strong>Result:</strong> Checkbox only</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h1>📊 Visual Guide</h1>
+
+    <div class="comparison-table">
+      <div class="comparison-item">
+        <h4>"quantity"</h4>
+        <p><strong>Use for:</strong> Physical items</p>
+        <p><strong>Shows:</strong></p>
+        <ul class="compact">
+          <li>☑ Checkbox</li>
+          <li>[-] [1] [+] Controls</li>
+        </ul>
+        <p><strong>Example:</strong> Extra shelves</p>
+      </div>
+      <div class="comparison-item">
+        <h4>"yes_no"</h4>
+        <p><strong>Use for:</strong> Services</p>
+        <p><strong>Shows:</strong></p>
+        <ul class="compact">
+          <li>☑ Checkbox only</li>
+          <li>No quantity selector</li>
+        </ul>
+        <p><strong>Example:</strong> Installation</p>
+      </div>
+    </div>
+
+    <h1>🔧 Common Issues</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nothing shows up</td>
+          <td>Check <code>addon_products</code> on main product has items</td>
+        </tr>
+        <tr>
+          <td>No +/- buttons</td>
+          <td>
+            Set <code>addon_type</code> = <code>"quantity"</code> on add-on
+            product
+          </td>
+        </tr>
+        <tr>
+          <td>Can't change quantity</td>
+          <td>
+            Change <code>addon_type</code> from <code>"yes_no"</code> to
+            <code>"quantity"</code>
+          </td>
+        </tr>
+        <tr>
+          <td>Too many add-ons</td>
+          <td>Theme Customizer → Limit to 3-6 products</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>✅ Best Practices</h1>
+
+    <div class="tip-box">
+      <strong>Keep it simple:</strong>
+      <ul class="compact">
+        <li>3-6 add-ons max per product</li>
+        <li>Order by importance (first = shows first)</li>
+        <li>Use clear product names</li>
+        <li>Mix quantity and yes/no types</li>
+        <li>Test before launching</li>
+      </ul>
+    </div>
+
+    <h1>🎓 Decision Guide</h1>
+
+    <div class="flow-diagram">
+      Physical item that customers might buy multiple of? ↓ YES ↓ NO Use
+      "quantity" Use "yes_no" Examples: ✓ Quantity: Shelves, locks, batteries ✓
+      Yes/No: Warranty, installation, delivery
+    </div>
+
+    <h1>📝 Checklist</h1>
+
+    <div class="step-box">
+      <ol>
+        <li>☐ Set <code>addon_type</code> on each add-on product</li>
+        <li>
+          ☐ Add add-ons to main product's <code>addon_products</code> list
+        </li>
+        <li>☐ Order by priority</li>
+        <li>☐ Test on desktop</li>
+        <li>☐ Test on mobile</li>
+        <li>☐ Go live</li>
+      </ol>
+    </div>
+
+    <h1>🚀 That's It!</h1>
+
+    <div class="result-box">
+      <p>
+        <strong>Two metafields. Two values. Unlimited possibilities.</strong>
+      </p>
+      <p>
+        <code>addon_products</code> on main product = what shows<br />
+        <code>addon_type</code> on add-on products = how it shows
+      </p>
+    </div>
+
+    <div
+      style="
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 2px solid #ddd;
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 12px;
+      "
+    >
+      <p><strong>SafeGear Product Add-ons Quick Guide</strong></p>
+      <p>November 2025 | Version 1.0</p>
+    </div>
+  </body>
+</html>
