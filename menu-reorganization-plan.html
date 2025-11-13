@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Reorganization Plan - Print Version</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        background: white;
+        padding: 20px;
+        color: #000;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #333;
+      }
+
+      h1 {
+        font-size: 28pt;
+        color: #000;
+        margin-bottom: 10px;
+      }
+
+      .date {
+        font-size: 11pt;
+        color: #666;
+      }
+
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+        page-break-inside: avoid;
+      }
+
+      .panel {
+        border: 2px solid #333;
+        padding: 15px;
+        background: white;
+      }
+
+      .panel h2 {
+        font-size: 16pt;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #000;
+      }
+
+      .current h2::before {
+        content: '📋 ';
+      }
+
+      .proposed h2::after {
+        content: ' ✓';
+        color: #28a745;
+      }
+
+      .menu-item {
+        margin: 12px 0;
+        padding: 10px;
+        border-left: 4px solid #666;
+      }
+
+      .menu-item.moved {
+        background: #fff9e6;
+        border-left-color: #ff9800;
+      }
+
+      .menu-item.new {
+        background: #f0f8f0;
+        border-left-color: #28a745;
+      }
+
+      .menu-title {
+        font-weight: bold;
+        font-size: 11pt;
+        margin-bottom: 5px;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 8pt;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: bold;
+        margin-left: 5px;
+      }
+
+      .badge.moved {
+        background: #ff9800;
+        color: white;
+      }
+
+      .badge.new {
+        background: #28a745;
+        color: white;
+      }
+
+      .submenu {
+        margin-left: 15px;
+        margin-top: 5px;
+        font-size: 9pt;
+        color: #333;
+      }
+
+      .submenu-item {
+        padding: 3px 0;
+        line-height: 1.4;
+      }
+
+      .summary {
+        page-break-before: avoid;
+      }
+
+      .summary h2 {
+        font-size: 18pt;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #000;
+      }
+
+      .change-section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+      }
+
+      .change-section h3 {
+        font-size: 13pt;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .change-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .change-section li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .change-section li:before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .moved-section {
+        background: #fff9e6;
+      }
+
+      .moved-section h3:before {
+        content: '📦 ';
+      }
+
+      .created-section {
+        background: #f0f8f0;
+      }
+
+      .created-section h3:before {
+        content: '✨ ';
+      }
+
+      .benefits {
+        background: #e8f4f8;
+      }
+
+      .benefits h3:before {
+        content: '🎯 ';
+      }
+
+      .benefits li {
+        font-weight: 500;
+      }
+
+      .legend {
+        margin: 20px 0;
+        padding: 15px;
+        border: 2px dashed #999;
+        background: #f9f9f9;
+        page-break-inside: avoid;
+      }
+
+      .legend h3 {
+        font-size: 12pt;
+        margin-bottom: 10px;
+      }
+
+      .legend-item {
+        display: inline-block;
+        margin: 5px 15px 5px 0;
+        font-size: 9pt;
+      }
+
+      .legend-box {
+        display: inline-block;
+        width: 20px;
+        height: 15px;
+        margin-right: 5px;
+        border: 1px solid #333;
+        vertical-align: middle;
+      }
+
+      .legend-box.moved {
+        background: #fff9e6;
+        border-left: 4px solid #ff9800;
+      }
+
+      .legend-box.new {
+        background: #f0f8f0;
+        border-left: 4px solid #28a745;
+      }
+
+      .footer {
+        margin-top: 40px;
+        padding-top: 15px;
+        border-top: 1px solid #ccc;
+        text-align: center;
+        font-size: 9pt;
+        color: #666;
+      }
+
+      /* Print-specific styles */
+      @media print {
+        body {
+          padding: 15mm;
+        }
+
+        .comparison {
+          page-break-inside: avoid;
+        }
+
+        .summary {
+          page-break-before: auto;
+        }
+
+        .change-section {
+          page-break-inside: avoid;
+        }
+
+        @page {
+          margin: 15mm;
+          size: A4;
+        }
+      }
+
+      @media screen {
+        body {
+          background: #f5f5f5;
+          padding: 40px 20px;
+        }
+
+        .container {
+          background: white;
+          padding: 40px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .print-button {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 15px 30px;
+          background: #667eea;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 14pt;
+          font-weight: bold;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+        }
+
+        .print-button:hover {
+          background: #5568d3;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      @media print {
+        .print-button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button" onclick="window.print()">
+      🖨️ Print / Save as PDF
+    </button>
+
+    <div class="container">
+      <div class="header">
+        <h1>Website Menu Reorganization Plan</h1>
+        <div class="date">Document Date: November 2025</div>
+      </div>
+
+      <div class="legend">
+        <h3>Legend:</h3>
+        <div class="legend-item">
+          <span class="legend-box moved"></span>
+          <span>Item Moved to Different Category</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-box new"></span>
+          <span>New Category Created</span>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="panel current">
+          <h2>Current Structure (6 Categories)</h2>
+
+          <div class="menu-item">
+            <div class="menu-title">1. Værdiskabe (Safes)</div>
+            <div class="submenu">
+              <div class="submenu-item">• 16 subcategories</div>
+              <div class="submenu-item">
+                • Cash, Document, Data, Computer, Weapon Safes
+              </div>
+              <div class="submenu-item">
+                • Vault Doors, Medicine, Wall, Deposit, Key Cabinets
+              </div>
+              <div class="submenu-item">
+                • Chemical Cabinets, Hotel, Premium Safes, Steel Cabinets, Locks
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-title">2. Brandsikring (Fire Safety)</div>
+            <div class="submenu">
+              <div class="submenu-item">• Fire Extinguishers (6 types)</div>
+              <div class="submenu-item">• Fire Ladders, Fire Blankets</div>
+              <div class="submenu-item">• Safety Signs, Fire Signs</div>
+              <div class="submenu-item">
+                • Hose Cabinets/Reels/Drums, Fire Cabinets
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item moved">
+            <div class="menu-title">
+              3. Sikkerhedsspejle (Security Mirrors)
+              <span class="badge moved">MOVED</span>
+            </div>
+            <div class="submenu">
+              <div class="submenu-item">
+                • Shop, Traffic, School & Hospital Mirrors
+              </div>
+              <div class="submenu-item">
+                • Inspection Mirrors, Prison Mirrors
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item moved">
+            <div class="menu-title">
+              4. Varesikring (Product Security)
+              <span class="badge moved">MOVED</span>
+            </div>
+            <div class="submenu">
+              <div class="submenu-item">• Point Security / Alarms</div>
+              <div class="submenu-item">• Sensors / Alarm Cables</div>
+              <div class="submenu-item">• Cable Security / Retractors</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-title">
+              5. Ringeanlæg og Skoleur (Bell Systems & Clocks)
+            </div>
+            <div class="submenu">
+              <div class="submenu-item">• School Bell Systems</div>
+              <div class="submenu-item">• School Clocks</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-title">6. Tilbud (Offers)</div>
+          </div>
+        </div>
+
+        <div class="panel proposed">
+          <h2>Proposed Structure (5 Categories)</h2>
+
+          <div class="menu-item">
+            <div class="menu-title">1. SAFES & SECURE STORAGE</div>
+            <div class="submenu">
+              <div class="submenu-item">• Same 16 subcategories</div>
+              <div class="submenu-item">• No structural changes</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-title">2. FIRE SAFETY & EMERGENCY</div>
+            <div class="submenu">
+              <div class="submenu-item">• Fire Extinguishers (6 types)</div>
+              <div class="submenu-item">• Fire Blankets, Fire Ladders</div>
+              <div class="submenu-item">
+                • Hose Cabinets/Reels/Drums, Fire Cabinets
+              </div>
+              <div class="submenu-item">
+                <strong>▸ Signs & Marking</strong> (new grouping)
+              </div>
+              <div class="submenu-item">&nbsp;&nbsp;├─ Fire Signs</div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;└─ Safety Signs (moved here)
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item new">
+            <div class="menu-title">
+              3. SURVEILLANCE & SECURITY
+              <span class="badge new">NEW</span>
+            </div>
+            <div class="submenu">
+              <div class="submenu-item">
+                <strong>▸ Security Mirrors</strong>
+              </div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;├─ Shop, Traffic, School & Hospital Mirrors
+              </div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;└─ Inspection, Prison Mirrors
+              </div>
+              <div class="submenu-item">
+                <strong>▸ Product Security</strong>
+              </div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;├─ Point Security / Alarms
+              </div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;├─ Sensors / Alarm Cables
+              </div>
+              <div class="submenu-item">
+                &nbsp;&nbsp;└─ Cable Security / Retractors
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-item new">
+            <div class="menu-title">
+              4. INSTITUTIONAL EQUIPMENT
+              <span class="badge new">NEW</span>
+            </div>
+            <div class="submenu">
+              <div class="submenu-item">• School Bell Systems</div>
+              <div class="submenu-item">• School Clocks</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-title">5. OFFERS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <h2>Summary of Changes</h2>
+
+        <div class="change-section moved-section">
+          <h3>What Moved</h3>
+          <ul>
+            <li>
+              <strong>Safety Signs</strong> → Moved from top level into Fire
+              Safety category under new "Signs & Marking" subcategory
+            </li>
+            <li>
+              <strong>Security Mirrors</strong> → Changed from top-level
+              category to subcategory under new "Surveillance & Security" parent
+            </li>
+            <li>
+              <strong>Product Security</strong> → Changed from top-level
+              category to subcategory under new "Surveillance & Security" parent
+            </li>
+          </ul>
+        </div>
+
+        <div class="change-section created-section">
+          <h3>New Groupings Created</h3>
+          <ul>
+            <li>
+              <strong>Surveillance & Security</strong> (parent category) -
+              Logically combines Security Mirrors + Product Security into one
+              security-focused section
+            </li>
+            <li>
+              <strong>Institutional Equipment</strong> (parent category) -
+              Groups school-related bell systems and clocks together
+            </li>
+            <li>
+              <strong>Signs & Marking</strong> (subcategory) - Groups fire signs
+              and safety signs under Fire Safety where they belong contextually
+            </li>
+          </ul>
+        </div>
+
+        <div class="change-section benefits">
+          <h3>Key Benefits</h3>
+          <ul>
+            <li>
+              <strong>Simplified Navigation:</strong> Top-level categories
+              reduced from 6 to 5, making the menu less cluttered
+            </li>
+            <li>
+              <strong>Logical Grouping:</strong> Related products now grouped by
+              function and use case (e.g., all surveillance products together)
+            </li>
+            <li>
+              <strong>Improved Discoverability:</strong> Customers looking for
+              security products will find both mirrors and alarms in one place
+            </li>
+            <li>
+              <strong>Better Scalability:</strong> New structure makes it easier
+              to add products in the future without creating more top-level
+              clutter
+            </li>
+            <li>
+              <strong>Professional Organization:</strong> Category names clearly
+              communicate the purpose and contents
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer">
+        Website Menu Reorganization Plan | Prepared November 2025
+      </div>
+    </div>
+  </body>
+</html>
