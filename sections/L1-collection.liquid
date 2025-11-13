@@ -25,10 +25,13 @@
     assign max_height = 0
     assign min_weight = 999999
     assign max_weight = 0
+    assign min_variant_weight = 999999
+    assign max_variant_weight = 0
     assign has_depth_data = false
     assign has_width_data = false
     assign has_height_data = false
     assign has_weight_data = false
+    assign has_variant_weight_data = false
     
     assign agg_seen_ids = ','
     if subcategory_handles != blank and subcategory_handles.size > 0
@@ -110,6 +113,23 @@
                   assign max_weight = kg
                 endif
               endif
+
+              if product.variants.size > 0
+                assign variant_weight = product.variants.first.weight
+                if variant_weight != blank and variant_weight != ''
+                  assign variant_weight_num = variant_weight | plus: 0
+                  if variant_weight_num > 0
+                    assign variant_weight_kg = variant_weight_num | divided_by: 1000.0
+                    assign has_variant_weight_data = true
+                    if variant_weight_kg < min_variant_weight
+                      assign min_variant_weight = variant_weight_kg
+                    endif
+                    if variant_weight_kg > max_variant_weight
+                      assign max_variant_weight = variant_weight_kg
+                    endif
+                  endif
+                endif
+              endif
             endunless
           endfor
         endif
@@ -184,6 +204,23 @@
           endif
           if kg > max_weight
             assign max_weight = kg
+          endif
+        endif
+
+        if product.variants.size > 0
+          assign variant_weight = product.variants.first.weight
+          if variant_weight != blank and variant_weight != ''
+            assign variant_weight_num = variant_weight | plus: 0
+            if variant_weight_num > 0
+              assign variant_weight_kg = variant_weight_num | divided_by: 1000.0
+              assign has_variant_weight_data = true
+              if variant_weight_kg < min_variant_weight
+                assign min_variant_weight = variant_weight_kg
+              endif
+              if variant_weight_kg > max_variant_weight
+                assign max_variant_weight = variant_weight_kg
+              endif
+            endif
           endif
         endif
       endfor
@@ -452,7 +489,44 @@
                 </div>
               {% endif %}
             {% endfor %}
-  
+
+            {% if has_variant_weight_data and max_variant_weight > min_variant_weight %}
+              <div class="filter-group dimension-filter-group">
+                <h4 class="filter-group-title" data-accordion="variant_weight">
+                  Variant Vægt (kg)
+                  <span class="accordion-icon">−</span>
+                </h4>
+                <div class="filter-options" data-accordion-content="variant_weight">
+                  <div class="dimension-range-container">
+                    <div class="dimension-range-slider-container">
+                      <div class="dimension-range-slider">
+                        <div class="variant_weight-range-track"></div>
+                        <input type="range" id="variant_weight-min" class="dimension-slider variant_weight-slider-min"
+                               min="{{ min_variant_weight }}" max="{{ max_variant_weight }}" value="{{ min_variant_weight }}"
+                               step="0.01" data-filter-type="variant_weight_range" aria-label="Minimum variant weight">
+                        <input type="range" id="variant_weight-max" class="dimension-slider variant_weight-slider-max"
+                               min="{{ min_variant_weight }}" max="{{ max_variant_weight }}" value="{{ max_variant_weight }}"
+                               step="0.01" data-filter-type="variant_weight_range" aria-label="Maximum variant weight">
+                      </div>
+
+                      <div class="dimension-range-labels">
+                        <span class="variant_weight-min-label">{{ min_variant_weight }}</span>
+                        <span class="variant_weight-max-label">{{ max_variant_weight }}</span>
+                      </div>
+
+                      <div class="dimension-range-inputs">
+                        <input type="number" id="variant_weight-min-input" class="dimension-input variant_weight-min-input"
+                               min="{{ min_variant_weight }}" max="{{ max_variant_weight }}" value="{{ min_variant_weight }}" placeholder="Min" step="0.01">
+                        <span class="range-separator">-</span>
+                        <input type="number" id="variant_weight-max-input" class="dimension-input variant_weight-max-input"
+                               min="{{ min_variant_weight }}" max="{{ max_variant_weight }}" value="{{ max_variant_weight }}" placeholder="Max" step="0.01">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
             <div class="filter-actions">
               <button type="button" id="clear-filters" class="clear-filters-btn">{{ section.settings.clear_filters_text }}</button>
             </div>
@@ -562,7 +636,14 @@
                       {% unless rendered_seen_ids contains pid_token %}
                         {% assign rendered_seen_ids = rendered_seen_ids | append: product.id | append: ',' %}
                         {% unless product.title contains 'Gift Card' %}
-                          <div class="product-card" 
+                          {% assign prod_variant_weight_kg = 0 %}
+                          {% if product.variants.size > 0 and product.variants.first.weight %}
+                            {% assign prod_variant_weight_num = product.variants.first.weight | plus: 0 %}
+                            {% if prod_variant_weight_num > 0 %}
+                              {% assign prod_variant_weight_kg = prod_variant_weight_num | divided_by: 1000.0 %}
+                            {% endif %}
+                          {% endif %}
+                          <div class="product-card"
                                data-burglary-grade="{{ product.metafields.custom.burglary_classification.value | default: '' }}"
                                data-fire-resistance="{{ product.metafields.custom.fire_duration.value | default: '' }}"
                                data-product-type="{{ product.product_type | default: '' }}"
@@ -571,6 +652,7 @@
                                data-width="{{ product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
                                data-height="{{ product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
                                data-weight="{{ product.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0 }}"
+                               data-variant-weight="{{ prod_variant_weight_kg }}"
                                data-collection-handle="{{ current_collection.handle }}">
                                   
                                   <div class="product-image">
@@ -761,7 +843,14 @@
               {% else %}
                 {% for product in current_collection.products %}
                   {% unless product.title contains 'Gift Card' %}
-                    <div class="product-card" 
+                    {% assign prod_variant_weight_kg = 0 %}
+                    {% if product.variants.size > 0 and product.variants.first.weight %}
+                      {% assign prod_variant_weight_num = product.variants.first.weight | plus: 0 %}
+                      {% if prod_variant_weight_num > 0 %}
+                        {% assign prod_variant_weight_kg = prod_variant_weight_num | divided_by: 1000.0 %}
+                      {% endif %}
+                    {% endif %}
+                    <div class="product-card"
                          data-burglary-grade="{{ product.metafields.custom.burglary_classification.value | default: '' }}"
                          data-fire-resistance="{{ product.metafields.custom.fire_duration.value | default: '' }}"
                          data-product-type="{{ product.product_type | default: '' }}"
@@ -770,6 +859,7 @@
                          data-width="{{ product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
                          data-height="{{ product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
                          data-weight="{{ product.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0 }}"
+                         data-variant-weight="{{ prod_variant_weight_kg }}"
                          data-collection-handle="{{ current_collection.handle }}">
                           
                           <div class="product-image">

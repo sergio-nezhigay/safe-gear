@@ -9,7 +9,8 @@ class L1MainCategoryFilters {
         depth_range: { min: null, max: null },
         width_range: { min: null, max: null },
         height_range: { min: null, max: null },
-        weight_range: { min: null, max: null }
+        weight_range: { min: null, max: null },
+        variant_weight_range: { min: null, max: null }
       };
       
       this.allProducts = [];
@@ -165,6 +166,7 @@ class L1MainCategoryFilters {
             width: parseFloat(card.getAttribute('data-width')) || 0,
             height: parseFloat(card.getAttribute('data-height')) || 0,
             weight: parseFloat(card.getAttribute('data-weight')) || 0,
+            variant_weight: parseFloat(card.getAttribute('data-variant-weight')) || 0,
             collection_handle: card.getAttribute('data-collection-handle') || ''
           }
         };
@@ -176,7 +178,7 @@ class L1MainCategoryFilters {
     
     initializeSliders() {
       this.updatePriceSliderTrack();
-      ['depth', 'width', 'height', 'weight'].forEach(dimension => {
+      ['depth', 'width', 'height', 'weight', 'variant_weight'].forEach(dimension => {
         this.updateDimensionSliderTrack(dimension);
       });
     }
@@ -321,7 +323,7 @@ class L1MainCategoryFilters {
     
     handleDimensionInput(input) {
       const classes = input.className;
-      const dimension = classes.match(/(depth|width|height|weight)/)[0];
+      const dimension = classes.match(/(depth|width|height|weight|variant_weight)/)[0];
       const isMin = classes.includes('min');
       const value = parseInt(input.value) || 0;
       
@@ -507,7 +509,7 @@ class L1MainCategoryFilters {
       if (this.filters.price_range.min !== null && data.price < this.filters.price_range.min) return false;
       if (this.filters.price_range.max !== null && data.price > this.filters.price_range.max) return false;
   
-      const dimensions = ['depth', 'width', 'height', 'weight'];
+      const dimensions = ['depth', 'width', 'height', 'weight', 'variant_weight'];
       for (const dim of dimensions) {
         const filter = this.filters[`${dim}_range`];
         if (filter.min !== null && filter.max !== null) {
@@ -555,7 +557,7 @@ class L1MainCategoryFilters {
         count += this.filters[filterType].length;
       });
       
-      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range'].forEach(filterType => {
+      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range', 'variant_weight_range'].forEach(filterType => {
         const filter = this.filters[filterType];
         if (filter.min !== null || filter.max !== null) {
           count++;
@@ -583,7 +585,8 @@ class L1MainCategoryFilters {
         depth_range: { min: null, max: null },
         width_range: { min: null, max: null },
         height_range: { min: null, max: null },
-        weight_range: { min: null, max: null }
+        weight_range: { min: null, max: null },
+        variant_weight_range: { min: null, max: null }
       };
       
       this.checkboxes?.forEach(checkbox => {
@@ -744,7 +747,7 @@ class L1MainCategoryFilters {
         }
       });
   
-      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range'].forEach(filterType => {
+      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range', 'variant_weight_range'].forEach(filterType => {
         const f = this.filters[filterType];
         if (f && (f.min !== null || f.max !== null)) {
           activeFilters[filterType] = f;
@@ -768,7 +771,7 @@ class L1MainCategoryFilters {
       ['burglary_grade', 'fire_resistance', 'product_type'].forEach(filterType => {
         if (this.filters[filterType] && this.filters[filterType].length > 0) active = true;
       });
-      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range'].forEach(filterType => {
+      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range', 'variant_weight_range'].forEach(filterType => {
         const f = this.filters[filterType];
         if (f && (f.min !== null || f.max !== null)) active = true;
       });
@@ -796,7 +799,7 @@ class L1MainCategoryFilters {
         this.updatePriceSliderTrack();
       }
       
-      ['depth', 'width', 'height', 'weight'].forEach(dimension => {
+      ['depth', 'width', 'height', 'weight', 'variant_weight'].forEach(dimension => {
         const minSlider = document.getElementById(`${dimension}-min`);
         const maxSlider = document.getElementById(`${dimension}-max`);
         const minInput = document.getElementById(`${dimension}-min-input`);
@@ -867,7 +870,7 @@ class L1MainCategoryFilters {
         }
       });
       
-      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range'].forEach(filterType => {
+      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range', 'variant_weight_range'].forEach(filterType => {
         const filter = this.filters[filterType];
         if (filter.min !== null || filter.max !== null) {
           activeFilters[filterType] = filter;
@@ -914,7 +917,7 @@ class L1MainCategoryFilters {
         checkbox.checked = this.filters[filterType]?.includes(value) || false;
       });
       
-      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range'].forEach(filterType => {
+      ['price_range', 'depth_range', 'width_range', 'height_range', 'weight_range', 'variant_weight_range'].forEach(filterType => {
         const dimension = filterType.replace('_range', '');
         const filter = this.filters[filterType];
         

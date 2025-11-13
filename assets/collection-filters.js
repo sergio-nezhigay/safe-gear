@@ -10,6 +10,7 @@ class CollectionFilters {
       width_range: { min: null, max: null },
       height_range: { min: null, max: null },
       weight_range: { min: null, max: null },
+      variant_weight_range: { min: null, max: null },
     };
 
     this.allCollections = [];
@@ -304,6 +305,7 @@ class CollectionFilters {
           width: parseFloat(card.getAttribute('data-width')) || 0,
           height: parseFloat(card.getAttribute('data-height')) || 0,
           weight: parseFloat(card.getAttribute('data-weight')) || 0,
+          variant_weight: parseFloat(card.getAttribute('data-variant-weight')) || 0,
           collection_handle: card.getAttribute('data-collection-handle') || '',
         },
       };
@@ -340,7 +342,7 @@ class CollectionFilters {
   initializeSliders() {
     this.updatePriceSliderTrack();
 
-    ['depth', 'width', 'height', 'weight'].forEach((dimension) => {
+    ['depth', 'width', 'height', 'weight', 'variant_weight'].forEach((dimension) => {
       this.updateDimensionSliderTrack(dimension);
     });
   }
@@ -500,7 +502,7 @@ class CollectionFilters {
 
   handleDimensionInput(input) {
     const classes = input.className;
-    const dimension = classes.match(/(depth|width|height|weight)/)[0];
+    const dimension = classes.match(/(depth|width|height|weight|variant_weight)/)[0];
     const isMin = classes.includes('min');
     const value = parseInt(input.value) || 0;
 
@@ -801,7 +803,7 @@ class CollectionFilters {
       return false;
     }
 
-    const dimensions = ['depth', 'width', 'height', 'weight'];
+    const dimensions = ['depth', 'width', 'height', 'weight', 'variant_weight'];
     for (const dim of dimensions) {
       const filter = this.filters[`${dim}_range`];
       const dataValue = data[dim];
@@ -1156,6 +1158,7 @@ class CollectionFilters {
       width_range: { min: null, max: null },
       height_range: { min: null, max: null },
       weight_range: { min: null, max: null },
+      variant_weight_range: { min: null, max: null },
     };
 
     this.checkboxes?.forEach((checkbox) => {
@@ -1200,7 +1203,7 @@ class CollectionFilters {
       this.updatePriceSliderTrack();
     }
 
-    ['depth', 'width', 'height', 'weight'].forEach((dimension) => {
+    ['depth', 'width', 'height', 'weight', 'variant_weight'].forEach((dimension) => {
       const minSlider = document.getElementById(`${dimension}-min`);
       const maxSlider = document.getElementById(`${dimension}-max`);
       const minInput = document.getElementById(`${dimension}-min-input`);
