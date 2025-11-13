@@ -29,7 +29,9 @@
       "mcp__playwright__browser_evaluate",
       "WebFetch(domain:127.0.0.1)",
       "mcp__playwright__browser_take_screenshot",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(git add:*)",
+      "Bash(git revert:*)"
     ],
     "deny": [],
     "ask": []
