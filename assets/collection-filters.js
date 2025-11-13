@@ -279,6 +279,18 @@ class CollectionFilters {
 
     this.filteredCollections = [...this.allCollections];
 
+    console.log('%c=== COLLECTION CARDS HEIGHT DATA ===', 'background: #222; color: #00BCD4; font-size: 14px; font-weight: bold;');
+    console.log('Collection cards loaded with height ranges:');
+    const collectionsWithHeight = this.allCollections
+      .filter(c => c.data.height_min > 0 || c.data.height_max > 0)
+      .map(c => ({
+        collection: c.data.category,
+        height_min: c.data.height_min,
+        height_max: c.data.height_max
+      }));
+    console.table(collectionsWithHeight);
+    console.log(`${collectionsWithHeight.length} collections have height data`);
+
     const productCards = document.querySelectorAll('.product-card');
     this.allProducts = Array.from(productCards).map((card) => {
       return {
@@ -298,6 +310,31 @@ class CollectionFilters {
     });
 
     this.filteredProducts = [...this.allProducts];
+
+    console.log('%c=== PRODUCT CARDS HEIGHT & WEIGHT DATA ===', 'background: #222; color: #E91E63; font-size: 14px; font-weight: bold;');
+    console.log('Product cards loaded with height and weight values:');
+    const productsWithData = this.allProducts
+      .filter(p => p.data.height > 0 || p.data.weight > 0)
+      .map(p => {
+        const title = p.element.querySelector('.product-title a')?.textContent?.trim() || 'Unknown';
+        return {
+          product: title,
+          height_mm: p.data.height || 'N/A',
+          metafield_weight_kg: p.data.weight || 'N/A',
+          collection: p.data.collection_handle
+        };
+      });
+    console.table(productsWithData);
+    console.log(`${productsWithData.length} products have height/weight data out of ${this.allProducts.length} total products`);
+
+    // Show weight summary
+    const withWeight = this.allProducts.filter(p => p.data.weight > 0);
+    if (withWeight.length > 0) {
+      const weights = withWeight.map(p => p.data.weight);
+      console.log('%cWeight Summary (from metafield):', 'color: #FF6F00; font-weight: bold;');
+      console.log(`  Products with weight: ${withWeight.length}`);
+      console.log(`  Weight range: ${Math.min(...weights)} - ${Math.max(...weights)} kg`);
+    }
   }
 
   initializeSliders() {
@@ -425,6 +462,11 @@ class CollectionFilters {
 
     this.filters[`${dimension}_range`].min = minVal;
     this.filters[`${dimension}_range`].max = maxVal;
+
+    if (dimension === 'height') {
+      console.log('%c=== HEIGHT FILTER CHANGED ===', 'background: #FF5722; color: white; font-weight: bold;');
+      console.log(`Height range set to: ${minVal}mm - ${maxVal}mm`);
+    }
 
     if (minInput) minInput.value = minVal;
     if (maxInput) maxInput.value = maxVal;
@@ -569,6 +611,12 @@ class CollectionFilters {
     const cacheKey = this.createCacheKey();
 
     requestAnimationFrame(() => {
+      // Reset debug counters for each filter application
+      window._heightFilterDebugCount = 0;
+      window._heightFilterAcceptCount = 0;
+
+      const heightFilterActive = this.filters.height_range.min !== null || this.filters.height_range.max !== null;
+
       if (this.filterCache.has(cacheKey)) {
         this.filteredCollections = this.filterCache.get(cacheKey);
       } else {
@@ -585,6 +633,30 @@ class CollectionFilters {
       this.filteredProducts = this.allProducts.filter((product) => {
         return this.matchesProductFilters(product.data);
       });
+
+      if (heightFilterActive) {
+        console.log('%c=== FILTER RESULTS SUMMARY ===', 'background: #673AB7; color: white; font-weight: bold;');
+        console.log(`Height filter range: ${this.filters.height_range.min}mm - ${this.filters.height_range.max}mm`);
+        console.log(`Products matching filter: ${this.filteredProducts.length} out of ${this.allProducts.length}`);
+        console.log(`Collections matching filter: ${this.filteredCollections.length} out of ${this.allCollections.length}`);
+
+        const matchingProducts = this.filteredProducts
+          .filter(p => p.data.height > 0)
+          .map(p => {
+            const title = p.element.querySelector('.product-title a')?.textContent?.trim() || 'Unknown';
+            return {
+              product: title,
+              height: p.data.height
+            };
+          });
+
+        if (matchingProducts.length > 0 && matchingProducts.length <= 10) {
+          console.table(matchingProducts);
+        } else if (matchingProducts.length > 10) {
+          console.log(`(Showing first 10 of ${matchingProducts.length} matching products)`);
+          console.table(matchingProducts.slice(0, 10));
+        }
+      }
 
       this.currentPage = 1;
       this.productsCurrentPage = 1;
@@ -695,6 +767,9 @@ class CollectionFilters {
   }
 
   matchesProductFilters(data) {
+    const debugHeight = this.filters.height_range.min !== null || this.filters.height_range.max !== null;
+    let heightDebugInfo = null;
+
     if (this.filters.burglary_grade.length > 0) {
       if (!this.filters.burglary_grade.includes(data.burglary_grade)) {
         return false;
@@ -733,11 +808,46 @@ class CollectionFilters {
 
       if (!dataValue) continue;
 
+      if (dim === 'height' && debugHeight) {
+        heightDebugInfo = {
+          productHeight: dataValue,
+          filterMin: filter.min,
+          filterMax: filter.max,
+          passesMin: filter.min === null || dataValue >= filter.min,
+          passesMax: filter.max === null || dataValue <= filter.max
+        };
+      }
+
       if (filter.min !== null && dataValue < filter.min) {
+        if (dim === 'height' && debugHeight) {
+          heightDebugInfo.result = 'REJECTED (below min)';
+          if (!window._heightFilterDebugCount) window._heightFilterDebugCount = 0;
+          if (window._heightFilterDebugCount < 5) {
+            console.log('%cProduct rejected by height filter:', 'color: red;', heightDebugInfo);
+            window._heightFilterDebugCount++;
+          }
+        }
         return false;
       }
       if (filter.max !== null && dataValue > filter.max) {
+        if (dim === 'height' && debugHeight) {
+          heightDebugInfo.result = 'REJECTED (above max)';
+          if (!window._heightFilterDebugCount) window._heightFilterDebugCount = 0;
+          if (window._heightFilterDebugCount < 5) {
+            console.log('%cProduct rejected by height filter:', 'color: red;', heightDebugInfo);
+            window._heightFilterDebugCount++;
+          }
+        }
         return false;
+      }
+    }
+
+    if (heightDebugInfo && debugHeight) {
+      heightDebugInfo.result = 'ACCEPTED';
+      if (!window._heightFilterAcceptCount) window._heightFilterAcceptCount = 0;
+      if (window._heightFilterAcceptCount < 5) {
+        console.log('%cProduct accepted by height filter:', 'color: green;', heightDebugInfo);
+        window._heightFilterAcceptCount++;
       }
     }
 
