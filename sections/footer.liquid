@@ -28,9 +28,26 @@
       {%  render 'spacing-style', settings: section.settings %}
     "
   >
-    {% content_for 'blocks' %}
+    <div class="footer__wrapper">
+      {% content_for 'blocks' %}
+    </div>
   </div>
 </div>
+
+{% stylesheet %}
+  .footer__wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .footer__wrapper {
+      padding: 0 103px;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
