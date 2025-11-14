@@ -7,7 +7,7 @@
   <div class="volume-pricing-content">
     <button
       type="button"
-      class="volume-pricing-button button {{ block.settings.button_style }}"
+      class="volume-pricing-link button {{ block.settings.button_style }}"
       on:click="#volume-pricing-modal/showDialog"
     >
       {{ block.settings.button_text }}
@@ -52,17 +52,43 @@
 
 {% stylesheet %}
   .volume-pricing-block {
-    margin-top: var(--spacing-md, 1rem);
     width: 100%;
-  }
-
-  .volume-pricing-content {
-    text-align: center;
-    padding: var(--spacing-sm, 0.5rem) 0;
   }
 
   .volume-pricing-button {
     width: 100%;
-    max-width: 400px;
+    font-size: 20px;
+  }
+  /* Volume pricing CTA styled as link */
+  .button.volume-pricing-link,
+  button.volume-pricing-link {
+    /* visual reset to look like text link */
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    min-width: 0;
+    height: auto;
+    font-size: 20px;
+
+    /* link-like appearance */
+    color: #4b81bf;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+
+    /* keep inline flow */
+    display: inline;
+  }
+
+  /* hover & focus states */
+  .button.volume-pricing-link:hover,
+  button.volume-pricing-link:hover,
+  .button.volume-pricing-link:focus-visible,
+  button.volume-pricing-link:focus-visible {
+    text-decoration: underline;
+    color: #4b81bf;
   }
 {% endstylesheet %}
