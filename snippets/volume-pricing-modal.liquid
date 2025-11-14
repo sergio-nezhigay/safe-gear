@@ -30,7 +30,9 @@
 
     <div class="volume-pricing-modal__inner">
       <div class="volume-pricing-modal__header">
-        <h2 class="volume-pricing-modal__title">{{ 'products.product.volume_pricing_inquiry' | t | default: 'Volume Pricing Inquiry' }}</h2>
+        <h2 class="volume-pricing-modal__title">
+          {{ 'products.product.volume_pricing_inquiry' | t | default: 'Volume Pricing Inquiry' }}
+        </h2>
         {% if product %}
           <p class="volume-pricing-modal__subtitle">{{ product.title }}</p>
         {% endif %}
@@ -41,7 +43,11 @@
 
         {%- form 'contact', id: form_id, class: 'volume-pricing-form' -%}
           {%- comment -%} Hidden field to identify this as a volume pricing inquiry {%- endcomment -%}
-          <input type="hidden" name="contact[subject]" value="Volume Pricing Inquiry - {{ product.title | default: 'Product' }}">
+          <input
+            type="hidden"
+            name="contact[subject]"
+            value="Volume Pricing Inquiry - {{ product.title | default: 'Product' }}"
+          >
 
           {%- if form.errors -%}
             <div
@@ -144,8 +150,8 @@ Please provide me with information about:
           </div>
 
           <div class="volume-pricing-form__actions">
-            <button type="submit" class="button button--primary volume-pricing-form__submit">
-              {{ 'blocks.contact_form.send' | t | default: 'Send Message' }}
+            <button type="submit" class="button volume-pricing-form__submit">
+              {{- 'actions.submit' | t -}}
             </button>
           </div>
         {%- endform -%}

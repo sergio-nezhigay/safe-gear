@@ -24,7 +24,8 @@
       "phone": "Telefon",
       "comment": "Kommentar",
       "post_success": "Tak for din henvendelse. Vi kontakter dig hurtigst muligt.",
-      "error_heading": "Juster følgende:"
+      "error_heading": "Juster følgende:",
+      "send": "Send"
     }
   },
   "accessibility": {
@@ -272,7 +273,8 @@
       "adding_to_cart": "Tilføjer...",
       "add_to_cart_error": "Der opstod en fejl, da du lagde varen i indkøbskurven",
       "sold_out": "Udsolgt",
-      "unavailable": "Ikke tilgængelig"
+      "unavailable": "Ikke tilgængelig",
+      "volume_pricing_inquiry": "Forespørgsel om mængdepriser"
     }
   },
   "fields": {
