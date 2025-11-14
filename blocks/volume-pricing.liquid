@@ -1,0 +1,47 @@
+{% comment %}
+  Volume Pricing Block
+  Shows information about volume pricing availability.
+  Can be enhanced later to include a contact form button.
+{% endcomment %}
+
+<div class="volume-pricing-block" {{ block.shopify_attributes }}>
+  <div class="volume-pricing-content">
+    {% if block.settings.text != blank %}
+      <p class="volume-pricing-text">{{ block.settings.text }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Volume Pricing",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Volume pricing available"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .volume-pricing-block {
+    margin-top: var(--spacing-md, 1rem);
+    width: 100%;
+  }
+
+  .volume-pricing-content {
+    text-align: center;
+    padding: var(--spacing-sm, 0.5rem) 0;
+  }
+
+  .volume-pricing-text {
+    margin: 0;
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-foreground);
+    line-height: 1.5;
+  }
+{% endstylesheet %}

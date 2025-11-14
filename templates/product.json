@@ -310,6 +310,12 @@
               },
               "block_order": []
             },
+            "volume_pricing_VpNxKm": {
+              "type": "volume-pricing",
+              "settings": {
+                "text": "Volume pricing available"
+              }
+            },
             "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
               "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/qb-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
               "settings": {
@@ -338,6 +344,7 @@
             "variant_picker_R3rGDr",
             "price_Amgf6J",
             "buy_buttons_eYQEYi",
+            "volume_pricing_VpNxKm",
             "wishlist_hero_custom_product_button_FGXkRM",
             "ymq_b2b_wholesale_solution_qb_table_ac89pa",
             "ymq_b2b_wholesale_solution_ol_notification_VJpCFm",
