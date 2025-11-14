@@ -433,7 +433,11 @@
     border: 1px solid #000;
   }
 
-  @media screen and (min-width: 750px) {
+  .wishlist-inline-button {
+    margin-top: calc(-1 * (var(--height-buy-buttons) + 24px));
+  }
+
+  @media screen and (min-width: 990px) {
     .wishlist-inline-button {
       margin-top: calc(-1 * (var(--height-buy-buttons) + 28px));
     }
@@ -459,7 +463,7 @@
 
   @media screen and (max-width: 749px) {
     .product-form-buttons--stacked .add-to-cart-button {
-      max-width: calc(100% - var(--height-buy-buttons) - calc(var(--gap-sm) / 2));
+      max-width: calc(100% - 80px);
     }
   }
 {% endstylesheet %}
