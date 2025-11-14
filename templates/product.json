@@ -347,7 +347,7 @@
       },
       "custom_css": [],
       "settings": {
-        "content_width": "content-center-aligned",
+        "content_width": "content-full-width",
         "desktop_media_position": "left",
         "equal_columns": true,
         "limit_details_width": false,
@@ -747,7 +747,7 @@
       "name": "Product Metafields Tables",
       "settings": {
         "section_title": "Produktoplysninger",
-        "section_width": "full-width",
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
         "padding-block-start": 48,
