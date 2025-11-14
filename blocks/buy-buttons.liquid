@@ -417,6 +417,51 @@
       gap: calc(var(--gap-xs) / 2);
     }
   }
+
+  /* Wishlist inline button styling - positions wishlist next to buy buttons */
+  .wishlist-inline-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: var(--height-buy-buttons);
+    padding-right: 0;
+
+    pointer-events: none;
+  }
+
+  .wishlisthero-product-page-button-container {
+    border: 1px solid #000;
+  }
+
+  @media screen and (min-width: 750px) {
+    .wishlist-inline-button {
+      margin-top: calc(-1 * (var(--height-buy-buttons) + 28px));
+    }
+  }
+
+  /* Make wishlist button itself clickable */
+  .wishlist-inline-button > *,
+  .wishlist-inline-button .wishlist-hero-custom-button {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+    min-width: var(--height-buy-buttons);
+    cursor: pointer;
+  }
+
+  /* Constrain buy button width when next to wishlist */
+  .product-form-buttons--stacked .add-to-cart-button {
+    max-width: calc(100% - 80px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-form-buttons--stacked .add-to-cart-button {
+      max-width: calc(100% - var(--height-buy-buttons) - calc(var(--gap-sm) / 2));
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

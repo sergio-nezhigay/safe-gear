@@ -226,12 +226,12 @@
                 "buttonFontSize": 26,
                 "overrideFont": false,
                 "customFont": "sans_serif_n4",
-                "buttonFullwidth": true,
+                "buttonFullwidth": false,
                 "removeBoxShadowAndBorder": false,
                 "horizontalPadding": 20,
                 "iconTopOffset": 0,
-                "addedCssClassNames": "",
-                "addedContainerStyles": "position: absolute;    top: 73%;    left: 85%;    scale: 1.5; max-width: fit-content;"
+                "addedCssClassNames": "wishlist-inline-button",
+                "addedContainerStyles": ""
               }
             },
             "variant_picker_R3rGDr": {
@@ -335,10 +335,10 @@
             "text_aEtTtq",
             "security_badges_JFj4zL",
             "divider_VJhene",
-            "wishlist_hero_custom_product_button_FGXkRM",
             "variant_picker_R3rGDr",
             "price_Amgf6J",
             "buy_buttons_eYQEYi",
+            "wishlist_hero_custom_product_button_FGXkRM",
             "ymq_b2b_wholesale_solution_qb_table_ac89pa",
             "ymq_b2b_wholesale_solution_ol_notification_VJpCFm",
             "ymq_b2b_wholesale_solution_ef_table_qiwFcb"
