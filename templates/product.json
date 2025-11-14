@@ -313,7 +313,8 @@
             "volume_pricing_VpNxKm": {
               "type": "volume-pricing",
               "settings": {
-                "text": "Volume pricing available"
+                "button_text": "Inquire About Volume Pricing",
+                "button_style": "button--secondary"
               }
             },
             "ymq_b2b_wholesale_solution_qb_table_ac89pa": {

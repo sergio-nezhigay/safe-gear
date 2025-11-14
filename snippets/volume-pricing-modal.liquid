@@ -1,0 +1,316 @@
+{% comment %}
+  Volume Pricing Contact Modal
+  Shows a contact form modal for volume pricing inquiries
+{% endcomment %}
+
+<script
+  src="{{ 'dialog.js' | asset_url }}"
+  type="module"
+></script>
+
+<dialog-component
+  id="volume-pricing-modal"
+  class="volume-pricing-modal"
+>
+  <dialog
+    ref="dialog"
+    on:click="/closeDialogOnClickOutside"
+    on:keydown="/closeDialogOnEscapePress"
+    class="volume-pricing-modal__content dialog-modal color-{{ settings.popover_color_scheme }}"
+    scroll-lock
+  >
+    <button
+      ref="closeButton"
+      on:click="/closeDialog"
+      class="button button-unstyled close-button volume-pricing-modal__close"
+      aria-label="{{ 'accessibility.close_dialog' | t }}"
+    >
+      {{- 'icon-close.svg' | inline_asset_content -}}
+    </button>
+
+    <div class="volume-pricing-modal__inner">
+      <div class="volume-pricing-modal__header">
+        <h2 class="volume-pricing-modal__title">{{ 'products.product.volume_pricing_inquiry' | t | default: 'Volume Pricing Inquiry' }}</h2>
+        {% if product %}
+          <p class="volume-pricing-modal__subtitle">{{ product.title }}</p>
+        {% endif %}
+      </div>
+
+      <div class="volume-pricing-modal__body">
+        {% assign form_id = 'VolumePricingForm-' | append: product.id | default: 'VolumePricingForm' %}
+
+        {%- form 'contact', id: form_id, class: 'volume-pricing-form' -%}
+          {%- comment -%} Hidden field to identify this as a volume pricing inquiry {%- endcomment -%}
+          <input type="hidden" name="contact[subject]" value="Volume Pricing Inquiry - {{ product.title | default: 'Product' }}">
+
+          {%- if form.errors -%}
+            <div
+              class="volume-pricing-form__error"
+              tabindex="-1"
+              autofocus
+            >
+              {{- 'icon-error.svg' | inline_asset_content -}}
+              {{- form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email -}}
+            </div>
+          {%- endif -%}
+
+          {%- if form.posted_successfully? -%}
+            <div
+              class="volume-pricing-form__success"
+              tabindex="-1"
+              autofocus
+            >
+              {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              {{- 'blocks.contact_form.post_success' | t | default: 'Thanks for contacting us. We\'ll get back to you as soon as possible.' -}}
+            </div>
+          {%- endif -%}
+
+          <div class="volume-pricing-form__row">
+            <div class="volume-pricing-form__field">
+              <label class="volume-pricing-form__label" for="{{ form_id }}-name">
+                {{- 'blocks.contact_form.name' | t | default: 'Name' -}}
+              </label>
+              <input
+                type="text"
+                id="{{ form_id }}-name"
+                class="volume-pricing-form__input"
+                autocomplete="name"
+                name="contact[name]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="{{ 'blocks.contact_form.name' | t | default: 'Name' }}"
+              >
+            </div>
+
+            <div class="volume-pricing-form__field">
+              <label class="volume-pricing-form__label" for="{{ form_id }}-email">
+                {{- 'blocks.contact_form.email' | t | default: 'Email' -}}
+                <span aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="{{ form_id }}-email"
+                class="volume-pricing-form__input"
+                autocomplete="email"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="{{ form_id }}-email-error"
+                {% endif %}
+                placeholder="{{ 'blocks.contact_form.email' | t | default: 'Email' }}"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="volume-pricing-form__field">
+            <label class="volume-pricing-form__label" for="{{ form_id }}-phone">
+              {{- 'blocks.contact_form.phone' | t | default: 'Phone' -}}
+            </label>
+            <input
+              type="tel"
+              id="{{ form_id }}-phone"
+              class="volume-pricing-form__input"
+              autocomplete="tel"
+              name="contact[phone]"
+              pattern="[0-9\-]*"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="{{ 'blocks.contact_form.phone' | t | default: 'Phone' }}"
+            >
+          </div>
+
+          <div class="volume-pricing-form__field">
+            <label class="volume-pricing-form__label" for="{{ form_id }}-body">
+              {{- 'blocks.contact_form.comment' | t | default: 'Message' -}}
+            </label>
+            <textarea
+              rows="6"
+              id="{{ form_id }}-body"
+              class="volume-pricing-form__input volume-pricing-form__textarea"
+              name="contact[body]"
+              placeholder="{{ 'blocks.contact_form.comment' | t | default: 'Message' }}"
+            >{% if form.body %}{{ form.body }}{% else %}I'm interested in volume pricing for {{ product.title | default: 'this product' }}.
+
+Product URL: {{ shop.url }}{{ product.url | default: '' }}
+
+Please provide me with information about:
+- Bulk pricing tiers
+- Minimum order quantities
+- Lead times{% endif %}</textarea>
+          </div>
+
+          <div class="volume-pricing-form__actions">
+            <button type="submit" class="button button--primary volume-pricing-form__submit">
+              {{ 'blocks.contact_form.send' | t | default: 'Send Message' }}
+            </button>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </dialog>
+</dialog-component>
+
+{% stylesheet %}
+  .volume-pricing-modal__content {
+    padding: 0;
+    border: var(--style-border-popover);
+    max-width: 600px;
+    width: 90vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 30px rgb(0 0 0 / var(--opacity-15));
+  }
+
+  @media screen and (max-width: 749px) {
+    .volume-pricing-modal__content {
+      position: fixed;
+      inset: auto 0 0 0;
+      max-width: 100%;
+      width: 100%;
+      max-height: 90vh;
+      border-radius: var(--style-border-radius-popover) var(--style-border-radius-popover) 0 0;
+    }
+
+    .volume-pricing-modal__content::backdrop {
+      display: none;
+    }
+  }
+
+  .volume-pricing-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .volume-pricing-modal__close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .volume-pricing-modal__inner {
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .volume-pricing-modal__inner {
+      padding: 1.5rem;
+      padding-top: 3rem;
+    }
+  }
+
+  .volume-pricing-modal__header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .volume-pricing-modal__title {
+    margin: 0;
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+  }
+
+  .volume-pricing-modal__subtitle {
+    margin: 0.5rem 0 0 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-foreground-secondary);
+  }
+
+  .volume-pricing-modal__body {
+    margin-top: 1rem;
+  }
+
+  .volume-pricing-form__error,
+  .volume-pricing-form__success {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--style-border-radius);
+  }
+
+  .volume-pricing-form__error {
+    background-color: var(--color-error-background);
+    color: var(--color-error);
+  }
+
+  .volume-pricing-form__success {
+    background-color: var(--color-success-background);
+    color: var(--color-success);
+  }
+
+  .volume-pricing-form__error svg,
+  .volume-pricing-form__success svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .volume-pricing-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 549px) {
+    .volume-pricing-form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .volume-pricing-form__field {
+    margin-bottom: 1rem;
+  }
+
+  .volume-pricing-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .volume-pricing-form__input,
+  .volume-pricing-form__textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius);
+    transition: border-color 0.2s ease;
+  }
+
+  .volume-pricing-form__input:focus,
+  .volume-pricing-form__textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .volume-pricing-form__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .volume-pricing-form__actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .volume-pricing-form__submit {
+    min-width: 150px;
+  }
+{% endstylesheet %}

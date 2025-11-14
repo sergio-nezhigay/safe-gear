@@ -1,14 +1,17 @@
 {% comment %}
   Volume Pricing Block
-  Shows information about volume pricing availability.
-  Can be enhanced later to include a contact form button.
+  Shows a button to open the volume pricing contact form modal.
 {% endcomment %}
 
 <div class="volume-pricing-block" {{ block.shopify_attributes }}>
   <div class="volume-pricing-content">
-    {% if block.settings.text != blank %}
-      <p class="volume-pricing-text">{{ block.settings.text }}</p>
-    {% endif %}
+    <button
+      type="button"
+      class="volume-pricing-button button {{ block.settings.button_style }}"
+      on:click="#volume-pricing-modal/showDialog"
+    >
+      {{ block.settings.button_text }}
+    </button>
   </div>
 </div>
 
@@ -19,9 +22,29 @@
   "settings": [
     {
       "type": "text",
-      "id": "text",
-      "label": "Text",
-      "default": "Volume pricing available"
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Inquire About Volume Pricing"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "button--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "button--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "button--outline",
+          "label": "Outline"
+        }
+      ],
+      "default": "button--secondary"
     }
   ]
 }
@@ -38,10 +61,8 @@
     padding: var(--spacing-sm, 0.5rem) 0;
   }
 
-  .volume-pricing-text {
-    margin: 0;
-    font-size: var(--font-size-sm, 0.875rem);
-    color: var(--color-foreground);
-    line-height: 1.5;
+  .volume-pricing-button {
+    width: 100%;
+    max-width: 400px;
   }
 {% endstylesheet %}
