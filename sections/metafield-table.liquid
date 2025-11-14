@@ -39,13 +39,14 @@
     {% endfor %}
   </div>
 
-  {% if section.settings.section_title != blank %}
-    <h3 class="metafields__main-title h4">
-      {{ section.settings.section_title }}
-    </h3>
-  {% endif %}
+  <div class="metafields__wrapper">
+    {% if section.settings.section_title != blank %}
+      <h3 class="metafields__main-title h4">
+        {{ section.settings.section_title }}
+      </h3>
+    {% endif %}
 
-  <div class="metafields__content" data-content>
+    <div class="metafields__content" data-content>
     {% comment %} Group metafields by creating separate tables {% endcomment %}
 
     {% comment %} Ydre dimensioner group {% endcomment %}
@@ -647,6 +648,7 @@
         </table>
       </div>
     {% endif %}
+    </div>
   </div>
 </product-metafields-section>
 
@@ -664,12 +666,21 @@
     --skeleton-opacity: 0.1;
   }
 
-  .metafields__content {
-    max-width: 100%;
+  .metafields__wrapper {
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .metafields__wrapper {
+      padding: 0 103px;
+    }
+  }
+
+  .metafields__content {
     display: block;
     width: 100%;
-    padding: 0 30px;
   }
 
   .table-container {
@@ -724,11 +735,6 @@
     line-height: var(--font-h4--line-height);
     text-align: left;
     margin-bottom: clamp(24px, 4vw, 48px);
-    max-width: 1200px;
-    margin-left: 0;
-    margin-right: auto;
-    padding: 0 36px !important;
-
   }
 
 
@@ -906,9 +912,6 @@
 
   /* Mobile Responsive */
   @media screen and (max-width: 600px) {
-    .metafields__content {
-      padding: 0;
-    }
     .metafields-table td:first-child,
     .metafields-table th:first-child {
       width: 36%;
