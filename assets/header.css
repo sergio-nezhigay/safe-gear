@@ -5,14 +5,13 @@
   top: 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  max-width: 1280px;
   margin: 0 auto;
 }
 
 .header-container {
-  max-width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 25px;
 }
 
 .header-main {
@@ -273,7 +272,7 @@
 .nav-container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -805,12 +804,6 @@ body.mobile-menu-open {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-@media (min-width: 1600px) {
-  .nav-container {
-    padding: 0 100px;
   }
 }
 
