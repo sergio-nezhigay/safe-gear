@@ -276,7 +276,7 @@
                 "stacking": true,
                 "show_pickup_availability": false,
                 "gift_card_form": true,
-                "show_payment_icons": true,
+                "show_payment_icons": false,
                 "payment_icon_height": 45,
                 "payment_icons_limit": 9,
                 "payment_icons_spacing": 20,
