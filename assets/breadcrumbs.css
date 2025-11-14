@@ -5,7 +5,7 @@
 }
 
 .breadcrumbs .breadcrumb-container {
-  max-width: min(1200px, 92vw);
+  max-width: 1280px;
   margin: 0 auto;
   padding: 10px 0;
 }
@@ -43,7 +43,7 @@
   gap: 6px;
   text-decoration: none;
   color: var(--breadcrumb-accent);
-  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   border-radius: 6px;
   padding: 4px 6px;
 }
@@ -67,7 +67,7 @@
 }
 
 .breadcrumbs .breadcrumb-text,
-.breadcrumbs [itemprop="name"] {
+.breadcrumbs [itemprop='name'] {
   display: inline-block;
   max-width: 44ch;
   overflow: hidden;
@@ -77,8 +77,8 @@
 }
 
 .breadcrumbs .breadcrumb-current .breadcrumb-text,
-.breadcrumbs .breadcrumb-current [itemprop="name"],
-.breadcrumbs .breadcrumb-item[aria-current="page"] .breadcrumb-text {
+.breadcrumbs .breadcrumb-current [itemprop='name'],
+.breadcrumbs .breadcrumb-item[aria-current='page'] .breadcrumb-text {
   font-weight: 600;
   color: var(--breadcrumb-text);
   background: color-mix(in oklab, var(--breadcrumb-hover) 60%, transparent);
@@ -95,9 +95,11 @@
   border-radius: 8px;
   background: transparent;
   color: var(--breadcrumb-accent);
-  border: 1px solid color-mix(in oklab, var(--breadcrumb-accent) 25%, var(--breadcrumb-border));
+  border: 1px solid
+    color-mix(in oklab, var(--breadcrumb-accent) 25%, var(--breadcrumb-border));
   cursor: pointer;
-  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .breadcrumbs .breadcrumb-back:hover {
@@ -110,7 +112,6 @@
   height: 16px;
 }
 
-
 @media (max-width: 767px) {
   .breadcrumbs .breadcrumb-container {
     padding: 8px 0;
@@ -120,7 +121,7 @@
     font-size: 13px;
   }
   .breadcrumbs .breadcrumb-text,
-  .breadcrumbs [itemprop="name"] {
+  .breadcrumbs [itemprop='name'] {
     max-width: 28ch;
   }
   .breadcrumbs .breadcrumb-back {
@@ -128,16 +129,18 @@
   }
 }
 
-
 @media (prefers-color-scheme: dark) {
   .breadcrumbs {
-    border-bottom-color: color-mix(in oklab, var(--breadcrumb-border) 60%, black);
+    border-bottom-color: color-mix(
+      in oklab,
+      var(--breadcrumb-border) 60%,
+      black
+    );
   }
   .breadcrumbs .breadcrumb-current .breadcrumb-text {
     background: color-mix(in oklab, var(--breadcrumb-hover) 30%, black);
   }
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .breadcrumbs .breadcrumb-link,
@@ -146,7 +149,6 @@
     transition: none;
   }
 }
-
 
 .breadcrumbs .breadcrumb-container {
   overflow-x: auto;
