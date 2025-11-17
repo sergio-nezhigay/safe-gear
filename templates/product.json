@@ -756,7 +756,7 @@
       "name": "Product Metafields Tables",
       "settings": {
         "section_title": "Produktoplysninger",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
         "padding-block-start": 48,

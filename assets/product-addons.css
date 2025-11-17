@@ -1142,11 +1142,10 @@
 /* Add desktop max-width + horizontal padding for product-addons section */
 @media (min-width: 990px) {
   .product-addons-section .container {
-    max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 103px;
-    padding-right: 103px;
+    padding-left: 30px;
+    padding-right: 30px;
     width: 100%;
   }
 }
