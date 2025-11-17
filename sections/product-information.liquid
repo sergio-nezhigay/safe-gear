@@ -56,23 +56,21 @@
     >
       {% assign render_order_array = render_order | split: ',' %}
       {% capture media %}
-          <div
-            class="product-information__media"
-            data-testid="product-information-media"
-          >
-            {%- content_for 'block',
-              type: '_product-media-gallery',
-              id: 'media-gallery',
-              closest.product: closest.product
-            -%}
-          </div>
-
-          {% comment %} Simple text block under the media gallery. Render if metafield exists. {% endcomment %}
-
-            <div class="product-information__media-text spacing-style" data-testid="product-media-text">
-             test test
+          <div class="product-information__media-wrapper">
+            <div
+              class="product-information__media"
+              data-testid="product-information-media"
+            >
+              {%- content_for 'block',
+                type: '_product-media-gallery',
+                id: 'media-gallery',
+                closest.product: closest.product
+              -%}
             </div>
 
+            {% comment %} Product downloads/user manuals section under the media gallery {% endcomment %}
+            {% render 'product-downloads', product: closest.product %}
+          </div>
         {% endcapture %}
 
       {% capture details %}
@@ -123,15 +121,19 @@
     order: 1;
   }
 
-  .product-information__media {
+  .product-information__media-wrapper {
     order: 0;
     width: 0;
     min-width: 100%;
   }
 
+  .product-information__media {
+    width: 100%;
+  }
+
   /* Mobile styles */
   @media screen and (max-width: 749px) {
-    .product-information__media {
+    .product-information__media-wrapper {
       grid-column: 1 / -1;
       padding-left: 16px;
       padding-right: 16px;
@@ -165,7 +167,7 @@
       &.product-information--media-left {
         grid-template-columns: 1fr min(50vw, var(--sidebar-width));
 
-        .product-information__media {
+        .product-information__media-wrapper {
           padding-right: calc(var(--gap, 0) / 2);
         }
 
@@ -182,7 +184,7 @@
       &.product-information--media-right {
         grid-template-columns: min(50vw, var(--sidebar-width)) 1fr;
 
-        .product-information__media {
+        .product-information__media-wrapper {
           padding-left: calc(var(--gap, 0) / 2);
           order: 1;
         }
@@ -208,7 +210,7 @@
           var(--full-page-grid-margin);
 
         &.product-information--media-left {
-          .product-information__media {
+          .product-information__media-wrapper {
             grid-column: 2 / 3;
 
             &:has(.media-gallery--extend) {
@@ -222,7 +224,7 @@
         }
 
         &.product-information--media-right {
-          .product-information__media {
+          .product-information__media-wrapper {
             grid-column: 3 / 4;
 
             &:has(.media-gallery--extend) {
@@ -255,7 +257,7 @@
         }
 
         &.product-information__grid--half.product-information--media-left {
-          .product-information__media {
+          .product-information__media-wrapper {
             grid-column: 1 / 3;
           }
 
@@ -265,7 +267,7 @@
         }
 
         &.product-information__grid--half.product-information--media-right {
-          .product-information__media {
+          .product-information__media-wrapper {
             grid-column: 3 / -1;
           }
 
@@ -294,6 +296,13 @@
     }
   }
 
+  /* Media wrapper should stack its children vertically */
+  .product-information__media-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
   .product-information__grid--limit-details .product-details > .group-block {
     max-width: var(--sidebar-width);
   }
@@ -301,6 +310,78 @@
   /* If the header is sticky, make product details content stick underneath the header */
   body:has(#header-group #header-component[data-sticky-state='active']) .product-details.sticky-content--desktop {
     --sticky-header-offset: var(--header-height);
+  }
+
+  /* Product downloads section */
+  .product-downloads {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 16px;
+  }
+
+  .product-downloads__heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: #1a202c;
+  }
+
+  .product-downloads__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-downloads__item {
+    margin: 0;
+  }
+
+  .product-downloads__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #2d3748;
+    transition: all 0.2s ease;
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  .product-downloads__link:hover {
+    background: #f7fafc;
+    color: #1a202c;
+  }
+
+  .product-downloads__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  .product-downloads__text {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  /* Mobile responsive */
+  @media screen and (max-width: 749px) {
+    .product-downloads {
+      padding: 20px 16px;
+      margin-top: 16px;
+    }
+
+    .product-downloads__heading {
+      font-size: 20px;
+    }
+
+    .product-downloads__text {
+      font-size: 14px;
+    }
   }
 {% endstylesheet %}
 
