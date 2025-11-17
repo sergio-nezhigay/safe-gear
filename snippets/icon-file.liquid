@@ -1,0 +1,47 @@
+{%- comment -%}
+  Params:
+    class   - CSS class for the <svg>
+    size    - numeric size (width/height) default 24
+    viewBox - optional viewBox (default "0 0 24 24")
+    fill    - fill color default "none"
+    stroke  - stroke color default "currentColor"
+    stroke_width - stroke width default 2
+    title   - accessible title (if provided -> role="img" + <title>)
+{%- endcomment -%}
+
+{%- assign svg_class = class | default: '' -%}
+{%- assign svg_size = size | default: 24 -%}
+{%- assign svg_viewbox = viewBox | default: '0 0 24 24' -%}
+{%- assign svg_fill = fill | default: 'none' -%}
+{%- assign svg_stroke = stroke | default: 'currentColor' -%}
+{%- assign svg_stroke_width = stroke_width | default: 2 -%}
+
+{%- if title != blank -%}
+  {%- assign has_title = true -%}
+{%- else -%}
+  {%- assign has_title = false -%}
+{%- endif -%}
+
+<svg
+  class="{{ svg_class }}"
+  width="{{ svg_size }}"
+  height="{{ svg_size }}"
+  viewBox="{{ svg_viewbox }}"
+  fill="{{ svg_fill }}"
+  xmlns="http://www.w3.org/2000/svg"
+  {%- if has_title -%}
+    role="img" aria-label="{{ title | escape }}"
+  {%- else -%}
+    aria-hidden="true"
+  {%- endif -%}
+>
+  {%- if has_title -%}
+    <title>{{ title | escape }}</title>
+  {%- endif -%}
+
+  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
+    stroke="{{ svg_stroke }}" stroke-width="{{ svg_stroke_width }}" stroke-linecap="round" stroke-linejoin="round" fill="{{ svg_fill }}" />
+  <path d="M14 2V8H20" stroke="{{ svg_stroke }}" stroke-width="{{ svg_stroke_width }}" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 18V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 15L12 18L15 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
