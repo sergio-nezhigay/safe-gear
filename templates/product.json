@@ -386,6 +386,61 @@
         "empty_text": "Ingen tilføjelsesprodukter er konfigureret. Angiv venligst metafeltet 'addon_products' for dette produkt."
       }
     },
+    "product_nav_marquee_KjT9wQ": {
+      "type": "product-navigation-marquee",
+      "blocks": {
+        "nav_link_delivery": {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Delivery",
+            "icon": "truck",
+            "icon_size": 24,
+            "link": "#delivery"
+          }
+        },
+        "nav_link_size_chart": {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Size Chart",
+            "icon": "ruler",
+            "icon_size": 24,
+            "link": "#size-chart"
+          }
+        },
+        "nav_link_product_info": {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Product information",
+            "icon": "clipboard",
+            "icon_size": 24,
+            "link": "#product-info"
+          }
+        },
+        "nav_link_ask_question": {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Ask a question",
+            "icon": "question_mark",
+            "icon_size": 24,
+            "link": "#ask-question"
+          }
+        }
+      },
+      "block_order": [
+        "nav_link_delivery",
+        "nav_link_size_chart",
+        "nav_link_product_info",
+        "nav_link_ask_question"
+      ],
+      "name": "Product Navigation",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 16,
+        "padding-block-end": 16,
+        "gap_between_elements": 0
+      }
+    },
     "size_chart_deqbKr": {
       "type": "size-chart",
       "custom_css": [],
@@ -909,6 +964,7 @@
     "breadcrumbs_UaYrXQ",
     "main",
     "addons_product_EU3Fbt",
+    "product_nav_marquee_KjT9wQ",
     "size_chart_deqbKr",
     "metafield_table_JUaEGX",
     "product_recommendations_qggXJq"

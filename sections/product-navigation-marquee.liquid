@@ -1,0 +1,330 @@
+<script
+  src="{{ 'marquee.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% assign gap_between_elements = section.settings.gap_between_elements %}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<marquee-component
+  class="section spacing-style gap-style color-{{ section.settings.color_scheme }} product-nav-marquee"
+  style="
+    {%- render 'spacing-style', settings: section.settings %};
+    {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
+    --marquee-direction: {{ section.settings.movement_direction }};
+  "
+  data-speed-factor="20"
+  data-movement-direction="{{ section.settings.movement_direction }}"
+>
+  <div
+    class="marquee__wrapper"
+    ref="wrapper"
+  >
+    <div
+      class="marquee__content"
+      ref="content"
+    >
+      <div class="marquee__repeated-items">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'navigation_link' %}
+              <a
+                href="{{ block.settings.link }}"
+                class="nav-link-item"
+                {{ block.shopify_attributes }}
+              >
+                {% if block.settings.icon != 'none' %}
+                  <span class="nav-link-icon">
+                    {% render 'icon-or-image',
+                      icon: block.settings.icon,
+                      width: block.settings.icon_size,
+                      class_name: 'nav-icon'
+                    %}
+                  </span>
+                {% endif %}
+                {% if block.settings.label != blank %}
+                  <span class="nav-link-label">{{ block.settings.label }}</span>
+                {% endif %}
+              </a>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</marquee-component>
+
+{% stylesheet %}
+  marquee-component.product-nav-marquee {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .product-nav-marquee .marquee__wrapper {
+    display: flex;
+    gap: var(--marquee-gap);
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .product-nav-marquee .marquee__content {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+  }
+
+  .product-nav-marquee .marquee__repeated-items {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: currentColor;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-link-item:hover {
+    opacity: 0.8;
+  }
+
+  .nav-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-link-icon svg {
+    fill: currentColor;
+  }
+
+  .nav-link-label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+    .nav-link-item {
+      padding: 10px 20px;
+    }
+
+    .nav-link-label {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    marquee-component.product-nav-marquee:not([data-disabled]) .marquee__wrapper {
+      animation: marquee-motion var(--marquee-speed) linear infinite var(--marquee-direction);
+    }
+  }
+
+  @keyframes marquee-motion {
+    to {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product Navigation",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "navigation_link",
+      "name": "Navigation Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Navigation Item"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "truck",
+              "label": "Delivery (Truck)"
+            },
+            {
+              "value": "ruler",
+              "label": "Size Chart (Ruler)"
+            },
+            {
+              "value": "clipboard",
+              "label": "Product Information (Clipboard)"
+            },
+            {
+              "value": "question_mark",
+              "label": "Ask a Question"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat Bubble"
+            },
+            {
+              "value": "check_box",
+              "label": "Check Box"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map Pin"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price Tag"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "default": 24
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Anchor Link",
+          "info": "Use # followed by section ID (e.g., #delivery, #size-chart, #product-info)"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "movement_direction",
+      "label": "Motion Direction",
+      "options": [
+        {
+          "value": "reverse",
+          "label": "Forward"
+        },
+        {
+          "value": "normal",
+          "label": "Reverse"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_between_elements",
+      "label": "Gap Between Items",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Navigation",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Delivery",
+            "icon": "truck",
+            "link": "#delivery"
+          }
+        },
+        {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Size Chart",
+            "icon": "ruler",
+            "link": "#size-chart"
+          }
+        },
+        {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Product information",
+            "icon": "clipboard",
+            "link": "#product-info"
+          }
+        },
+        {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Ask a question",
+            "icon": "question_mark",
+            "link": "#ask-question"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
