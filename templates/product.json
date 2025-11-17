@@ -868,6 +868,46 @@
         "padding-block-end": 0
       }
     },
+    "questions_and_answers_section": {
+      "type": "questions-and-answers",
+      "blocks": {
+        "qa_item_1": {
+          "type": "qa_item",
+          "settings": {
+            "question_user": "Boyan Uzunov",
+            "question_date": "24.05.2024",
+            "question_text": "<p>\"Can I anchor the safe to a wooden floor?\"</p>",
+            "answer_date": "24.05.2024",
+            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
+          }
+        },
+        "qa_item_2": {
+          "type": "qa_item",
+          "settings": {
+            "question_user": "Amelie Smith",
+            "question_date": "24.05.2024",
+            "question_text": "<p>\"Can I have the safe in red colour?\"</p>",
+            "answer_date": "24.05.2024",
+            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "qa_item_1",
+        "qa_item_2"
+      ],
+      "settings": {
+        "heading": "Questions and answers",
+        "heading_size": "h4",
+        "content_width": "wide",
+        "show_contact_button": true,
+        "question_text": "Did you find what you are looking for?",
+        "button_text": "Leave a message",
+        "button_style": "secondary",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -1018,6 +1058,7 @@
     "size_chart_deqbKr",
     "metafield_table_JUaEGX",
     "knowledge_base_section",
+    "questions_and_answers_section",
     "product_recommendations_qggXJq"
   ]
 }

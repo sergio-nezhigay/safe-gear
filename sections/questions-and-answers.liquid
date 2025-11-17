@@ -1,0 +1,272 @@
+{{ 'section-questions-and-answers.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign spacing_style = 'padding-block-start: ' | append: section.settings['padding-block-start'] | append: 'px; padding-block-end: ' | append: section.settings['padding-block-end'] | append: 'px;'
+-%}
+
+<div class="questions-and-answers" style="{{ spacing_style }}">
+  <div class="questions-and-answers__container content-width-{{ section.settings.content_width }}">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="questions-and-answers__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="questions-and-answers__list">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'qa_item' -%}
+              <div class="questions-and-answers__item" {{ block.shopify_attributes }}>
+                {%- comment -%} Question {%- endcomment -%}
+                <div class="questions-and-answers__question">
+                  <div class="questions-and-answers__icon questions-and-answers__icon--question">
+                    <span>Q</span>
+                  </div>
+                  <div class="questions-and-answers__content">
+                    <div class="questions-and-answers__meta">
+                      <span class="questions-and-answers__author questions-and-answers__author--question">
+                        {{ block.settings.question_user }}
+                      </span>
+                      {%- if block.settings.question_date != blank -%}
+                        <span class="questions-and-answers__date"> wrote on {{ block.settings.question_date }} : </span>
+                      {%- endif -%}
+                    </div>
+                    <div class="questions-and-answers__text">
+                      {{ block.settings.question_text }}
+                    </div>
+                  </div>
+                </div>
+
+                {%- comment -%} Answer {%- endcomment -%}
+                <div class="questions-and-answers__answer">
+                  <div class="questions-and-answers__icon questions-and-answers__icon--answer">
+                    <span>A</span>
+                  </div>
+                  <div class="questions-and-answers__content">
+                    <div class="questions-and-answers__meta">
+                      <span class="questions-and-answers__author questions-and-answers__author--answer">
+                        Safe Gear
+                      </span>
+                      {%- if block.settings.answer_date != blank -%}
+                        <span class="questions-and-answers__date"> answer: </span>
+                      {%- endif -%}
+                    </div>
+                    <div class="questions-and-answers__text">
+                      {{ block.settings.answer_text }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_contact_button -%}
+      <div class="questions-and-answers__footer">
+        <button
+          type="button"
+          class="button button--{{ section.settings.button_style }}"
+          onclick="document.querySelector('#ContactModal')?.showDialog()"
+          id="questions-and-answers__button"
+        >
+          {{ section.settings.button_text }}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Questions and answers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Questions and answers"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h6",
+          "label": "Extra Small"
+        },
+        {
+          "value": "h5",
+          "label": "Small"
+        },
+        {
+          "value": "h4",
+          "label": "Medium"
+        },
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra Large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "narrow",
+          "label": "Narrow"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Contact Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_button",
+      "label": "Show contact button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Leave a message"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "qa_item",
+      "name": "Q&A Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Question"
+        },
+        {
+          "type": "text",
+          "id": "question_user",
+          "label": "User name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "question_date",
+          "label": "Question date",
+          "default": "24.05.2024"
+        },
+        {
+          "type": "richtext",
+          "id": "question_text",
+          "label": "Question text",
+          "default": "<p>Your question here?</p>"
+        },
+        {
+          "type": "header",
+          "content": "Answer"
+        },
+        {
+          "type": "text",
+          "id": "answer_date",
+          "label": "Answer date",
+          "default": "24.05.2024"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_text",
+          "label": "Answer text",
+          "default": "<p>Your answer here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Questions and answers",
+      "blocks": [
+        {
+          "type": "qa_item",
+          "settings": {
+            "question_user": "Boyan Uzunov",
+            "question_date": "24.05.2024",
+            "question_text": "<p>\"Can I anchor the safe to a wooden floor?\"</p>",
+            "answer_date": "24.05.2024",
+            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
+          }
+        },
+        {
+          "type": "qa_item",
+          "settings": {
+            "question_user": "Amelie Smith",
+            "question_date": "24.05.2024",
+            "question_text": "<p>\"Can I have the safe in red colour?\"</p>",
+            "answer_date": "24.05.2024",
+            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
