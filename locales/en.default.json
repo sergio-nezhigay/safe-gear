@@ -92,7 +92,10 @@
       "phone": "Telephone",
       "comment": "Comment",
       "post_success": "Thank you for your inquiry. We will contact you as soon as possible.",
-      "error_heading": "Adjust the following:"
+      "error_heading": "Adjust the following:",
+      "heading": "Contact Us",
+      "subheading": "Have a question? We're here to help.",
+      "send": "Send message"
     },
     "email_signup": {
       "label": "Mail",
