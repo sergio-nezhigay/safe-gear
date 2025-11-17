@@ -901,10 +901,9 @@
         "heading_size": "h4",
         "content_width": "wide",
         "show_contact_button": true,
-        "question_text": "Did you find what you are looking for?",
         "button_text": "Leave a message",
         "button_style": "secondary",
-        "padding-block-start": 0,
+        "padding-block-start": 48,
         "padding-block-end": 0
       }
     },
