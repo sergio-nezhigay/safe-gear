@@ -19,7 +19,7 @@ p:empty {
 }
 
 :root {
-  --font-primary: 'Assistant', sans-serif;
+  --font-primary: var(--font-primary);
 }
 
 h1,
