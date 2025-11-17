@@ -907,6 +907,30 @@
         "padding-block-end": 0
       }
     },
+    "product_videos_section": {
+      "type": "product-videos",
+      "blocks": {
+        "video_item_1": {
+          "type": "video_item",
+          "settings": {
+            "video_source": "youtube",
+            "video_id": "",
+            "autoplay": false,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "video_item_1"
+      ],
+      "settings": {
+        "heading": "Videos",
+        "heading_size": "h4",
+        "content_width": "wide",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -1058,6 +1082,7 @@
     "metafield_table_JUaEGX",
     "knowledge_base_section",
     "questions_and_answers_section",
+    "product_videos_section",
     "product_recommendations_qggXJq"
   ]
 }
