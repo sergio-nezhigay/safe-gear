@@ -404,7 +404,7 @@
             "label": "Size Chart",
             "icon": "ruler",
             "icon_size": 24,
-            "link": "#size-chart"
+            "link": "#shopify-section-template--26152755691846__size_chart_deqbKr"
           }
         },
         "nav_link_product_info": {
@@ -436,6 +436,8 @@
       "settings": {
         "movement_direction": "normal",
         "color_scheme": "scheme-3",
+        "margin_top": 70,
+        "margin_bottom": 34,
         "gap_between_elements": 50
       }
     },
