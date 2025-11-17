@@ -66,6 +66,13 @@
               closest.product: closest.product
             -%}
           </div>
+
+          {% comment %} Simple text block under the media gallery. Render if metafield exists. {% endcomment %}
+
+            <div class="product-information__media-text spacing-style" data-testid="product-media-text">
+             test test
+            </div>
+
         {% endcapture %}
 
       {% capture details %}
