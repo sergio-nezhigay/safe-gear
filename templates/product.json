@@ -864,8 +864,8 @@
         "question_text": "Did you find what you are looking for?",
         "button_text": "Ask a question",
         "button_style": "secondary",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding-block-start": 60,
+        "padding-block-end": 60
       }
     },
     "product_recommendations_qggXJq": {
