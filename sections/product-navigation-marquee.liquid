@@ -5,57 +5,57 @@
 ></script>
 
 {% assign gap_between_elements = section.settings.gap_between_elements %}
-
-<div class="section-background" style="background-color: #4b81bf;"></div>
-<marquee-component
-  class="section gap-style product-nav-marquee"
-  style="
-    padding-top: 0px;
-    padding-bottom: 0px;
-    {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
-    --marquee-direction: {{ section.settings.movement_direction }};
-    background-color: #4b81bf;
-  "
-  data-speed-factor="20"
-  data-movement-direction="{{ section.settings.movement_direction }}"
->
-  <div
-    class="marquee__wrapper"
-    ref="wrapper"
+<div style="margin-top: 100px; margin-bottom: 100px;">
+  <div class="section-background" style="background-color: #4b81bf;"></div>
+  <marquee-component
+    class="section gap-style product-nav-marquee"
+    style="
+      padding-top: 0px;
+      padding-bottom: 0px;
+      {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
+      --marquee-direction: {{ section.settings.movement_direction }};
+      background-color: #4b81bf;
+    "
+    data-speed-factor="20"
+    data-movement-direction="{{ section.settings.movement_direction }}"
   >
     <div
-      class="marquee__content"
-      ref="content"
+      class="marquee__wrapper"
+      ref="wrapper"
     >
-      <div class="marquee__repeated-items">
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'navigation_link' %}
-              <a
-                href="{{ block.settings.link }}"
-                class="nav-link-item"
-                {{ block.shopify_attributes }}
-              >
-                {% if block.settings.icon != 'none' %}
-                  <span class="nav-link-icon">
-                    {% render 'icon-or-image',
-                      icon: block.settings.icon,
-                      width: block.settings.icon_size,
-                      class_name: 'nav-icon'
-                    %}
-                  </span>
-                {% endif %}
-                {% if block.settings.label != blank %}
-                  <span class="nav-link-label">{{ block.settings.label }}</span>
-                {% endif %}
-              </a>
-          {% endcase %}
-        {% endfor %}
+      <div
+        class="marquee__content"
+        ref="content"
+      >
+        <div class="marquee__repeated-items">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'navigation_link' %}
+                <a
+                  href="{{ block.settings.link }}"
+                  class="nav-link-item"
+                  {{ block.shopify_attributes }}
+                >
+                  {% if block.settings.icon != 'none' %}
+                    <span class="nav-link-icon">
+                      {% render 'icon-or-image',
+                        icon: block.settings.icon,
+                        width: block.settings.icon_size,
+                        class_name: 'nav-icon'
+                      %}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.label != blank %}
+                    <span class="nav-link-label">{{ block.settings.label }}</span>
+                  {% endif %}
+                </a>
+            {% endcase %}
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
-</marquee-component>
-
+  </marquee-component>
+</div>
 {% stylesheet %}
   marquee-component.product-nav-marquee {
     display: block;
