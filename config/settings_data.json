@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "type_body_font": "inter_n4",
+    "type_body_font": "assistant_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
     "type_accent_font": "inter_n7",
@@ -213,12 +213,12 @@
           "primary_hover": "#000000",
           "border": "#0000000f",
           "shadow": "#000000",
-          "primary_button_background": "#3CC561",
+          "primary_button_background": "#3cc561",
           "primary_button_text": "#ffffff",
-          "primary_button_border": "#3CC561",
-          "primary_button_hover_background": "#2FA94D",
+          "primary_button_border": "#3cc561",
+          "primary_button_hover_background": "#2fa94d",
           "primary_button_hover_text": "#ffffff",
-          "primary_button_hover_border": "#2FA94D",
+          "primary_button_hover_border": "#2fa94d",
           "secondary_button_background": "rgba(0,0,0,0)",
           "secondary_button_text": "#000000",
           "secondary_button_border": "#000000",

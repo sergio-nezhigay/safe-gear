@@ -217,23 +217,6 @@
               },
               "blocks": {}
             },
-            "wishlist_hero_custom_product_button_FGXkRM": {
-              "type": "shopify://apps/wishlist-hero/blocks/custom-product-button/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
-              "settings": {
-                "displayButtonMode": "icon_only",
-                "contentAlignment": "center",
-                "buttonAlignment": "flex-end",
-                "buttonFontSize": 26,
-                "overrideFont": false,
-                "customFont": "sans_serif_n4",
-                "buttonFullwidth": false,
-                "removeBoxShadowAndBorder": false,
-                "horizontalPadding": 20,
-                "iconTopOffset": 0,
-                "addedCssClassNames": "wishlist-inline-button",
-                "addedContainerStyles": ""
-              }
-            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -315,6 +298,24 @@
               "settings": {
                 "button_text": "Inquire About Volume Pricing",
                 "button_style": "button--secondary"
+              },
+              "blocks": {}
+            },
+            "wishlist_hero_custom_product_button_FGXkRM": {
+              "type": "shopify://apps/wishlist-hero/blocks/custom-product-button/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+              "settings": {
+                "displayButtonMode": "icon_only",
+                "contentAlignment": "center",
+                "buttonAlignment": "flex-end",
+                "buttonFontSize": 26,
+                "overrideFont": false,
+                "customFont": "sans_serif_n4",
+                "buttonFullwidth": false,
+                "removeBoxShadowAndBorder": false,
+                "horizontalPadding": 20,
+                "iconTopOffset": 0,
+                "addedCssClassNames": "wishlist-inline-button",
+                "addedContainerStyles": ""
               }
             },
             "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
@@ -370,7 +371,7 @@
       "name": "Product Add-ons with Sticky Cart",
       "settings": {
         "section_title": "Fuldfør din opsætning",
-        "section_description": "Forbedr din sikkerhed med disse anbefalede tilføjelser",
+        "section_description": "",
         "products_limit": 11,
         "cart_title": "Dit valg",
         "main_product_label": "Hovedprodukt",
