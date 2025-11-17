@@ -913,8 +913,10 @@
         "video_item_1": {
           "type": "video_item",
           "settings": {
-            "video_source": "youtube",
+            "video_source": "shopify",
+            "shopify_video": "shopify://files/videos/file_example_MP4_640_3MG.mp4",
             "video_id": "",
+            "video_url": "",
             "autoplay": false,
             "loop": false
           }
