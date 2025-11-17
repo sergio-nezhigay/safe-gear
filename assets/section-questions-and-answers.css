@@ -165,12 +165,15 @@
 /* Content Width Variants */
 .content-width-narrow {
   max-width: 760px;
+  padding: 0 30px;
 }
 
 .content-width-medium {
   max-width: 1000px;
+  padding: 0 30px;
 }
 
 .content-width-wide {
   max-width: none;
+  padding: 0 30px;
 }
