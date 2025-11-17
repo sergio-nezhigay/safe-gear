@@ -818,6 +818,56 @@
         "padding-block-end": 48
       }
     },
+    "knowledge_base_section": {
+      "type": "knowledge-base",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Order & Delivery: All you need to know",
+            "content": "<p>Learn about our shipping methods, delivery times, and order tracking options.</p>"
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What Level of Burglary Protection is Right for You?",
+            "content": "<p>Discover which security grade suits your needs based on your valuables and risk assessment.</p>"
+          }
+        },
+        "faq_item_3": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Safes: What are the European Norms for Burglary Safe Ratings?",
+            "content": "<p>Understand EN 1143-1 certification standards and what each security grade means.</p>"
+          }
+        },
+        "faq_item_4": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Safes: What does Safe Burglary Grade or Rating mean?",
+            "content": "<p>Learn how safe ratings indicate the level of protection against break-in attempts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4"
+      ],
+      "settings": {
+        "heading": "Knowledge base",
+        "heading_size": "h3",
+        "content_width": "medium",
+        "show_contact_button": true,
+        "question_text": "Did you find what you are looking for?",
+        "button_text": "Ask a question",
+        "button_style": "secondary",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -967,6 +1017,7 @@
     "product_nav_marquee_KjT9wQ",
     "size_chart_deqbKr",
     "metafield_table_JUaEGX",
+    "knowledge_base_section",
     "product_recommendations_qggXJq"
   ]
 }

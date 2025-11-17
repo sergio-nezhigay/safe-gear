@@ -1,0 +1,306 @@
+{%- doc -%}
+  Contact Form Modal
+  A modal dialog containing a contact form for customer inquiries.
+{%- enddoc -%}
+
+<dialog-component id="ContactModal">
+  <dialog
+    class="contact-modal dialog-modal color-{{ settings.popover_color_scheme }}"
+    ref="dialog"
+    scroll-lock
+  >
+    <button
+      ref="closeButton"
+      on:click="/closeDialog"
+      class="button button-unstyled close-button contact-modal__close"
+      aria-label="{{ 'accessibility.close_dialog' | t }}"
+    >
+      {{- 'icon-close.svg' | inline_asset_content -}}
+    </button>
+
+    <div class="contact-modal__content">
+      <div class="contact-modal__header">
+        <h2 class="contact-modal__title">{{ 'blocks.contact_form.heading' | t | default: 'Contact Us' }}</h2>
+        <p class="contact-modal__subtitle">{{ 'blocks.contact_form.subheading' | t | default: 'Have a question? We\'re here to help.' }}</p>
+      </div>
+
+      {%- assign form_id = 'ContactModalForm' -%}
+
+      {%- form 'contact', id: form_id, class: 'contact-modal__form' -%}
+        {%- if form.errors -%}
+          <div
+            class="contact-modal__error"
+            tabindex="-1"
+            autofocus
+          >
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{- form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email -}}
+          </div>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+          <div
+            class="contact-modal__success"
+            tabindex="-1"
+            autofocus
+          >
+            {{- 'icon-checkmark.svg' | inline_asset_content -}}
+            {{- 'blocks.contact_form.post_success' | t -}}
+          </div>
+        {%- endif -%}
+
+        <div class="contact-modal__form-row">
+          <div class="contact-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="ContactModalForm-name"
+            >
+              {{- 'blocks.contact_form.name' | t -}}
+            </label>
+            <input
+              type="text"
+              id="ContactModalForm-name"
+              class="contact-modal__input"
+              autocomplete="name"
+              name="contact[name]"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              placeholder="{{ 'blocks.contact_form.name' | t }}"
+            >
+          </div>
+
+          <div class="contact-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="ContactModalForm-email"
+            >
+              {{- 'blocks.contact_form.email' | t -}}
+              <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="ContactModalForm-email"
+              class="contact-modal__input"
+              autocomplete="email"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactModalForm-email-error"
+              {% endif %}
+              placeholder="{{ 'blocks.contact_form.email' | t }}"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="contact-modal__form-field">
+          <label
+            class="visually-hidden"
+            for="ContactModalForm-phone"
+          >
+            {{- 'blocks.contact_form.phone' | t -}}
+          </label>
+          <input
+            type="tel"
+            id="ContactModalForm-phone"
+            class="contact-modal__input"
+            autocomplete="tel"
+            name="contact[phone]"
+            pattern="[0-9\-]*"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            placeholder="{{ 'blocks.contact_form.phone' | t }}"
+          >
+        </div>
+
+        <div class="contact-modal__form-field">
+          <label
+            class="visually-hidden"
+            for="ContactModalForm-body"
+          >
+            {{- 'blocks.contact_form.comment' | t -}}
+          </label>
+          <textarea
+            rows="5"
+            id="ContactModalForm-body"
+            class="contact-modal__input contact-modal__input--textarea"
+            name="contact[body]"
+            placeholder="{{ 'blocks.contact_form.comment' | t }}"
+          >{{ form.body }}</textarea>
+        </div>
+
+        <button type="submit" class="contact-modal__submit button button--primary">
+          {{ 'blocks.contact_form.send' | t | default: 'Send message' }}
+        </button>
+      {%- endform -%}
+    </div>
+  </dialog>
+</dialog-component>
+
+{% stylesheet %}
+  .contact-modal {
+    padding: 0;
+    border: var(--style-border-popover);
+    border-radius: var(--style-border-radius-popover, 8px);
+    max-width: 500px;
+    width: 90vw;
+    box-shadow: 0 5px 30px rgb(0 0 0 / var(--opacity-15));
+    overflow: visible;
+
+    @media screen and (max-width: 750px) {
+      max-width: 95vw;
+      border-radius: var(--style-border-radius-popover, 8px);
+    }
+  }
+
+  .contact-modal[open] {
+    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .contact-modal.dialog-closing {
+    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .contact-modal__close {
+    position: absolute;
+    top: var(--margin-md);
+    right: var(--margin-md);
+    transition: transform 0.15s var(--animation-timing-bounce);
+    z-index: var(--layer-raised);
+    padding: var(--padding-xs);
+  }
+
+  .contact-modal__close:active {
+    transform: scale(0.8);
+  }
+
+  .contact-modal__content {
+    padding: var(--padding-2xl);
+
+    @media screen and (max-width: 750px) {
+      padding: var(--padding-xl);
+    }
+  }
+
+  .contact-modal__header {
+    margin-bottom: var(--margin-xl);
+    padding-right: var(--padding-xl); /* Space for close button */
+  }
+
+  .contact-modal__title {
+    font-size: var(--font-size--2xl);
+    font-weight: 600;
+    margin: 0 0 var(--margin-xs) 0;
+    line-height: 1.2;
+  }
+
+  .contact-modal__subtitle {
+    font-size: var(--font-size--md);
+    color: var(--color-text-secondary, #666);
+    margin: 0;
+  }
+
+  .contact-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .contact-modal__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact-modal__form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-modal__input {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    padding: var(--padding-md) var(--padding-lg);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    border: var(--style-border-width-inputs, 1px) solid var(--color-input-border, #ddd);
+    font-size: var(--font-size--md);
+    transition: border-color 0.2s ease;
+  }
+
+  .contact-modal__input:focus {
+    outline: none;
+    border-color: var(--color-input-border-focus, #000);
+  }
+
+  .contact-modal__input--textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+  }
+
+  .contact-modal__error,
+  .contact-modal__success {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    padding: var(--padding-md);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    font-size: var(--font-size--sm);
+  }
+
+  .contact-modal__error {
+    background-color: #fee;
+    color: #c33;
+  }
+
+  .contact-modal__success {
+    background-color: #efe;
+    color: #3a3;
+  }
+
+  .contact-modal__error svg,
+  .contact-modal__success svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-modal__submit {
+    width: 100%;
+    margin-top: var(--margin-sm);
+  }
+
+  @keyframes modalSlideInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes modalSlideOutTop {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+{% endstylesheet %}

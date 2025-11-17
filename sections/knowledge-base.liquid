@@ -1,0 +1,350 @@
+{%- doc -%}
+  Knowledge Base Section
+  Displays FAQ items with accordion functionality and a button to open a contact form modal.
+{%- enddoc -%}
+
+<div class="knowledge-base spacing-style" style="{% render 'spacing-style', settings: section.settings %}">
+  <div class="knowledge-base__container container container--{{ section.settings.content_width }}">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="knowledge-base__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="knowledge-base__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'faq_item' -%}
+              <li class="knowledge-base__item" {{ block.shopify_attributes }}>
+                <details class="knowledge-base__details">
+                  <summary class="knowledge-base__summary">
+                    <span class="knowledge-base__title">{{ block.settings.title }}</span>
+                    <span class="knowledge-base__icon" aria-hidden="true">
+                      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </summary>
+                  {%- if block.settings.content != blank -%}
+                    <div class="knowledge-base__content rte">
+                      {{ block.settings.content }}
+                    </div>
+                  {%- endif -%}
+                </details>
+              </li>
+          {%- endcase -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.show_contact_button -%}
+      <div class="knowledge-base__footer">
+        <p class="knowledge-base__question-text">{{ section.settings.question_text }}</p>
+        <button
+          type="button"
+          class="knowledge-base__button button button--{{ section.settings.button_style }}"
+          onclick="document.querySelector('#ContactModal')?.showDialog()"
+        >
+          {{ section.settings.button_text }}
+        </button>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .knowledge-base {
+    width: 100%;
+  }
+
+  .knowledge-base__container {
+    margin-inline: auto;
+  }
+
+  .knowledge-base__heading {
+    margin-bottom: var(--margin-xl);
+    font-weight: 500;
+  }
+
+  .knowledge-base__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .knowledge-base__item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .knowledge-base__details {
+    position: relative;
+  }
+
+  .knowledge-base__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-lg) 0;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .knowledge-base__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .knowledge-base__summary:hover {
+    color: var(--color-link-hover, #666);
+  }
+
+  .knowledge-base__title {
+    flex: 1;
+    font-size: var(--font-size--md);
+    font-weight: 400;
+    line-height: 1.5;
+    padding-right: var(--padding-md);
+  }
+
+  .knowledge-base__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .knowledge-base__icon svg {
+    width: 8px;
+    height: 14px;
+  }
+
+  .knowledge-base__details[open] .knowledge-base__icon {
+    transform: rotate(90deg);
+  }
+
+  .knowledge-base__content {
+    padding: 0 0 var(--padding-lg) 0;
+    font-size: var(--font-size--sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary, #666);
+  }
+
+  .knowledge-base__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--margin-xl);
+    padding-top: var(--padding-lg);
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+  }
+
+  .knowledge-base__question-text {
+    margin: 0;
+    font-size: var(--font-size--md);
+  }
+
+  .knowledge-base__button {
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .knowledge-base__footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .knowledge-base__button {
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Knowledge Base",
+  "tag": "section",
+  "class": "section-knowledge-base",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Knowledge base"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h6",
+          "label": "Extra small"
+        },
+        {
+          "value": "h5",
+          "label": "Small"
+        },
+        {
+          "value": "h4",
+          "label": "Medium"
+        },
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "narrow",
+          "label": "Narrow"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Contact Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_button",
+      "label": "Show contact button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "question_text",
+      "label": "Question text",
+      "default": "Did you find what you are looking for?"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Ask a question"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question",
+          "default": "Question title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Answer",
+          "default": "<p>Answer content goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knowledge Base",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Order & Delivery: All you need to know",
+            "content": "<p>Information about order and delivery.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "What Level of Burglary Protection is Right for You?",
+            "content": "<p>Information about burglary protection levels.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Safes: What are the European Norms for Burglary Safe Ratings?",
+            "content": "<p>Information about European norms.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Safes: What does Safe Burglary Grade or Rating mean?",
+            "content": "<p>Information about safe burglary grades.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
