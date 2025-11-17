@@ -6,13 +6,15 @@
 
 {% assign gap_between_elements = section.settings.gap_between_elements %}
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section-background" style="background-color: #4b81bf;"></div>
 <marquee-component
-  class="section spacing-style gap-style color-{{ section.settings.color_scheme }} product-nav-marquee"
+  class="section gap-style product-nav-marquee"
   style="
-    {%- render 'spacing-style', settings: section.settings %};
+    padding-top: 0px;
+    padding-bottom: 0px;
     {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
     --marquee-direction: {{ section.settings.movement_direction }};
+    background-color: #4b81bf;
   "
   data-speed-factor="20"
   data-movement-direction="{{ section.settings.movement_direction }}"
@@ -254,26 +256,6 @@
     {
       "type": "header",
       "content": "Padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "Top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "Bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 16
     },
     {
       "type": "range",
