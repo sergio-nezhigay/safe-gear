@@ -858,8 +858,8 @@
       ],
       "settings": {
         "heading": "Knowledge base",
-        "heading_size": "h3",
-        "content_width": "medium",
+        "heading_size": "h4",
+        "content_width": "wide",
         "show_contact_button": true,
         "question_text": "Did you find what you are looking for?",
         "button_text": "Ask a question",

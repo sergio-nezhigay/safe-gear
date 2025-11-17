@@ -5,7 +5,6 @@
 
 <div class="knowledge-base spacing-style" style="{% render 'spacing-style', settings: section.settings %}">
   <div class="knowledge-base__container container container--{{ section.settings.content_width }}">
-
     {%- if section.settings.heading != blank -%}
       <h2 class="knowledge-base__heading {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
@@ -51,7 +50,6 @@
         </button>
       </div>
     {%- endif -%}
-
   </div>
 </div>
 
@@ -62,6 +60,7 @@
 
   .knowledge-base__container {
     margin-inline: auto;
+    padding: 0 30px;
   }
 
   .knowledge-base__heading {
