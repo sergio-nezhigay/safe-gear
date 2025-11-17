@@ -32,7 +32,6 @@
   text-align: left;
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .addons-layout {
@@ -48,8 +47,9 @@
 }
 
 .addons-title {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 400;
+  font-family: 'Assistant', sans-serif;
   color: var(--text-primary);
   margin-bottom: 15px;
   line-height: 1.2;
