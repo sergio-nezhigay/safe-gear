@@ -157,7 +157,9 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["product_title_eYVzTU"]
+              "block_order": [
+                "product_title_eYVzTU"
+              ]
             },
             "sku_CdgQtF": {
               "type": "sku",
@@ -380,7 +382,7 @@
         "installation_option_2_price": "DKK 5 000",
         "installation_disclaimer": "These prices are non-binding indications. The cost depends on location, access, stairs, weight etc.",
         "installation_link_text": "More about delivery and Installation",
-        "installation_link_url": "",
+        "installation_link_url": "#",
         "show_transport_button": true,
         "transport_button_helper": "Get an installation estimate",
         "transport_button_text": "Transport Form",
@@ -917,7 +919,9 @@
           ]
         }
       },
-      "block_order": ["text_cbcgyb"],
+      "block_order": [
+        "text_cbcgyb"
+      ],
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
