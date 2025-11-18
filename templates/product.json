@@ -157,9 +157,7 @@
                   "blocks": {}
                 }
               },
-              "block_order": [
-                "product_title_eYVzTU"
-              ]
+              "block_order": ["product_title_eYVzTU"]
             },
             "sku_CdgQtF": {
               "type": "sku",
@@ -364,6 +362,44 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 0
+      }
+    },
+    "installation_delivery_info_PQ7mK9": {
+      "type": "delivery-info",
+      "name": "Delivery Info",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding-block-start": 40,
+        "padding-block-end": 40,
+        "installation_title": "Installation",
+        "show_installation_option_1": true,
+        "installation_option_1_label": "Delivered to final location",
+        "installation_option_1_price": "DKK 4 000",
+        "show_installation_option_2": true,
+        "installation_option_2_label": "Delivered to final location with bolting to floor/wall",
+        "installation_option_2_price": "DKK 5 000",
+        "installation_disclaimer": "These prices are non-binding indications. The cost depends on location, access, stairs, weight etc.",
+        "installation_link_text": "More about delivery and Installation",
+        "installation_link_url": "",
+        "show_transport_button": true,
+        "transport_button_helper": "Get an installation estimate",
+        "transport_button_text": "Transport Form",
+        "modal_title": "Transport & Installation Estimate",
+        "modal_subtitle": "Fill out this form to get a personalized quote for transport and installation.",
+        "delivery_title": "Delivery time",
+        "delivery_time_badge": "1-2 weeks",
+        "show_delivery_option_1": true,
+        "delivery_option_1_label": "Curbside Delivery",
+        "delivery_option_1_price": "DKK 400",
+        "delivery_option_1_description": "Delivery to the edge of your property, where the item will be left for you to bring inside.",
+        "show_delivery_option_2": true,
+        "delivery_option_2_label": "Collection from SafeGear warehouse",
+        "delivery_option_2_price": "DKK 0",
+        "delivery_option_2_description": "",
+        "show_delivery_option_3": false,
+        "delivery_option_3_label": "",
+        "delivery_option_3_price": "",
+        "delivery_option_3_description": ""
       }
     },
     "addons_product_EU3Fbt": {
@@ -881,9 +917,7 @@
           ]
         }
       },
-      "block_order": [
-        "text_cbcgyb"
-      ],
+      "block_order": ["text_cbcgyb"],
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
@@ -908,6 +942,7 @@
   "order": [
     "breadcrumbs_UaYrXQ",
     "main",
+    "installation_delivery_info_PQ7mK9",
     "addons_product_EU3Fbt",
     "size_chart_deqbKr",
     "metafield_table_JUaEGX",

@@ -1,0 +1,578 @@
+{%- doc -%}
+  Installation & Delivery Information Section
+  Displays installation options, delivery options, and estimated delivery times with pricing.
+{%- enddoc -%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="installation-delivery-section"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="installation-delivery-grid">
+    {%- comment -%} Installation Column {%- endcomment -%}
+    <div class="installation-column">
+      <div class="column-header">
+        <span class="column-icon">
+          {%- render 'icon-wrench' -%}
+        </span>
+        <h3 class="column-title">{{ section.settings.installation_title | default: 'Installation' }}</h3>
+      </div>
+
+      <div class="pricing-options">
+        {%- if section.settings.show_installation_option_1 -%}
+          <div class="pricing-row">
+            <span class="pricing-label">{{ section.settings.installation_option_1_label }}</span>
+            <span class="pricing-value">Approx. {{ section.settings.installation_option_1_price }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_installation_option_2 -%}
+          <div class="pricing-row">
+            <span class="pricing-label">{{ section.settings.installation_option_2_label }}</span>
+            <span class="pricing-value">Approx. {{ section.settings.installation_option_2_price }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.installation_disclaimer != blank -%}
+        <p class="disclaimer-text">{{ section.settings.installation_disclaimer }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.installation_link_text != blank and section.settings.installation_link_url != blank -%}
+        <a href="{{ section.settings.installation_link_url }}" class="info-link">
+          {{ section.settings.installation_link_text }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.show_transport_button -%}
+        <div class="transport-button-wrapper">
+          <p class="button-helper-text">
+            {{ section.settings.transport_button_helper | default: 'Get an installation estimate' }}
+          </p>
+          <button
+            type="button"
+            class="transport-button button button--primary"
+            onclick="document.getElementById('TransportModal').showDialog()"
+          >
+            {{ section.settings.transport_button_text | default: 'Transport Form' }}
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Delivery Column {%- endcomment -%}
+    <div class="delivery-column">
+      <div class="column-header">
+        <span class="column-icon">
+          {%- render 'icon-package' -%}
+        </span>
+        <h3 class="column-title">{{ section.settings.delivery_title | default: 'Delivery time' }}</h3>
+        {%- if section.settings.delivery_time_badge != blank -%}
+          <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="delivery-options">
+        {%- if section.settings.show_delivery_option_1 -%}
+          <div class="delivery-option">
+            <div class="delivery-option-header">
+              <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
+              <span class="delivery-price">Approx. {{ section.settings.delivery_option_1_price }}</span>
+            </div>
+            {%- if section.settings.delivery_option_1_description != blank -%}
+              <p class="delivery-description">{{ section.settings.delivery_option_1_description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_delivery_option_2 -%}
+          <div class="delivery-option">
+            <div class="delivery-option-header">
+              <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
+              <span class="delivery-price">Approx. {{ section.settings.delivery_option_2_price }}</span>
+            </div>
+            {%- if section.settings.delivery_option_2_description != blank -%}
+              <p class="delivery-description">{{ section.settings.delivery_option_2_description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_delivery_option_3 -%}
+          <div class="delivery-option">
+            <div class="delivery-option-header">
+              <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
+              <span class="delivery-price">Approx. {{ section.settings.delivery_option_3_price }}</span>
+            </div>
+            {%- if section.settings.delivery_option_3_description != blank -%}
+              <p class="delivery-description">{{ section.settings.delivery_option_3_description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Include the transport form modal {%- endcomment -%}
+{%- if section.settings.show_transport_button -%}
+  {%- render 'transport-form-modal', section: section -%}
+{%- endif -%}
+
+{% stylesheet %}
+  .installation-delivery-section {
+    padding: 0 30px;
+  }
+
+  .installation-delivery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    .installation-delivery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .installation-column {
+    border: 3px solid #d9d9d9;
+    padding: 15px;
+  }
+
+  .delivery-column {
+    background-color: #f5f5f5;
+    padding: 15px;
+  }
+
+  .installation-column,
+  .delivery-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 24px);
+  }
+
+  .column-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm, 12px);
+    flex-wrap: wrap;
+  }
+
+  .column-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: #323232;
+  }
+
+  .column-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .column-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: #121212;
+  }
+
+  .delivery-badge {
+    display: inline-block;
+    color: #3cc561;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: auto;
+  }
+
+  .pricing-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md, 16px);
+  }
+
+  .pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md, 16px);
+    padding: var(--spacing-sm, 12px) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .pricing-row:last-child {
+    border-bottom: none;
+  }
+
+  .pricing-label {
+    flex: 1;
+    font-size: 14px;
+    color: #121212;
+    line-height: 1.5;
+  }
+
+  .pricing-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3cc561;
+    white-space: nowrap;
+  }
+
+  .disclaimer-text {
+    font-size: 12px;
+    color: #121212;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .info-link {
+    font-size: 14px;
+    color: #4b81bf;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .info-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .transport-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm, 12px);
+    padding-top: var(--spacing-sm, 12px);
+  }
+
+  .button-helper-text {
+    font-size: 13px;
+    color: #121212;
+    margin: 0;
+  }
+
+  .transport-button {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #4b81bf;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .transport-button:hover {
+    background-color: #3d6ba3;
+  }
+
+  .delivery-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 24px);
+  }
+
+  .delivery-option {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs, 8px);
+  }
+
+  .delivery-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md, 16px);
+  }
+
+  .delivery-label {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-foreground, #000);
+    line-height: 1.5;
+  }
+
+  .delivery-price {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-foreground, #000);
+    white-space: nowrap;
+  }
+
+  .delivery-description {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    .installation-delivery-section {
+      padding: var(--spacing-lg, 24px) var(--spacing-md, 16px);
+    }
+
+    .column-title {
+      font-size: 16px;
+    }
+
+    .delivery-badge {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Delivery Info",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "scheme-1",
+          "label": "Scheme 1"
+        },
+        {
+          "value": "scheme-2",
+          "label": "Scheme 2"
+        },
+        {
+          "value": "scheme-3",
+          "label": "Scheme 3"
+        },
+        {
+          "value": "scheme-4",
+          "label": "Scheme 4"
+        },
+        {
+          "value": "scheme-5",
+          "label": "Scheme 5"
+        }
+      ],
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Installation Settings"
+    },
+    {
+      "type": "text",
+      "id": "installation_title",
+      "label": "Installation title",
+      "default": "Installation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_installation_option_1",
+      "label": "Show installation option 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "installation_option_1_label",
+      "label": "Installation option 1 label",
+      "default": "Delivered to final location"
+    },
+    {
+      "type": "text",
+      "id": "installation_option_1_price",
+      "label": "Installation option 1 price",
+      "default": "DKK 4 000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_installation_option_2",
+      "label": "Show installation option 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "installation_option_2_label",
+      "label": "Installation option 2 label",
+      "default": "Delivered to final location with bolting to floor/wall"
+    },
+    {
+      "type": "text",
+      "id": "installation_option_2_price",
+      "label": "Installation option 2 price",
+      "default": "DKK 5 000"
+    },
+    {
+      "type": "textarea",
+      "id": "installation_disclaimer",
+      "label": "Installation disclaimer",
+      "default": "These prices are non-binding indications. The cost depends on location, access, stairs, weight etc."
+    },
+    {
+      "type": "text",
+      "id": "installation_link_text",
+      "label": "Installation link text",
+      "default": "More about delivery and Installation"
+    },
+    {
+      "type": "url",
+      "id": "installation_link_url",
+      "label": "Installation link URL"
+    },
+    {
+      "type": "header",
+      "content": "Transport Form Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_transport_button",
+      "label": "Show transport form button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "transport_button_helper",
+      "label": "Button helper text",
+      "default": "Get an installation estimate"
+    },
+    {
+      "type": "text",
+      "id": "transport_button_text",
+      "label": "Button text",
+      "default": "Transport Form"
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Modal title",
+      "default": "Transport & Installation Estimate"
+    },
+    {
+      "type": "textarea",
+      "id": "modal_subtitle",
+      "label": "Modal subtitle",
+      "default": "Fill out this form to get a personalized quote for transport and installation."
+    },
+    {
+      "type": "header",
+      "content": "Delivery Settings"
+    },
+    {
+      "type": "text",
+      "id": "delivery_title",
+      "label": "Delivery title",
+      "default": "Delivery time"
+    },
+    {
+      "type": "text",
+      "id": "delivery_time_badge",
+      "label": "Delivery time badge text",
+      "default": "1-2 weeks"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery_option_1",
+      "label": "Show delivery option 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_1_label",
+      "label": "Delivery option 1 label",
+      "default": "Curbside Delivery"
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_1_price",
+      "label": "Delivery option 1 price",
+      "default": "DKK 400"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_option_1_description",
+      "label": "Delivery option 1 description",
+      "default": "Delivery to the edge of your property, where the item will be left for you to bring inside."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery_option_2",
+      "label": "Show delivery option 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_2_label",
+      "label": "Delivery option 2 label",
+      "default": "Collection from SafeGear warehouse"
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_2_price",
+      "label": "Delivery option 2 price",
+      "default": "DKK 0"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_option_2_description",
+      "label": "Delivery option 2 description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery_option_3",
+      "label": "Show delivery option 3",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_3_label",
+      "label": "Delivery option 3 label"
+    },
+    {
+      "type": "text",
+      "id": "delivery_option_3_price",
+      "label": "Delivery option 3 price"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_option_3_description",
+      "label": "Delivery option 3 description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Info"
+    }
+  ]
+}
+{% endschema %}

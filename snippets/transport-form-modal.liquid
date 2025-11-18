@@ -1,0 +1,376 @@
+{%- doc -%}
+  Transport Form Modal
+  A modal dialog for requesting installation and transport estimates.
+{%- enddoc -%}
+
+<dialog-component id="TransportModal">
+  <dialog
+    class="transport-modal dialog-modal color-{{ settings.popover_color_scheme }}"
+    ref="dialog"
+    scroll-lock
+  >
+    <button
+      ref="closeButton"
+      on:click="/closeDialog"
+      class="button button-unstyled close-button transport-modal__close"
+      aria-label="{{ 'accessibility.close_dialog' | t }}"
+    >
+      {{- 'icon-close.svg' | inline_asset_content -}}
+    </button>
+
+    <div class="transport-modal__content">
+      <div class="transport-modal__header">
+        <h2 class="transport-modal__title">{{ section.settings.modal_title | default: 'Transport & Installation Estimate' }}</h2>
+        <p class="transport-modal__subtitle">{{ section.settings.modal_subtitle | default: 'Fill out this form to get a personalized quote for transport and installation.' }}</p>
+      </div>
+
+      {%- assign form_id = 'TransportModalForm' -%}
+
+      {%- form 'contact', id: form_id, class: 'transport-modal__form' -%}
+        <input type="hidden" name="contact[subject]" value="Transport & Installation Estimate Request">
+        <input type="hidden" name="contact[product]" value="{{ product.title }}">
+        <input type="hidden" name="contact[product_url]" value="{{ shop.url }}{{ product.url }}">
+
+        {%- if form.errors -%}
+          <div
+            class="transport-modal__error"
+            tabindex="-1"
+            autofocus
+          >
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {% for field in form.errors %}
+              {{- form.errors.translated_fields[field] | capitalize }}
+              {{ form.errors.messages[field] }}
+            {% endfor %}
+          </div>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+          <div
+            class="transport-modal__success"
+            tabindex="-1"
+            autofocus
+          >
+            {{- 'icon-checkmark.svg' | inline_asset_content -}}
+            {{ 'blocks.contact_form.post_success' | t | default: 'Thank you! We will contact you shortly with your estimate.' }}
+          </div>
+        {%- endif -%}
+
+        <div class="transport-modal__form-row">
+          <div class="transport-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="TransportModalForm-name"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="TransportModalForm-name"
+              class="transport-modal__input"
+              autocomplete="name"
+              name="contact[name]"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              placeholder="Name *"
+              required
+            >
+          </div>
+
+          <div class="transport-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="TransportModalForm-email"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="TransportModalForm-email"
+              class="transport-modal__input"
+              autocomplete="email"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="Email *"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="transport-modal__form-row">
+          <div class="transport-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="TransportModalForm-phone"
+            >
+              Phone
+            </label>
+            <input
+              type="tel"
+              id="TransportModalForm-phone"
+              class="transport-modal__input"
+              autocomplete="tel"
+              name="contact[phone]"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="Phone *"
+              required
+            >
+          </div>
+
+          <div class="transport-modal__form-field">
+            <label
+              class="visually-hidden"
+              for="TransportModalForm-postal"
+            >
+              Postal Code
+            </label>
+            <input
+              type="text"
+              id="TransportModalForm-postal"
+              class="transport-modal__input"
+              name="contact[postal_code]"
+              placeholder="Postal Code *"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="transport-modal__form-field">
+          <label
+            class="visually-hidden"
+            for="TransportModalForm-address"
+          >
+            Delivery Address
+          </label>
+          <input
+            type="text"
+            id="TransportModalForm-address"
+            class="transport-modal__input"
+            autocomplete="street-address"
+            name="contact[address]"
+            placeholder="Delivery Address *"
+            required
+          >
+        </div>
+
+        <div class="transport-modal__form-field">
+          <label class="transport-modal__label" for="TransportModalForm-service">
+            Installation Service
+          </label>
+          <select
+            id="TransportModalForm-service"
+            class="transport-modal__input"
+            name="contact[installation_service]"
+          >
+            <option value="none">No installation needed</option>
+            <option value="delivery">Delivered to final location</option>
+            <option value="installation">Delivered + bolting to floor/wall</option>
+          </select>
+        </div>
+
+        <div class="transport-modal__form-field">
+          <label
+            class="visually-hidden"
+            for="TransportModalForm-details"
+          >
+            Additional Details
+          </label>
+          <textarea
+            rows="4"
+            id="TransportModalForm-details"
+            class="transport-modal__input transport-modal__input--textarea"
+            name="contact[body]"
+            placeholder="Additional details (stairs, access restrictions, floor, etc.)"
+          >{{ form.body }}</textarea>
+        </div>
+
+        <button type="submit" class="transport-modal__submit button button--primary">
+          Request Estimate
+        </button>
+      {%- endform -%}
+    </div>
+  </dialog>
+</dialog-component>
+
+{% stylesheet %}
+  .transport-modal {
+    padding: 0;
+    border: var(--style-border-popover);
+    border-radius: var(--style-border-radius-popover, 8px);
+    max-width: 600px;
+    width: 90vw;
+    box-shadow: 0 5px 30px rgb(0 0 0 / var(--opacity-15));
+    overflow: visible;
+  }
+
+  @media screen and (max-width: 750px) {
+    .transport-modal {
+      max-width: 95vw;
+      border-radius: var(--style-border-radius-popover, 8px);
+    }
+  }
+
+  .transport-modal[open] {
+    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .transport-modal.dialog-closing {
+    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .transport-modal__close {
+    position: absolute;
+    top: var(--margin-md);
+    right: var(--margin-md);
+    transition: transform 0.15s var(--animation-timing-bounce);
+    z-index: var(--layer-raised);
+    padding: var(--padding-xs);
+  }
+
+  .transport-modal__close:active {
+    transform: scale(0.8);
+  }
+
+  .transport-modal__content {
+    padding: var(--padding-2xl);
+  }
+
+  @media screen and (max-width: 750px) {
+    .transport-modal__content {
+      padding: var(--padding-xl);
+    }
+  }
+
+  .transport-modal__header {
+    margin-bottom: var(--margin-xl);
+    padding-right: var(--padding-xl);
+  }
+
+  .transport-modal__title {
+    font-size: var(--font-size--2xl);
+    font-weight: 600;
+    margin: 0 0 var(--margin-xs) 0;
+    line-height: 1.2;
+  }
+
+  .transport-modal__subtitle {
+    font-size: var(--font-size--md);
+    color: var(--color-text-secondary, #666);
+    margin: 0;
+  }
+
+  .transport-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .transport-modal__form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+  }
+
+  @media screen and (min-width: 750px) {
+    .transport-modal__form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .transport-modal__form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .transport-modal__label {
+    font-size: var(--font-size--sm);
+    font-weight: 500;
+    margin-bottom: var(--margin-xs);
+    color: var(--color-text-primary);
+  }
+
+  .transport-modal__input {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    padding: var(--padding-md) var(--padding-lg);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    border: var(--style-border-width-inputs, 1px) solid var(--color-input-border, #ddd);
+    font-size: var(--font-size--md);
+    transition: border-color 0.2s ease;
+  }
+
+  .transport-modal__input:focus {
+    outline: none;
+    border-color: var(--color-input-border-focus, #000);
+  }
+
+  .transport-modal__input--textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+  }
+
+  .transport-modal__error,
+  .transport-modal__success {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    padding: var(--padding-md);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    font-size: var(--font-size--sm);
+  }
+
+  .transport-modal__error {
+    background-color: #fee;
+    color: #c33;
+  }
+
+  .transport-modal__success {
+    background-color: #efe;
+    color: #3a3;
+  }
+
+  .transport-modal__error svg,
+  .transport-modal__success svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .transport-modal__submit {
+    width: 100%;
+    margin-top: var(--margin-sm);
+  }
+
+  @keyframes modalSlideInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes modalSlideOutTop {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+{% endstylesheet %}
