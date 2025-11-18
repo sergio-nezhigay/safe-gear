@@ -37,10 +37,20 @@
       <div class="installation-bottom-section">
         <div class="disclaimer-link-wrapper">
           {%- if section.settings.installation_disclaimer != blank -%}
-            <p class="disclaimer-text">{{ section.settings.installation_disclaimer }}</p>
+            <p class="disclaimer-text">
+              {% if section.settings.installation_disclaimer contains 'non-binding indications' %}
+                {%- assign parts = section.settings.installation_disclaimer | split: 'non-binding indications' -%}
+                {{ parts[0] -}}
+                <strong>non-binding indications</strong>{{ parts[1] }}
+              {% else %}
+                {{ section.settings.installation_disclaimer }}
+              {% endif %}
+            </p>
           {%- endif -%}
 
-          {%- if section.settings.installation_link_text != blank and section.settings.installation_link_url != blank -%}
+          {%- if section.settings.installation_link_text != blank
+            and section.settings.installation_link_url != blank
+          -%}
             <a href="{{ section.settings.installation_link_url }}" class="info-link">
               {{ section.settings.installation_link_text }}
             </a>
@@ -214,7 +224,7 @@
 
   .pricing-label {
     flex: 1;
-    font-size: 14px;
+    font-size: 18px;
     color: #121212;
     line-height: 1.5;
   }
@@ -247,10 +257,15 @@
   }
 
   .disclaimer-text {
-    font-size: 12px;
+    font-size: 14px;
     color: #121212;
     line-height: 1.5;
+    letter-spacing: 0.02em;
     margin: 0;
+  }
+
+  .disclaimer-text strong {
+    font-weight: 700;
   }
 
   .info-link {
@@ -273,7 +288,7 @@
   }
 
   .button-helper-text {
-    font-size: 13px;
+    font-size: 14px;
     color: #121212;
     margin: 0;
   }
@@ -316,22 +331,21 @@
 
   .delivery-label {
     flex: 1;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-foreground, #000);
+    font-size: 18px;
+    color: #121212;
     line-height: 1.5;
   }
 
   .delivery-price {
     font-size: 14px;
     font-weight: 500;
-    color: var(--color-foreground, #000);
+    color: #3cc561;
     white-space: nowrap;
   }
 
   .delivery-description {
     font-size: 13px;
-    color: #666;
+    color: #121212;
     line-height: 1.5;
     margin: 0;
   }
