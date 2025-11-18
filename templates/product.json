@@ -386,61 +386,6 @@
         "empty_text": "Ingen tilføjelsesprodukter er konfigureret. Angiv venligst metafeltet 'addon_products' for dette produkt."
       }
     },
-    "product_nav_marquee_KjT9wQ": {
-      "type": "product-navigation-marquee",
-      "blocks": {
-        "nav_link_delivery": {
-          "type": "navigation_link",
-          "settings": {
-            "label": "Delivery",
-            "icon": "truck",
-            "icon_size": 24,
-            "link": "#delivery"
-          }
-        },
-        "nav_link_size_chart": {
-          "type": "navigation_link",
-          "settings": {
-            "label": "Size Chart",
-            "icon": "ruler",
-            "icon_size": 24,
-            "link": "#shopify-section-template--26152755691846__size_chart_deqbKr"
-          }
-        },
-        "nav_link_product_info": {
-          "type": "navigation_link",
-          "settings": {
-            "label": "Product information",
-            "icon": "clipboard",
-            "icon_size": 24,
-            "link": "#product-info"
-          }
-        },
-        "nav_link_ask_question": {
-          "type": "navigation_link",
-          "settings": {
-            "label": "Ask a question",
-            "icon": "question_mark",
-            "icon_size": 24,
-            "link": "#ask-question"
-          }
-        }
-      },
-      "block_order": [
-        "nav_link_delivery",
-        "nav_link_size_chart",
-        "nav_link_product_info",
-        "nav_link_ask_question"
-      ],
-      "name": "Product Navigation",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "scheme-3",
-        "margin_top": 70,
-        "margin_bottom": 34,
-        "gap_between_elements": 50
-      }
-    },
     "size_chart_deqbKr": {
       "type": "size-chart",
       "custom_css": [],
@@ -818,121 +763,6 @@
         "padding-block-end": 48
       }
     },
-    "knowledge_base_section": {
-      "type": "knowledge-base",
-      "blocks": {
-        "faq_item_1": {
-          "type": "faq_item",
-          "settings": {
-            "title": "Order & Delivery: All you need to know",
-            "content": "<p>Learn about our shipping methods, delivery times, and order tracking options.</p>"
-          }
-        },
-        "faq_item_2": {
-          "type": "faq_item",
-          "settings": {
-            "title": "What Level of Burglary Protection is Right for You?",
-            "content": "<p>Discover which security grade suits your needs based on your valuables and risk assessment.</p>"
-          }
-        },
-        "faq_item_3": {
-          "type": "faq_item",
-          "settings": {
-            "title": "Safes: What are the European Norms for Burglary Safe Ratings?",
-            "content": "<p>Understand EN 1143-1 certification standards and what each security grade means.</p>"
-          }
-        },
-        "faq_item_4": {
-          "type": "faq_item",
-          "settings": {
-            "title": "Safes: What does Safe Burglary Grade or Rating mean?",
-            "content": "<p>Learn how safe ratings indicate the level of protection against break-in attempts.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_1",
-        "faq_item_2",
-        "faq_item_3",
-        "faq_item_4"
-      ],
-      "settings": {
-        "heading": "Knowledge base",
-        "heading_size": "h4",
-        "content_width": "wide",
-        "show_contact_button": true,
-        "question_text": "Did you find what you are looking for?",
-        "button_text": "Ask a question",
-        "button_style": "secondary",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "questions_and_answers_section": {
-      "type": "questions-and-answers",
-      "blocks": {
-        "qa_item_1": {
-          "type": "qa_item",
-          "settings": {
-            "question_user": "Boyan Uzunov",
-            "question_date": "24.05.2024",
-            "question_text": "<p>\"Can I anchor the safe to a wooden floor?\"</p>",
-            "answer_date": "24.05.2024",
-            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
-          }
-        },
-        "qa_item_2": {
-          "type": "qa_item",
-          "settings": {
-            "question_user": "Amelie Smith",
-            "question_date": "24.05.2024",
-            "question_text": "<p>\"Can I have the safe in red colour?\"</p>",
-            "answer_date": "24.05.2024",
-            "answer_text": "<p>\"Yes, but make sure there are no pipes or cables running below the floor.\"</p>"
-          }
-        }
-      },
-      "block_order": [
-        "qa_item_1",
-        "qa_item_2"
-      ],
-      "settings": {
-        "heading": "Questions and answers",
-        "heading_size": "h4",
-        "content_width": "wide",
-        "show_contact_button": true,
-        "button_text": "Leave a message",
-        "button_style": "secondary",
-        "padding-block-start": 48,
-        "padding-block-end": 0
-      }
-    },
-    "product_videos_section": {
-      "type": "product-videos",
-      "blocks": {
-        "video_item_1": {
-          "type": "video_item",
-          "settings": {
-            "video_source": "shopify",
-            "shopify_video": "shopify://files/videos/file_example_MP4_640_3MG.mp4",
-            "video_id": "",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false
-          }
-        }
-      },
-      "block_order": [
-        "video_item_1"
-      ],
-      "settings": {
-        "heading": "Videos",
-        "heading_size": "h4",
-        "content_width": "wide",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -1079,12 +909,8 @@
     "breadcrumbs_UaYrXQ",
     "main",
     "addons_product_EU3Fbt",
-    "product_nav_marquee_KjT9wQ",
     "size_chart_deqbKr",
     "metafield_table_JUaEGX",
-    "knowledge_base_section",
-    "questions_and_answers_section",
-    "product_videos_section",
     "product_recommendations_qggXJq"
   ]
 }
