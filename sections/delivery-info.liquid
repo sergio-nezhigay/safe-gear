@@ -34,30 +34,34 @@
         {%- endif -%}
       </div>
 
-      {%- if section.settings.installation_disclaimer != blank -%}
-        <p class="disclaimer-text">{{ section.settings.installation_disclaimer }}</p>
-      {%- endif -%}
+      <div class="installation-bottom-section">
+        <div class="disclaimer-link-wrapper">
+          {%- if section.settings.installation_disclaimer != blank -%}
+            <p class="disclaimer-text">{{ section.settings.installation_disclaimer }}</p>
+          {%- endif -%}
 
-      {%- if section.settings.installation_link_text != blank and section.settings.installation_link_url != blank -%}
-        <a href="{{ section.settings.installation_link_url }}" class="info-link">
-          {{ section.settings.installation_link_text }}
-        </a>
-      {%- endif -%}
-
-      {%- if section.settings.show_transport_button -%}
-        <div class="transport-button-wrapper">
-          <p class="button-helper-text">
-            {{ section.settings.transport_button_helper | default: 'Get an installation estimate' }}
-          </p>
-          <button
-            type="button"
-            class="transport-button button button--primary"
-            onclick="document.getElementById('TransportModal').showDialog()"
-          >
-            {{ section.settings.transport_button_text | default: 'Transport Form' }}
-          </button>
+          {%- if section.settings.installation_link_text != blank and section.settings.installation_link_url != blank -%}
+            <a href="{{ section.settings.installation_link_url }}" class="info-link">
+              {{ section.settings.installation_link_text }}
+            </a>
+          {%- endif -%}
         </div>
-      {%- endif -%}
+
+        {%- if section.settings.show_transport_button -%}
+          <div class="transport-button-wrapper">
+            <p class="button-helper-text">
+              {{ section.settings.transport_button_helper | default: 'Get an installation estimate' }}
+            </p>
+            <button
+              type="button"
+              class="transport-button button button--primary"
+              onclick="document.getElementById('TransportModal').showDialog()"
+            >
+              {{ section.settings.transport_button_text | default: 'Transport Form' }}
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
     </div>
 
     {%- comment -%} Delivery Column {%- endcomment -%}
@@ -222,6 +226,26 @@
     white-space: nowrap;
   }
 
+  .installation-bottom-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg, 24px);
+  }
+
+  @media screen and (min-width: 768px) {
+    .installation-bottom-section {
+      display: grid;
+      grid-template-columns: 268fr 235fr;
+      gap: 50px;
+    }
+  }
+
+  .disclaimer-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm, 12px);
+  }
+
   .disclaimer-text {
     font-size: 12px;
     color: #121212;
@@ -246,7 +270,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm, 12px);
-    padding-top: var(--spacing-sm, 12px);
   }
 
   .button-helper-text {
