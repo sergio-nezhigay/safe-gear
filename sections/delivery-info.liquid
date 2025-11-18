@@ -22,14 +22,14 @@
         {%- if section.settings.show_installation_option_1 -%}
           <div class="pricing-row">
             <span class="pricing-label">{{ section.settings.installation_option_1_label }}</span>
-            <span class="pricing-value">Approx. {{ section.settings.installation_option_1_price }}</span>
+            <span class="pricing-value"><span class="approx-text">Approx.</span> {{ section.settings.installation_option_1_price }}</span>
           </div>
         {%- endif -%}
 
         {%- if section.settings.show_installation_option_2 -%}
           <div class="pricing-row">
             <span class="pricing-label">{{ section.settings.installation_option_2_label }}</span>
-            <span class="pricing-value">Approx. {{ section.settings.installation_option_2_price }}</span>
+            <span class="pricing-value"><span class="approx-text">Approx.</span> {{ section.settings.installation_option_2_price }}</span>
           </div>
         {%- endif -%}
       </div>
@@ -91,7 +91,7 @@
           <div class="delivery-option">
             <div class="delivery-option-header">
               <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
-              <span class="delivery-price">Approx. {{ section.settings.delivery_option_1_price }}</span>
+              <span class="delivery-price"><span class="approx-text">Approx.</span> {{ section.settings.delivery_option_1_price }}</span>
             </div>
             {%- if section.settings.delivery_option_1_description != blank -%}
               <p class="delivery-description">{{ section.settings.delivery_option_1_description }}</p>
@@ -103,7 +103,7 @@
           <div class="delivery-option">
             <div class="delivery-option-header">
               <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
-              <span class="delivery-price">Approx. {{ section.settings.delivery_option_2_price }}</span>
+              <span class="delivery-price"><span class="approx-text">Approx.</span> {{ section.settings.delivery_option_2_price }}</span>
             </div>
             {%- if section.settings.delivery_option_2_description != blank -%}
               <p class="delivery-description">{{ section.settings.delivery_option_2_description }}</p>
@@ -115,7 +115,7 @@
           <div class="delivery-option">
             <div class="delivery-option-header">
               <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
-              <span class="delivery-price">Approx. {{ section.settings.delivery_option_3_price }}</span>
+              <span class="delivery-price"><span class="approx-text">Approx.</span> {{ section.settings.delivery_option_3_price }}</span>
             </div>
             {%- if section.settings.delivery_option_3_description != blank -%}
               <p class="delivery-description">{{ section.settings.delivery_option_3_description }}</p>
@@ -236,6 +236,10 @@
     white-space: nowrap;
   }
 
+  .pricing-value .approx-text {
+    color: #121212;
+  }
+
   .installation-bottom-section {
     display: flex;
     flex-direction: column;
@@ -341,6 +345,10 @@
     font-weight: 500;
     color: #3cc561;
     white-space: nowrap;
+  }
+
+  .delivery-price .approx-text {
+    color: #121212;
   }
 
   .delivery-description {
