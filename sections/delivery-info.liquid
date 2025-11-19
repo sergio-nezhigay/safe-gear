@@ -142,11 +142,15 @@
   {%- render 'transport-form-modal', section: section -%}
 {%- endif -%}
 
-{% stylesheet %}
+<style>
   .installation-delivery-section {
-    padding: 0 30px;
-  }
+    padding-top: {{ section.settings['padding-block-start'] | default: 40 }}px;
+    padding-bottom: {{ section.settings['padding-block-end'] | default: 40 }}px;
 
+  }
+</style>
+
+{% stylesheet %}
   .installation-delivery-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -258,6 +262,10 @@
   }
 
   @media screen and (min-width: 768px) {
+    .installation-delivery-section {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
     .installation-bottom-section {
       display: grid;
       grid-template-columns: 268fr 235fr;
