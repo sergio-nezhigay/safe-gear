@@ -1,4 +1,36 @@
 {% stylesheet %}
+.size-chart-section th, .size-chart-section td{
+  text-align: center !important;
+}
+@media(min-width: 1024px){
+.product-row .cut_td:first-child {
+  width: 29%;
+  text-align: left !important;
+}
+}
+.product-row .cut_td:first-child {
+  text-align: left !important;
+}
+@media (max-width: 768px) {
+    .size-chart-section table th:last-child, .size-chart-section table td:last-child {
+        min-width: 55px;
+    }
+}
+.product-row.active .main-icon-table:hover,
+.product-row.active .cut_td:hover,
+.product-row.active .main-icon-table,
+.product-row.active .cut_td{
+    border-bottom: 1px solid #000000 !important;
+}
+.product-row.active.highlighted:active,
+.product-row.active.highlighted:hover,
+.product-row.active.highlighted{
+    box-shadow: 0px 4px 12px -2px rgba(0, 0, 0, 0.35);
+    z-index: 999;
+    background-color: white !important;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
   .size-chart-section {
     max-width: 100%;
     margin: 0 auto;
@@ -71,8 +103,8 @@
   }
 
   .size-chart-section thead {
-    background: #f0f8ff;
-    color: #333;
+    background: #4b81bf;
+    color: white;
     text-align: left;
   }
 
@@ -84,8 +116,8 @@
   }
 
   .size-chart-section th {
-    background: #f0f8ff;
-    color: #333;
+    background: #4b81bf;
+    color: white;
     font-weight: bold;
     font-size: 16px;
   }
@@ -187,13 +219,18 @@
     }
 
     .size-chart-section table th:first-child {
-      background-color: #f0f8ff;
+      background-color: #4b81bf;
       font-size: 14px;
       font-weight: 600;
       text-align: left;
       padding: 12px 8px;
       height: 100%;
       vertical-align: top;
+      border: 0;
+      text-align: center !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;;
     }
 
     .size-chart-section table th,
@@ -209,7 +246,7 @@
       font-size: 14px;
       font-weight: 600;
       text-align: center;
-      background-color: #f0f8ff;
+      background-color: #4b81bf;
     }
 
     .size-chart-section table td:first-child a,
@@ -274,6 +311,7 @@
                       </th>
                       <th class="cust_ve">{{ section.settings.header_weight }}</th>
                       <th class="cust_price">{{ section.settings.header_price }}</th>
+                      <th class="cust_price"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -301,6 +339,11 @@
                         </td>
                         <td class="cut_td">
                           {{ section.settings.price_prefix }} <span class="price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ product_.price | money_with_currency }}</span></span>
+                        </td>
+                        <td class="main-icon-table">
+                          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5163 20.5769C17.6058 22.2418 15.1081 23.25 12.375 23.25C6.3689 23.25 1.5 18.3811 1.5 12.375C1.5 6.3689 6.3689 1.5 12.375 1.5C18.3811 1.5 23.25 6.3689 23.25 12.375C23.25 15.1081 22.2418 17.6058 20.5769 19.5163L29.7803 28.7197L28.7197 29.7803L19.5163 20.5769ZM21.75 12.375C21.75 17.5527 17.5527 21.75 12.375 21.75C7.19733 21.75 3 17.5527 3 12.375C3 7.19733 7.19733 3 12.375 3C17.5527 3 21.75 7.19733 21.75 12.375Z" fill="#3CC561"/>
+                          </svg>
                         </td>
                       </tr>
                     {% endfor %}
@@ -340,7 +383,21 @@
     if (!target) return;
 
     event.preventDefault();
+if (target && target.classList.contains('product-row')) {
 
+  document.querySelectorAll('.product-row.active, .product-row.highlighted').forEach(row => {
+    row.classList.remove('active', 'highlighted');
+  });
+
+  target.classList.add('active', 'highlighted');
+
+  const prevRow = target.previousElementSibling;
+
+  if (prevRow && prevRow.classList.contains('product-row')) {
+    prevRow.classList.add('active');
+    prevRow.classList.remove('highlighted'); // на випадок, якщо залишився
+  }
+}
     const productUrl = target.dataset.productUrl;
     const productHandle = target.dataset.productHandle;
 

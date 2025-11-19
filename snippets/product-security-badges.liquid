@@ -106,7 +106,7 @@
             <img src="{{ burglary_icon | img_url: '60x60' }}" alt="{{ burglary_alt }}" width="60" height="60" loading="lazy">
           </div>
           <div class="badge-content">
-            <h4 class="badge-title">Burglary Grade</h4>
+            {% comment %} <h4 class="badge-title">Burglary Grade</h4> {% endcomment %}
             <div class="badge-description">{{ burglary_desc }}</div>
           </div>
         </div>
@@ -170,7 +170,7 @@
       align-items: flex-start;
       gap: 1rem;
       padding: 1rem;
-      border: 1px solid rgb(var(--color-border-rgb) / 0.2);
+      {% comment %} border: 1px solid rgb(var(--color-border-rgb) / 0.2); {% endcomment %}
       border-radius: 8px;
       background: rgb(var(--color-background-rgb));
       min-width: 280px;
