@@ -444,19 +444,46 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: auto;
+    width: 52px;
     min-width: var(--height-buy-buttons);
     cursor: pointer;
   }
 
   /* Constrain buy button width when next to wishlist */
   .product-form-buttons--stacked .add-to-cart-button {
-    max-width: calc(100% - 80px);
+    max-width: calc(100% - 60px);
+  }
+
+  /* Wishlist heart icon size */
+  .wishlist-inline-button svg,
+  .wishlist-inline-button .fa,
+  .wishlist-inline-button .far,
+  .wishlist-inline-button .fas,
+  .wishlist-inline-button .fa-1x,
+  .wishlist-inline-button .svg-inline--fa,
+  .wishlist-hero-custom-button svg,
+  .wishlist-hero-custom-button .fa,
+  .wishlist-hero-custom-button .far,
+  .wishlist-hero-custom-button .fas,
+  .wishlist-hero-custom-button .fa-1x,
+  .wishlist-hero-custom-button .svg-inline--fa,
+  .wishlist-hero-custom-button .fa-heart {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 35px !important;
+    max-width: 35px !important;
+    max-height: 35px !important;
+  }
+
+  @media screen and (max-width: 990px) {
+    .wishlist-inline-button {
+      margin-top: calc(-1 * 132px);
+    }
   }
 
   @media screen and (max-width: 749px) {
     .product-form-buttons--stacked .add-to-cart-button {
-      max-width: calc(100% - 80px);
+      max-width: calc(100% - 60px);
     }
     .wishlist-inline-button {
       margin-top: calc(-1 * 132px);
