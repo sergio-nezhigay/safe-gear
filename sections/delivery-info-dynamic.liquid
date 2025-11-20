@@ -218,11 +218,6 @@
   {%- render 'transport-form-modal', section: section -%}
 {%- endif -%}
 
-{%- comment -%} Pass debug mode to JavaScript {%- endcomment -%}
-<script>
-  window.deliveryInfoDebug = {{ section.settings.show_debug_info | default: false }};
-</script>
-
 {%- comment -%} Load pricing renderer and variant change handler {%- endcomment -%}
 {%- if section.settings.enable_dynamic_pricing -%}
   <script src="{{ 'delivery-pricing-renderer.js' | asset_url }}" defer></script>
@@ -514,13 +509,6 @@
       "id": "product",
       "label": "Product (optional)",
       "info": "Leave blank to use current product context"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_debug_info",
-      "label": "Show debug info (console only)",
-      "default": false,
-      "info": "Enable console logging for debugging variant changes"
     },
     {
       "type": "header",
