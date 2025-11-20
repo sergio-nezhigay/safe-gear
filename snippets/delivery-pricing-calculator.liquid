@@ -1,0 +1,92 @@
+{%- comment -%}
+  Delivery Pricing Calculator Snippet
+
+  Calculates delivery and installation prices based on product weight and country.
+
+  @param {number} weight_kg - Product weight in kilograms
+  @param {string} country_code - ISO country code (ES, FR, etc.)
+  @param {object} pricing_data - Parsed JSON pricing data from metaobject
+
+  @returns {object} pricing_result - Object with calculated prices
+{%- endcomment -%}
+
+{%- liquid
+  assign weight_kg = weight_kg | default: 0
+  assign country_code = country_code | default: ''
+  assign pricing_data = pricing_data | default: null
+
+  comment
+    Initialize result object
+  endcomment
+  assign pricing_result = null
+  assign weight_range_index = -1
+  assign weight_range_label = ''
+
+  if pricing_data == null or pricing_data == blank
+    assign pricing_result = 'error: no pricing data'
+    echo pricing_result
+    break
+  endif
+
+  comment
+    Parse weight ranges and find matching range
+  endcomment
+  assign weight_ranges = pricing_data.weight_ranges
+
+  if weight_ranges == null or weight_ranges.size == 0
+    assign pricing_result = 'error: no weight ranges'
+    echo pricing_result
+    break
+  endif
+
+  for range in weight_ranges
+    assign min_weight = range.min | default: 0
+    assign max_weight = range.max | default: 999999
+
+    if weight_kg >= min_weight and weight_kg <= max_weight
+      assign weight_range_index = forloop.index0
+      assign weight_range_label = range.label
+      break
+    endif
+  endfor
+
+  comment
+    If no range found, use last range (heaviest)
+  endcomment
+  if weight_range_index == -1
+    assign last_index = weight_ranges.size | minus: 1
+    assign weight_range_index = last_index
+    assign weight_range_label = weight_ranges[last_index].label
+  endif
+
+  comment
+    Build result object as JSON string
+    We'll output this and the section will parse it
+  endcomment
+-%}
+
+{
+  "weight_kg": {{ weight_kg | json }},
+  "country_code": {{ country_code | json }},
+  "weight_range_index": {{ weight_range_index | json }},
+  "weight_range_label": {{ weight_range_label | json }},
+  "delivery_options": [
+    {%- for option in pricing_data.delivery_options -%}
+      {
+        "id": {{ option.id | json }},
+        "label": {{ option.label | json }},
+        "description": {{ option.description | default: '' | json }},
+        "price_cents": {{ option.prices[weight_range_index] | default: 0 | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  "installation_options": [
+    {%- for option in pricing_data.installation_options -%}
+      {
+        "id": {{ option.id | json }},
+        "label": {{ option.label | json }},
+        "price_cents": {{ option.prices[weight_range_index] | default: 0 | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}

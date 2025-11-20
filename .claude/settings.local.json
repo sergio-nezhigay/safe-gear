@@ -31,7 +31,8 @@
       "mcp__playwright__browser_take_screenshot",
       "Bash(git restore:*)",
       "Bash(git add:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "WebFetch(domain:docs.google.com)"
     ],
     "deny": [],
     "ask": []
