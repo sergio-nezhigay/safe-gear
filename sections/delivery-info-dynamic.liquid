@@ -490,19 +490,23 @@
       "id": "enable_dynamic_pricing",
       "label": "Enable dynamic pricing",
       "default": true,
-      "info": "Use metaobject-based pricing based on weight and country"
+      "info": "When enabled, delivery and installation prices change automatically based on product weight and customer country"
+    },
+    {
+      "type": "paragraph",
+      "content": "📋 **Understanding the Price Data Below:** You'll see options like 'Curbside Delivery' with 6 numbers in brackets: [2000, 6000, 8000, 12000, 15000, 20000]. Each number = price for a weight range. **Number 1** = tiny items (0-20kg) | **Number 2** = small (21-100kg) | **Number 3** = medium (101-200kg) | **Number 4** = large (201-300kg) | **Number 5** = very large (301-500kg) | **Number 6** = huge items (500+kg). Prices are in cents: €20 = 2000, €50 = 5000, €100 = 10000."
     },
     {
       "type": "textarea",
       "id": "pricing_spain_json",
       "label": "Spain Pricing Data (JSON)",
-      "info": "JSON pricing data for Spain. See documentation for format."
+      "info": "📝 EXAMPLE: To change Curbside Delivery for tiny items (0-20kg) from €20 to €25: (1) Find the line with 'Curbside Delivery', (2) Find 'prices': [2000, 6000...], (3) Change 2000 to 2500 (first number), (4) Save. Why? 2000 cents = €20, 2500 cents = €25. The FIRST number is always for tiny items (0-20kg). SECOND number = small items (21-100kg), and so on. ⚠️ Don't remove commas between numbers or quotes around text!"
     },
     {
       "type": "textarea",
       "id": "pricing_france_json",
       "label": "France Pricing Data (JSON)",
-      "info": "JSON pricing data for France. See documentation for format."
+      "info": "📝 EXAMPLE: To change Warehouse Collection for medium items (101-200kg) from €10 to €15: (1) Find 'Collection from SafeGear warehouse', (2) Find 'prices': [1000, 1000, 1000...], (3) Change the THIRD number from 1000 to 1500, (4) Save. Why? 1000 cents = €10, 1500 = €15. Position matters: 1st=tiny (0-20kg), 2nd=small (21-100kg), 3rd=medium (101-200kg), 4th=large (201-300kg), 5th=very large (301-500kg), 6th=huge (500+kg). France prices are usually Spain prices + €10. ⚠️ Keep commas and quotes!"
     },
     {
       "type": "product",
