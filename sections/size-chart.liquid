@@ -1,38 +1,42 @@
 {% stylesheet %}
-.size-chart-section th, .size-chart-section td{
-  text-align: center !important;
-}
-@media(min-width: 1024px){
-.product-row .cut_td:first-child {
-  width: 29%;
-  text-align: left !important;
-}
-}
-.product-row .cut_td:first-child {
-  text-align: left !important;
-}
-@media (max-width: 768px) {
-    .size-chart-section table th:last-child, .size-chart-section table td:last-child {
-        min-width: 55px;
+  .size-chart-section th,
+  .size-chart-section td {
+    text-align: center !important;
+  }
+  @media (min-width: 1024px) {
+    .product-row .cut_td:first-child {
+      width: 29%;
+      text-align: left !important;
     }
-}
-.product-row.active .main-icon-table:hover,
-.product-row.active .cut_td:hover,
-.product-row.active .main-icon-table,
-.product-row.active .cut_td{
+  }
+  .product-row .cut_td:first-child {
+    text-align: left !important;
+  }
+  @media (max-width: 768px) {
+    .size-chart-section table th:last-child,
+    .size-chart-section table td:last-child {
+      min-width: 55px;
+    }
+  }
+  .product-row.active .main-icon-table:hover,
+  .product-row.active .cut_td:hover,
+  .product-row.active .main-icon-table,
+  .product-row.active .cut_td {
     border-bottom: 1px solid #000000 !important;
-}
-.product-row.active.highlighted:active,
-.product-row.active.highlighted:hover,
-.product-row.active.highlighted{
+  }
+  .product-row.active.highlighted:active,
+  .product-row.active.highlighted:hover,
+  .product-row.active.highlighted {
     box-shadow: 0px 4px 12px -2px rgba(0, 0, 0, 0.35);
     z-index: 999;
     background-color: white !important;
     border-left: 1px solid;
     border-right: 1px solid;
-}
+  }
   .size-chart-section {
-    max-width: 100%;
+    display: block !important;
+    width: 100% !important;
+    max-width: 1390px !important;
     margin: 0 auto;
     --section-padding: var(--spacing-md, 16px);
     --table-border-radius: 8px;
@@ -44,16 +48,18 @@
     padding-block-start: var(--padding-block-start, clamp(24px, 5vw, 48px));
     padding-block-end: var(--padding-block-end, clamp(24px, 5vw, 48px));
     display: unset;
-    padding: 0 30px;
+    padding: 0 0;
   }
 
   .product-info__main-title {
     margin: 0 0 clamp(24px, 4vw, 48px) 0 !important;
   }
 
-.size-chart-section .page-width {
-  padding: 0 30px;
-}
+  .size-chart-section .page-width {
+    padding: 0 0;
+    max-width: 1390px;
+    margin: 0 auto;
+  }
 
   @media (min-width: 990px) {
     .size-chart-section {
@@ -76,8 +82,6 @@
     text-align: left !important;
   }
 
-
- 
   .product-info__main-title {
     font-family: var(--font-primary--family);
     font-size: var(--font-h4--size);
@@ -188,8 +192,8 @@
   /* Mobile Responsive */
   @media (max-width: 768px) {
     .size-chart-section .page-width {
-  padding: 0 15px;
-}
+      padding: 0 15px;
+    }
     .size-chart-section .table-container {
       width: 100%;
       overflow-x: auto;
@@ -230,7 +234,7 @@
       text-align: center !important;
       display: flex !important;
       align-items: center;
-      justify-content: center;;
+      justify-content: center;
     }
 
     .size-chart-section table th,
@@ -302,11 +306,13 @@
                     <tr>
                       <th class="cust_model">{{ section.settings.header_model }}</th>
                       <th class="cust_hkd">
-                        {{ section.settings.header_external }}<br>
+                        {{ section.settings.header_external -}}
+                        <br>
                         ({{ section.settings.dimensions_unit }})
                       </th>
                       <th class="cust_hkd">
-                        {{ section.settings.header_internal }}<br>
+                        {{ section.settings.header_internal -}}
+                        <br>
                         ({{ section.settings.dimensions_unit }})
                       </th>
                       <th class="cust_ve">{{ section.settings.header_weight }}</th>
@@ -316,7 +322,11 @@
                   </thead>
                   <tbody>
                     {% for product_ in product.metafields.custom.list_product.value %}
-                      <tr class="product-row" data-product-url="{{ product_.url }}?variant={{ product_.variants[0].id }}" data-product-handle="{{ product_.handle }}">
+                      <tr
+                        class="product-row"
+                        data-product-url="{{ product_.url }}?variant={{ product_.variants[0].id }}"
+                        data-product-handle="{{ product_.handle }}"
+                      >
                         <td class="cut_td">
                           <span class="product_title_">{{- product_.title -}}</span>
                         </td>
@@ -333,15 +343,35 @@
                         <td class="cut_td">
                           {% for variant in product_.variants %}
                             {% if forloop.first %}
-                              <span>{{ variant.weight | divided_by: 1000 }} {{ section.settings.weight_unit }}</span>
+                              <span>
+                                {{- variant.weight | divided_by: 1000 }}
+                                {{ section.settings.weight_unit -}}
+                              </span>
                             {% endif %}
                           {% endfor %}
                         </td>
                         <td class="cut_td">
-                          {{ section.settings.price_prefix }} <span class="price"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ product_.price | money_with_currency }}</span></span>
+                          {{ section.settings.price_prefix }}
+                          <span class="price"
+                            ><span
+                              class="ymq-b2b-price-hidden"
+                              ymq-b2b-product-id="{{ product.id }}"
+                              ymq-b2b-product-handle="{{ product.handle }}"
+                              ymq-b2b-variant-price
+                              ymq-b2b-variant-id="{{ variant.id }}"
+                            >
+                              {{- product_.price | money_with_currency -}}
+                            </span></span
+                          >
                         </td>
                         <td class="main-icon-table">
-                          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg
+                            width="30"
+                            height="30"
+                            viewBox="0 0 30 30"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5163 20.5769C17.6058 22.2418 15.1081 23.25 12.375 23.25C6.3689 23.25 1.5 18.3811 1.5 12.375C1.5 6.3689 6.3689 1.5 12.375 1.5C18.3811 1.5 23.25 6.3689 23.25 12.375C23.25 15.1081 22.2418 17.6058 20.5769 19.5163L29.7803 28.7197L28.7197 29.7803L19.5163 20.5769ZM21.75 12.375C21.75 17.5527 17.5527 21.75 12.375 21.75C7.19733 21.75 3 17.5527 3 12.375C3 7.19733 7.19733 3 12.375 3C17.5527 3 21.75 7.19733 21.75 12.375Z" fill="#3CC561"/>
                           </svg>
                         </td>
@@ -352,7 +382,10 @@
               </div>
             {% else %}
               {% comment %} Editor placeholder content {% endcomment %}
-              <div class="table-container" style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center;">
+              <div
+                class="table-container"
+                style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center;"
+              >
                 <div style="color: #6c757d; font-size: 16px; line-height: 1.5;">
                   <h4 style="color: #495057; margin: 0 0 16px 0;">{{ section.settings.placeholder_title }}</h4>
                   <p style="margin: 0 0 8px 0;">{{ section.settings.placeholder_description }}</p>
@@ -360,7 +393,9 @@
                     <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_1 }}</li>
                     <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_2 }}</li>
                   </ul>
-                  <p style="margin: 16px 0 0 0; font-size: 14px; color: #868e96;">{{ section.settings.placeholder_hint }}</p>
+                  <p style="margin: 16px 0 0 0; font-size: 14px; color: #868e96;">
+                    {{ section.settings.placeholder_hint }}
+                  </p>
                 </div>
               </div>
             {% endif %}
@@ -371,10 +406,7 @@
   </div>
 {% endif %}
 
-
-
 {% javascript %}
-
   const pageCache = new Map();
   const prefetchQueue = new Set();
 
@@ -383,26 +415,25 @@
     if (!target) return;
 
     event.preventDefault();
-if (target && target.classList.contains('product-row')) {
+    if (target && target.classList.contains('product-row')) {
+      document.querySelectorAll('.product-row.active, .product-row.highlighted').forEach((row) => {
+        row.classList.remove('active', 'highlighted');
+      });
 
-  document.querySelectorAll('.product-row.active, .product-row.highlighted').forEach(row => {
-    row.classList.remove('active', 'highlighted');
-  });
+      target.classList.add('active', 'highlighted');
 
-  target.classList.add('active', 'highlighted');
+      const prevRow = target.previousElementSibling;
 
-  const prevRow = target.previousElementSibling;
-
-  if (prevRow && prevRow.classList.contains('product-row')) {
-    prevRow.classList.add('active');
-    prevRow.classList.remove('highlighted'); // на випадок, якщо залишився
-  }
-}
+      if (prevRow && prevRow.classList.contains('product-row')) {
+        prevRow.classList.add('active');
+        prevRow.classList.remove('highlighted'); // на випадок, якщо залишився
+      }
+    }
     const productUrl = target.dataset.productUrl;
     const productHandle = target.dataset.productHandle;
 
     if (!productUrl) {
-        return;
+      return;
     }
 
     target.classList.add('loading');
@@ -448,12 +479,12 @@ if (target && target.classList.contains('product-row')) {
         if (mainSection) {
           pageCache.set(productUrl, {
             mainSection: mainSection.cloneNode(true),
-            addonsSection: addonsSection ? addonsSection.cloneNode(true) : null
+            addonsSection: addonsSection ? addonsSection.cloneNode(true) : null,
           });
         }
       }
     } catch (error) {
-      } finally {
+    } finally {
       prefetchQueue.delete(productUrl);
     }
   }
@@ -465,7 +496,6 @@ if (target && target.classList.contains('product-row')) {
       if (pageCache.has(productUrl)) {
         newContent = pageCache.get(productUrl);
       } else {
-
         const response = await fetch(productUrl, {
           headers: {
             Accept: 'text/html',
@@ -485,18 +515,17 @@ if (target && target.classList.contains('product-row')) {
         const addonsSection = doc.querySelector('.product-addons-section');
         const metafieldSection = doc.querySelector('product-metafields-section');
 
-
         newContent = {
           mainSection: mainSection,
           addonsSection: addonsSection,
-          metafieldSection: metafieldSection
+          metafieldSection: metafieldSection,
         };
 
         if (newContent.mainSection) {
           pageCache.set(productUrl, {
             mainSection: newContent.mainSection.cloneNode(true),
             addonsSection: newContent.addonsSection ? newContent.addonsSection.cloneNode(true) : null,
-            metafieldSection: newContent.metafieldSection ? newContent.metafieldSection.cloneNode(true) : null
+            metafieldSection: newContent.metafieldSection ? newContent.metafieldSection.cloneNode(true) : null,
           });
         }
       }
@@ -504,8 +533,7 @@ if (target && target.classList.contains('product-row')) {
       const currentMainSection = document.querySelector('[id*="template--"][id*="__main"]');
 
       if (newContent.mainSection && currentMainSection) {
-
-        // Замінюємо основну секцію  
+        // Замінюємо основну секцію
         currentMainSection.outerHTML = newContent.mainSection.outerHTML;
 
         // Знищуємо старий ProductAddons перед заміною addons секції
@@ -542,19 +570,20 @@ if (target && target.classList.contains('product-row')) {
         // Чекаємо і створюємо новий ProductAddons
         setTimeout(() => {
           const newAddonsSection = document.querySelector('.product-addons-section');
-          
+
           if (newAddonsSection && window.ProductAddons) {
             window.currentProductAddons = new window.ProductAddons();
           }
-          
+
           // Переініціалізуємо всі скрипти продукту
           const scripts = document.querySelectorAll('script[src*="product"], script:not([src])');
-          scripts.forEach(script => {
-            if (script.textContent && (
-              script.textContent.includes('ProductAddons') || 
-              script.textContent.includes('variant') ||
-              script.textContent.includes('product')
-            )) {
+          scripts.forEach((script) => {
+            if (
+              script.textContent &&
+              (script.textContent.includes('ProductAddons') ||
+                script.textContent.includes('variant') ||
+                script.textContent.includes('product'))
+            ) {
               try {
                 eval(script.textContent);
               } catch (e) {
@@ -562,7 +591,7 @@ if (target && target.classList.contains('product-row')) {
               }
             }
           });
-          
+
           // Події для theme та Horizon
           const events = [
             'theme:section:load',
@@ -570,17 +599,19 @@ if (target && target.classList.contains('product-row')) {
             'horizon:page:changed',
             'product:loaded',
             'product:switched',
-            'addons:reinit'
+            'addons:reinit',
           ];
-          
-          events.forEach(eventName => {
-            document.dispatchEvent(new CustomEvent(eventName, {
-              detail: { 
-                productUrl, 
-                productHandle: target.dataset.productHandle,
-                source: 'product-switcher'
-              }
-            }));
+
+          events.forEach((eventName) => {
+            document.dispatchEvent(
+              new CustomEvent(eventName, {
+                detail: {
+                  productUrl,
+                  productHandle: target.dataset.productHandle,
+                  source: 'product-switcher',
+                },
+              })
+            );
           });
         }, 150);
 
@@ -629,7 +660,6 @@ if (target && target.classList.contains('product-row')) {
   }
 
   function initProductSwitcher() {
-
     document.removeEventListener('click', handleProductSwitchClick);
     document.removeEventListener('mouseover', handleProductHover);
 
@@ -643,7 +673,6 @@ if (target && target.classList.contains('product-row')) {
         manageCacheSize();
       }
     });
-
   }
 
   if (document.readyState === 'loading') {
@@ -790,4 +819,5 @@ if (target && target.classList.contains('product-row')) {
     }
   ]
 }
-{% endschema %}{% comment %}<!-- ymq b2b done -->{% endcomment %}
+{% endschema %}
+{% comment %}<!-- ymq b2b done -->{% endcomment %}
