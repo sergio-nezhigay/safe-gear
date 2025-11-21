@@ -8,60 +8,57 @@
 >
 
 <style>
-  #{{ section.id }} {
-    --header-bg: {{ section.settings.header_background }};
-    --header-text: {{ section.settings.text_color }};
-    --header-accent: {{ section.settings.accent_color }};
-    --header-border: {{ section.settings.border_color }};
-    --nav-hover: {{ section.settings.nav_hover_color }};
-    --phone-color: {{ section.settings.phone_color }};
-    --help-color: {{ section.settings.help_color }};
-    --help-bg: {{ section.settings.help_background }};
-    --search-bg: {{ section.settings.search_background }};
-    --search-border: {{ section.settings.search_border }};
-    --logo-width: {{ section.settings.logo_width }}px;
-  }
+      #{{ section.id }} {
+        --header-bg: {{ section.settings.header_background }};
+        --header-text: {{ section.settings.text_color }};
+        --header-accent: {{ section.settings.accent_color }};
+        --header-border: {{ section.settings.border_color }};
+        --nav-hover: {{ section.settings.nav_hover_color }};
+        --phone-color: {{ section.settings.phone_color }};
+        --help-color: {{ section.settings.help_color }};
+        --help-bg: {{ section.settings.help_background }};
+        --search-bg: {{ section.settings.search_background }};
+        --search-border: {{ section.settings.search_border }};
+        --logo-width: {{ section.settings.logo_width }}px;
+      }
 
-  /* Sticky Header Styles */
   #{{ section.id }} {
-    position: relative;
-    transition: all 0.3s ease-in-out;
-  }
-
-  #{{ section.id }}.is-sticky {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  #{{ section.id }}.is-sticky {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    animation: slideDown 0.3s ease-out;
   }
 
-  /* Hide navigation when sticky */
-  #{{ section.id }}.is-sticky .header-nav {
-    display: none;
-  }
+      /* Hide navigation when sticky */
+      #{{ section.id }}.is-sticky .header-nav {
+        display: none;
+      }
 
-  @keyframes slideDown {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
 
-  /* Placeholder to prevent content jump when header becomes fixed */
-  .header-placeholder {
-    display: none;
-  }
+      /* Placeholder to prevent content jump when header becomes fixed */
+      .header-placeholder {
+        display: none;
+      }
 
-  .header-placeholder.is-active {
-    display: block;
-  }
+      .header-placeholder.is-active {
+        display: block;
+      }
 </style>
 
 <header id="{{ section.id }}" class="site-header {{ section.settings.custom_classes }}">

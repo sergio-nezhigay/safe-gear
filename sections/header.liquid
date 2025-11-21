@@ -28,7 +28,7 @@
   if section.settings.enable_sticky_header == 'always'
     assign sticky = 'always'
   elsif section.settings.enable_sticky_header == 'scroll-up'
-    assign sticky = 'scroll-up'
+    assign sticky = 'always'
   endif
 
   if transparent and sticky
@@ -393,7 +393,6 @@
   }
 
   .header[data-sticky-state='active'] {
-    view-transition-name: sticky-header;
   }
 
   .header[data-sticky-state='idle'],
