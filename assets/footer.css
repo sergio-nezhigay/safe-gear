@@ -6,14 +6,14 @@
 }
 
 .footer-container {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
 @media screen and (min-width: 750px) {
   .footer-container {
-    padding: 0 103px;
+    max-width: 1390px;
+    padding: 0 0;
   }
 }
 
@@ -288,7 +288,7 @@
   .footer-content {
     gap: 2.5rem;
   }
-  
+
   .footer-container {
     padding: 0 1.5rem;
   }
@@ -299,12 +299,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem 2rem;
   }
-  
+
   .footer-form {
     grid-column: span 2;
     max-width: 500px;
   }
-  
+
   .form-row {
     gap: 0.75rem;
   }
@@ -314,32 +314,32 @@
   .site-footer {
     padding: 3rem 0 1.5rem;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  
+
   .footer-form {
     grid-column: span 1;
     max-width: none;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
   }
-  
+
   .footer-copyright {
     text-align: left;
   }
-  
+
   .payment-icons {
     justify-content: flex-start;
     gap: 0.5rem;
@@ -350,45 +350,45 @@
   .footer-container {
     padding: 0 1rem;
   }
-  
+
   .site-footer {
     padding: 2rem 0 1.25rem;
   }
-  
+
   .footer-content {
     gap: 2rem;
   }
-  
+
   .footer-title {
     font-size: 1rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .contact-item {
     margin-bottom: 1rem;
   }
-  
+
   .footer-link-item {
     margin-bottom: 0.5rem;
   }
-  
+
   .form-input,
   .form-textarea {
     padding: 0.875rem 1rem;
     font-size: 0.875rem;
   }
-  
+
   .form-submit {
     padding: 0.875rem 1.75rem;
     font-size: 0.875rem;
     width: 100%;
   }
-  
+
   .payment-icon svg {
     width: 36px;
     height: 22px;
   }
-  
+
   .footer-copyright {
     font-size: 0.8rem;
   }
@@ -398,51 +398,51 @@
   .footer-container {
     padding: 0 20px;
   }
-  
+
   .site-footer {
     padding: 1.5rem 0 1rem;
   }
-  
+
   .footer-content {
     gap: 1.5rem;
   }
-  
+
   .footer-title {
     font-size: 0.95rem;
     margin-bottom: 1rem;
   }
-  
+
   .contact-label {
     font-size: 0.8rem;
   }
-  
+
   .contact-info,
   .contact-link,
   .footer-link {
     font-size: 0.85rem;
   }
-  
+
   .form-input,
   .form-textarea {
     padding: 0.75rem 1rem;
     font-size: 0.85rem;
   }
-  
+
   .form-submit {
     padding: 0.875rem 1.5rem;
     font-size: 0.85rem;
     width: 100%;
   }
-  
+
   .footer-bottom {
     padding-top: 1.5rem;
     gap: 1rem;
   }
-  
+
   .payment-icons {
     gap: 0.375rem;
   }
-  
+
   .payment-icon svg {
     width: 32px;
     height: 20px;
@@ -457,7 +457,7 @@
     transform: none;
     box-shadow: none;
   }
-  
+
   .form-input,
   .form-textarea,
   .contact-link,
