@@ -9,7 +9,7 @@
 }
 
 .header-container {
-  max-width: 1440px;
+  max-width: 1390px;
   margin: 0 auto;
   padding: 0 25px;
 }
@@ -21,7 +21,7 @@
   padding: 1rem 0;
   gap: 2rem;
   min-height: 70px;
-  max-width: 1440px;
+  max-width: 1390px;
   margin: 0 auto;
 }
 
@@ -872,6 +872,13 @@ body.mobile-menu-open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+/* Prevent first dropdown from being cut off at viewport edge (1260px issue) */
+@media (min-width: 1251px) and (max-width: 1400px) {
+  .header-nav .nav-item:first-child .nav-dropdown {
+    left: calc(50% + 25px);
+  }
 }
 
 .mega-menu-content {
