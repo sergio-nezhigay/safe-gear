@@ -272,7 +272,7 @@
 .nav-container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
