@@ -5,37 +5,40 @@
   top: 8px;
   left: 20px;
 }
-.metafields-table th{
+.metafields-table th {
   background: #4b81bf;
   color: #fff;
 }
-rte-formatter p{
+rte-formatter p {
   min-width: 100%;
 }
 @media (min-width: 1024px) {
-    .variant-option__button-label:has(.swatch) span.swatch {
-        --swatch-width: 85px;
-        --swatch-height: 85px;
-    }
-    .variant-option--equal-width-buttons .variant-option__button-label:has(.variant-lock-image),
-    .variant-option__button-label:has(.swatch):has(:checked){
-        width: 85px;
-        height: 85px !important;
-    }
-    .variant-picker .variant-option--buttons label:has(.swatch){
-          border-radius: 50% !important;
-    }
-        .variant-option__button-label input {
-        min-width: 85px;
-        min-height: 85px;
-        height: 85px !important;
-    }
-        .variant-option--equal-width-buttons .variant-option__button-label:has(.variant-lock-image), 
-        .variant-option--equal-width-buttons .variant-option__button-label:has(.swatch) {
-        min-width: 85px !important;
-        min-height: 85px;
-        height: 85px;
-    }
+  .variant-option__button-label:has(.swatch) span.swatch {
+    --swatch-width: 85px;
+    --swatch-height: 85px;
+  }
+  .variant-option--equal-width-buttons
+    .variant-option__button-label:has(.variant-lock-image),
+  .variant-option__button-label:has(.swatch):has(:checked) {
+    width: 85px;
+    height: 85px !important;
+  }
+  .variant-picker .variant-option--buttons label:has(.swatch) {
+    border-radius: 50% !important;
+  }
+  .variant-option__button-label input {
+    min-width: 85px;
+    min-height: 85px;
+    height: 85px !important;
+  }
+  .variant-option--equal-width-buttons
+    .variant-option__button-label:has(.variant-lock-image),
+  .variant-option--equal-width-buttons
+    .variant-option__button-label:has(.swatch) {
+    min-width: 85px !important;
+    min-height: 85px;
+    height: 85px;
+  }
 }
 .site-header__icon
   span.wishlist-hero-items-count.wishlist-hero-items-count-exists {
@@ -4589,4 +4592,8 @@ text-component {
   .h6.h6 select {
     font-size: max(1rem, 100%);
   }
+}
+
+body {
+  padding-top: 188px;
 }
