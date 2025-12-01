@@ -835,6 +835,7 @@
 {% schema %}
 {
   "name": "Product Metafields Tables",
+  "tag": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -903,6 +904,10 @@
     }
   ],
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "**HOW TO USE:** Add 'Metafield Row' blocks and set Label, Namespace (usually 'custom'), and Key. **GROUPING:** Blocks with the same Group Name display together in one table. The group name becomes the table header. **VARIANT METAFIELDS:** Enable checkbox if metafield belongs to variants - it will update when customers select options. Empty metafields auto-hide. See docs/metafield-table-section-guide.md for full documentation."
+    },
     {
       "type": "header",
       "content": "Section Layout"
