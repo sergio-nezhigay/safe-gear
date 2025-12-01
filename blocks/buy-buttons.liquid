@@ -434,7 +434,7 @@
   }
 
   .wishlist-inline-button {
-    margin-top: calc(-1 * 140px);
+    margin-top: calc(-1 * (88px + var(--height-buy-buttons)));
   }
 
   .wishlist-inline-button > *,
@@ -445,7 +445,7 @@
     justify-content: center;
     height: 100%;
     width: 52px;
-    min-width: var(--height-buy-buttons);
+    min-width: 47px;
     cursor: pointer;
   }
 
@@ -477,7 +477,7 @@
 
   @media screen and (max-width: 990px) {
     .wishlist-inline-button {
-      margin-top: calc(-1 * 132px);
+      margin-top: calc(-1 * (80px + var(--height-buy-buttons   )));
     }
   }
 
@@ -486,7 +486,7 @@
       max-width: calc(100% - 60px);
     }
     .wishlist-inline-button {
-      margin-top: calc(-1 * 132px);
+      margin-top: calc(-1 * (80px + var(--height-buy-buttons)));
     }
   }
 {% endstylesheet %}
