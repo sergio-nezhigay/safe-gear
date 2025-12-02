@@ -1507,3 +1507,37 @@
   font-weight: 600;
   margin-left: 4px;
 }
+
+/* Collection Card Restructuring */
+.collection-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.collection-description {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.collection-specs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 140px; /* Adjust as needed */
+  flex-shrink: 0;
+}
+
+.collection-dimensions {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.dimension-line {
+  margin-bottom: 2px;
+}
+
+.collection-price {
+  margin-top: auto;
+  font-weight: bold;
+}

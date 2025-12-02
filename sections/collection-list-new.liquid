@@ -782,11 +782,57 @@
                         <a href="{{ link_url }}">{{ col.title | escape }}</a>
                       </h3>
 
-                      {% if col.description != blank %}
-                        <div class="collection-description">
-                          {{ col.description | strip_html }}
+                      <div class="collection-content-wrapper">
+                        {% if col.description != blank %}
+                          <div class="collection-description">
+                            {{ col.description | strip_html }}
+                          </div>
+                        {% endif %}
+
+                        <div class="collection-specs-wrapper">
+                          {% if has_depth_data or has_width_data or has_height_data %}
+                            <div class="collection-dimensions">
+                              {% if has_height_data %}
+                                <div class="dimension-line">
+                                  {{ section.settings.height_display_label | default: 'Height' }}:
+                                  {% if min_height == max_height %}
+                                    {{ min_height }}mm
+                                  {% else %}
+                                    {{ min_height }}-{{ max_height }}mm
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                              {% if has_width_data %}
+                                <div class="dimension-line">
+                                  {{ section.settings.width_display_label | default: 'Width' }}:
+                                  {% if min_width == max_width %}
+                                    {{ min_width }}mm
+                                  {% else %}
+                                    {{ min_width }}-{{ max_width }}mm
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                              {% if has_depth_data %}
+                                <div class="dimension-line">
+                                  {{ section.settings.depth_display_label | default: 'Depth' }}:
+                                  {% if min_depth == max_depth %}
+                                    {{ min_depth }}mm
+                                  {% else %}
+                                    {{ min_depth }}-{{ max_depth }}mm
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                            </div>
+                          {% endif %}
+
+                          {% if collection_min_price > 0 %}
+                            <div class="collection-price">
+                              <span class="price-label">{{ section.settings.price_label | default: 'from' }}</span>
+                              <span class="price-value">{{ collection_min_price | money }}</span>
+                            </div>
+                          {% endif %}
                         </div>
-                      {% endif %}
+                      </div>
                     </div>
                   </div>
 
@@ -1022,48 +1068,6 @@
                     </div>
 
                     <div class="collection-details">
-                      {% if has_depth_data or has_width_data or has_height_data %}
-                        <div class="collection-dimensions">
-                          {% if has_height_data %}
-                            <div class="dimension-line">
-                              {{ section.settings.height_display_label | default: 'Height' }}:
-                              {% if min_height == max_height %}
-                                {{ min_height }}mm
-                              {% else %}
-                                {{ min_height }}-{{ max_height }}mm
-                              {% endif %}
-                            </div>
-                          {% endif %}
-                          {% if has_width_data %}
-                            <div class="dimension-line">
-                              {{ section.settings.width_display_label | default: 'Width' }}:
-                              {% if min_width == max_width %}
-                                {{ min_width }}mm
-                              {% else %}
-                                {{ min_width }}-{{ max_width }}mm
-                              {% endif %}
-                            </div>
-                          {% endif %}
-                          {% if has_depth_data %}
-                            <div class="dimension-line">
-                              {{ section.settings.depth_display_label | default: 'Depth' }}:
-                              {% if min_depth == max_depth %}
-                                {{ min_depth }}mm
-                              {% else %}
-                                {{ min_depth }}-{{ max_depth }}mm
-                              {% endif %}
-                            </div>
-                          {% endif %}
-                        </div>
-                      {% endif %}
-
-                      {% if collection_min_price > 0 %}
-                        <div class="collection-price">
-                          <span class="price-label">{{ section.settings.price_label | default: 'from' }}</span>
-                          <span class="price-value">{{ collection_min_price | money }}</span>
-                        </div>
-                      {% endif %}
-
                       {% if section.settings.show_button %}
                         <div class="collection-action">
                           <a
