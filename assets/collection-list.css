@@ -865,7 +865,6 @@
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    padding: 0 var(--spacing-sm);
   }
 
   .collection-badges {
@@ -873,14 +872,12 @@
     flex-direction: column;
     gap: var(--spacing-sm);
     flex: 0 0 auto;
-    align-self: flex-start;
-    margin-left: auto;
   }
 
   .badge {
-    width: 60px;
-    height: 60px;
-    border-radius: var(--border-radius);
+    width: 50px;
+    height: 50px;
+    border-radius: 1px;
     overflow: hidden;
     background: white;
     border: 1px solid #e8ecef;
@@ -1052,7 +1049,10 @@
   }
 
   .collection-card-bottom {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: start  ;
+    justify-content: space-between;;
   }
 
   @media (max-width: 768px) {
