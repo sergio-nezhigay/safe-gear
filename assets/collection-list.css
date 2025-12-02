@@ -1416,7 +1416,7 @@
   .product-price {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #3EB211;
     margin-bottom: var(--spacing-md);
     margin-top: auto;
   }
@@ -1496,7 +1496,7 @@
 
 .spec-label {
   font-size: 10px;
-  color: #6c757d;
+   color: #000;
 }
 
 .spec-value {
