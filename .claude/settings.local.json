@@ -34,7 +34,11 @@
       "Bash(git revert:*)",
       "WebFetch(domain:docs.google.com)",
       "Bash(sed:*)",
-      "Bash(npx markdown-pdf:*)"
+      "Bash(npx markdown-pdf:*)",
+      "Bash(git checkout:*)",
+      "Bash(timeout /t 5)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
