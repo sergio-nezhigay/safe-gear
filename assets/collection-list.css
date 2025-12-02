@@ -1475,3 +1475,32 @@
   .products-grid[style*="display: none"] + .products-pagination {
     display: none;
   }
+
+/* Product Specifications Table */
+.product-specifications {
+  margin: 10px 0;
+  font-size: 10px;
+  color: #000;
+}
+
+.spec-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-row {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.spec-label {
+font-size: 10px ;
+}
+
+.spec-value {
+font-size: 10px;
+/*text-align: right;*/
+}

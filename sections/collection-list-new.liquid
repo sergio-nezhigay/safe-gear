@@ -1171,11 +1171,46 @@
                             <a href="{{ product.url }}">{{ product.title | escape }}</a>
                           </h3>
 
-                          {% if product.description != blank %}
-                            <div class="product-description">
-                              {{ product.description | strip_html | truncate: 100 }}
+                          <div class="product-specifications">
+                            {% assign height = product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+                            {% assign width = product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+                            {% assign depth = product.metafields.custom.new_depth.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+
+                            {% assign min_weight = 0 %}
+                            {% assign max_weight = 0 %}
+
+                            {% if product.variants.size > 0 %}
+                              {% assign weights = product.variants | map: 'weight' | sort %}
+                              {% assign min_weight = weights.first | divided_by: 1000.0 %}
+                              {% assign max_weight = weights.last | divided_by: 1000.0 %}
+                            {% endif %}
+
+                            <div class="spec-table">
+                              {% if height > 0 or width > 0 or depth > 0 %}
+                                <div class="spec-row">
+                                  <span class="spec-label">H x W x D (mm)</span>
+                                  <span class="spec-value">
+                                    {% if height > 0 %}{{ height }}{% else %}-{% endif %} x
+                                    {% if width > 0 %}{{ width }}{% else %}-{% endif %} x
+                                    {% if depth > 0 %}{{ depth }}{% else %}-{% endif %}
+                                  </span>
+                                </div>
+                              {% endif %}
+
+                              {% if max_weight > 0 %}
+                                <div class="spec-row">
+                                  <span class="spec-label">Weight</span>
+                                  <span class="spec-value">
+                                    {% if min_weight == max_weight %}
+                                      {{ min_weight | round: 1 }} kg
+                                    {% else %}
+                                      {{ min_weight | round: 1 }}-{{ max_weight | round: 1 }} kg
+                                    {% endif %}
+                                  </span>
+                                </div>
+                              {% endif %}
                             </div>
-                          {% endif %}
+                          </div>
 
                           <div class="product-price">
                             {{ product.price | money }}
