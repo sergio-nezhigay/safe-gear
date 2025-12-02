@@ -1188,11 +1188,11 @@
                             <div class="spec-table">
                               {% if height > 0 or width > 0 or depth > 0 %}
                                 <div class="spec-row">
-                                  <span class="spec-label">H x W x D (mm)</span>
+                                  <span class="spec-label">H x W x D</span>
                                   <span class="spec-value">
                                     {% if height > 0 %}{{ height }}{% else %}-{% endif %} x
                                     {% if width > 0 %}{{ width }}{% else %}-{% endif %} x
-                                    {% if depth > 0 %}{{ depth }}{% else %}-{% endif %}
+                                    {% if depth > 0 %}{{ depth }}{% else %}-{% endif %} mm
                                   </span>
                                 </div>
                               {% endif %}
