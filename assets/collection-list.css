@@ -1414,8 +1414,8 @@
 
 
   .product-price {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
     color: #3EB211;
     margin-bottom: var(--spacing-md);
     margin-top: auto;
