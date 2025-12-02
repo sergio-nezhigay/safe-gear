@@ -34,7 +34,7 @@
       }
     ]
   },
-  
+
   {
     "name": "t:names.colors",
     "settings": [
@@ -2510,6 +2510,19 @@
         "id": "icon_fire_120_minutes_description",
         "label": "120 Minutes Description",
         "default": "<p><strong>120 Minutes Fire Resistance</strong> - Maximum fire protection rating of 2 hours at extreme temperatures. Premium protection for irreplaceable documents and valuable items.</p>"
+      }
+    ],
+    "name": "t:names.badges"
+  },
+  {
+    "name": "Product Grid",
+    "settings": [
+      {
+        "type": "text",
+        "id": "product_price_suffix",
+        "label": "Price Suffix",
+        "default": "incl. VAT",
+        "info": "Text to display after the product price (e.g., incl. VAT)"
       }
     ]
   }

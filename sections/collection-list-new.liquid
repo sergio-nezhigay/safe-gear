@@ -1214,6 +1214,9 @@
 
                           <div class="product-price">
                             {{ product.price | money }}
+                            {% if settings.product_price_suffix != blank %}
+                              <span class="price-suffix">{{ settings.product_price_suffix }}</span>
+                            {% endif %}
                           </div>
 
                           {% if section.settings.show_product_button %}
