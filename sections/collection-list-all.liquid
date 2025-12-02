@@ -229,10 +229,10 @@
     </div>
   {% endif %}
 
-  <div class="collections-container" 
+  <div class="collections-container"
        data-collections-per-page="{{ section.settings.collections_per_page | default: 12 }}"
        data-show-pagination="{{ section.settings.show_pagination | default: true }}">
-    
+
     <div class="mobile-filter-toggle">
       <button type="button" id="mobile-filter-btn" class="mobile-filter-button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -243,7 +243,7 @@
         <span class="filter-count" id="active-filter-count" style="display:none;">0</span>
       </button>
     </div>
-    
+
     <div class="mobile-filter-overlay" id="mobile-filter-overlay">
       <div class="mobile-filter-drawer" id="mobile-filter-drawer">
         <div class="mobile-filter-header">
@@ -312,13 +312,13 @@
                   <div class="price-range-slider">
                     <div class="price-range-track"></div>
                     <input type="range" id="price-min" class="price-slider price-slider-min"
-                           min="{{ global_min_price | divided_by: 100 }}" 
-                           max="{{ global_max_price | divided_by: 100 }}" 
+                           min="{{ global_min_price | divided_by: 100 }}"
+                           max="{{ global_max_price | divided_by: 100 }}"
                            value="{{ global_min_price | divided_by: 100 }}"
                            step="1" data-filter-type="price_range" aria-label="Minimum price">
                     <input type="range" id="price-max" class="price-slider price-slider-max"
-                           min="{{ global_min_price | divided_by: 100 }}" 
-                           max="{{ global_max_price | divided_by: 100 }}" 
+                           min="{{ global_min_price | divided_by: 100 }}"
+                           max="{{ global_max_price | divided_by: 100 }}"
                            value="{{ global_max_price | divided_by: 100 }}"
                            step="1" data-filter-type="price_range" aria-label="Maximum price">
                   </div>
@@ -391,12 +391,12 @@
                              min="{{ min_val }}" max="{{ max_val }}" value="{{ max_val }}"
                              step="1" data-filter-type="{{ dimension }}_range" aria-label="Maximum {{ dimension }}">
                     </div>
-                    
+
                     <div class="dimension-range-labels">
                       <span class="{{ dimension }}-min-label">{{ min_val }}</span>
                       <span class="{{ dimension }}-max-label">{{ max_val }}</span>
                     </div>
-                    
+
                     <div class="dimension-range-inputs">
                       <input type="number" id="{{ dimension }}-min-input" class="dimension-input {{ dimension }}-min-input"
                              min="{{ min_val }}" max="{{ max_val }}" value="{{ min_val }}" placeholder="Min">
@@ -447,7 +447,7 @@
       <div class="results-info" style="display:none;">
         <div class="results-count">{{ section.settings.results_count_text | default: 'Showing all collections' }}</div>
       </div>
-      
+
       <div class="collections-grid" id="collections-grid">
         {% if child_handles and child_handles.size > 0 %}
           {% for h in child_handles %}
@@ -471,7 +471,7 @@
                 endif
               %}
 
-              <div class="collection-card" 
+              <div class="collection-card"
                    data-burglary-grade="{{ col.metafields.custom.burglary_grade.value | default: '' | escape }}"
                    data-fire-resistance="{{ col.metafields.custom.fire_resistance.value | default: '' | escape }}"
                    data-category="{{ col.title | escape }}"
@@ -480,12 +480,12 @@
                    data-width="{{ first_width | default: '0' }}"
                    data-height="{{ first_height | default: '0' }}"
                    data-weight="{{ first_weight | default: '0' }}">
-                
+
                 <div class="collection-card-top">
                   <div class="collection-image">
                     <a href="{{ col.url }}" aria-label="{{ col.title | escape }}">
                       {% if col.featured_image %}
-                        <img src="{{ col.featured_image | img_url: '290x178' }}" 
+                        <img src="{{ col.featured_image | img_url: '290x178' }}"
                              alt="{{ col.title | escape }}"
                              loading="lazy" width="290" height="178">
                       {% else %}
@@ -495,12 +495,12 @@
                       {% endif %}
                     </a>
                   </div>
-                  
+
                   <div class="collection-info">
                     <h3 class="collection-title">
                       <a href="{{ col.url }}">{{ col.title | escape }}</a>
                     </h3>
-                    
+
                     {% if col.description != blank %}
                       <div class="collection-description">
                         {{ col.description | strip_html | truncate: 120 }}
@@ -508,12 +508,12 @@
                     {% endif %}
                   </div>
                 </div>
-                
+
                 <div class="collection-card-bottom">
                   <div class="collection-badges">
                     {% assign fire_resistance = col.metafields.custom.fire_resistance.value %}
                     {% assign burglary_grade = col.metafields.custom.burglary_grade.value %}
-                    
+
                     {% if fire_resistance != blank %}
                       <div class="badge fire-badge" data-badge-type="fire" data-badge-value="{{ fire_resistance | escape }}" title="Fire Resistance: {{ fire_resistance | escape }}">
                         {% case fire_resistance %}
@@ -596,7 +596,7 @@
           </div>
         {% endif %}
       </div>
-      
+
       <div class="pagination" id="pagination-container"></div>
     </div>
   </div>

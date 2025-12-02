@@ -861,6 +861,13 @@
     text-decoration: none;
   }
 
+  .collection-action {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-sm);
+  }
+
   .collection-badges {
     display: flex;
     flex-direction: column;
