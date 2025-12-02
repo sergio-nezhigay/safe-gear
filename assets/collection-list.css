@@ -1508,6 +1508,83 @@
   color: #000;
 }
 
+/* Certification Badges - Mobile First */
+.product-specifications-wrapper {
+  margin: 10px 0;
+}
+
+.certification-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.2;
+  text-align: center;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.cert-badge__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Desktop: Side-by-side layout */
+@media (min-width: 769px) {
+  .product-specifications-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .product-specifications {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .certification-badges {
+    flex: 0 0 auto;
+    margin-top: 0;
+    min-width: 100px;
+    max-width: 140px;
+    align-items: flex-end;
+  }
+
+  .cert-badge {
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+}
+
+/* Large Desktop: More space for badges */
+@media (min-width: 1024px) {
+  .certification-badges {
+    max-width: 160px;
+  }
+
+  .cert-badge {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+}
+
 .price-suffix {
   font-size: 14px;
   color: #3EB211;

@@ -1160,6 +1160,7 @@
                             <a href="{{ product.url }}">{{ product.title | escape }}</a>
                           </h3>
 
+                          <div class="product-specifications-wrapper">
                           <div class="product-specifications">
                             {% assign height = product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
                             {% assign width = product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
@@ -1200,6 +1201,26 @@
                               {% endif %}
                             </div>
                           </div>
+
+                          {%- assign cert_method = product.metafields.custom.burglary_test_method.value -%}
+                          {%- assign cert_center = product.metafields.custom.burglary_test_center.value -%}
+
+                          {%- if cert_method != blank or cert_center != blank -%}
+                            <div class="certification-badges">
+                              {%- if cert_method != blank -%}
+                                <div class="cert-badge cert-badge--method">
+                                  <span class="cert-badge__text">{{ cert_method | escape }}</span>
+                                </div>
+                              {%- endif -%}
+
+                              {%- if cert_center != blank -%}
+                                <div class="cert-badge cert-badge--center">
+                                  <span class="cert-badge__text">{{ cert_center | escape }}</span>
+                                </div>
+                              {%- endif -%}
+                            </div>
+                          {%- endif -%}
+                        </div>
 
                           <div class="product-price">
                             {{ product.price | money }}
