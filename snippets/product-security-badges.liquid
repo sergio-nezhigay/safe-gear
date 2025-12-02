@@ -2,14 +2,12 @@
   assign product = closest.product
   assign burglary_classification = product.metafields.custom.burglary_classification.value
   assign fire_duration = product.metafields.custom.fire_duration.value
-  
+
   if heading == blank
     assign heading = settings.security_features_heading | default: 'Security Features'
   endif
-  
-  unless show_heading
-    assign show_heading = true
-  endunless
+
+
 -%}
 
 {%- if burglary_classification != blank or fire_duration != blank -%}
@@ -21,33 +19,29 @@
     spacing-style
     size-style
   " style="
-    --border-width: 1px; --border-style: none; --border-color: rgb(var(--color-border-rgb) / 1.0); --border-radius: 0px; 
+    --border-width: 1px; --border-style: none; --border-color: rgb(var(--color-border-rgb) / 1.0); --border-radius: 0px;
     --padding-block-start: 0;--padding-block-end: 0;--padding-inline-start: 0px;--padding-inline-end: 0px;
     --size-style-width: 100%;--size-style-height: fit;--size-style-width-mobile: 100%; --size-style-width-mobile-min: 5rem;
   " data-testid="group-block">
   <div class="group-block__media-wrapper"></div>
-  
+
   <div class="
       group-block-content
       layout-panel-flex
       layout-panel-flex--column
     " style="--flex-direction: column; --flex-wrap: nowrap; --gap: 10px; --horizontal-alignment: ; --vertical-alignment: ; --vertical-alignment-mobile: ;">
-    
-    {% if show_heading %}
-      <div class="spacing-style text-block text-block--security-features h3" style="--padding-block-start: 0px; --padding-block-end:0px; --padding-inline-start:0px; --padding-inline-end:0px; --color: var(--color-foreground); --width: fit-content; --max-width: var(--max-width--body-normal);">
-        <h3>{{ heading | escape }}</h3>
-      </div>
-    {% endif %}
-    
+
+
+
     <div class="security-badges-container layout-panel-flex layout-panel-flex--row" style="--flex-direction: row; --flex-wrap: wrap; --gap: 20px; --horizontal-alignment: flex-start; --vertical-alignment: flex-start;">
-      
+
       {%- if burglary_classification != blank -%}
         {%- assign burglary_lower = burglary_classification | upcase -%}
         {%- assign show_burglary = false -%}
         {%- assign burglary_icon = blank -%}
         {%- assign burglary_alt = blank -%}
         {%- assign burglary_desc = blank -%}
-        
+
         {%- if burglary_lower contains 'S1' and settings.icon_burglary_s1 -%}
           {%- assign show_burglary = true -%}
           {%- assign burglary_icon = settings.icon_burglary_s1 -%}
@@ -99,12 +93,10 @@
           {%- assign burglary_alt = settings.icon_burglary_grade_7_description | default: 'Grade VII' -%}
           {%- assign burglary_desc = settings.icon_burglary_grade_7_description | default: 'Grade VII offers the ultimate in security protection.' -%}
         {%- endif -%}
-        
+
         {%- if show_burglary -%}
         <div class="security-badge-item">
-          <div class="badge burglary-badge">
-            <img src="{{ burglary_icon | img_url: '60x60' }}" alt="{{ burglary_alt }}" width="60" height="60" loading="lazy">
-          </div>
+
           <div class="badge-content">
             {% comment %} <h4 class="badge-title">Burglary Grade</h4> {% endcomment %}
             <div class="badge-description">{{ burglary_desc }}</div>
@@ -119,7 +111,7 @@
         {%- assign fire_icon = blank -%}
         {%- assign fire_alt = blank -%}
         {%- assign fire_desc = blank -%}
-        
+
         {%- if fire_lower contains 'fire insulated' or fire_lower contains 'insulated' or fire_lower contains 'Brandisoleret' and settings.icon_fire_insulated -%}
           {%- assign show_fire = true -%}
           {%- assign fire_icon = settings.icon_fire_insulated -%}
@@ -146,12 +138,10 @@
           {%- assign fire_alt = settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' -%}
           {%- assign fire_desc = settings.icon_fire_120_minutes_description | default: '120 minutes fire protection delivers maximum fire resistance.' -%}
         {%- endif -%}
-        
+
         {%- if show_fire -%}
         <div class="security-badge-item">
-          <div class="badge fire-badge">
-            <img src="{{ fire_icon | img_url: '60x60' }}" alt="{{ fire_alt }}" width="60" height="60" loading="lazy">
-          </div>
+
           <div class="badge-content">
             <h4 class="badge-title">Fire Resistance</h4>
             <div class="badge-description">{{ fire_desc }}</div>
@@ -169,40 +159,39 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      padding: 1rem;
+
       {% comment %} border: 1px solid rgb(var(--color-border-rgb) / 0.2); {% endcomment %}
-      border-radius: 8px;
-      background: rgb(var(--color-background-rgb));
+
       min-width: 280px;
       flex: 1;
     }
-    
+
     .badge {
       flex-shrink: 0;
     }
-    
+
     .badge-content {
       flex: 1;
     }
-    
+
     .badge-title {
       font-weight: 600;
       font-size: 1rem;
       color: rgb(var(--color-foreground-rgb));
       margin: 0 0 0.5rem 0;
     }
-    
+
     .badge-description {
       font-size: 0.875rem;
       line-height: 1.4;
       color: rgb(var(--color-foreground-rgb) / 0.8);
     }
-    
+
     @media (max-width: 768px) {
       .security-badges-container {
         --flex-direction: column !important;
       }
-      
+
       .security-badge-item {
         min-width: auto;
       }
