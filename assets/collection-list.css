@@ -740,8 +740,8 @@
   }
 
   .collection-image {
-    flex: 0 0 145px;
-    height: 120px;
+    flex: 0 0 164px;
+    height: 164px;
     overflow: hidden;
     border-radius: var(--border-radius);
   }
@@ -1020,6 +1020,13 @@
     gap: var(--spacing-lg);
   }
 
+  @media screen and (min-width: 768px) {
+    .collection-btn,
+    .collection-action {
+      width: 100%;
+    }
+  }
+
   @media (max-width: 1200px) {
     .collections-container {
       max-width: 100%;
@@ -1079,6 +1086,7 @@
   @media (min-width: 768px) {
     .collection-card-bottom {
       padding-top: 33px;
+      width: 192px;
     }
   }
 
