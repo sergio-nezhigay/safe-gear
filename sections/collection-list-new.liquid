@@ -723,6 +723,34 @@
                       endif
                     endfor
 
+                    assign fire_test_center = ''
+                    assign fire_test_method = ''
+                    assign burglary_test_center = ''
+                    assign burglary_test_method = ''
+
+                    for p in col.products
+                      if fire_test_center == '' and p.metafields.custom.fire_test_center.value != blank
+                        assign fire_test_center = p.metafields.custom.fire_test_center.value
+                      endif
+                      if fire_test_method == '' and p.metafields.custom.fire_test_method.value != blank
+                        assign fire_test_method = p.metafields.custom.fire_test_method.value
+                        assign fire_test_method_words = fire_test_method | split: ' '
+                        if fire_test_method_words.size >= 2
+                          assign fire_test_method = fire_test_method_words[0] | append: ' ' | append: fire_test_method_words[1]
+                        endif
+                      endif
+                      if burglary_test_center == '' and p.metafields.custom.burglary_test_center.value != blank
+                        assign burglary_test_center = p.metafields.custom.burglary_test_center.value
+                      endif
+                      if burglary_test_method == '' and p.metafields.custom.burglary_test_method.value != blank
+                        assign burglary_test_method = p.metafields.custom.burglary_test_method.value
+                        assign burglary_test_method_words = burglary_test_method | split: ' '
+                        if burglary_test_method_words.size >= 2
+                          assign burglary_test_method = burglary_test_method_words[0] | append: ' ' | append: burglary_test_method_words[1]
+                        endif
+                      endif
+                    endfor
+
                     if min_depth == 999999
                       assign min_depth = 0
                     endif
@@ -844,6 +872,7 @@
                       {% endif %}
 
                       {% if fire_resistance != blank and show_fire_badge and fire_resistance != 'Not Fireproof' %}
+                        <div class="badge-with-info">
                         <div
                           class="badge fire-badge"
                           data-badge-type="fire"
@@ -925,14 +954,26 @@
                               {% endif %}
                           {% endcase %}
                         </div>
+                        {% if fire_test_method != blank or fire_test_center != blank %}
+                          <div class="badge-info-text">
+                            {% if fire_test_method != blank %}
+                              <div class="badge-info-line">{{ fire_test_method }}</div>
+                            {% endif %}
+                            {% if fire_test_center != blank %}
+                              <div class="badge-info-line">{{ fire_test_center }}</div>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        </div>
                       {% endif %}
 
                       {% if burglary_grade != blank
                         and burglary_grade != 'Ingen klassificering'
                         and burglary_grade != 'No classification'
                       %}
+                        <div class="badge-with-info">
                         <div
-                          class="badge burglary-badge"
+                          class="target badge burglary-badge"
                           data-badge-type="burglary"
                           data-badge-value="{{ burglary_grade | escape }}"
                           title="Burglary Grade: {{ burglary_grade | escape }}"
@@ -1063,6 +1104,17 @@
                                 {{ burglary_grade | escape | truncate: 3, '' }}
                               </div>
                           {% endcase %}
+                        </div>
+                        {% if burglary_test_method != blank or burglary_test_center != blank %}
+                          <div class="badge-info-text">
+                            {% if burglary_test_method != blank %}
+                              <div class="badge-info-line">{{ burglary_test_method }}</div>
+                            {% endif %}
+                            {% if burglary_test_center != blank %}
+                              <div class="badge-info-line">{{ burglary_test_center }}</div>
+                            {% endif %}
+                          </div>
+                        {% endif %}
                         </div>
                       {% endif %}
                     </div>

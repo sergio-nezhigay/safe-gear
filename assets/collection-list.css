@@ -906,6 +906,27 @@
     line-height: 1;
   }
 
+  .badge-with-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .badge-info-line {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.57;
+    white-space: nowrap;
+  }
+
   .safe-view-image {
     flex: 0 0 200px;
     height: 120px;
@@ -1194,6 +1215,12 @@
     .badge {
       width: 45px;
       height: 45px;
+    }
+
+    .badge-info-line {
+      font-size: 9px;
+      padding: 1px 4px;
+      border-width: 1px;
     }
 
     .collection-price {
