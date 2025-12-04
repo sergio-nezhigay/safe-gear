@@ -1021,12 +1021,12 @@
     gap: var(--spacing-lg);
   }
 
-  @media screen and (min-width: 768px) {
+
     .collection-btn,
     .collection-action {
       width: 100%;
     }
-  }
+
 
   @media (max-width: 1200px) {
     .collections-container {
@@ -1096,6 +1096,10 @@
       padding: var(--spacing-xl) 15px;
       padding-top: 16px !important;
     }
+        .collection-card-bottom {
+      padding-top: 33px;
+    }
+
 
     .collections-container {
       flex-direction: column;
