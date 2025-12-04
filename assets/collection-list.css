@@ -1076,6 +1076,12 @@
     justify-content: space-between;;
   }
 
+  @media (min-width: 768px) {
+    .collection-card-bottom {
+      padding-top: 33px;
+    }
+  }
+
   @media (max-width: 768px) {
     .collection-list-section {
       padding: var(--spacing-xl) 15px;
