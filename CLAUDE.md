@@ -20,7 +20,7 @@ npm run pull
 ```
 
 Store: f1what-2r.myshopify.com
-Theme ID: 183334175046
+Theme ID: 185002983750
 
 ## Architecture
 
