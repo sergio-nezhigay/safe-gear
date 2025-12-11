@@ -1,6 +1,6 @@
 .site-header {
   background-color: #fbfbfb;
-  border-bottom: 1px solid var(--header-border);
+  /*border-bottom: 1px solid var(--header-border);*/
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 10px 0;
   gap: 0px;
   min-height: 70px;
   max-width: 1390px;
@@ -292,7 +292,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  color: var(--header-text);
+  color: #000;
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;

@@ -5,9 +5,9 @@
 }
 
 .breadcrumbs .breadcrumb-container {
-  max-width: 1390px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 10px 25px;
+  padding: 10px 32px 28px 32px;
 }
 
 .breadcrumbs .breadcrumb-list {
@@ -31,6 +31,10 @@
   max-width: 100%;
 }
 
+.breadcrumb-item span {
+  font-size:13px;
+}
+
 .breadcrumbs .breadcrumb-separator {
   color: var(--breadcrumb-separator);
   user-select: none;
@@ -45,7 +49,7 @@
   color: var(--breadcrumb-accent);
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   border-radius: 6px;
-  padding: 4px 6px;
+  padding: 4px 6px 4px 0;
 }
 
 .breadcrumbs .breadcrumb-link:hover,
