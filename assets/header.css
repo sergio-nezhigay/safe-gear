@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  gap: 2rem;
+  gap: 21px;
   min-height: 70px;
   max-width: 1390px;
   margin: 0 auto;
@@ -47,7 +47,7 @@
 .logo-image {
   display: block;
   max-height: 100px;
-  width: var(--logo-width);
+  width: 132px;
   height: auto;
   object-fit: contain;
 }
@@ -61,7 +61,7 @@
 
 .header-image {
   flex-shrink: 0;
-  margin: 0 1rem;
+  margin: 0 1px;
 }
 
 .header-img {
@@ -821,7 +821,7 @@ body.mobile-menu-open {
 .menu-dropdown-wrapper {
   position: relative;
   margin-left: 0;
-  margin-right: 1rem;
+  margin-right: 0;
 }
 
 /* Menu Dropdown Toggle Button */
@@ -829,7 +829,7 @@ body.mobile-menu-open {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px 8px 0;
   background: none;
   border: none;
   border-radius: 4px;
@@ -851,8 +851,9 @@ body.mobile-menu-open {
 }
 
 .menu-text {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
 }
 
 /* Mega Menu Dropdown */
