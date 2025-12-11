@@ -34,7 +34,8 @@
       "Bash(git revert:*)",
       "WebFetch(domain:docs.google.com)",
       "Bash(sed:*)",
-      "Bash(npx markdown-pdf:*)"
+      "Bash(npx markdown-pdf:*)",
+      "mcp__playwright__browser_snapshot"
     ],
     "deny": [],
     "ask": []
