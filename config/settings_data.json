@@ -183,7 +183,7 @@
           "language_country_mapping": "",
           "countries_filter": "",
           "custom_css": "",
-          "header_switcher_reference_element": ".header-image.desktop-only",
+          "header_switcher_reference_element": ".header-help-dropdown.desktop-only",
           "header_switcher_relative_position": "after",
           "mobile_menu_switcher_reference_element": ".mobile-nav-contact",
           "mobile_switcher_relative_position": "after",
