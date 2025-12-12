@@ -1397,18 +1397,18 @@
 
   .product-card {
     background: white;
-    border: 1px solid var(--border-color);
+
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     transition: all var(--transition-normal);
     display: flex;
     flex-direction: column;
-    outline: 1px solid red;
   }
 
   .product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    z-index: 1;
   }
 
   .product-image {
@@ -1426,7 +1426,7 @@
   }
 
   .product-card:hover .product-image img {
-    transform: scale(1.05);
+    transform: none;
   }
 
   .product-placeholder {
