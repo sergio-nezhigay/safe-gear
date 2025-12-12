@@ -121,6 +121,7 @@
     color: #121212;
     margin: 0 0 var(--spacing-md) 0;
     line-height: 1.2;
+    text-align: left;
   }
 
   .collection-header .collection-description {
@@ -132,7 +133,7 @@
     -webkit-line-clamp: none;
     -webkit-box-orient: initial;
     overflow: visible;
-
+    text-align: left;
   }
 
 

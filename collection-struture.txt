@@ -1,0 +1,36 @@
+Collection Page Top Area Content Brief
+Overview
+This document outlines the structure and data sources for the top area content of collection pages on SafeGear.no. The differences observed between pages are due to the assignment of different Shopify Templates.
+
+1. Simple Category Page (e.g., Pengeskabe)
+URL Example: /collections/pengeskabe
+Template Type: Collection List (L2/L1 Category Page)
+Section File:
+sections/collection-list-new.liquid
+ or
+sections/L1-collection.liquid
+
+This layout is lighter and designed mainly for navigation to sub-collections.
+
+UI Element	CSS Class	Data Source (Liquid/Metafield)	Description
+Title	.collection-title	{{ collection.title }}	The standard name of the collection in Shopify Admin.
+Description	.collection-description	{{ collection.description }}	The main description field from the editor. HTML tags are often stripped or simplified.
+2. Product Landing Page (e.g., Al-brandsikring)
+URL Example: /collections/al-brandsikring-1
+Template Type: Default Collection (Product Grid)
+Section File:
+sections/new-collection-grid.liquid
+
+This layout is richer and designed for conversion, featuring trust badges and SEO content.
+
+UI Element	CSS Class	Data Source (Liquid/Metafield)	Description
+Title	.collection-header__title	{{ collection.title }}	Standard name. Falls back to section settings if empty.
+Description	.collection-header__description	{{ collection.description }}	Main description. Renders full HTML.
+Features (Badges)	.collection-header__features	collection.metafields.custom.burglary_grade
+collection.metafields.custom.fire_resistance	Burglary Grade: Displays a blue shield icon corresponding to the grade (e.g., "Grade I").
+Fire Resistance: Displays a red flame icon corresponding to the duration (e.g., "60 Minutes").
+Expandable Content	.collection-header__expandable	collection.metafields.custom.read_more_text	Extra SEO text hidden behind a "Read More" button. Stored in a custom metafield.
+Technical Summary
+Logic: The "Features" section only appears if the collection has values for burglary_grade or fire_resistance metafields.
+Expandable Text: The "Read more" section only appears if the read_more_text metafield is populated.
+Differentiation: If a collection page looks "Simple," it is assigned the Listing/L2 template. If it looks "Advanced," it is assigned the Default template. You can change this in the Shopify Admin on the right-hand side of the Collection edit page (Theme template).
