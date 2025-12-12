@@ -79,18 +79,21 @@ flex-direction: column;
   object-fit: contain;
 }
 
+
+
 .feature-item__title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-  color: #333;
+    font-family: Assistant !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0.4px !important;
+    font-size: 14px !important;
+    color: #202223 !important;
+    margin: 0 0 8px 0;
 }
 
 .feature-item__text {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
+  font-size: 14px !important;
+  line-height: 1.7;
+  color: #202223;
 }
 
 .collection-header__expandable {
