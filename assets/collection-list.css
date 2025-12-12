@@ -1445,6 +1445,16 @@
     flex: 1;
   }
 
+  /* Add padding to inner elements so action button stays full width */
+  .product-collection,
+  .product-title,
+  .product-description,
+  .product-specifications,
+  .product-price {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   .product-collection {
     font-size: 0.8rem;
     color: var(--text-secondary);
@@ -1456,13 +1466,15 @@
 
   .product-title {
     margin: 0;
+    font-family: var(--font-family);
     font-size: 12px;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.25;
   }
 
   .product-title a {
     text-decoration: none;
+    color: #000;
     transition: color var(--transition-fast);
   }
 
