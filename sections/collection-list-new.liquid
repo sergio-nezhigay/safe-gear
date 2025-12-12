@@ -657,7 +657,7 @@
             <div class="collection-header__features">
               {% comment %} Auto-generated Burglary Resistance feature {% endcomment %}
               {% if burglary_grade != blank %}
-                <div class="feature-item feature-item--auto">
+                <div class="feature-item feature-item--auto feature-item--burglary">
                   <div class="feature-item__icon">
                     {% case burglary_grade %}
                       {% when 'S1' %}
@@ -724,7 +724,7 @@
 
               {% comment %} Auto-generated Fire Resistance feature {% endcomment %}
               {% if fire_resistance != blank %}
-                <div class="feature-item feature-item--auto">
+                <div class="feature-item feature-item--auto feature-item--fire">
                   <div class="feature-item__icon">
                     {% case fire_resistance %}
                       {% when '30 Minutes' or '30 minutter' %}

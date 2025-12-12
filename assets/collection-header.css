@@ -43,8 +43,8 @@
 .collection-header__features {
 display: flex;
 flex-direction: column;
-  gap: 25px;
-  margin: 40px 0;
+  gap: 37px;
+  margin: 34px 0;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -82,18 +82,30 @@ flex-direction: column;
 
 
 .feature-item__title {
+    display: inline !important;
     font-family: Assistant !important;
     line-height: 1.7 !important;
     letter-spacing: 0.4px !important;
     font-size: 14px !important;
     color: #202223 !important;
-    margin: 0 0 8px 0;
+    margin: 0 5px 0 0 !important;
+}
+
+.feature-item__title::after {
+    content: ": ";
 }
 
 .feature-item__text {
+  display: inline !important;
   font-size: 14px !important;
   line-height: 1.7;
   color: #202223;
+}
+
+.feature-item__text p {
+    display: inline;
+    margin: 0;
+    font-size: inherit;
 }
 
 .collection-header__expandable {
