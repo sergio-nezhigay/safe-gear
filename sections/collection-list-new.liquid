@@ -941,11 +941,11 @@
                       </h3>
 
                       <div class="collection-content-wrapper">
-                        {% if col.description != blank %}
-                          <div class="collection-description">
+                        <div class="collection-description">
+                          {% if col.description != blank %}
                             {{ col.description | strip_html }}
-                          </div>
-                        {% endif %}
+                          {% endif %}
+                        </div>
 
                         <div class="collection-specs-wrapper">
                           {% if has_depth_data or has_width_data or has_height_data %}

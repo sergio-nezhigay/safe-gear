@@ -735,6 +735,7 @@
     background: white;
     transition: all var(--transition-normal);
     cursor: pointer;
+    overflow: hidden;
   }
 
   .collection-card:hover {
@@ -1402,6 +1403,7 @@
     transition: all var(--transition-normal);
     display: flex;
     flex-direction: column;
+    outline: 1px solid red;
   }
 
   .product-card:hover {
@@ -1437,7 +1439,7 @@
   }
 
   .product-info {
-    padding: var(--spacing-md);
+    padding: 0;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -1492,8 +1494,8 @@
     background: #3EB211;
     color: white;
     text-decoration: none;
-    padding: 4px var(--spacing-md);
-    border-radius: var(--border-radius);
+    padding: 1px var(--spacing-md);
+    border-radius: 6px;
     font-weight: 400;
     text-align: center;
     transition: all var(--transition-fast);
