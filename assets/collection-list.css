@@ -728,7 +728,6 @@
   .collection-card {
     display: flex;
     gap: 20px;
-    outline: 1px solid blue;
     padding: 12px 17px;
     border-bottom: 1px solid var(--border-color);
     /*border: 1px solid #e8ecef;
@@ -829,32 +828,31 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    margin: var(--spacing-xs) 0;
+    margin: 0;
   }
 
   .price-label {
-    font-size: 12px;
-    color: var(--text-secondary);
-    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
   }
 
   .price-value {
-    font-size: 1.1rem;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--success-color);
+    color: #3EB211;
   }
 
   .collection-btn {
     background: #3EB211;
     color: white;
-    padding: 6px var(--spacing-md);
+    padding: 4px var(--spacing-md);
     text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 13px;
     display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
     transition: all var(--transition-normal);
     text-align: center;
     margin-top: var(--spacing-xs);
@@ -1089,7 +1087,7 @@
 
   @media (min-width: 768px) {
     .collection-card-bottom {
-      padding-top: 33px;
+      padding-top: 30px;
       width: 192px;
     }
   }
@@ -1210,10 +1208,18 @@
       flex-wrap: wrap;
     }
 
-    .collection-details .dimension-line {
+    .collection-details .dimension-row {
+      display: inline-flex;
+      gap: 3px;
+      align-items: baseline;
+    }
+
+    .collection-details .dimension-label,
+    .collection-details .dimension-value {
       font-size: 0.7rem;
       color: var(--text-secondary);
       white-space: nowrap;
+      font-weight: 400; /* Resetting desktop bold if needed, or keep it? Original was all regular/secondary */
     }
 
     .collection-details .collection-price {
@@ -1569,6 +1575,7 @@
   display: flex;
   justify-content: space-between;
   gap: 15px;
+  flex: 1;
 }
 
 .collection-description {
@@ -1585,12 +1592,27 @@
 }
 
 .collection-dimensions {
-  font-size: 0.85rem;
-  color: #666;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-column-gap: 15px;
+  row-gap: 1px;
 }
 
-.dimension-line {
-  margin-bottom: 2px;
+.dimension-row {
+  display: contents;
+}
+
+.dimension-label {
+  font-size: 0.85rem; /* derived from previous .collection-dimensions font size, or adjusted */
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+}
+
+.dimension-value {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #000;
 }
 
 .collection-price {

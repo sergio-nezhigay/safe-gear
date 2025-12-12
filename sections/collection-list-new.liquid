@@ -951,33 +951,39 @@
                           {% if has_depth_data or has_width_data or has_height_data %}
                             <div class="collection-dimensions">
                               {% if has_height_data %}
-                                <div class="dimension-line">
-                                  {{ section.settings.height_display_label | default: 'Height' }}:
+                                <div class="dimension-row">
+                                  <span class="dimension-label">{{ section.settings.height_display_label | default: 'Height' }}</span>
+                                  <span class="dimension-value">
                                   {% if min_height == max_height %}
-                                    {{ min_height }}mm
+                                    {{ min_height }} mm
                                   {% else %}
-                                    {{ min_height }}-{{ max_height }}mm
+                                    {{ min_height }} - {{ max_height }} mm
                                   {% endif %}
+                                  </span>
                                 </div>
                               {% endif %}
                               {% if has_width_data %}
-                                <div class="dimension-line">
-                                  {{ section.settings.width_display_label | default: 'Width' }}:
+                                <div class="dimension-row">
+                                  <span class="dimension-label">{{ section.settings.width_display_label | default: 'Width' }}</span>
+                                  <span class="dimension-value">
                                   {% if min_width == max_width %}
-                                    {{ min_width }}mm
+                                    {{ min_width }} mm
                                   {% else %}
-                                    {{ min_width }}-{{ max_width }}mm
+                                    {{ min_width }} - {{ max_width }} mm
                                   {% endif %}
+                                  </span>
                                 </div>
                               {% endif %}
                               {% if has_depth_data %}
-                                <div class="dimension-line">
-                                  {{ section.settings.depth_display_label | default: 'Depth' }}:
+                                <div class="dimension-row">
+                                  <span class="dimension-label">{{ section.settings.depth_display_label | default: 'Depth' }}</span>
+                                  <span class="dimension-value">
                                   {% if min_depth == max_depth %}
-                                    {{ min_depth }}mm
+                                    {{ min_depth }} mm
                                   {% else %}
-                                    {{ min_depth }}-{{ max_depth }}mm
+                                    {{ min_depth }} - {{ max_depth }} mm
                                   {% endif %}
+                                  </span>
                                 </div>
                               {% endif %}
                             </div>
