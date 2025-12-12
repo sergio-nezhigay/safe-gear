@@ -27,7 +27,7 @@
   }
 
   .collection-header .collection-title {
-    margin-bottom: 24px;
+    margin-bottom: 31px;
     font-family: 'Assistant', sans-serif !important;
     font-weight: 400 !important;
   }
@@ -88,16 +88,16 @@
   .collections-container {
     display: flex;
     gap: 34px;
-    max-width: 1115px;
+    max-width: 1095px;
     margin: 0 auto;
     width: 100%;
     align-items: flex-start;
-    padding-top: 24px;
+    padding-top: 41px;
     min-height: 100vh;
   }
 
   .filters-sidebar {
-    flex: 0 0 260px;
+    flex: 0 0 255px;
     position: sticky;
     top: 20px;
     align-self: flex-start;
@@ -126,7 +126,7 @@
   .collection-header .collection-description {
     font-size: 16px;
     color: #202223;
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
     display: block;
     -webkit-line-clamp: none;
@@ -147,8 +147,8 @@
     margin: 0 0 var(--spacing-md) 0;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--text-primary);
-    border-bottom: 2px solid var(--primary-color);
+    color: #1a1a1a;
+    border-bottom: 2px solid #0b3d62;
     padding-bottom: var(--spacing-xs);
   }
 
@@ -168,7 +168,7 @@
     font-weight: 600;
     color: var(--text-primary);
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.1px;
     cursor: pointer;
     transition: color var(--transition-fast);
     padding: var(--spacing-xs) 0;

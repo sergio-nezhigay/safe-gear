@@ -49,7 +49,11 @@
   color: var(--breadcrumb-accent);
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   border-radius: 6px;
-  padding: 4px 6px 4px 0;
+  padding: 4px 6px 4px 4px;
+}
+
+.breadcrumbs .breadcrumb-home {
+    padding: 4px 6px 4px 0;
 }
 
 .breadcrumbs .breadcrumb-link:hover,
