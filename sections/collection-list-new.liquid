@@ -727,19 +727,19 @@
                 <div class="feature-item feature-item--auto">
                   <div class="feature-item__icon">
                     {% case fire_resistance %}
-                      {% when '30 Minutes' %}
+                      {% when '30 Minutes' or '30 minutter' %}
                         {% if settings.icon_fire_30_minutes != blank %}
                           <img src="{{ settings.icon_fire_30_minutes | image_url: width: 48 }}" alt="30 Minutes Fire Protection" width="24" height="24">
                         {% endif %}
-                      {% when '60 Minutes' %}
+                      {% when '60 Minutes' or '60 minutter' %}
                         {% if settings.icon_fire_60_minutes != blank %}
                           <img src="{{ settings.icon_fire_60_minutes | image_url: width: 48 }}" alt="60 Minutes Fire Protection" width="24" height="24">
                         {% endif %}
-                      {% when '90 Minutes' %}
+                      {% when '90 Minutes' or '90 minutter' %}
                         {% if settings.icon_fire_90_minutes != blank %}
                           <img src="{{ settings.icon_fire_90_minutes | image_url: width: 48 }}" alt="90 Minutes Fire Protection" width="24" height="24">
                         {% endif %}
-                      {% when '120 Minutes' %}
+                      {% when '120 Minutes' or '120 minutter' %}
                         {% if settings.icon_fire_120_minutes != blank %}
                           <img src="{{ settings.icon_fire_120_minutes | image_url: width: 48 }}" alt="120 Minutes Fire Protection" width="24" height="24">
                         {% endif %}
@@ -753,13 +753,13 @@
                     <h3 class="feature-item__title">Certified Fire Protection</h3>
                     <div class="feature-item__text">
                       {% case fire_resistance %}
-                        {% when '30 Minutes' %}
+                        {% when '30 Minutes' or '30 minutter' %}
                           {{ settings.icon_fire_30_minutes_description | default: 'Tested according to European Standards. 30 Minutes fire protection certified.' }}
-                        {% when '60 Minutes' %}
+                        {% when '60 Minutes' or '60 minutter' %}
                           {{ settings.icon_fire_60_minutes_description | default: 'Tested according to European Standards. 60 Minutes fire protection certified.' }}
-                        {% when '90 Minutes' %}
+                        {% when '90 Minutes' or '90 minutter' %}
                           {{ settings.icon_fire_90_minutes_description | default: 'Tested according to European Standards. 90 Minutes fire protection certified.' }}
-                        {% when '120 Minutes' %}
+                        {% when '120 Minutes' or '120 minutter' %}
                           {{ settings.icon_fire_120_minutes_description | default: 'Tested according to European Standards. 120 Minutes fire protection certified.' }}
                         {% when 'Fire Insulated' %}
                           {{ settings.icon_fire_insulated_description | default: 'Tested according to European Standards. Fire Insulated protection certified.' }}
