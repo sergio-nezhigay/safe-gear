@@ -35,7 +35,8 @@
       "WebFetch(domain:docs.google.com)",
       "Bash(sed:*)",
       "Bash(npx markdown-pdf:*)",
-      "mcp__playwright__browser_snapshot"
+      "mcp__playwright__browser_snapshot",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

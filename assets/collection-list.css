@@ -115,7 +115,7 @@
     margin-bottom: var(--spacing-xl);
   }
 
-  .collection-title {
+  .collection-card-title {
     font-size: clamp(16px, 4vw, 18px);
     font-weight: 700;
     color: #121212;
@@ -775,11 +775,11 @@
     min-height: 0;
   }
 
-  .collection-title {
+  .collection-card-title {
     margin: 0;
   }
 
-  .collection-title a {
+  .collection-card-title a {
     font-size: 18px;
     font-family: Assistant;
     font-weight: 700;
@@ -790,7 +790,7 @@
     display: block;
   }
 
-  .collection-title a:hover {
+  .collection-card-title a:hover {
     color: var(--primary-hover);
     text-decoration: none;
   }
@@ -1182,7 +1182,7 @@
       width: 100%;
     }
 
-    .collection-title a {
+    .collection-card-title a {
       font-size: 0.95rem;
       font-weight: 700;
       line-height: 1.2;
@@ -1309,7 +1309,7 @@
       height: 70px;
     }
 
-    .collection-title a {
+    .collection-card-title a {
       font-size: 0.85rem;
     }
 

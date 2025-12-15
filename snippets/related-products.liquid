@@ -383,20 +383,20 @@ class RelatedProducts {
       const productsPerCollection = Math.ceil(this.settings.maxProducts / maxCollections);
       
       for (const collection of visibleCollections.slice(0, maxCollections)) {
-        const collectionLink = collection.querySelector('.collection-title a');
+        const collectionLink = collection.querySelector('.collection-card-title a');
         if (collectionLink) {
           const collectionUrl = collectionLink.href;
           const collectionHandle = collectionUrl.split('/collections/')[1]?.split('?')[0];
-          
+
           if (collectionHandle) {
             const products = await this.fetchCollectionProducts(collectionHandle);
-            
+
             // Просто беремо перші N продуктів без додаткової фільтрації
             const selectedProducts = products.slice(0, productsPerCollection);
-            
+
             // Add collection name to products for better display
             selectedProducts.forEach(product => {
-              product.collection_title = collection.querySelector('.collection-title a')?.textContent?.trim();
+              product.collection_title = collection.querySelector('.collection-card-title a')?.textContent?.trim();
             });
             
             allProducts.push(...selectedProducts);
