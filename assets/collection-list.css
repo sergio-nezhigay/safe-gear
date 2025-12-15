@@ -116,7 +116,7 @@
   }
 
   .collection-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(16px, 4vw, 18px);
     font-weight: 700;
     color: #121212;
     margin: 0 0 var(--spacing-md) 0;
@@ -1639,7 +1639,12 @@
 
 @media screen and (min-width: 1024px) {
     .collection-content-wrapper {
-
-  gap: 45px;
+      gap: 45px;
+   }
 }
+
+@media screen and (max-width: 768px) {
+    .collection-content-wrapper {
+      flex-direction: column;
+   }
 }
