@@ -943,7 +943,9 @@
                       <div class="collection-content-wrapper">
                         <div class="collection-description">
                           {% if col.description != blank %}
-                            {{ col.description | strip_html }}
+                            <div class="collection-description-text">
+                              {{ col.description | strip_html }}
+                            </div>
                           {% endif %}
                         </div>
 
