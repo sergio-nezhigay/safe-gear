@@ -4599,7 +4599,7 @@ text-component {
     padding-top: 70px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1251px) {
   body {
     padding-top: 149px;
   }

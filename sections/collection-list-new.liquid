@@ -1311,7 +1311,8 @@
                           {% assign prod_variant_weight_kg = prod_variant_weight_num | divided_by: 1000.0 %}
                         {% endif %}
                       {% endif %}
-                      <div
+                      <a
+                        href="{{ product.url }}"
                         class="product-card"
                         data-burglary-grade="{{ product.metafields.custom.burglary_classification.value | default: '' }}"
                         data-fire-resistance="{{ product.metafields.custom.fire_duration.value | default: '' }}"
@@ -1325,28 +1326,26 @@
                         data-collection-handle="{{ col.handle }}"
                       >
                         <div class="product-image">
-                          <a href="{{ product.url }}">
-                            {% if product.featured_image %}
-                              <img
-                                src="{{ product.featured_image | img_url: '300x300' }}"
-                                alt="{{ product.title | escape }}"
-                                loading="lazy"
-                                width="300"
-                                height="300"
-                              >
-                            {% else %}
-                              <div class="product-placeholder">
-                                {{ 'product-1' | placeholder_svg_tag }}
-                              </div>
-                            {% endif %}
-                          </a>
+                          {% if product.featured_image %}
+                            <img
+                              src="{{ product.featured_image | img_url: '300x300' }}"
+                              alt="{{ product.title | escape }}"
+                              loading="lazy"
+                              width="300"
+                              height="300"
+                            >
+                          {% else %}
+                            <div class="product-placeholder">
+                              {{ 'product-1' | placeholder_svg_tag }}
+                            </div>
+                          {% endif %}
                         </div>
 
                         <div class="product-info">
 
 
                           <h3 class="product-title">
-                            <a href="{{ product.url }}">{{ product.title | escape }}</a>
+                            {{ product.title | escape }}
                           </h3>
 
                           <div class="product-specifications">
@@ -1399,13 +1398,13 @@
 
                           {% if section.settings.show_product_button %}
                             <div class="product-action">
-                              <a href="{{ product.url }}" class="product-btn">
+                              <span class="product-btn">
                                 {{ section.settings.products_button_text | default: 'View Product' }}
-                              </a>
+                              </span>
                             </div>
                           {% endif %}
                         </div>
-                      </div>
+                      </a>
                     {% endunless %}
                   {% endunless %}
                 {% endfor %}
