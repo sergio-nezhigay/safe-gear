@@ -996,7 +996,7 @@ html {
   }
 
   .product-grid-section {
-    padding: 0 5px;
+    padding: 0 16px;
   }
 
   .products-container {
@@ -1160,9 +1160,6 @@ html {
 @media (max-width: 480px) {
   .feature-item__content {
     text-align: left;
-  }
-  .product-grid-section {
-    padding: 0 5px;
   }
 
   .section-header {

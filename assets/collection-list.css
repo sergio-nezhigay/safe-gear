@@ -27,9 +27,11 @@
   }
 
   .collection-header .collection-title {
-    margin-bottom: 31px;
+    font-size: 40px;
+    margin-bottom: 40px;
     font-family: 'Assistant', sans-serif !important;
     font-weight: 400 !important;
+    color: #121212;
   }
   .collection-list-section {
     padding: var(--spacing-xl) 20px;
@@ -1101,7 +1103,7 @@
       padding-top: 16px !important;
     }
         .collection-card-bottom {
-      padding-top: 33px;
+      padding-top: 30px;
     }
 
 
@@ -1183,7 +1185,7 @@
     }
 
     .collection-card-title a {
-      font-size: 0.95rem;
+      font-size: 16px;
       font-weight: 700;
       line-height: 1.2;
     }
@@ -1277,13 +1279,12 @@
     .section-heading {
       font-size: 1.5rem;
     }
+    .collection-header .collection-title {
+      font-size: 24px;
+    }
   }
 
   @media (max-width: 480px) {
-    .collection-list-section {
-      padding: 0 5px;
-    }
-
     .section-header {
       margin-bottom: var(--spacing-lg);
       padding: 0;
@@ -1307,10 +1308,6 @@
       flex: 0 0 70px;
       width: 70px;
       height: 70px;
-    }
-
-    .collection-card-title a {
-      font-size: 0.85rem;
     }
 
     .collection-description {
@@ -1585,6 +1582,12 @@
   color: #3EB211;
   font-weight: 600;
   margin-left: 4px;
+}
+
+@media screen and (max-width: 410px) {
+    .price-suffix {
+        display: none;
+    }
 }
 
 /* Collection Card Restructuring */
