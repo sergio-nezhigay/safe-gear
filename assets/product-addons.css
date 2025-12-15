@@ -536,7 +536,7 @@
   color: white;
   border: none;
   padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--border-radius);
+  border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -627,7 +627,7 @@
   flex: 0 0 120px;
   width: 120px;
   height: 90px;
-  border-radius: var(--border-radius);
+  border-radius: 6px;
   overflow: hidden;
   background: var(--background-light);
   display: flex;

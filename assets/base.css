@@ -224,6 +224,8 @@ select {
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
   will-change: transform, box-shadow;
   z-index: var(--layer-flat);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .product-card__link {
@@ -1501,7 +1503,7 @@ button.shopify-payment-button__button--unbranded {
   font-family: var(--button-font-family-primary);
   font-weight: var(--button-font-weight-primary);
   text-transform: var(--button-text-case-primary);
-  border-radius: var(--style-border-radius-buttons-primary);
+  border-radius: 6px;
 }
 
 .button:not(.button-secondary, .button-unstyled) {
@@ -2905,7 +2907,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
 }
 
 .product-details .quantity-selector {
-  border-radius: var(--style-border-radius-buttons-primary);
+  border-radius: 6px;
 }
 
 .product-details .quantity-selector .quantity-minus {
