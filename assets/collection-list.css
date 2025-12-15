@@ -509,7 +509,7 @@
 
   .clear-filters-btn {
     width: 100%;
-    background: #6c757d;
+    background: #0a3d62;
     color: white;
     border: none;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -523,8 +523,7 @@
   }
 
   .clear-filters-btn:hover {
-    background: #5a6268;
-    transform: translateY(-1px);
+    background: #072f4c;
     text-decoration: none;
   }
 
