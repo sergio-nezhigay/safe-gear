@@ -4606,3 +4606,7 @@ text-component {
     padding-top: 149px;
   }
 }
+
+.add-to-cart-text__content {
+    font-size: 24px;;
+}

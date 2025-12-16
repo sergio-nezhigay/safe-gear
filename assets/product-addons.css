@@ -532,10 +532,10 @@
 
 .cart-add-btn {
   width: 100%;
-  background: var(--primary-color);
+  background: #3EB211;
   color: white;
   border: none;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 7.5px var(--spacing-lg);
   border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
