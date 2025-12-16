@@ -660,6 +660,11 @@
     border-bottom: 4px solid #D0D0D0;
   }
 
+  /* Prevent double borders: Remove top border from all rows except the first */
+  .metafields-table tr:not(:first-child) td {
+    border-top: none;
+  }
+
   /* Remove default cell borders if they conflict */
   .metafields-table td,
   .metafields-table th {
