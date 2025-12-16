@@ -73,6 +73,68 @@
   data-enable-dynamic="{{ section.settings.enable_dynamic_pricing }}"
 >
   <div class="installation-delivery-grid">
+    {%- comment -%} Delivery Column {%- endcomment -%}
+    <div class="delivery-column">
+      <div class="column-header">
+        <span class="column-icon">
+          {%- render 'icon-package' -%}
+        </span>
+        <h3 class="column-title">{{ section.settings.delivery_title | default: 'Delivery time' }}</h3>
+        {%- if section.settings.delivery_time_badge != blank -%}
+          <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="delivery-options" data-pricing-type="delivery">
+        {%- if section.settings.enable_dynamic_pricing -%}
+          {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
+          <div class="pricing-loading">Loading prices...</div>
+        {%- else -%}
+          {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
+          {%- if section.settings.show_delivery_option_1 -%}
+            <div class="delivery-option">
+              <div class="delivery-option-header">
+                <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
+                <span class="delivery-price">
+                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_1_price }}
+                </span>
+              </div>
+              {%- if section.settings.delivery_option_1_description != blank -%}
+                <p class="delivery-description">{{ section.settings.delivery_option_1_description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_delivery_option_2 -%}
+            <div class="delivery-option">
+              <div class="delivery-option-header">
+                <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
+                <span class="delivery-price">
+                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_2_price }}
+                </span>
+              </div>
+              {%- if section.settings.delivery_option_2_description != blank -%}
+                <p class="delivery-description">{{ section.settings.delivery_option_2_description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_delivery_option_3 -%}
+            <div class="delivery-option">
+              <div class="delivery-option-header">
+                <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
+                <span class="delivery-price">
+                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_3_price }}
+                </span>
+              </div>
+              {%- if section.settings.delivery_option_3_description != blank -%}
+                <p class="delivery-description">{{ section.settings.delivery_option_3_description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
     {%- comment -%} Installation Column {%- endcomment -%}
     <div class="installation-column">
       <div class="column-header">
@@ -148,68 +210,7 @@
       </div>
     </div>
 
-    {%- comment -%} Delivery Column {%- endcomment -%}
-    <div class="delivery-column">
-      <div class="column-header">
-        <span class="column-icon">
-          {%- render 'icon-package' -%}
-        </span>
-        <h3 class="column-title">{{ section.settings.delivery_title | default: 'Delivery time' }}</h3>
-        {%- if section.settings.delivery_time_badge != blank -%}
-          <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
-        {%- endif -%}
-      </div>
 
-      <div class="delivery-options" data-pricing-type="delivery">
-        {%- if section.settings.enable_dynamic_pricing -%}
-          {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
-          <div class="pricing-loading">Loading prices...</div>
-        {%- else -%}
-          {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
-          {%- if section.settings.show_delivery_option_1 -%}
-            <div class="delivery-option">
-              <div class="delivery-option-header">
-                <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
-                <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_1_price }}
-                </span>
-              </div>
-              {%- if section.settings.delivery_option_1_description != blank -%}
-                <p class="delivery-description">{{ section.settings.delivery_option_1_description }}</p>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_delivery_option_2 -%}
-            <div class="delivery-option">
-              <div class="delivery-option-header">
-                <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
-                <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_2_price }}
-                </span>
-              </div>
-              {%- if section.settings.delivery_option_2_description != blank -%}
-                <p class="delivery-description">{{ section.settings.delivery_option_2_description }}</p>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_delivery_option_3 -%}
-            <div class="delivery-option">
-              <div class="delivery-option-header">
-                <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
-                <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_3_price }}
-                </span>
-              </div>
-              {%- if section.settings.delivery_option_3_description != blank -%}
-                <p class="delivery-description">{{ section.settings.delivery_option_3_description }}</p>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-        {%- endif -%}
-      </div>
-    </div>
   </div>
 </div>
 
@@ -251,7 +252,6 @@
   }
 
   .installation-column {
-    background-color: #f5f5f5;
     padding: 15px;
     border-radius: 6px;
   }
