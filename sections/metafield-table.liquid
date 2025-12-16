@@ -623,15 +623,15 @@
   .table-container {
     width: 100%;
     margin-bottom: 24px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
     overflow: hidden;
   }
 
   .metafields-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Separates the rows so rounded corners are visible */
   }
 
   .table-header {
@@ -641,27 +641,60 @@
     font-weight: bold;
     font-size: 16px;
     text-align: left;
+    border-radius: 6px;
+    overflow: hidden;
+    border: none;
+    border-bottom: none !important;
+  }
+
+  .metafields-table tr {
+    background: #fafafa;
   }
 
   .metafields-table td,
   .metafields-table th {
     padding: 12px 16px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    /* Borders for top and bottom of the "row" */
+    border-top: 4px solid #D0D0D0;
+    border-bottom: 4px solid #D0D0D0;
+  }
+
+  /* Remove default cell borders if they conflict */
+  .metafields-table td,
+  .metafields-table th {
+     border-right: none;
+     border-left: none;
   }
 
   .metafields-table td:first-child,
   .metafields-table th:first-child {
     width: 40%;
     font-weight: 600;
+    /* Rounded left side */
+    border-left: 4px solid #D0D0D0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
 
-  .metafields-table tr:nth-child(even) {
+  /* Handle the last cell for the right side rounded corners */
+  .metafields-table td:last-child {
+      border-right: 4px solid #D0D0D0;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+
+  .metafields-table tr:nth-child(even) td {
     background: #fafafa;
   }
 
+  .metafields-table tr:nth-child(odd) td {
+      background: #ffffff;
+  }
+
+  /* Remove the old tr styles */
   .metafields-table tr:last-child td {
-    border-bottom: none;
+    border-bottom: 4px solid #D0D0D0; /* Ensure last row has bottom border */
   }
 
   .metafields__main-title {
