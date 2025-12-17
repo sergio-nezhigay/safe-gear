@@ -295,12 +295,25 @@ class CollectionFilters {
   }
 
   initializeAccordions() {
-    document.querySelectorAll('[data-accordion-content]').forEach((content) => {
-      content.style.display = 'block';
-    });
+    const filterGroups = document.querySelectorAll('.filter-group');
 
-    document.querySelectorAll('.accordion-icon').forEach((icon) => {
-      icon.textContent = '−';
+    filterGroups.forEach((group, index) => {
+      const content = group.querySelector('[data-accordion-content]');
+      const icon = group.querySelector('.accordion-icon');
+
+      if (!content || !icon) return;
+
+      if (index === 0) {
+        // Open first group
+        content.style.display = 'block';
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        // Close other groups
+        content.style.display = 'none';
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+      }
     });
   }
 

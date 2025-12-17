@@ -262,14 +262,16 @@
     <div class="filters-sidebar">
       <div class="filters-container">
         <h3 class="filters-title">{{ section.settings.filters_title | default: 'Filters' }}</h3>
+        {% assign is_first_group = true %}
 
         {% if all_burglary_grades.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="burglary">
               {{ section.settings.burglary_grade_label | default: 'Burglary Grade' }}
-              <span class="accordion-icon">−</span>
+              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
             </h4>
-            <div class="filter-options" data-accordion-content="burglary">
+            <div class="filter-options" data-accordion-content="burglary" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              {% assign is_first_group = false %}
               {% assign sorted_burglary = all_burglary_grades | sort %}
               {% for grade in sorted_burglary %}
                 {% if grade == 'Ingen klassificering' %}
@@ -297,9 +299,10 @@
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="fire">
               {{ section.settings.fire_resistance_label | default: 'Fire Resistance' }}
-              <span class="accordion-icon">−</span>
+              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
             </h4>
-            <div class="filter-options" data-accordion-content="fire">
+            <div class="filter-options" data-accordion-content="fire" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              {% assign is_first_group = false %}
               {% assign sorted_fire = all_fire_resistance | sort %}
               <!-- Show fire resistance in specific order based on content -->
               {% assign fire_order = '30minutter,60minutter,90minutter,120minutter' | split: ',' %}
@@ -342,9 +345,10 @@
           <div class="filter-group price-filter-group">
             <h4 class="filter-group-title" data-accordion="price">
               {{ section.settings.price_range_label | default: 'Price Range' }}
-              <span class="accordion-icon">−</span>
+              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
             </h4>
-            <div class="filter-options" data-accordion-content="price">
+            <div class="filter-options" data-accordion-content="price" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              {% assign is_first_group = false %}
               <div class="price-range-container">
                 <div class="price-range-slider-container">
                   <div class="price-range-slider">
@@ -441,9 +445,10 @@
             <div class="filter-group dimension-filter-group">
               <h4 class="filter-group-title" data-accordion="{{ dimension }}">
                 {{ title }} ({{ unit }})
-                <span class="accordion-icon">−</span>
+                <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
               </h4>
-              <div class="filter-options" data-accordion-content="{{ dimension }}">
+              <div class="filter-options" data-accordion-content="{{ dimension }}" {% unless is_first_group %}style="display: none;"{% endunless %}>
+                {% assign is_first_group = false %}
                 <div class="dimension-range-container">
                   <div class="dimension-range-slider-container">
                     <div class="dimension-range-slider">
@@ -509,9 +514,10 @@
           <div class="filter-group dimension-filter-group">
             <h4 class="filter-group-title" data-accordion="variant_weight">
               Variant Vægt (kg)
-              <span class="accordion-icon">−</span>
+              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
             </h4>
-            <div class="filter-options" data-accordion-content="variant_weight">
+            <div class="filter-options" data-accordion-content="variant_weight" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              {% assign is_first_group = false %}
               <div class="dimension-range-container">
                 <div class="dimension-range-slider-container">
                   <div class="dimension-range-slider">
@@ -576,9 +582,10 @@
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="category">
               {{ section.settings.category_label | default: 'Category' }}
-              <span class="accordion-icon">−</span>
+              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
             </h4>
-            <div class="filter-options" data-accordion-content="category">
+            <div class="filter-options" data-accordion-content="category" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              {% assign is_first_group = false %}
               <div class="category-options-container">
                 {% assign sorted_categories = all_categories | sort %}
                 {% for category in sorted_categories %}

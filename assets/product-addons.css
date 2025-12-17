@@ -546,7 +546,6 @@
 
 .cart-add-btn:hover {
   background: var(--primary-hover);
-  transform: translateY(-1px);
 }
 
 .cart-add-btn.in-cart {
