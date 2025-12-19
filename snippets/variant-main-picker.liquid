@@ -464,7 +464,14 @@
   .variant-option--equal-width-buttons .variant-option__button-label:has(.variant-lock-image) {
     min-width: auto;
     max-width: none;
+    width: 100%;
     flex: 0 0 auto;
+    background-color: green;
+  }
+
+  .variant-lock-image {
+    width: 83px !important;
+    height: 83px !important;
   }
 
   .variant-option__button-label:has(:focus-visible) {
@@ -488,13 +495,15 @@
   .variant-option__button-label:has(:checked) {
     color: var(--color-selected-variant-text);
     background-color: var(--color-selected-variant-background);
-    border-color: var(--color-selected-variant-border);
+
+    background-color: green;
     transition: background-color var(--animation-speed) var(--animation-easing),
       border-color var(--animation-speed) var(--animation-easing);
 
     &:hover {
       background-color: var(--color-selected-variant-hover-background);
-      border-color: var(--color-selected-variant-hover-border);
+      border-color: blue;
+      background-color: green;
       color: var(--color-selected-variant-hover-text);
     }
   }
@@ -502,7 +511,7 @@
   /* Lighter border for selected lock variants */
   .variant-option__button-label--lock:has(:checked) {
     border-width: 1px;
-    border-color: rgba(var(--color-foreground-rgb), 0.3);
+    border-color: blue;
   }
 
   .variant-option__button-label:has([data-option-available='false']) {
@@ -779,7 +788,7 @@
   }
 
   .variant-option__button-label--lock:has(:checked) {
-    border-color: #16f33b !important;
+    border-color: blue !important;
     outline: none !important;
     box-shadow: none !important;
   }
