@@ -466,7 +466,7 @@
     max-width: none;
     width: 100%;
     flex: 0 0 auto;
-    background-color: green;
+    border: 1px solid lightgrey;
   }
 
   .variant-lock-image {
@@ -494,7 +494,7 @@
 
   .variant-option__button-label:has(:checked) {
     color: var(--color-selected-variant-text);
-    background-color: var(--color-selected-variant-background);
+    background-color: yellow;
 
     background-color: green;
     transition: background-color var(--animation-speed) var(--animation-easing),
@@ -511,7 +511,7 @@
   /* Lighter border for selected lock variants */
   .variant-option__button-label--lock:has(:checked) {
     border-width: 1px;
-    border-color: blue;
+    border-color: var(--color-price-text);
   }
 
   .variant-option__button-label:has([data-option-available='false']) {
@@ -679,10 +679,10 @@
     justify-content: right;
   }
 
-  /* Styles for variant images - Square 50x50 format */
+  /* Styles for variant images - Square 83x83 format */
   .variant-lock-image {
-    --lock-image-width: 50px;
-    --lock-image-height: 50px;
+    --lock-image-width: 83px;
+    --lock-image-height: 83px;
     width: var(--lock-image-width);
     height: var(--lock-image-height);
     display: inline-block;
@@ -696,9 +696,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--padding-sm);
-    min-height: auto;
-    width: auto;
     flex: 0 0 auto;
   }
 
@@ -787,8 +784,12 @@
     border-color: #16f33b;
   }
 
+  .variant-option__button-label--lock {
+    padding: 0 !important;
+  }
+
   .variant-option__button-label--lock:has(:checked) {
-    border-color: blue !important;
+    border-color: var(--color-price-text) !important;
     outline: none !important;
     box-shadow: none !important;
   }

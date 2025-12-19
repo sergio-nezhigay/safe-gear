@@ -20,24 +20,19 @@ rte-formatter p {
   .variant-option--equal-width-buttons
     .variant-option__button-label:has(.variant-lock-image),
   .variant-option__button-label:has(.swatch):has(:checked) {
-    width: 85px;
-    height: 85px !important;
+
   }
   .variant-picker .variant-option--buttons label:has(.swatch) {
     border-radius: 50% !important;
   }
   .variant-option__button-label input {
-    min-width: 85px;
-    min-height: 85px;
-    height: 85px !important;
+
   }
   .variant-option--equal-width-buttons
     .variant-option__button-label:has(.variant-lock-image),
   .variant-option--equal-width-buttons
     .variant-option__button-label:has(.swatch) {
-    min-width: 85px !important;
-    min-height: 85px;
-    height: 85px;
+
   }
 }
 .site-header__icon
