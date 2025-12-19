@@ -2,11 +2,11 @@
     --primary-color: #0a3d62;
     --primary-hover: #357abd;
     --success-color: #28a745;
-    --border-color: #dee2e6;
-    --background-light: #f8f9fa;
-    --text-primary: #1a1a1a;
+    --border-color: var(--color-border-light);
+    --background-light: var(--color-bg-2);
+    --text-primary: var(--color-text-default);
     --text-secondary: #666;
-    --text-muted: #999;
+    --text-muted: var(--color-border-dark);
     --border-radius: 4px;
     --border-radius-lg: 8px;
     --spacing-xs: 4px;
@@ -31,7 +31,7 @@
     margin-bottom: 40px;
     font-family: 'Assistant', sans-serif !important;
     font-weight: 400 !important;
-    color: #121212;
+    color: var(--color-text-default);
   }
   .collection-list-section {
     padding: var(--spacing-xl) 20px;
@@ -69,7 +69,7 @@
 
   .show-more-btn {
     background: var(--primary-color);
-    color: white;
+    color: var(--color-bg-1);
     padding: var(--spacing-md) 28px;
     text-decoration: none;
     border-radius: var(--border-radius);
@@ -120,7 +120,7 @@
   .collection-card-title {
     font-size: clamp(16px, 4vw, 18px);
     font-weight: 700;
-    color: #121212;
+    color: var(--color-text-default);
     margin: 0 0 var(--spacing-md) 0;
     line-height: 1.2;
     text-align: left;
@@ -157,7 +157,7 @@
 
   .filter-group {
     margin-bottom: var(--spacing-sm);
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--color-border-light);
     padding-bottom: var(--spacing-sm);
   }
 
@@ -234,7 +234,7 @@
     transform: translateY(-50%);
     height: 14px;
     width: 14px;
-    background-color: #fff;
+    background-color: var(--color-bg-1);
     border: 2px solid var(--border-color);
     border-radius: 2px;
     transition: all var(--transition-fast);
@@ -298,7 +298,7 @@
     left: 2px;
     right: 2px;
     height: 4px;
-    background: #e9ecef;
+    background: var(--color-border-light);
     border-radius: 2px;
     transform: translateY(-50%);
     z-index: 1;
@@ -733,7 +733,7 @@
     border-bottom: 1px solid var(--border-color);
     /*border: 1px solid #e8ecef;
     border-radius: var(--border-radius-lg);*/
-    background: white;
+    background: var(--color-bg-1);
     transition: all var(--transition-normal);
     cursor: pointer;
     overflow: hidden;
@@ -784,7 +784,7 @@
     font-size: 18px;
     font-family: Assistant;
     font-weight: 700;
-    color: #121212;
+    color: var(--color-text-default);
     text-decoration: none;
     line-height: 1.0;
     transition: color var(--transition-fast);
@@ -845,12 +845,12 @@
 
   .price-value {
     font-size: 16px;
-    color: #3EB211;
+    color: var(--color-price-text);
   }
 
   .collection-btn {
-    background: #3EB211;
-    color: white;
+    background: var(--primary-color);
+    color: var(--color-bg-1);
     padding: 4px var(--spacing-md);
     text-decoration: none;
     border-radius: 6px;
@@ -864,7 +864,7 @@
   }
 
   .collection-card:hover .collection-btn {
-    background: #3EB211;
+    background: var(--primary-hover);
     text-decoration: none;
   }
 
@@ -1507,7 +1507,7 @@
   .product-price {
     font-size: 14px;
     font-weight: 600;
-    color: #3EB211;
+    color: var(--color-price-text);
     margin-bottom: 5px;
     margin-top: auto;
   }
@@ -1520,7 +1520,7 @@
     display: inline-block;
     width: 100%;
     font-size: 16px;
-    background: #3EB211;
+    background: var(--color-price-text);
     color: white;
     text-decoration: none;
     padding: 1px var(--spacing-md);
@@ -1596,7 +1596,7 @@
 
 .price-suffix {
   font-size: 14px;
-  color: #3EB211;
+  color: var(--color-price-text);
   font-weight: 600;
   margin-left: 4px;
 }

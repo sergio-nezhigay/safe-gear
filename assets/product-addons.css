@@ -433,7 +433,7 @@
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-md) 0;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--color-bg-2);
   position: relative;
 }
 
@@ -532,7 +532,7 @@
 
 .cart-add-btn {
   width: 100%;
-  background: #3EB211;
+  background: var(--color-price-text);
   color: white;
   border: none;
   padding: 7.5px var(--spacing-lg);
@@ -1102,7 +1102,7 @@
 }
 
 .addon-quantity-controls .quantity-btn:hover:not(:disabled) {
-  background: #f5f5f5;
+  background: var(--color-bg-2);
   border-color: #999;
 }
 

@@ -2,11 +2,11 @@
   --primary-color: #0a3d62;
   --primary-hover: #357abd;
   --success-color: #28a745;
-  --border-color: #dee2e6;
-  --background-light: #f8f9fa;
-  --text-primary: #1a1a1a;
+  --border-color: var(--color-border-light);
+  --background-light: var(--color-bg-2);
+  --text-primary: var(--color-text-default);
   --text-secondary: #666;
-  --text-muted: #999;
+  --text-muted: var(--color-border-dark);
   --border-radius: 4px;
   --border-radius-lg: 8px;
   --spacing-xs: 4px;
@@ -89,7 +89,7 @@ html {
 
 .filter-group {
   margin-bottom: var(--spacing-sm);
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border-light);
   padding-bottom: var(--spacing-sm);
   position: relative;
 }
@@ -167,7 +167,7 @@ html {
   transform: translateY(-50%);
   height: 14px;
   width: 14px;
-  background-color: #fff;
+  background-color: var(--color-bg-1);
   border: 2px solid var(--border-color);
   border-radius: 2px;
   transition: all var(--transition-fast);
@@ -190,7 +190,7 @@ html {
   top: -1px;
   width: 4px;
   height: 8px;
-  border: solid white;
+  border: solid var(--color-bg-1);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -227,7 +227,7 @@ html {
   left: 2px;
   right: 2px;
   height: 4px;
-  background: #e9ecef;
+  background: var(--color-border-light);
   border-radius: 2px;
   transform: translateY(-50%);
   z-index: 1;
@@ -377,7 +377,7 @@ html {
   right: 0;
   width: 100%;
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--color-border-light);
   background-color: rgba(250, 250, 250, 0.95);
   backdrop-filter: blur(2px);
 }
@@ -435,7 +435,7 @@ html {
 
 .price-input,
 .dimension-input {
-  background: white;
+  background: var(--color-bg-1);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: var(--spacing-sm);
@@ -698,9 +698,9 @@ html {
   flex-direction: row;
   align-items: center;
   padding: 12px;
-  border: 1px solid #e8ecef;
+  border: 1px solid var(--color-border-light);
   border-radius: 16px;
-  background: white;
+  background: var(--color-bg-1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   position: relative;

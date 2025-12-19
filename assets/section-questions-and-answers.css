@@ -62,7 +62,7 @@
 }
 
 .questions-and-answers__icon--answer {
-  background-color: #4b81bf; /* Blue for A */
+  background-color: var(--color-text-link); /* Blue for A */
 }
 
 /* Content */
@@ -90,7 +90,7 @@
 }
 
 .questions-and-answers__author--answer {
-  color: #4b81bf; /* Blue for Safe Gear */
+  color: var(--color-text-link); /* Blue for Safe Gear */
 }
 
 .questions-and-answers__date {
@@ -130,7 +130,7 @@
 #questions-and-answers__button {
   min-width: 200px;
   white-space: nowrap;
-  background-color: #4b81bf;
+  background-color: var(--color-text-link);
   color: #ffffff;
   line-height: 15px;
 }

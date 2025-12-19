@@ -6,7 +6,7 @@
 
 {% assign gap_between_elements = section.settings.gap_between_elements %}
 <div style="margin-top: {{ section.settings.margin_top | default: 16 }}px; margin-bottom: {{ section.settings.margin_bottom | default: 16 }}px;">
-  <div class="section-background" style="background-color: #4b81bf;"></div>
+  <div class="section-background" style="background-color: var(--color-text-link);"></div>
   <marquee-component
     class="section gap-style product-nav-marquee"
     style="
@@ -14,7 +14,7 @@
       padding-bottom: 0px;
       {% render 'gap-style', value: gap_between_elements, name: 'marquee-gap' %}
       --marquee-direction: {{ section.settings.movement_direction }};
-      background-color: #4b81bf;
+      background-color: var(--color-text-link);
     "
     data-speed-factor="20"
     data-movement-direction="{{ section.settings.movement_direction }}"
