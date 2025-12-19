@@ -1,6 +1,6 @@
 :root {
     --primary-color: #0a3d62;
-    --primary-hover: #357abd;
+    --primary-hover: var(--color-primary-hover-custom);
     --success-color: #28a745;
     --border-color: var(--color-border-light);
     --background-light: var(--color-bg-2);
@@ -849,7 +849,7 @@
   }
 
   .collection-btn {
-    background: var(--primary-color);
+    background: var(--color-price-text);
     color: var(--color-bg-1);
     padding: 4px var(--spacing-md);
     text-decoration: none;
@@ -864,7 +864,7 @@
   }
 
   .collection-card:hover .collection-btn {
-    background: var(--primary-hover);
+    background: var(--color-primary-hover-custom);
     text-decoration: none;
   }
 
@@ -1654,7 +1654,6 @@
 
 .collection-price {
   margin-top: auto;
-  font-weight: bold;
 }
 
 @media screen and (min-width: 1024px) {
