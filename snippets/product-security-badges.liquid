@@ -96,7 +96,15 @@
 
         {%- if show_burglary -%}
         <div class="security-badge-item">
-
+          <div class="badge">
+            {%- if burglary_icon != blank -%}
+              <img src="{{ burglary_icon | image_url: width: 85, height: 85 }}"
+                   alt="{{ burglary_alt }}"
+                   width="85"
+                   height="85"
+                   loading="lazy">
+            {%- endif -%}
+          </div>
           <div class="badge-content">
             {% comment %} <h4 class="badge-title">Burglary Grade</h4> {% endcomment %}
             <div class="badge-description">{{ burglary_desc }}</div>
@@ -141,7 +149,15 @@
 
         {%- if show_fire -%}
         <div class="security-badge-item">
-
+          <div class="badge">
+            {%- if fire_icon != blank -%}
+              <img src="{{ fire_icon | image_url: width: 85, height: 85 }}"
+                   alt="{{ fire_alt }}"
+                   width="85"
+                   height="85"
+                   loading="lazy">
+            {%- endif -%}
+          </div>
           <div class="badge-content">
             <h4 class="badge-title">Fire Resistance</h4>
             <div class="badge-description">{{ fire_desc }}</div>
@@ -168,6 +184,14 @@
 
     .badge {
       flex-shrink: 0;
+      width: 85px;
+      height: 85px;
+    }
+
+    .badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .badge-content {
