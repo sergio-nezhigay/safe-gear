@@ -839,14 +839,12 @@
   }
 
   .price-label {
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
-    font-weight: 600;
   }
 
   .price-value {
     font-size: 16px;
-    font-weight: 700;
     color: #3EB211;
   }
 
@@ -1642,14 +1640,14 @@
 }
 
 .dimension-label {
-  font-size: 0.85rem; /* derived from previous .collection-dimensions font size, or adjusted */
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   color: #000;
   white-space: nowrap;
 }
 
 .dimension-value {
-  font-size: 0.85rem;
+  font-size: 14px;
   font-weight: 400;
   color: #000;
 }
