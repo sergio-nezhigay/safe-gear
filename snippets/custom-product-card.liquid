@@ -1,0 +1,112 @@
+{% comment %}
+  Reusable product card snippet used in collection-list-new and product recommendations.
+  Based on collection-list-new.liquid product card structure.
+
+  Parameters:
+  - product: The product object to render
+  - collection_handle: (optional) The collection handle for data attribute
+
+  Usage:
+  {% render 'custom-product-card', product: product, collection_handle: collection.handle %}
+{% endcomment %}
+
+{% assign prod_variant_weight_kg = 0 %}
+{% if product.variants.size > 0 and product.variants.first.weight %}
+  {% assign prod_variant_weight_num = product.variants.first.weight | plus: 0 %}
+  {% if prod_variant_weight_num > 0 %}
+    {% assign prod_variant_weight_kg = prod_variant_weight_num | divided_by: 1000.0 %}
+  {% endif %}
+{% endif %}
+
+<a
+  href="{{ product.url }}"
+  class="product-card"
+  data-burglary-grade="{{ product.metafields.custom.burglary_classification.value | default: '' }}"
+  data-fire-resistance="{{ product.metafields.custom.fire_duration.value | default: '' }}"
+  data-category="{{ product.product_type | default: '' }}"
+  data-price="{{ product.price | divided_by: 100 }}"
+  data-depth="{{ product.metafields.custom.new_depth.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
+  data-width="{{ product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
+  data-height="{{ product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 }}"
+  data-weight="{{ product.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0 }}"
+  data-variant-weight="{{ prod_variant_weight_kg }}"
+  {% if collection_handle %}data-collection-handle="{{ collection_handle }}"{% endif %}
+>
+  <div class="product-image">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | img_url: '300x300' }}"
+        alt="{{ product.title | escape }}"
+        loading="lazy"
+        width="300"
+        height="300"
+      >
+    {% else %}
+      <div class="product-placeholder">
+        {{ 'product-1' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="product-info">
+
+
+    <h3 class="product-title">
+      {{ product.title | escape }}
+    </h3>
+
+    <div class="product-specifications">
+      {% assign height = product.metafields.custom.new_height.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+      {% assign width = product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+      {% assign depth = product.metafields.custom.new_depth.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
+
+      {% assign min_weight = 0 %}
+      {% assign max_weight = 0 %}
+
+      {% if product.variants.size > 0 %}
+        {% assign weights = product.variants | map: 'weight' | sort %}
+        {% assign min_weight = weights.first | divided_by: 1000.0 %}
+        {% assign max_weight = weights.last | divided_by: 1000.0 %}
+      {% endif %}
+
+      <div class="spec-table">
+        {% if height > 0 or width > 0 or depth > 0 %}
+          <div class="spec-row">
+            <span class="spec-label">H x W x D</span>
+            <span class="spec-value">
+              {% if height > 0 %}{{ height }}{% else %}-{% endif %} x
+              {% if width > 0 %}{{ width }}{% else %}-{% endif %} x
+              {% if depth > 0 %}{{ depth }}{% else %}-{% endif %} mm
+            </span>
+          </div>
+        {% endif %}
+
+        {% if max_weight > 0 %}
+          <div class="spec-row">
+            <span class="spec-label">Weight</span>
+            <span class="spec-value">
+              {% if min_weight == max_weight %}
+                {{ min_weight | round: 1 }} kg
+              {% else %}
+                {{ min_weight | round: 1 }}-{{ max_weight | round: 1 }} kg
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="product-price">
+      {{ product.price | money }}
+      {% if settings.product_price_suffix != blank %}
+        <span class="price-suffix">{{ settings.product_price_suffix }}</span>
+      {% endif %}
+    </div>
+
+    <div class="product-action">
+      <span class="product-btn">
+        View Product
+      </span>
+    </div>
+  </div>
+</a>
