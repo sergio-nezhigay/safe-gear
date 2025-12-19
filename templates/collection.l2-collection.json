@@ -95,7 +95,7 @@
         "height_display_label": "Højde",
         "width_display_label": "Bredde",
         "depth_display_label": "Dybde",
-        "collections_per_page": 12,
+        "collections_per_page": 24,
         "show_pagination": true
       }
     },

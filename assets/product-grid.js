@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.filteredProducts = [];
       this.currentPage = 1;
       this.itemsPerPage = parseInt(document.querySelector('[data-products-per-page]')?.getAttribute('data-products-per-page')) || 12;
+      this.paginationEnabled = document.querySelector('[data-show-pagination]')?.getAttribute('data-show-pagination') === 'true';
       this.debounceTimer = null;
       this.isFiltering = false;
       this.init();
@@ -393,9 +394,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderProducts() {
       if (!this.productsGrid) return;
-      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      const endIndex = startIndex + this.itemsPerPage;
-      const pageProducts = this.filteredProducts.slice(startIndex, endIndex);
+      let pageProducts;
+      if (this.paginationEnabled) {
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        pageProducts = this.filteredProducts.slice(startIndex, endIndex);
+      } else {
+        // Show all filtered products when pagination is disabled
+        pageProducts = this.filteredProducts;
+      }
       const pageElements = new Set(pageProducts.map(p => p.element));
 
       this.allProducts.forEach(p => {
@@ -425,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updatePagination() {
-      if (!this.pagination) return;
+      if (!this.pagination || !this.paginationEnabled) return;
       const totalItems = this.filteredProducts.length;
       const totalPages = Math.ceil(totalItems / this.itemsPerPage);
       if (totalPages <= 1) {

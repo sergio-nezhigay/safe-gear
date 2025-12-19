@@ -165,7 +165,9 @@
     {% endif %}
   {% endif %}
 
-  <div class="products-container" data-products-per-page="{{ section.settings.products_per_page | default: 12 }}">
+  <div class="products-container"
+       data-products-per-page="{{ section.settings.products_per_page | default: 12 }}"
+       data-show-pagination="{{ section.settings.show_pagination }}">
     
     <div class="mobile-filter-toggle">
       <button type="button" id="mobile-product-filter-btn" class="mobile-filter-button">
@@ -772,11 +774,13 @@
         <p>{{ section.settings.no_results_text | default: 'No products found matching your criteria. Try adjusting your filters.' }}</p>
       </div>
 
-      <div class="pagination" id="product-pagination-container">
-      </div>
-      
-      <div class="pagination-info" id="product-pagination-info">
-      </div>
+      {% if section.settings.show_pagination %}
+        <div class="pagination" id="product-pagination-container">
+        </div>
+
+        <div class="pagination-info" id="product-pagination-info">
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -936,6 +940,12 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": true
+    },
+    {
       "type": "header",
       "content": "Filter Text & Buttons"
     },
@@ -1011,6 +1021,7 @@
         "show_product_badges": true,
         "show_product_specs": true,
         "show_compare_price": true,
+        "show_pagination": true,
         "clear_filters_text": "Clear All Filters",
         "mobile_filters_text": "Filters",
         "mobile_clear_text": "Clear All",
