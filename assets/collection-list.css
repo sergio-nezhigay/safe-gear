@@ -118,8 +118,7 @@
   }
 
   .collection-card-title {
-    font-size: clamp(16px, 4vw, 18px);
-    font-weight: 700;
+    font-size: 16px;
     color: var(--color-text-default);
     margin: 0 0 var(--spacing-md) 0;
     line-height: 1.2;
@@ -509,7 +508,7 @@
 
   .clear-filters-btn {
     width: 100%;
-    background: #0a3d62;
+    background: var(--color-text-link);
     color: white;
     border: none;
     padding: var(--spacing-sm) var(--spacing-md);
@@ -523,7 +522,7 @@
   }
 
   .clear-filters-btn:hover {
-    background: #072f4c;
+    background: var(--color-text-link-hover);
     text-decoration: none;
   }
 
