@@ -855,7 +855,7 @@
     text-decoration: none;
     border-radius: 6px;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 14px;
     display: inline-block;
     letter-spacing: 0.4px;
     transition: all var(--transition-normal);
@@ -864,7 +864,6 @@
   }
 
   .collection-card:hover .collection-btn {
-    background: var(--color-primary-hover-custom);
     text-decoration: none;
   }
 
@@ -1519,7 +1518,7 @@
   .product-btn {
     display: inline-block;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     background: var(--color-price-text);
     color: white;
     text-decoration: none;
@@ -1597,7 +1596,6 @@
 .price-suffix {
   font-size: 14px;
   color: var(--color-price-text);
-  font-weight: 600;
   margin-left: 4px;
 }
 
