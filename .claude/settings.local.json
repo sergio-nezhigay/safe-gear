@@ -36,7 +36,10 @@
       "Bash(sed:*)",
       "Bash(npx markdown-pdf:*)",
       "mcp__playwright__browser_snapshot",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:support.claude.com)",
+      "Bash(ls:*)",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []
