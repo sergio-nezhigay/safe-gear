@@ -994,9 +994,9 @@
   }
 
   .pagination-current {
-    background: var(--primary-color);
+    background: var(--color-text-link);
     color: white;
-    border-color: var(--primary-color);
+    border-color: var(--color-text-link);
   }
 
   .pagination-ellipsis {
