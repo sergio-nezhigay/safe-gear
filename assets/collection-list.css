@@ -989,7 +989,8 @@
 
   .pagination-btn:hover {
     background: var(--background-light);
-    border-color: var(--primary-color);
+    border-color: var(--color-text-link);
+    color: var(--color-text-link);
     text-decoration: none;
   }
 
