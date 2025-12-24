@@ -1410,7 +1410,7 @@
   .product-title {
     text-decoration: none !important;
     font-weight: 400 !important;
-    font-size: 15px !important;
+    font-size: 16px !important;
     color: #000 !important;
     margin-bottom: 5px !important;
 }
@@ -1477,7 +1477,7 @@ a.product-card * {
 
   .spec-label,
   .spec-value {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .product-collection {
@@ -1513,7 +1513,7 @@ a.product-card * {
 
 
   .product-price {
-    font-size: 23px;
+    font-size: 24px;
     color: var(--color-price-text);
     margin-bottom: 5px;
     margin-top: auto;
@@ -1592,7 +1592,7 @@ a.product-card * {
 .price-suffix {
   color: var(--color-price-text);
   margin-left: 4px;
-  font-size: 23px;
+  font-size: 24px;
 }
 
 @media screen and (max-width: 410px) {
@@ -1689,4 +1689,23 @@ overflow: hidden;
     .collection-content-wrapper {
       flex-direction: column;
    }
+}
+
+/* Overrides for smaller text in collection-list-new cards */
+.collection-list-section .product-card .product-title {
+    font-size: 13px !important;
+}
+
+.collection-list-section .product-card .spec-label,
+.collection-list-section .product-card .spec-value {
+    font-size: 11px !important;
+}
+
+.collection-list-section .product-card .product-price,
+.collection-list-section .product-card .price-suffix {
+    font-size: 19px !important;
+}
+
+.collection-list-section .product-card .product-btn {
+    font-size: 12px !important;
 }
