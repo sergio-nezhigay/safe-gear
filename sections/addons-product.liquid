@@ -4,25 +4,25 @@
   %}
 
   {% if addon_products != blank %}
-  
+
   {{ 'product-addons.css' | asset_url | stylesheet_tag }}
-  
+
   <section class="product-addons-section" data-section-id="{{ section.id }}" data-product-id="{{ current_product.id }}" data-product-handle="{{ current_product.handle }}" data-selected-variant-id="{{ current_product.selected_or_first_available_variant.id }}" data-selected-variant-price="{{ current_product.selected_or_first_available_variant.price }}" data-money-format="{{ shop.money_format | strip_html | escape }}" data-shop-currency="{{ shop.currency }}">
     <div class="container">
-      
+
       {% if section.settings.section_title != blank %}
         <div class="addons-header">
-          <h2 class="addons-title">{{ section.settings.section_title }}</h2>
+          <h2 class="section-title">{{ section.settings.section_title }}</h2>
           {% if section.settings.section_description != blank %}
             <div class="addons-description">{{ section.settings.section_description }}</div>
           {% endif %}
         </div>
       {% endif %}
-      
+
       <div class="addons-layout">
-        
+
         <div class="addons-content">
-  
+
           <div class="addons-grid" id="addons-grid">
             {% if addon_products != blank %}
               {% for addon_product in addon_products limit: section.settings.products_limit %}
@@ -34,20 +34,20 @@
                        data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
                        data-price="{{ addon_product.selected_or_first_available_variant.price }}"
                        data-addon-type="{{ addon_type }}">
-                    
+
                     <div class="addon-content-row">
                       <div class="addon-image">
                       {% if addon_product.featured_media %}
-                        <img src="{{ addon_product.featured_media.preview_image | img_url: '240x180', crop: 'center' }}" 
+                        <img src="{{ addon_product.featured_media.preview_image | img_url: '240x180', crop: 'center' }}"
                              alt="{{ addon_product.title | escape }}"
                              width="120" height="90" loading="lazy">
                       {% elsif addon_product.featured_image %}
-                        <img src="{{ addon_product.featured_image | img_url: '240x180', crop: 'center' }}" 
+                        <img src="{{ addon_product.featured_image | img_url: '240x180', crop: 'center' }}"
                              alt="{{ addon_product.title | escape }}"
                              width="120" height="90" loading="lazy">
                       {% elsif addon_product.images and addon_product.images.size > 0 %}
                         {% assign first_image = addon_product.images | first %}
-                        <img src="{{ first_image | img_url: '240x180', crop: 'center' }}" 
+                        <img src="{{ first_image | img_url: '240x180', crop: 'center' }}"
                              alt="{{ addon_product.title | escape }}"
                              width="120" height="90" loading="lazy">
                       {% else %}
@@ -58,7 +58,7 @@
                         </div>
                       {% endif %}
                     </div>
-  
+
                       <div class="addon-info">
                         {% assign addon_variant = addon_product.selected_or_first_available_variant %}
                         <div class="addon-main">
@@ -72,12 +72,12 @@
                         </div>
                         <div class="addon-actions">
                           <div class="addon-add-price">+ <span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ addon_variant.price | money }}</span></div>
-                          <label class="addon-checkbox-wrapper" 
+                          <label class="addon-checkbox-wrapper"
                                  data-variant-id="{{ addon_variant.id }}"
                                  data-product-title="{{ addon_product.title | escape }}"
                                  data-product-price="{{ addon_variant.price }}">
-                            <input type="checkbox" 
-                                   class="addon-checkbox" 
+                            <input type="checkbox"
+                                   class="addon-checkbox"
                                    value="{{ addon_variant.id }}">
                             <span class="checkbox-checkmark"></span>
                           </label>
@@ -107,19 +107,19 @@
             {% endif %}
           </div>
         </div>
-  
+
         <div class="sticky-cart-sidebar">
           <div class="sticky-cart" id="sticky-cart">
             <div class="cart-header">
               <h3 class="cart-title">{{ section.settings.cart_title | default: 'Your Selection' }}</h3>
             </div>
-  
+
             <div class="cart-content">
               <div class="cart-section-title">{{ section.settings.main_product_label | default: 'Main' }}</div>
               <div class="cart-main-product">
                 <div class="cart-product-image">
                   {% if current_product.featured_image %}
-                    <img src="{{ current_product.featured_image | img_url: '80x80' }}" 
+                    <img src="{{ current_product.featured_image | img_url: '80x80' }}"
                          alt="{{ current_product.title | escape }}"
                          width="60" height="60">
                   {% else %}
@@ -135,58 +135,58 @@
                   <div class="cart-product-price" data-price="{{ current_product.selected_or_first_available_variant.price }}"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></div>
                 </div>
               </div>
-  
+
               <div class="cart-section-title">Add-ons</div>
               <div class="cart-addons-list" id="cart-addons-list">
               </div>
-  
+
               <div class="cart-summary">
                 <div class="summary-line total-line">
                   <span class="summary-label">{{ section.settings.total_label | default: 'Total' }}:</span>
                   <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
                 </div>
               </div>
-  
+
               <div class="cart-actions">
                 <!-- Прихане поле для addons configuration -->
-                <input type="hidden" 
-                       id="selected_addons_config" 
+                <input type="hidden"
+                       id="selected_addons_config"
                        name="properties[Additional Items]"
                        value="">
-                
-                <button type="button" 
-                        class="cart-add-btn" 
+
+                <button type="button"
+                        class="cart-add-btn"
                         id="main-add-to-cart"
                         data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
                         data-product-id="{{ current_product.id }}">
                   <span class="btn-text-add">{{ section.settings.main_add_button | default: 'Add to Cart' }}</span>
                   <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'Checkout' }}</span>
                 </button>
-                
-                <button type="button" 
-                        class="cart-clear-btn" 
+
+                <button type="button"
+                        class="cart-clear-btn"
                         id="clear-addons"
                         style="display: none;">
                   {{ section.settings.clear_button | default: 'Clear Add-ons' }}
                 </button>
               </div>
             </div>
-  
+
             <div class="cart-loading" id="cart-loading" style="display: none;">
               <div class="loading-spinner"></div>
               <span>{{ section.settings.loading_text | default: 'Adding to cart...' }}</span>
             </div>
           </div>
         </div>
-  
+
       </div>
     </div>
   </section>
-  
+
   {{ 'product-addons.js' | asset_url | script_tag }}
-  
+
   {% endif %}
-  
+
   {% schema %}
   {
     "name": "Product Add-ons",
@@ -254,7 +254,7 @@
       {
         "type": "text",
         "id": "remove_button_text",
-        "label": "Remove Button Text", 
+        "label": "Remove Button Text",
         "default": "Remove"
       },
       {
