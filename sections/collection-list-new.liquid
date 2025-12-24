@@ -1253,28 +1253,28 @@
                               </div>
                             {% endif %}
                           </div>
+
+                          {% if section.settings.show_button %}
+                            <div class="collection-action target">
+                              <a
+                                href="{{ link_url }}"
+                                class="collection-btn"
+                                aria-label="View {{ col.title | escape }} {% if cheapest_product %}product{% else %}collection{% endif %}"
+                              >
+                                {% if cheapest_product %}
+                                  {{ section.settings.product_button_text | default: 'View Product' }}
+                                {% else %}
+                                  {{ section.settings.button_text | default: 'View Collection' }}
+                                {% endif %}
+                              </a>
+                            </div>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div class="collection-card-bottom">
-
-                    {% if section.settings.show_button %}
-                      <div class="collection-action target">
-                        <a
-                          href="{{ link_url }}"
-                          class="collection-btn"
-                          aria-label="View {{ col.title | escape }} {% if cheapest_product %}product{% else %}collection{% endif %}"
-                        >
-                          {% if cheapest_product %}
-                            {{ section.settings.product_button_text | default: 'View Product' }}
-                          {% else %}
-                            {{ section.settings.button_text | default: 'View Collection' }}
-                          {% endif %}
-                        </a>
-                      </div>
-                    {% endif %}
                   </div>
                 </div>
               {% endif %}

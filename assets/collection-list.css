@@ -1626,8 +1626,10 @@ a.product-card * {
 
 .collection-placeholder {
   flex: 192;
-  font-size: 14px;
-  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
 }
 
 .collection-dimensions {
