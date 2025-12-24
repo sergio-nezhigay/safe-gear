@@ -1658,6 +1658,20 @@ a.product-card * {
 
 .collection-price {
   margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 16px;
+}
+
+.collection-price .price-label {
+  color: #000;
+  font-weight: 400;
+}
+
+.collection-price .price-value {
+  color: #4CAF50; /* Green color from image */
+  font-weight: 500;
 }
 
 @media screen and (min-width: 1024px) {
