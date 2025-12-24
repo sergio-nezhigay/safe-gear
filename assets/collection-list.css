@@ -846,6 +846,16 @@
     font-size: 16px;
     color: var(--color-price-text);
   }
+  .collection-placeholder-row {
+    margin-top: 4px;
+    display: block;
+    width: 100%;
+  }
+
+  .collection-placeholder-row span {
+    font-size: 14px;
+    color: #000;
+  }
 
   .collection-btn {
     background: var(--color-price-text);
