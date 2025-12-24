@@ -1410,7 +1410,7 @@
   .product-title {
     text-decoration: none !important;
     font-weight: 400 !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
     color: #000 !important;
     margin-bottom: 5px !important;
 }
@@ -1477,7 +1477,7 @@ a.product-card * {
 
   .spec-label,
   .spec-value {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .product-collection {
@@ -1513,7 +1513,7 @@ a.product-card * {
 
 
   .product-price {
-    font-size: 20px;
+    font-size: 23px;
     color: var(--color-price-text);
     margin-bottom: 5px;
     margin-top: auto;
@@ -1592,6 +1592,7 @@ a.product-card * {
 .price-suffix {
   color: var(--color-price-text);
   margin-left: 4px;
+  font-size: 23px;
 }
 
 @media screen and (max-width: 410px) {
