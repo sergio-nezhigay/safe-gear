@@ -839,7 +839,7 @@
 
   .collection-price .price-label,
   .collection-price .price-value {
-    font-size: 14px;
+    font-size: 16px;
     color: inherit;
   }
 
@@ -1617,7 +1617,7 @@ a.product-card * {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 198;
+  flex: 220;
 }
 
 .collection-badges-wrapper {
@@ -1626,6 +1626,12 @@ a.product-card * {
   flex-direction: column;
   gap: 15px;
   align-items: flex-start;
+
+}
+
+.collection-badges-wrapper .collection-action {
+  margin-top: auto;
+  width: 100%;
 }
 
 .collection-dimensions {
@@ -1655,7 +1661,6 @@ a.product-card * {
 .collection-price {
   margin-top: auto;
   display: flex;
-  gap: 8px;
   align-items: baseline;
   font-size: 16px;
 }
@@ -1666,13 +1671,16 @@ a.product-card * {
 }
 
 .collection-price .price-value {
-  color: #4CAF50; /* Green color from image */
+  color: var(--color-price-text);
   font-weight: 500;
 }
 
 @media screen and (min-width: 1024px) {
     .collection-content-wrapper {
-      gap: 45px;
+      gap: 15px;
+   }
+   .collection-badges-wrapper {
+        max-width: 192px;
    }
 }
 
