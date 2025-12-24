@@ -1620,7 +1620,7 @@ a.product-card * {
   flex: 198;
 }
 
-.collection-placeholder {
+.collection-badges-wrapper {
   flex: 192;
   display: flex;
   flex-direction: column;
