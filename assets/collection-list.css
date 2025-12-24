@@ -1614,7 +1614,7 @@ a.product-card * {
 
 .collection-description {
   flex: 150;
-  min-width: 0; /* Prevent flex item from overflowing */
+  min-width: 0;
 }
 
 .collection-specs-wrapper {
@@ -1622,7 +1622,12 @@ a.product-card * {
   flex-direction: column;
   gap: 10px;
   flex: 198;
+}
 
+.collection-placeholder {
+  flex: 192;
+  font-size: 14px;
+  color: #000;
 }
 
 .collection-dimensions {

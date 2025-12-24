@@ -997,16 +997,10 @@
                               {% endif %}
                             </div>
                           {% endif %}
+                        </div>
 
-                          {% if collection_min_price > 0 %}
-                            <div class="collection-price">
-                              <span class="price-label">{{ section.settings.price_label | default: 'from' }}</span>
-                              <span class="price-value">{{ collection_min_price | money }}</span>
-                              {% if settings.product_price_suffix != blank %}
-                                <span class="price-suffix">{{ settings.product_price_suffix }}</span>
-                              {% endif %}
-                            </div>
-                          {% endif %}
+                        <div class="collection-placeholder">
+                          placeholder
                         </div>
                       </div>
                     </div>
