@@ -1626,7 +1626,7 @@ a.product-card * {
   flex-direction: column;
   gap: 15px;
   align-items: flex-start;
-
+overflow: hidden;
 }
 
 .collection-badges-wrapper .collection-action {
