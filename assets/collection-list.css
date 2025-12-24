@@ -118,11 +118,10 @@
   }
 
   .collection-card-title {
-    font-size: 16px;
-    color: var(--color-text-default);
-    margin: 0 0 var(--spacing-md) 0;
-    line-height: 1.2;
-    text-align: left;
+    font-size: 16px !important;
+    color: var(--color-text-default) !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
   }
 
   .collection-header .collection-description {
@@ -831,30 +830,17 @@
   }
 
   .collection-price {
+    margin-top: 8px;
     display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    margin: 0;
-  }
-
-  .price-label {
-    font-size: 16px;
-    color: #000;
-  }
-
-  .price-value {
-    font-size: 16px;
-    color: var(--color-price-text);
-  }
-  .collection-placeholder-row {
-    margin-top: 4px;
-    display: block;
+    gap: 4px;
     width: 100%;
+    color: var(--success-color);
   }
 
-  .collection-placeholder-row span {
+  .collection-price .price-label,
+  .collection-price .price-value {
     font-size: 14px;
-    color: #000;
+    color: inherit;
   }
 
   .collection-btn {
