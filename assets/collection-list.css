@@ -347,7 +347,7 @@ html {
   width: 20px;
   border-radius: 50%;
   background: white;
-  border: 3px solid var(--primary-color);
+  border: 3px solid #4b81bf;
   cursor: pointer;
   pointer-events: auto;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -363,7 +363,7 @@ html {
 .price-range-slider input[type="range"]::-webkit-slider-thumb:active,
 .dimension-range-slider input[type="range"]::-webkit-slider-thumb:active {
   transform: scale(1.25);
-  border-color: var(--primary-hover);
+  border-color: #c82333;
 }
 
 .price-range-slider input[type="range"]::-moz-range-track,
@@ -381,7 +381,7 @@ html {
   width: 20px;
   border-radius: 50%;
   background: white;
-  border: 3px solid var(--primary-color);
+  border: 3px solid #dc3545;
   cursor: pointer;
   pointer-events: auto;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -396,13 +396,13 @@ html {
 .price-range-slider input[type="range"]:focus::-webkit-slider-thumb,
 .dimension-range-slider input[type="range"]:focus::-webkit-slider-thumb {
   outline: none;
-  outline: 3px solid rgba(10, 61, 98, 0.2);
+  outline: 3px solid rgba(220, 53, 69, 0.2);
 }
 
 .price-range-slider input[type="range"]:focus::-moz-range-thumb,
 .dimension-range-slider input[type="range"]:focus::-moz-range-thumb {
   outline: none;
-  outline: 3px solid rgba(10, 61, 98, 0.2);
+  outline: 3px solid rgba(220, 53, 69, 0.2);
 }
 
 .price-range-labels,
