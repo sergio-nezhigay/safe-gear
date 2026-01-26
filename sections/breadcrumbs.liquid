@@ -186,7 +186,7 @@
 <script>
 (function() {
   'use strict';
-  
+
 
   const breadcrumbLinks = document.querySelectorAll('.breadcrumb-link');
   breadcrumbLinks.forEach(link => {
@@ -217,6 +217,56 @@
   if (currentItem) {
     currentItem.setAttribute('aria-current', 'page');
   }
+
+  // Sticky breadcrumbs: Update top position based on header height
+  function updateBreadcrumbPosition() {
+    // Find the inner header (the actual visible one when sticky)
+    const innerHeader = document.querySelector('header.site-header.is-sticky') ||
+                        document.querySelector('#sections--26152749990214__new_header_LbYACt');
+
+    if (innerHeader) {
+      const headerHeight = innerHeader.offsetHeight;
+      document.documentElement.style.setProperty('--breadcrumb-sticky-top', `${headerHeight}px`);
+    } else {
+      // Fallback to outer header if inner not found
+      const outerHeader = document.querySelector('header.site-header');
+      if (outerHeader) {
+        const headerHeight = outerHeader.offsetHeight;
+        document.documentElement.style.setProperty('--breadcrumb-sticky-top', `${headerHeight}px`);
+      }
+    }
+  }
+
+  // Initial update
+  updateBreadcrumbPosition();
+
+  // Watch for the inner header (the one that changes size)
+  const innerHeader = document.querySelector('header.site-header.is-sticky') ||
+                      document.querySelector('#sections--26152749990214__new_header_LbYACt');
+
+  if (innerHeader && 'ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(updateBreadcrumbPosition);
+    resizeObserver.observe(innerHeader);
+  }
+
+  // Also watch for class changes (when is-sticky is added/removed)
+  if ('MutationObserver' in window) {
+    const mutationObserver = new MutationObserver(updateBreadcrumbPosition);
+    const headers = document.querySelectorAll('header.site-header');
+    headers.forEach(header => {
+      mutationObserver.observe(header, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+
+  // Fallback: update on scroll (for older browsers)
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateBreadcrumbPosition, 50);
+  }, { passive: true });
+
+  // Update on window resize
+  window.addEventListener('resize', updateBreadcrumbPosition);
 })();
 </script>
 {% endunless %}

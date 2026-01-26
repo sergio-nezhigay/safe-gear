@@ -2,12 +2,16 @@
   background: var(--breadcrumb-bg);
   border-bottom: 1px solid var(--breadcrumb-border);
   color: var(--breadcrumb-text);
+  position: sticky;
+  top: var(--breadcrumb-sticky-top, 86px);
+  z-index: 900;
+  /* transition: top 0s ease; */
 }
 
 .breadcrumbs .breadcrumb-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10px 32px 28px 32px;
+  padding: 10px 32px 10px 32px;
 }
 
 .breadcrumbs .breadcrumb-list {
@@ -32,7 +36,7 @@
 }
 
 .breadcrumb-item span {
-  font-size:13px;
+  font-size: 13px;
 }
 
 .breadcrumbs .breadcrumb-separator {
@@ -47,13 +51,16 @@
   gap: 6px;
   text-decoration: none;
   color: var(--breadcrumb-accent);
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
   border-radius: 6px;
   padding: 4px 6px 4px 4px;
 }
 
 .breadcrumbs .breadcrumb-home {
-    padding: 4px 6px 4px 0;
+  padding: 4px 6px 4px 0;
 }
 
 .breadcrumbs .breadcrumb-link:hover,
@@ -75,7 +82,7 @@
 }
 
 .breadcrumbs .breadcrumb-text,
-.breadcrumbs [itemprop='name'] {
+.breadcrumbs [itemprop="name"] {
   display: inline-block;
   max-width: 44ch;
   overflow: hidden;
@@ -85,8 +92,8 @@
 }
 
 .breadcrumbs .breadcrumb-current .breadcrumb-text,
-.breadcrumbs .breadcrumb-current [itemprop='name'],
-.breadcrumbs .breadcrumb-item[aria-current='page'] .breadcrumb-text {
+.breadcrumbs .breadcrumb-current [itemprop="name"],
+.breadcrumbs .breadcrumb-item[aria-current="page"] .breadcrumb-text {
   font-weight: 600;
   color: var(--breadcrumb-text);
   background: color-mix(in oklab, var(--breadcrumb-hover) 60%, transparent);
@@ -106,7 +113,9 @@
   border: 1px solid
     color-mix(in oklab, var(--breadcrumb-accent) 25%, var(--breadcrumb-border));
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease,
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
@@ -129,7 +138,7 @@
     font-size: 13px;
   }
   .breadcrumbs .breadcrumb-text,
-  .breadcrumbs [itemprop='name'] {
+  .breadcrumbs [itemprop="name"] {
     max-width: 28ch;
   }
   .breadcrumbs .breadcrumb-back {
