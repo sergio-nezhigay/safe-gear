@@ -366,45 +366,6 @@
         "padding-block-end": 0
       }
     },
-    "installation_delivery_info_PQ7mK9": {
-      "type": "delivery-info",
-      "disabled": true,
-      "name": "Delivery Info",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 40,
-        "installation_title": "Installation",
-        "show_installation_option_1": true,
-        "installation_option_1_label": "Delivered to final location",
-        "installation_option_1_price": "DKK 4 000",
-        "show_installation_option_2": true,
-        "installation_option_2_label": "Delivered to final location with bolting to floor/wall",
-        "installation_option_2_price": "DKK 5 000",
-        "installation_disclaimer": "These prices are non-binding indications. The cost depends on location, access, stairs, weight etc.",
-        "installation_link_text": "More about delivery and Installation",
-        "installation_link_url": "#",
-        "show_transport_button": true,
-        "transport_button_helper": "Get an installation estimate",
-        "transport_button_text": "Transport Form",
-        "modal_title": "Transport & Installation Estimate",
-        "modal_subtitle": "Fill out this form to get a personalized quote for transport and installation.",
-        "delivery_title": "Delivery time",
-        "delivery_time_badge": "1-2 weeks",
-        "show_delivery_option_1": true,
-        "delivery_option_1_label": "Curbside Delivery",
-        "delivery_option_1_price": "DKK 400",
-        "delivery_option_1_description": "Delivery to the edge of your property, where the item will be left for you to bring inside.",
-        "show_delivery_option_2": true,
-        "delivery_option_2_label": "Collection from SafeGear warehouse",
-        "delivery_option_2_price": "DKK 0",
-        "delivery_option_2_description": "",
-        "show_delivery_option_3": false,
-        "delivery_option_3_label": "",
-        "delivery_option_3_price": "",
-        "delivery_option_3_description": ""
-      }
-    },
     "delivery_info_dynamic_dYjYm8": {
       "type": "delivery-info-dynamic",
       "name": "Delivery Info (Dynamic)",
@@ -413,7 +374,6 @@
         "pricing_spain_json": "{\"weight_ranges\":[{\"min\":0,\"max\":20,\"label\":\"0-20 kg\"},{\"min\":21,\"max\":100,\"label\":\"21-100 kg\"},{\"min\":101,\"max\":200,\"label\":\"101-200 kg\"},{\"min\":201,\"max\":300,\"label\":\"201-300 kg\"},{\"min\":301,\"max\":500,\"label\":\"301-500 kg\"},{\"min\":501,\"max\":999999,\"label\":\">500 kg\"}],\"delivery_options\":[{\"id\":\"curbside\",\"label\":\"Curbside Delivery\",\"description\":\"Delivery to the edge of your property, where the item will be left for you to bring inside.\",\"prices\":[2000,6000,8000,12000,15000,20000]},{\"id\":\"warehouse\",\"label\":\"Collection from SafeGear warehouse\",\"description\":\"\",\"prices\":[0,0,0,0,0,0]}],\"installation_options\":[{\"id\":\"final_location\",\"label\":\"Delivery to final location\",\"prices\":[22000,31000,38000,47000,65000,90000]},{\"id\":\"anchoring\",\"label\":\"Anchoring to floor or wall (per bolt)\",\"prices\":[6000,6000,6000,6000,10000,12000]}]}",
         "pricing_france_json": "{\"weight_ranges\":[{\"min\":0,\"max\":20,\"label\":\"0-20 kg\"},{\"min\":21,\"max\":100,\"label\":\"21-100 kg\"},{\"min\":101,\"max\":200,\"label\":\"101-200 kg\"},{\"min\":201,\"max\":300,\"label\":\"201-300 kg\"},{\"min\":301,\"max\":500,\"label\":\"301-500 kg\"},{\"min\":501,\"max\":999999,\"label\":\">500 kg\"}],\"delivery_options\":[{\"id\":\"curbside\",\"label\":\"Curbside Delivery\",\"description\":\"Delivery to the edge of your property, where the item will be left for you to bring inside.\",\"prices\":[3000,7000,9000,13000,16000,21000]},{\"id\":\"warehouse\",\"label\":\"Collection from SafeGear warehouse\",\"description\":\"\",\"prices\":[1000,1000,1000,1000,1000,1000]}],\"installation_options\":[{\"id\":\"final_location\",\"label\":\"Delivery to final location\",\"prices\":[23000,32000,39000,48000,66000,91000]},{\"id\":\"anchoring\",\"label\":\"Anchoring to floor or wall (per bolt)\",\"prices\":[7000,7000,7000,7000,11000,13000]}]}",
         "product": "",
-        "show_debug_info": true,
         "color_scheme": "scheme-1",
         "padding-block-start": 40,
         "padding-block-end": 40,
@@ -452,19 +412,19 @@
       "type": "addons-product",
       "name": "Product Add-ons with Sticky Cart",
       "settings": {
-        "section_title": "Fuldfør din opsætning",
+        "section_title": "Accessories",
         "section_description": "",
         "products_limit": 11,
-        "cart_title": "Dit valg",
-        "main_product_label": "Hovedprodukt",
-        "total_label": "Samlet beløb",
-        "add_button_text": "Læg i kurv",
-        "remove_button_text": "Fjern",
-        "main_add_button": "Læg i kurv",
-        "checkout_button": "Gå til betaling",
-        "clear_button": "Ryd tilføjelser",
-        "sold_out_text": "Udsolgt",
-        "loading_text": "Lægger i kurven...",
+        "cart_title": "Your Selection",
+        "main_product_label": "Main Product",
+        "total_label": "Total",
+        "add_button_text": "Add to cart",
+        "remove_button_text": "Remove",
+        "main_add_button": "Add to cart",
+        "checkout_button": "Go to Checkout",
+        "clear_button": "Remove Accessories",
+        "sold_out_text": "Sold Out",
+        "loading_text": "Adding to Cart…",
         "empty_text": "Ingen tilføjelsesprodukter er konfigureret. Angiv venligst metafeltet 'addon_products' for dette produkt."
       }
     },
@@ -474,13 +434,13 @@
       "name": "Size chart",
       "settings": {
         "color_scheme": "",
-        "section_title": "Størrelser",
+        "section_title": "Size Chart",
         "header_model": "Model",
-        "header_external": "Udvendige mål",
-        "header_internal": "Indvendige mål",
-        "header_weight": "Vægt",
-        "header_price": "Pris",
-        "dimensions_unit": "HxBxD mm",
+        "header_external": "External Dimensions",
+        "header_internal": "Internal Dimensions",
+        "header_weight": "Weight",
+        "header_price": "Price",
+        "dimensions_unit": "H×W×D mm",
         "weight_unit": "kg",
         "price_prefix": "From",
         "placeholder_title": "Size Chart Preview",
@@ -495,6 +455,19 @@
     "metafield_table_JUaEGX": {
       "type": "metafield-table",
       "blocks": {
+        "metafield_row_k76edg": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
         "metafield_row_KP9hYt": {
           "type": "metafield_row",
           "settings": {
@@ -508,10 +481,36 @@
             "is_variant_metafield": false
           }
         },
+        "metafield_row_4MrxM4": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "External dimensions",
+            "label": "Height - External (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_FRXnx3": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
         "metafield_row_FPNB83": {
           "type": "metafield_row",
           "settings": {
-            "group_name": "Ydre dimensioner",
+            "group_name": "External dimensions",
             "label": "Bredde",
             "metafield_namespace": "custom",
             "metafield_key": "new_width",
@@ -810,7 +809,10 @@
         }
       },
       "block_order": [
+        "metafield_row_k76edg",
         "metafield_row_KP9hYt",
+        "metafield_row_4MrxM4",
+        "metafield_row_FRXnx3",
         "metafield_row_FPNB83",
         "metafield_row_pjnLhe",
         "metafield_row_zx9YUx",
@@ -837,7 +839,7 @@
       ],
       "name": "Product Metafields Tables",
       "settings": {
-        "section_title": "Produktoplysninger",
+        "section_title": "Product Information",
         "section_width": "full-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
@@ -873,94 +875,6 @@
             "padding-inline-end": 0
           },
           "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "portrait",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
         }
       },
       "block_order": [
@@ -990,7 +904,6 @@
   "order": [
     "breadcrumbs_UaYrXQ",
     "main",
-    "installation_delivery_info_PQ7mK9",
     "delivery_info_dynamic_dYjYm8",
     "addons_product_EU3Fbt",
     "size_chart_deqbKr",
