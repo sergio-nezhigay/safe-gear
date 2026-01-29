@@ -320,18 +320,21 @@
             },
             "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
               "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/qb-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "disabled": true,
               "settings": {
                 "product": "{{closest.product}}"
               }
             },
             "ymq_b2b_wholesale_solution_ol_notification_VJpCFm": {
               "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ol-notification/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "disabled": true,
               "settings": {
                 "product": "{{closest.product}}"
               }
             },
             "ymq_b2b_wholesale_solution_ef_table_qiwFcb": {
               "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ef-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
+              "disabled": true,
               "settings": {
                 "product": "{{closest.product}}"
               }
