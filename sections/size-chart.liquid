@@ -154,6 +154,11 @@
     font-size: 16px;
   }
 
+  .size-chart-section th .dimension-unit {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
   .size-chart-section th:first-child {
     width: 30%;
     font-weight: 600;
@@ -340,12 +345,12 @@
                       <th class="cust_hkd">
                         {{ section.settings.header_external -}}
                         <br>
-                        ({{ section.settings.dimensions_unit }})
+                        <span class="dimension-unit">({{ section.settings.dimensions_unit }})</span>
                       </th>
                       <th class="cust_hkd">
                         {{ section.settings.header_internal -}}
                         <br>
-                        ({{ section.settings.dimensions_unit }})
+                        <span class="dimension-unit">({{ section.settings.dimensions_unit }})</span>
                       </th>
                       <th class="cust_ve">{{ section.settings.header_weight }}</th>
                       <th class="cust_price">{{ section.settings.header_price }}</th>
