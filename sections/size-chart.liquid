@@ -370,12 +370,12 @@
                         <td class="cut_td">
                           {{- product_.metafields.custom.new_height.value | split: ' ' | first }} X
                           {{ product_.metafields.custom.new_width.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_depth.value | split: ' ' | first -}}
+                          {{ product_.metafields.custom.new_depth.value | split: ' ' | first }} mm
                         </td>
                         <td class="cut_td">
                           {{- product_.metafields.custom.new_height_interior.value | split: ' ' | first }} X
                           {{ product_.metafields.custom.new_width_interior.value | split: ' ' | first }} X
-                          {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first -}}
+                          {{ product_.metafields.custom.new_depth_interior.value | split: ' ' | first }} mm
                         </td>
                         <td class="cut_td">
                           {% for variant in product_.variants %}
