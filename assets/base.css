@@ -2325,9 +2325,9 @@ deferred-media[class]
   }
 }
 
-.variant-picker .variant-option--buttons label:has(.swatch) {
+/*.variant-picker .variant-option--buttons label:has(.swatch) {
   border-radius: var(--variant-picker-swatch-radius);
-}
+}*/
 
 .sticky-content {
   position: sticky;
