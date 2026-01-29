@@ -510,7 +510,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
-  border-top: 1px solid #f0f0f0;
+  /*border-top: 1px solid #f0f0f0;*/
   padding-top: var(--spacing-sm);
   margin-top: var(--spacing-sm);
 }
