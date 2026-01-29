@@ -548,8 +548,8 @@
 }
 
 .btn-text-add {
-    font-size: 14px;
-    font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .cart-add-btn.in-cart {
@@ -678,64 +678,20 @@
 .addon-quantity-controls {
   display: flex;
   align-items: center;
-  gap: 2px;
-  background: var(--background-light);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;
+  gap: 0;
+  font-size: 16px;
+}
+
+/* Override quantity-selector styles for addon context */
+.addon-quantity-controls .quantity-selector {
+  width: auto;
+  min-width: 124px;
 }
 
 .addon-add-price {
   font-weight: 600;
   color: var(--text-primary);
   white-space: nowrap;
-}
-
-.quantity-btn {
-  background: var(--background-light);
-  border: none;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: all var(--transition-fast);
-  font-size: 14px;
-}
-
-.quantity-btn:hover {
-  background: var(--border-color);
-  color: var(--text-primary);
-}
-
-.quantity-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.addon-quantity-input {
-  border: none;
-  width: 40px;
-  height: 28px;
-  text-align: center;
-  background: white;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-primary);
-  outline: none;
-}
-
-.addon-quantity-input::-webkit-outer-spin-button,
-.addon-quantity-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.addon-quantity-input[type='number'] {
-  -moz-appearance: textfield;
 }
 
 .addon-add-btn {
@@ -868,20 +824,7 @@
     justify-content: center;
     margin-top: var(--spacing-sm);
     padding-top: 0;
-    border-top: 1px solid #f0f0f0;
-    gap: var(--spacing-sm);
-  }
-
-  .quantity-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-
-  .addon-quantity-input {
-    width: 60px;
-    height: 32px;
-    font-size: 14px;
+    /*border-top: 1px solid #f0f0f0;*/
   }
 
   .sticky-cart-sidebar {
@@ -965,22 +908,6 @@
   .addon-add-btn {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: 0.8rem;
-  }
-
-  .addon-quantity-controls {
-    gap: var(--spacing-xs);
-  }
-
-  .quantity-btn {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
-  }
-
-  .addon-quantity-input {
-    width: 50px;
-    height: 28px;
-    font-size: 12px;
   }
 
   .sticky-cart-sidebar {
@@ -1076,66 +1003,10 @@
   .addon-quantity-controls {
     right: 170px;
     position: absolute;
-    top: 40px;
+    /*top: 40px;*/
+    top: 50%;
+    transform: translateY(-50%);
   }
-}
-
-.addon-quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 8px;
-  justify-content: center;
-}
-
-.addon-quantity-controls .quantity-btn {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  padding: 0;
-  border: 1px solid #ddd;
-  background: #fff;
-  cursor: pointer;
-  border-radius: 3px;
-  font-size: 14px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.addon-quantity-controls .quantity-btn:hover:not(:disabled) {
-  background: var(--color-bg-2);
-  border-color: #999;
-}
-
-.addon-quantity-controls .quantity-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background: #fafafa;
-}
-
-.addon-quantity-controls .addon-quantity-input {
-  width: 40px;
-  height: 24px;
-  padding: 0 4px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  font-size: 13px;
-  -moz-appearance: textfield;
-}
-
-.addon-quantity-controls .addon-quantity-input::-webkit-outer-spin-button,
-.addon-quantity-controls .addon-quantity-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.addon-quantity-controls .addon-quantity-input:focus {
-  outline: none;
-  border-color: #666;
 }
 
 /* Hide quantity controls for yes/no addon types */

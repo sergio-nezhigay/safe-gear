@@ -242,9 +242,11 @@ async handleAddonCheckboxChange(checkbox) {
 }
 
     handleQuantityChange(button, action) {
-      const variantId = button.dataset.variantId;
       const card = button.closest(this.selectors.addonCard);
-      const quantityInput = card.querySelector(this.selectors.quantityInput);
+      if (!card) return;
+
+      const variantId = card.dataset.variantId;
+      const quantityInput = card.querySelector(this.selectors.quantityInput) || card.querySelector('input[type="number"]');
 
       if (!quantityInput) return;
 
@@ -274,8 +276,10 @@ async handleAddonCheckboxChange(checkbox) {
     }
 
     handleQuantityInputChange(input) {
-      const variantId = input.dataset.variantId;
       const card = input.closest(this.selectors.addonCard);
+      if (!card) return;
+
+      const variantId = card.dataset.variantId;
 
       // Skip quantity changes for yes/no addons
       const addonType = card.dataset.addonType || 'quantity';
@@ -360,7 +364,7 @@ async handleAddonCheckboxChange(checkbox) {
       // Get quantity from input, default to 1
       // For yes/no addons, always use quantity 1
       const addonType = card.dataset.addonType || 'quantity';
-      const quantityInput = card.querySelector(this.selectors.quantityInput);
+      const quantityInput = card.querySelector(this.selectors.quantityInput) || card.querySelector('input[type="number"]');
       const quantity = addonType === 'yes_no' ? 1 : (quantityInput ? parseInt(quantityInput.value) || 1 : 1);
 
       if (this.cart.addons.has(variantId)) {
@@ -452,7 +456,7 @@ async handleAddonCheckboxChange(checkbox) {
         // Get quantity from input, default to 1
         // For yes/no addons, always use quantity 1
         const addonType = card.dataset.addonType || 'quantity';
-        const quantityInput = card.querySelector(this.selectors.quantityInput);
+        const quantityInput = card.querySelector(this.selectors.quantityInput) || card.querySelector('input[type="number"]');
         const quantity = addonType === 'yes_no' ? 1 : (quantityInput ? parseInt(quantityInput.value) || 1 : 1);
 
         // Додаємо addon без parent_id (додамо після)
@@ -826,8 +830,8 @@ async handleAddonCheckboxChange(checkbox) {
     if (wrapper && variantId) {
       const isInCart = this.cart.addons.has(variantId);
       const quantityControls = card.querySelector(this.selectors.quantityControls);
-      const quantityInput = card.querySelector(this.selectors.quantityInput);
-      
+      const quantityInput = card.querySelector(this.selectors.quantityInput) || card.querySelector('input[type="number"]');
+
       if (isInCart) {
         card.classList.add('added');
         wrapper.classList.add('checked');
