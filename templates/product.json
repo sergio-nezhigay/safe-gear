@@ -448,7 +448,7 @@
         "placeholder_requirement_1": "Product has related products in the \"list_product\" metafield",
         "placeholder_requirement_2": "Product dimensions are configured via metafields",
         "placeholder_hint": "Configure product metafields to see the actual size chart",
-        "padding-block-start": 48,
+        "padding-block-start": 0,
         "padding-block-end": 48
       }
     },

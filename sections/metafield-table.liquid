@@ -640,7 +640,7 @@
     font-weight: bold;
     font-size: 16px;
     text-align: left;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     overflow: hidden;
     border: 1px solid var(--color-text-link) !important;
   }
@@ -676,15 +676,16 @@
     font-weight: 600;
     /* Rounded left side */
     border-left: 1px solid #d0d0d0;
+  }
+
+  .metafields-table th:first-child {
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
   }
 
   /* Handle the last cell for the right side rounded corners */
   .metafields-table td:last-child {
     border-right: 1px solid #d0d0d0;
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
 
   .metafields-table tr:nth-child(even) td {

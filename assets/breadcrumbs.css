@@ -11,7 +11,7 @@
 .breadcrumbs .breadcrumb-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10px 32px 10px 32px;
+  padding: 4px 32px 4px 32px;
 }
 
 .breadcrumbs .breadcrumb-list {
@@ -82,7 +82,7 @@
 }
 
 .breadcrumbs .breadcrumb-text,
-.breadcrumbs [itemprop="name"] {
+.breadcrumbs [itemprop='name'] {
   display: inline-block;
   max-width: 44ch;
   overflow: hidden;
@@ -92,8 +92,8 @@
 }
 
 .breadcrumbs .breadcrumb-current .breadcrumb-text,
-.breadcrumbs .breadcrumb-current [itemprop="name"],
-.breadcrumbs .breadcrumb-item[aria-current="page"] .breadcrumb-text {
+.breadcrumbs .breadcrumb-current [itemprop='name'],
+.breadcrumbs .breadcrumb-item[aria-current='page'] .breadcrumb-text {
   font-weight: 600;
   color: var(--breadcrumb-text);
   background: color-mix(in oklab, var(--breadcrumb-hover) 60%, transparent);
@@ -138,7 +138,7 @@
     font-size: 13px;
   }
   .breadcrumbs .breadcrumb-text,
-  .breadcrumbs [itemprop="name"] {
+  .breadcrumbs [itemprop='name'] {
     max-width: 28ch;
   }
   .breadcrumbs .breadcrumb-back {
