@@ -4623,3 +4623,9 @@ text-component {
     margin-bottom: 16px !important;
   }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1250px) {
+  #MainContent {
+    padding-top: 62px;
+  }
+}

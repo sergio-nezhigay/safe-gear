@@ -1524,7 +1524,7 @@ a.product-card * {
   background: var(--color-price-text);
   color: white;
   text-decoration: none;
-  padding: 4px var(--spacing-md);
+  padding: 6px var(--spacing-md);
   border-radius: 6px;
   font-weight: 400;
   text-align: center;
