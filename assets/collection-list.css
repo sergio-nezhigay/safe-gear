@@ -33,6 +33,7 @@ html {
   font-weight: 400 !important;
   color: var(--color-text-default);
 }
+
 .collection-list-section {
   padding: var(--spacing-xl) 20px;
   scroll-margin-top: 15px;
@@ -241,7 +242,7 @@ html {
   border-color: #4b81bf;
 }
 
-.filter-checkbox input:checked ~ .checkmark {
+.filter-checkbox input:checked~.checkmark {
   background-color: #4b81bf;
   border-color: #4b81bf;
 }
@@ -259,7 +260,7 @@ html {
   transform: rotate(45deg);
 }
 
-.filter-checkbox input:checked ~ .checkmark:after {
+.filter-checkbox input:checked~.checkmark:after {
   display: block;
 }
 
@@ -738,9 +739,7 @@ html {
 
 .collection-card:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  border-color: var(
-    --border-color
-  ); /* Keep border color static or remove if border is not wanted on hover */
+  border-color: var(--border-color);
   z-index: 1;
 }
 
@@ -876,22 +875,17 @@ html {
   flex: 0 0 auto;
 }
 
-.badge {
-  width: 85px;
-  height: 85px;
+.collection-card .badge {
+  width: 50px;
+  height: 50px;
   border-radius: 1px;
   overflow: hidden;
   background: white;
-  border: 1px solid #e8ecef;
+  /* border: 1px solid #e8ecef; */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
-}
-
-.badge:hover {
-  border-color: var(--primary-color);
-  transform: scale(1.05);
 }
 
 .badge img {
@@ -1067,10 +1061,6 @@ html {
     gap: var(--spacing-xs);
   }
 
-  .badge {
-    width: 50px;
-    height: 50px;
-  }
 }
 
 .collection-card-top {
@@ -1096,6 +1086,7 @@ html {
     padding: var(--spacing-xl) 15px;
     padding-top: 16px !important;
   }
+
   .collection-card-bottom {
     padding-top: 30px;
   }
@@ -1219,7 +1210,7 @@ html {
     font-size: 0.7rem;
     color: var(--text-secondary);
     white-space: nowrap;
-    font-weight: 400; /* Resetting desktop bold if needed, or keep it? Original was all regular/secondary */
+    font-weight: 400;
   }
 
   .collection-details .collection-price {
@@ -1240,7 +1231,7 @@ html {
     width: auto;
   }
 
-  .badge {
+  .collection-card .badge {
     width: 45px;
     height: 45px;
   }
@@ -1274,6 +1265,7 @@ html {
   .section-heading {
     font-size: 1.5rem;
   }
+
   .collection-header .collection-title {
     font-size: 24px;
   }
@@ -1321,7 +1313,7 @@ html {
     font-size: 0.85rem;
   }
 
-  .badge {
+  .collection-card .badge {
     width: 40px;
     height: 40px;
   }
@@ -1364,6 +1356,7 @@ html {
 .dimension-range-labels span {
   font-size: 12px !important;
 }
+
 .price-range-labels span {
   font-size: 12px !important;
 }
@@ -1562,7 +1555,7 @@ a.product-card * {
   }
 }
 
-.products-grid[style*='display: none'] + .products-pagination {
+.products-grid[style*='display: none']+.products-pagination {
   display: none;
 }
 
@@ -1673,6 +1666,7 @@ a.product-card * {
   .collection-content-wrapper {
     gap: 15px;
   }
+
   .collection-badges-wrapper {
     max-width: 192px;
   }
