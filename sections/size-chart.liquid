@@ -248,6 +248,45 @@
     background: #2ea84d;
   }
 
+  /* Tablet and Desktop: 71px header height, no text wrap */
+  @media screen and (min-width: 750px) {
+    .size-chart-section table thead {
+      height: 71px;
+    }
+
+    .size-chart-section table thead tr {
+      height: 71px;
+    }
+
+    .size-chart-section table thead th {
+      height: 71px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      /* white-space: nowrap; */
+      vertical-align: middle;
+      line-height: 1.2;
+    }
+
+    .size-chart-section table thead th .dimension-unit {
+      display: inline;
+      margin-left: 4px;
+    }
+
+    /* Optional: Add slight horizontal spacing if needed */
+    .size-chart-section table thead th.cust_hkd {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+
+  /* Optional: Desktop-specific adjustments (≥1024px) */
+  @media screen and (min-width: 1024px) {
+    .size-chart-section table thead th {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
   /* Mobile Responsive */
   @media (max-width: 768px) {
     .size-chart-section .page-width {
