@@ -296,8 +296,8 @@
                 </div>
                 
                 <div class="price-range-labels">
-                  <span class="price-min-label"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ min_price | money }}</span></span>
-                  <span class="price-max-label"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ max_price | money }}</span></span>
+                  <span class="price-min-label"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ min_price | money_without_currency | remove: ',' }}</span></span>
+                  <span class="price-max-label"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ max_price | money_without_currency | remove: ',' }}</span></span>
                 </div>
                 
                 <div class="price-range-inputs">

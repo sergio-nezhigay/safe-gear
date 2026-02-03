@@ -39,7 +39,8 @@
       "Bash(cat:*)",
       "WebFetch(domain:support.claude.com)",
       "Bash(ls:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

@@ -514,16 +514,12 @@ class CollectionFilters {
 
   formatPrice(price) {
     const rounded = Math.round(price / 100);
-    return this.currencyPosition === 'after'
-      ? `${rounded} ${this.currencySymbol}`
-      : `${this.currencySymbol}${rounded}`;
+    return `${rounded}`;
   }
 
   formatPriceCompact(price) {
     const rounded = Math.round(price / 100);
-    return this.currencyPosition === 'after'
-      ? `${rounded} ${this.currencySymbol}`
-      : `${this.currencySymbol}${rounded}`;
+    return `${rounded}`;
   }
 
   formatInputPrice(value) {
