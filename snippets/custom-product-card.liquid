@@ -60,10 +60,18 @@
       {% assign width = product.metafields.custom.new_width.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
       {% assign depth = product.metafields.custom.new_depth.value | remove: ' mm' | remove: 'mm' | plus: 0 %}
 
+      {%- comment -%} Weight fallback: try metafield first, then variant weight {%- endcomment -%}
+      {% assign weight_from_metafield = product.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0 %}
+
       {% assign min_weight = 0 %}
       {% assign max_weight = 0 %}
 
-      {% if product.variants.size > 0 %}
+      {% if weight_from_metafield > 0 %}
+        {%- comment -%} Use metafield as single value {%- endcomment -%}
+        {% assign min_weight = weight_from_metafield %}
+        {% assign max_weight = weight_from_metafield %}
+      {% elsif product.variants.size > 0 %}
+        {%- comment -%} Fallback to variant weight range {%- endcomment -%}
         {% assign weights = product.variants | map: 'weight' | sort %}
         {% assign min_weight = weights.first | divided_by: 1000.0 %}
         {% assign max_weight = weights.last | divided_by: 1000.0 %}

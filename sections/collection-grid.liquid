@@ -151,6 +151,26 @@
           {% assign max_weight = weight_value %}
         {% endif %}
       {% endunless %}
+    {% else %}
+      {%- comment -%} Fallback to variant weight if metafield is empty {%- endcomment -%}
+      {% if product.variants.size > 0 and product.variants.first.weight %}
+        {% assign variant_weight_num = product.variants.first.weight | plus: 0 %}
+        {% if variant_weight_num > 0 %}
+          {% assign weight_value = variant_weight_num | divided_by: 1000.0 %}
+          {% unless has_weight_data %}
+            {% assign min_weight = weight_value %}
+            {% assign max_weight = weight_value %}
+            {% assign has_weight_data = true %}
+          {% else %}
+            {% if weight_value < min_weight %}
+              {% assign min_weight = weight_value %}
+            {% endif %}
+            {% if weight_value > max_weight %}
+              {% assign max_weight = weight_value %}
+            {% endif %}
+          {% endunless %}
+        {% endif %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 
