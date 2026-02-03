@@ -809,6 +809,11 @@
                   assign has_height_data = false
                   assign burglary_grade = ''
                   assign fire_resistance = ''
+                  assign min_weight = 999999
+                  assign max_weight = 0
+                  assign bolting_csv = ''
+                  assign has_weight_data = false
+                  assign has_bolting_data = false
 
                   if first_product
                     for p in col.products
@@ -855,6 +860,40 @@
                         assign burglary_grade = p.metafields.custom.burglary_classification.value
                       endif
 
+                      assign kg_val = p.metafields.custom.weight.value | remove: ' kg' | remove: 'kg' | plus: 0
+                      if kg_val == 0 and p.variants.size > 0
+                        assign kg_val = p.variants.first.weight | divided_by: 1000.0
+                      endif
+
+                      if kg_val > 0
+                        assign has_weight_data = true
+                        if kg_val < min_weight
+                          assign min_weight = kg_val
+                        endif
+                        if kg_val > max_weight
+                          assign max_weight = kg_val
+                        endif
+                      endif
+
+                      assign bolting_val = p.metafields.custom.bolting.value
+                      if bolting_val != blank
+                        assign has_bolting_data = true
+                        comment
+                           Check if it's a list/array
+                        endcomment
+                        if bolting_val.first != blank
+                          for item in bolting_val
+                            unless bolting_csv contains item
+                              assign bolting_csv = bolting_csv | append: ',' | append: item
+                            endunless
+                          endfor
+                        else
+                          unless bolting_csv contains bolting_val
+                            assign bolting_csv = bolting_csv | append: ',' | append: bolting_val
+                          endunless
+                        endif
+                      endif
+
                       if fire_resistance == ''
                         assign fire_resistance = p.metafields.custom.fire_duration.value
                       endif
@@ -897,6 +936,10 @@
                     if min_height == 999999
                       assign min_height = 0
                     endif
+                    if min_weight == 999999
+                      assign min_weight = 0
+                    endif
+                    assign bolting_labels = bolting_csv | remove_first: ',' | split: ',' | uniq | join: ', '
                   endif
 
                   assign link_url = col.url
@@ -957,7 +1000,7 @@
                         </div>
 
                         <div class="collection-specs-wrapper">
-                          {% if has_depth_data or has_width_data or has_height_data %}
+                          {% if has_depth_data or has_width_data or has_height_data or has_weight_data or has_bolting_data %}
                             <div class="collection-dimensions">
                               {% if has_height_data %}
                                 <div class="dimension-row">
@@ -993,6 +1036,24 @@
                                     {{ min_depth }} - {{ max_depth }} mm
                                   {% endif %}
                                   </span>
+                                </div>
+                              {% endif %}
+                              {% if has_weight_data %}
+                                <div class="dimension-row">
+                                  <span class="dimension-label">{{ section.settings.weight_display_label | default: 'Weight' }}</span>
+                                  <span class="dimension-value">
+                                  {% if min_weight == max_weight %}
+                                    {{ min_weight }} kg
+                                  {% else %}
+                                    {{ min_weight }} - {{ max_weight }} kg
+                                  {% endif %}
+                                  </span>
+                                </div>
+                              {% endif %}
+                              {% if has_bolting_data %}
+                                <div class="dimension-row">
+                                  <span class="dimension-label">{{ section.settings.bolting_display_label | default: 'Bolting' }}</span>
+                                  <span class="dimension-value">{{ bolting_labels }}</span>
                                 </div>
                               {% endif %}
                             </div>
@@ -1534,6 +1595,8 @@
     { "type": "text", "id": "height_display_label", "label": "Height Display Label", "default": "Height" },
     { "type": "text", "id": "width_display_label", "label": "Width Display Label", "default": "Width" },
     { "type": "text", "id": "depth_display_label", "label": "Depth Display Label", "default": "Depth" },
+    { "type": "text", "id": "weight_display_label", "label": "Weight Display Label", "default": "Weight" },
+    { "type": "text", "id": "bolting_display_label", "label": "Bolting Display Label", "default": "Bolting" },
 
     { "type": "header", "content": "Pagination Settings" },
     {

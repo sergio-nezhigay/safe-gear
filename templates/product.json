@@ -458,26 +458,70 @@
     "metafield_table_JUaEGX": {
       "type": "metafield-table",
       "blocks": {
-        "metafield_row_k76edg": {
+        "metafield_row_mBmVnt": {
           "type": "metafield_row",
+          "name": "Width - Interior (mm)",
           "settings": {
-            "group_name": "Product Information",
-            "label": "Property",
+            "group_name": "Internal dimensions",
+            "label": "Width - Interior (mm)",
             "metafield_namespace": "custom",
-            "metafield_key": "",
+            "metafield_key": "new_width_interior",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
           }
         },
-        "metafield_row_KP9hYt": {
+        "metafield_row_wXT3qc": {
           "type": "metafield_row",
+          "name": "Depth - Interior (mm)",
           "settings": {
-            "group_name": "Ydre dimensioner",
-            "label": "Højde",
+            "group_name": "Internal dimensions",
+            "label": "Depth - Interior (mm)",
             "metafield_namespace": "custom",
-            "metafield_key": "new_height",
+            "metafield_key": "new_depth_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_K8de4F": {
+          "type": "metafield_row",
+          "name": "Height - Interior (mm)",
+          "settings": {
+            "group_name": "Internal dimensions",
+            "label": "Height - Interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_xrggqX": {
+          "type": "metafield_row",
+          "name": "Depth - Exterior (mm)",
+          "settings": {
+            "group_name": "External dimensions",
+            "label": "Depth - Exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_zbcXnB": {
+          "type": "metafield_row",
+          "name": "Width - Exterior (mm)",
+          "settings": {
+            "group_name": "External dimensions",
+            "label": "Width - Exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
@@ -486,6 +530,7 @@
         },
         "metafield_row_4MrxM4": {
           "type": "metafield_row",
+          "name": "Height - External (mm)",
           "settings": {
             "group_name": "External dimensions",
             "label": "Height - External (mm)",
@@ -497,86 +542,9 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_FRXnx3": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Product Information",
-            "label": "Property",
-            "metafield_namespace": "custom",
-            "metafield_key": "",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_FPNB83": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "External dimensions",
-            "label": "Bredde",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_pjnLhe": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Ydre dimensioner",
-            "label": "Height - Exterior (mm)",
-            "metafield_namespace": "",
-            "metafield_key": "custom.height_exterior_mm",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_zx9YUx": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Indre dimensioner",
-            "label": "Højde (indre)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_height_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_CEbTPL": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Indre dimensioner",
-            "label": "Bredde (indre)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_AATKW3": {
-          "type": "metafield_row",
-          "settings": {
-            "group_name": "Indre dimensioner",
-            "label": "Dybde (indre)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
         "metafield_row_RPmccX": {
           "type": "metafield_row",
+          "name": "Model",
           "settings": {
             "group_name": "Produktspecifikationer",
             "label": "Model",
@@ -590,6 +558,7 @@
         },
         "metafield_row_mtCWr6": {
           "type": "metafield_row",
+          "name": "Model Serie",
           "settings": {
             "group_name": "Produktspecifikationer",
             "label": "Model Serie",
@@ -603,6 +572,7 @@
         },
         "metafield_row_rjRfCY": {
           "type": "metafield_row",
+          "name": "Produktspecifikationer",
           "settings": {
             "group_name": "Produktspecifikationer",
             "label": "Pengeskabstype",
@@ -616,6 +586,7 @@
         },
         "metafield_row_HDT3UM": {
           "type": "metafield_row",
+          "name": "Formål",
           "settings": {
             "group_name": "Produktspecifikationer",
             "label": "Formål",
@@ -629,6 +600,7 @@
         },
         "metafield_row_weight_variant": {
           "type": "metafield_row",
+          "name": "Vægt",
           "settings": {
             "group_name": "Produktspecifikationer",
             "label": "Vægt",
@@ -642,6 +614,7 @@
         },
         "metafield_row_TtLyni": {
           "type": "metafield_row",
+          "name": "Dørstruktur",
           "settings": {
             "group_name": "Konstruktion",
             "label": "Dørstruktur",
@@ -655,6 +628,7 @@
         },
         "metafield_row_AWKmbN": {
           "type": "metafield_row",
+          "name": "Korpusstruktur",
           "settings": {
             "group_name": "Konstruktion",
             "label": "Korpusstruktur",
@@ -668,6 +642,7 @@
         },
         "metafield_row_V4U3tF": {
           "type": "metafield_row",
+          "name": "Fastgørelse",
           "settings": {
             "group_name": "Installation",
             "label": "Fastgørelse",
@@ -681,6 +656,7 @@
         },
         "metafield_row_mWAUUV": {
           "type": "metafield_row",
+          "name": "Bolte inkluderet",
           "settings": {
             "group_name": "Installation",
             "label": "Bolte inkluderet",
@@ -694,6 +670,7 @@
         },
         "metafield_row_npk77M": {
           "type": "metafield_row",
+          "name": "Indbrudsklassifikation",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
             "label": "Indbrudsklassifikation",
@@ -707,6 +684,7 @@
         },
         "metafield_row_BWyAMi": {
           "type": "metafield_row",
+          "name": "Testmetode",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
             "label": "Testmetode",
@@ -720,6 +698,7 @@
         },
         "metafield_row_EjK4NL": {
           "type": "metafield_row",
+          "name": "Testcenter",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
             "label": "Testcenter",
@@ -733,6 +712,7 @@
         },
         "metafield_row_JDxeKd": {
           "type": "metafield_row",
+          "name": "Kontantrating",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
             "label": "Kontantrating",
@@ -746,6 +726,7 @@
         },
         "metafield_row_3yQHj7": {
           "type": "metafield_row",
+          "name": "Brandvarighed",
           "settings": {
             "group_name": "Sikkerhed & Certifikater",
             "label": "Brandvarighed",
@@ -812,15 +793,12 @@
         }
       },
       "block_order": [
-        "metafield_row_k76edg",
-        "metafield_row_KP9hYt",
+        "metafield_row_mBmVnt",
+        "metafield_row_wXT3qc",
+        "metafield_row_K8de4F",
+        "metafield_row_xrggqX",
+        "metafield_row_zbcXnB",
         "metafield_row_4MrxM4",
-        "metafield_row_FRXnx3",
-        "metafield_row_FPNB83",
-        "metafield_row_pjnLhe",
-        "metafield_row_zx9YUx",
-        "metafield_row_CEbTPL",
-        "metafield_row_AATKW3",
         "metafield_row_RPmccX",
         "metafield_row_mtCWr6",
         "metafield_row_rjRfCY",
