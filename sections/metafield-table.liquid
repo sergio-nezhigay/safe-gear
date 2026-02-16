@@ -167,8 +167,9 @@
   .table-container {
     width: 100%;
     margin-bottom: 24px;
-
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
   }
 
   .metafields-table {
@@ -200,6 +201,12 @@
     /* Borders for top and bottom of the "row" */
     border-top: 1px solid var(--color-border-light);
     border-bottom: 1px solid var(--color-border-light);
+    /* Ensure text wraps properly */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
   }
 
   /* Prevent double borders: Remove top border from all rows except the first */
@@ -352,6 +359,12 @@
     .metafields-table td:first-child,
     .metafields-table th:first-child {
       width: 36%;
+      min-width: 100px;
+    }
+
+    .metafields-table td:last-child {
+      width: 64%;
+      min-width: 150px;
     }
 
     .table-container {
@@ -361,10 +374,13 @@
     .metafields-table td,
     .metafields-table th {
       font-size: 14px;
+      padding: 10px 12px;
+      line-height: 1.5;
     }
 
     .table-header {
       font-size: 16px;
+      padding: 14px 12px;
     }
 
     .metafields__content {
