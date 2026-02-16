@@ -268,9 +268,17 @@
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="burglary">
               {{ section.settings.burglary_grade_label | default: 'Burglary Grade' }}
-              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+              <span class="accordion-icon">
+                {%- if is_first_group %}−{% else %}+{% endif -%}
+              </span>
             </h4>
-            <div class="filter-options" data-accordion-content="burglary" {% unless is_first_group %}style="display: none;"{% endunless %}>
+            <div
+              class="filter-options"
+              data-accordion-content="burglary"
+              {% unless is_first_group %}
+                style="display: none;"
+              {% endunless %}
+            >
               {% assign is_first_group = false %}
               {% assign sorted_burglary = all_burglary_grades | sort %}
               {% for grade in sorted_burglary %}
@@ -299,9 +307,17 @@
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="fire">
               {{ section.settings.fire_resistance_label | default: 'Fire Resistance' }}
-              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+              <span class="accordion-icon">
+                {%- if is_first_group %}−{% else %}+{% endif -%}
+              </span>
             </h4>
-            <div class="filter-options" data-accordion-content="fire" {% unless is_first_group %}style="display: none;"{% endunless %}>
+            <div
+              class="filter-options"
+              data-accordion-content="fire"
+              {% unless is_first_group %}
+                style="display: none;"
+              {% endunless %}
+            >
               {% assign is_first_group = false %}
               {% assign sorted_fire = all_fire_resistance | sort %}
               <!-- Show fire resistance in specific order based on content -->
@@ -345,9 +361,17 @@
           <div class="filter-group price-filter-group">
             <h4 class="filter-group-title" data-accordion="price">
               {{ section.settings.price_range_label | default: 'Price Range' }}
-              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+              <span class="accordion-icon">
+                {%- if is_first_group %}−{% else %}+{% endif -%}
+              </span>
             </h4>
-            <div class="filter-options" data-accordion-content="price" {% unless is_first_group %}style="display: none;"{% endunless %}>
+            <div
+              class="filter-options"
+              data-accordion-content="price"
+              {% unless is_first_group %}
+                style="display: none;"
+              {% endunless %}
+            >
               {% assign is_first_group = false %}
               <div class="price-range-container">
                 <div class="price-range-slider-container">
@@ -445,9 +469,17 @@
             <div class="filter-group dimension-filter-group">
               <h4 class="filter-group-title" data-accordion="{{ dimension }}">
                 {{ title }} ({{ unit }})
-                <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+                <span class="accordion-icon">
+                  {%- if is_first_group %}−{% else %}+{% endif -%}
+                </span>
               </h4>
-              <div class="filter-options" data-accordion-content="{{ dimension }}" {% unless is_first_group %}style="display: none;"{% endunless %}>
+              <div
+                class="filter-options"
+                data-accordion-content="{{ dimension }}"
+                {% unless is_first_group %}
+                  style="display: none;"
+                {% endunless %}
+              >
                 {% assign is_first_group = false %}
                 <div class="dimension-range-container">
                   <div class="dimension-range-slider-container">
@@ -513,10 +545,18 @@
         {% if has_variant_weight_data and max_variant_weight > min_variant_weight %}
           <div class="filter-group dimension-filter-group">
             <h4 class="filter-group-title" data-accordion="variant_weight">
-              Variant Vægt (kg)
-              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+              {{ section.settings.weight_label | default: 'Weight' }} (kg)
+              <span class="accordion-icon">
+                {%- if is_first_group %}−{% else %}+{% endif -%}
+              </span>
             </h4>
-            <div class="filter-options" data-accordion-content="variant_weight" {% unless is_first_group %}style="display: none;"{% endunless %}>
+            <div
+              class="filter-options"
+              data-accordion-content="variant_weight"
+              {% unless is_first_group %}
+                style="display: none;"
+              {% endunless %}
+            >
               {% assign is_first_group = false %}
               <div class="dimension-range-container">
                 <div class="dimension-range-slider-container">
@@ -582,9 +622,17 @@
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="category">
               {{ section.settings.category_label | default: 'Category' }}
-              <span class="accordion-icon">{% if is_first_group %}−{% else %}+{% endif %}</span>
+              <span class="accordion-icon">
+                {%- if is_first_group %}−{% else %}+{% endif -%}
+              </span>
             </h4>
-            <div class="filter-options" data-accordion-content="category" {% unless is_first_group %}style="display: none;"{% endunless %}>
+            <div
+              class="filter-options"
+              data-accordion-content="category"
+              {% unless is_first_group %}
+                style="display: none;"
+              {% endunless %}
+            >
               {% assign is_first_group = false %}
               <div class="category-options-container">
                 {% assign sorted_categories = all_categories | sort %}
@@ -669,35 +717,75 @@
                     {% case burglary_grade %}
                       {% when 'S1' %}
                         {% if settings.icon_burglary_s1 != blank %}
-                          <img src="{{ settings.icon_burglary_s1 | image_url: width: 48 }}" alt="S1 Grade" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_s1 | image_url: width: 48 }}"
+                            alt="S1 Grade"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                       {% when 'S2' %}
                         {% if settings.icon_burglary_s2 != blank %}
-                          <img src="{{ settings.icon_burglary_s2 | image_url: width: 48 }}" alt="S2 Grade" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_s2 | image_url: width: 48 }}"
+                            alt="S2 Grade"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                       {% when 'Grade 0' %}
                         {% if settings.icon_burglary_grade_0 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_0 | image_url: width: 48 }}" alt="Grade 0" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_0 | image_url: width: 48 }}"
+                            alt="Grade 0"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                       {% when 'Grade I' %}
                         {% if settings.icon_burglary_grade_1 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_1 | image_url: width: 48 }}" alt="Grade I" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_1 | image_url: width: 48 }}"
+                            alt="Grade I"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when 'Grade II' or 'GRADE II' %}
+                      {% when 'Grade II', 'GRADE II' %}
                         {% if settings.icon_burglary_grade_2 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_2 | image_url: width: 48 }}" alt="Grade II" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_2 | image_url: width: 48 }}"
+                            alt="Grade II"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when 'Grade III' or 'GRADE III' %}
+                      {% when 'Grade III', 'GRADE III' %}
                         {% if settings.icon_burglary_grade_3 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_3 | image_url: width: 48 }}" alt="Grade III" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_3 | image_url: width: 48 }}"
+                            alt="Grade III"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when 'Grade IV' or 'GRADE IV' %}
+                      {% when 'Grade IV', 'GRADE IV' %}
                         {% if settings.icon_burglary_grade_4 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_4 | image_url: width: 48 }}" alt="Grade IV" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_4 | image_url: width: 48 }}"
+                            alt="Grade IV"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when 'Grade V' or 'GRADE V' %}
+                      {% when 'Grade V', 'GRADE V' %}
                         {% if settings.icon_burglary_grade_5 != blank %}
-                          <img src="{{ settings.icon_burglary_grade_5 | image_url: width: 48 }}" alt="Grade V" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_burglary_grade_5 | image_url: width: 48 }}"
+                            alt="Grade V"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                     {% endcase %}
                   </div>
@@ -706,23 +794,53 @@
                     <div class="feature-item__text">
                       {% case burglary_grade %}
                         {% when 'S1' %}
-                          {{ settings.icon_burglary_s1_description | default: 'Tested according to European standard EN-1143-1. S1 certified.' }}
+                          {{
+                            settings.icon_burglary_s1_description
+                            | default: 'Tested according to European standard EN-1143-1. S1 certified.'
+                          }}
                         {% when 'S2' %}
-                          {{ settings.icon_burglary_s2_description | default: 'Tested according to European standard EN-1143-1. S2 certified.' }}
+                          {{
+                            settings.icon_burglary_s2_description
+                            | default: 'Tested according to European standard EN-1143-1. S2 certified.'
+                          }}
                         {% when 'Grade 0' %}
-                          {{ settings.icon_burglary_grade_0_description | default: 'Tested according to European standard EN-1143-1. Grade 0 certified.' }}
+                          {{
+                            settings.icon_burglary_grade_0_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade 0 certified.'
+                          }}
                         {% when 'Grade I' %}
-                          {{ settings.icon_burglary_grade_1_description | default: 'Tested according to European standard EN-1143-1. Grade I certified.' }}
-                        {% when 'Grade II' or 'GRADE II' %}
-                          {{ settings.icon_burglary_grade_2_description | default: 'Tested according to European standard EN-1143-1. Grade II certified.' }}
-                        {% when 'Grade III' or 'GRADE III' %}
-                          {{ settings.icon_burglary_grade_3_description | default: 'Tested according to European standard EN-1143-1. Grade III certified.' }}
-                        {% when 'Grade IV' or 'GRADE IV' %}
-                          {{ settings.icon_burglary_grade_4_description | default: 'Tested according to European standard EN-1143-1. Grade IV certified.' }}
-                        {% when 'Grade V' or 'GRADE V' %}
-                          {{ settings.icon_burglary_grade_5_description | default: 'Tested according to European standard EN-1143-1. Grade V certified.' }}
+                          {{
+                            settings.icon_burglary_grade_1_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade I certified.'
+                          }}
+                        {% when 'Grade II', 'GRADE II' %}
+                          {{
+                            settings.icon_burglary_grade_2_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade II certified.'
+                          }}
+                        {% when 'Grade III', 'GRADE III' %}
+                          {{
+                            settings.icon_burglary_grade_3_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade III certified.'
+                          }}
+                        {% when 'Grade IV', 'GRADE IV' %}
+                          {{
+                            settings.icon_burglary_grade_4_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade IV certified.'
+                          }}
+                        {% when 'Grade V', 'GRADE V' %}
+                          {{
+                            settings.icon_burglary_grade_5_description
+                            | default: 'Tested according to European standard EN-1143-1. Grade V certified.'
+                          }}
                         {% else %}
-                          <p>{{ section.settings.burglary_description | default: 'Tested according to European standard EN-1143-1.' }} <strong>{{ burglary_grade }}</strong> certified.</p>
+                          <p>
+                            {{
+                              section.settings.burglary_description
+                              | default: 'Tested according to European standard EN-1143-1.'
+                            }}
+                            <strong>{{ burglary_grade }}</strong> certified.
+                          </p>
                       {% endcase %}
                     </div>
                   </div>
@@ -734,25 +852,50 @@
                 <div class="feature-item feature-item--auto feature-item--fire">
                   <div class="feature-item__icon">
                     {% case fire_resistance %}
-                      {% when '30 Minutes' or '30 minutter' %}
+                      {% when '30 Minutes', '30 minutter' %}
                         {% if settings.icon_fire_30_minutes != blank %}
-                          <img src="{{ settings.icon_fire_30_minutes | image_url: width: 48 }}" alt="30 Minutes Fire Protection" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_fire_30_minutes | image_url: width: 48 }}"
+                            alt="30 Minutes Fire Protection"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when '60 Minutes' or '60 minutter' %}
+                      {% when '60 Minutes', '60 minutter' %}
                         {% if settings.icon_fire_60_minutes != blank %}
-                          <img src="{{ settings.icon_fire_60_minutes | image_url: width: 48 }}" alt="60 Minutes Fire Protection" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_fire_60_minutes | image_url: width: 48 }}"
+                            alt="60 Minutes Fire Protection"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when '90 Minutes' or '90 minutter' %}
+                      {% when '90 Minutes', '90 minutter' %}
                         {% if settings.icon_fire_90_minutes != blank %}
-                          <img src="{{ settings.icon_fire_90_minutes | image_url: width: 48 }}" alt="90 Minutes Fire Protection" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_fire_90_minutes | image_url: width: 48 }}"
+                            alt="90 Minutes Fire Protection"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
-                      {% when '120 Minutes' or '120 minutter' %}
+                      {% when '120 Minutes', '120 minutter' %}
                         {% if settings.icon_fire_120_minutes != blank %}
-                          <img src="{{ settings.icon_fire_120_minutes | image_url: width: 48 }}" alt="120 Minutes Fire Protection" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_fire_120_minutes | image_url: width: 48 }}"
+                            alt="120 Minutes Fire Protection"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                       {% when 'Fire Insulated' %}
                         {% if settings.icon_fire_insulated != blank %}
-                          <img src="{{ settings.icon_fire_insulated | image_url: width: 48 }}" alt="Fire Insulated" width="24" height="24">
+                          <img
+                            src="{{ settings.icon_fire_insulated | image_url: width: 48 }}"
+                            alt="Fire Insulated"
+                            width="24"
+                            height="24"
+                          >
                         {% endif %}
                     {% endcase %}
                   </div>
@@ -760,18 +903,36 @@
                     <h3 class="feature-item__title">Certified Fire Protection</h3>
                     <div class="feature-item__text">
                       {% case fire_resistance %}
-                        {% when '30 Minutes' or '30 minutter' %}
-                          {{ settings.icon_fire_30_minutes_description | default: 'Tested according to European Standards. 30 Minutes fire protection certified.' }}
-                        {% when '60 Minutes' or '60 minutter' %}
-                          {{ settings.icon_fire_60_minutes_description | default: 'Tested according to European Standards. 60 Minutes fire protection certified.' }}
-                        {% when '90 Minutes' or '90 minutter' %}
-                          {{ settings.icon_fire_90_minutes_description | default: 'Tested according to European Standards. 90 Minutes fire protection certified.' }}
-                        {% when '120 Minutes' or '120 minutter' %}
-                          {{ settings.icon_fire_120_minutes_description | default: 'Tested according to European Standards. 120 Minutes fire protection certified.' }}
+                        {% when '30 Minutes', '30 minutter' %}
+                          {{
+                            settings.icon_fire_30_minutes_description
+                            | default: 'Tested according to European Standards. 30 Minutes fire protection certified.'
+                          }}
+                        {% when '60 Minutes', '60 minutter' %}
+                          {{
+                            settings.icon_fire_60_minutes_description
+                            | default: 'Tested according to European Standards. 60 Minutes fire protection certified.'
+                          }}
+                        {% when '90 Minutes', '90 minutter' %}
+                          {{
+                            settings.icon_fire_90_minutes_description
+                            | default: 'Tested according to European Standards. 90 Minutes fire protection certified.'
+                          }}
+                        {% when '120 Minutes', '120 minutter' %}
+                          {{
+                            settings.icon_fire_120_minutes_description
+                            | default: 'Tested according to European Standards. 120 Minutes fire protection certified.'
+                          }}
                         {% when 'Fire Insulated' %}
-                          {{ settings.icon_fire_insulated_description | default: 'Tested according to European Standards. Fire Insulated protection certified.' }}
+                          {{
+                            settings.icon_fire_insulated_description
+                            | default: 'Tested according to European Standards. Fire Insulated protection certified.'
+                          }}
                         {% else %}
-                          <p>{{ section.settings.fire_description | default: 'Tested according to European Standards.' }} <strong>{{ fire_resistance }}</strong> protection.</p>
+                          <p>
+                            {{ section.settings.fire_description | default: 'Tested according to European Standards.' }}
+                            <strong>{{ fire_resistance }}</strong> protection.
+                          </p>
                       {% endcase %}
                     </div>
                   </div>
@@ -879,7 +1040,7 @@
                       if bolting_val != blank
                         assign has_bolting_data = true
                         comment
-                           Check if it's a list/array
+                          Check if it's a list/array
                         endcomment
                         if bolting_val.first != blank
                           for item in bolting_val
@@ -1000,59 +1161,74 @@
                         </div>
 
                         <div class="collection-specs-wrapper">
-                          {% if has_depth_data or has_width_data or has_height_data or has_weight_data or has_bolting_data %}
+                          {% if has_depth_data
+                            or has_width_data
+                            or has_height_data
+                            or has_weight_data
+                            or has_bolting_data
+                          %}
                             <div class="collection-dimensions">
                               {% if has_height_data %}
                                 <div class="dimension-row">
-                                  <span class="dimension-label">{{ section.settings.height_display_label | default: 'Height' }}</span>
+                                  <span class="dimension-label">
+                                    {{- section.settings.height_display_label | default: 'Height' -}}
+                                  </span>
                                   <span class="dimension-value">
-                                  {% if min_height == max_height %}
-                                    {{ min_height }} mm
-                                  {% else %}
-                                    {{ min_height }} - {{ max_height }} mm
-                                  {% endif %}
+                                    {% if min_height == max_height %}
+                                      {{ min_height }} mm
+                                    {% else %}
+                                      {{ min_height }} - {{ max_height }} mm
+                                    {% endif %}
                                   </span>
                                 </div>
                               {% endif %}
                               {% if has_width_data %}
                                 <div class="dimension-row">
-                                  <span class="dimension-label">{{ section.settings.width_display_label | default: 'Width' }}</span>
+                                  <span class="dimension-label">
+                                    {{- section.settings.width_display_label | default: 'Width' -}}
+                                  </span>
                                   <span class="dimension-value">
-                                  {% if min_width == max_width %}
-                                    {{ min_width }} mm
-                                  {% else %}
-                                    {{ min_width }} - {{ max_width }} mm
-                                  {% endif %}
+                                    {% if min_width == max_width %}
+                                      {{ min_width }} mm
+                                    {% else %}
+                                      {{ min_width }} - {{ max_width }} mm
+                                    {% endif %}
                                   </span>
                                 </div>
                               {% endif %}
                               {% if has_depth_data %}
                                 <div class="dimension-row">
-                                  <span class="dimension-label">{{ section.settings.depth_display_label | default: 'Depth' }}</span>
+                                  <span class="dimension-label">
+                                    {{- section.settings.depth_display_label | default: 'Depth' -}}
+                                  </span>
                                   <span class="dimension-value">
-                                  {% if min_depth == max_depth %}
-                                    {{ min_depth }} mm
-                                  {% else %}
-                                    {{ min_depth }} - {{ max_depth }} mm
-                                  {% endif %}
+                                    {% if min_depth == max_depth %}
+                                      {{ min_depth }} mm
+                                    {% else %}
+                                      {{ min_depth }} - {{ max_depth }} mm
+                                    {% endif %}
                                   </span>
                                 </div>
                               {% endif %}
                               {% if has_weight_data %}
                                 <div class="dimension-row">
-                                  <span class="dimension-label">{{ section.settings.weight_display_label | default: 'Weight' }}</span>
+                                  <span class="dimension-label">
+                                    {{- section.settings.weight_display_label | default: 'Weight' -}}
+                                  </span>
                                   <span class="dimension-value">
-                                  {% if min_weight == max_weight %}
-                                    {{ min_weight }} kg
-                                  {% else %}
-                                    {{ min_weight }} - {{ max_weight }} kg
-                                  {% endif %}
+                                    {% if min_weight == max_weight %}
+                                      {{ min_weight }} kg
+                                    {% else %}
+                                      {{ min_weight }} - {{ max_weight }} kg
+                                    {% endif %}
                                   </span>
                                 </div>
                               {% endif %}
                               {% if has_bolting_data %}
                                 <div class="dimension-row">
-                                  <span class="dimension-label">{{ section.settings.bolting_display_label | default: 'Bolting' }}</span>
+                                  <span class="dimension-label">
+                                    {{- section.settings.bolting_display_label | default: 'Bolting' -}}
+                                  </span>
                                   <span class="dimension-value">{{ bolting_labels }}</span>
                                 </div>
                               {% endif %}
@@ -1061,7 +1237,10 @@
 
                           {% if collection_min_price > 0 %}
                             <div class="collection-price">
-                              <span class="price-label">{{ 'content.price' | t }} {{ section.settings.price_label | default: 'from' }}</span>
+                              <span class="price-label">
+                                {{- 'content.price' | t }}
+                                {{ section.settings.price_label | default: 'from' -}}
+                              </span>
                               <span class="price-value">{{ collection_min_price | money }} incl. VAT</span>
                             </div>
                           {% endif %}
@@ -1070,103 +1249,113 @@
                         <div class="collection-badges-wrapper">
                           <div class="collection-badges">
                             {% assign show_fire_badge = true %}
-                            {% if fire_resistance == 'Ingen klassificering' or fire_resistance == 'Ikke Brandisoleret' %}
+                            {% if fire_resistance == 'Ingen klassificering'
+                              or fire_resistance == 'Ikke Brandisoleret'
+                            %}
                               {% assign show_fire_badge = false %}
                             {% endif %}
 
                             {% if fire_resistance != blank and show_fire_badge and fire_resistance != 'Not Fireproof' %}
                               <div class="badge-with-info">
-                              <div
-                                class="badge fire-badge"
-                                data-badge-type="fire"
-                                data-badge-value="{{ fire_resistance | escape }}"
-                                title="Fire Resistance: {{ fire_resistance | escape }}"
-                              >
-                                {% case fire_resistance %}
-                                  {% when 'Fire Insulated', 'Brandisoleret', 'Fireproof' %}
-                                    {% if settings.icon_fire_insulated %}
-                                      <img
-                                        src="{{ settings.icon_fire_insulated | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_fire_insulated_description | default: 'Fire Insulated' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {% else %}
-                                      <div class="badge-placeholder" aria-label="Fire Insulated">FI</div>
-                                    {% endif %}
-                                  {% else %}
-                                    {% assign fire_number = fire_resistance
-                                      | remove: ' Minutes'
-                                      | remove: 'Minutes'
-                                      | remove: ' '
-                                      | plus: 0
-                                    %}
-                                    {% if fire_number == 30 %}
-                                      {% if settings.icon_fire_30_minutes %}
+                                <div
+                                  class="badge fire-badge"
+                                  data-badge-type="fire"
+                                  data-badge-value="{{ fire_resistance | escape }}"
+                                  title="Fire Resistance: {{ fire_resistance | escape }}"
+                                >
+                                  {% case fire_resistance %}
+                                    {% when 'Fire Insulated', 'Brandisoleret', 'Fireproof' %}
+                                      {% if settings.icon_fire_insulated %}
                                         <img
-                                          src="{{ settings.icon_fire_30_minutes | img_url: '50x50' }}"
-                                          alt="{{ settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' }}"
+                                          src="{{ settings.icon_fire_insulated | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_fire_insulated_description | default: 'Fire Insulated' }}"
                                           width="50"
                                           height="50"
                                           loading="lazy"
                                         >
                                       {% else %}
-                                        <div class="badge-placeholder" aria-label="30 Minutes Fire Resistance">30</div>
-                                      {% endif %}
-                                    {% elsif fire_number == 60 %}
-                                      {% if settings.icon_fire_60_minutes %}
-                                        <img
-                                          src="{{ settings.icon_fire_60_minutes | img_url: '50x50' }}"
-                                          alt="{{ settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' }}"
-                                          width="50"
-                                          height="50"
-                                          loading="lazy"
-                                        >
-                                      {% else %}
-                                        <div class="badge-placeholder" aria-label="60 Minutes Fire Resistance">60</div>
-                                      {% endif %}
-                                    {% elsif fire_number == 90 %}
-                                      {% if settings.icon_fire_90_minutes %}
-                                        <img
-                                          src="{{ settings.icon_fire_90_minutes | img_url: '50x50' }}"
-                                          alt="{{ settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' }}"
-                                          width="50"
-                                          height="50"
-                                          loading="lazy"
-                                        >
-                                      {% else %}
-                                        <div class="badge-placeholder" aria-label="90 Minutes Fire Resistance">90</div>
-                                      {% endif %}
-                                    {% elsif fire_number == 120 %}
-                                      {% if settings.icon_fire_120_minutes %}
-                                        <img
-                                          src="{{ settings.icon_fire_120_minutes | img_url: '50x50' }}"
-                                          alt="{{ settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' }}"
-                                          width="50"
-                                          height="50"
-                                          loading="lazy"
-                                        >
-                                      {% else %}
-                                        <div class="badge-placeholder" aria-label="120 Minutes Fire Resistance">120</div>
+                                        <div class="badge-placeholder" aria-label="Fire Insulated">FI</div>
                                       {% endif %}
                                     {% else %}
-                                      <div class="badge-placeholder" aria-label="{{ fire_resistance | escape }}">
-                                        {{ fire_resistance | escape | truncate: 2, '' }}
-                                      </div>
-                                    {% endif %}
-                                {% endcase %}
-                              </div>
-                              {% if fire_test_method != blank or fire_test_center != blank %}
-                                <div class="badge-info-text">
-                                  {% if fire_test_method != blank %}
-                                    <div class="badge-info-line">{{ fire_test_method }}</div>
-                                  {% endif %}
-                                  {% if fire_test_center != blank %}
-                                    <div class="badge-info-line">{{ fire_test_center }}</div>
-                                  {% endif %}
+                                      {% assign fire_number = fire_resistance
+                                        | remove: ' Minutes'
+                                        | remove: 'Minutes'
+                                        | remove: ' '
+                                        | plus: 0
+                                      %}
+                                      {% if fire_number == 30 %}
+                                        {% if settings.icon_fire_30_minutes %}
+                                          <img
+                                            src="{{ settings.icon_fire_30_minutes | img_url: '50x50' }}"
+                                            alt="{{ settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' }}"
+                                            width="50"
+                                            height="50"
+                                            loading="lazy"
+                                          >
+                                        {% else %}
+                                          <div class="badge-placeholder" aria-label="30 Minutes Fire Resistance">
+                                            30
+                                          </div>
+                                        {% endif %}
+                                      {% elsif fire_number == 60 %}
+                                        {% if settings.icon_fire_60_minutes %}
+                                          <img
+                                            src="{{ settings.icon_fire_60_minutes | img_url: '50x50' }}"
+                                            alt="{{ settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' }}"
+                                            width="50"
+                                            height="50"
+                                            loading="lazy"
+                                          >
+                                        {% else %}
+                                          <div class="badge-placeholder" aria-label="60 Minutes Fire Resistance">
+                                            60
+                                          </div>
+                                        {% endif %}
+                                      {% elsif fire_number == 90 %}
+                                        {% if settings.icon_fire_90_minutes %}
+                                          <img
+                                            src="{{ settings.icon_fire_90_minutes | img_url: '50x50' }}"
+                                            alt="{{ settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' }}"
+                                            width="50"
+                                            height="50"
+                                            loading="lazy"
+                                          >
+                                        {% else %}
+                                          <div class="badge-placeholder" aria-label="90 Minutes Fire Resistance">
+                                            90
+                                          </div>
+                                        {% endif %}
+                                      {% elsif fire_number == 120 %}
+                                        {% if settings.icon_fire_120_minutes %}
+                                          <img
+                                            src="{{ settings.icon_fire_120_minutes | img_url: '50x50' }}"
+                                            alt="{{ settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' }}"
+                                            width="50"
+                                            height="50"
+                                            loading="lazy"
+                                          >
+                                        {% else %}
+                                          <div class="badge-placeholder" aria-label="120 Minutes Fire Resistance">
+                                            120
+                                          </div>
+                                        {% endif %}
+                                      {% else %}
+                                        <div class="badge-placeholder" aria-label="{{ fire_resistance | escape }}">
+                                          {{ fire_resistance | escape | truncate: 2, '' }}
+                                        </div>
+                                      {% endif %}
+                                  {% endcase %}
                                 </div>
-                              {% endif %}
+                                {% if fire_test_method != blank or fire_test_center != blank %}
+                                  <div class="badge-info-text">
+                                    {% if fire_test_method != blank %}
+                                      <div class="badge-info-line">{{ fire_test_method }}</div>
+                                    {% endif %}
+                                    {% if fire_test_center != blank %}
+                                      <div class="badge-info-line">{{ fire_test_center }}</div>
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
                               </div>
                             {% endif %}
 
@@ -1175,149 +1364,149 @@
                               and burglary_grade != 'No classification'
                             %}
                               <div class="badge-with-info">
-                              <div
-                                class="target badge burglary-badge"
-                                data-badge-type="burglary"
-                                data-badge-value="{{ burglary_grade | escape }}"
-                                title="Burglary Grade: {{ burglary_grade | escape }}"
-                              >
-                                {% case burglary_grade %}
-                                  {% when 'S1' -%}
-                                    {%- if settings.icon_burglary_s1 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_s1 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_s1_description | default: 'Security Grade S1' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Security Grade S1">S1</div>
-                                    {% endif %}
-                                  {% when 'S2', 'S2 (YELLOW Cabinet)' -%}
-                                    {%- if settings.icon_burglary_s2 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_s2 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_s2_description | default: 'Security Grade S2' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Security Grade S2">S2</div>
-                                    {% endif %}
-                                  {% when 'GRADE 0' -%}
-                                    {%- if settings.icon_burglary_grade_0 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_0 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>
-                                    {% endif %}
-                                  {% when 'GRADE I', 'GRADE I (RED Skafor)' -%}
-                                    {%- if settings.icon_burglary_grade_1 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_1 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>
-                                    {% endif %}
-                                  {% when 'GRADE II' -%}
-                                    {%- if settings.icon_burglary_grade_2 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_2 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>
-                                    {% endif %}
-                                  {% when 'GRADE III' -%}
-                                    {%- if settings.icon_burglary_grade_3 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_3 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>
-                                    {% endif %}
-                                  {% when 'GRADE IV' -%}
-                                    {%- if settings.icon_burglary_grade_4 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_4 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>
-                                    {% endif %}
-                                  {% when 'GRADE V' -%}
-                                    {%- if settings.icon_burglary_grade_5 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_5 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_5_description | default: 'Burglary Grade V' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>
-                                    {% endif %}
-                                  {% when 'GRADE VI' -%}
-                                    {%- if settings.icon_burglary_grade_6 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_6 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_6_description | default: 'Burglary Grade VI' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>
-                                    {% endif %}
-                                  {% when 'GRADE VII' -%}
-                                    {%- if settings.icon_burglary_grade_7 -%}
-                                      <img
-                                        src="{{ settings.icon_burglary_grade_7 | img_url: '50x50' }}"
-                                        alt="{{ settings.icon_burglary_grade_7_description | default: 'Burglary Grade VII' }}"
-                                        width="50"
-                                        height="50"
-                                        loading="lazy"
-                                      >
-                                    {%- else %}
-                                      <div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>
-                                    {% endif %}
-                                  {% else %}
-                                    <div class="badge-placeholder" aria-label="{{ burglary_grade | escape }}">
-                                      {{ burglary_grade | escape | truncate: 3, '' }}
-                                    </div>
-                                {% endcase %}
-                              </div>
-                              {% if burglary_test_method != blank or burglary_test_center != blank %}
-                                <div class="badge-info-text">
-                                  {% if burglary_test_method != blank %}
-                                    <div class="badge-info-line">{{ burglary_test_method }}</div>
-                                  {% endif %}
-                                  {% if burglary_test_center != blank %}
-                                    <div class="badge-info-line">{{ burglary_test_center }}</div>
-                                  {% endif %}
+                                <div
+                                  class="target badge burglary-badge"
+                                  data-badge-type="burglary"
+                                  data-badge-value="{{ burglary_grade | escape }}"
+                                  title="Burglary Grade: {{ burglary_grade | escape }}"
+                                >
+                                  {% case burglary_grade %}
+                                    {% when 'S1' -%}
+                                      {%- if settings.icon_burglary_s1 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_s1 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_s1_description | default: 'Security Grade S1' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Security Grade S1">S1</div>
+                                      {% endif %}
+                                    {% when 'S2', 'S2 (YELLOW Cabinet)' -%}
+                                      {%- if settings.icon_burglary_s2 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_s2 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_s2_description | default: 'Security Grade S2' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Security Grade S2">S2</div>
+                                      {% endif %}
+                                    {% when 'GRADE 0' -%}
+                                      {%- if settings.icon_burglary_grade_0 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_0 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade 0">G0</div>
+                                      {% endif %}
+                                    {% when 'GRADE I', 'GRADE I (RED Skafor)' -%}
+                                      {%- if settings.icon_burglary_grade_1 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_1 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade I">G1</div>
+                                      {% endif %}
+                                    {% when 'GRADE II' -%}
+                                      {%- if settings.icon_burglary_grade_2 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_2 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade II">G2</div>
+                                      {% endif %}
+                                    {% when 'GRADE III' -%}
+                                      {%- if settings.icon_burglary_grade_3 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_3 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade III">G3</div>
+                                      {% endif %}
+                                    {% when 'GRADE IV' -%}
+                                      {%- if settings.icon_burglary_grade_4 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_4 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade IV">G4</div>
+                                      {% endif %}
+                                    {% when 'GRADE V' -%}
+                                      {%- if settings.icon_burglary_grade_5 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_5 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_5_description | default: 'Burglary Grade V' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade V">G5</div>
+                                      {% endif %}
+                                    {% when 'GRADE VI' -%}
+                                      {%- if settings.icon_burglary_grade_6 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_6 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_6_description | default: 'Burglary Grade VI' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade VI">G6</div>
+                                      {% endif %}
+                                    {% when 'GRADE VII' -%}
+                                      {%- if settings.icon_burglary_grade_7 -%}
+                                        <img
+                                          src="{{ settings.icon_burglary_grade_7 | img_url: '50x50' }}"
+                                          alt="{{ settings.icon_burglary_grade_7_description | default: 'Burglary Grade VII' }}"
+                                          width="50"
+                                          height="50"
+                                          loading="lazy"
+                                        >
+                                      {%- else %}
+                                        <div class="badge-placeholder" aria-label="Burglary Grade VII">G7</div>
+                                      {% endif %}
+                                    {% else %}
+                                      <div class="badge-placeholder" aria-label="{{ burglary_grade | escape }}">
+                                        {{ burglary_grade | escape | truncate: 3, '' }}
+                                      </div>
+                                  {% endcase %}
                                 </div>
-                              {% endif %}
+                                {% if burglary_test_method != blank or burglary_test_center != blank %}
+                                  <div class="badge-info-text">
+                                    {% if burglary_test_method != blank %}
+                                      <div class="badge-info-line">{{ burglary_test_method }}</div>
+                                    {% endif %}
+                                    {% if burglary_test_center != blank %}
+                                      <div class="badge-info-line">{{ burglary_test_center }}</div>
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
                               </div>
                             {% endif %}
                           </div>
@@ -1341,8 +1530,6 @@
                       </div>
                     </div>
                   </div>
-
-
                 </div>
               {% endif %}
             {% endfor %}
