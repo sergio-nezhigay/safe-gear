@@ -6,169 +6,243 @@
   if heading == blank
     assign heading = settings.security_features_heading | default: 'Security Features'
   endif
-
-
 -%}
 
 {%- if burglary_classification != blank or fire_duration != blank -%}
-<div class="
-    group-block
-    group-block--height-fit
-    group-block--width-fill
-    border-style
-    spacing-style
-    size-style
-  " style="
-    --border-width: 1px; --border-style: none; --border-color: rgb(var(--color-border-rgb) / 1.0); --border-radius: 0px;
-    --padding-block-start: 0;--padding-block-end: 0;--padding-inline-start: 0px;--padding-inline-end: 0px;
-    --size-style-width: 100%;--size-style-height: fit;--size-style-width-mobile: 100%; --size-style-width-mobile-min: 5rem;
-  " data-testid="group-block">
-  <div class="group-block__media-wrapper"></div>
+  <div
+    class="
+      group-block
+      group-block--height-fit
+      group-block--width-fill
+      border-style
+      spacing-style
+      size-style
+    "
+    style="
+      --border-width: 1px; --border-style: none; --border-color: rgb(var(--color-border-rgb) / 1.0); --border-radius: 0px;
+      --padding-block-start: 0;--padding-block-end: 0;--padding-inline-start: 0px;--padding-inline-end: 0px;
+      --size-style-width: 100%;--size-style-height: fit;--size-style-width-mobile: 100%; --size-style-width-mobile-min: 5rem;
+    "
+    data-testid="group-block"
+  >
+    <div class="group-block__media-wrapper"></div>
 
-  <div class="
-      group-block-content
-      layout-panel-flex
-      layout-panel-flex--column
-    " style="--flex-direction: column; --flex-wrap: nowrap; --gap: 10px; --horizontal-alignment: ; --vertical-alignment: ; --vertical-alignment-mobile: ;">
+    <div
+      class="
+        group-block-content
+        layout-panel-flex
+        layout-panel-flex--column
+      "
+      style="--flex-direction: column; --flex-wrap: nowrap; --gap: 10px; --horizontal-alignment: ; --vertical-alignment: ; --vertical-alignment-mobile: ;"
+    >
+      <div
+        class="security-badges-container layout-panel-flex layout-panel-flex--column"
+        style="--flex-direction: column; --flex-wrap: nowrap; --gap: 20px; --horizontal-alignment: flex-start; --vertical-alignment: flex-start;"
+      >
+        {%- if burglary_classification != blank -%}
+          {%- assign burglary_lower = burglary_classification | upcase -%}
+          {%- assign show_burglary = false -%}
+          {%- assign burglary_icon = blank -%}
+          {%- assign burglary_alt = blank -%}
+          {%- assign burglary_desc = blank -%}
 
+          {%- if burglary_lower contains 'S1' and settings.icon_burglary_s1 -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_s1 -%}
+            {%- assign burglary_alt = settings.icon_burglary_s1_description | default: 'Security Grade S1' -%}
+            {%- assign burglary_desc = settings.icon_burglary_s1_description
+              | default: 'S1 security grade provides basic burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'S2' and settings.icon_burglary_s2 -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_s2 -%}
+            {%- assign burglary_alt = settings.icon_burglary_s2_description | default: 'Security Grade S2' -%}
+            {%- assign burglary_desc = settings.icon_burglary_s2_description
+              | default: 'S2 security grade offers enhanced burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE 0'
+            or burglary_lower contains 'GRADE0'
+            and settings.icon_burglary_grade_0
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_0 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_0_description
+              | default: 'Grade 0 provides professional-level burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE I'
+            or burglary_lower contains 'GRADE1'
+            or burglary_lower contains 'GRADE 1'
+            and settings.icon_burglary_grade_1
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_1 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_1_description
+              | default: 'Grade I offers high-security burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE II'
+            or burglary_lower contains 'GRADE2'
+            or burglary_lower contains 'GRADE 2'
+            and settings.icon_burglary_grade_2
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_2 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_2_description
+              | default: 'Grade II provides superior burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE III'
+            or burglary_lower contains 'GRADE3'
+            or burglary_lower contains 'GRADE 3'
+            and settings.icon_burglary_grade_3
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_3 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_3_description
+              | default: 'Grade III delivers maximum burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE IV'
+            or burglary_lower contains 'GRADE4'
+            or burglary_lower contains 'GRADE 4'
+            and settings.icon_burglary_grade_4
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_4 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_4_description
+              | default: 'Grade IV represents the highest standard of burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE V'
+            or burglary_lower contains 'GRADE5'
+            or burglary_lower contains 'GRADE 5'
+            and settings.icon_burglary_grade_5
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_5 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_5_description | default: 'Grade V' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_5_description
+              | default: 'Grade V offers ultra-high security.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE VI'
+            or burglary_lower contains 'GRADE6'
+            or burglary_lower contains 'GRADE 6'
+            and settings.icon_burglary_grade_6
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_6 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_6_description | default: 'Grade VI' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_6_description
+              | default: 'Grade VI provides exceptional security protection.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE VII'
+            or burglary_lower contains 'GRADE7'
+            or burglary_lower contains 'GRADE 7'
+            and settings.icon_burglary_grade_7
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_7 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_7_description | default: 'Grade VII' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_7_description
+              | default: 'Grade VII offers the ultimate in security protection.'
+            -%}
+          {%- endif -%}
 
-
-    <div class="security-badges-container layout-panel-flex layout-panel-flex--row" style="--flex-direction: row; --flex-wrap: wrap; --gap: 20px; --horizontal-alignment: flex-start; --vertical-alignment: flex-start;">
-
-      {%- if burglary_classification != blank -%}
-        {%- assign burglary_lower = burglary_classification | upcase -%}
-        {%- assign show_burglary = false -%}
-        {%- assign burglary_icon = blank -%}
-        {%- assign burglary_alt = blank -%}
-        {%- assign burglary_desc = blank -%}
-
-        {%- if burglary_lower contains 'S1' and settings.icon_burglary_s1 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_s1 -%}
-          {%- assign burglary_alt = settings.icon_burglary_s1_description | default: 'Security Grade S1' -%}
-          {%- assign burglary_desc = settings.icon_burglary_s1_description | default: 'S1 security grade provides basic burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'S2' and settings.icon_burglary_s2 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_s2 -%}
-          {%- assign burglary_alt = settings.icon_burglary_s2_description | default: 'Security Grade S2' -%}
-          {%- assign burglary_desc = settings.icon_burglary_s2_description | default: 'S2 security grade offers enhanced burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE 0' or burglary_lower contains 'GRADE0' and settings.icon_burglary_grade_0 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_0 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_0_description | default: 'Grade 0 provides professional-level burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE I' or burglary_lower contains 'GRADE1' or burglary_lower contains 'GRADE 1' and settings.icon_burglary_grade_1 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_1 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_1_description | default: 'Grade I offers high-security burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE II' or burglary_lower contains 'GRADE2' or burglary_lower contains 'GRADE 2' and settings.icon_burglary_grade_2 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_2 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_2_description | default: 'Grade II provides superior burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE III' or burglary_lower contains 'GRADE3' or burglary_lower contains 'GRADE 3' and settings.icon_burglary_grade_3 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_3 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_3_description | default: 'Grade III delivers maximum burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE IV' or burglary_lower contains 'GRADE4' or burglary_lower contains 'GRADE 4' and settings.icon_burglary_grade_4 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_4 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_4_description | default: 'Grade IV represents the highest standard of burglary resistance.' -%}
-        {%- elsif burglary_lower contains 'GRADE V' or burglary_lower contains 'GRADE5' or burglary_lower contains 'GRADE 5' and settings.icon_burglary_grade_5 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_5 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_5_description | default: 'Grade V' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_5_description | default: 'Grade V offers ultra-high security.' -%}
-        {%- elsif burglary_lower contains 'GRADE VI' or burglary_lower contains 'GRADE6' or burglary_lower contains 'GRADE 6' and settings.icon_burglary_grade_6 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_6 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_6_description | default: 'Grade VI' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_6_description | default: 'Grade VI provides exceptional security protection.' -%}
-        {%- elsif burglary_lower contains 'GRADE VII' or burglary_lower contains 'GRADE7' or burglary_lower contains 'GRADE 7' and settings.icon_burglary_grade_7 -%}
-          {%- assign show_burglary = true -%}
-          {%- assign burglary_icon = settings.icon_burglary_grade_7 -%}
-          {%- assign burglary_alt = settings.icon_burglary_grade_7_description | default: 'Grade VII' -%}
-          {%- assign burglary_desc = settings.icon_burglary_grade_7_description | default: 'Grade VII offers the ultimate in security protection.' -%}
+          {%- if show_burglary -%}
+            <div class="security-badge-item">
+              <div class="badge">
+                {%- if burglary_icon != blank -%}
+                  <img
+                    src="{{ burglary_icon | image_url: width: 85, height: 85 }}"
+                    alt="{{ burglary_alt }}"
+                    width="85"
+                    height="85"
+                    loading="lazy"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="badge-content">
+                {% comment %} <h4 class="badge-title">Burglary Grade</h4> {% endcomment %}
+                <div class="badge-description">{{ burglary_desc }}</div>
+              </div>
+            </div>
+          {%- endif -%}
         {%- endif -%}
 
-        {%- if show_burglary -%}
-        <div class="security-badge-item">
-          <div class="badge">
-            {%- if burglary_icon != blank -%}
-              <img src="{{ burglary_icon | image_url: width: 85, height: 85 }}"
-                   alt="{{ burglary_alt }}"
-                   width="85"
-                   height="85"
-                   loading="lazy">
-            {%- endif -%}
-          </div>
-          <div class="badge-content">
-            {% comment %} <h4 class="badge-title">Burglary Grade</h4> {% endcomment %}
-            <div class="badge-description">{{ burglary_desc }}</div>
-          </div>
-        </div>
+        {%- if fire_duration != blank -%}
+          {%- assign fire_lower = fire_duration | downcase -%}
+          {%- assign show_fire = false -%}
+          {%- assign fire_icon = blank -%}
+          {%- assign fire_alt = blank -%}
+          {%- assign fire_desc = blank -%}
+
+          {%- if fire_lower contains 'fire insulated'
+            or fire_lower contains 'insulated'
+            or fire_lower contains 'Brandisoleret'
+            and settings.icon_fire_insulated
+          -%}
+            {%- assign show_fire = true -%}
+            {%- assign fire_icon = settings.icon_fire_insulated -%}
+            {%- assign fire_alt = settings.icon_fire_insulated_description | default: 'Fire Insulated' -%}
+            {%- assign fire_desc = settings.icon_fire_insulated_description
+              | default: 'Fire insulated design provides comprehensive thermal protection.'
+            -%}
+          {%- elsif fire_lower contains '30' and settings.icon_fire_30_minutes -%}
+            {%- assign show_fire = true -%}
+            {%- assign fire_icon = settings.icon_fire_30_minutes -%}
+            {%- assign fire_alt = settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' -%}
+            {%- assign fire_desc = settings.icon_fire_30_minutes_description
+              | default: '30 minutes fire protection safeguards your valuables.'
+            -%}
+          {%- elsif fire_lower contains '60' and settings.icon_fire_60_minutes -%}
+            {%- assign show_fire = true -%}
+            {%- assign fire_icon = settings.icon_fire_60_minutes -%}
+            {%- assign fire_alt = settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' -%}
+            {%- assign fire_desc = settings.icon_fire_60_minutes_description
+              | default: '60 minutes fire protection provides extended fire resistance.'
+            -%}
+          {%- elsif fire_lower contains '90' and settings.icon_fire_90_minutes -%}
+            {%- assign show_fire = true -%}
+            {%- assign fire_icon = settings.icon_fire_90_minutes -%}
+            {%- assign fire_alt = settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' -%}
+            {%- assign fire_desc = settings.icon_fire_90_minutes_description
+              | default: '90 minutes fire protection offers superior fire resistance.'
+            -%}
+          {%- elsif fire_lower contains '120' and settings.icon_fire_120_minutes -%}
+            {%- assign show_fire = true -%}
+            {%- assign fire_icon = settings.icon_fire_120_minutes -%}
+            {%- assign fire_alt = settings.icon_fire_120_minutes_description
+              | default: '120 Minutes Fire Resistance'
+            -%}
+            {%- assign fire_desc = settings.icon_fire_120_minutes_description
+              | default: '120 minutes fire protection delivers maximum fire resistance.'
+            -%}
+          {%- endif -%}
+
+          {%- if show_fire -%}
+            <div class="security-badge-item">
+              <div class="badge">
+                {%- if fire_icon != blank -%}
+                  <img
+                    src="{{ fire_icon | image_url: width: 85, height: 85 }}"
+                    alt="{{ fire_alt }}"
+                    width="85"
+                    height="85"
+                    loading="lazy"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="badge-content">
+                <h4 class="badge-title">Fire Resistance</h4>
+                <div class="badge-description">{{ fire_desc }}</div>
+              </div>
+            </div>
+          {%- endif -%}
         {%- endif -%}
-      {%- endif -%}
-
-      {%- if fire_duration != blank -%}
-        {%- assign fire_lower = fire_duration | downcase -%}
-        {%- assign show_fire = false -%}
-        {%- assign fire_icon = blank -%}
-        {%- assign fire_alt = blank -%}
-        {%- assign fire_desc = blank -%}
-
-        {%- if fire_lower contains 'fire insulated' or fire_lower contains 'insulated' or fire_lower contains 'Brandisoleret' and settings.icon_fire_insulated -%}
-          {%- assign show_fire = true -%}
-          {%- assign fire_icon = settings.icon_fire_insulated -%}
-          {%- assign fire_alt = settings.icon_fire_insulated_description | default: 'Fire Insulated' -%}
-          {%- assign fire_desc = settings.icon_fire_insulated_description | default: 'Fire insulated design provides comprehensive thermal protection.' -%}
-        {%- elsif fire_lower contains '30' and settings.icon_fire_30_minutes -%}
-          {%- assign show_fire = true -%}
-          {%- assign fire_icon = settings.icon_fire_30_minutes -%}
-          {%- assign fire_alt = settings.icon_fire_30_minutes_description | default: '30 Minutes Fire Resistance' -%}
-          {%- assign fire_desc = settings.icon_fire_30_minutes_description | default: '30 minutes fire protection safeguards your valuables.' -%}
-        {%- elsif fire_lower contains '60' and settings.icon_fire_60_minutes -%}
-          {%- assign show_fire = true -%}
-          {%- assign fire_icon = settings.icon_fire_60_minutes -%}
-          {%- assign fire_alt = settings.icon_fire_60_minutes_description | default: '60 Minutes Fire Resistance' -%}
-          {%- assign fire_desc = settings.icon_fire_60_minutes_description | default: '60 minutes fire protection provides extended fire resistance.' -%}
-        {%- elsif fire_lower contains '90' and settings.icon_fire_90_minutes -%}
-          {%- assign show_fire = true -%}
-          {%- assign fire_icon = settings.icon_fire_90_minutes -%}
-          {%- assign fire_alt = settings.icon_fire_90_minutes_description | default: '90 Minutes Fire Resistance' -%}
-          {%- assign fire_desc = settings.icon_fire_90_minutes_description | default: '90 minutes fire protection offers superior fire resistance.' -%}
-        {%- elsif fire_lower contains '120' and settings.icon_fire_120_minutes -%}
-          {%- assign show_fire = true -%}
-          {%- assign fire_icon = settings.icon_fire_120_minutes -%}
-          {%- assign fire_alt = settings.icon_fire_120_minutes_description | default: '120 Minutes Fire Resistance' -%}
-          {%- assign fire_desc = settings.icon_fire_120_minutes_description | default: '120 minutes fire protection delivers maximum fire resistance.' -%}
-        {%- endif -%}
-
-        {%- if show_fire -%}
-        <div class="security-badge-item">
-          <div class="badge">
-            {%- if fire_icon != blank -%}
-              <img src="{{ fire_icon | image_url: width: 85, height: 85 }}"
-                   alt="{{ fire_alt }}"
-                   width="85"
-                   height="85"
-                   loading="lazy">
-            {%- endif -%}
-          </div>
-          <div class="badge-content">
-            <h4 class="badge-title">Fire Resistance</h4>
-            <div class="badge-description">{{ fire_desc }}</div>
-          </div>
-        </div>
-        {%- endif -%}
-      {%- endif -%}
-
+      </div>
     </div>
   </div>
-</div>
 
   <style>
     .security-badge-item {
