@@ -117,16 +117,6 @@ class ProductAddons {
           e.preventDefault();
           this.handleAddonToggle(e.target.closest(this.selectors.addonAddBtn));
         }
-        
-        if (e.target.matches(this.selectors.quantityMinus)) {
-          e.preventDefault();
-          this.handleQuantityChange(e.target, 'minus');
-        }
-        
-        if (e.target.matches(this.selectors.quantityPlus)) {
-          e.preventDefault();
-          this.handleQuantityChange(e.target, 'plus');
-        }
       });
   
       document.addEventListener('change', (e) => {
@@ -162,6 +152,35 @@ class ProductAddons {
   
       document.addEventListener('addons:reinit', (e) => {
         this.reinitializeAfterProductSwitch();
+      });
+
+      // Listen to quantity selector updates from the component
+      document.addEventListener('quantity-selector:update', (e) => {
+        const input = e.target;
+        if (!input || !(input instanceof HTMLInputElement)) return;
+
+        // Only handle addon quantity selectors
+        const card = input.closest(this.selectors.addonCard);
+        if (!card) return;
+
+        const variantId = card.dataset.variantId;
+        const newQuantity = e.detail.quantity;
+
+        // Skip quantity changes for yes/no addons
+        const addonType = card.dataset.addonType || 'quantity';
+        if (addonType === 'yes_no') return;
+
+        // Update addon quantity in cart
+        this.updateAddonQuantity(variantId, newQuantity, card);
+
+        // Update button states
+        const minusBtn = card.querySelector(this.selectors.quantityMinus);
+        const plusBtn = card.querySelector(this.selectors.quantityPlus);
+        const min = parseInt(input.getAttribute('min')) || 1;
+        const max = parseInt(input.getAttribute('max')) || 10;
+
+        if (minusBtn) minusBtn.disabled = newQuantity <= min;
+        if (plusBtn) plusBtn.disabled = newQuantity >= max;
       });
     }
   
@@ -241,6 +260,11 @@ async handleAddonCheckboxChange(checkbox) {
   }
 }
 
+    /**
+     * @deprecated This method is no longer used. Quantity changes are now handled
+     * via the 'quantity-selector:update' event listener in bindEvents().
+     * Kept for backward compatibility in case other code references it.
+     */
     handleQuantityChange(button, action) {
       const card = button.closest(this.selectors.addonCard);
       if (!card) return;
