@@ -40,7 +40,13 @@
       "WebFetch(domain:support.claude.com)",
       "Bash(ls:*)",
       "Bash(git log:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(where:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(claude:*)",
+      "Bash(reg query:*)",
+      "Bash(powershell -Command:*)"
     ],
     "deny": [],
     "ask": []
