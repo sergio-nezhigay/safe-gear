@@ -46,7 +46,8 @@
       "Bash(npm install:*)",
       "Bash(claude:*)",
       "Bash(reg query:*)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

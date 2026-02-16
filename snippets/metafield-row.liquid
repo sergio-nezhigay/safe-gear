@@ -1,0 +1,99 @@
+{% comment %}
+  Renders a single metafield row
+
+  Parameters:
+  - block: The metafield_row block with settings
+  - product: The current product object
+{% endcomment %}
+
+{% assign namespace = block.settings.metafield_namespace %}
+{% assign key = block.settings.metafield_key %}
+{% assign is_variant_metafield = block.settings.is_variant_metafield %}
+
+{% comment %} Handle special variant weight case {% endcomment %}
+{% if namespace == 'variant' and key == 'weight' %}
+  {% if product.variants.size > 0 %}
+    {% comment %} Calculate min and max weight across all variants {% endcomment %}
+    {% assign min_weight = null %}
+    {% assign max_weight = null %}
+
+    {% for variant in product.variants %}
+      {% if variant.weight > 0 %}
+        {% if min_weight == null or variant.weight < min_weight %}
+          {% assign min_weight = variant.weight %}
+        {% endif %}
+        {% if max_weight == null or variant.weight > max_weight %}
+          {% assign max_weight = variant.weight %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if min_weight != null %}
+      <tr {{ block.shopify_attributes }}>
+        <td>
+          <strong>{{ block.settings.label }}</strong>
+        </td>
+        <td>
+          {% if min_weight == max_weight %}
+            {% comment %} All variants have same weight {% endcomment %}
+            {% assign weight_kg = min_weight | divided_by: 1000.0 %}
+            {{ weight_kg }} kg
+          {% else %}
+            {% comment %} Show weight range {% endcomment %}
+            {% assign min_kg = min_weight | divided_by: 1000.0 %}
+            {% assign max_kg = max_weight | divided_by: 1000.0 %}
+            {{ min_kg }} - {{ max_kg }} kg
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+  {% endif %}
+{% else %}
+  {% comment %} Regular metafield handling {% endcomment %}
+
+  {% comment %} Get metafield value from variant or product {% endcomment %}
+  {% if is_variant_metafield %}
+    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+  {% else %}
+    {% assign metafield_value = product.metafields[namespace][key] %}
+  {% endif %}
+
+  {% if metafield_value != blank %}
+    <tr
+      {{ block.shopify_attributes }}
+      {% if is_variant_metafield %}
+        data-variant-metafield="true"
+        data-metafield-key="{{ namespace }}.{{ key }}"
+        data-variant-row
+      {% endif %}
+    >
+      <td>
+        <strong>{{ block.settings.label }}</strong>
+      </td>
+      <td data-metafield-value>
+        {% if metafield_value.value.value and metafield_value.value.unit %}
+          {{ metafield_value.value.value }}
+          {{ metafield_value.value.unit }}
+        {% elsif metafield_value.value %}
+          {{ metafield_value.value }}
+        {% else %}
+          {{ metafield_value }}
+        {% endif %}
+      </td>
+    </tr>
+  {% elsif is_variant_metafield %}
+    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
+    <tr
+      {{ block.shopify_attributes }}
+      data-variant-metafield="true"
+      data-metafield-key="{{ namespace }}.{{ key }}"
+      data-variant-row
+      style="display: none;"
+    >
+      <td>
+        <strong>{{ block.settings.label }}</strong>
+      </td>
+      <td data-metafield-value></td>
+    </tr>
+  {% endif %}
+{% endif %}

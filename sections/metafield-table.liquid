@@ -47,544 +47,88 @@
     {% endif %}
 
     <div class="metafields__content" data-content>
-      {% comment %} Group metafields by creating separate tables {% endcomment %}
+      {% comment %} Dynamically collect all unique group names from blocks using string concatenation {% endcomment %}
+      {% assign all_groups_string = '' %}
+      {% assign separator = '|||SEPARATOR|||' %}
 
-      {% comment %} Ydre dimensioner group {% endcomment %}
-      {% assign has_ydre_dim = false %}
       {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Ydre dimensioner' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-          {% assign metafield_value = product.metafields[namespace][key] %}
-          {% if metafield_value != blank %}
-            {% assign has_ydre_dim = true %}
-            {% break %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
+        {% if block.type == 'metafield_row' %}
+          {% assign group_name = block.settings.group_name | default: 'Product Information' %}
+          {% assign search_string = separator | append: group_name | append: separator %}
 
-      {% if has_ydre_dim %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Ydre dimensioner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Ydre dimensioner' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                  {% comment %} Get metafield value from variant or product {% endcomment %}
-                  {% if is_variant_metafield %}
-                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                  {% else %}
-                    {% assign metafield_value = product.metafields[namespace][key] %}
-                  {% endif %}
-
-                  {% if metafield_value != blank %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      {% if is_variant_metafield %}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                      {% endif %}
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value>
-                        {% if metafield_value.value.value and metafield_value.value.unit %}
-                          {{ metafield_value.value.value }}
-                          {{ metafield_value.value.unit }}
-                        {% elsif metafield_value.value %}
-                          {{ metafield_value.value }}
-                        {% else %}
-                          {{ metafield_value }}
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% elsif is_variant_metafield %}
-                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      data-variant-metafield="true"
-                      data-metafield-key="{{ namespace }}.{{ key }}"
-                      data-variant-row
-                      style="display: none;"
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
-
-      {% comment %} Indre dimensioner group {% endcomment %}
-      {% assign has_indre_dim = false %}
-      {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Indre dimensioner' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-          {% assign metafield_value = product.metafields[namespace][key] %}
-          {% if metafield_value != blank %}
-            {% assign has_indre_dim = true %}
-            {% break %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      {% if has_indre_dim %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Indre dimensioner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Indre dimensioner' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                  {% comment %} Get metafield value from variant or product {% endcomment %}
-                  {% if is_variant_metafield %}
-                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                  {% else %}
-                    {% assign metafield_value = product.metafields[namespace][key] %}
-                  {% endif %}
-
-                  {% if metafield_value != blank %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      {% if is_variant_metafield %}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                      {% endif %}
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value>
-                        {% if metafield_value.value.value and metafield_value.value.unit %}
-                          {{ metafield_value.value.value }}
-                          {{ metafield_value.value.unit }}
-                        {% elsif metafield_value.value %}
-                          {{ metafield_value.value }}
-                        {% else %}
-                          {{ metafield_value }}
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% elsif is_variant_metafield %}
-                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      data-variant-metafield="true"
-                      data-metafield-key="{{ namespace }}.{{ key }}"
-                      data-variant-row
-                      style="display: none;"
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
-
-      {% comment %} Produktspecifikationer group {% endcomment %}
-      {% assign has_produktspec = false %}
-      {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-
-          {% comment %} Check for variant weight special case {% endcomment %}
-          {% if namespace == 'variant' and key == 'weight' %}
-            {% if product.variants.size > 0 %}
-              {% assign has_produktspec = true %}
-              {% break %}
+          {% comment %} Track unique group names in order of first appearance {% endcomment %}
+          {% assign wrapped_string = separator | append: all_groups_string | append: separator %}
+          {% unless wrapped_string contains search_string %}
+            {% if all_groups_string != '' %}
+              {% assign all_groups_string = all_groups_string | append: separator %}
             {% endif %}
-          {% else %}
-            {% assign metafield_value = product.metafields[namespace][key] %}
-            {% if metafield_value != blank %}
-              {% assign has_produktspec = true %}
-              {% break %}
+            {% assign all_groups_string = all_groups_string | append: group_name %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Convert string back to array for iteration {% endcomment %}
+      {% if all_groups_string != '' %}
+        {% assign all_groups = all_groups_string | split: separator %}
+      {% else %}
+        {% assign all_groups = '' | split: ',' %}
+      {% endif %}
+
+      {% comment %} Render tables dynamically for each group {% endcomment %}
+      {% for group_name in all_groups %}
+
+        {% comment %} Check if this group has any non-empty metafields {% endcomment %}
+        {% assign has_values = false %}
+        {% for block in section.blocks %}
+          {% if block.type == 'metafield_row' and block.settings.group_name == group_name %}
+            {% assign namespace = block.settings.metafield_namespace %}
+            {% assign key = block.settings.metafield_key %}
+
+            {% comment %} Handle special variant weight case {% endcomment %}
+            {% if namespace == 'variant' and key == 'weight' %}
+              {% if product.variants.size > 0 %}
+                {% assign has_values = true %}
+                {% break %}
+              {% endif %}
+            {% else %}
+              {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+              {% if is_variant_metafield %}
+                {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
+              {% else %}
+                {% assign metafield_value = product.metafields[namespace][key] %}
+              {% endif %}
+
+              {% if metafield_value != blank %}
+                {% assign has_values = true %}
+                {% break %}
+              {% endif %}
             {% endif %}
           {% endif %}
+        {% endfor %}
+
+        {% comment %} Render table if group has values {% endcomment %}
+        {% if has_values %}
+          <div class="table-container">
+            <table class="metafields-table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-header">{{ group_name }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% comment %} Render all rows for this group {% endcomment %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'metafield_row' and block.settings.group_name == group_name %}
+                    {% render 'metafield-row',
+                      block: block,
+                      product: product %}
+                  {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         {% endif %}
       {% endfor %}
-
-      {% if has_produktspec %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Produktspecifikationer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Produktspecifikationer' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-
-                  {% comment %} Handle variant weight special case {% endcomment %}
-                  {% if namespace == 'variant' and key == 'weight' %}
-                    {% if product.variants.size > 0 %}
-                      {% comment %} Calculate min and max weight across all variants {% endcomment %}
-                      {% assign min_weight = null %}
-                      {% assign max_weight = null %}
-
-                      {% for variant in product.variants %}
-                        {% if variant.weight > 0 %}
-                          {% if min_weight == null or variant.weight < min_weight %}
-                            {% assign min_weight = variant.weight %}
-                          {% endif %}
-                          {% if max_weight == null or variant.weight > max_weight %}
-                            {% assign max_weight = variant.weight %}
-                          {% endif %}
-                        {% endif %}
-                      {% endfor %}
-
-                      {% if min_weight != null %}
-                        <tr {{ block.shopify_attributes }}>
-                          <td>
-                            <strong>{{ block.settings.label }}</strong>
-                          </td>
-                          <td>
-                            {% if min_weight == max_weight %}
-                              {% comment %} All variants have same weight {% endcomment %}
-                              {% assign weight_kg = min_weight | divided_by: 1000.0 %}
-                              {{ weight_kg }} kg
-                            {% else %}
-                              {% comment %} Show weight range {% endcomment %}
-                              {% assign min_kg = min_weight | divided_by: 1000.0 %}
-                              {% assign max_kg = max_weight | divided_by: 1000.0 %}
-                              {{ min_kg }} - {{ max_kg }} kg
-                            {% endif %}
-                          </td>
-                        </tr>
-                      {% endif %}
-                    {% endif %}
-                  {% else %}
-                    {% comment %} Regular metafield handling {% endcomment %}
-                    {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                    {% comment %} Get metafield value from variant or product {% endcomment %}
-                    {% if is_variant_metafield %}
-                      {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                    {% else %}
-                      {% assign metafield_value = product.metafields[namespace][key] %}
-                    {% endif %}
-
-                    {% if metafield_value != blank %}
-                      <tr
-                        {{ block.shopify_attributes }}
-                        {% if is_variant_metafield %}
-                          data-variant-metafield="true"
-                          data-metafield-key="{{ namespace }}.{{ key }}"
-                          data-variant-row
-                        {% endif %}
-                      >
-                        <td>
-                          <strong>{{ block.settings.label }}</strong>
-                        </td>
-                        <td data-metafield-value>
-                          {% if metafield_value.value.value and metafield_value.value.unit %}
-                            {{ metafield_value.value.value }}
-                            {{ metafield_value.value.unit }}
-                          {% elsif metafield_value.value %}
-                            {{ metafield_value.value }}
-                          {% else %}
-                            {{ metafield_value }}
-                          {% endif %}
-                        </td>
-                      </tr>
-                    {% elsif is_variant_metafield %}
-                      {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                      <tr
-                        {{ block.shopify_attributes }}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                        style="display: none;"
-                      >
-                        <td>
-                          <strong>{{ block.settings.label }}</strong>
-                        </td>
-                        <td data-metafield-value></td>
-                      </tr>
-                    {% endif %}
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
-
-      {% comment %} Konstruktion group {% endcomment %}
-      {% assign has_konstruktion = false %}
-      {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Konstruktion' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-          {% assign metafield_value = product.metafields[namespace][key] %}
-          {% if metafield_value != blank %}
-            {% assign has_konstruktion = true %}
-            {% break %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      {% if has_konstruktion %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Konstruktion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Konstruktion' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                  {% comment %} Get metafield value from variant or product {% endcomment %}
-                  {% if is_variant_metafield %}
-                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                  {% else %}
-                    {% assign metafield_value = product.metafields[namespace][key] %}
-                  {% endif %}
-
-                  {% if metafield_value != blank %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      {% if is_variant_metafield %}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                      {% endif %}
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value>
-                        {% if metafield_value.value.value and metafield_value.value.unit %}
-                          {{ metafield_value.value.value }}
-                          {{ metafield_value.value.unit }}
-                        {% elsif metafield_value.value %}
-                          {{ metafield_value.value }}
-                        {% else %}
-                          {{ metafield_value }}
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% elsif is_variant_metafield %}
-                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      data-variant-metafield="true"
-                      data-metafield-key="{{ namespace }}.{{ key }}"
-                      data-variant-row
-                      style="display: none;"
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
-
-      {% comment %} Installation group {% endcomment %}
-      {% assign has_installation = false %}
-      {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Installation' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-          {% assign metafield_value = product.metafields[namespace][key] %}
-          {% if metafield_value != blank %}
-            {% assign has_installation = true %}
-            {% break %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      {% if has_installation %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Installation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Installation' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                  {% comment %} Get metafield value from variant or product {% endcomment %}
-                  {% if is_variant_metafield %}
-                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                  {% else %}
-                    {% assign metafield_value = product.metafields[namespace][key] %}
-                  {% endif %}
-
-                  {% if metafield_value != blank %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      {% if is_variant_metafield %}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                      {% endif %}
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value>
-                        {% if metafield_value.value.value and metafield_value.value.unit %}
-                          {{ metafield_value.value.value }}
-                          {{ metafield_value.value.unit }}
-                        {% elsif metafield_value.value %}
-                          {{ metafield_value.value }}
-                        {% else %}
-                          {{ metafield_value }}
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% elsif is_variant_metafield %}
-                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      data-variant-metafield="true"
-                      data-metafield-key="{{ namespace }}.{{ key }}"
-                      data-variant-row
-                      style="display: none;"
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
-
-      {% comment %} Sikkerhed & Certifikater group {% endcomment %}
-      {% assign has_sikkerhed = false %}
-      {% for block in section.blocks %}
-        {% if block.type == 'metafield_row' and block.settings.group_name == 'Sikkerhed & Certifikater' %}
-          {% assign namespace = block.settings.metafield_namespace %}
-          {% assign key = block.settings.metafield_key %}
-          {% assign metafield_value = product.metafields[namespace][key] %}
-          {% if metafield_value != blank %}
-            {% assign has_sikkerhed = true %}
-            {% break %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      {% if has_sikkerhed %}
-        <div class="table-container">
-          <table class="metafields-table">
-            <thead>
-              <tr>
-                <th colspan="2" class="table-header">Sikkerhed & Certifikater</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for block in section.blocks %}
-                {% if block.type == 'metafield_row' and block.settings.group_name == 'Sikkerhed & Certifikater' %}
-                  {% assign namespace = block.settings.metafield_namespace %}
-                  {% assign key = block.settings.metafield_key %}
-                  {% assign is_variant_metafield = block.settings.is_variant_metafield %}
-
-                  {% comment %} Get metafield value from variant or product {% endcomment %}
-                  {% if is_variant_metafield %}
-                    {% assign metafield_value = product.selected_or_first_available_variant.metafields[namespace][key] %}
-                  {% else %}
-                    {% assign metafield_value = product.metafields[namespace][key] %}
-                  {% endif %}
-
-                  {% if metafield_value != blank %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      {% if is_variant_metafield %}
-                        data-variant-metafield="true"
-                        data-metafield-key="{{ namespace }}.{{ key }}"
-                        data-variant-row
-                      {% endif %}
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value>
-                        {% if metafield_value.value.value and metafield_value.value.unit %}
-                          {{ metafield_value.value.value }}
-                          {{ metafield_value.value.unit }}
-                        {% elsif metafield_value.value %}
-                          {{ metafield_value.value }}
-                        {% else %}
-                          {{ metafield_value }}
-                        {% endif %}
-                      </td>
-                    </tr>
-                  {% elsif is_variant_metafield %}
-                    {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
-                    <tr
-                      {{ block.shopify_attributes }}
-                      data-variant-metafield="true"
-                      data-metafield-key="{{ namespace }}.{{ key }}"
-                      data-variant-row
-                      style="display: none;"
-                    >
-                      <td>
-                        <strong>{{ block.settings.label }}</strong>
-                      </td>
-                      <td data-metafield-value></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% endif %}
     </div>
   </div>
 </product-metafields-section>
