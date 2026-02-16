@@ -673,21 +673,32 @@
             window.currentProductAddons = new window.ProductAddons();
           }
 
-          // Переініціалізуємо всі скрипти продукту
-          const scripts = document.querySelectorAll('script[src*="product"], script:not([src])');
-          scripts.forEach((script) => {
-            if (
-              script.textContent &&
-              (script.textContent.includes('ProductAddons') ||
-                script.textContent.includes('variant') ||
-                script.textContent.includes('product'))
-            ) {
-              try {
-                eval(script.textContent);
-              } catch (e) {
-                // Silent script execution
+          // Переініціалізуємо скрипти лише в оновлених секціях
+          const updatedContainers = [
+            document.querySelector('[id*="template--"][id*="__main"]'),
+            document.querySelector('.product-addons-section'),
+            document.querySelector('product-metafields-section'),
+          ];
+
+          updatedContainers.forEach((container) => {
+            if (!container) return;
+            // Get all scripts in container
+            container.querySelectorAll('script').forEach((script) => {
+              // Ensure we only execute inline scripts with relevant content
+              if (
+                !script.src &&
+                script.textContent &&
+                (script.textContent.includes('ProductAddons') ||
+                  script.textContent.includes('variant') ||
+                  script.textContent.includes('product'))
+              ) {
+                try {
+                  eval(script.textContent);
+                } catch (e) {
+                  console.error('Error executing script via product switcher:', e);
+                }
               }
-            }
+            });
           });
 
           // Події для theme та Horizon
