@@ -77,7 +77,7 @@
         "related_grid_columns_desktop": "4",
         "related_grid_columns_mobile": "2",
         "filters_title": "Filter",
-        "burglary_grade_label": "Burglary Grade",
+        "burglary_grade_label": "Burglary Resistance",
         "fire_resistance_label": "Fire Resistance",
         "price_range_label": "Price",
         "depth_label": "Depth",
@@ -95,6 +95,8 @@
         "height_display_label": "Height",
         "width_display_label": "Width",
         "depth_display_label": "Depth",
+        "weight_display_label": "Weight",
+        "bolting_display_label": "Bolting",
         "collections_per_page": 24,
         "show_pagination": true
       }
