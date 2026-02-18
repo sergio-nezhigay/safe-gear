@@ -46,84 +46,16 @@
           {%- assign burglary_alt = blank -%}
           {%- assign burglary_desc = blank -%}
 
-          {%- if burglary_lower contains 'S1' and settings.icon_burglary_s1 -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_s1 -%}
-            {%- assign burglary_alt = settings.icon_burglary_s1_description | default: 'Security Grade S1' -%}
-            {%- assign burglary_desc = settings.icon_burglary_s1_description
-              | default: 'S1 security grade provides basic burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'S2' and settings.icon_burglary_s2 -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_s2 -%}
-            {%- assign burglary_alt = settings.icon_burglary_s2_description | default: 'Security Grade S2' -%}
-            {%- assign burglary_desc = settings.icon_burglary_s2_description
-              | default: 'S2 security grade offers enhanced burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE 0'
-            or burglary_lower contains 'GRADE0'
-            and settings.icon_burglary_grade_0
+          {%- if burglary_lower contains 'GRADE VII'
+            or burglary_lower contains 'GRADE7'
+            or burglary_lower contains 'GRADE 7'
+            and settings.icon_burglary_grade_7
           -%}
             {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_0 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_0_description
-              | default: 'Grade 0 provides professional-level burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE I'
-            or burglary_lower contains 'GRADE1'
-            or burglary_lower contains 'GRADE 1'
-            and settings.icon_burglary_grade_1
-          -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_1 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_1_description
-              | default: 'Grade I offers high-security burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE II'
-            or burglary_lower contains 'GRADE2'
-            or burglary_lower contains 'GRADE 2'
-            and settings.icon_burglary_grade_2
-          -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_2 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_2_description
-              | default: 'Grade II provides superior burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE III'
-            or burglary_lower contains 'GRADE3'
-            or burglary_lower contains 'GRADE 3'
-            and settings.icon_burglary_grade_3
-          -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_3 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_3_description
-              | default: 'Grade III delivers maximum burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE IV'
-            or burglary_lower contains 'GRADE4'
-            or burglary_lower contains 'GRADE 4'
-            and settings.icon_burglary_grade_4
-          -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_4 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_4_description
-              | default: 'Grade IV represents the highest standard of burglary resistance.'
-            -%}
-          {%- elsif burglary_lower contains 'GRADE V'
-            or burglary_lower contains 'GRADE5'
-            or burglary_lower contains 'GRADE 5'
-            and settings.icon_burglary_grade_5
-          -%}
-            {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_5 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_5_description | default: 'Grade V' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_5_description
-              | default: 'Grade V offers ultra-high security.'
+            {%- assign burglary_icon = settings.icon_burglary_grade_7 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_7_description | default: 'Grade VII' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_7_description
+              | default: 'Grade VII offers the ultimate in security protection.'
             -%}
           {%- elsif burglary_lower contains 'GRADE VI'
             or burglary_lower contains 'GRADE6'
@@ -136,16 +68,84 @@
             {%- assign burglary_desc = settings.icon_burglary_grade_6_description
               | default: 'Grade VI provides exceptional security protection.'
             -%}
-          {%- elsif burglary_lower contains 'GRADE VII'
-            or burglary_lower contains 'GRADE7'
-            or burglary_lower contains 'GRADE 7'
-            and settings.icon_burglary_grade_7
+          {%- elsif burglary_lower contains 'GRADE V'
+            or burglary_lower contains 'GRADE5'
+            or burglary_lower contains 'GRADE 5'
+            and settings.icon_burglary_grade_5
           -%}
             {%- assign show_burglary = true -%}
-            {%- assign burglary_icon = settings.icon_burglary_grade_7 -%}
-            {%- assign burglary_alt = settings.icon_burglary_grade_7_description | default: 'Grade VII' -%}
-            {%- assign burglary_desc = settings.icon_burglary_grade_7_description
-              | default: 'Grade VII offers the ultimate in security protection.'
+            {%- assign burglary_icon = settings.icon_burglary_grade_5 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_5_description | default: 'Grade V' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_5_description
+              | default: 'Grade V offers ultra-high security.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE IV'
+            or burglary_lower contains 'GRADE4'
+            or burglary_lower contains 'GRADE 4'
+            and settings.icon_burglary_grade_4
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_4 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_4_description | default: 'Burglary Grade IV' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_4_description
+              | default: 'Grade IV represents the highest standard of burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE III'
+            or burglary_lower contains 'GRADE3'
+            or burglary_lower contains 'GRADE 3'
+            and settings.icon_burglary_grade_3
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_3 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_3_description | default: 'Burglary Grade III' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_3_description
+              | default: 'Grade III delivers maximum burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE II'
+            or burglary_lower contains 'GRADE2'
+            or burglary_lower contains 'GRADE 2'
+            and settings.icon_burglary_grade_2
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_2 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_2_description | default: 'Burglary Grade II' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_2_description
+              | default: 'Grade II provides superior burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE I'
+            or burglary_lower contains 'GRADE1'
+            or burglary_lower contains 'GRADE 1'
+            and settings.icon_burglary_grade_1
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_1 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_1_description | default: 'Burglary Grade I' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_1_description
+              | default: 'Grade I offers high-security burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'GRADE 0'
+            or burglary_lower contains 'GRADE0'
+            and settings.icon_burglary_grade_0
+          -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_grade_0 -%}
+            {%- assign burglary_alt = settings.icon_burglary_grade_0_description | default: 'Burglary Grade 0' -%}
+            {%- assign burglary_desc = settings.icon_burglary_grade_0_description
+              | default: 'Grade 0 provides professional-level burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'S1' and settings.icon_burglary_s1 -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_s1 -%}
+            {%- assign burglary_alt = settings.icon_burglary_s1_description | default: 'Security Grade S1' -%}
+            {%- assign burglary_desc = settings.icon_burglary_s1_description
+              | default: 'S1 security grade provides basic burglary resistance.'
+            -%}
+          {%- elsif burglary_lower contains 'S2' and settings.icon_burglary_s2 -%}
+            {%- assign show_burglary = true -%}
+            {%- assign burglary_icon = settings.icon_burglary_s2 -%}
+            {%- assign burglary_alt = settings.icon_burglary_s2_description | default: 'Security Grade S2' -%}
+            {%- assign burglary_desc = settings.icon_burglary_s2_description
+              | default: 'S2 security grade offers enhanced burglary resistance.'
             -%}
           {%- endif -%}
 
