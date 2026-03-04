@@ -16,10 +16,11 @@
   style="{% render 'spacing-style', settings: section.settings %}"
   data-section-id="{{ section.id }}"
   data-lazy-load="{{ section.settings.enable_lazy_loading | default: true }}"
+  data-list-separator="{{ section.settings.list_separator | escape }}"
   role="region"
   aria-labelledby="metafields-heading-{{ section.id }}"
   {{ section.shopify_attributes }}
->
+>"},{
   <h2 id="metafields-heading-{{ section.id }}" class="sr-only">Product Metafields Information</h2>
 
   <!-- Skeleton Loading State -->
@@ -121,7 +122,8 @@
                   {% if block.type == 'metafield_row' and block.settings.group_name == group_name %}
                     {% render 'metafield-row',
                       block: block,
-                      product: product %}
+                      product: product,
+                      separator: section.settings.list_separator %}
                   {% endif %}
                 {% endfor %}
               </tbody>
@@ -546,6 +548,19 @@
       "default": true
     },
     {
+      "type": "select",
+      "id": "list_separator",
+      "label": "List separator",
+      "default": ", ",
+      "options": [
+        { "value": ", ", "label": "Comma" },
+        { "value": " / ", "label": "Slash" },
+        { "value": " ", "label": "Space" },
+        { "value": "", "label": "None" }
+      ],
+      "info": "When a metafield returns multiple values (list type), separate them with this string."
+    },
+    {
       "type": "header",
       "content": "Padding"
     },
@@ -579,6 +594,7 @@
         "section_width": "page-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
+        "list_separator": ", ",
         "padding-block-start": 48,
         "padding-block-end": 48
       },

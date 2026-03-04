@@ -71,11 +71,18 @@
         <strong>{{ block.settings.label }}</strong>
       </td>
       <td data-metafield-value>
+        {% assign sep = separator | default: ', ' %}
         {% if metafield_value.value.value and metafield_value.value.unit %}
           {{ metafield_value.value.value }}
           {{ metafield_value.value.unit }}
         {% elsif metafield_value.value %}
-          {{ metafield_value.value }}
+          {%- comment -%}For list metafields we detect the type and join the values with separator{%- endcomment -%}
+          {% assign mf_type = metafield_value.type | default: '' %}
+          {% if mf_type contains 'list.' and metafield_value.value != blank %}
+            {{ metafield_value.value | join: sep }}
+          {% else %}
+            {{ metafield_value.value }}
+          {% endif %}
         {% else %}
           {{ metafield_value }}
         {% endif %}

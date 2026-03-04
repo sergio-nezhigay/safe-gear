@@ -8,6 +8,8 @@ class ProductMetafieldsSection extends HTMLElement {
     super();
     this.sectionId = this.dataset.sectionId;
     this.lazyLoadEnabled = this.dataset.lazyLoad === 'true';
+    // separator for list‑type metafields; defaults to comma+space
+    this.separator = this.dataset.listSeparator || ', ';
     this.loaded = false;
 
     this.init();
@@ -204,6 +206,11 @@ class ProductMetafieldsSection extends HTMLElement {
    * @returns {string} The display value
    */
   extractMetafieldValue(metafieldValue) {
+    // arrays need to be joined using configured separator
+    if (Array.isArray(metafieldValue)) {
+      return metafieldValue.join(this.separator);
+    }
+
     if (typeof metafieldValue === 'object' && metafieldValue !== null) {
       // Handle Shopify dimension/weight/volume format: {type, value: {value, unit}}
       if (metafieldValue.type && metafieldValue.value) {
@@ -211,6 +218,10 @@ class ProductMetafieldsSection extends HTMLElement {
           const val = metafieldValue.value.value;
           const unit = metafieldValue.value.unit;
           return unit ? `${val} ${unit}` : val;
+        }
+        // value might itself be an array
+        if (Array.isArray(metafieldValue.value)) {
+          return metafieldValue.value.join(this.separator);
         }
         return metafieldValue.value;
       }
@@ -220,6 +231,9 @@ class ProductMetafieldsSection extends HTMLElement {
           const val = metafieldValue.value.value;
           const unit = metafieldValue.value.unit;
           return unit ? `${val} ${unit}` : val;
+        }
+        if (Array.isArray(metafieldValue.value)) {
+          return metafieldValue.value.join(this.separator);
         }
         const val = metafieldValue.value;
         const unit = metafieldValue.unit;

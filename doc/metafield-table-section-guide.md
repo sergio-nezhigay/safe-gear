@@ -156,12 +156,24 @@ Boolean metafields display custom text:
 - Configure "Text for True" (default: "Yes")
 - Configure "Text for False" (default: "No")
 
+### Multi‑Value (List) Metafields
+List‑type metafields (e.g. `list.single_line_text_field`) return an array of values. Prior to the update you were seeing the items concatenated without separators.  
+To control how multiple entries are joined use the **List separator** setting in the section: slash, comma, space or none.  
+The section automatically converts any value to an array and joins with the chosen separator, so single values remain unaffected.
+
+
+
 ### URLs
 URLs are automatically detected and formatted as clickable links with styling.
 
 ---
 
 ## Special Features
+
+### List Separator Setting
+A new setting named **List separator** appears under the section layout options. It accepts one of four presets (Comma, Slash, Space, or None) and determines what string is inserted between items when the metafield value is an array. This setting is also passed to the client‑side script so variant updates respect the same formatting.
+
+
 
 ### Lazy Loading
 
