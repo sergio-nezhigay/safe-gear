@@ -480,6 +480,19 @@
           "info": "Unit to display after numeric values"
         },
         {
+          "type": "select",
+          "id": "rounding",
+          "label": "Rounding",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "integer", "label": "Whole number" },
+            { "value": "1", "label": "1 decimal place" },
+            { "value": "2", "label": "2 decimal places" }
+          ],
+          "info": "Automatically round numeric values for this metafield."
+        },
+        {
           "type": "text",
           "id": "true_text",
           "label": "Text for True (boolean fields)",
@@ -506,8 +519,9 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "**HOW TO USE:** Add 'Metafield Row' blocks and set Label, Namespace (usually 'custom'), and Key. **GROUPING:** Blocks with the same Group Name display together in one table. The group name becomes the table header. **VARIANT METAFIELDS:** Enable checkbox if metafield belongs to variants - it will update when customers select options. Empty metafields auto-hide. See https://drive.google.com/file/d/1JFLmEKs3fGmHPJVFIvlkhDDNkRgVxYFK/view?usp=sharing for full documentation."
+      "content": "**HOW TO USE:** Add 'Metafield Row' blocks and set Label, Namespace (usually 'custom'), and Key. Use the new 'Rounding' setting to automatically round numeric values (whole numbers, one or two decimals). **GROUPING:** Blocks with the same Group Name display together in one table. The group name becomes the table header. **VARIANT METAFIELDS:** Enable checkbox if metafield belongs to variants - it will update when customers select options. Empty metafields auto-hide. See https://drive.google.com/file/d/1JFLmEKs3fGmHPJVFIvlkhDDNkRgVxYFK/view?usp=sharing for full documentation."
     },
+
     {
       "type": "header",
       "content": "Section Layout"

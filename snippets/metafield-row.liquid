@@ -9,6 +9,7 @@
 {% assign namespace = block.settings.metafield_namespace %}
 {% assign key = block.settings.metafield_key %}
 {% assign is_variant_metafield = block.settings.is_variant_metafield %}
+{% assign rounding = block.settings.rounding | default: 'none' %}
 
 {% comment %} Handle special variant weight case {% endcomment %}
 {% if namespace == 'variant' and key == 'weight' %}
@@ -61,6 +62,7 @@
   {% if metafield_value != blank %}
     <tr
       {{ block.shopify_attributes }}
+      data-rounding="{{ block.settings.rounding | default: 'none' }}"
       {% if is_variant_metafield %}
         data-variant-metafield="true"
         data-metafield-key="{{ namespace }}.{{ key }}"
@@ -73,26 +75,51 @@
       <td data-metafield-value>
         {% assign sep = separator | default: ', ' %}
         {% if metafield_value.value.value and metafield_value.value.unit %}
-          {{ metafield_value.value.value }}
-          {{ metafield_value.value.unit }}
+          {% assign num = metafield_value.value.value %}
+          {% if rounding != 'none' %}
+            {% case rounding %}
+              {% when 'integer' %}{% assign num = num | round %}{% when '1' %}{% assign num = num | times:10 | round | divided_by:10 %}{% when '2' %}{% assign num = num | times:100 | round | divided_by:100 %}{% endcase %}
+          {% endif %}
+          {{ num }} {{ metafield_value.value.unit }}
         {% elsif metafield_value.value %}
           {%- comment -%}For list metafields we detect the type and join the values with separator{%- endcomment -%}
           {% assign mf_type = metafield_value.type | default: '' %}
           {% if mf_type contains 'list.' and metafield_value.value != blank %}
             {{ metafield_value.value | join: sep }}
           {% else %}
-            {{ metafield_value.value }}
+            {% assign output_value = metafield_value.value %}
+            {% if rounding != 'none' %}
+              {% assign numeric = output_value | plus: 0 %}
+              {% if numeric != 0 or output_value == '0' %}
+                {% case rounding %}
+                  {% when 'integer' %}{% assign output_value = numeric | round %}
+                  {% when '1' %}{% assign output_value = numeric | times:10 | round | divided_by:10 %}
+                  {% when '2' %}{% assign output_value = numeric | times:100 | round | divided_by:100 %}
+                {% endcase %}
+              {% endif %}
+            {% endif %}
+            {{ output_value }}
           {% endif %}
         {% else %}
-          {{ metafield_value }}
+          {% assign output_value = metafield_value %}
+          {% if rounding != 'none' %}
+            {% assign numeric = output_value | plus: 0 %}
+            {% if numeric != 0 or output_value == '0' %}
+              {% case rounding %}
+                {% when 'integer' %}{% assign output_value = numeric | round %}
+                {% when '1' %}{% assign output_value = numeric | times:10 | round | divided_by:10 %}
+                {% when '2' %}{% assign output_value = numeric | times:100 | round | divided_by:100 %}
+              {% endcase %}
+            {% endif %}
+          {% endif %}
+          {{ output_value }}
         {% endif %}
       </td>
     </tr>
   {% elsif is_variant_metafield %}
     {% comment %} For variant metafields, render hidden row that can be shown later {% endcomment %}
     <tr
-      {{ block.shopify_attributes }}
-      data-variant-metafield="true"
+      {{ block.shopify_attributes }}      data-rounding="{{ block.settings.rounding | default: 'none' }}"      data-variant-metafield="true"
       data-metafield-key="{{ namespace }}.{{ key }}"
       data-variant-row
       style="display: none;"

@@ -58,6 +58,9 @@ class ProductMetafieldsSection extends HTMLElement {
         detail: { sectionId: this.sectionId },
         bubbles: true
       }));
+
+      // rounding may be required on values that existed before lazy load
+      this.applyRoundingToAll();
     }, 300);
   }
 
@@ -85,6 +88,10 @@ class ProductMetafieldsSection extends HTMLElement {
 
     // Listen for variant changes to update variant metafields
     document.addEventListener('variant:update', this.handleVariantUpdate.bind(this));
+
+    // apply rounding to any initial values already rendered in the section
+    // (lazy loading may delay this until loadContent, so also invoked there)
+    this.applyRoundingToAll();
   }
 
   disconnectedCallback() {
@@ -187,11 +194,14 @@ class ProductMetafieldsSection extends HTMLElement {
       const [namespace, key] = metafieldKey.split('.');
       const metafieldValue = variant.metafields?.[namespace]?.[key];
       const currentValueCell = row.querySelector('[data-metafield-value]');
+      const rounding = row.dataset.rounding;
 
       if (metafieldValue) {
-        const displayValue = this.extractMetafieldValue(metafieldValue);
+        let displayValue = this.extractMetafieldValue(metafieldValue);
+        // apply row-specific rounding if needed
         if (currentValueCell) {
           currentValueCell.textContent = displayValue;
+          this.applyRoundingToCell(currentValueCell, rounding);
         }
         this.showRow(row);
       } else {
@@ -255,6 +265,12 @@ class ProductMetafieldsSection extends HTMLElement {
     requestAnimationFrame(() => {
       row.classList.remove('hidden');
     });
+
+    // if the row already has a value cell we may need to re-format
+    const cell = row.querySelector('[data-metafield-value]');
+    if (cell) {
+      this.applyRoundingToCell(cell, row.dataset.rounding);
+    }
   }
 
   /**
@@ -271,6 +287,50 @@ class ProductMetafieldsSection extends HTMLElement {
         row.style.display = 'none';
       }
     }, 300); // Match the CSS transition duration
+  }
+
+  /**
+   * Round/format the text content of a metafield value cell based on rounding instructions.
+   * @param {HTMLElement} cell - td[data-metafield-value]
+   * @param {string} rounding - one of 'none','integer','1','2'
+   */
+  formatCell(cell, rounding) {
+    if (!rounding || rounding === 'none') return;
+
+    const text = cell.textContent.trim();
+    // match leading number (integer or decimal), preserve any trailing unit or text
+    const match = text.match(/^(-?\d+(?:\.\d+)?)(.*)$/);
+    if (!match) return;
+
+    let num = parseFloat(match[1]);
+    const suffix = match[2] || '';
+
+    switch (rounding) {
+      case 'integer':
+        num = Math.round(num);
+        break;
+      case '1':
+        num = num.toFixed(1);
+        break;
+      case '2':
+        num = num.toFixed(2);
+        break;
+    }
+
+    cell.textContent = num + suffix;
+  }
+
+  /**
+   * Walk through all cells in the section and apply rounding rules where defined.
+   */
+  applyRoundingToAll() {
+    this.querySelectorAll('tr').forEach(row => {
+      const rounding = row.dataset.rounding;
+      const cell = row.querySelector('[data-metafield-value]');
+      if (cell && rounding) {
+        this.formatCell(cell, rounding);
+      }
+    });
   }
 }
 
