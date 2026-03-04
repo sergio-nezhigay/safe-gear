@@ -458,95 +458,11 @@
     "metafield_table_JUaEGX": {
       "type": "metafield-table",
       "blocks": {
-        "metafield_row_mBmVnt": {
-          "type": "metafield_row",
-          "name": "Width - Interior (mm)",
-          "settings": {
-            "group_name": "Internal dimensions",
-            "label": "Width - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_wXT3qc": {
-          "type": "metafield_row",
-          "name": "Depth - Interior (mm)",
-          "settings": {
-            "group_name": "Internal dimensions",
-            "label": "Depth - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_K8de4F": {
-          "type": "metafield_row",
-          "name": "Height - Interior (mm)",
-          "settings": {
-            "group_name": "Internal dimensions",
-            "label": "Height - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_height_interior",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_xrggqX": {
-          "type": "metafield_row",
-          "name": "Depth - Exterior (mm)",
-          "settings": {
-            "group_name": "External dimensions",
-            "label": "Depth - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_zbcXnB": {
-          "type": "metafield_row",
-          "name": "Width - Exterior (mm)",
-          "settings": {
-            "group_name": "External dimensions",
-            "label": "Width - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_4MrxM4": {
-          "type": "metafield_row",
-          "name": "Height - External (mm)",
-          "settings": {
-            "group_name": "External dimensions",
-            "label": "Height - External (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_height",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
         "metafield_row_RPmccX": {
           "type": "metafield_row",
           "name": "Model",
           "settings": {
-            "group_name": "Produktspecifikationer",
+            "group_name": "Specifications",
             "label": "Model",
             "metafield_namespace": "custom",
             "metafield_key": "model",
@@ -560,8 +476,8 @@
           "type": "metafield_row",
           "name": "Model Serie",
           "settings": {
-            "group_name": "Produktspecifikationer",
-            "label": "Model Serie",
+            "group_name": "Specifications",
+            "label": "Model Series",
             "metafield_namespace": "custom",
             "metafield_key": "model_series",
             "unit": "",
@@ -572,10 +488,10 @@
         },
         "metafield_row_rjRfCY": {
           "type": "metafield_row",
-          "name": "Produktspecifikationer",
+          "name": "Safe Type",
           "settings": {
-            "group_name": "Produktspecifikationer",
-            "label": "Pengeskabstype",
+            "group_name": "Specifications",
+            "label": "Safe Type",
             "metafield_namespace": "custom",
             "metafield_key": "safe_kind",
             "unit": "",
@@ -586,10 +502,10 @@
         },
         "metafield_row_HDT3UM": {
           "type": "metafield_row",
-          "name": "Formål",
+          "name": "Safe Purpose",
           "settings": {
-            "group_name": "Produktspecifikationer",
-            "label": "Formål",
+            "group_name": "Specifications",
+            "label": "Safe Purpose",
             "metafield_namespace": "custom",
             "metafield_key": "safe_purpose",
             "unit": "",
@@ -598,54 +514,12 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_weight_variant": {
-          "type": "metafield_row",
-          "name": "Vægt",
-          "settings": {
-            "group_name": "Produktspecifikationer",
-            "label": "Vægt",
-            "metafield_namespace": "variant",
-            "metafield_key": "weight",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_TtLyni": {
-          "type": "metafield_row",
-          "name": "Dørstruktur",
-          "settings": {
-            "group_name": "Konstruktion",
-            "label": "Dørstruktur",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_structure",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
-        "metafield_row_AWKmbN": {
-          "type": "metafield_row",
-          "name": "Korpusstruktur",
-          "settings": {
-            "group_name": "Konstruktion",
-            "label": "Korpusstruktur",
-            "metafield_namespace": "custom",
-            "metafield_key": "body_structure",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
         "metafield_row_V4U3tF": {
           "type": "metafield_row",
-          "name": "Fastgørelse",
+          "name": "Bolting",
           "settings": {
-            "group_name": "Installation",
-            "label": "Fastgørelse",
+            "group_name": "Specifications",
+            "label": "Bolting",
             "metafield_namespace": "custom",
             "metafield_key": "bolting",
             "unit": "",
@@ -656,10 +530,10 @@
         },
         "metafield_row_mWAUUV": {
           "type": "metafield_row",
-          "name": "Bolte inkluderet",
+          "name": "Bolts included",
           "settings": {
-            "group_name": "Installation",
-            "label": "Bolte inkluderet",
+            "group_name": "Specifications",
+            "label": "Bolts included",
             "metafield_namespace": "custom",
             "metafield_key": "bolts_included",
             "unit": "",
@@ -668,12 +542,26 @@
             "is_variant_metafield": false
           }
         },
+        "metafield_row_yaDae9": {
+          "type": "metafield_row",
+          "name": "Color",
+          "settings": {
+            "group_name": "Specifications",
+            "label": "Color",
+            "metafield_namespace": "custom",
+            "metafield_key": "color",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
         "metafield_row_npk77M": {
           "type": "metafield_row",
-          "name": "Indbrudsklassifikation",
+          "name": "Burglary Certification",
           "settings": {
-            "group_name": "Sikkerhed & Certifikater",
-            "label": "Indbrudsklassifikation",
+            "group_name": "Certifications",
+            "label": "Burglary Certication",
             "metafield_namespace": "custom",
             "metafield_key": "burglary_classification",
             "unit": "",
@@ -682,12 +570,52 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_BWyAMi": {
+        "metafield_row_FYTRQb": {
           "type": "metafield_row",
-          "name": "Testmetode",
           "settings": {
-            "group_name": "Sikkerhed & Certifikater",
-            "label": "Testmetode",
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_JDxeKd": {
+          "type": "metafield_row",
+          "name": "Burglary Cash Rating",
+          "settings": {
+            "group_name": "Certifications",
+            "label": "Burglary Cash Rating",
+            "metafield_namespace": "custom",
+            "metafield_key": "cash_rating",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_9CPahG": {
+          "type": "metafield_row",
+          "settings": {
+            "group_name": "Product Information",
+            "label": "Property",
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_3wLnix": {
+          "type": "metafield_row",
+          "name": "Burglary Certification Method",
+          "settings": {
+            "group_name": "Certifications",
+            "label": "Burglary Certification Method",
             "metafield_namespace": "custom",
             "metafield_key": "burglary_test_method",
             "unit": "",
@@ -698,10 +626,10 @@
         },
         "metafield_row_EjK4NL": {
           "type": "metafield_row",
-          "name": "Testcenter",
+          "name": "Burglary Certification Body",
           "settings": {
-            "group_name": "Sikkerhed & Certifikater",
-            "label": "Testcenter",
+            "group_name": "Certifications",
+            "label": "Burglary Certification Body",
             "metafield_namespace": "custom",
             "metafield_key": "burglary_test_center",
             "unit": "",
@@ -710,26 +638,12 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_JDxeKd": {
-          "type": "metafield_row",
-          "name": "Kontantrating",
-          "settings": {
-            "group_name": "Sikkerhed & Certifikater",
-            "label": "Kontantrating",
-            "metafield_namespace": "custom",
-            "metafield_key": "cash_rating",
-            "unit": "",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false
-          }
-        },
         "metafield_row_3yQHj7": {
           "type": "metafield_row",
-          "name": "Brandvarighed",
+          "name": "Fire Resistance",
           "settings": {
-            "group_name": "Sikkerhed & Certifikater",
-            "label": "Brandvarighed",
+            "group_name": "Certifications",
+            "label": "Fire Resistance",
             "metafield_namespace": "custom",
             "metafield_key": "fire_duration",
             "unit": "",
@@ -738,38 +652,222 @@
             "is_variant_metafield": false
           }
         },
-        "metafield_row_3ET4YB": {
+        "metafield_row_zjfxPX": {
           "type": "metafield_row",
-          "disabled": true,
+          "name": "Fire Resistance Classification",
           "settings": {
-            "group_name": "Ydre dimensioner",
-            "label": "door_light_width_mm",
+            "group_name": "Certifications",
+            "label": "Fire Resistance Classification",
             "metafield_namespace": "custom",
-            "metafield_key": "door_light_width_mm",
+            "metafield_key": "fire_classification",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
-            "is_variant_metafield": true
+            "is_variant_metafield": false
           }
         },
-        "metafield_row_door_light_height": {
+        "metafield_row_Y4LLt9": {
           "type": "metafield_row",
+          "name": "Fire Resistance Method",
           "settings": {
-            "group_name": "Ydre dimensioner",
-            "label": "custom.width_exterior_mm",
+            "group_name": "Certifications",
+            "label": "Fire Resistance Method",
             "metafield_namespace": "custom",
-            "metafield_key": "width_exterior_mm",
+            "metafield_key": "fire_test_method",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
-            "is_variant_metafield": true
+            "is_variant_metafield": false
           }
         },
-        "metafield_row_Cyac6k": {
+        "metafield_row_dMiHPt": {
           "type": "metafield_row",
+          "name": "Fire Certification Body",
           "settings": {
-            "group_name": "Ydre dimensioner",
-            "label": "custom.height_exterior_mm",
+            "group_name": "Certifications",
+            "label": "Fire Certification Body",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_test_center",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_weight_variant": {
+          "type": "metafield_row",
+          "name": "Weight",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Weight",
+            "metafield_namespace": "variant",
+            "metafield_key": "weight",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_4MrxM4": {
+          "type": "metafield_row",
+          "name": "Height - External (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Height - External (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_zbcXnB": {
+          "type": "metafield_row",
+          "name": "Width - Exterior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Width - Exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_xrggqX": {
+          "type": "metafield_row",
+          "name": "Depth - Exterior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Depth - Exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_WEPjAR": {
+          "type": "metafield_row",
+          "name": "Depth - Lock / Handle (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Depth - Lock / Handle (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "lock_depth",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_acxAjD": {
+          "type": "metafield_row",
+          "name": "Depth incl. Lock / Handle",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Depth incl. Lock / Handle",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_incl_lock_handle",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_K8de4F": {
+          "type": "metafield_row",
+          "name": "Height - Interior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Height - Interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_wXT3qc": {
+          "type": "metafield_row",
+          "name": "Depth - Interior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Depth - Interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_mBmVnt": {
+          "type": "metafield_row",
+          "name": "Width - Interior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Width - Interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width_interior",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_4qEVgg": {
+          "type": "metafield_row",
+          "name": "Width - Door Open 180 degrees (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Width - Door Open 180 degrees (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "width_door_open_180",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_CUWhdA": {
+          "type": "metafield_row",
+          "name": "Depth - Door open 90 degrees (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Depth - Door open 90 degrees (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "depth_door_open_90",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_khXeaY": {
+          "type": "metafield_row",
+          "name": "Size customization (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Customizable size (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "custom_range",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_CwL3bQ": {
+          "type": "metafield_row",
+          "name": "Door Frame Height - Exterior (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Frame Height - Exterior (mm)",
             "metafield_namespace": "custom",
             "metafield_key": "height_exterior_mm",
             "unit": "",
@@ -778,13 +876,280 @@
             "is_variant_metafield": true
           }
         },
-        "metafield_row_pdf_document": {
+        "metafield_row_RGPyV7": {
           "type": "metafield_row",
+          "name": "Door Frame Width - Exterior (mm) - TEST",
           "settings": {
-            "group_name": "Dokumenter",
-            "label": "Produktdokumentation (PDF)",
+            "group_name": "Dimensions",
+            "label": "Door Frame Width - Exterior (mm)",
             "metafield_namespace": "custom",
-            "metafield_key": "product_document",
+            "metafield_key": "width_exterior_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_n9VaTe": {
+          "type": "metafield_row",
+          "name": "Wall Opening Height - (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Wall Opening Height - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "height_interior_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_VtCkaM": {
+          "type": "metafield_row",
+          "name": "Wall Opening Width - (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Wall Opening Width - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "width_interior_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_H6CGbH": {
+          "type": "metafield_row",
+          "name": "Clear opening Height - (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Clear opening Height - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_height_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_UmYDx8": {
+          "type": "metafield_row",
+          "name": "Door Light Width - (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Light Width - (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_width_mm",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
+          }
+        },
+        "metafield_row_acnDMi": {
+          "type": "metafield_row",
+          "name": "Door Opening - Height (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Opening - Height (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_height",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_VbJy88": {
+          "type": "metafield_row",
+          "name": "Door Opening - Width (mm)",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Opening - Width (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_width",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_hNT9Aj": {
+          "type": "metafield_row",
+          "name": "Door Hinges",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Hinges",
+            "metafield_namespace": "custom",
+            "metafield_key": "hinges",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_FjpJgF": {
+          "type": "metafield_row",
+          "name": "Door - Angle and Hinges",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door - Angle and Hinges",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_angle",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_PKycAB": {
+          "type": "metafield_row",
+          "name": "Capacity - Liter",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - Liter",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_liter",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_aF3KFt": {
+          "type": "metafield_row",
+          "name": "Capacity - Binders",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - Binders",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_binder",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_R7pUaF": {
+          "type": "metafield_row",
+          "name": "Capacity - Keys",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - Keys",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_keys",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_ibtRjB": {
+          "type": "metafield_row",
+          "name": "Capacity - LTO Tapes",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - LTO Tapes",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_data_lto",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_xCi9BR": {
+          "type": "metafield_row",
+          "name": "Capacity - Laptops",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - Laptops",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_laptops",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_hGGf8t": {
+          "type": "metafield_row",
+          "name": "Capacity - Guns",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Capacity - Guns",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_guns",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_TtLyni": {
+          "type": "metafield_row",
+          "name": "Door Structure",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Door Structure",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_structure",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_AWKmbN": {
+          "type": "metafield_row",
+          "name": "Body Structure",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Body Structure",
+            "metafield_namespace": "custom",
+            "metafield_key": "body_structure",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_RktYAg": {
+          "type": "metafield_row",
+          "name": "Shelves included",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Shelves included",
+            "metafield_namespace": "custom",
+            "metafield_key": "shelf_number",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_k4bEbU": {
+          "type": "metafield_row",
+          "name": "Drawers included",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Drawers included",
+            "metafield_namespace": "custom",
+            "metafield_key": "drawer_amounts",
+            "unit": "",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
+          }
+        },
+        "metafield_row_UDzTQp": {
+          "type": "metafield_row",
+          "name": "Drawers maximum",
+          "settings": {
+            "group_name": "Dimensions",
+            "label": "Drawers maximum",
+            "metafield_namespace": "custom",
+            "metafield_key": "drawers_max",
             "unit": "",
             "true_text": "Yes",
             "false_text": "No",
@@ -793,30 +1158,56 @@
         }
       },
       "block_order": [
-        "metafield_row_mBmVnt",
-        "metafield_row_wXT3qc",
-        "metafield_row_K8de4F",
-        "metafield_row_xrggqX",
-        "metafield_row_zbcXnB",
-        "metafield_row_4MrxM4",
         "metafield_row_RPmccX",
         "metafield_row_mtCWr6",
         "metafield_row_rjRfCY",
         "metafield_row_HDT3UM",
-        "metafield_row_weight_variant",
-        "metafield_row_TtLyni",
-        "metafield_row_AWKmbN",
         "metafield_row_V4U3tF",
         "metafield_row_mWAUUV",
+        "metafield_row_yaDae9",
         "metafield_row_npk77M",
-        "metafield_row_BWyAMi",
-        "metafield_row_EjK4NL",
+        "metafield_row_FYTRQb",
         "metafield_row_JDxeKd",
+        "metafield_row_9CPahG",
+        "metafield_row_3wLnix",
+        "metafield_row_EjK4NL",
         "metafield_row_3yQHj7",
-        "metafield_row_3ET4YB",
-        "metafield_row_door_light_height",
-        "metafield_row_Cyac6k",
-        "metafield_row_pdf_document"
+        "metafield_row_zjfxPX",
+        "metafield_row_Y4LLt9",
+        "metafield_row_dMiHPt",
+        "metafield_row_weight_variant",
+        "metafield_row_4MrxM4",
+        "metafield_row_zbcXnB",
+        "metafield_row_xrggqX",
+        "metafield_row_WEPjAR",
+        "metafield_row_acxAjD",
+        "metafield_row_K8de4F",
+        "metafield_row_wXT3qc",
+        "metafield_row_mBmVnt",
+        "metafield_row_4qEVgg",
+        "metafield_row_CUWhdA",
+        "metafield_row_khXeaY",
+        "metafield_row_CwL3bQ",
+        "metafield_row_RGPyV7",
+        "metafield_row_n9VaTe",
+        "metafield_row_VtCkaM",
+        "metafield_row_H6CGbH",
+        "metafield_row_UmYDx8",
+        "metafield_row_acnDMi",
+        "metafield_row_VbJy88",
+        "metafield_row_hNT9Aj",
+        "metafield_row_FjpJgF",
+        "metafield_row_PKycAB",
+        "metafield_row_aF3KFt",
+        "metafield_row_R7pUaF",
+        "metafield_row_ibtRjB",
+        "metafield_row_xCi9BR",
+        "metafield_row_hGGf8t",
+        "metafield_row_TtLyni",
+        "metafield_row_AWKmbN",
+        "metafield_row_RktYAg",
+        "metafield_row_k4bEbU",
+        "metafield_row_UDzTQp"
       ],
       "name": "Product Metafields Tables",
       "settings": {
