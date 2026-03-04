@@ -171,7 +171,7 @@ URLs are automatically detected and formatted as clickable links with styling.
 ## Special Features
 
 ### List Separator Setting
-A new setting named **List separator** appears under the section layout options. It accepts one of four presets (Comma, Slash, Space, or None) and determines what string is inserted between items when the metafield value is an array. This setting is also passed to the client‑side script so variant updates respect the same formatting.
+A new setting named **List separator** appears under the section layout options. It is now a free‑text field that accepts any character string (for example ` / `, `,`, ` | `, or even emoji). Whatever you enter will be inserted between items when the metafield value is an array. Leave it blank for no separator. The value is also passed to the client‑side script so variant updates respect the same formatting.
 
 
 
