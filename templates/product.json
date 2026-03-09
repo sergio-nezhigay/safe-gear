@@ -467,6 +467,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "model",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -481,6 +482,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "model_series",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -495,6 +497,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "safe_kind",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -509,6 +512,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "safe_purpose",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -523,6 +527,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "bolting",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -537,6 +542,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "bolts_included",
             "unit": "",
+            "rounding": "none",
             "true_text": "Ja",
             "false_text": "Nej",
             "is_variant_metafield": false
@@ -551,6 +557,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "color",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -565,6 +572,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "burglary_classification",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -578,6 +586,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -592,6 +601,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "cash_rating",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -605,6 +615,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -619,6 +630,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "burglary_test_method",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -633,6 +645,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "burglary_test_center",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -647,6 +660,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "fire_duration",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -661,6 +675,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "fire_classification",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -675,6 +690,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "fire_test_method",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -689,6 +705,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "fire_test_center",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -703,6 +720,7 @@
             "metafield_namespace": "variant",
             "metafield_key": "weight",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -717,6 +735,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_height",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -731,6 +750,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_width",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -745,6 +765,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_depth",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -759,6 +780,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "lock_depth",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -773,6 +795,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_depth_incl_lock_handle",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -787,6 +810,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_height_interior",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -801,6 +825,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_depth_interior",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -815,6 +840,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "new_width_interior",
             "unit": "",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -829,6 +855,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "width_door_open_180",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -843,6 +870,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "depth_door_open_90",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -857,6 +885,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "custom_range",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -871,6 +900,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "height_exterior_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -885,6 +915,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "width_exterior_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -899,6 +930,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "height_interior_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -913,6 +945,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "width_interior_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -927,6 +960,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_light_height_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -941,6 +975,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_light_width_mm",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": true
@@ -955,6 +990,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_opening_height",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -969,6 +1005,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_opening_width",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -983,6 +1020,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "hinges",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -997,6 +1035,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_opening_angle",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1011,6 +1050,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_liter",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1025,6 +1065,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_binder",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1039,6 +1080,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_keys",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1053,6 +1095,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_data_lto",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1067,6 +1110,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_laptops",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1081,6 +1125,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "capacity_guns",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1095,6 +1140,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_structure",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1109,6 +1155,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "body_structure",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1123,6 +1170,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "shelf_number",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1137,6 +1185,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "drawer_amounts",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1151,6 +1200,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "drawers_max",
             "unit": "",
+            "rounding": "none",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1215,6 +1265,7 @@
         "section_width": "full-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
+        "list_separator": ",",
         "padding-block-start": 20,
         "padding-block-end": 0
       }
