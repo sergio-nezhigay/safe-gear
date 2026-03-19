@@ -47,7 +47,8 @@
       "Bash(claude:*)",
       "Bash(reg query:*)",
       "Bash(powershell -Command:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
