@@ -1,4 +1,8 @@
-// All dependencies will be available globally from Horizon theme bundle
+import { Component } from '@theme/component';
+import { ThemeEvents, CartErrorEvent, CartAddEvent } from '@theme/events';
+import { fetchConfig, onAnimationEnd, preloadImage } from '@theme/utilities';
+import { morph } from '@theme/morph';
+import { cartPerformance } from '@theme/performance';
 
 // The following is a patched version of Horizon's product-form JavaScript.  The
 // original implementation disables the add‑to‑cart button whenever the
@@ -17,7 +21,7 @@ export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 2000;
  * @property {HTMLButtonElement} addToCartButton - The add to cart button.
  * @extends Component<AddToCartRefs>
  */
-export class AddToCartComponent extends HTMLElement {
+export class AddToCartComponent extends Component {
   requiredRefs = ['addToCartButton'];
 
   /** @type {number | undefined} */
