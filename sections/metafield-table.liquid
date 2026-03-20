@@ -4,6 +4,12 @@
   fetchpriority="low"
 ></script>
 
+{% comment %} Build separator, appending a space if the option is enabled {% endcomment %}
+{% assign list_sep = section.settings.list_separator %}
+{% if section.settings.list_separator_space %}
+  {% assign list_sep = list_sep | append: ' ' %}
+{% endif %}
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <product-metafields-section
   class="
@@ -16,7 +22,7 @@
   style="{% render 'spacing-style', settings: section.settings %}"
   data-section-id="{{ section.id }}"
   data-lazy-load="{{ section.settings.enable_lazy_loading | default: true }}"
-  data-list-separator="{{ section.settings.list_separator | escape }}"
+  data-list-separator="{{ list_sep | escape }}"
   role="region"
   aria-labelledby="metafields-heading-{{ section.id }}"
   {{ section.shopify_attributes }}
@@ -123,7 +129,7 @@
                     {% render 'metafield-row',
                       block: block,
                       product: product,
-                      separator: section.settings.list_separator %}
+                      separator: list_sep %}
                   {% endif %}
                 {% endfor %}
               </tbody>
@@ -565,8 +571,15 @@
       "type": "text",
       "id": "list_separator",
       "label": "List separator",
-      "default": ", ",
-      "info": "Any string used to separate items when a metafield returns multiple values. Leave blank for no separator."
+      "default": ",",
+      "info": "Character(s) used to separate items when a metafield returns multiple values. Leave blank for no separator."
+    },
+    {
+      "type": "checkbox",
+      "id": "list_separator_space",
+      "label": "Add space after separator",
+      "default": true,
+      "info": "Adds a space after the separator (e.g. \",\" becomes \", \")."
     },
     {
       "type": "header",
@@ -602,7 +615,8 @@
         "section_width": "page-width",
         "color_scheme": "scheme-1",
         "enable_lazy_loading": true,
-        "list_separator": ", ",
+        "list_separator": ",",
+        "list_separator_space": true,
         "padding-block-start": 48,
         "padding-block-end": 48
       },
