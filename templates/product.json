@@ -720,7 +720,7 @@
             "metafield_namespace": "variant",
             "metafield_key": "weight",
             "unit": "",
-            "rounding": "none",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -855,7 +855,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "width_door_open_180",
             "unit": "",
-            "rounding": "none",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -870,7 +870,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "depth_door_open_90",
             "unit": "",
-            "rounding": "none",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -990,7 +990,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_opening_height",
             "unit": "",
-            "rounding": "none",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false
@@ -1005,7 +1005,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "door_opening_width",
             "unit": "",
-            "rounding": "none",
+            "rounding": "integer",
             "true_text": "Yes",
             "false_text": "No",
             "is_variant_metafield": false

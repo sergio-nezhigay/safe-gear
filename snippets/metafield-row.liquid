@@ -30,19 +30,21 @@
     {% endfor %}
 
     {% if min_weight != null %}
-      <tr {{ block.shopify_attributes }}>
+      <tr {{ block.shopify_attributes }} data-rounding="{{ block.settings.rounding | default: 'none' }}">
         <td>
           <strong>{{ block.settings.label }}</strong>
         </td>
-        <td>
+        <td data-metafield-value>
           {% if min_weight == max_weight %}
             {% comment %} All variants have same weight {% endcomment %}
             {% assign weight_kg = min_weight | divided_by: 1000.0 %}
+            {% if rounding == 'integer' %}{% assign weight_kg = weight_kg | round %}{% elsif rounding == '1' %}{% assign weight_kg = weight_kg | times: 10 | round | divided_by: 10.0 %}{% elsif rounding == '2' %}{% assign weight_kg = weight_kg | times: 100 | round | divided_by: 100.0 %}{% endif %}
             {{ weight_kg }} kg
           {% else %}
             {% comment %} Show weight range {% endcomment %}
             {% assign min_kg = min_weight | divided_by: 1000.0 %}
             {% assign max_kg = max_weight | divided_by: 1000.0 %}
+            {% if rounding == 'integer' %}{% assign min_kg = min_kg | round %}{% assign max_kg = max_kg | round %}{% elsif rounding == '1' %}{% assign min_kg = min_kg | times: 10 | round | divided_by: 10.0 %}{% assign max_kg = max_kg | times: 10 | round | divided_by: 10.0 %}{% elsif rounding == '2' %}{% assign min_kg = min_kg | times: 100 | round | divided_by: 100.0 %}{% assign max_kg = max_kg | times: 100 | round | divided_by: 100.0 %}{% endif %}
             {{ min_kg }} - {{ max_kg }} kg
           {% endif %}
         </td>
