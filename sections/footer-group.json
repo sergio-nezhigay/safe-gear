@@ -25,7 +25,7 @@
           "type": "menu_column",
           "settings": {
             "title": "SafeGear",
-            "menu": "safegar"
+            "menu": "footer"
           }
         }
       },

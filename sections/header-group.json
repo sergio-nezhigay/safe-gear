@@ -63,7 +63,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu-mt",
+            "menu": "main-menu",
             "menu_style": "featured_products",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
@@ -130,7 +130,7 @@
         "show_search": true,
         "search_placeholder": "",
         "show_navigation": true,
-        "menu": "main-menu-mt",
+        "menu": "main-menu",
         "header_image_alt": "",
         "header_image_link": "",
         "show_account": true,
