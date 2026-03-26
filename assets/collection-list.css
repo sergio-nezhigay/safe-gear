@@ -137,6 +137,40 @@ html {
   text-align: left;
 }
 
+.collection-header .collection-description img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.collection-header .collection-description h2,
+.collection-header .collection-description h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+.collection-header .collection-description p {
+  margin: 0 0 10px;
+}
+
+.collection-header .collection-description strong {
+  font-weight: 700;
+}
+
+.collection-header .collection-description table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.collection-header .collection-description td,
+.collection-header .collection-description th {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+}
+
 .filters-container {
   background: var(--background-light);
   border: 1px solid var(--border-color);

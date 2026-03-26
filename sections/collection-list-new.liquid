@@ -709,7 +709,7 @@
             <h1 class="collection-title">{{ collection.title }}</h1>
           {% endif %}
           {% if collection.description != blank %}
-            <div class="collection-description">{{ collection.description | strip_html }}</div>
+            <div class="collection-description">{{ collection.description }}</div>
           {% endif %}
           {% if burglary_grade != blank or fire_resistance != blank %}
             <div class="collection-header__features">
