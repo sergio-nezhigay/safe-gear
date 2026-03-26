@@ -144,6 +144,32 @@ html {
   vertical-align: middle;
 }
 
+.collection-header .collection-description table td:first-child {
+  width: 50px !important;
+  min-width: 50px !important;
+  padding: 6px 0 !important;
+  box-sizing: content-box !important;
+}
+
+.collection-header .collection-description td img {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .collection-header .collection-description table td:first-child {
+    width: 40px !important;
+    min-width: 40px !important;
+  }
+
+  .collection-header .collection-description td img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
 .collection-header .collection-description h2,
 .collection-header .collection-description h3 {
   font-size: 1.1rem;
