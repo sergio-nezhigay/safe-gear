@@ -48,7 +48,8 @@
       "Bash(reg query:*)",
       "Bash(powershell -Command:*)",
       "Bash(find:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Skill(keybindings-help)"
     ],
     "deny": [],
     "ask": []
