@@ -74,7 +74,8 @@
     "increase_quantity": "Øg antal",
     "quantity": "Antal",
     "rating": "Bedømmelsen af dette produkt er {{ rating }} ud af 5",
-    "nested_product": "{{ product_title }} for {{ parent_title }}"
+    "nested_product": "{{ product_title }} for {{ parent_title }}",
+    "help": "Hjælp"
   },
   "actions": {
     "add_to_cart": "Læg i indkøbskurven",
@@ -300,6 +301,97 @@
       "post": "Send kommentar",
       "success_moderated": "Kommentaren blev indsendt og afventer moderering",
       "success": "Kommentaren blev indsendt"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Hjem",
+    "collections": "Kollektioner",
+    "search": "Søg",
+    "account": "Konto",
+    "addresses": "Adresser",
+    "order": "Ordre",
+    "back": "Tilbage"
+  },
+  "sections": {
+    "footer_new": {
+      "contact_title": "Kontakt",
+      "address_title": "Adresse",
+      "phone_title": "Telefon",
+      "email_title": "E-mail",
+      "form_title": "Kontakt os",
+      "success_message": "Tak for din besked! Vi vender tilbage til dig snarest.",
+      "name_placeholder": "Navn",
+      "email_placeholder": "E-mail",
+      "comment_placeholder": "Besked",
+      "sent_text": "Besked sendt!",
+      "submit_text": "Send besked",
+      "privacy_text": "Privatlivspolitik",
+      "powered_by": "Drevet af"
+    },
+    "delivery_info": {
+      "delivery_title": "Leveringstid",
+      "installation_title": "Installation",
+      "loading_prices": "Indlæser priser...",
+      "approx_text": "Ca.",
+      "transport_button_helper": "Få et installationstilbud",
+      "transport_button_text": "Transportformular",
+      "transport_modal_title": "Transport & Installationsestimate"
+    },
+    "product_addons": {
+      "empty_text": "Ingen tilkøbsprodukter tilgængelige.",
+      "cart_title": "Dit valg",
+      "main_product_label": "Hoved",
+      "addons_label": "Tilkøb",
+      "total_label": "Total",
+      "add_to_cart_button": "Læg i kurv",
+      "checkout_button": "Gå til kassen",
+      "clear_button": "Fjern tilkøb",
+      "loading_text": "Lægger i kurv..."
+    },
+    "collection_grid": {
+      "more_collections_text": "Se alle kollektioner",
+      "mobile_filters_text": "Filtre",
+      "filters_title": "Produktfiltre",
+      "mobile_clear_text": "Ryd alle",
+      "mobile_apply_text": "Anvend filtre",
+      "burglary_label": "Indbrudsklasse",
+      "fire_label": "Brandsikring",
+      "price_label": "Prisinterval",
+      "product_type_label": "Produkttype",
+      "price_min_label": "Minimumspris",
+      "price_max_label": "Maksimumspris",
+      "price_min_placeholder": "Min",
+      "price_max_placeholder": "Maks"
+    },
+    "collection_list": {
+      "show_more_text": "Klik her for mere...",
+      "filters_text": "Filtre",
+      "clear_all_text": "Ryd alle",
+      "apply_filters_text": "Anvend filtre",
+      "burglary_grade_label": "Indbrudsklasse",
+      "fire_resistance_label": "Brandsikring",
+      "price_range_label": "Prisinterval",
+      "depth_label": "Udvendig dybde",
+      "width_label": "Udvendig bredde",
+      "height_label": "Udvendig højde",
+      "weight_label": "Vægt",
+      "category_label": "Kategori",
+      "show_less_categories": "Vis færre kategorier",
+      "show_more_categories": "Vis flere kategorier",
+      "clear_all_filters_text": "Ryd alle filtre",
+      "results_count_text": "Viser alle kollektioner",
+      "height_display_label": "Højde",
+      "width_display_label": "Bredde",
+      "depth_display_label": "Dybde",
+      "weight_display_label": "Vægt",
+      "bolting_display_label": "Fastgørelse",
+      "price_from_label": "fra",
+      "view_product_text": "Se produkt",
+      "view_collection_text": "Se kollektion",
+      "empty_text": "Ingen kollektioner fundet"
+    },
+    "banner_help_center": {
+      "search_placeholder": "Søg produkter..."
     }
   }
 }

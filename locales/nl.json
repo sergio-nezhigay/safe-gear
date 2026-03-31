@@ -71,7 +71,8 @@
     "increase_quantity": "Verhoog aantal",
     "quantity": "Aantal",
     "rating": "De beoordeling van dit product is {{ rating }} van de 5",
-    "nested_product": "{{ product_title }} voor {{ parent_title }}"
+    "nested_product": "{{ product_title }} voor {{ parent_title }}",
+    "help": "Help"
   },
   "actions": {
     "add_to_cart": "Voeg toe aan winkelwagen",
@@ -3705,6 +3706,97 @@
         }
       },
       "processing": "Behandelaar…"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "collections": "Collections",
+    "search": "Search",
+    "account": "Account",
+    "addresses": "Addresses",
+    "order": "Order",
+    "back": "Back"
+  },
+  "sections": {
+    "footer_new": {
+      "contact_title": "Contact",
+      "address_title": "Address",
+      "phone_title": "Phone",
+      "email_title": "Email",
+      "form_title": "Get in Touch",
+      "success_message": "Thank you for your message! We will get back to you soon.",
+      "name_placeholder": "Name",
+      "email_placeholder": "Email",
+      "comment_placeholder": "Message",
+      "sent_text": "Message Sent!",
+      "submit_text": "Send Message",
+      "privacy_text": "Privacy Policy",
+      "powered_by": "Powered by"
+    },
+    "delivery_info": {
+      "delivery_title": "Delivery time",
+      "installation_title": "Installation",
+      "loading_prices": "Loading prices...",
+      "approx_text": "Approx.",
+      "transport_button_helper": "Get an installation estimate",
+      "transport_button_text": "Transport Form",
+      "transport_modal_title": "Transport & Installation Estimate"
+    },
+    "product_addons": {
+      "empty_text": "No add-on products available.",
+      "cart_title": "Your Selection",
+      "main_product_label": "Main",
+      "addons_label": "Add-ons",
+      "total_label": "Total",
+      "add_to_cart_button": "Add to Cart",
+      "checkout_button": "Checkout",
+      "clear_button": "Clear Add-ons",
+      "loading_text": "Adding to cart..."
+    },
+    "collection_grid": {
+      "more_collections_text": "View All Collections",
+      "mobile_filters_text": "Filters",
+      "filters_title": "Product Filters",
+      "mobile_clear_text": "Clear All",
+      "mobile_apply_text": "Apply Filters",
+      "burglary_label": "Burglary Grade",
+      "fire_label": "Fire Resistance",
+      "price_label": "Price Range",
+      "product_type_label": "Product Type",
+      "price_min_label": "Minimum price",
+      "price_max_label": "Maximum price",
+      "price_min_placeholder": "Min",
+      "price_max_placeholder": "Max"
+    },
+    "collection_list": {
+      "show_more_text": "Click here for more...",
+      "filters_text": "Filters",
+      "clear_all_text": "Clear All",
+      "apply_filters_text": "Apply Filters",
+      "burglary_grade_label": "Burglary Grade",
+      "fire_resistance_label": "Fire Resistance",
+      "price_range_label": "Price Range",
+      "depth_label": "Exterior Depth",
+      "width_label": "Exterior Width",
+      "height_label": "External Height",
+      "weight_label": "Weight",
+      "category_label": "Category",
+      "show_less_categories": "Show Less Categories",
+      "show_more_categories": "Show More Categories",
+      "clear_all_filters_text": "Clear All Filters",
+      "results_count_text": "Showing all collections",
+      "height_display_label": "Height",
+      "width_display_label": "Width",
+      "depth_display_label": "Depth",
+      "weight_display_label": "Weight",
+      "bolting_display_label": "Bolting",
+      "price_from_label": "from",
+      "view_product_text": "View Product",
+      "view_collection_text": "View Collection",
+      "empty_text": "No collections found"
+    },
+    "banner_help_center": {
+      "search_placeholder": "Search products..."
     }
   }
 }

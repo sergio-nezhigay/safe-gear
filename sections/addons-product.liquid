@@ -101,7 +101,7 @@
               {% endfor %}
             {% else %}
               <div class="addons-empty">
-                <p>{{ section.settings.empty_text | default: 'No add-on products available.' }}</p>
+                <p>{{ section.settings.empty_text | default: 'sections.product_addons.empty_text' | t }}</p>
               </div>
             {% endif %}
           </div>
@@ -110,11 +110,11 @@
         <div class="sticky-cart-sidebar">
           <div class="sticky-cart" id="sticky-cart">
             <div class="cart-header">
-              <h3 class="cart-title">{{ section.settings.cart_title | default: 'Your Selection' }}</h3>
+              <h3 class="cart-title">{{ section.settings.cart_title | default: 'sections.product_addons.cart_title' | t }}</h3>
             </div>
 
             <div class="cart-content">
-              <div class="cart-section-title">{{ section.settings.main_product_label | default: 'Main' }}</div>
+              <div class="cart-section-title">{{ section.settings.main_product_label | default: 'sections.product_addons.main_product_label' | t }}</div>
               <div class="cart-main-product">
                 <div class="cart-product-image">
                   {% if current_product.featured_image %}
@@ -135,19 +135,19 @@
                 </div>
               </div>
 
-              <div class="cart-section-title">Add-ons</div>
+              <div class="cart-section-title">{{ 'sections.product_addons.addons_label' | t }}</div>
               <div class="cart-addons-list" id="cart-addons-list">
               </div>
 
               <div class="cart-summary">
                 <div class="summary-line total-line">
-                  <span class="summary-label">{{ section.settings.total_label | default: 'Total' }}:</span>
+                  <span class="summary-label">{{ section.settings.total_label | default: 'sections.product_addons.total_label' | t }}:</span>
                   <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
                 </div>
               </div>
 
               <div class="cart-actions">
-                <!-- Прихане поле для addons configuration -->
+                <!-- hidden field for addons configuration -->
                 <input type="hidden"
                        id="selected_addons_config"
                        name="properties[Additional Items]"
@@ -158,22 +158,22 @@
                         id="main-add-to-cart"
                         data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
                         data-product-id="{{ current_product.id }}">
-                  <span class="btn-text-add">{{ section.settings.main_add_button | default: 'Add to Cart' }}</span>
-                  <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'Checkout' }}</span>
+                  <span class="btn-text-add">{{ section.settings.main_add_button | default: 'sections.product_addons.add_to_cart_button' | t }}</span>
+                  <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'sections.product_addons.checkout_button' | t }}</span>
                 </button>
 
                 <button type="button"
                         class="cart-clear-btn"
                         id="clear-addons"
                         style="display: none;">
-                  {{ section.settings.clear_button | default: 'Clear Add-ons' }}
+                  {{ section.settings.clear_button | default: 'sections.product_addons.clear_button' | t }}
                 </button>
               </div>
             </div>
 
             <div class="cart-loading" id="cart-loading" style="display: none;">
               <div class="loading-spinner"></div>
-              <span>{{ section.settings.loading_text | default: 'Adding to cart...' }}</span>
+              <span>{{ section.settings.loading_text | default: 'sections.product_addons.loading_text' | t }}</span>
             </div>
           </div>
         </div>

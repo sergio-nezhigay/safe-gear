@@ -16,8 +16,8 @@
     <div class="show-more-wrapper">
       <a href="{{ routes.collections_url }}" 
          class="show-more-btn"
-         aria-label="View all collections">
-        {{ section.settings.more_collections_text | default: 'View All Collections' }}
+         aria-label="{{ 'sections.collection_grid.more_collections_text' | t }}">
+        {{ section.settings.more_collections_text | default: 'sections.collection_grid.more_collections_text' | t }}
       </a>
     </div>
   {% endif %}
@@ -195,7 +195,7 @@
           <path d="M3 7H21L19 9V16C19 17.1 18.1 18 17 18H7C5.9 18 5 17.1 5 16V9L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        {{ section.settings.mobile_filters_text | default: 'Filters' }}
+        {{ section.settings.mobile_filters_text | default: 'sections.collection_grid.mobile_filters_text' | t }}
         <span class="filter-count" id="active-product-filter-count" style="display: none;">0</span>
       </button>
     </div>
@@ -203,26 +203,26 @@
     <div class="mobile-filter-overlay" id="mobile-product-filter-overlay">
       <div class="mobile-filter-drawer" id="mobile-product-filter-drawer">
         <div class="mobile-filter-header">
-          <h3>{{ section.settings.filters_title | default: 'Product Filters' }}</h3>
+          <h3>{{ section.settings.filters_title | default: 'sections.collection_grid.filters_title' | t }}</h3>
           <button type="button" id="mobile-product-filter-close" class="mobile-filter-close">×</button>
         </div>
         <div class="mobile-filter-content">
         </div>
         <div class="mobile-filter-footer">
-          <button type="button" id="mobile-product-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'Clear All' }}</button>
-          <button type="button" id="mobile-product-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'Apply Filters' }}</button>
+          <button type="button" id="mobile-product-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'sections.collection_grid.mobile_clear_text' | t }}</button>
+          <button type="button" id="mobile-product-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'sections.collection_grid.mobile_apply_text' | t }}</button>
         </div>
       </div>
     </div>
 
     <div class="filters-sidebar">
       <div class="filters-container">
-        <h3 class="filters-title">{{ section.settings.filters_title | default: 'Product Filters' }}</h3>
+        <h3 class="filters-title">{{ section.settings.filters_title | default: 'sections.collection_grid.filters_title' | t }}</h3>
         
         {% if all_burglary_grades.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="burglary">
-              {{ section.settings.burglary_label | default: 'Burglary Grade' }}
+              {{ section.settings.burglary_label | default: 'sections.collection_grid.burglary_label' | t }}
               <span class="accordion-icon">-</span>
             </h4>
             <div class="filter-options" data-accordion-content="burglary">
@@ -245,7 +245,7 @@
         {% if all_fire_resistance.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="fire">
-              {{ section.settings.fire_label | default: 'Fire Resistance' }}
+              {{ section.settings.fire_label | default: 'sections.collection_grid.fire_label' | t }}
               <span class="accordion-icon">-</span>
             </h4>
             <div class="filter-options" data-accordion-content="fire">
@@ -268,7 +268,7 @@
         {% if min_price %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="price">
-              {{ section.settings.price_label | default: 'Price Range' }}
+              {{ section.settings.price_label | default: 'sections.collection_grid.price_label' | t }}
               <span class="accordion-icon">-</span>
             </h4>
             <div class="filter-options" data-accordion-content="price">
@@ -283,16 +283,16 @@
                          value="{{ min_price | divided_by: 100.0 | floor }}"
                          step="10"
                          data-filter-type="price_range"
-                         aria-label="Minimum price">
-                  <input type="range" 
-                         id="product-price-max" 
+                         aria-label="{{ 'sections.collection_grid.price_min_label' | t }}">
+                  <input type="range"
+                         id="product-price-max"
                          class="price-slider"
-                         min="{{ min_price | divided_by: 100.0 | floor }}" 
-                         max="{{ max_price | divided_by: 100.0 | ceil }}" 
+                         min="{{ min_price | divided_by: 100.0 | floor }}"
+                         max="{{ max_price | divided_by: 100.0 | ceil }}"
                          value="{{ max_price | divided_by: 100.0 | ceil }}"
                          step="10"
                          data-filter-type="price_range"
-                         aria-label="Maximum price">
+                         aria-label="{{ 'sections.collection_grid.price_max_label' | t }}">
                 </div>
                 
                 <div class="price-range-labels">
@@ -307,7 +307,7 @@
                          min="{{ min_price | divided_by: 100.0 | floor }}" 
                          max="{{ max_price | divided_by: 100.0 | ceil }}"
                          value="{{ min_price | divided_by: 100.0 | floor }}"
-                         placeholder="Min">
+                         placeholder="{{ 'sections.collection_grid.price_min_placeholder' | t }}">
                   <span class="range-separator">-</span>
                   <input type="number" 
                          id="product-price-max-input"
@@ -315,7 +315,7 @@
                          min="{{ min_price | divided_by: 100.0 | floor }}" 
                          max="{{ max_price | divided_by: 100.0 | ceil }}"
                          value="{{ max_price | divided_by: 100.0 | ceil }}"
-                         placeholder="Max">
+                         placeholder="{{ 'sections.collection_grid.price_max_placeholder' | t }}">
                 </div>
               </div>
             </div>
@@ -325,7 +325,7 @@
         {% if all_product_types.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="product-type">
-              {{ section.settings.product_type_label | default: 'Product Type' }}
+              {{ section.settings.product_type_label | default: 'sections.collection_grid.product_type_label' | t }}
               <span class="accordion-icon">-</span>
             </h4>
             <div class="filter-options" data-accordion-content="product-type">
@@ -390,7 +390,7 @@
                          min="{{ min_depth | default: 0 }}" 
                          max="{{ max_depth | default: 1000 }}"
                          value="{{ min_depth | default: 0 }}"
-                         placeholder="Min">
+                         placeholder="{{ 'sections.collection_grid.price_min_placeholder' | t }}">
                   <span class="range-separator">-</span>
                   <input type="number" 
                          id="product-depth-max-input"
@@ -398,7 +398,7 @@
                          min="{{ min_depth | default: 0 }}" 
                          max="{{ max_depth | default: 1000 }}"
                          value="{{ max_depth | default: 1000 }}"
-                         placeholder="Max">
+                         placeholder="{{ 'sections.collection_grid.price_max_placeholder' | t }}">
                 </div>
               </div>
             </div>
@@ -450,7 +450,7 @@
                          min="{{ min_width | default: 0 }}" 
                          max="{{ max_width | default: 1000 }}"
                          value="{{ min_width | default: 0 }}"
-                         placeholder="Min">
+                         placeholder="{{ 'sections.collection_grid.price_min_placeholder' | t }}">
                   <span class="range-separator">-</span>
                   <input type="number" 
                          id="product-width-max-input"
@@ -458,7 +458,7 @@
                          min="{{ min_width | default: 0 }}" 
                          max="{{ max_width | default: 1000 }}"
                          value="{{ max_width | default: 1000 }}"
-                         placeholder="Max">
+                         placeholder="{{ 'sections.collection_grid.price_max_placeholder' | t }}">
                 </div>
               </div>
             </div>
@@ -510,7 +510,7 @@
                          min="{{ min_height | default: 0 }}" 
                          max="{{ max_height | default: 1000 }}"
                          value="{{ min_height | default: 0 }}"
-                         placeholder="Min">
+                         placeholder="{{ 'sections.collection_grid.price_min_placeholder' | t }}">
                   <span class="range-separator">-</span>
                   <input type="number" 
                          id="product-height-max-input"
@@ -518,7 +518,7 @@
                          min="{{ min_height | default: 0 }}" 
                          max="{{ max_height | default: 1000 }}"
                          value="{{ max_height | default: 1000 }}"
-                         placeholder="Max">
+                         placeholder="{{ 'sections.collection_grid.price_max_placeholder' | t }}">
                 </div>
               </div>
             </div>
@@ -570,7 +570,7 @@
                          min="{{ min_weight | default: 0 }}" 
                          max="{{ max_weight | default: 1000 }}"
                          value="{{ min_weight | default: 0 }}"
-                         placeholder="Min">
+                         placeholder="{{ 'sections.collection_grid.price_min_placeholder' | t }}">
                   <span class="range-separator">-</span>
                   <input type="number" 
                          id="product-weight-max-input"
@@ -578,7 +578,7 @@
                          min="{{ min_weight | default: 0 }}" 
                          max="{{ max_weight | default: 1000 }}"
                          value="{{ max_weight | default: 1000 }}"
-                         placeholder="Max">
+                         placeholder="{{ 'sections.collection_grid.price_max_placeholder' | t }}">
                 </div>
               </div>
             </div>

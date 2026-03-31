@@ -82,11 +82,11 @@
       </div>
 
       <div class="menu-dropdown-wrapper desktop-only">
-        <button class="menu-dropdown-toggle" aria-label="Toggle menu">
+        <button class="menu-dropdown-toggle" aria-label="{{ 'accessibility.menu' | t }}">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
             <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-          <span class="menu-text">Menu</span>
+          <span class="menu-text">{{ 'accessibility.menu' | t }}</span>
         </button>
 
         <div class="mega-menu-dropdown">
@@ -145,7 +145,7 @@
               class="search-input"
               autocomplete="off"
             >
-            <button type="submit" class="search-button" aria-label="Search">
+            <button type="submit" class="search-button" aria-label="{{ 'accessibility.open_search_modal' | t }}">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
                 <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -157,7 +157,7 @@
 
       {% if section.settings.help_text != blank %}
         <div class="header-help-dropdown desktop-only">
-          <button class="help-button" aria-label="Help">
+          <button class="help-button" aria-label="{{ 'accessibility.help' | t }}">
             {{ section.settings.help_text }}
           </button>
           <div class="help-dropdown-menu">
@@ -294,7 +294,7 @@
         </div>
 
         {% if section.settings.show_account %}
-          <a href="{{ routes.account_url }}" class="header-account" aria-label="Account">
+          <a href="{{ routes.account_url }}" class="header-account" aria-label="{{ 'accessibility.account' | t }}">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
@@ -305,7 +305,7 @@
         {% if section.settings.show_drawer %}
           {%- render 'cart-drawer.liquid' -%}
         {% elsif section.settings.show_cart %}
-          <a href="{{ routes.cart_url }}" class="header-cart" aria-label="Cart">
+          <a href="{{ routes.cart_url }}" class="header-cart" aria-label="{{ 'accessibility.cart' | t }}">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
               <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
@@ -318,7 +318,7 @@
         {% endif %}
 
         {% if section.settings.show_search %}
-          <button class="header-search-mobile mobile-only" aria-label="Toggle search">
+          <button class="header-search-mobile mobile-only" aria-label="{{ 'accessibility.open_search_modal' | t }}">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
               <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -329,7 +329,7 @@
           </button>
         {% endif %}
 
-        <button class="mobile-menu-toggle mobile-only" aria-label="Toggle menu">
+        <button class="mobile-menu-toggle mobile-only" aria-label="{{ 'accessibility.menu' | t }}">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>

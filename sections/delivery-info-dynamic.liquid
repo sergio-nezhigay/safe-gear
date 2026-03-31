@@ -79,7 +79,7 @@
         <span class="column-icon">
           {%- render 'icon-package' -%}
         </span>
-        <h3 class="column-title">{{ section.settings.delivery_title | default: 'Delivery time' }}</h3>
+        <h3 class="column-title">{{ section.settings.delivery_title | default: 'sections.delivery_info.delivery_title' | t }}</h3>
         {%- if section.settings.delivery_time_badge != blank -%}
           <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
         {%- endif -%}
@@ -88,7 +88,7 @@
       <div class="delivery-options" data-pricing-type="delivery">
         {%- if section.settings.enable_dynamic_pricing -%}
           {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
-          <div class="pricing-loading">Loading prices...</div>
+          <div class="pricing-loading">{{ 'sections.delivery_info.loading_prices' | t }}</div>
         {%- else -%}
           {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
           {%- if section.settings.show_delivery_option_1 -%}
@@ -96,7 +96,7 @@
               <div class="delivery-option-header">
                 <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_1_price }}
+                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_1_price }}
                 </span>
               </div>
               {%- if section.settings.delivery_option_1_description != blank -%}
@@ -110,7 +110,7 @@
               <div class="delivery-option-header">
                 <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_2_price }}
+                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_2_price }}
                 </span>
               </div>
               {%- if section.settings.delivery_option_2_description != blank -%}
@@ -124,7 +124,7 @@
               <div class="delivery-option-header">
                 <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">Approx.</span> {{ section.settings.delivery_option_3_price }}
+                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_3_price }}
                 </span>
               </div>
               {%- if section.settings.delivery_option_3_description != blank -%}
@@ -141,13 +141,13 @@
         <span class="column-icon">
           {%- render 'icon-wrench' -%}
         </span>
-        <h3 class="column-title">{{ section.settings.installation_title | default: 'Installation' }}</h3>
+        <h3 class="column-title">{{ section.settings.installation_title | default: 'sections.delivery_info.installation_title' | t }}</h3>
       </div>
 
       <div class="pricing-options" data-pricing-type="installation">
         {%- if section.settings.enable_dynamic_pricing -%}
           {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
-          <div class="pricing-loading">Loading prices...</div>
+          <div class="pricing-loading">{{ 'sections.delivery_info.loading_prices' | t }}</div>
         {%- else -%}
           {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
           {%- if section.settings.show_installation_option_1 -%}
@@ -196,14 +196,14 @@
         {%- if section.settings.show_transport_button -%}
           <div class="transport-button-wrapper">
             <p class="button-helper-text">
-              {{ section.settings.transport_button_helper | default: 'Get an installation estimate' }}
+              {{ section.settings.transport_button_helper | default: 'sections.delivery_info.transport_button_helper' | t }}
             </p>
             <button
               type="button"
               class="transport-button button button--primary"
               onclick="document.getElementById('TransportModal').showDialog()"
             >
-              {{ section.settings.transport_button_text | default: 'Transport Form' }}
+              {{ section.settings.transport_button_text | default: 'sections.delivery_info.transport_button_text' | t }}
             </button>
           </div>
         {%- endif -%}

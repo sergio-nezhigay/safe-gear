@@ -24,7 +24,7 @@
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
             </svg>
           {% endif %}
-          <span itemprop="name">{{ section.settings.home_text | default: 'Home' }}</span>
+          <span itemprop="name">{{ section.settings.home_text | default: 'breadcrumbs.home' | t }}</span>
         </a>
         <meta itemprop="position" content="1" />
       </li>
@@ -35,23 +35,23 @@
       {% if template.name == 'list-collections' %}
         <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
-          <span class="breadcrumb-text" itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+          <span class="breadcrumb-text" itemprop="name">{{ section.settings.collections_text | default: 'breadcrumbs.collections' | t }}</span>
           <meta itemprop="position" content="{{ breadcrumb_position }}" />
         </li>
 
-      
+
       {% elsif template.name == 'collection' %}
         {% if section.settings.show_collections_link %}
           <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
             <a href="{{ routes.collections_url }}" class="breadcrumb-link" itemprop="item">
-              <span itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+              <span itemprop="name">{{ section.settings.collections_text | default: 'breadcrumbs.collections' | t }}</span>
             </a>
             <meta itemprop="position" content="{{ breadcrumb_position }}" />
           </li>
           {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
         {% endif %}
-        
+
         <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
           <span class="breadcrumb-text" itemprop="name">{{ collection.title }}</span>
@@ -66,13 +66,13 @@
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
               <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
               <a href="{{ routes.collections_url }}" class="breadcrumb-link" itemprop="item">
-                <span itemprop="name">{{ section.settings.collections_text | default: 'Collections' }}</span>
+                <span itemprop="name">{{ section.settings.collections_text | default: 'breadcrumbs.collections' | t }}</span>
               </a>
               <meta itemprop="position" content="{{ breadcrumb_position }}" />
             </li>
             {% assign breadcrumb_position = breadcrumb_position | plus: 1 %}
           {% endif %}
-          
+
           <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
             <a href="{{ main_collection.url }}" class="breadcrumb-link" itemprop="item">
@@ -127,7 +127,7 @@
         <li class="breadcrumb-item breadcrumb-current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
           <span class="breadcrumb-text" itemprop="name">
-            {{ section.settings.search_text | default: 'Search' }}
+            {{ section.settings.search_text | default: 'breadcrumbs.search' | t }}
             {% if search.terms != blank %}
               : "{{ search.terms }}"
             {% endif %}
@@ -140,7 +140,7 @@
         <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
           <a href="{{ routes.account_url }}" class="breadcrumb-link" itemprop="item">
-            <span itemprop="name">{{ section.settings.account_text | default: 'Account' }}</span>
+            <span itemprop="name">{{ section.settings.account_text | default: 'breadcrumbs.account' | t }}</span>
           </a>
           <meta itemprop="position" content="{{ breadcrumb_position }}" />
         </li>
@@ -151,8 +151,8 @@
             <span class="breadcrumb-separator">{{ section.settings.separator | default: '/' }}</span>
             <span class="breadcrumb-text" itemprop="name">
               {% case template.name %}
-                {% when 'addresses' %}{{ section.settings.addresses_text | default: 'Addresses' }}
-                {% when 'order' %}{{ section.settings.order_text | default: 'Order' }} #{{ order.name }}
+                {% when 'addresses' %}{{ section.settings.addresses_text | default: 'breadcrumbs.addresses' | t }}
+                {% when 'order' %}{{ section.settings.order_text | default: 'breadcrumbs.order' | t }} #{{ order.name }}
                 {% else %}{{ template.name | capitalize }}
               {% endcase %}
             </span>
@@ -176,7 +176,7 @@
         <svg viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
         </svg>
-        <span>{{ section.settings.back_text | default: 'Back' }}</span>
+        <span>{{ section.settings.back_text | default: 'breadcrumbs.back' | t }}</span>
       </button>
     {% endif %}
 

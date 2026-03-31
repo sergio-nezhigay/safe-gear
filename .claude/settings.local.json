@@ -49,7 +49,9 @@
       "Bash(powershell -Command:*)",
       "Bash(find:*)",
       "Bash(git commit:*)",
-      "Skill(keybindings-help)"
+      "Skill(keybindings-help)",
+      "Bash(python3:*)",
+      "Bash(cd:*)"
     ],
     "deny": [],
     "ask": []
