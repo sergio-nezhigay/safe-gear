@@ -101,7 +101,7 @@
               {% endfor %}
             {% else %}
               <div class="addons-empty">
-                <p>{{ section.settings.empty_text | default: 'sections.product_addons.empty_text' | t }}</p>
+                <p>{%- if section.settings.empty_text != blank -%}{{ section.settings.empty_text }}{%- else -%}{{ 'sections.product_addons.empty_text' | t }}{%- endif -%}</p>
               </div>
             {% endif %}
           </div>
@@ -110,11 +110,11 @@
         <div class="sticky-cart-sidebar">
           <div class="sticky-cart" id="sticky-cart">
             <div class="cart-header">
-              <h3 class="cart-title">{{ section.settings.cart_title | default: 'sections.product_addons.cart_title' | t }}</h3>
+              <h3 class="cart-title">{%- if section.settings.cart_title != blank -%}{{ section.settings.cart_title }}{%- else -%}{{ 'sections.product_addons.cart_title' | t }}{%- endif -%}</h3>
             </div>
 
             <div class="cart-content">
-              <div class="cart-section-title">{{ section.settings.main_product_label | default: 'sections.product_addons.main_product_label' | t }}</div>
+              <div class="cart-section-title">{%- if section.settings.main_product_label != blank -%}{{ section.settings.main_product_label }}{%- else -%}{{ 'sections.product_addons.main_product_label' | t }}{%- endif -%}</div>
               <div class="cart-main-product">
                 <div class="cart-product-image">
                   {% if current_product.featured_image %}
@@ -141,7 +141,7 @@
 
               <div class="cart-summary">
                 <div class="summary-line total-line">
-                  <span class="summary-label">{{ section.settings.total_label | default: 'sections.product_addons.total_label' | t }}:</span>
+                  <span class="summary-label">{%- if section.settings.total_label != blank -%}{{ section.settings.total_label }}{%- else -%}{{ 'sections.product_addons.total_label' | t }}{%- endif -%}:</span>
                   <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
                 </div>
               </div>
@@ -158,22 +158,22 @@
                         id="main-add-to-cart"
                         data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
                         data-product-id="{{ current_product.id }}">
-                  <span class="btn-text-add">{{ section.settings.main_add_button | default: 'sections.product_addons.add_to_cart_button' | t }}</span>
-                  <span class="btn-text-checkout" style="display: none;">{{ section.settings.checkout_button | default: 'sections.product_addons.checkout_button' | t }}</span>
+                  <span class="btn-text-add">{%- if section.settings.main_add_button != blank -%}{{ section.settings.main_add_button }}{%- else -%}{{ 'sections.product_addons.add_to_cart_button' | t }}{%- endif -%}</span>
+                  <span class="btn-text-checkout" style="display: none;">{%- if section.settings.checkout_button != blank -%}{{ section.settings.checkout_button }}{%- else -%}{{ 'sections.product_addons.checkout_button' | t }}{%- endif -%}</span>
                 </button>
 
                 <button type="button"
                         class="cart-clear-btn"
                         id="clear-addons"
                         style="display: none;">
-                  {{ section.settings.clear_button | default: 'sections.product_addons.clear_button' | t }}
+                  {%- if section.settings.clear_button != blank -%}{{ section.settings.clear_button }}{%- else -%}{{ 'sections.product_addons.clear_button' | t }}{%- endif -%}
                 </button>
               </div>
             </div>
 
             <div class="cart-loading" id="cart-loading" style="display: none;">
               <div class="loading-spinner"></div>
-              <span>{{ section.settings.loading_text | default: 'sections.product_addons.loading_text' | t }}</span>
+              <span>{%- if section.settings.loading_text != blank -%}{{ section.settings.loading_text }}{%- else -%}{{ 'sections.product_addons.loading_text' | t }}{%- endif -%}</span>
             </div>
           </div>
         </div>

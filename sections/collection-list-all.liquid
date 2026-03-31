@@ -224,7 +224,7 @@
   {% if section.settings.show_more_link != blank %}
     <div class="show-more-wrapper">
       <a href="{{ section.settings.show_more_link }}" class="show-more-btn">
-        {{ section.settings.show_more_text | default: 'sections.collection_list.show_more_text' | t }}
+        {%- if section.settings.show_more_text != blank -%}{{ section.settings.show_more_text }}{%- else -%}{{ 'sections.collection_list.show_more_text' | t }}{%- endif -%}
       </a>
     </div>
   {% endif %}
@@ -239,7 +239,7 @@
           <path d="M3 7H21L19 9V16C19 17.1 18.1 18 17 18H7C5.9 18 5 17.1 5 16V9L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        {{ section.settings.mobile_filter_text | default: 'sections.collection_list.filters_text' | t }}
+        {%- if section.settings.mobile_filter_text != blank -%}{{ section.settings.mobile_filter_text }}{%- else -%}{{ 'sections.collection_list.filters_text' | t }}{%- endif -%}
         <span class="filter-count" id="active-filter-count" style="display:none;">0</span>
       </button>
     </div>
@@ -247,25 +247,25 @@
     <div class="mobile-filter-overlay" id="mobile-filter-overlay">
       <div class="mobile-filter-drawer" id="mobile-filter-drawer">
         <div class="mobile-filter-header">
-          <h3>{{ section.settings.mobile_filter_title | default: 'sections.collection_list.filters_text' | t }}</h3>
+          <h3>{%- if section.settings.mobile_filter_title != blank -%}{{ section.settings.mobile_filter_title }}{%- else -%}{{ 'sections.collection_list.filters_text' | t }}{%- endif -%}</h3>
           <button type="button" id="mobile-filter-close" class="mobile-filter-close" aria-label="Close">×</button>
         </div>
         <div class="mobile-filter-content"></div>
         <div class="mobile-filter-footer">
-          <button type="button" id="mobile-clear-filters" class="mobile-clear-btn">{{ section.settings.mobile_clear_text | default: 'sections.collection_list.clear_all_text' | t }}</button>
-          <button type="button" id="mobile-apply-filters" class="mobile-apply-btn">{{ section.settings.mobile_apply_text | default: 'sections.collection_list.apply_filters_text' | t }}</button>
+          <button type="button" id="mobile-clear-filters" class="mobile-clear-btn">{%- if section.settings.mobile_clear_text != blank -%}{{ section.settings.mobile_clear_text }}{%- else -%}{{ 'sections.collection_list.clear_all_text' | t }}{%- endif -%}</button>
+          <button type="button" id="mobile-apply-filters" class="mobile-apply-btn">{%- if section.settings.mobile_apply_text != blank -%}{{ section.settings.mobile_apply_text }}{%- else -%}{{ 'sections.collection_list.apply_filters_text' | t }}{%- endif -%}</button>
         </div>
       </div>
     </div>
 
     <div class="filters-sidebar">
       <div class="filters-container">
-        <h3 class="filters-title">{{ section.settings.filters_title | default: 'sections.collection_list.filters_text' | t }}</h3>
+        <h3 class="filters-title">{%- if section.settings.filters_title != blank -%}{{ section.settings.filters_title }}{%- else -%}{{ 'sections.collection_list.filters_text' | t }}{%- endif -%}</h3>
 
         {% if all_burglary_grades.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="burglary">
-              {{ section.settings.burglary_grade_label | default: 'sections.collection_list.burglary_grade_label' | t }}
+              {%- if section.settings.burglary_grade_label != blank -%}{{ section.settings.burglary_grade_label }}{%- else -%}{{ 'sections.collection_list.burglary_grade_label' | t }}{%- endif -%}
               <span class="accordion-icon">−</span>
             </h4>
             <div class="filter-options" data-accordion-content="burglary">
@@ -284,7 +284,7 @@
         {% if all_fire_resistance.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="fire">
-              {{ section.settings.fire_resistance_label | default: 'sections.collection_list.fire_resistance_label' | t }}
+              {%- if section.settings.fire_resistance_label != blank -%}{{ section.settings.fire_resistance_label }}{%- else -%}{{ 'sections.collection_list.fire_resistance_label' | t }}{%- endif -%}
               <span class="accordion-icon">−</span>
             </h4>
             <div class="filter-options" data-accordion-content="fire">
@@ -303,7 +303,7 @@
         {% if global_max_price > 0 and global_min_price < global_max_price %}
           <div class="filter-group price-filter-group">
             <h4 class="filter-group-title" data-accordion="price">
-              {{ section.settings.price_range_label | default: 'sections.collection_list.price_range_label' | t }}
+              {%- if section.settings.price_range_label != blank -%}{{ section.settings.price_range_label }}{%- else -%}{{ 'sections.collection_list.price_range_label' | t }}{%- endif -%}
               <span class="accordion-icon">−</span>
             </h4>
             <div class="filter-options" data-accordion-content="price">
@@ -354,22 +354,22 @@
               {% assign has_data = has_depth_data %}
               {% assign min_val = min_depth %}
               {% assign max_val = max_depth %}
-              {% assign title = section.settings.depth_label | default: 'sections.collection_list.depth_label' | t %}
+              {%- if section.settings.depth_label != blank -%}{%- assign title = section.settings.depth_label -%}{%- else -%}{%- assign title = 'sections.collection_list.depth_label' | t -%}{%- endif -%}
             {% when 'width' %}
               {% assign has_data = has_width_data %}
               {% assign min_val = min_width %}
               {% assign max_val = max_width %}
-              {% assign title = section.settings.width_label | default: 'sections.collection_list.width_label' | t %}
+              {%- if section.settings.width_label != blank -%}{%- assign title = section.settings.width_label -%}{%- else -%}{%- assign title = 'sections.collection_list.width_label' | t -%}{%- endif -%}
             {% when 'height' %}
               {% assign has_data = has_height_data %}
               {% assign min_val = min_height %}
               {% assign max_val = max_height %}
-              {% assign title = section.settings.height_label | default: 'sections.collection_list.height_label' | t %}
+              {%- if section.settings.height_label != blank -%}{%- assign title = section.settings.height_label -%}{%- else -%}{%- assign title = 'sections.collection_list.height_label' | t -%}{%- endif -%}
             {% when 'weight' %}
               {% assign has_data = has_weight_data %}
               {% assign min_val = min_weight %}
               {% assign max_val = max_weight %}
-              {% assign title = section.settings.weight_label | default: 'sections.collection_list.weight_label' | t %}
+              {%- if section.settings.weight_label != blank -%}{%- assign title = section.settings.weight_label -%}{%- else -%}{%- assign title = 'sections.collection_list.weight_label' | t -%}{%- endif -%}
               {% assign unit = 'kg' %}
           {% endcase %}
 
@@ -414,7 +414,7 @@
         {% if all_categories.size > 0 %}
           <div class="filter-group">
             <h4 class="filter-group-title" data-accordion="category">
-              {{ section.settings.category_label | default: 'sections.collection_list.category_label' | t }}
+              {%- if section.settings.category_label != blank -%}{{ section.settings.category_label }}{%- else -%}{{ 'sections.collection_list.category_label' | t }}{%- endif -%}
               <span class="accordion-icon">−</span>
             </h4>
             <div class="filter-options" data-accordion-content="category">
@@ -428,8 +428,8 @@
                   </label>
                 {% endfor %}
                 {% if all_categories.size > 8 %}
-                  <button type="button" class="show-more-categories" data-show-less-text="{{ section.settings.show_less_categories_text | default: 'sections.collection_list.show_less_categories' | t }}">
-                    {{ section.settings.show_more_categories_text | default: 'sections.collection_list.show_more_categories' | t }}
+                  <button type="button" class="show-more-categories" data-show-less-text="{%- if section.settings.show_less_categories_text != blank -%}{{ section.settings.show_less_categories_text }}{%- else -%}{{ 'sections.collection_list.show_less_categories' | t }}{%- endif -%}">
+                    {%- if section.settings.show_more_categories_text != blank -%}{{ section.settings.show_more_categories_text }}{%- else -%}{{ 'sections.collection_list.show_more_categories' | t }}{%- endif -%}
                   </button>
                 {% endif %}
               </div>
@@ -438,14 +438,14 @@
         {% endif %}
 
         <div class="filter-actions">
-          <button type="button" id="clear-filters" class="clear-filters-btn">{{ section.settings.clear_filters_text | default: 'sections.collection_list.clear_all_filters_text' | t }}</button>
+          <button type="button" id="clear-filters" class="clear-filters-btn">{%- if section.settings.clear_filters_text != blank -%}{{ section.settings.clear_filters_text }}{%- else -%}{{ 'sections.collection_list.clear_all_filters_text' | t }}{%- endif -%}</button>
         </div>
       </div>
     </div>
 
     <div class="collections-content">
       <div class="results-info" style="display:none;">
-        <div class="results-count">{{ section.settings.results_count_text | default: 'sections.collection_list.results_count_text' | t }}</div>
+        <div class="results-count">{%- if section.settings.results_count_text != blank -%}{{ section.settings.results_count_text }}{%- else -%}{{ 'sections.collection_list.results_count_text' | t }}{%- endif -%}</div>
       </div>
 
       <div class="collections-grid" id="collections-grid">
@@ -558,15 +558,15 @@
                   <div class="collection-details">
                     {% if first_depth > 0 or first_width > 0 or first_height > 0 %}
                       <div class="collection-dimensions">
-                        {% if first_height > 0 %}<div class="dimension-line">{{ section.settings.height_display_label | default: 'sections.collection_list.height_display_label' | t }}: {{ first_height }}mm</div>{% endif %}
-                        {% if first_width > 0 %}<div class="dimension-line">{{ section.settings.width_display_label | default: 'sections.collection_list.width_display_label' | t }}: {{ first_width }}mm</div>{% endif %}
-                        {% if first_depth > 0 %}<div class="dimension-line">{{ section.settings.depth_display_label | default: 'sections.collection_list.depth_display_label' | t }}: {{ first_depth }}mm</div>{% endif %}
+                        {% if first_height > 0 %}<div class="dimension-line">{%- if section.settings.height_display_label != blank -%}{{ section.settings.height_display_label }}{%- else -%}{{ 'sections.collection_list.height_display_label' | t }}{%- endif -%}: {{ first_height }}mm</div>{% endif %}
+                        {% if first_width > 0 %}<div class="dimension-line">{%- if section.settings.width_display_label != blank -%}{{ section.settings.width_display_label }}{%- else -%}{{ 'sections.collection_list.width_display_label' | t }}{%- endif -%}: {{ first_width }}mm</div>{% endif %}
+                        {% if first_depth > 0 %}<div class="dimension-line">{%- if section.settings.depth_display_label != blank -%}{{ section.settings.depth_display_label }}{%- else -%}{{ 'sections.collection_list.depth_display_label' | t }}{%- endif -%}: {{ first_depth }}mm</div>{% endif %}
                       </div>
                     {% endif %}
 
                     {% if collection_min_price > 0 %}
                       <div class="collection-price">
-                        <span class="price-label">{{ section.settings.price_label | default: 'sections.collection_list.price_from_label' | t }}</span>
+                        <span class="price-label">{%- if section.settings.price_label != blank -%}{{ section.settings.price_label }}{%- else -%}{{ 'sections.collection_list.price_from_label' | t }}{%- endif -%}</span>
                         <span class="price-value">{{ collection_min_price | money }}</span>
                       </div>
                     {% endif %}
@@ -574,7 +574,7 @@
                     {% if section.settings.show_button %}
                       <div class="collection-action">
                         <a href="{{ col.url }}" class="collection-btn" aria-label="View {{ col.title | escape }} collection">
-                          {{ section.settings.button_text | default: 'sections.collection_list.view_collection_text' | t }}
+                          {%- if section.settings.button_text != blank -%}{{ section.settings.button_text }}{%- else -%}{{ 'sections.collection_list.view_collection_text' | t }}{%- endif -%}
                         </a>
                       </div>
                     {% endif %}
@@ -592,7 +592,7 @@
           {% endfor %}
         {% else %}
           <div class="empty-state">
-            {{ section.settings.empty_text | default: 'sections.collection_list.empty_text' | t }}
+            {%- if section.settings.empty_text != blank -%}{{ section.settings.empty_text }}{%- else -%}{{ 'sections.collection_list.empty_text' | t }}{%- endif -%}
           </div>
         {% endif %}
       </div>

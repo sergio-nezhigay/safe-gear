@@ -79,7 +79,7 @@
         <span class="column-icon">
           {%- render 'icon-package' -%}
         </span>
-        <h3 class="column-title">{{ section.settings.delivery_title | default: 'sections.delivery_info.delivery_title' | t }}</h3>
+        <h3 class="column-title">{%- if section.settings.delivery_title != blank -%}{{ section.settings.delivery_title }}{%- else -%}{{ 'sections.delivery_info.delivery_title' | t }}{%- endif -%}</h3>
         {%- if section.settings.delivery_time_badge != blank -%}
           <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
         {%- endif -%}
@@ -141,7 +141,7 @@
         <span class="column-icon">
           {%- render 'icon-wrench' -%}
         </span>
-        <h3 class="column-title">{{ section.settings.installation_title | default: 'sections.delivery_info.installation_title' | t }}</h3>
+        <h3 class="column-title">{%- if section.settings.installation_title != blank -%}{{ section.settings.installation_title }}{%- else -%}{{ 'sections.delivery_info.installation_title' | t }}{%- endif -%}</h3>
       </div>
 
       <div class="pricing-options" data-pricing-type="installation">
@@ -196,14 +196,14 @@
         {%- if section.settings.show_transport_button -%}
           <div class="transport-button-wrapper">
             <p class="button-helper-text">
-              {{ section.settings.transport_button_helper | default: 'sections.delivery_info.transport_button_helper' | t }}
+              {%- if section.settings.transport_button_helper != blank -%}{{ section.settings.transport_button_helper }}{%- else -%}{{ 'sections.delivery_info.transport_button_helper' | t }}{%- endif -%}
             </p>
             <button
               type="button"
               class="transport-button button button--primary"
               onclick="document.getElementById('TransportModal').showDialog()"
             >
-              {{ section.settings.transport_button_text | default: 'sections.delivery_info.transport_button_text' | t }}
+              {%- if section.settings.transport_button_text != blank -%}{{ section.settings.transport_button_text }}{%- else -%}{{ 'sections.delivery_info.transport_button_text' | t }}{%- endif -%}
             </button>
           </div>
         {%- endif -%}

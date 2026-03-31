@@ -18,18 +18,18 @@
       
       {% if section.settings.show_contact %}
         <div class="footer-contact">
-          <h3 class="footer-title">{{ section.settings.contact_title | default: 'sections.footer_new.contact_title' | t }}</h3>
+          <h3 class="footer-title">{%- if section.settings.contact_title != blank -%}{{ section.settings.contact_title }}{%- else -%}{{ 'sections.footer_new.contact_title' | t }}{%- endif -%}</h3>
           
           {% if section.settings.company_address != blank %}
             <div class="contact-item">
-              <h4 class="contact-label">{{ section.settings.address_title | default: 'sections.footer_new.address_title' | t }}</h4>
+              <h4 class="contact-label">{%- if section.settings.address_title != blank -%}{{ section.settings.address_title }}{%- else -%}{{ 'sections.footer_new.address_title' | t }}{%- endif -%}</h4>
               <div class="contact-info">{{ section.settings.company_address }}</div>
             </div>
           {% endif %}
           
           {% if section.settings.company_phone != blank %}
             <div class="contact-item">
-              <h4 class="contact-label">{{ section.settings.phone_title | default: 'sections.footer_new.phone_title' | t }}</h4>
+              <h4 class="contact-label">{%- if section.settings.phone_title != blank -%}{{ section.settings.phone_title }}{%- else -%}{{ 'sections.footer_new.phone_title' | t }}{%- endif -%}</h4>
               <a href="tel:{{ section.settings.company_phone | replace: ' ', '' }}" class="contact-link">
                 {{ section.settings.company_phone }}
               </a>
@@ -38,7 +38,7 @@
           
           {% if section.settings.company_email != blank %}
             <div class="contact-item">
-              <h4 class="contact-label">{{ section.settings.email_title | default: 'sections.footer_new.email_title' | t }}</h4>
+              <h4 class="contact-label">{%- if section.settings.email_title != blank -%}{{ section.settings.email_title }}{%- else -%}{{ 'sections.footer_new.email_title' | t }}{%- endif -%}</h4>
               <a href="mailto:{{ section.settings.company_email }}" class="contact-link">
                 {{ section.settings.company_email }}
               </a>
@@ -73,12 +73,12 @@
 
       {% if section.settings.show_contact_form %}
         <div class="footer-form">
-          <h3 class="footer-title">{{ section.settings.form_title | default: 'sections.footer_new.form_title' | t }}</h3>
+          <h3 class="footer-title">{%- if section.settings.form_title != blank -%}{{ section.settings.form_title }}{%- else -%}{{ 'sections.footer_new.form_title' | t }}{%- endif -%}</h3>
           
           {% form 'contact', class: 'contact-form' %}
             {% if form.posted_successfully? %}
               <div class="form-success">
-                <p>{{ section.settings.success_message | default: 'sections.footer_new.success_message' | t }}</p>
+                <p>{%- if section.settings.success_message != blank -%}{{ section.settings.success_message }}{%- else -%}{{ 'sections.footer_new.success_message' | t }}{%- endif -%}</p>
               </div>
             {% endif %}
             
@@ -96,7 +96,7 @@
                   type="text" 
                   name="contact[name]" 
                   id="contact-name"
-                  placeholder="{{ section.settings.name_placeholder | default: 'sections.footer_new.name_placeholder' | t }}"
+                  placeholder="{%- if section.settings.name_placeholder != blank -%}{{ section.settings.name_placeholder }}{%- else -%}{{ 'sections.footer_new.name_placeholder' | t }}{%- endif -%}"
                   class="form-input{% if form.errors contains 'name' %} form-input--error{% endif %}"
                   value="{{ form.name }}"
                   required
@@ -107,7 +107,7 @@
                   type="email" 
                   name="contact[email]" 
                   id="contact-email"
-                  placeholder="{{ section.settings.email_placeholder | default: 'sections.footer_new.email_placeholder' | t }}"
+                  placeholder="{%- if section.settings.email_placeholder != blank -%}{{ section.settings.email_placeholder }}{%- else -%}{{ 'sections.footer_new.email_placeholder' | t }}{%- endif -%}"
                   class="form-input{% if form.errors contains 'email' %} form-input--error{% endif %}"
                   value="{{ form.email }}"
                   required
@@ -119,7 +119,7 @@
               <textarea 
                 name="contact[body]" 
                 id="contact-body"
-                placeholder="{{ section.settings.comment_placeholder | default: 'sections.footer_new.comment_placeholder' | t }}"
+                placeholder="{%- if section.settings.comment_placeholder != blank -%}{{ section.settings.comment_placeholder }}{%- else -%}{{ 'sections.footer_new.comment_placeholder' | t }}{%- endif -%}"
                 class="form-textarea{% if form.errors contains 'body' %} form-input--error{% endif %}"
                 rows="4"
                 required
@@ -128,9 +128,9 @@
             
             <button type="submit" class="form-submit" {% if form.posted_successfully? %}disabled{% endif %}>
               {% if form.posted_successfully? %}
-                {{ section.settings.sent_text | default: 'sections.footer_new.sent_text' | t }}
+                {%- if section.settings.sent_text != blank -%}{{ section.settings.sent_text }}{%- else -%}{{ 'sections.footer_new.sent_text' | t }}{%- endif -%}
               {% else %}
-                {{ section.settings.submit_text | default: 'sections.footer_new.submit_text' | t }}
+                {%- if section.settings.submit_text != blank -%}{{ section.settings.submit_text }}{%- else -%}{{ 'sections.footer_new.submit_text' | t }}{%- endif -%}
               {% endif %}
             </button>
           {% endform %}
@@ -222,7 +222,7 @@
                 {{ 'sections.footer_new.powered_by' | t }} <a href="https://shopify.com" target="_blank" rel="noopener">Shopify</a>
               {% endif %}
               {% if section.settings.privacy_policy_link != blank %}
-                • <a href="{{ section.settings.privacy_policy_link }}">{{ section.settings.privacy_text | default: 'sections.footer_new.privacy_text' | t }}</a>
+                • <a href="{{ section.settings.privacy_policy_link }}">{%- if section.settings.privacy_text != blank -%}{{ section.settings.privacy_text }}{%- else -%}{{ 'sections.footer_new.privacy_text' | t }}{%- endif -%}</a>
               {% endif %}
             </p>
           </div>
