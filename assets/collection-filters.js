@@ -906,12 +906,14 @@ class CollectionFilters {
   }
 
   generateProductsPaginationHTML(totalPages) {
+    const nextLabel = this.productsPagination?.dataset.nextLabel || 'Next \u203a';
+    const prevLabel = this.productsPagination?.dataset.prevLabel || '\u2039 Previous';
     let html = '';
 
     if (this.productsCurrentPage > 1) {
       html += `<button class="pagination-btn" data-page="${
         this.productsCurrentPage - 1
-      }">‹ Previous</button>`;
+      }">${prevLabel}</button>`;
     }
 
     const maxVisiblePages = 5;
@@ -952,7 +954,7 @@ class CollectionFilters {
     if (this.productsCurrentPage < totalPages) {
       html += `<button class="pagination-btn" data-page="${
         this.productsCurrentPage + 1
-      }">Next ›</button>`;
+      }">${nextLabel}</button>`;
     }
 
     return html;
@@ -966,12 +968,14 @@ class CollectionFilters {
   }
 
   generatePaginationHTML(totalPages) {
+    const nextLabel = this.pagination?.dataset.nextLabel || 'Next \u203a';
+    const prevLabel = this.pagination?.dataset.prevLabel || '\u2039 Previous';
     let html = '';
 
     if (this.currentPage > 1) {
       html += `<button class="pagination-btn" data-page="${
         this.currentPage - 1
-      }">‹ Previous</button>`;
+      }">${prevLabel}</button>`;
     }
 
     const maxVisiblePages = 5;
@@ -1012,7 +1016,7 @@ class CollectionFilters {
     if (this.currentPage < totalPages) {
       html += `<button class="pagination-btn" data-page="${
         this.currentPage + 1
-      }">Next ›</button>`;
+      }">${nextLabel}</button>`;
     }
 
     return html;

@@ -1545,6 +1545,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "Neste \u203a",
+      "previous": "\u2039 Forrige"
     }
   },
   "gift_cards": {

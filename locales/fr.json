@@ -1545,6 +1545,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "Suivant \u203a",
+      "previous": "\u2039 Pr\u00e9c\u00e9dent"
     }
   },
   "gift_cards": {

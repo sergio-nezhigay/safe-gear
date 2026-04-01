@@ -1508,6 +1508,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "Next \u203a",
+      "previous": "\u2039 Previous"
     }
   },
   "gift_cards": {

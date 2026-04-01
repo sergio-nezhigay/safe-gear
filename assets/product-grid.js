@@ -462,9 +462,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     generatePaginationHTML(totalPages) {
+      const nextLabel = this.pagination?.dataset.nextLabel || 'Next \u203a';
+      const prevLabel = this.pagination?.dataset.prevLabel || '\u2039 Previous';
       let html = '';
       if (this.currentPage > 1) {
-        html += `<button class="pagination-btn" data-page="${this.currentPage - 1}">‹ Previous</button>`;
+        html += `<button class="pagination-btn" data-page="${this.currentPage - 1}">${prevLabel}</button>`;
       }
       const maxVisiblePages = 5;
       const halfVisible = Math.floor(maxVisiblePages / 2);
@@ -490,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         html += `<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
       }
       if (this.currentPage < totalPages) {
-        html += `<button class="pagination-btn" data-page="${this.currentPage + 1}">Next ›</button>`;
+        html += `<button class="pagination-btn" data-page="${this.currentPage + 1}">${nextLabel}</button>`;
       }
       return html;
     }

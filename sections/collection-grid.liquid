@@ -795,7 +795,10 @@
       </div>
 
       {% if section.settings.show_pagination %}
-        <div class="pagination" id="product-pagination-container">
+        <div class="pagination" id="product-pagination-container"
+          data-next-label="{{ 'general.pagination.next' | t }}"
+          data-prev-label="{{ 'general.pagination.previous' | t }}"
+        >
         </div>
 
         <div class="pagination-info" id="product-pagination-info">

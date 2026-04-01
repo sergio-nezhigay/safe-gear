@@ -1545,6 +1545,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "Weiter \u203a",
+      "previous": "\u2039 Zur\u00fcck"
     }
   },
   "gift_cards": {

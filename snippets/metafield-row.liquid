@@ -12,19 +12,19 @@
 {% assign rounding = block.settings.rounding | default: 'none' %}
 
 {% comment %} Locale-aware label {% endcomment %}
-{% assign _locale = request.locale.iso_code %}
-{% case _locale %}
-  {% when 'fi' %}{% assign _row_label = block.settings.label_fi | default: block.settings.label %}
-  {% when 'de' %}{% assign _row_label = block.settings.label_de | default: block.settings.label %}
-  {% when 'da' %}{% assign _row_label = block.settings.label_da | default: block.settings.label %}
-  {% when 'sv' %}{% assign _row_label = block.settings.label_sv | default: block.settings.label %}
-  {% when 'nb' %}{% assign _row_label = block.settings.label_nb | default: block.settings.label %}
-  {% when 'nl' %}{% assign _row_label = block.settings.label_nl | default: block.settings.label %}
-  {% when 'fr' %}{% assign _row_label = block.settings.label_fr | default: block.settings.label %}
-  {% when 'es' %}{% assign _row_label = block.settings.label_es | default: block.settings.label %}
-  {% when 'it' %}{% assign _row_label = block.settings.label_it | default: block.settings.label %}
-  {% when 'pt-PT' %}{% assign _row_label = block.settings.label_pt | default: block.settings.label %}
-  {% else %}{% assign _row_label = block.settings.label %}
+{% assign locale = request.locale.iso_code %}
+{% case locale %}
+  {% when 'fi' %}{% assign row_label = block.settings.label_fi | default: block.settings.label %}
+  {% when 'de' %}{% assign row_label = block.settings.label_de | default: block.settings.label %}
+  {% when 'da' %}{% assign row_label = block.settings.label_da | default: block.settings.label %}
+  {% when 'sv' %}{% assign row_label = block.settings.label_sv | default: block.settings.label %}
+  {% when 'nb' %}{% assign row_label = block.settings.label_nb | default: block.settings.label %}
+  {% when 'nl' %}{% assign row_label = block.settings.label_nl | default: block.settings.label %}
+  {% when 'fr' %}{% assign row_label = block.settings.label_fr | default: block.settings.label %}
+  {% when 'es' %}{% assign row_label = block.settings.label_es | default: block.settings.label %}
+  {% when 'it' %}{% assign row_label = block.settings.label_it | default: block.settings.label %}
+  {% when 'pt-PT' %}{% assign row_label = block.settings.label_pt | default: block.settings.label %}
+  {% else %}{% assign row_label = block.settings.label %}
 {% endcase %}
 
 {% comment %} Handle special variant weight case {% endcomment %}
@@ -48,7 +48,7 @@
     {% if min_weight != null %}
       <tr {{ block.shopify_attributes }} data-rounding="{{ block.settings.rounding | default: 'none' }}">
         <td>
-          <strong>{{ _row_label }}</strong>
+          <strong>{{ row_label }}</strong>
         </td>
         <td data-metafield-value>
           {% if min_weight == max_weight %}
@@ -88,7 +88,7 @@
       {% endif %}
     >
       <td>
-        <strong>{{ _row_label }}</strong>
+        <strong>{{ row_label }}</strong>
       </td>
       <td data-metafield-value>
         {% assign sep = separator | default: ', ' %}
@@ -143,7 +143,7 @@
       style="display: none;"
     >
       <td>
-        <strong>{{ _row_label }}</strong>
+        <strong>{{ row_label }}</strong>
       </td>
       <td data-metafield-value></td>
     </tr>

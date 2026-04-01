@@ -1592,7 +1592,10 @@
           {% endif %}
         </div>
 
-        <div class="products-pagination" id="products-pagination-container"></div>
+        <div class="products-pagination" id="products-pagination-container"
+          data-next-label="{{ 'general.pagination.next' | t }}"
+          data-prev-label="{{ 'general.pagination.previous' | t }}"
+        ></div>
       {% endif %}
     </div>
   </div>

@@ -1545,6 +1545,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "Seuraava \u203a",
+      "previous": "\u2039 Edellinen"
     }
   },
   "gift_cards": {

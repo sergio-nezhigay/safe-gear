@@ -1545,6 +1545,10 @@
     "search": {
       "search": "Search",
       "reset": "Reset search"
+    },
+    "pagination": {
+      "next": "N\u00e4sta \u203a",
+      "previous": "\u2039 F\u00f6reg\u00e5ende"
     }
   },
   "gift_cards": {
