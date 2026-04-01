@@ -7,6 +7,32 @@
 ></script>
 
 {% liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign locale_heading = 'You may also like'
+
+  case locale_code
+    when 'da'
+      assign locale_heading = 'Du vil måske også kunne lide'
+    when 'de'
+      assign locale_heading = 'Das könnte Ihnen auch gefallen'
+    when 'es'
+      assign locale_heading = 'También te puede gustar'
+    when 'fi'
+      assign locale_heading = 'Saatat pitää myös näistä'
+    when 'fr'
+      assign locale_heading = 'Vous aimerez peut-être aussi'
+    when 'it'
+      assign locale_heading = 'Potrebbe piacerti anche'
+    when 'nb'
+      assign locale_heading = 'Du vil kanskje også like'
+    when 'nl'
+      assign locale_heading = 'Dit vind je misschien ook leuk'
+    when 'pt-PT'
+      assign locale_heading = 'Também pode gostar'
+    when 'sv'
+      assign locale_heading = 'Du kanske också gillar'
+  endcase
+
   case section.settings.layout_type
     when 'grid'
       assign classes = 'resource-list--grid'
@@ -24,6 +50,14 @@
     echo '--column-count: ' | append: section.settings.columns | append: ';'
     echo '--column-count-mobile: ' | append: section.settings.mobile_columns | append: ';'
   endcapture
+
+  assign has_custom_heading = false
+  for block in section.blocks
+    if block.type == 'text' and block.settings.text != blank
+      assign has_custom_heading = true
+      break
+    endif
+  endfor
 %}
 
 <product-recommendations
@@ -53,6 +87,9 @@
   >
     <div class="recommendations__wrapper">
       <div class="section-resource-list__content">
+        {%- unless has_custom_heading -%}
+          <h3>{{ locale_heading }}</h3>
+        {%- endunless -%}
         {% content_for 'blocks' %}
       </div>
 

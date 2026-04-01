@@ -1592,7 +1592,7 @@
       }
     },
     "downloads": {
-      "title": "Downloads"
+      "title": "Descargas"
     }
   },
   "shopify": {
@@ -4487,26 +4487,6 @@
       "submit_text": "Send Message",
       "privacy_text": "Privacy Policy",
       "powered_by": "Powered by"
-    },
-    "delivery_info": {
-      "delivery_title": "Delivery time",
-      "installation_title": "Installation",
-      "loading_prices": "Loading prices...",
-      "approx_text": "Approx.",
-      "transport_button_helper": "Get an installation estimate",
-      "transport_button_text": "Transport Form",
-      "transport_modal_title": "Transport & Installation Estimate"
-    },
-    "product_addons": {
-      "empty_text": "No add-on products available.",
-      "cart_title": "Your Selection",
-      "main_product_label": "Main",
-      "addons_label": "Add-ons",
-      "total_label": "Total",
-      "add_to_cart_button": "Add to Cart",
-      "checkout_button": "Checkout",
-      "clear_button": "Clear Add-ons",
-      "loading_text": "Adding to cart..."
     },
     "collection_grid": {
       "more_collections_text": "View All Collections",

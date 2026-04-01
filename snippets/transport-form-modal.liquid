@@ -3,6 +3,193 @@
   A modal dialog for requesting installation and transport estimates.
 {%- enddoc -%}
 
+{%- liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign modal_title = section.settings.modal_title
+  if modal_title == blank or modal_title == 'Transport & Installation Estimate'
+    assign modal_title = 'Transport & Installation Estimate'
+  endif
+
+  assign modal_subtitle = section.settings.modal_subtitle
+  if modal_subtitle == blank or modal_subtitle == 'Fill out this form to get a personalized quote for transport and installation.'
+    assign modal_subtitle = 'Fill out this form to get a personalized quote for transport and installation.'
+  endif
+
+  assign subject_text = 'Transport & Installation Estimate Request'
+
+  assign name_label = 'Name'
+  assign email_label = 'Email'
+  assign phone_label = 'Phone'
+  assign submit_label = 'Send'
+  assign postal_code_label = 'Postal code'
+  assign delivery_address_label = 'Delivery address'
+  assign installation_service_label = 'Installation service'
+  assign additional_details_label = 'Additional details'
+
+  assign name_placeholder = name_label
+  assign email_placeholder = email_label
+  assign phone_placeholder = phone_label
+  assign postal_code_placeholder = postal_code_label
+  assign delivery_address_placeholder = delivery_address_label
+  assign additional_details_placeholder = 'Additional details (stairs, access restrictions, floor, etc.)'
+  assign no_installation_text = 'No installation needed'
+  assign delivery_option_text = 'Delivered to final location'
+  assign installation_option_text = 'Delivered + bolting to floor/wall'
+
+  case locale_code
+    when 'da'
+      assign modal_title = 'Transport- og installationsestimat'
+      assign modal_subtitle = 'Udfyld denne formular for at få et skræddersyet tilbud på transport og montering.'
+      assign name_label = 'Navn'
+      assign email_label = 'E-mail'
+      assign phone_label = 'Telefon'
+      assign submit_label = 'Send'
+      assign postal_code_label = 'Postnummer'
+      assign delivery_address_label = 'Leveringsadresse'
+      assign installation_service_label = 'Monteringsservice'
+      assign additional_details_label = 'Yderligere oplysninger'
+      assign additional_details_placeholder = 'Yderligere oplysninger (trapper, adgangsbegrænsninger, gulv osv.)'
+      assign no_installation_text = 'Ingen montering nødvendig'
+      assign delivery_option_text = 'Leveret til endelig placering'
+      assign installation_option_text = 'Leveret + gulv-/vægforankring'
+    when 'de'
+      assign modal_title = 'Transport- und Montageangebot'
+      assign modal_subtitle = 'Füllen Sie dieses Formular aus, um ein individuelles Angebot für Transport und Montage zu erhalten.'
+      assign name_label = 'Name'
+      assign email_label = 'E-Mail'
+      assign phone_label = 'Telefon'
+      assign submit_label = 'Senden'
+      assign postal_code_label = 'Postleitzahl'
+      assign delivery_address_label = 'Lieferadresse'
+      assign installation_service_label = 'Montageservice'
+      assign additional_details_label = 'Weitere Details'
+      assign additional_details_placeholder = 'Weitere Details (Treppen, Zugangsbeschränkungen, Boden usw.)'
+      assign no_installation_text = 'Keine Montage erforderlich'
+      assign delivery_option_text = 'Lieferung an den endgültigen Standort'
+      assign installation_option_text = 'Lieferung + Verankerung an Boden/Wand'
+    when 'es'
+      assign modal_title = 'Estimación de transporte e instalación'
+      assign modal_subtitle = 'Rellena este formulario para obtener un presupuesto personalizado de transporte e instalación.'
+      assign name_label = 'Nombre'
+      assign email_label = 'Correo electrónico'
+      assign phone_label = 'Teléfono'
+      assign submit_label = 'Enviar'
+      assign postal_code_label = 'Código postal'
+      assign delivery_address_label = 'Dirección de entrega'
+      assign installation_service_label = 'Servicio de instalación'
+      assign additional_details_label = 'Detalles adicionales'
+      assign additional_details_placeholder = 'Detalles adicionales (escaleras, restricciones de acceso, suelo, etc.)'
+      assign no_installation_text = 'No se necesita instalación'
+      assign delivery_option_text = 'Entregado en la ubicación final'
+      assign installation_option_text = 'Entregado + anclaje al suelo/pared'
+    when 'fi'
+      assign modal_title = 'Kuljetus- ja asennusarvio'
+      assign modal_subtitle = 'Täytä tämä lomake saadaksesi räätälöidyn kuljetus- ja asennusarvion.'
+      assign name_label = 'Nimi'
+      assign email_label = 'Sähköposti'
+      assign phone_label = 'Puhelin'
+      assign submit_label = 'Lähetä'
+      assign postal_code_label = 'Postinumero'
+      assign delivery_address_label = 'Toimitusosoite'
+      assign installation_service_label = 'Asennuspalvelu'
+      assign additional_details_label = 'Lisätiedot'
+      assign additional_details_placeholder = 'Lisätiedot (portaat, kulkurajoitukset, lattia jne.)'
+      assign no_installation_text = 'Ei asennusta'
+      assign delivery_option_text = 'Toimitettuna lopulliseen sijaintiin'
+      assign installation_option_text = 'Toimitus + lattia-/seinäkiinnitys'
+    when 'fr'
+      assign modal_title = "Estimation de transport et d'installation"
+      assign modal_subtitle = "Remplissez ce formulaire pour obtenir un devis personnalisé pour le transport et l'installation."
+      assign name_label = 'Nom'
+      assign email_label = 'E-mail'
+      assign phone_label = 'Téléphone'
+      assign submit_label = 'Envoyer'
+      assign postal_code_label = 'Code postal'
+      assign delivery_address_label = 'Adresse de livraison'
+      assign installation_service_label = "Service d'installation"
+      assign additional_details_label = 'Détails supplémentaires'
+      assign additional_details_placeholder = "Détails supplémentaires (escaliers, restrictions d'accès, sol, etc.)"
+      assign no_installation_text = "Aucune installation nécessaire"
+      assign delivery_option_text = "Livré à l'emplacement final"
+      assign installation_option_text = 'Livré + fixation au sol/mur'
+    when 'it'
+      assign modal_title = 'Preventivo di trasporto e installazione'
+      assign modal_subtitle = 'Compila questo modulo per ricevere un preventivo personalizzato per trasporto e installazione.'
+      assign name_label = 'Nome'
+      assign email_label = 'Email'
+      assign phone_label = 'Telefono'
+      assign submit_label = 'Invia'
+      assign postal_code_label = 'CAP'
+      assign delivery_address_label = 'Indirizzo di consegna'
+      assign installation_service_label = 'Servizio di installazione'
+      assign additional_details_label = 'Dettagli aggiuntivi'
+      assign additional_details_placeholder = 'Dettagli aggiuntivi (scale, restrizioni di accesso, pavimento, ecc.)'
+      assign no_installation_text = 'Nessuna installazione'
+      assign delivery_option_text = 'Consegnato nel luogo finale'
+      assign installation_option_text = 'Consegnato + fissaggio a pavimento/parete'
+    when 'nb'
+      assign modal_title = 'Transport- og installasjonsestimat'
+      assign modal_subtitle = 'Fyll ut dette skjemaet for å få et tilpasset tilbud på transport og installasjon.'
+      assign name_label = 'Navn'
+      assign email_label = 'E-post'
+      assign phone_label = 'Telefon'
+      assign submit_label = 'Send'
+      assign postal_code_label = 'Postnummer'
+      assign delivery_address_label = 'Leveringsadresse'
+      assign installation_service_label = 'Monteringstjeneste'
+      assign additional_details_label = 'Ytterligere detaljer'
+      assign additional_details_placeholder = 'Ytterligere detaljer (trapper, tilgangsbegrensninger, gulv osv.)'
+      assign no_installation_text = 'Ingen montering nødvendig'
+      assign delivery_option_text = 'Levert til endelig plassering'
+      assign installation_option_text = 'Levert + bolting til gulv/vegg'
+    when 'nl'
+      assign modal_title = 'Transport- en installatieofferte'
+      assign modal_subtitle = 'Vul dit formulier in om een offerte op maat voor transport en installatie te ontvangen.'
+      assign name_label = 'Naam'
+      assign email_label = 'E-mail'
+      assign phone_label = 'Telefoon'
+      assign submit_label = 'Verzenden'
+      assign postal_code_label = 'Postcode'
+      assign delivery_address_label = 'Bezorgadres'
+      assign installation_service_label = 'Installatieservice'
+      assign additional_details_label = 'Extra details'
+      assign additional_details_placeholder = 'Extra details (trappen, toegangsbeperkingen, vloer, enz.)'
+      assign no_installation_text = 'Geen installatie'
+      assign delivery_option_text = 'Afgeleverd op eindlocatie'
+      assign installation_option_text = 'Afgeleverd + vloer-/muurverankering'
+    when 'pt-PT'
+      assign modal_title = 'Orçamento de transporte e instalação'
+      assign modal_subtitle = 'Preencha este formulário para receber um orçamento personalizado de transporte e instalação.'
+      assign name_label = 'Nome'
+      assign email_label = 'Email'
+      assign phone_label = 'Telefone'
+      assign submit_label = 'Enviar'
+      assign postal_code_label = 'Código postal'
+      assign delivery_address_label = 'Morada de entrega'
+      assign installation_service_label = 'Serviço de instalação'
+      assign additional_details_label = 'Detalhes adicionais'
+      assign additional_details_placeholder = 'Detalhes adicionais (escadas, restrições de acesso, piso, etc.)'
+      assign no_installation_text = 'Sem instalação'
+      assign delivery_option_text = 'Entregue no local final'
+      assign installation_option_text = 'Entregue + fixação ao chão/parede'
+    when 'sv'
+      assign modal_title = 'Transport- och installationsuppskattning'
+      assign modal_subtitle = 'Fyll i detta formulär för att få en skräddarsydd offert för transport och installation.'
+      assign name_label = 'Namn'
+      assign email_label = 'E-post'
+      assign phone_label = 'Telefon'
+      assign submit_label = 'Skicka'
+      assign postal_code_label = 'Postnummer'
+      assign delivery_address_label = 'Leveransadress'
+      assign installation_service_label = 'Installationstjänst'
+      assign additional_details_label = 'Ytterligare detaljer'
+      assign additional_details_placeholder = 'Ytterligare detaljer (trappor, åtkomstbegränsningar, golv osv.)'
+      assign no_installation_text = 'Ingen installation'
+      assign delivery_option_text = 'Levererad till slutlig plats'
+      assign installation_option_text = 'Levererad + golv-/väggförankring'
+  endcase
+%}
+
 <dialog-component id="TransportModal">
   <dialog
     class="transport-modal dialog-modal color-{{ settings.popover_color_scheme }}"
@@ -20,14 +207,14 @@
 
     <div class="transport-modal__content">
       <div class="transport-modal__header">
-        <h2 class="transport-modal__title">{{ section.settings.modal_title | default: 'Transport & Installation Estimate' }}</h2>
-        <p class="transport-modal__subtitle">{{ section.settings.modal_subtitle | default: 'Fill out this form to get a personalized quote for transport and installation.' }}</p>
+        <h2 class="transport-modal__title">{{ modal_title }}</h2>
+        <p class="transport-modal__subtitle">{{ modal_subtitle }}</p>
       </div>
 
       {%- assign form_id = 'TransportModalForm' -%}
 
       {%- form 'contact', id: form_id, class: 'transport-modal__form' -%}
-        <input type="hidden" name="contact[subject]" value="Transport & Installation Estimate Request">
+        <input type="hidden" name="contact[subject]" value="{{ subject_text }}">
         <input type="hidden" name="contact[product]" value="{{ product.title }}">
         <input type="hidden" name="contact[product_url]" value="{{ shop.url }}{{ product.url }}">
 
@@ -62,7 +249,7 @@
               class="visually-hidden"
               for="TransportModalForm-name"
             >
-              Name
+              {{ name_label }}
             </label>
             <input
               type="text"
@@ -71,7 +258,7 @@
               autocomplete="name"
               name="contact[name]"
               value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-              placeholder="Name *"
+              placeholder="{{ name_placeholder }} *"
               required
             >
           </div>
@@ -81,7 +268,7 @@
               class="visually-hidden"
               for="TransportModalForm-email"
             >
-              Email
+              {{ email_label }}
             </label>
             <input
               type="email"
@@ -96,7 +283,7 @@
               {% if form.errors contains 'email' %}
                 aria-invalid="true"
               {% endif %}
-              placeholder="Email *"
+              placeholder="{{ email_placeholder }} *"
               required
             >
           </div>
@@ -108,7 +295,7 @@
               class="visually-hidden"
               for="TransportModalForm-phone"
             >
-              Phone
+              {{ phone_label }}
             </label>
             <input
               type="tel"
@@ -117,7 +304,7 @@
               autocomplete="tel"
               name="contact[phone]"
               value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-              placeholder="Phone *"
+              placeholder="{{ phone_placeholder }} *"
               required
             >
           </div>
@@ -127,14 +314,14 @@
               class="visually-hidden"
               for="TransportModalForm-postal"
             >
-              Postal Code
+              {{ postal_code_label }}
             </label>
             <input
               type="text"
               id="TransportModalForm-postal"
               class="transport-modal__input"
               name="contact[postal_code]"
-              placeholder="Postal Code *"
+              placeholder="{{ postal_code_placeholder }} *"
               required
             >
           </div>
@@ -145,7 +332,7 @@
             class="visually-hidden"
             for="TransportModalForm-address"
           >
-            Delivery Address
+            {{ delivery_address_label }}
           </label>
           <input
             type="text"
@@ -153,23 +340,23 @@
             class="transport-modal__input"
             autocomplete="street-address"
             name="contact[address]"
-            placeholder="Delivery Address *"
+            placeholder="{{ delivery_address_placeholder }} *"
             required
           >
         </div>
 
         <div class="transport-modal__form-field">
           <label class="transport-modal__label" for="TransportModalForm-service">
-            Installation Service
+            {{ installation_service_label }}
           </label>
           <select
             id="TransportModalForm-service"
             class="transport-modal__input"
             name="contact[installation_service]"
           >
-            <option value="none">No installation needed</option>
-            <option value="delivery">Delivered to final location</option>
-            <option value="installation">Delivered + bolting to floor/wall</option>
+            <option value="none">{{ no_installation_text }}</option>
+            <option value="delivery">{{ delivery_option_text }}</option>
+            <option value="installation">{{ installation_option_text }}</option>
           </select>
         </div>
 
@@ -178,19 +365,19 @@
             class="visually-hidden"
             for="TransportModalForm-details"
           >
-            Additional Details
+            {{ additional_details_label }}
           </label>
           <textarea
             rows="4"
             id="TransportModalForm-details"
             class="transport-modal__input transport-modal__input--textarea"
             name="contact[body]"
-            placeholder="Additional details (stairs, access restrictions, floor, etc.)"
+            placeholder="{{ additional_details_placeholder }}"
           >{{ form.body }}</textarea>
         </div>
 
         <button type="submit" class="transport-modal__submit button button--primary">
-          Request Estimate
+          {{ submit_label }}
         </button>
       {%- endform -%}
     </div>

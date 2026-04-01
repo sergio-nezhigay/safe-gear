@@ -31,6 +31,30 @@ class DeliveryPricingRenderer {
       const weightKg = parseFloat(sectionEl.dataset.weightKg) || 0;
       const countryCode = sectionEl.dataset.countryCode || 'ES';
       const pricingJson = sectionEl.dataset.pricingJson;
+      const i18n = {
+        approxText: sectionEl.dataset.approxText || 'Approx.',
+        pricingErrorText: sectionEl.dataset.pricingErrorText || 'Error',
+        noDeliveryOptionsText: sectionEl.dataset.noDeliveryOptionsText || 'No delivery options available',
+        noInstallationOptionsText: sectionEl.dataset.noInstallationOptionsText || 'No installation options available',
+        deliveryOptions: {
+          curbside: {
+            label: sectionEl.dataset.deliveryLabelCurbside || 'Curbside Delivery',
+            description: sectionEl.dataset.deliveryDescriptionCurbside || ''
+          },
+          warehouse: {
+            label: sectionEl.dataset.deliveryLabelWarehouse || 'Collection from SafeGear warehouse',
+            description: sectionEl.dataset.deliveryDescriptionWarehouse || ''
+          }
+        },
+        installationOptions: {
+          final_location: {
+            label: sectionEl.dataset.installationLabelFinalLocation || 'Delivery to final location'
+          },
+          anchoring: {
+            label: sectionEl.dataset.installationLabelBolting || 'Anchoring to floor or wall (per bolt)'
+          }
+        }
+      };
 
       if (!pricingJson) {
         this.showError(sectionEl, 'No pricing data configured');
@@ -58,13 +82,13 @@ class DeliveryPricingRenderer {
       // Render installation options
       const installationContainer = sectionEl.querySelector('[data-pricing-type="installation"]');
       if (installationContainer) {
-        this.renderInstallationOptions(installationContainer, calculated.installation_options);
+        this.renderInstallationOptions(installationContainer, calculated.installation_options, i18n);
       }
 
       // Render delivery options
       const deliveryContainer = sectionEl.querySelector('[data-pricing-type="delivery"]');
       if (deliveryContainer) {
-        this.renderDeliveryOptions(deliveryContainer, calculated.delivery_options);
+        this.renderDeliveryOptions(deliveryContainer, calculated.delivery_options, i18n);
       }
 
     } catch (error) {
@@ -147,19 +171,21 @@ class DeliveryPricingRenderer {
    * @param {HTMLElement} container - Container element
    * @param {Array} options - Installation options
    */
-  renderInstallationOptions(container, options) {
+  renderInstallationOptions(container, options, i18n) {
     if (!options || options.length === 0) {
-      container.innerHTML = '<div class="pricing-error">No installation options available</div>';
+      container.innerHTML = `<div class="pricing-error">${i18n?.noInstallationOptionsText || 'No installation options available'}</div>`;
       return;
     }
 
     let html = '';
     options.forEach(option => {
+      const localizedOption = i18n?.installationOptions?.[option.id] || {};
+      const label = localizedOption.label || option.label;
       html += `
         <div class="pricing-row" data-option-id="${option.id}">
-          <span class="pricing-label">${option.label}</span>
+          <span class="pricing-label">${label}</span>
           <span class="pricing-value" data-price-cents="${option.price_cents}">
-            <span class="approx-text">Approx.</span>
+            <span class="approx-text">${i18n?.approxText || 'Approx.'}</span>
             <span class="price-amount">${this.formatMoney(option.price_cents)}</span>
           </span>
         </div>
@@ -174,24 +200,27 @@ class DeliveryPricingRenderer {
    * @param {HTMLElement} container - Container element
    * @param {Array} options - Delivery options
    */
-  renderDeliveryOptions(container, options) {
+  renderDeliveryOptions(container, options, i18n) {
     if (!options || options.length === 0) {
-      container.innerHTML = '<div class="pricing-error">No delivery options available</div>';
+      container.innerHTML = `<div class="pricing-error">${i18n?.noDeliveryOptionsText || 'No delivery options available'}</div>`;
       return;
     }
 
     let html = '';
     options.forEach(option => {
+      const localizedOption = i18n?.deliveryOptions?.[option.id] || {};
+      const label = localizedOption.label || option.label;
+      const description = localizedOption.description || option.description || '';
       html += `
         <div class="delivery-option" data-option-id="${option.id}">
           <div class="delivery-option-header">
-            <span class="delivery-label">${option.label}</span>
+            <span class="delivery-label">${label}</span>
             <span class="delivery-price" data-price-cents="${option.price_cents}">
-              <span class="approx-text">Approx.</span>
+              <span class="approx-text">${i18n?.approxText || 'Approx.'}</span>
               <span class="price-amount">${this.formatMoney(option.price_cents)}</span>
             </span>
           </div>
-          ${option.description ? `<p class="delivery-description">${option.description}</p>` : ''}
+          ${description ? `<p class="delivery-description">${description}</p>` : ''}
         </div>
       `;
     });
@@ -229,8 +258,9 @@ class DeliveryPricingRenderer {
   showError(sectionEl, message) {
     const installationContainer = sectionEl.querySelector('[data-pricing-type="installation"]');
     const deliveryContainer = sectionEl.querySelector('[data-pricing-type="delivery"]');
+    const errorLabel = sectionEl.dataset.pricingErrorText || 'Error';
 
-    const errorHtml = `<div class="pricing-error" style="color: #d32f2f; padding: 10px; background: #ffebee; border-radius: 4px;">Error: ${message}</div>`;
+    const errorHtml = `<div class="pricing-error" style="color: #d32f2f; padding: 10px; background: #ffebee; border-radius: 4px;">${errorLabel}: ${message}</div>`;
 
     if (installationContainer) {
       installationContainer.innerHTML = errorHtml;

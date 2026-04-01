@@ -428,7 +428,7 @@
         "clear_button": "Remove Accessories",
         "sold_out_text": "Sold Out",
         "loading_text": "Adding to Cart…",
-        "empty_text": "Ingen tilføjelsesprodukter er konfigureret. Angiv venligst metafeltet 'addon_products' for dette produkt."
+        "empty_text": ""
       }
     },
     "size_chart_deqbKr": {
@@ -1275,13 +1275,13 @@
       "type": "product-recommendations",
       "blocks": {
         "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
+        "type": "text",
+        "name": "t:names.header",
+        "settings": {
+          "text": "",
+          "width": "fit-content",
+          "max_width": "normal",
+          "alignment": "left",
             "type_preset": "h4",
             "font": "var(--font-primary--family)",
             "font_size": "",

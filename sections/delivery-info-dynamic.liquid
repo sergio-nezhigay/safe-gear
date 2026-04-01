@@ -58,6 +58,256 @@
   comment
     We'll parse JSON and calculate prices in JavaScript since Liquid doesn't have parse_json
   endcomment
+
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign loading_prices_text = 'Loading prices...'
+  assign approx_text = 'Approx.'
+  assign locale_delivery_title = 'Delivery time'
+  assign locale_installation_title = 'Installation'
+  assign locale_installation_disclaimer = 'These prices are non-binding indications. The cost depends on location, access, stairs, weight etc.'
+  assign locale_installation_link_text = 'More about delivery and Installation'
+  assign locale_transport_button_helper = 'Get an installation estimate'
+  assign locale_transport_button_text = 'Transport Form'
+  assign locale_delivery_option_1_label = 'Curbside Delivery'
+  assign locale_delivery_option_1_description = 'Delivery to the edge of your property, where the item will be left for you to bring inside.'
+  assign locale_delivery_option_2_label = 'Collection from SafeGear warehouse'
+  assign locale_installation_option_1_label = 'Delivered to final location'
+  assign locale_installation_option_2_label = 'Delivered to final location with bolting to floor/wall'
+  assign locale_pricing_error_text = 'Error'
+  assign locale_no_delivery_options_text = 'No delivery options available'
+  assign locale_no_installation_options_text = 'No installation options available'
+
+  case locale_code
+    when 'da'
+      assign loading_prices_text = 'Indlæser priser...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Leveringstid'
+      assign locale_installation_title = 'Installation'
+      assign locale_installation_disclaimer = 'Disse priser er uforpligtende vejledende priser. Prisen afhænger af placering, adgang, trapper, vægt osv.'
+      assign locale_installation_link_text = 'Mere om levering og installation'
+      assign locale_transport_button_helper = 'Få et installationstilbud'
+      assign locale_transport_button_text = 'Transportformular'
+      assign locale_delivery_option_1_label = 'Levering til kantstenen'
+      assign locale_delivery_option_1_description = 'Levering til kanten af din ejendom, hvor varen afleveres, så du kan bære den ind.'
+      assign locale_delivery_option_2_label = 'Afhentning fra SafeGear-lageret'
+      assign locale_installation_option_1_label = 'Leveret til endelig placering'
+      assign locale_installation_option_2_label = 'Leveret til endelig placering med gulv-/vægforankring'
+      assign locale_pricing_error_text = 'Fejl'
+      assign locale_no_delivery_options_text = 'Ingen leveringsmuligheder tilgængelige'
+      assign locale_no_installation_options_text = 'Ingen installationsmuligheder tilgængelige'
+    when 'de'
+      assign loading_prices_text = 'Preise werden geladen...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Lieferzeit'
+      assign locale_installation_title = 'Montage'
+      assign locale_installation_disclaimer = 'Diese Preise sind unverbindliche Richtwerte. Die Kosten hängen von Standort, Zugang, Treppen, Gewicht usw. ab.'
+      assign locale_installation_link_text = 'Mehr über Lieferung und Montage'
+      assign locale_transport_button_helper = 'Fordern Sie einen Kostenvoranschlag für die Montage an'
+      assign locale_transport_button_text = 'Transportformular'
+      assign locale_delivery_option_1_label = 'Lieferung bis Bordsteinkante'
+      assign locale_delivery_option_1_description = 'Lieferung bis an die Grenze Ihres Grundstücks, wo der Artikel abgestellt wird, damit Sie ihn hineinbringen können.'
+      assign locale_delivery_option_2_label = 'Abholung vom SafeGear-Lager'
+      assign locale_installation_option_1_label = 'Lieferung an den endgültigen Standort'
+      assign locale_installation_option_2_label = 'Lieferung an den endgültigen Standort mit Verankerung an Boden/Wand'
+      assign locale_pricing_error_text = 'Fehler'
+      assign locale_no_delivery_options_text = 'Keine Lieferoptionen verfügbar'
+      assign locale_no_installation_options_text = 'Keine Montageoptionen verfügbar'
+    when 'es'
+      assign loading_prices_text = 'Cargando precios...'
+      assign approx_text = 'Aprox.'
+      assign locale_delivery_title = 'Tiempo de entrega'
+      assign locale_installation_title = 'Instalación'
+      assign locale_installation_disclaimer = 'Estos precios son indicaciones sin compromiso. El coste depende del lugar, el acceso, las escaleras, el peso, etc.'
+      assign locale_installation_link_text = 'Más sobre la entrega y la instalación'
+      assign locale_transport_button_helper = 'Solicita un presupuesto de instalación'
+      assign locale_transport_button_text = 'Formulario de transporte'
+      assign locale_delivery_option_1_label = 'Entrega en la acera'
+      assign locale_delivery_option_1_description = 'Entrega hasta el borde de su propiedad, donde se dejará el artículo para que usted lo introduzca.'
+      assign locale_delivery_option_2_label = 'Recogida en el almacén SafeGear'
+      assign locale_installation_option_1_label = 'Entrega en la ubicación final'
+      assign locale_installation_option_2_label = 'Entrega en la ubicación final con anclaje al suelo/pared'
+      assign locale_pricing_error_text = 'Error'
+      assign locale_no_delivery_options_text = 'No hay opciones de entrega disponibles'
+      assign locale_no_installation_options_text = 'No hay opciones de instalación disponibles'
+    when 'fi'
+      assign loading_prices_text = 'Ladataan hintoja...'
+      assign approx_text = 'Noin'
+      assign locale_delivery_title = 'Toimitusaika'
+      assign locale_installation_title = 'Asennus'
+      assign locale_installation_disclaimer = 'Nämä hinnat ovat sitoumuksettomia arvioita. Hinta riippuu sijainnista, kulkureiteistä, portaista, painosta jne.'
+      assign locale_installation_link_text = 'Lisätietoja toimituksesta ja asennuksesta'
+      assign locale_transport_button_helper = 'Pyydä asennusarvio'
+      assign locale_transport_button_text = 'Kuljetuslomake'
+      assign locale_delivery_option_1_label = 'Toimitus pihalle'
+      assign locale_delivery_option_1_description = 'Toimitus kiinteistön reunaan, jonne tuote jätetään, jotta voit kantaa sen sisään.'
+      assign locale_delivery_option_2_label = 'Nouto SafeGearin varastolta'
+      assign locale_installation_option_1_label = 'Toimitus lopulliseen sijaintiin'
+      assign locale_installation_option_2_label = 'Toimitus lopulliseen sijaintiin lattia-/seinäkiinnityksellä'
+      assign locale_pricing_error_text = 'Virhe'
+      assign locale_no_delivery_options_text = 'Toimitusvaihtoehtoja ei ole saatavilla'
+      assign locale_no_installation_options_text = 'Asennusvaihtoehtoja ei ole saatavilla'
+    when 'fr'
+      assign loading_prices_text = 'Chargement des prix...'
+      assign approx_text = 'Env.'
+      assign locale_delivery_title = 'Délai de livraison'
+      assign locale_installation_title = 'Installation'
+      assign locale_installation_disclaimer = "Ces prix sont des indications sans engagement. Le coût dépend du lieu, de l'accès, des escaliers, du poids, etc."
+      assign locale_installation_link_text = 'En savoir plus sur la livraison et l’installation'
+      assign locale_transport_button_helper = "Demandez une estimation d'installation"
+      assign locale_transport_button_text = 'Formulaire de transport'
+      assign locale_delivery_option_1_label = 'Livraison au trottoir'
+      assign locale_delivery_option_1_description = 'Livraison jusqu’au bord de votre propriété, où l’article sera déposé pour que vous puissiez le rentrer.'
+      assign locale_delivery_option_2_label = 'Retrait à l’entrepôt SafeGear'
+      assign locale_installation_option_1_label = 'Livré à l’emplacement final'
+      assign locale_installation_option_2_label = 'Livré à l’emplacement final avec fixation au sol/mur'
+      assign locale_pricing_error_text = 'Erreur'
+      assign locale_no_delivery_options_text = 'Aucune option de livraison disponible'
+      assign locale_no_installation_options_text = "Aucune option d'installation disponible"
+    when 'it'
+      assign loading_prices_text = 'Caricamento prezzi...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Tempi di consegna'
+      assign locale_installation_title = 'Installazione'
+      assign locale_installation_disclaimer = 'Questi prezzi sono indicazioni non vincolanti. Il costo dipende da luogo, accesso, scale, peso, ecc.'
+      assign locale_installation_link_text = 'Maggiori informazioni su consegna e installazione'
+      assign locale_transport_button_helper = 'Richiedi un preventivo per l’installazione'
+      assign locale_transport_button_text = 'Modulo trasporto'
+      assign locale_delivery_option_1_label = 'Consegna al bordo strada'
+      assign locale_delivery_option_1_description = "Consegna fino al limite della tua proprietà, dove l'articolo verrà lasciato per essere portato all'interno."
+      assign locale_delivery_option_2_label = 'Ritiro dal magazzino SafeGear'
+      assign locale_installation_option_1_label = 'Consegnato nel luogo finale'
+      assign locale_installation_option_2_label = 'Consegnato nel luogo finale con fissaggio a pavimento/parete'
+      assign locale_pricing_error_text = 'Errore'
+      assign locale_no_delivery_options_text = 'Nessuna opzione di consegna disponibile'
+      assign locale_no_installation_options_text = 'Nessuna opzione di installazione disponibile'
+    when 'nb'
+      assign loading_prices_text = 'Laster priser...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Leveringstid'
+      assign locale_installation_title = 'Montering'
+      assign locale_installation_disclaimer = 'Disse prisene er veiledende og ikke bindende. Kostnaden avhenger av sted, adkomst, trapper, vekt osv.'
+      assign locale_installation_link_text = 'Mer om levering og montering'
+      assign locale_transport_button_helper = 'Få et tilbud på montering'
+      assign locale_transport_button_text = 'Transportskjema'
+      assign locale_delivery_option_1_label = 'Levering til fortauskant'
+      assign locale_delivery_option_1_description = 'Levering til tomtegrensen, hvor varen blir satt igjen slik at du kan bære den inn.'
+      assign locale_delivery_option_2_label = 'Henting fra SafeGear-lageret'
+      assign locale_installation_option_1_label = 'Levert til endelig plassering'
+      assign locale_installation_option_2_label = 'Levert til endelig plassering med bolting til gulv/vegg'
+      assign locale_pricing_error_text = 'Feil'
+      assign locale_no_delivery_options_text = 'Ingen leveringsalternativer tilgjengelig'
+      assign locale_no_installation_options_text = 'Ingen installasjonsalternativer tilgjengelig'
+    when 'nl'
+      assign loading_prices_text = 'Prijzen laden...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Levertijd'
+      assign locale_installation_title = 'Installatie'
+      assign locale_installation_disclaimer = 'Deze prijzen zijn vrijblijvende indicaties. De kosten zijn afhankelijk van locatie, toegang, trappen, gewicht, enz.'
+      assign locale_installation_link_text = 'Meer over levering en installatie'
+      assign locale_transport_button_helper = 'Vraag een installatieofferte aan'
+      assign locale_transport_button_text = 'Transportformulier'
+      assign locale_delivery_option_1_label = 'Levering tot aan de stoep'
+      assign locale_delivery_option_1_description = 'Levering tot aan de rand van uw terrein, waar het artikel wordt achtergelaten zodat u het naar binnen kunt brengen.'
+      assign locale_delivery_option_2_label = 'Afhaling bij SafeGear-magazijn'
+      assign locale_installation_option_1_label = 'Afgeleverd op eindlocatie'
+      assign locale_installation_option_2_label = 'Afgeleverd op eindlocatie met vloer-/muurverankering'
+      assign locale_pricing_error_text = 'Fout'
+      assign locale_no_delivery_options_text = 'Geen leveringsopties beschikbaar'
+      assign locale_no_installation_options_text = 'Geen installatieopties beschikbaar'
+    when 'pt-PT'
+      assign loading_prices_text = 'A carregar preços...'
+      assign approx_text = 'Aprox.'
+      assign locale_delivery_title = 'Prazo de entrega'
+      assign locale_installation_title = 'Instalação'
+      assign locale_installation_disclaimer = 'Estes preços são indicações sem compromisso. O custo depende do local, acesso, escadas, peso, etc.'
+      assign locale_installation_link_text = 'Mais sobre entrega e instalação'
+      assign locale_transport_button_helper = 'Peça um orçamento de instalação'
+      assign locale_transport_button_text = 'Formulário de transporte'
+      assign locale_delivery_option_1_label = 'Entrega na berma'
+      assign locale_delivery_option_1_description = 'Entrega até à borda da sua propriedade, onde o artigo será deixado para o transportar para dentro.'
+      assign locale_delivery_option_2_label = 'Levantamento no armazém SafeGear'
+      assign locale_installation_option_1_label = 'Entregue no local final'
+      assign locale_installation_option_2_label = 'Entregue no local final com fixação ao chão/parede'
+      assign locale_pricing_error_text = 'Erro'
+      assign locale_no_delivery_options_text = 'Não há opções de entrega disponíveis'
+      assign locale_no_installation_options_text = 'Não há opções de instalação disponíveis'
+    when 'sv'
+      assign loading_prices_text = 'Laddar priser...'
+      assign approx_text = 'Ca.'
+      assign locale_delivery_title = 'Leveranstid'
+      assign locale_installation_title = 'Installation'
+      assign locale_installation_disclaimer = 'Dessa priser är icke-bindande riktpriser. Kostnaden beror på plats, åtkomst, trappor, vikt osv.'
+      assign locale_installation_link_text = 'Mer om leverans och installation'
+      assign locale_transport_button_helper = 'Be om en installationsuppskattning'
+      assign locale_transport_button_text = 'Transportformulär'
+      assign locale_delivery_option_1_label = 'Leverans till trottoarkant'
+      assign locale_delivery_option_1_description = 'Leverans till kanten av din fastighet, där varan lämnas så att du kan bära in den.'
+      assign locale_delivery_option_2_label = 'Upphämtning från SafeGear-lagret'
+      assign locale_installation_option_1_label = 'Levereras till slutlig plats'
+      assign locale_installation_option_2_label = 'Levereras till slutlig plats med golv-/väggförankring'
+      assign locale_pricing_error_text = 'Fel'
+      assign locale_no_delivery_options_text = 'Inga leveransalternativ tillgängliga'
+      assign locale_no_installation_options_text = 'Inga installationsalternativ tillgängliga'
+  endcase
+
+  assign delivery_title = section.settings.delivery_title
+  if delivery_title == blank or delivery_title == 'Delivery time'
+    assign delivery_title = locale_delivery_title
+  endif
+
+  assign installation_title = section.settings.installation_title
+  if installation_title == blank or installation_title == 'Installation'
+    assign installation_title = locale_installation_title
+  endif
+
+  assign installation_disclaimer = section.settings.installation_disclaimer
+  if installation_disclaimer == blank or installation_disclaimer == 'These prices are non-binding indications. The cost depends on location, access, stairs, weight etc.'
+    assign installation_disclaimer = locale_installation_disclaimer
+  endif
+
+  assign installation_link_text = section.settings.installation_link_text
+  if installation_link_text == blank or installation_link_text == 'More about delivery and Installation'
+    assign installation_link_text = locale_installation_link_text
+  endif
+
+  assign transport_button_helper = section.settings.transport_button_helper
+  if transport_button_helper == blank or transport_button_helper == 'Get an installation estimate'
+    assign transport_button_helper = locale_transport_button_helper
+  endif
+
+  assign transport_button_text = section.settings.transport_button_text
+  if transport_button_text == blank or transport_button_text == 'Transport Form'
+    assign transport_button_text = locale_transport_button_text
+  endif
+
+  assign delivery_option_1_label = section.settings.delivery_option_1_label
+  if delivery_option_1_label == blank or delivery_option_1_label == 'Curbside Delivery'
+    assign delivery_option_1_label = locale_delivery_option_1_label
+  endif
+
+  assign delivery_option_1_description = section.settings.delivery_option_1_description
+  if delivery_option_1_description == blank or delivery_option_1_description contains 'Delivery to the edge of your property'
+    assign delivery_option_1_description = locale_delivery_option_1_description
+  endif
+
+  assign delivery_option_2_label = section.settings.delivery_option_2_label
+  if delivery_option_2_label == blank or delivery_option_2_label == 'Collection from SafeGear warehouse'
+    assign delivery_option_2_label = locale_delivery_option_2_label
+  endif
+
+  assign installation_option_1_label = section.settings.installation_option_1_label
+  if installation_option_1_label == blank or installation_option_1_label == 'Delivered to final location'
+    assign installation_option_1_label = locale_installation_option_1_label
+  endif
+
+  assign installation_option_2_label = section.settings.installation_option_2_label
+  if installation_option_2_label == blank or installation_option_2_label == 'Delivered to final location with bolting to floor/wall'
+    assign installation_option_2_label = locale_installation_option_2_label
+  endif
+
+  assign pricing_error_text = locale_pricing_error_text
+  assign no_delivery_options_text = locale_no_delivery_options_text
+  assign no_installation_options_text = locale_no_installation_options_text
 -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
@@ -71,6 +321,15 @@
   data-country-code="{{ country_code }}"
   data-pricing-json="{{ pricing_data_raw | escape }}"
   data-enable-dynamic="{{ section.settings.enable_dynamic_pricing }}"
+  data-approx-text="{{ approx_text | escape }}"
+  data-pricing-error-text="{{ pricing_error_text | escape }}"
+  data-no-delivery-options-text="{{ no_delivery_options_text | escape }}"
+  data-no-installation-options-text="{{ no_installation_options_text | escape }}"
+  data-delivery-label-curbside="{{ delivery_option_1_label | escape }}"
+  data-delivery-description-curbside="{{ delivery_option_1_description | escape }}"
+  data-delivery-label-warehouse="{{ delivery_option_2_label | escape }}"
+  data-installation-label-final-location="{{ installation_option_1_label | escape }}"
+  data-installation-label-bolting="{{ installation_option_2_label | escape }}"
 >
   <div class="installation-delivery-grid">
     {%- comment -%} Delivery Column {%- endcomment -%}
@@ -79,7 +338,7 @@
         <span class="column-icon">
           {%- render 'icon-package' -%}
         </span>
-        <h3 class="column-title">{%- if section.settings.delivery_title != blank -%}{{ section.settings.delivery_title }}{%- else -%}{{ 'sections.delivery_info.delivery_title' | t }}{%- endif -%}</h3>
+        <h3 class="column-title">{{ delivery_title }}</h3>
         {%- if section.settings.delivery_time_badge != blank -%}
           <span class="delivery-badge">{{ section.settings.delivery_time_badge }}</span>
         {%- endif -%}
@@ -88,19 +347,19 @@
       <div class="delivery-options" data-pricing-type="delivery">
         {%- if section.settings.enable_dynamic_pricing -%}
           {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
-          <div class="pricing-loading">{{ 'sections.delivery_info.loading_prices' | t }}</div>
+          <div class="pricing-loading">{{ loading_prices_text }}</div>
         {%- else -%}
           {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
           {%- if section.settings.show_delivery_option_1 -%}
             <div class="delivery-option">
               <div class="delivery-option-header">
-                <span class="delivery-label">{{ section.settings.delivery_option_1_label }}</span>
+                <span class="delivery-label">{{ delivery_option_1_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_1_price }}
+                  <span class="approx-text">{{ approx_text }}</span> {{ section.settings.delivery_option_1_price }}
                 </span>
               </div>
-              {%- if section.settings.delivery_option_1_description != blank -%}
-                <p class="delivery-description">{{ section.settings.delivery_option_1_description }}</p>
+              {%- if delivery_option_1_description != blank -%}
+                <p class="delivery-description">{{ delivery_option_1_description }}</p>
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -108,9 +367,9 @@
           {%- if section.settings.show_delivery_option_2 -%}
             <div class="delivery-option">
               <div class="delivery-option-header">
-                <span class="delivery-label">{{ section.settings.delivery_option_2_label }}</span>
+                <span class="delivery-label">{{ delivery_option_2_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_2_price }}
+                  <span class="approx-text">{{ approx_text }}</span> {{ section.settings.delivery_option_2_price }}
                 </span>
               </div>
               {%- if section.settings.delivery_option_2_description != blank -%}
@@ -124,7 +383,7 @@
               <div class="delivery-option-header">
                 <span class="delivery-label">{{ section.settings.delivery_option_3_label }}</span>
                 <span class="delivery-price">
-                  <span class="approx-text">{{ 'sections.delivery_info.approx_text' | t }}</span> {{ section.settings.delivery_option_3_price }}
+                  <span class="approx-text">{{ approx_text }}</span> {{ section.settings.delivery_option_3_price }}
                 </span>
               </div>
               {%- if section.settings.delivery_option_3_description != blank -%}
@@ -141,29 +400,29 @@
         <span class="column-icon">
           {%- render 'icon-wrench' -%}
         </span>
-        <h3 class="column-title">{%- if section.settings.installation_title != blank -%}{{ section.settings.installation_title }}{%- else -%}{{ 'sections.delivery_info.installation_title' | t }}{%- endif -%}</h3>
+        <h3 class="column-title">{{ installation_title }}</h3>
       </div>
 
       <div class="pricing-options" data-pricing-type="installation">
         {%- if section.settings.enable_dynamic_pricing -%}
           {%- comment -%} Placeholder for dynamic pricing - JavaScript will populate {%- endcomment -%}
-          <div class="pricing-loading">{{ 'sections.delivery_info.loading_prices' | t }}</div>
+          <div class="pricing-loading">{{ loading_prices_text }}</div>
         {%- else -%}
           {%- comment -%} Fallback to static prices from settings {%- endcomment -%}
           {%- if section.settings.show_installation_option_1 -%}
             <div class="pricing-row">
-              <span class="pricing-label">{{ section.settings.installation_option_1_label }}</span>
+              <span class="pricing-label">{{ installation_option_1_label }}</span>
               <span class="pricing-value">
-                <span class="approx-text">Approx.</span> {{ section.settings.installation_option_1_price }}
+                <span class="approx-text">{{ approx_text }}</span> {{ section.settings.installation_option_1_price }}
               </span>
             </div>
           {%- endif -%}
 
           {%- if section.settings.show_installation_option_2 -%}
             <div class="pricing-row">
-              <span class="pricing-label">{{ section.settings.installation_option_2_label }}</span>
+              <span class="pricing-label">{{ installation_option_2_label }}</span>
               <span class="pricing-value">
-                <span class="approx-text">Approx.</span> {{ section.settings.installation_option_2_price }}
+                <span class="approx-text">{{ approx_text }}</span> {{ section.settings.installation_option_2_price }}
               </span>
             </div>
           {%- endif -%}
@@ -172,23 +431,17 @@
 
       <div class="installation-bottom-section">
         <div class="disclaimer-link-wrapper">
-          {%- if section.settings.installation_disclaimer != blank -%}
+          {%- if installation_disclaimer != blank -%}
             <p class="disclaimer-text">
-              {% if section.settings.installation_disclaimer contains 'non-binding indications' %}
-                {%- assign parts = section.settings.installation_disclaimer | split: 'non-binding indications' -%}
-                {{ parts[0] -}}
-                <strong>non-binding indications</strong>{{ parts[1] }}
-              {% else %}
-                {{ section.settings.installation_disclaimer }}
-              {% endif %}
+              {{ installation_disclaimer }}
             </p>
           {%- endif -%}
 
-          {%- if section.settings.installation_link_text != blank
+          {%- if installation_link_text != blank
             and section.settings.installation_link_url != blank
           -%}
             <a href="{{ section.settings.installation_link_url }}" class="info-link">
-              {{ section.settings.installation_link_text }}
+              {{ installation_link_text }}
             </a>
           {%- endif -%}
         </div>
@@ -196,14 +449,14 @@
         {%- if section.settings.show_transport_button -%}
           <div class="transport-button-wrapper">
             <p class="button-helper-text">
-              {%- if section.settings.transport_button_helper != blank -%}{{ section.settings.transport_button_helper }}{%- else -%}{{ 'sections.delivery_info.transport_button_helper' | t }}{%- endif -%}
+              {{ transport_button_helper }}
             </p>
             <button
               type="button"
               class="transport-button button button--primary"
               onclick="document.getElementById('TransportModal').showDialog()"
             >
-              {%- if section.settings.transport_button_text != blank -%}{{ section.settings.transport_button_text }}{%- else -%}{{ 'sections.delivery_info.transport_button_text' | t }}{%- endif -%}
+              {{ transport_button_text }}
             </button>
           </div>
         {%- endif -%}

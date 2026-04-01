@@ -1,20 +1,218 @@
 {% liquid
     assign current_product = product
     assign addon_products = current_product.metafields.custom.addon_products.value
+    assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+    assign locale_section_title = 'Accessories'
+    assign locale_section_description = 'Enhance your security with these recommended add-ons'
+    assign locale_cart_title = 'Your Selection'
+    assign locale_main_product_label = 'Main Product'
+    assign locale_addons_label = 'Add-ons'
+    assign locale_total_label = 'Total'
+    assign locale_main_add_button = 'Add to Cart'
+    assign locale_checkout_button = 'Checkout'
+    assign locale_clear_button = 'Clear Add-ons'
+    assign locale_loading_text = 'Adding to cart...'
+    assign locale_empty_text = 'No add-on products available.'
+    assign locale_remove_button_text = 'Remove'
+
+    case locale_code
+      when 'da'
+        assign locale_section_title = 'Tilkøb'
+        assign locale_section_description = 'Gør sikkerheden bedre med dette anbefalede tilbehør'
+        assign locale_cart_title = 'Dit valg'
+        assign locale_main_product_label = 'Hovedprodukt'
+        assign locale_addons_label = 'Tilkøb'
+        assign locale_total_label = 'Total'
+        assign locale_main_add_button = 'Læg i kurv'
+        assign locale_checkout_button = 'Gå til kassen'
+        assign locale_clear_button = 'Fjern tilkøb'
+        assign locale_loading_text = 'Lægger i kurv...'
+        assign locale_empty_text = 'Ingen tilkøbsprodukter tilgængelige.'
+        assign locale_remove_button_text = 'Fjern'
+      when 'de'
+        assign locale_section_title = 'Zubehör'
+        assign locale_section_description = 'Erweitern Sie Ihre Sicherheit mit diesen empfohlenen Zubehörprodukten'
+        assign locale_cart_title = 'Ihre Auswahl'
+        assign locale_main_product_label = 'Hauptprodukt'
+        assign locale_addons_label = 'Zubehör'
+        assign locale_total_label = 'Gesamt'
+        assign locale_main_add_button = 'In den Warenkorb'
+        assign locale_checkout_button = 'Zur Kasse'
+        assign locale_clear_button = 'Zubehör entfernen'
+        assign locale_loading_text = 'Wird in den Warenkorb gelegt...'
+        assign locale_empty_text = 'Keine Zubehörprodukte verfügbar.'
+        assign locale_remove_button_text = 'Entfernen'
+      when 'es'
+        assign locale_section_title = 'Accesorios'
+        assign locale_section_description = 'Mejora tu seguridad con estos complementos recomendados'
+        assign locale_cart_title = 'Tu selección'
+        assign locale_main_product_label = 'Producto principal'
+        assign locale_addons_label = 'Complementos'
+        assign locale_total_label = 'Total'
+        assign locale_main_add_button = 'Añadir al carrito'
+        assign locale_checkout_button = 'Ir a la caja'
+        assign locale_clear_button = 'Eliminar complementos'
+        assign locale_loading_text = 'Añadiendo al carrito...'
+        assign locale_empty_text = 'No hay productos adicionales disponibles.'
+        assign locale_remove_button_text = 'Eliminar'
+      when 'fi'
+        assign locale_section_title = 'Lisävarusteet'
+        assign locale_section_description = 'Paranna turvallisuutta näillä suositelluilla lisävarusteilla'
+        assign locale_cart_title = 'Valintasi'
+        assign locale_main_product_label = 'Päätuote'
+        assign locale_addons_label = 'Lisävarusteet'
+        assign locale_total_label = 'Yhteensä'
+        assign locale_main_add_button = 'Lisää ostoskoriin'
+        assign locale_checkout_button = 'Kassalle'
+        assign locale_clear_button = 'Poista lisävarusteet'
+        assign locale_loading_text = 'Lisätään ostoskoriin...'
+        assign locale_empty_text = 'Lisävarustetuotteita ei ole saatavilla.'
+        assign locale_remove_button_text = 'Poista'
+      when 'fr'
+        assign locale_section_title = 'Accessoires'
+        assign locale_section_description = 'Améliorez votre sécurité avec ces accessoires recommandés'
+        assign locale_cart_title = 'Votre sélection'
+        assign locale_main_product_label = 'Produit principal'
+        assign locale_addons_label = 'Accessoires'
+        assign locale_total_label = 'Total'
+        assign locale_main_add_button = 'Ajouter au panier'
+        assign locale_checkout_button = 'Passer à la caisse'
+        assign locale_clear_button = 'Supprimer les accessoires'
+        assign locale_loading_text = 'Ajout au panier...'
+        assign locale_empty_text = 'Aucun produit complémentaire disponible.'
+        assign locale_remove_button_text = 'Supprimer'
+      when 'it'
+        assign locale_section_title = 'Accessori'
+        assign locale_section_description = 'Migliora la tua sicurezza con questi accessori consigliati'
+        assign locale_cart_title = 'La tua selezione'
+        assign locale_main_product_label = 'Prodotto principale'
+        assign locale_addons_label = 'Accessori'
+        assign locale_total_label = 'Totale'
+        assign locale_main_add_button = 'Aggiungi al carrello'
+        assign locale_checkout_button = 'Vai alla cassa'
+        assign locale_clear_button = 'Rimuovi accessori'
+        assign locale_loading_text = 'Aggiunta al carrello...'
+        assign locale_empty_text = 'Nessun prodotto aggiuntivo disponibile.'
+        assign locale_remove_button_text = 'Rimuovi'
+      when 'nb'
+        assign locale_section_title = 'Tilbehør'
+        assign locale_section_description = 'Gjør sikkerheten bedre med dette anbefalte tilbehøret'
+        assign locale_cart_title = 'Ditt valg'
+        assign locale_main_product_label = 'Hovedprodukt'
+        assign locale_addons_label = 'Tilbehør'
+        assign locale_total_label = 'Total'
+        assign locale_main_add_button = 'Legg i handlekurv'
+        assign locale_checkout_button = 'Til kassen'
+        assign locale_clear_button = 'Fjern tilbehør'
+        assign locale_loading_text = 'Legger i handlekurv...'
+        assign locale_empty_text = 'Ingen tilleggsprodukter er tilgjengelige.'
+        assign locale_remove_button_text = 'Fjern'
+      when 'nl'
+        assign locale_section_title = 'Accessoires'
+        assign locale_section_description = 'Verbeter uw veiligheid met deze aanbevolen accessoires'
+        assign locale_cart_title = 'Uw selectie'
+        assign locale_main_product_label = 'Hoofdproduct'
+        assign locale_addons_label = 'Accessoires'
+        assign locale_total_label = 'Totaal'
+        assign locale_main_add_button = 'In winkelwagen'
+        assign locale_checkout_button = 'Afrekenen'
+        assign locale_clear_button = 'Accessoires verwijderen'
+        assign locale_loading_text = 'Toevoegen aan winkelwagen...'
+        assign locale_empty_text = 'Geen accessoireproducten beschikbaar.'
+        assign locale_remove_button_text = 'Verwijderen'
+      when 'pt-PT'
+        assign locale_section_title = 'Acessórios'
+        assign locale_section_description = 'Melhore a sua segurança com estes acessórios recomendados'
+        assign locale_cart_title = 'A sua seleção'
+        assign locale_main_product_label = 'Produto principal'
+        assign locale_addons_label = 'Acessórios'
+        assign locale_total_label = 'Total'
+        assign locale_main_add_button = 'Adicionar ao carrinho'
+        assign locale_checkout_button = 'Finalizar compra'
+        assign locale_clear_button = 'Remover acessórios'
+        assign locale_loading_text = 'A adicionar ao carrinho...'
+        assign locale_empty_text = 'Não há produtos adicionais disponíveis.'
+        assign locale_remove_button_text = 'Remover'
+      when 'sv'
+        assign locale_section_title = 'Tillbehör'
+        assign locale_section_description = 'Förbättra din säkerhet med dessa rekommenderade tillbehör'
+        assign locale_cart_title = 'Ditt val'
+        assign locale_main_product_label = 'Huvudprodukt'
+        assign locale_addons_label = 'Tillbehör'
+        assign locale_total_label = 'Totalt'
+        assign locale_main_add_button = 'Lägg i varukorgen'
+        assign locale_checkout_button = 'Till kassan'
+        assign locale_clear_button = 'Ta bort tillbehör'
+        assign locale_loading_text = 'Lägger i varukorgen...'
+        assign locale_empty_text = 'Inga tillbehörsprodukter finns tillgängliga.'
+        assign locale_remove_button_text = 'Ta bort'
+    endcase
+
+    assign section_title = section.settings.section_title
+    if section_title == blank or section_title == 'Accessories' or section_title == 'Complete Your Setup'
+      assign section_title = locale_section_title
+    endif
+
+    assign section_description = section.settings.section_description
+    if section_description == blank or section_description == 'Enhance your security with these recommended add-ons'
+      assign section_description = locale_section_description
+    endif
+
+    assign cart_title = section.settings.cart_title
+    if cart_title == blank or cart_title == 'Your Selection'
+      assign cart_title = locale_cart_title
+    endif
+
+    assign main_product_label = section.settings.main_product_label
+    if main_product_label == blank or main_product_label == 'Main Product'
+      assign main_product_label = locale_main_product_label
+    endif
+
+    assign total_label = section.settings.total_label
+    if total_label == blank or total_label == 'Total'
+      assign total_label = locale_total_label
+    endif
+
+    assign main_add_button = section.settings.main_add_button
+    if main_add_button == blank or main_add_button == 'Add to cart' or main_add_button == 'Add to Cart'
+      assign main_add_button = locale_main_add_button
+    endif
+
+    assign checkout_button = section.settings.checkout_button
+    if checkout_button == blank or checkout_button == 'Checkout' or checkout_button == 'Go to Checkout'
+      assign checkout_button = locale_checkout_button
+    endif
+
+    assign clear_button = section.settings.clear_button
+    if clear_button == blank or clear_button == 'Clear Add-ons' or clear_button == 'Remove Accessories'
+      assign clear_button = locale_clear_button
+    endif
+
+    assign loading_text = section.settings.loading_text
+    if loading_text == blank or loading_text contains 'Adding to'
+      assign loading_text = locale_loading_text
+    endif
+
+    assign empty_text = section.settings.empty_text
+    if empty_text == blank or empty_text == 'No add-on products available.' or empty_text contains 'addon_products'
+      assign empty_text = locale_empty_text
+    endif
+
+    assign remove_button_text = locale_remove_button_text
   %}
 
   {% if addon_products != blank %}
 
   {{ 'product-addons.css' | asset_url | stylesheet_tag }}
 
-  <section class="product-addons-section" data-section-id="{{ section.id }}" data-product-id="{{ current_product.id }}" data-product-handle="{{ current_product.handle }}" data-selected-variant-id="{{ current_product.selected_or_first_available_variant.id }}" data-selected-variant-price="{{ current_product.selected_or_first_available_variant.price }}" data-money-format="{{ shop.money_format | strip_html | escape }}" data-shop-currency="{{ shop.currency }}">
+  <section class="product-addons-section" data-section-id="{{ section.id }}" data-product-id="{{ current_product.id }}" data-product-handle="{{ current_product.handle }}" data-selected-variant-id="{{ current_product.selected_or_first_available_variant.id }}" data-selected-variant-price="{{ current_product.selected_or_first_available_variant.price }}" data-money-format="{{ shop.money_format | strip_html | escape }}" data-shop-currency="{{ shop.currency }}" data-remove-button-text="{{ remove_button_text | escape }}">
     <div class="container">
 
-      {% if section.settings.section_title != blank %}
+      {% if section_title != blank %}
         <div class="addons-header">
-          <h2 class="section-title">{{ section.settings.section_title }}</h2>
-          {% if section.settings.section_description != blank %}
-            <div class="addons-description">{{ section.settings.section_description }}</div>
+          <h2 class="section-title">{{ section_title }}</h2>
+          {% if section_description != blank %}
+            <div class="addons-description">{{ section_description }}</div>
           {% endif %}
         </div>
       {% endif %}
@@ -101,7 +299,7 @@
               {% endfor %}
             {% else %}
               <div class="addons-empty">
-                <p>{%- if section.settings.empty_text != blank -%}{{ section.settings.empty_text }}{%- else -%}{{ 'sections.product_addons.empty_text' | t }}{%- endif -%}</p>
+                <p>{{ empty_text }}</p>
               </div>
             {% endif %}
           </div>
@@ -110,11 +308,11 @@
         <div class="sticky-cart-sidebar">
           <div class="sticky-cart" id="sticky-cart">
             <div class="cart-header">
-              <h3 class="cart-title">{%- if section.settings.cart_title != blank -%}{{ section.settings.cart_title }}{%- else -%}{{ 'sections.product_addons.cart_title' | t }}{%- endif -%}</h3>
+              <h3 class="cart-title">{{ cart_title }}</h3>
             </div>
 
             <div class="cart-content">
-              <div class="cart-section-title">{%- if section.settings.main_product_label != blank -%}{{ section.settings.main_product_label }}{%- else -%}{{ 'sections.product_addons.main_product_label' | t }}{%- endif -%}</div>
+              <div class="cart-section-title">{{ main_product_label }}</div>
               <div class="cart-main-product">
                 <div class="cart-product-image">
                   {% if current_product.featured_image %}
@@ -135,13 +333,13 @@
                 </div>
               </div>
 
-              <div class="cart-section-title">{{ 'sections.product_addons.addons_label' | t }}</div>
+              <div class="cart-section-title">{{ locale_addons_label }}</div>
               <div class="cart-addons-list" id="cart-addons-list">
               </div>
 
               <div class="cart-summary">
                 <div class="summary-line total-line">
-                  <span class="summary-label">{%- if section.settings.total_label != blank -%}{{ section.settings.total_label }}{%- else -%}{{ 'sections.product_addons.total_label' | t }}{%- endif -%}:</span>
+                  <span class="summary-label">{{ total_label }}:</span>
                   <span class="summary-value" id="cart-total"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ current_product.selected_or_first_available_variant.price | money }}</span></span>
                 </div>
               </div>
@@ -158,22 +356,22 @@
                         id="main-add-to-cart"
                         data-variant-id="{{ current_product.selected_or_first_available_variant.id }}"
                         data-product-id="{{ current_product.id }}">
-                  <span class="btn-text-add">{%- if section.settings.main_add_button != blank -%}{{ section.settings.main_add_button }}{%- else -%}{{ 'sections.product_addons.add_to_cart_button' | t }}{%- endif -%}</span>
-                  <span class="btn-text-checkout" style="display: none;">{%- if section.settings.checkout_button != blank -%}{{ section.settings.checkout_button }}{%- else -%}{{ 'sections.product_addons.checkout_button' | t }}{%- endif -%}</span>
+                  <span class="btn-text-add">{{ main_add_button }}</span>
+                  <span class="btn-text-checkout" style="display: none;">{{ checkout_button }}</span>
                 </button>
 
                 <button type="button"
                         class="cart-clear-btn"
                         id="clear-addons"
                         style="display: none;">
-                  {%- if section.settings.clear_button != blank -%}{{ section.settings.clear_button }}{%- else -%}{{ 'sections.product_addons.clear_button' | t }}{%- endif -%}
+                  {{ clear_button }}
                 </button>
               </div>
             </div>
 
             <div class="cart-loading" id="cart-loading" style="display: none;">
               <div class="loading-spinner"></div>
-              <span>{%- if section.settings.loading_text != blank -%}{{ section.settings.loading_text }}{%- else -%}{{ 'sections.product_addons.loading_text' | t }}{%- endif -%}</span>
+              <span>{{ loading_text }}</span>
             </div>
           </div>
         </div>

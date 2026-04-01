@@ -386,6 +386,247 @@
   }
 {% endstylesheet %}
 
+{% liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign locale_section_title = 'Size Chart'
+  assign locale_header_model = 'Model'
+  assign locale_header_external = 'External'
+  assign locale_header_internal = 'Internal'
+  assign locale_header_weight = 'Weight'
+  assign locale_header_price = 'Price'
+  assign locale_dimensions_unit = 'Height x Width x Depth'
+  assign locale_weight_unit = 'kg'
+  assign locale_price_prefix = 'From'
+  assign locale_placeholder_title = 'Size Chart Preview'
+  assign locale_placeholder_description = 'This section will display a size comparison table when:'
+  assign locale_placeholder_requirement_1 = 'The product has related products in the "list_product" metafield'
+  assign locale_placeholder_requirement_2 = 'The product dimensions are configured via metafields'
+  assign locale_placeholder_hint = 'Configure product metafields to see the actual size chart'
+
+  case locale_code
+    when 'da'
+      assign locale_section_title = 'Størrelsestabel'
+      assign locale_header_model = 'Model'
+      assign locale_header_external = 'Udvendig'
+      assign locale_header_internal = 'Indvendig'
+      assign locale_header_weight = 'Vægt'
+      assign locale_header_price = 'Pris'
+      assign locale_dimensions_unit = 'Højde x Bredde x Dybde'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Fra'
+      assign locale_placeholder_title = 'Forhåndsvisning af størrelsestabel'
+      assign locale_placeholder_description = 'Denne sektion viser en sammenligningstabel for størrelser, når:'
+      assign locale_placeholder_requirement_1 = 'Produktet har relaterede produkter i metafeltet "list_product"'
+      assign locale_placeholder_requirement_2 = 'Produktets mål er konfigureret via metafelter'
+      assign locale_placeholder_hint = 'Konfigurer produktets metafelter for at se den egentlige størrelsestabel'
+    when 'de'
+      assign locale_section_title = 'Größentabelle'
+      assign locale_header_model = 'Modell'
+      assign locale_header_external = 'Außen'
+      assign locale_header_internal = 'Innen'
+      assign locale_header_weight = 'Gewicht'
+      assign locale_header_price = 'Preis'
+      assign locale_dimensions_unit = 'Höhe x Breite x Tiefe'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Ab'
+      assign locale_placeholder_title = 'Vorschau der Größentabelle'
+      assign locale_placeholder_description = 'Dieser Abschnitt zeigt eine Größenvergleichstabelle an, wenn:'
+      assign locale_placeholder_requirement_1 = 'Das Produkt verwandte Produkte im Metafeld "list_product" hat'
+      assign locale_placeholder_requirement_2 = 'Die Produktabmessungen über Metafelder konfiguriert sind'
+      assign locale_placeholder_hint = 'Konfigurieren Sie die Produkt-Metafelder, um die eigentliche Größentabelle zu sehen'
+    when 'es'
+      assign locale_section_title = 'Tabla de tallas'
+      assign locale_header_model = 'Modelo'
+      assign locale_header_external = 'Exterior'
+      assign locale_header_internal = 'Interior'
+      assign locale_header_weight = 'Peso'
+      assign locale_header_price = 'Precio'
+      assign locale_dimensions_unit = 'Altura x Anchura x Profundidad'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Desde'
+      assign locale_placeholder_title = 'Vista previa de la tabla de tallas'
+      assign locale_placeholder_description = 'Esta sección mostrará una tabla comparativa de tamaños cuando:'
+      assign locale_placeholder_requirement_1 = 'El producto tenga productos relacionados en el metacampo "list_product"'
+      assign locale_placeholder_requirement_2 = 'Las dimensiones del producto estén configuradas mediante metacampos'
+      assign locale_placeholder_hint = 'Configure los metacampos del producto para ver la tabla de tallas real'
+    when 'fi'
+      assign locale_section_title = 'Kokotaulukko'
+      assign locale_header_model = 'Malli'
+      assign locale_header_external = 'Ulkoinen'
+      assign locale_header_internal = 'Sisäinen'
+      assign locale_header_weight = 'Paino'
+      assign locale_header_price = 'Hinta'
+      assign locale_dimensions_unit = 'Korkeus x Leveys x Syvyys'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Alkaen'
+      assign locale_placeholder_title = 'Kokotaulukon esikatselu'
+      assign locale_placeholder_description = 'Tämä osio näyttää kokojen vertailutaulukon, kun:'
+      assign locale_placeholder_requirement_1 = 'Tuotteella on siihen liittyviä tuotteita metafieldissä "list_product"'
+      assign locale_placeholder_requirement_2 = 'Tuotteen mitat on määritetty metafieldeillä'
+      assign locale_placeholder_hint = 'Määritä tuotteen metafieldit nähdäksesi varsinaisen kokotaulukon'
+    when 'fr'
+      assign locale_section_title = 'Tableau des tailles'
+      assign locale_header_model = 'Modèle'
+      assign locale_header_external = 'Extérieur'
+      assign locale_header_internal = 'Intérieur'
+      assign locale_header_weight = 'Poids'
+      assign locale_header_price = 'Prix'
+      assign locale_dimensions_unit = 'Hauteur x Largeur x Profondeur'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'À partir de'
+      assign locale_placeholder_title = 'Aperçu du tableau des tailles'
+      assign locale_placeholder_description = 'Cette section affichera un tableau comparatif des tailles lorsque :'
+      assign locale_placeholder_requirement_1 = 'Le produit a des produits associés dans le métachamp "list_product"'
+      assign locale_placeholder_requirement_2 = 'Les dimensions du produit sont configurées via des métachamps'
+      assign locale_placeholder_hint = 'Configurez les métachamps du produit pour voir le tableau des tailles réel'
+    when 'it'
+      assign locale_section_title = 'Tabella taglie'
+      assign locale_header_model = 'Modello'
+      assign locale_header_external = 'Esterno'
+      assign locale_header_internal = 'Interno'
+      assign locale_header_weight = 'Peso'
+      assign locale_header_price = 'Prezzo'
+      assign locale_dimensions_unit = 'Altezza x Larghezza x Profondità'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Da'
+      assign locale_placeholder_title = 'Anteprima tabella taglie'
+      assign locale_placeholder_description = 'Questa sezione mostrerà una tabella comparativa delle dimensioni quando:'
+      assign locale_placeholder_requirement_1 = 'Il prodotto ha prodotti correlati nel metafield "list_product"'
+      assign locale_placeholder_requirement_2 = 'Le dimensioni del prodotto sono configurate tramite metafield'
+      assign locale_placeholder_hint = 'Configura i metafield del prodotto per vedere la tabella taglie reale'
+    when 'nb'
+      assign locale_section_title = 'Størrelsestabell'
+      assign locale_header_model = 'Modell'
+      assign locale_header_external = 'Utvendig'
+      assign locale_header_internal = 'Innvendig'
+      assign locale_header_weight = 'Vekt'
+      assign locale_header_price = 'Pris'
+      assign locale_dimensions_unit = 'Høyde x Bredde x Dybde'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Fra'
+      assign locale_placeholder_title = 'Forhåndsvisning av størrelsestabell'
+      assign locale_placeholder_description = 'Denne delen viser en størrelsessammenligningstabell når:'
+      assign locale_placeholder_requirement_1 = 'Produktet har relaterte produkter i metafeltet "list_product"'
+      assign locale_placeholder_requirement_2 = 'Produktmål er konfigurert via metafelt'
+      assign locale_placeholder_hint = 'Konfigurer produktmetafeltene for å se den faktiske størrelsestabellen'
+    when 'nl'
+      assign locale_section_title = 'Maattabel'
+      assign locale_header_model = 'Model'
+      assign locale_header_external = 'Buiten'
+      assign locale_header_internal = 'Binnen'
+      assign locale_header_weight = 'Gewicht'
+      assign locale_header_price = 'Prijs'
+      assign locale_dimensions_unit = 'Hoogte x Breedte x Diepte'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Vanaf'
+      assign locale_placeholder_title = 'Voorbeeld van maattabel'
+      assign locale_placeholder_description = 'Deze sectie toont een vergelijkingstabel voor maten wanneer:'
+      assign locale_placeholder_requirement_1 = 'Het product gerelateerde producten heeft in het metafield "list_product"'
+      assign locale_placeholder_requirement_2 = 'De productafmetingen zijn ingesteld via metafields'
+      assign locale_placeholder_hint = 'Configureer de metafields van het product om de echte maattabel te zien'
+    when 'pt-PT'
+      assign locale_section_title = 'Tabela de tamanhos'
+      assign locale_header_model = 'Modelo'
+      assign locale_header_external = 'Exterior'
+      assign locale_header_internal = 'Interior'
+      assign locale_header_weight = 'Peso'
+      assign locale_header_price = 'Preço'
+      assign locale_dimensions_unit = 'Altura x Largura x Profundidade'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'A partir de'
+      assign locale_placeholder_title = 'Pré-visualização da tabela de tamanhos'
+      assign locale_placeholder_description = 'Esta secção mostrará uma tabela comparativa de tamanhos quando:'
+      assign locale_placeholder_requirement_1 = 'O produto tiver produtos relacionados no metafield "list_product"'
+      assign locale_placeholder_requirement_2 = 'As dimensões do produto estiverem configuradas através de metafields'
+      assign locale_placeholder_hint = 'Configure os metafields do produto para ver a tabela de tamanhos real'
+    when 'sv'
+      assign locale_section_title = 'Storlekstabell'
+      assign locale_header_model = 'Modell'
+      assign locale_header_external = 'Yttre'
+      assign locale_header_internal = 'Inre'
+      assign locale_header_weight = 'Vikt'
+      assign locale_header_price = 'Pris'
+      assign locale_dimensions_unit = 'Höjd x Bredd x Djup'
+      assign locale_weight_unit = 'kg'
+      assign locale_price_prefix = 'Från'
+      assign locale_placeholder_title = 'Förhandsvisning av storlekstabell'
+      assign locale_placeholder_description = 'Det här avsnittet visar en jämförande storlekstabell när:'
+      assign locale_placeholder_requirement_1 = 'Produkten har relaterade produkter i metafältet "list_product"'
+      assign locale_placeholder_requirement_2 = 'Produktens mått är konfigurerade via metafält'
+      assign locale_placeholder_hint = 'Konfigurera produktens metafält för att se den riktiga storlekstabellen'
+  endcase
+
+  assign section_title = section.settings.section_title
+  if section_title == blank or section_title == 'Size Chart'
+    assign section_title = locale_section_title
+  endif
+
+  assign header_model = section.settings.header_model
+  if header_model == blank or header_model == 'Model'
+    assign header_model = locale_header_model
+  endif
+
+  assign header_external = section.settings.header_external
+  if header_external == blank or header_external == 'External'
+    assign header_external = locale_header_external
+  endif
+
+  assign header_internal = section.settings.header_internal
+  if header_internal == blank or header_internal == 'Internal'
+    assign header_internal = locale_header_internal
+  endif
+
+  assign header_weight = section.settings.header_weight
+  if header_weight == blank or header_weight == 'Weight'
+    assign header_weight = locale_header_weight
+  endif
+
+  assign header_price = section.settings.header_price
+  if header_price == blank or header_price == 'Price'
+    assign header_price = locale_header_price
+  endif
+
+  assign dimensions_unit = section.settings.dimensions_unit
+  if dimensions_unit == blank or dimensions_unit == 'Height x Width x Depth'
+    assign dimensions_unit = locale_dimensions_unit
+  endif
+
+  assign weight_unit = section.settings.weight_unit
+  if weight_unit == blank or weight_unit == 'kg'
+    assign weight_unit = locale_weight_unit
+  endif
+
+  assign price_prefix = section.settings.price_prefix
+  if price_prefix == blank or price_prefix == 'From'
+    assign price_prefix = locale_price_prefix
+  endif
+
+  assign placeholder_title = section.settings.placeholder_title
+  if placeholder_title == blank or placeholder_title == 'Size Chart Preview'
+    assign placeholder_title = locale_placeholder_title
+  endif
+
+  assign placeholder_description = section.settings.placeholder_description
+  if placeholder_description == blank or placeholder_description == 'This section will display a size comparison table when:'
+    assign placeholder_description = locale_placeholder_description
+  endif
+
+  assign placeholder_requirement_1 = section.settings.placeholder_requirement_1
+  if placeholder_requirement_1 == blank or placeholder_requirement_1 contains 'list_product'
+    assign placeholder_requirement_1 = locale_placeholder_requirement_1
+  endif
+
+  assign placeholder_requirement_2 = section.settings.placeholder_requirement_2
+  if placeholder_requirement_2 == blank or placeholder_requirement_2 contains 'metafields'
+    assign placeholder_requirement_2 = locale_placeholder_requirement_2
+  endif
+
+  assign placeholder_hint = section.settings.placeholder_hint
+  if placeholder_hint == blank or placeholder_hint == 'Configure product metafields to see the actual size chart'
+    assign placeholder_hint = locale_placeholder_hint
+  endif
+%}
+
 {% if product.metafields.custom.list_product != blank or request.design_mode %}
   <div class="section-background color-{{ section.settings.color_scheme }}"></div>
   <div
@@ -393,7 +634,7 @@
     style="{% render 'spacing-style', settings: section.settings %}"
   >
     <div class="page-width">
-      <h3 class="section-title">{{ section.settings.section_title }}</h3>
+      <h3 class="section-title">{{ section_title }}</h3>
       <div id="custom-product-{{ section.id }}" class="custom-size_chart">
         <div class="custom-product-wrap">
           <div class="custom-product-container">
@@ -402,19 +643,19 @@
                 <table>
                   <thead>
                     <tr>
-                      <th class="cust_model">{{ section.settings.header_model }}</th>
+                      <th class="cust_model">{{ header_model }}</th>
                       <th class="cust_hkd">
-                        {{ section.settings.header_external -}}
+                        {{ header_external -}}
                         <br>
-                        <span class="dimension-unit">({{ section.settings.dimensions_unit }})</span>
+                        <span class="dimension-unit">({{ dimensions_unit }})</span>
                       </th>
                       <th class="cust_hkd">
-                        {{ section.settings.header_internal -}}
+                        {{ header_internal -}}
                         <br>
-                        <span class="dimension-unit">({{ section.settings.dimensions_unit }})</span>
+                        <span class="dimension-unit">({{ dimensions_unit }})</span>
                       </th>
-                      <th class="cust_ve">{{ section.settings.header_weight }}</th>
-                      <th class="cust_price">{{ section.settings.header_price }}</th>
+                      <th class="cust_ve">{{ header_weight }}</th>
+                      <th class="cust_price">{{ header_price }}</th>
                       <th class="cust_price"></th>
                     </tr>
                   </thead>
@@ -443,13 +684,13 @@
                             {% if forloop.first %}
                               <span>
                                 {{- variant.weight | divided_by: 1000 }}
-                                {{ section.settings.weight_unit -}}
+                                {{ weight_unit -}}
                               </span>
                             {% endif %}
                           {% endfor %}
                         </td>
                         <td class="cut_td">
-                          {{ section.settings.price_prefix }}
+                          {{ price_prefix }}
                           <span class="price"
                             ><span
                               class="ymq-b2b-price-hidden"
@@ -485,14 +726,14 @@
                 style="background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; padding: 40px; text-align: center;"
               >
                 <div style="color: #6c757d; font-size: 16px; line-height: 1.5;">
-                  <h4 style="color: #495057; margin: 0 0 16px 0;">{{ section.settings.placeholder_title }}</h4>
-                  <p style="margin: 0 0 8px 0;">{{ section.settings.placeholder_description }}</p>
+                  <h4 style="color: #495057; margin: 0 0 16px 0;">{{ placeholder_title }}</h4>
+                  <p style="margin: 0 0 8px 0;">{{ placeholder_description }}</p>
                   <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_1 }}</li>
-                    <li style="margin: 4px 0;">• {{ section.settings.placeholder_requirement_2 }}</li>
+                    <li style="margin: 4px 0;">• {{ placeholder_requirement_1 }}</li>
+                    <li style="margin: 4px 0;">• {{ placeholder_requirement_2 }}</li>
                   </ul>
                   <p style="margin: 16px 0 0 0; font-size: 14px; color: #868e96;">
-                    {{ section.settings.placeholder_hint }}
+                    {{ placeholder_hint }}
                   </p>
                 </div>
               </div>

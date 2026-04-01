@@ -10,6 +10,96 @@
   {% assign list_sep = list_sep | append: ' ' %}
 {% endif %}
 
+{% liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign locale_section_title = 'Product Information'
+  assign locale_accessibility_title = 'Product Metafields Information'
+  assign locale_group_product_information = 'Product Information'
+  assign locale_group_specifications = 'Specifications'
+  assign locale_group_dimensions = 'Dimensions'
+  assign locale_group_installation = 'Installation'
+
+  case locale_code
+    when 'da'
+      assign locale_section_title = 'Produktinformation'
+      assign locale_accessibility_title = 'Produktmetafeltinformation'
+      assign locale_group_product_information = 'Produktinformation'
+      assign locale_group_specifications = 'Specifikationer'
+      assign locale_group_dimensions = 'Mål'
+      assign locale_group_installation = 'Montering'
+    when 'de'
+      assign locale_section_title = 'Produktinformationen'
+      assign locale_accessibility_title = 'Produkt-Metafelinformationen'
+      assign locale_group_product_information = 'Produktinformationen'
+      assign locale_group_specifications = 'Spezifikationen'
+      assign locale_group_dimensions = 'Abmessungen'
+      assign locale_group_installation = 'Montage'
+    when 'es'
+      assign locale_section_title = 'Información del producto'
+      assign locale_accessibility_title = 'Información de metacampos del producto'
+      assign locale_group_product_information = 'Información del producto'
+      assign locale_group_specifications = 'Especificaciones'
+      assign locale_group_dimensions = 'Dimensiones'
+      assign locale_group_installation = 'Instalación'
+    when 'fi'
+      assign locale_section_title = 'Tuotetiedot'
+      assign locale_accessibility_title = 'Tuotteen metafietot'
+      assign locale_group_product_information = 'Tuotetiedot'
+      assign locale_group_specifications = 'Tekniset tiedot'
+      assign locale_group_dimensions = 'Mitat'
+      assign locale_group_installation = 'Asennus'
+    when 'fr'
+      assign locale_section_title = 'Informations sur le produit'
+      assign locale_accessibility_title = 'Informations sur les métachamps du produit'
+      assign locale_group_product_information = 'Informations sur le produit'
+      assign locale_group_specifications = 'Spécifications'
+      assign locale_group_dimensions = 'Dimensions'
+      assign locale_group_installation = 'Installation'
+    when 'it'
+      assign locale_section_title = 'Informazioni prodotto'
+      assign locale_accessibility_title = 'Informazioni metafield prodotto'
+      assign locale_group_product_information = 'Informazioni prodotto'
+      assign locale_group_specifications = 'Specifiche'
+      assign locale_group_dimensions = 'Dimensioni'
+      assign locale_group_installation = 'Installazione'
+    when 'nb'
+      assign locale_section_title = 'Produktinformasjon'
+      assign locale_accessibility_title = 'Produktmetafeltinformasjon'
+      assign locale_group_product_information = 'Produktinformasjon'
+      assign locale_group_specifications = 'Spesifikasjoner'
+      assign locale_group_dimensions = 'Mål'
+      assign locale_group_installation = 'Montering'
+    when 'nl'
+      assign locale_section_title = 'Productinformatie'
+      assign locale_accessibility_title = 'Productmetaveldinformatie'
+      assign locale_group_product_information = 'Productinformatie'
+      assign locale_group_specifications = 'Specificaties'
+      assign locale_group_dimensions = 'Afmetingen'
+      assign locale_group_installation = 'Installatie'
+    when 'pt-PT'
+      assign locale_section_title = 'Informação do produto'
+      assign locale_accessibility_title = 'Informação de metafields do produto'
+      assign locale_group_product_information = 'Informação do produto'
+      assign locale_group_specifications = 'Especificações'
+      assign locale_group_dimensions = 'Dimensões'
+      assign locale_group_installation = 'Instalação'
+    when 'sv'
+      assign locale_section_title = 'Produktinformation'
+      assign locale_accessibility_title = 'Produktens metafältinformation'
+      assign locale_group_product_information = 'Produktinformation'
+      assign locale_group_specifications = 'Specifikationer'
+      assign locale_group_dimensions = 'Mått'
+      assign locale_group_installation = 'Installation'
+  endcase
+
+  assign section_title = section.settings.section_title
+  if section_title == blank or section_title == 'Product Information'
+    assign section_title = locale_section_title
+  endif
+
+  assign accessibility_title = locale_accessibility_title
+%}
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <product-metafields-section
   class="
@@ -27,7 +117,7 @@
   aria-labelledby="metafields-heading-{{ section.id }}"
   {{ section.shopify_attributes }}
 >
-  <h2 id="metafields-heading-{{ section.id }}" class="sr-only">Product Metafields Information</h2>
+  <h2 id="metafields-heading-{{ section.id }}" class="sr-only">{{ accessibility_title }}</h2>
 
   <!-- Skeleton Loading State -->
   <div class="metafields__skeleton" data-skeleton aria-hidden="true">
@@ -47,9 +137,9 @@
   </div>
 
   <div class="metafields__wrapper">
-    {% if section.settings.section_title != blank %}
+    {% if section_title != blank %}
       <h3 class="section-title">
-        {{ section.settings.section_title }}
+        {{ section_title }}
       </h3>
     {% endif %}
 
@@ -83,6 +173,19 @@
 
       {% comment %} Render tables dynamically for each group {% endcomment %}
       {% for group_name in all_groups %}
+          {% liquid
+            assign group_label = group_name
+            case group_name
+              when 'Product Information'
+              assign group_label = locale_group_product_information
+              when 'Specifications'
+              assign group_label = locale_group_specifications
+              when 'Dimensions'
+              assign group_label = locale_group_dimensions
+              when 'Installation'
+              assign group_label = locale_group_installation
+            endcase
+          %}
 
         {% comment %} Check if this group has any non-empty metafields {% endcomment %}
         {% assign has_values = false %}
@@ -119,7 +222,7 @@
             <table class="metafields-table">
               <thead>
                 <tr>
-                  <th colspan="2" class="table-header">{{ group_name }}</th>
+                  <th colspan="2" class="table-header">{{ group_label }}</th>
                 </tr>
               </thead>
               <tbody>

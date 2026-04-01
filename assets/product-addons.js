@@ -1,5 +1,7 @@
 class ProductAddons {
     constructor() {
+      const section = document.querySelector('.product-addons-section');
+
       this.cart = {
         mainProduct: null,
         addons: new Map(),
@@ -35,6 +37,10 @@ class ProductAddons {
       this._requestQueue = [];
       this._isProcessing = false;
       this._debounceTimers = new Map();
+      this.strings = {
+        removeButtonText: section?.dataset.removeButtonText || 'Remove',
+        soldOutText: section?.dataset.soldOutText || 'Sold Out'
+      };
       
       this.throttledUpdateCart = this.throttle(this.updateCartDisplay.bind(this), 100);
       
@@ -818,7 +824,7 @@ async handleAddonCheckboxChange(checkbox) {
             <div class="cart-addon-price">${this.formatMoney(addon.price)}</div>
           </div>
           <button type="button" class="cart-addon-remove" data-variant-id="${addon.variantId}">
-            Remove
+            ${this.escapeHtml(this.strings.removeButtonText)}
           </button>
         </div>
       `).join('');

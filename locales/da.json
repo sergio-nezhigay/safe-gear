@@ -1592,7 +1592,7 @@
       }
     },
     "downloads": {
-      "title": "Downloads"
+      "title": "Downloadfiler"
     }
   },
   "shopify": {
@@ -4487,26 +4487,6 @@
       "submit_text": "Send besked",
       "privacy_text": "Privatlivspolitik",
       "powered_by": "Drevet af"
-    },
-    "delivery_info": {
-      "delivery_title": "Leveringstid",
-      "installation_title": "Installation",
-      "loading_prices": "Indlæser priser...",
-      "approx_text": "Ca.",
-      "transport_button_helper": "Få et installationstilbud",
-      "transport_button_text": "Transportformular",
-      "transport_modal_title": "Transport & Installationsestimate"
-    },
-    "product_addons": {
-      "empty_text": "Ingen tilkøbsprodukter tilgængelige.",
-      "cart_title": "Dit valg",
-      "main_product_label": "Hoved",
-      "addons_label": "Tilkøb",
-      "total_label": "Total",
-      "add_to_cart_button": "Læg i kurv",
-      "checkout_button": "Gå til kassen",
-      "clear_button": "Fjern tilkøb",
-      "loading_text": "Lægger i kurv..."
     },
     "collection_grid": {
       "more_collections_text": "Se alle kollektioner",

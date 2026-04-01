@@ -10,31 +10,54 @@
 
 {% liquid
   assign user_manuals = product.metafields.custom.user_manuals.value
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign downloads_label = 'Downloads'
+  assign user_manual_label = 'User manual'
+
+  case locale_code
+    when 'da'
+      assign downloads_label = 'Downloadfiler'
+      assign user_manual_label = 'Brugermanual'
+    when 'de'
+      assign downloads_label = 'Downloads'
+      assign user_manual_label = 'Benutzerhandbuch'
+    when 'es'
+      assign downloads_label = 'Descargas'
+      assign user_manual_label = 'Manual de usuario'
+    when 'fi'
+      assign downloads_label = 'Ladattavat tiedostot'
+      assign user_manual_label = 'Käyttöohje'
+    when 'fr'
+      assign downloads_label = 'Téléchargements'
+      assign user_manual_label = "Manuel d'utilisation"
+    when 'it'
+      assign downloads_label = 'File da scaricare'
+      assign user_manual_label = "Manuale d'uso"
+    when 'nb'
+      assign downloads_label = 'Nedlastinger'
+      assign user_manual_label = 'Brukermanual'
+    when 'nl'
+      assign downloads_label = 'Downloads'
+      assign user_manual_label = 'Gebruikershandleiding'
+    when 'pt-PT'
+      assign downloads_label = 'Transferências'
+      assign user_manual_label = 'Manual do utilizador'
+    when 'sv'
+      assign downloads_label = 'Nedladdningar'
+      assign user_manual_label = 'Bruksanvisning'
+  endcase
 %}
 
 {%- if user_manuals != blank -%}
-  {%- comment -%}
-    Compute a safe label: the t filter returns a "translation missing: ..." string
-    when the key is not defined, which is not blank — therefore the previous
-    use of `| t | default: 'Downloads'` didn't work. Detect that string and
-    fallback to 'Downloads'.
-  {%- endcomment -%}
-  {% assign downloads_label_raw = 'products.downloads.title' | t %}
-  {% if downloads_label_raw contains 'translation missing' %}
-    {% assign downloads_label = 'Downloads' %}
-  {% else %}
-    {% assign downloads_label = downloads_label_raw %}
-  {% endif %}
-
   <div class="product-downloads">
     <h3 class="product-downloads__heading">{{ downloads_label }}</h3>
     <ul class="product-downloads__list">
       {% for file in user_manuals %}
         <li class="product-downloads__item">
           <a href="{{ file.url }}" class="product-downloads__link" download target="_blank" rel="noopener noreferrer">
-            {% render 'icon-file', class: 'product-downloads__icon', size: 24, fill: '#E53E3E', stroke: 'currentColor', title: file.alt | default: 'User manual', aria_hidden: true %}
+            {% render 'icon-file', class: 'product-downloads__icon', size: 24, fill: '#E53E3E', stroke: 'currentColor', title: file.alt | default: user_manual_label, aria_hidden: true %}
             <span class="product-downloads__text">
-              {{ file.alt | default: 'User manual' }}
+              {{ file.alt | default: user_manual_label }}
             </span>
           </a>
         </li>
