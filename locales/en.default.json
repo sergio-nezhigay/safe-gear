@@ -1,4 +1,1248 @@
 {
+  "customer_accounts": {
+    "account_information": {
+      "add_button": "A dd b ut to n",
+      "loading_accessibility_message": "L oa di ng a cc es si bi li ty m es sa ge",
+      "people": {
+        "pagination": {
+          "load_more": "L oa d m or e",
+          "load_more_accessibility_label": "L oa d m or e a cc es si bi li ty l ab el",
+          "loading_accessibility_label": "L oa di ng a cc es si bi li ty l ab el"
+        }
+      },
+      "profile_card": {
+        "cancel": "C an ce l",
+        "last_name": "L as t n am e",
+        "no_name_provided_accessibility_label": "N o n am e p ro vi de d a cc es si bi li ty l ab el",
+        "cancel_accessibility_label": "Cancel profile editing",
+        "email_help_text": "Mail cannot be edited",
+        "phone_number_help_text": "Phone number cannot be edited",
+        "email": "Email address",
+        "errors": {
+          "name_too_long": "{{fieldName}} is too long (maximum 255 characters)",
+          "name_cannot_contain_url": "{{fieldName}} must not contain a web address",
+          "name_cannot_contain_html_tags": "{{fieldName}} must not contain HTML tags",
+          "email_cant_be_blank": "The email address must not be empty",
+          "invalid_email_format": "Enter a valid email address"
+        },
+        "editable_email_help_text": "This email address is used for login and order updates."
+      },
+      "verify_new_email_modal": {
+        "cancel_button": "C an ce l b ut to n",
+        "description": "D es cr ip ti on",
+        "email_resend_button": "E ma il r es en d b ut to n",
+        "one_time_password_label": "O ne t im e p as sw or d l ab el",
+        "title": "Confirm email address",
+        "email_resend_button_accessibility_label": "Resend confirmation code",
+        "verify_button": "Confirm",
+        "verify_button_accessibility_label": "Confirm one-time code",
+        "cancel_button_accessibility_label": "Cancel editing of email address",
+        "email_resend_button_success_toast_message": "The confirmation code has been sent",
+        "email_resend_button_error_banner_message": "The confirmation code could not be sent"
+      },
+      "loading_finished_accessibility_message": "The account information has been loaded",
+      "profile_update_confirmation_message": "The profile has been updated",
+      "email_update_success_modal": {
+        "title": "Confirm email address",
+        "description": "Email address was updated. Redirecting to login."
+      },
+      "email_update_confirmation_message": "The email address has been updated to {{email}}"
+    },
+    "active_inspector": {
+      "extension": {
+        "select": "S el ec t",
+        "unselect": "Deselect the extension named {{extensionName}}",
+        "move_down": "Move the extension to the next location",
+        "move_up": "Move the extension to the previous location",
+        "remove": "Remove the extension",
+        "move_down_tooltip": "Move to next location",
+        "move_up_tooltip": "Move to previous location"
+      }
+    },
+    "address_form": {
+      "attention_help_text": "A tt en ti on h el p t ex t",
+      "auto_complete_close_accessibility_label": "A ut o c om pl et e c lo se a cc es si bi li ty l ab el",
+      "billing_address": "B il li ng a dd re ss",
+      "cancel": "C an ce l",
+      "default_address": "D ef au lt a dd re ss",
+      "loading_add_form_accessibility_message": "L oa di ng a dd f or m a cc es si bi li ty m es sa ge",
+      "loading_form_accessibility_message": "L oa di ng f or m a cc es si bi li ty m es sa ge",
+      "section_title_accessibility_label": "S ec ti on t it le a cc es si bi li ty l ab el",
+      "auto_complete_title": "Recommendations",
+      "cancel_accessibility_label": "Cancel editing of the address {{address}}",
+      "creation_success_notification": "The address was added",
+      "default_address_creation_success_notification": "The standard address was added",
+      "default_address_update_success_notification": "The standard address was updated",
+      "loading_edit_form_accessibility_message": "Loading form for address change",
+      "loading_finished_accessibility_message": "The address form is loaded",
+      "save_accessibility_label": "Save the address {{address}}",
+      "update_success_notification": "The address was updated",
+      "attention": "Note",
+      "attention_company": "Company/att."
+    },
+    "addresses": {
+      "add_button": "A dd b ut to n",
+      "add_button_accessibility_label": "A dd b ut to n a cc es si bi li ty l ab el",
+      "add_button_text": "A dd b ut to n t ex t",
+      "back_button": "B ac k b ut to n",
+      "cancel_adding_address_accessibility_label": "C an ce l a dd in g a dd re ss a cc es si bi li ty l ab el",
+      "cancel_deletion_button": "C an ce l d el et io n b ut to n",
+      "delete_button_accessibility_label": "D el et e b ut to n a cc es si bi li ty l ab el",
+      "delete_confirmation_button": "D el et e c on fi rm at io n b ut to n",
+      "delete_confirmation_button_accessibility_label": "D el et e c on fi rm at io n b ut to n a cc es si bi li ty l ab el",
+      "delete_confirmation_description": "D el et e c on fi rm at io n d es cr ip ti on",
+      "edit_button_accessibility_label": "E di t b ut to n a cc es si bi li ty l ab el",
+      "edit_modal_title": {
+        "billing": "B il li ng",
+        "default": "D ef au lt",
+        "shipping": "Edit delivery address"
+      },
+      "edit_section_accessibility_label": "E di t s ec ti on a cc es si bi li ty l ab el",
+      "loading_accessibility_message": "L oa di ng a cc es si bi li ty m es sa ge",
+      "loading_addresses_accessibility_message": "L oa di ng a dd re ss es a cc es si bi li ty m es sa ge",
+      "loading_billing_accessibility_message": "L oa di ng b il li ng a cc es si bi li ty m es sa ge",
+      "pagination": {
+        "load_more": "L oa d m or e",
+        "load_more_accessibility_label": "L oa d m or e a cc es si bi li ty l ab el"
+      },
+      "address_deleted_notification": "The address was deleted",
+      "cancel_deletion_button_accessibility_label": "Cancel deletion of {{address}}",
+      "default_address": {
+        "title": "Standard address",
+        "title_accessibility_label": "Standard address: {{address}}"
+      },
+      "delete_confirmation_message": "Do you want to delete the address? Existing orders will not be affected.",
+      "loading_finished_accessibility_message": "A new page with addresses has been loaded",
+      "loading_shipping_accessibility_message": "Loading delivery address",
+      "delete_confirmation_title": "Do you want to delete the address?",
+      "add_address_banner": "Add addresses to be used for payment",
+      "back_button_accessibility_label": "Back to editing the address {{address}}",
+      "no_addresses_banner": "No addresses have been added"
+    },
+    "B2B": {
+      "account_information": {
+        "company_card_name_label": "C om pa ny c ar d n am e l ab el",
+        "company_card_section_accessibility_label": "C om pa ny c ar d s ec ti on a cc es si bi li ty l ab el"
+      },
+      "addresses": {
+        "add_billing_address_button": "A dd b il li ng a dd re ss b ut to n",
+        "add_billing_address_section_accessibility_label": "A dd b il li ng a dd re ss s ec ti on a cc es si bi li ty l ab el",
+        "cancel_adding_billing_address_accessibility_label": "C an ce l a dd in g b il li ng a dd re ss a cc es si bi li ty l ab el",
+        "save_new_billing_address_accessibility_label": "S av e n ew b il li ng a dd re ss a cc es si bi li ty l ab el",
+        "add_shipping_address_button": "Add delivery address",
+        "add_shipping_address_section_accessibility_label": "Add delivery address",
+        "cancel_adding_shipping_address_accessibility_label": "Cancel adding delivery address",
+        "save_new_shipping_address_accessibility_label": "Save delivery address",
+        "shipping_address_card_title": "Delivery address"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "D ra ft o rd er s ub ti tl e",
+        "order_timeline": {
+          "expand_events_label": "E xp an d e ve nt s l ab el",
+          "hide_events_label": "H id e e ve nt s l ab el",
+          "expand_events_accessibility_label": "View the order draft's information",
+          "hide_events_accessibility_label": "Hide the order draft's information"
+        },
+        "payment_status": {
+          "draft": {
+            "submitted": {
+              "description": "D es cr ip ti on",
+              "title": "T it le",
+              "deposit": {
+                "title": "The payment is overdue",
+                "due_later": "The terms for the balance are in accordance with {{translatedName}}, and the balance is due {{dueDate}}.",
+                "due_on_fulfillment": "The balance is due when all items in this order are prepared.",
+                "due_on_receipt": "You will receive an invoice for the remaining balance.",
+                "due_on_date": "The balance is due {{dueDate}}."
+              }
+            },
+            "description": "The payment details are determined when the order is confirmed.",
+            "title": "The payment is not due yet",
+            "in_review": {
+              "description": "The payment details are determined when the order is confirmed.",
+              "title": "The payment is not due yet"
+            },
+            "deposit": {
+              "due_later": "{{depositAmount}} must be paid when your order is confirmed. The payment terms for the balance will be {{translatedName}}.",
+              "due_on_fulfillment": "{{depositAmount}} must be paid when your order is confirmed. The balance is due when the order is ready.",
+              "due_on_receipt": "{{depositAmount}} must be paid when your order is confirmed. The remaining balance is due later.",
+              "due_on_date": "{{depositAmount}} must be paid when your order is confirmed. The remaining balance is due {{dueDate}}."
+            }
+          },
+          "paid": {
+            "description": "D es cr ip ti on",
+            "title_with_date": "Paid on {{date}}"
+          },
+          "pay_now": "P ay n ow",
+          "pending": {
+            "banner_due_today": "B an ne r d ue t od ay",
+            "title": "T it le",
+            "banner_overdue": {
+              "one": "Your payment is overdue by {{count}} day",
+              "other": "Your payment is overdue by {{count}} days"
+            },
+            "title_with_date": "Overdue payment: {{date}}",
+            "description_overdue": "Your payment is overdue.",
+            "description_partially_paid": "This order was partially paid. You have an outstanding balance.",
+            "description_authorized": "Your payment method will be charged on the due date. You can also choose to pay now.",
+            "title_due_on_receipt": "The payment is not due yet",
+            "description_due_on_receipt": "You will receive an invoice when the payment is due.",
+            "title_due_on_fulfillment": "The payment is due upon preparation",
+            "description_due_on_fulfillment": "Payment is due when all items in this order are prepared.",
+            "description_waiting_for_manual_payment": "This order has a pending payment. The balance will be updated when the payment is received.",
+            "description_due_on_receipt_partially_paid": "This order was partially paid. You have an outstanding balance. You will receive an invoice when the payment is due.",
+            "description_due_on_fulfillment_partially_paid": "This order was partially paid. You have an outstanding balance. Payment is due when all items in this order are prepared."
+          },
+          "refund": {
+            "description_full_refund": "D es cr ip ti on f ul l r ef un d",
+            "description_multiple_refunds": "D es cr ip ti on m ul ti pl e r ef un ds",
+            "description_single_refund": "D es cr ip ti on s in gl e r ef un d",
+            "title": "T it le",
+            "title_with_date": "Refunded on {{date}}"
+          },
+          "title": "T it le",
+          "canceled": {
+            "title": "Payment cancelled",
+            "description": "You have not been charged."
+          },
+          "pay_now_accessibility_label": "Pay now for the order {{orderName}}"
+        },
+        "title": "T it le",
+        "loading": "Loading order information",
+        "loading_finished_accessibility_message": "The order information has been loaded",
+        "subtitle": "Sent on {{date}}"
+      },
+      "location_selection": {
+        "clear_search": "C le ar s ea rc h",
+        "continue_to_store": "C on ti nu e t o s to re",
+        "list_item_without_address_accessibility_label": "L is t i te m w it ho ut a dd re ss a cc es si bi li ty l ab el",
+        "list_loading_accessibility_message": "L is t l oa di ng a cc es si bi li ty m es sa ge",
+        "list_loading_address_accessibility_message": "L is t l oa di ng a dd re ss a cc es si bi li ty m es sa ge",
+        "no_location_description": "N o l oc at io n d es cr ip ti on",
+        "selection_cancel_button": "S el ec ti on c an ce l b ut to n",
+        "selection_confirmation_button": "S el ec ti on c on fi rm at io n b ut to n",
+        "selection_continue_button": "S el ec ti on c on ti nu e b ut to n",
+        "title": "T it le",
+        "title_choose_location": "T it le c ho os e l oc at io n",
+        "try_new_search": "T ry n ew s ea rc h",
+        "description": "If you already have items in your cart, changing the location may affect prices and quantities in the cart.",
+        "list_accessibility_label": "Location list",
+        "list_loading_finished_accessibility_message": "The list of locations has been loaded",
+        "loading_store_accessibility_message": "Goes to store",
+        "no_location_title": "Only personal orders",
+        "no_locations_found": "No locations were found",
+        "search": "Search for locations",
+        "search_location_title": "Choose a location",
+        "description_switch_later": "You can always change later"
+      },
+      "locations": {
+        "contact_permissions": "C on ta ct p er mi ss io ns",
+        "location_picker_accessibility_label": "L oc at io n p ic ke r a cc es si bi li ty l ab el",
+        "multiple_tax_exemptions": "M ul ti pl e t ax e xe mp ti on s",
+        "own_role_contact_name": "O wn r ol e c on ta ct n am e",
+        "pagination": {
+          "load_more": "L oa d m or e",
+          "load_more_accessibility_label": "L oa d m or e a cc es si bi li ty l ab el"
+        },
+        "permissions_label": "P er mi ss io ns l ab el",
+        "permissions_title": "P er mi ss io ns t it le",
+        "section_title": "S ec ti on t it le",
+        "tax_exemptions": "T ax e xe mp ti on s",
+        "tax_id": "T ax i d",
+        "taxes_none": "T ax es n on e",
+        "contact_email": "Email address",
+        "contact_list_title": "Persons",
+        "location_picker_label": "Name of location",
+        "net_payment_terms_description": "{{name}}: Payments are due in {{numberOfDays}} days",
+        "payment_details_title": "Payment information",
+        "payment_terms": "Payment deadlines",
+        "shipping_address_required": "Add a delivery address to this location to start placing orders.",
+        "tax_details_title": "Tax information",
+        "multiple_tax_exemptions_and": "and ",
+        "tax_exemption_not_applicable": "I/R",
+        "tax_exemptions_modal_button_accessibility_label": "See all tax exemptions",
+        "staff_and_permissions_title": "Employees and permissions",
+        "deposit_percentage": "{{percentage}} in deposit"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "H id e a ll",
+          "pending_tab_accessibility_label": {
+            "more_than_pagination_length": "M or e t ha n p ag in at io n l en gt h",
+            "no_pending_orders": "N o p en di ng o rd er s",
+            "pending_orders": {
+              "one": "You have {{count}} pending orders"
+            }
+          },
+          "show_all": "S ho w a ll",
+          "title": "T it le",
+          "hide_all_accessibility_label": "Hide all orders under review",
+          "show_all_accessibility_label": "Show all orders under review",
+          "pagination": {
+            "nav_accessibility_label": "Navigation buttons for orders under review"
+          },
+          "show_all_orders_in_review": "Show all orders under review",
+          "show_less_orders_in_review": "Show fewer orders under review",
+          "pending_orders_count_more_than_pagination_length": "More than {{count}}"
+        },
+        "order_list_column_headers_contact": "O rd er l is t c ol um n h ea de rs c on ta ct",
+        "order_list_column_headers_location": "O rd er l is t c ol um n h ea de rs l oc at io n",
+        "removed_company_contact_tooltip": "R em ov ed c om pa ny c on ta ct t oo lt ip"
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "D es cr ip ti on w it ho ut r ep la ce me nt",
+          "description_with_replacement": "If you delete this payment method, it will affect pre-approved payments for this location. Replace it with an alternative payment method to continue receiving upcoming orders."
+        },
+        "payment_details": {
+          "order_label": "O rd er l ab el",
+          "draft_label": "Order draft {{name}}"
+        }
+      },
+      "purchase_order_number": {
+        "cancel": "C an ce l",
+        "add_accessibility_label": "Add purchase order number",
+        "add_modal_title": "Add purchase order number",
+        "close_modal_accessibility_label": "Close mode with purchase order number",
+        "discard": "Undo",
+        "discard_changes_modal_title": "Do you want to discard the changes?",
+        "edit_accessibility_label": "Edit purchase order number",
+        "edit_modal_title": "Edit purchase order number",
+        "empty_state": "No purchase order number",
+        "modal_po_number_input_label": "Purchase order number",
+        "modal_po_number_input_max_length_error": "Purchase order numbers may be at most {{maxLength}} characters long.",
+        "title": "Purchase order no. {{poNumber}}"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneWeekAgo": "L es sT ha nO ne We ek Ag o",
+        "lessThanOneWeekAway": "L es sT ha nO ne We ek Aw ay",
+        "lessThanOneYearAgo": "L es sT ha nO ne Ye ar Ag o",
+        "lessThanOneYearAway": "L es sT ha nO ne Ye ar Aw ay",
+        "today": "T od ay",
+        "tomorrow": "T om or ro w",
+        "yesterday": "Y es te rd ay",
+        "lessThanOneMinuteAgo": "Right now"
+      }
+    },
+    "errors": {
+      "addresses_loading_issue": {
+        "description": "D es cr ip ti on"
+      },
+      "load_extension_error": {
+        "refresh_button": "R ef re sh b ut to n",
+        "description": "Refresh the page, or try again in a few minutes."
+      },
+      "resend_link": {
+        "generic": "G en er ic",
+        "too_many_requests": "Too many requests. Please try again later."
+      },
+      "address_deletion_error": {
+        "description": "There was a problem deleting this address. Please try again, or refresh the page."
+      },
+      "banner_title": {
+        "one": "There are {{count}} errors"
+      },
+      "failed_address_creation": {
+        "description": "There was a problem creating your address. Refresh the page, or check your internet connection."
+      },
+      "failed_address_update": {
+        "description": "There was a problem updating your address. Refresh the page, or check your internet connection."
+      },
+      "no_access_to_locations": {
+        "description": "You do not have access to any locations."
+      },
+      "not_found": {
+        "description": "Check the web address, or try again in a few minutes.",
+        "title": "An error occurred while loading this page"
+      },
+      "order_not_found": {
+        "description": "This order does not exist, or you do not have permission to view it.",
+        "title": "The order was not found"
+      },
+      "profile_update_error": {
+        "description": "There was a problem updating your profile. Refresh the page, or check your internet connection."
+      },
+      "retry_action_label": "Try again",
+      "load_orders_error": {
+        "title": "Could not load orders",
+        "description": "Try again, or come back later.",
+        "retry_button": "Try again"
+      },
+      "load_paypal_error": {
+        "description": "There is a problem loading PayPal. Please try again."
+      },
+      "logout_everywhere": {
+        "description": "Something went wrong during logout. Please try again."
+      },
+      "profile_name_update_error": {
+        "description": "There was a problem updating your name. Refresh the page, or check your internet connection."
+      },
+      "load_address_form_error": {
+        "title": "The address form was not loaded",
+        "description": "The address form was not loaded.",
+        "refresh_button": "Refresh the page"
+      }
+    },
+    "knowledge_base": {
+      "self_serve_returns": {
+        "enabled": "E na bl ed",
+        "disabled": "Customers must contact the shop owner to request a return."
+      }
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "nav_accessibility_label": "N av a cc es si bi li ty l ab el",
+        "hide_accessibility_label": "Hide account menu",
+        "show_accessibility_label": "Show account menu",
+        "open_menu_accessibility_label": "Open Account Navigation",
+        "close_menu_accessibility_label": "Close Account Navigation",
+        "loading_message": "Loading Account Navigation"
+      },
+      "action_menu_accessibility_label": "A ct io n m en u a cc es si bi li ty l ab el",
+      "close_menu_accessibility_label": "C lo se m en u a cc es si bi li ty l ab el",
+      "company_location": "C om pa ny l oc at io n",
+      "contact_link": "C on ta ct l in k",
+      "delete_confirmation": {
+        "cancel": "C an ce l"
+      },
+      "go_to_store_link": "G o t o s to re l in k",
+      "loading_message": "L oa di ng m es sa ge",
+      "loading_policy_content_accessibility_label": "L oa di ng p ol ic y c on te nt a cc es si bi li ty l ab el",
+      "nav_label_accessibility_label": "N av l ab el a cc es si bi li ty l ab el",
+      "navigation_accessibility_message": "N av ig at io n a cc es si bi li ty m es sa ge",
+      "open_menu_accessibility_label": "O pe n m en u a cc es si bi li ty l ab el",
+      "search": "S ea rc h",
+      "settings_link": "S et ti ng s l in k",
+      "try_new_search": "T ry n ew s ea rc h",
+      "contact_email_subject": "Contact from the webshop {{shopName}}",
+      "dismiss_toast": "Reject",
+      "document_title": "{{sectionName}} – {{shopName}} – Account",
+      "log_out_link": "Log out",
+      "logout_overlay_label": "Logging out …",
+      "shop_logo_accessibility_label": "{{shopName}}-logo",
+      "country_switcher_toast_message": "Country changed to {{countryName}}",
+      "switch_country": "Change country",
+      "location_switcher_toast_message": "The location was changed to {{locationName}}",
+      "switch_location": "Change location",
+      "view_details": "See details",
+      "no_locations_found": "No locations were found",
+      "skip_to_content": "Go to content"
+    },
+    "order_details": {
+      "adjusted_payment": "A dj us te d p ay me nt",
+      "company": "C om pa ny",
+      "company_and_location": "C om pa ny a nd l oc at io n",
+      "contact": "C on ta ct",
+      "contact_information": "C on ta ct i nf or ma ti on",
+      "discount": "D is co un t",
+      "edit_summary": {
+        "added": "A dd ed",
+        "added_with_quantity": "A dd ed w it h q ua nt it y",
+        "removed_with_quantities": "R em ov ed w it h q ua nt it ie s",
+        "removed_with_quantity": "R em ov ed w it h q ua nt it y",
+        "return_line_item_removed": "R et ur n l in e i te m r em ov ed",
+        "returned": "R et ur ne d",
+        "returned_with_quantities": "R et ur ne d w it h q ua nt it ie s",
+        "updated_at": "U pd at ed a t",
+        "return_line_item_removed_with_quantities": "Removed {{delta}} from the return"
+      },
+      "fully_refunded_label": "F ul ly r ef un de d l ab el",
+      "group_title_label": "G ro up t it le l ab el",
+      "group_title_label_with_parent": "G ro up t it le l ab el w it h p ar en t",
+      "grouped_view_components": {
+        "collapse_line_items": "C ol la ps e l in e i te ms",
+        "expand_line_items": "E xp an d l in e i te ms",
+        "line_item_summary_accessibility_label": "{{productTitle}}, quantity: {{refundableQuantity}}",
+        "line_item_summary_list_accessibility_label": "Items in the bundle {{productTitle}}"
+      },
+      "hide_items": "H id e i te ms",
+      "hide_order_summary": "H id e o rd er s um ma ry",
+      "image_gallery": {
+        "next": "N ex t",
+        "previous": "P re vi ou s",
+        "product_name_and_quantity": "{{productName}}, {{quantity}} pcs."
+      },
+      "location": "L oc at io n",
+      "login_card": {
+        "resend_link": "R es en d l in k",
+        "log_in": "Log in",
+        "link_expired": "The link has expired",
+        "resend_link_only": "To view your order details, you must have a new link sent to the email or phone number used during payment.",
+        "resend_link_and_login": "To view your order details, you must log in or send a new link to the email address or phone number used at checkout."
+      },
+      "marketing_section_title": "M ar ke ti ng s ec ti on t it le",
+      "mobile_summary_toggle_button": {
+        "closed": "C lo se d",
+        "open": "View order summary"
+      },
+      "no_data": "N o d at a",
+      "pagination": {
+        "load_more": "L oa d m or e",
+        "load_more_accessibility_label": "L oa d m or e a cc es si bi li ty l ab el",
+        "loading_accessibility_label": "L oa di ng a cc es si bi li ty l ab el"
+      },
+      "paid_amount": "P ai d a mo un t",
+      "paid_with_shop_pay_installments_card": {
+        "desktop_qr_code_content": {
+          "title": "T it le",
+          "description": "Get reminders about your installment payments with Shop."
+        },
+        "paid_with_shop_pay_installments": "P ai d w it h s ho p p ay i ns ta ll me nt s",
+        "payment_reminders_button": "P ay me nt r em in de rs b ut to n",
+        "description": "Keep track of your payment plan with reminders in the Shop app."
+      },
+      "partially_refunded_label": "P ar ti al ly r ef un de d l ab el",
+      "payment": {
+        "emv_details": {
+          "aid": "A id",
+          "auth": "A ut h",
+          "source": "S ou rc e"
+        },
+        "payment_type": {
+          "gift_card": "G if t c ar d",
+          "manual": "M an ua l",
+          "store_credit": "Voucher",
+          "money_order": "Postal order",
+          "cash_on_delivery": "Cash on delivery",
+          "bank_deposit": "Bank deposit"
+        },
+        "transactions": {
+          "details": "D et ai ls",
+          "show_all": "S ho w a ll",
+          "show_less": "Show fewer",
+          "payment_details": "Payment information"
+        },
+        "status_in_review": "The payment is due after the review",
+        "status_unpaid": "Payment is due on {{date}}",
+        "card_payment_details": "that ends with {{lastDigits}} – {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "Paid with Shop Pay Installments",
+          "view_schedule": "See schedule"
+        },
+        "gift_card_payment_details": "that ends with {{lastDigits}} – {{formattedTransactionAmount}}",
+        "manual_payment_methods": {
+          "money_order": "Postal order - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "Cash on delivery (Cash On Deliver, COD) - {{formattedTransactionAmount}}",
+          "bank_deposit": "Bank deposit - {{formattedTransactionAmount}}",
+          "manual": "Manual – {{formattedTransactionAmount}}"
+        },
+        "store_credit_payment_details": "Store credit – {{formattedTransactionAmount}}"
+      },
+      "pickup": {
+        "pickup": "P ic ku p",
+        "pickup_location": "P ic ku p l oc at io n",
+        "pickup_point": "Pickup location"
+      },
+      "refunded_amount": "R ef un de d a mo un t",
+      "remaining_amount": "R em ai ni ng a mo un t",
+      "returns": {
+        "expand_events_label": "E xp an d e ve nt s l ab el",
+        "hide_events_label": "H id e e ve nt s l ab el",
+        "print_shipping_label": "P ri nt s hi pp in g l ab el",
+        "tracking_number": "T ra ck in g n um be r",
+        "return_and_refund_modal_header": "Reimbursement policy",
+        "ineligible_return_message": "No items in this order are eligible for a return.",
+        "ineligible_return_message_when_returned": "No further items in this order are eligible for a return.",
+        "exchange_header": "Exchange goods",
+        "exchange_subheader": "Exchange items will be added to the order once the return has been completed."
+      },
+      "shipment_timeline": {
+        "expand_events_label": "E xp an d e ve nt s l ab el",
+        "hide_events_label": "H id e e ve nt s l ab el",
+        "expand_events_accessibility_label": "View the order's shipping information",
+        "hide_events_accessibility_label": "Hide the order's shipping information"
+      },
+      "shop_order_tracking": {
+        "title_header": "T it le h ea de r",
+        "track_order_with_shop": "T ra ck o rd er w it h s ho p",
+        "download_shop_to_track": "Download Shop to track packages",
+        "real_time_delivery_updates": "Shop sends you real-time updates about your delivery when your order has been shipped."
+      },
+      "shop_pay": {
+        "learn_more": "L ea rn m or e",
+        "order_completed_with": "The order was completed with"
+      },
+      "show_items": "S ho w i te ms",
+      "taxes": "T ax es",
+      "tip": "T ip",
+      "title": "T it le",
+      "vat_invoices": {
+        "title": "T it le"
+      },
+      "addresses_section_title": "Billing and delivery",
+      "card_ending_with": "Ends with {{lastDigits}}",
+      "loading": "Loading order information",
+      "loading_finished_accessibility_message": "The order information has been loaded",
+      "shipping": {
+        "address": "Delivery address",
+        "address_map_marker": "Delivery address",
+        "method": "Delivery method",
+        "summary": "Delivery",
+        "free_shipping_discount": "Free delivery",
+        "one_time": "One-time delivery",
+        "subscription": "Subscription delivery"
+      },
+      "subtitle": "Confirmed on {{date}}",
+      "summary_list_title_accessibility_label": "Made-to-order items",
+      "summary_title": "Order overview",
+      "summary_totals_title_accessibility_label": "The order in total",
+      "total": "In total",
+      "unit_price": "{{price}}/pcs.",
+      "not_applicable": "I/R",
+      "request_return_failed": "A problem occurred while processing your request. Please try again.",
+      "show_order_summary": "View order summary",
+      "marketing_description": "You will receive marketing emails You can unsubscribe at any time.",
+      "marketing_checkbox_label": "Send me emails about news and offers",
+      "marketing_checkmark_label": "You are subscribed to receive news and offers via email",
+      "order_details": "Order information",
+      "login_to_view_all_order_details": "Log in to see all order details.",
+      "log_in": "Log in",
+      "order_details_skeleton_accessibility_label": "Log in to see all order details.",
+      "logged_in_account_no_permission_to_order": "You are logged in as {{email}}. This account does not have permission to manage this order.",
+      "log_in_to_a_different_account": "Log in to another account",
+      "duties": "Customs",
+      "ok_duties_tooltip": "This order is shipped from another country, so customs duties have been added to your total order.",
+      "error_duties_tooltip": "This order is shipped from another country, so customs duties and taxes may be charged upon delivery.",
+      "zero_duties_tooltip": "This order is shipped from another country. No customs duties are charged upon delivery.",
+      "fees": {
+        "restocking_fee": "Return fee",
+        "return_shipping_fee": "Return delivery"
+      },
+      "taxes_included": "Including {{amount}} in tax",
+      "duties_and_taxes_included": "The total amount includes customs and taxes. No additional fees upon delivery.",
+      "cash_rounding": "Settlement in cash",
+      "adjusted_total": "Adjusted total amount",
+      "link_sent": "The link has been sent",
+      "due_on_date": "Due on {{date}}",
+      "due_on_fulfillment": "Expires upon preparation",
+      "due_on_receipt": "Due upon receipt"
+    },
+    "orders": {
+      "buy_again": "B uy a ga in",
+      "buy_again_accessibility_label": "B uy a ga in a cc es si bi li ty l ab el",
+      "group_title_label": "G ro up t it le l ab el",
+      "group_title_label_with_parent": "G ro up t it le l ab el w it h p ar en t",
+      "list_title_with_pending_orders": "L is t t it le w it h p en di ng o rd er s",
+      "manage": "M an ag e",
+      "manage_accessiblity_label": "M an ag e a cc es si bl it y l ab el",
+      "order_list": {
+        "carousel": {
+          "next": "N ex t",
+          "one_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}})",
+          "two_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}})",
+          "three_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}})",
+          "four_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}})",
+          "five_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}})",
+          "six_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}}), {{lineItemName6}} (quantity {{lineItemQuantity6}})",
+          "six_and_more_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}}), {{lineItemName6}} (quantity {{lineItemQuantity6}}) and more",
+          "view_order_details": "See order details"
+        },
+        "column_headers": {
+          "actions_accessibility_label": "A ct io ns a cc es si bi li ty l ab el",
+          "order": "O rd er",
+          "total": "In total"
+        },
+        "empty_state_title": "E mp ty s ta te t it le",
+        "empty_state_title_for_pending_orders": "E mp ty s ta te t it le f or p en di ng o rd er s",
+        "empty_state_with_location_title": "E mp ty s ta te w it h l oc at io n t it le",
+        "estimated_delivery": "E st im at ed d el iv er y",
+        "filter_title": "F il te r t it le",
+        "filter": {
+          "clear_all": "C le ar a ll",
+          "clear_section": "C le ar s ec ti on",
+          "date": {
+            "last_30_days": "L as t 30 d ay s",
+            "last_365_days": "L as t 365 d ay s",
+            "last_7_days": "L as t 7 d ay s",
+            "last_90_days": "L as t 90 d ay s",
+            "start_date": "S ta rt d at e",
+            "title": "T it le",
+            "today": "T od ay",
+            "custom": "Customized"
+          },
+          "apply": "Use"
+        },
+        "location_filter_picker": {
+          "current_location": "C ur re nt l oc at io n",
+          "switch_view": "Change view"
+        },
+        "no_filtered_results_description": "N o f il te re d r es ul ts d es cr ip ti on",
+        "no_filtered_results_title": "N o f il te re d r es ul ts t it le",
+        "order_number": "O rd er n um be r",
+        "order_status_message": {
+          "list_view": {
+            "estimated_delivery": "E st im at ed d el iv er y",
+            "view_order_for_details": "See details on the order",
+            "last_updated": "Last updated on {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "E st im at ed d el iv er y"
+          }
+        },
+        "orders_title": "O rd er s t it le",
+        "pagination": {
+          "load_more": "L oa d m or e",
+          "load_more_accessibility_label": "L oa d m or e a cc es si bi li ty l ab el",
+          "next": "N ex t",
+          "next_accessibility_label": "N ex t a cc es si bi li ty l ab el",
+          "previous_accessibility_label": "P re vi ou s a cc es si bi li ty l ab el",
+          "nav_accessibility_label": "Navigation buttons for orders",
+          "previous": "Previous"
+        },
+        "payment_status": {
+          "gallery_view": {
+            "due_without_date": "D ue w it ho ut d at e",
+            "pay_to_confirm": "P ay t o c on fi rm",
+            "overdue": "Payment is delayed",
+            "due": "Overdue payment: {{date}}",
+            "due_today": "Payment is due today",
+            "due_on_fulfillment": "The payment is due upon preparation",
+            "payment_not_due": "The payment is not due yet"
+          },
+          "list_view": {
+            "pay_to_confirm": "P ay t o c on fi rm",
+            "payment_not_due": "P ay me nt n ot d ue",
+            "overdue": "Expired",
+            "due": "Due on {{date}}",
+            "due_today": "Expires today",
+            "due_without_date": "Expired",
+            "due_on_fulfillment": "Expires upon preparation"
+          }
+        },
+        "plus_more_products": "P lu s m or e p ro du ct s",
+        "sort_by": "S or t b y",
+        "sort_currently_sorted_by_accessibility_label": "S or t c ur re nt ly s or te d b y a cc es si bi li ty l ab el",
+        "sort": {
+          "date": {
+            "newest": "N ew es t",
+            "oldest": "O ld es t"
+          },
+          "location": {
+            "ascending": "A sc en di ng",
+            "descending": "Location (Å-A)"
+          },
+          "order_number": {
+            "ascending": "A sc en di ng",
+            "descending": "D es ce nd in g"
+          },
+          "order_total": {
+            "ascending": "Orders in total (low to high)",
+            "descending": "Orders in total (high to low)"
+          }
+        },
+        "delivered": "Delivered on {{date}}",
+        "empty_state_order_source_description": "Only orders placed by {{email}} are shown here.",
+        "empty_state_subtitle": "Go to the store to place an order.",
+        "order_link": "See order {{name}}",
+        "sort_hide_options_accessibility_label": "Hide sorting options for confirmed orders.",
+        "sort_show_options_accessibility_label": "Show sorting options for confirmed orders.",
+        "one_images_accessibility_label": "The order contains {{lineItemName1}}",
+        "two_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "estimated_shortform": "Expected on {{date}}",
+        "show_order_actions_accessibility_label": "View order actions for order {{name}}",
+        "more_than_four_products_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} and {{numberOfAdditionalProducts}} additional products",
+        "more_than_three_products_accessibility_label": "The order includes {{lineItemName1}}, {{lineItemName2}} and {{numberOfAdditionalProducts}} additional products.",
+        "no_order_banner": "Create an order to test your extension on the order status page."
+      },
+      "order_status": {
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "new_window_disclaimer": "N ew w in do w d is cl ai me r",
+            "text": "T ex t"
+          }
+        },
+        "attempted_delivery_label": "A tt em pt ed d el iv er y l ab el",
+        "company_tracking_number": "C om pa ny t ra ck in g n um be r",
+        "confirmed_label": "C on fi rm ed l ab el",
+        "confirmed_title": "C on fi rm ed t it le",
+        "delivered": "D el iv er ed",
+        "delivered_label": "D el iv er ed l ab el",
+        "delivery_promise_v2": {
+          "details_modal": {
+            "claim_shop_cash_button_label": "C la im s ho p c as h b ut to n l ab el",
+            "expired_badge_label": "E xp ir ed b ad ge l ab el",
+            "learn_more_button_label": "L ea rn m or e b ut to n l ab el",
+            "title": "Guarantee of delivery",
+            "active_delivery_guarantee_label": "Delivery no later than {{date}}",
+            "expired_delivery_guarantee_description": "This order's 30-day Shop Promise guarantee has expired.",
+            "order_includes_guarantees_label": "Your order includes {{deliveryAgreementsCount}} warranties",
+            "order_includes_guarantees_description": "Shop Promise guarantees fast and reliable delivery. Claim Shop Cash if your order arrives after {{date}}.",
+            "delivered_after_label": "Delivered after the {{date}}",
+            "delivered_after_description": "Since your order arrived late, you are qualified to claim {{amount}} Shop Cash.",
+            "claimed_shop_cash_description": "Since your order arrived late, you have claimed {{amount}} Shop Cash.",
+            "eligible_to_claim_shop_cash_description": "Since your order arrived late, you are qualified to claim {{amount}} Shop Cash.",
+            "view_balance_in_shop_button_label": "See balance in Shop",
+            "scan_to_claim_shop_cash_label": "Scan to claim {{amount}} in Shop Cash"
+          },
+          "promise_line": {
+            "claim_shop_cash_button_label": "C la im s ho p c as h b ut to n l ab el",
+            "download_shop_app_button_label": "D ow nl oa d s ho p a pp b ut to n l ab el",
+            "track_with_shop_button_label": "T ra ck w it h s ho p b ut to n l ab el",
+            "shop_promise_brand_label": "Guaranteed delivery of",
+            "external_promise_brand_label": "Delivery before",
+            "not_delivered_by_label": "Delivered after the {{date}}",
+            "delivery_guarantee_expired_label": "Guaranteed delivery has expired",
+            "modal_accessibility_button_label": "Information about delivery commitments"
+          }
+        },
+        "delivery_promise": {
+          "claim_shop_cash_cta": {
+            "download_shop_app_label": "D ow nl oa d s ho p a pp l ab el",
+            "has_shop_app_label": "H as s ho p a pp l ab el",
+            "no_shop_app_label": "N o s ho p a pp l ab el"
+          },
+          "details_modal": {
+            "shop_cash_claim": {
+              "claim_shop_cash_description": "C la im s ho p c as h d es cr ip ti on",
+              "claim_shop_cash_title": "C la im s ho p c as h t it le",
+              "no_shop_cash_label": "N o s ho p c as h l ab el",
+              "may_be_eligible_label": "Shop Promise guarantees fast and reliable delivery. Send a review to Shop Cash if your order is delivered late.",
+              "may_be_eligible_not_authorized_label": "You may be eligible to claim Shop Cash because this order was delivered late. Log in to see details.",
+              "redeemed_label": "You have already claimed Shop Cash because this order was delivered late.",
+              "expired_label": "This order is not qualified for a claim for late delivery because the 30-day warranty has expired.",
+              "no_longer_guaranteed_label": "These goods are no longer supported by a delivery guarantee."
+            },
+            "title": "Delivery supported by",
+            "modal_accessiblity_label": "Information about delivery commitments",
+            "delivery_by_label": "Delivery no later than {{date}}",
+            "delivery_guaranteed_by_label": "Delivery is guaranteed no later than {{date}}",
+            "delivery_guarantee_label": "Guarantee of delivery"
+          },
+          "promise_line": {
+            "not_delivered_by_label": "N ot d el iv er ed b y l ab el",
+            "single_brand_label": "Delivery supported by",
+            "mixed_brands_label": "Guaranteed delivery",
+            "modal_accessibility_button_label": "Information about delivery commitments"
+          }
+        },
+        "estimated_delivery": "E st im at ed d el iv er y",
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "B uy w it h p ri me"
+        },
+        "in_review_title": "I n r ev ie w t it le",
+        "multiple_statuses_label": "M ul ti pl e s ta tu se s l ab el",
+        "no_tracking_number": "N o t ra ck in g n um be r",
+        "out_for_delivery_label": "O ut f or d el iv er y l ab el",
+        "picked_up_label": "P ic ke d u p l ab el",
+        "ready_for_pickup_label": "R ea dy f or p ic ku p l ab el",
+        "request_return": "R eq ue st r et ur n",
+        "resume_tracking": "R es um e t ra ck in g",
+        "status_timestamp": "S ta tu s t im es ta mp",
+        "track_shipment": "T ra ck s hi pm en t",
+        "canceled_label": "Cancelled",
+        "canceled_title": "Your order has been cancelled",
+        "come_back": "Return to this page to see updates on your shipment status.",
+        "in_review_label": "Under review",
+        "on_its_way_label": "On the way",
+        "submitted_label": "Sent",
+        "preparing_for_shipping_label": "Prepared for delivery",
+        "ready_for_pickup_description": "These items are ready for pickup. Bring your order confirmation when you pick up your order.",
+        "submitted_description": "Review the order and payment information.",
+        "last_updated": "Last updated on {{date}}",
+        "multiple_shipments_label": "More shipments",
+        "view_order_for_details": "See details on the order",
+        "confirmed_description_digital": "You will receive an email when your order is ready.",
+        "delivered_description_gift_card": {
+          "one": "The gift card was sent via email.",
+          "other": "The gift cards were sent via email."
+        },
+        "gift_card_label": {
+          "other": "Gift card"
+        },
+        "ready_for_pickup_location": "Your order is ready for pickup at the location",
+        "confirmed_description_pickup": "You will receive an email when your order is ready for pickup.",
+        "confirmed_gift_card_additional_description": {
+          "one": "Gift cards are sent in a separate email.",
+          "other": "Each gift card is sent in a separate email."
+        },
+        "confirmed_description_gift_card_text": "You will receive a text message when your order is ready.",
+        "delivered_description_gift_card_text": {
+          "one": "The gift card was sent via SMS.",
+          "other": "The gift cards were sent via SMS."
+        },
+        "confirmed_gift_card_additional_description_text": {
+          "one": "Gift cards are sent in a separate SMS..",
+          "other": "Each gift card is sent in a separate SMS."
+        },
+        "gift_resend_success": {
+          "one": "The gift card was sent again",
+          "other": "The gift cards were sent again"
+        },
+        "gift_resend_failure": {
+          "one": "There was a problem sending your gift card again. Please try again, or contact us.",
+          "other": "There was a problem sending your gift cards again. Please try again, or contact us."
+        },
+        "attempted_to_deliver_label": "Tried to deliver",
+        "there_was_a_problem_label": "A problem occurred",
+        "buy_with_prime_logo_accessibility_label": "Amazon's logo for Buy with Prime",
+        "complete_label": "Completed",
+        "gift_card_resend_button": {
+          "one": "Send gift card again",
+          "other": "Send gift card again"
+        },
+        "expected_by": "Expected no later than {{date}}",
+        "was_expected_by": "Was expected no later than {{date}}"
+      },
+      "status_mark_as_delivered": "S ta tu s m ar k a s d el iv er ed",
+      "list_layout_accessibility_label": "Layout settings",
+      "fulfillment_status_title": "Preparation status: {{status}}",
+      "list_title_confirmed_orders_accessibility_label": "Orders: Confirmed",
+      "list_title_pending_orders_accessibility_label": "Orders: Pending",
+      "switch_order_type_pending_orders_accessibility_label": "Change order type, currently showing pending orders",
+      "switch_order_type_confirmed_orders_accessibility_label": "Change order type, currently showing confirmed orders"
+    },
+    "payment_method_brands": {
+      "applepay": "A pp le pa y",
+      "dinersclub": "D in er sc lu b",
+      "discover": "D is co ve r",
+      "googlepay": "G oo gl ep ay",
+      "laser": "L as er",
+      "mastercard": "M as te rc ar d",
+      "shoppay": "S ho pp ay",
+      "unionpay": "U ni on pa y",
+      "forbrugsforeningen": "The Consumer Association",
+      "storecredit": "Voucher",
+      "bogus": "Fictional"
+    },
+    "payment_methods": {
+      "add_payment_method_button": "A dd p ay me nt m et ho d b ut to n",
+      "add_payment_method_dropdown": {
+        "credit_or_debit_card": "C re di t o r d eb it c ar d"
+      },
+      "add_payment_method": {
+        "add_new_button": "A dd n ew b ut to n",
+        "billing_address": {
+          "add_billing_address_button": "A dd b il li ng a dd re ss b ut to n",
+          "add_billing_address_button_accessibility_label": "A dd b il li ng a dd re ss b ut to n a cc es si bi li ty l ab el",
+          "default_checkbox": "D ef au lt c he ck bo x",
+          "choose_billing_address_from_list_button": "Select from the list",
+          "choose_billing_address_from_list_button_accessibility_label": "Select a billing address from the list",
+          "missing_billing_address_error_message": "Specify a billing address"
+        },
+        "title": "T it le",
+        "payment_method_added_confirmation": "The payment method has been added",
+        "replace_mode_warning": "If you delete this payment method, it will affect subscriptions or pre-orders. Replace it with an alternative payment method to continue receiving upcoming orders.",
+        "choose_from_list": "Select from the list"
+      },
+      "apple_pay": {
+        "errors": {
+          "not_available": "N ot a va il ab le",
+          "generic": "There was a problem with Apple Pay. Please try again, or use another payment method.",
+          "missing_billing_address": "Apple Pay requires a billing address. You need to add one to your account."
+        },
+        "loading": "L oa di ng"
+      },
+      "back_button": "B ac k b ut to n",
+      "card_fields": {
+        "card_number_label": "C ar d n um be r l ab el",
+        "card_number_placeholder": "C ar d n um be r p la ce ho ld er",
+        "card_start_label": "C ar d s ta rt l ab el",
+        "card_start_placeholder": "C ar d s ta rt p la ce ho ld er",
+        "field_errors": {
+          "credit_card_number_invalid": "C re di t c ar d n um be r i nv al id",
+          "credit_card_name_invalid": "Enter your name exactly as it appears on your card",
+          "credit_card_expiry_invalid": "Enter valid card expiration date",
+          "credit_card_verification_value_blank": "Enter CVV or security code on your card"
+        },
+        "tooltip": {
+          "card_security_notice": "C ar d s ec ur it y n ot ic e",
+          "card_verification_value_explanation_amex": "C ar d v er if ic at io n v al ue e xp la na ti on a me x",
+          "card_verification_value_explanation_other": "C ar d v er if ic at io n v al ue e xp la na ti on o th er",
+          "tooltip_accessibility_label": "For further information",
+          "card_verification_value_explanation": "3-digit security code, which you can usually find on the back of your card. American Express cards have a 4-digit code on the front."
+        },
+        "name_on_card_label": "Name of the card",
+        "name_on_card_placeholder": "Name of the card",
+        "card_expiry_label": "Expiration date (MM/YY)",
+        "card_expiry_placeholder": "Expiration date (MM/YY)",
+        "unavailable": {
+          "text": "Payments with credit/debit cards are not available at the moment.",
+          "link_text": "Update this page",
+          "suffix": "or try again later"
+        }
+      },
+      "delete_payment_method_button_accessibility_label": "D el et e p ay me nt m et ho d b ut to n a cc es si bi li ty l ab el",
+      "edit_payment_method_brand_button_accessibility_label": "E di t p ay me nt m et ho d b ra nd b ut to n a cc es si bi li ty l ab el",
+      "edit_payment_method": {
+        "billing_address_add_new": "B il li ng a dd re ss a dd n ew",
+        "cancel_edit_payment_method_button": "C an ce l e di t p ay me nt m et ho d b ut to n",
+        "title": "Edit the payment method",
+        "payment_method_updated_toast": "The payment method has been updated",
+        "billing_address_choose_from_list": "Select from the list",
+        "future_purchases_notice": "This payment method is saved for future purchases.",
+        "generic_error": "There was a problem with the update. Please try again."
+      },
+      "google_pay": {
+        "loading": "L oa di ng",
+        "loading_accessibility_message": "L oa di ng a cc es si bi li ty m es sa ge",
+        "errors": {
+          "generic": "There was a problem with Google Pay. Please try again, or use another payment method.",
+          "missing_billing_address": "Google Pay requires a billing address. You need to add one to your account."
+        },
+        "iframe_title_accessibility_label": "Add the payment method Google Pay"
+      },
+      "pay_pal": {
+        "loading_accessibility_message": "L oa di ng a cc es si bi li ty m es sa ge",
+        "iframe_title_accessibility_label": "Add the payment method PayPal"
+      },
+      "payment_delete": {
+        "delete_and_replace_button": "D el et e a nd r ep la ce b ut to n",
+        "description_without_replacement": "D es cr ip ti on w it ho ut r ep la ce me nt",
+        "loading_available_payment_methods_accessibility_label": "L oa di ng a va il ab le p ay me nt m et ho ds a cc es si bi li ty l ab el",
+        "payment_method_selector_no_alternative_payment": "P ay me nt m et ho d s el ec to r n o a lt er na ti ve p ay me nt",
+        "replace_method_with_new_method_description": "R ep la ce m et ho d w it h n ew m et ho d d es cr ip ti on",
+        "title": "T it le",
+        "description_with_replacement": "If you delete this payment method, it will affect pre-approved payments. You can also choose to replace it with another payment method to continue receiving upcoming orders.",
+        "payment_method_selector_placeholder": "Choose a replacement payment method (optional)",
+        "error_when_deleting": "We are sorry, but something went wrong, and we could not delete this payment method. Please try again later, or refresh the page.",
+        "delete_and_replace_button_accessibility_label": "Delete {{currentPaymentMethodName}}, and replace it with {{newPaymentMethodName}}.",
+        "deleted_successfully": "The payment method was deleted.",
+        "warning_message_with_replacement": {
+          "with_pending_orders_and_subscriptions": "If you delete this payment method, it will affect pre-approved payments. This payment method will still be charged outstanding balances for existing orders unless you choose an alternative payment method. If you choose an alternative payment method, you will have the option to select upcoming subscription orders without interruption.",
+          "with_pending_orders": "If you delete this payment method, it will be removed from your account and will no longer be available for future purchases. It will still be charged for outstanding balances on existing orders unless you choose an alternative payment method.",
+          "with_subscriptions": "If you delete this payment method, it will affect pre-approved payments. Replace it with an alternative payment method to continue receiving upcoming orders."
+        },
+        "warning_message_without_replacement": {
+          "with_pending_orders_and_subscriptions": "If you delete this payment method, it will affect pre-approved payments. This payment method will still be charged outstanding balances for existing orders, but you will not receive upcoming subscription orders. Add an alternative payment method to continue receiving subscription orders.",
+          "with_pending_orders": "If you delete this payment method, it will be removed from your account and will no longer be available for future purchases. It will still be charged for outstanding balances on existing orders.",
+          "with_subscriptions": "If you delete this payment method, it will affect pre-approved payments. Add an alternative payment method to continue receiving upcoming orders."
+        }
+      },
+      "payment_details": {
+        "card_info_title": "C ar d i nf o t it le",
+        "default_checkbox": "D ef au lt c he ck bo x",
+        "default_checkbox_accessibility_label": "D ef au lt c he ck bo x a cc es si bi li ty l ab el",
+        "invalid_payment_method": "I nv al id p ay me nt m et ho d",
+        "invalid_payment_method_message": "I nv al id p ay me nt m et ho d m es sa ge",
+        "loading_shop_pay": "L oa di ng s ho p p ay",
+        "replace_payment_method": "R ep la ce p ay me nt m et ho d",
+        "total_amount_of_subscription_line_items_left": "T ot al a mo un t o f s ub sc ri pt io n l in e i te ms l ef t",
+        "title": "Information about payment method",
+        "payment_method_expiring_on": "Expires {{expiryDate}}",
+        "preauthorized_payments": "Pre-approved payments",
+        "close_payment_modal_accessibility_label": "Close the window with payment method information",
+        "payment_method_not_found_error": "The payment method could not be found",
+        "payment_details_loading": "Loading information about the payment method",
+        "pre_authorized_payments": "Pre-approved payments",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} items in total, showing {{totalItemsToDisplay}} items.",
+        "next_payment_due": "Next due payment: {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button_accessibility_label": "Edit the payment method ending in {{lastDigits}}",
+        "credit_card_details_accessibility_label": "that ends with {{lastDigits}}",
+        "payment_method_expired_on": "Expires on {{expiryDate}}",
+        "checkout_card_banner": "This payment method can only be used for pre-approved payments. It will not be displayed at checkout if you are logged in to this store."
+      },
+      "store_credit": {
+        "details_modal": {
+          "amount_label": "A mo un t l ab el",
+          "balance_label": "B al an ce l ab el",
+          "events": {
+            "adjustment": "A dj us tm en t",
+            "order_payment": "O rd er p ay me nt",
+            "payment_returned": "P ay me nt r et ur ne d",
+            "order_refund": "Refund of order",
+            "payment_failure": "Payment error",
+            "order_cancellation": "Cancellation of order",
+            "tax_finalization": "Final processing of tax"
+          },
+          "expiration_date_label": "E xp ir at io n d at e l ab el",
+          "pagination": {
+            "load_more_label": "L oa d m or e l ab el",
+            "load_more_accessibility_label": "Load more amounts that can expire"
+          },
+          "title": "Voucher, which can expire",
+          "expirable_balance_info": "Some of your balance expires in the future",
+          "expirable_amount_label": "Total amount that can be redeemed",
+          "expirable_amounts_info": "Amounts that expire first are used first for payment",
+          "expired_amounts_button": "Show amount that has expired",
+          "expirable_amounts_button": "See"
+        },
+        "label": "Voucher",
+        "accesibility_label": "Voucher – {{formattedBalance}}",
+        "expirable_amounts_button": "Show amount that can expire",
+        "expirable_amounts_label": "Amounts that may expire"
+      },
+      "three_d_secure": {
+        "title": "T it le"
+      },
+      "title": "T it le",
+      "generic_card": "Short",
+      "expires_soon": "This card expires soon",
+      "expired": "This card has expired",
+      "card_update_consent": "This payment method is saved for future purchases.",
+      "digital_wallet_title": "Digital wallet",
+      "credit_or_debit_card_title": "Credit card or debit card",
+      "add_payment_method_banner": "Add payment method for faster payment or pre-approved services",
+      "edit_payment_method_button_accessibility_label": "Edit {{paymentMethodName}} ending with {{lastDigits}}",
+      "expiration_warning_button_accessibility_label": "Show expiration warning for {{paymentMethodName}}, ending with {{lastDigits}}",
+      "no_payment_methods_banner": "No payment methods have been added",
+      "default": "Standard",
+      "card_update_consent_subscriptions": "This payment method is saved for future purchases and can be used for recurring or deferred purchases.",
+      "replacement_payment_method_title": "Compensation payment method",
+      "bank_account": {
+        "loading_accessibility_message": "Button for bank account is loading",
+        "iframe_title_accessibility_label": "Setting up a bank account"
+      },
+      "generic_error": "An error occurred. Please try again."
+    },
+    "privacy_banner": {
+      "cookie_preferences_link": "C oo ki e p re fe re nc es l in k"
+    },
+    "profile_preview_bar": {
+      "actions_button": "A ct io ns b ut to n",
+      "close_preview": "C lo se p re vi ew",
+      "customize_button": "C us to mi ze b ut to n",
+      "hide_bar": "Hide beam",
+      "navigate_to_admin": "Navigate to the administrator",
+      "previewing": "You are viewing a preview of:",
+      "saved_at": "Saved on {{date}} at {{time}}",
+      "viewing": "You see:",
+      "not_available": "Profile data is not available"
+    },
+    "settings": {
+      "title": "T it le",
+      "loading_accessibility_message": "Loading the page with settings",
+      "log_out_everywhere": {
+        "title": "Log out everywhere",
+        "description": "If you have lost a device or have security concerns, you should log out everywhere to protect your account.",
+        "button": "Log out everywhere",
+        "warning_message": "You will also be logged out on this device."
+      }
+    },
+    "shop_ads": {
+      "button": "B ut to n",
+      "next_button": "N ex t b ut to n",
+      "previous_button": "P re vi ou s b ut to n",
+      "subtitle": "S ub ti tl e"
+    },
+    "sign_in": {
+      "error": {
+        "invalid": {
+          "invalid_code": "I nv al id c od e",
+          "invalid_email": "I nv al id e ma il"
+        }
+      },
+      "step_one": {
+        "button": "B ut to n",
+        "page_title": "Log in – %{shop_name}",
+        "heading": "Log in",
+        "subheading": "Enter your email, and we will send you a confirmation code",
+        "input_field_label": "Mail",
+        "subheading_with_sign_in_options": "Choose how you want to log in"
+      },
+      "step_two": {
+        "heading": "H ea di ng",
+        "input_field_label": "I np ut f ie ld l ab el",
+        "subheading": "S ub he ad in g",
+        "page_title": "Enter code – %{shop_name}",
+        "restart_link": "Log in with another email",
+        "button": "Send"
+      },
+      "brand_logo_alt_text": "%{shop_name}-logo",
+      "processing": "Treats…"
+    },
+    "subscriptions": {
+      "subscription_contracts": {
+        "load_more": "L oa d m or e",
+        "product_details": "P ro du ct d et ai ls",
+        "subscription_contracts_updated": "S ub sc ri pt io n c on tr ac ts u pd at ed",
+        "title": "T it le",
+        "contracts_update_failed": "Some subscription agreements were not updated",
+        "more_items": {
+          "one": "and {{count}} additional product",
+          "other": "and {{count}} additional products"
+        }
+      },
+      "update_payment_instrument": {
+        "cancel": "C an ce l",
+        "loading": "L oa di ng",
+        "title": "T it le",
+        "use_new_payment_method": "U se n ew p ay me nt m et ho d",
+        "no_payment_methods_available": "No available payment methods",
+        "select_new_payment_method": "Choose a new payment method",
+        "success": "The payment method has been updated"
+      },
+      "contracts_update_failed": "Some subscription agreements could not be updated",
+      "updating_contracts": {
+        "one": "Updating {{count}} subscription agreement …",
+        "other": "Updating {{count}} subscription agreements …"
+      },
+      "contracts_updated": {
+        "one": "{{count}} subscription agreement was updated",
+        "other": "{{count}} subscription agreements were updated"
+      }
+    },
+    "throttle": {
+      "too_many_attempts": {
+        "message": "M es sa ge",
+        "description": "Try again in a few minutes"
+      }
+    },
+    "ui_components": {
+      "addFile": "A dd Fi le",
+      "april": "A pr il",
+      "august": "A ug us t",
+      "clear": "C le ar",
+      "december": "D ec em be r",
+      "dropzoneDraggedOver": "D ro pz on eD ra gg ed Ov er",
+      "expandSheet": "E xp an dS he et",
+      "february": "F eb ru ar y",
+      "friday": "F ri da y",
+      "fridayAbbreviation": "F ri da yA bb re vi at io n",
+      "increase": "I nc re as e",
+      "july": "J ul y",
+      "june": "J un e",
+      "march": "M ar ch",
+      "may": "M ay",
+      "monday": "M on da y",
+      "november": "N ov em be r",
+      "october": "O ct ob er",
+      "qrCode": "Q rC od e",
+      "removeItem": "R em ov eI te m",
+      "removeTag": "R em ov eT ag",
+      "saturday": "S at ur da y",
+      "september": "S ep te mb er",
+      "showNextMonth": "S ho wN ex tM on th",
+      "showPreviousMonth": "S ho wP re vi ou sM on th",
+      "sunday": "S un da y",
+      "thursday": "T hu rs da y",
+      "tuesday": "T ue sd ay",
+      "wednesday": "W ed ne sd ay",
+      "expandNotification": "See more",
+      "submit": "Send",
+      "processing": "Therapist …",
+      "decrease": "Lower {{type}}",
+      "minimumReached": "You have reached the minimum limit of {{value}}",
+      "maximumReached": "You have reached the maximum limit of {{value}}",
+      "mondayAbbreviation": "Ma",
+      "tuesdayAbbreviation": "Ten",
+      "wednesdayAbbreviation": "On",
+      "thursdayAbbreviation": "To",
+      "saturdayAbbreviation": "Run",
+      "sundayAbbreviation": "Lake",
+      "rangeStart": "Start of interval",
+      "inRange": "Within the range",
+      "rangeEnd": "End of interval",
+      "mapClusterTitle": {
+        "one": "A cluster of {{number}} markers",
+        "other": "A cluster of {{number}} markers"
+      },
+      "dropzoneInvalidFileType": "The file type is not supported",
+      "clipboardFailedToCopy": "Could not copy"
+    },
+    "enable_javascript": "To view your account, you must enable JavaScript in your browser settings or log in using a different browser.",
+    "editor": {
+      "link_new_tab_confirmation": "This link cannot be opened in the editor. It will open in a new window ({{resolved_to_link}}). Click OK to continue."
+    },
+    "announcement_bar": {
+      "expand_label": "Expand message bar",
+      "collapse_label": "Hide message bar",
+      "close_label": "Close message bar"
+    }
+  },
   "accessibility": {
     "account": "Open account menu",
     "cart": "Shopping cart",
@@ -23,6 +1267,7 @@
     "new_window": "Opens in a new window.",
     "open_cart_drawer": "Open shopping cart",
     "open_search_modal": "Open search",
+    "loading": "Loading ...",
     "quantity": "Number",
     "pause_video": "Pause video",
     "play_model": "Play 3D model",
@@ -43,6 +1288,7 @@
     "slideshow_play": "Play slideshow",
     "slideshow_previous": "Previous slide",
     "unit_price": "Unit price",
+    "unit_price_separator": "per",
     "find_country": "Find country",
     "help": "Help"
   },
@@ -258,6 +1504,12 @@
   "fields": {
     "separator": "to"
   },
+  "general": {
+    "search": {
+      "search": "Search",
+      "reset": "Reset search"
+    }
+  },
   "gift_cards": {
     "issued": {
       "how_to_use_gift_card": "Use the gift card code online or as a QR code in the store",
@@ -290,7 +1542,17 @@
       "added_to_cart": "Added to cart",
       "add_to_cart_error": "Error adding to cart",
       "sold_out": "Sold out",
-      "unavailable": "Unavailable"
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "volume_pricing_inquiry": "Volume pricing inquiry",
+      "price": {
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price"
+      },
+      "volume_pricing": {
+        "price_range": "From {{ minimum }} to {{ maximum }}"
+      }
     },
     "downloads": {
       "title": "Downloads"
@@ -2363,830 +3625,6 @@
       "buyer_consent_product": "This item is a recurring or deferred purchase. By continuing, I accept %{cancellationPolicyLink} and authorize you to charge my payment method for the prices, with the frequency and on the dates specified on this page, until my order is fulfilled, or until I cancel, if this is allowed.",
       "buyer_consent_cart": "One or more of the items in your shopping cart are a recurring or deferred purchase. By continuing, I accept %{cancellationPolicyLink} and authorize you to charge my payment method at the prices, with the frequency, and on the dates specified on this page, until my order is fulfilled, or until I cancel, if this is allowed.",
       "cancellation_policy": "the termination policy"
-    }
-  },
-  "customer_accounts": {
-    "navigation_and_structure": {
-      "account_menu": {
-        "hide_accessibility_label": "Hide account menu",
-        "show_accessibility_label": "Show account menu",
-        "open_menu_accessibility_label": "Open Account Navigation",
-        "close_menu_accessibility_label": "Close Account Navigation",
-        "loading_message": "Loading Account Navigation"
-      },
-      "contact_email_subject": "Contact from the webshop {{shopName}}",
-      "dismiss_toast": "Reject",
-      "document_title": "{{sectionName}} – {{shopName}} – Account",
-      "log_out_link": "Log out",
-      "logout_overlay_label": "Logging out …",
-      "shop_logo_accessibility_label": "{{shopName}}-logo",
-      "country_switcher_toast_message": "Country changed to {{countryName}}",
-      "switch_country": "Change country",
-      "location_switcher_toast_message": "The location was changed to {{locationName}}",
-      "switch_location": "Change location",
-      "view_details": "See details",
-      "no_locations_found": "No locations were found",
-      "skip_to_content": "Go to content"
-    },
-    "account_information": {
-      "loading_finished_accessibility_message": "The account information has been loaded",
-      "profile_card": {
-        "cancel_accessibility_label": "Cancel profile editing",
-        "email_help_text": "Mail cannot be edited",
-        "phone_number_help_text": "Phone number cannot be edited",
-        "email": "Email address",
-        "errors": {
-          "name_too_long": "{{fieldName}} is too long (maximum 255 characters)",
-          "name_cannot_contain_url": "{{fieldName}} must not contain a web address",
-          "name_cannot_contain_html_tags": "{{fieldName}} must not contain HTML tags",
-          "email_cant_be_blank": "The email address must not be empty",
-          "invalid_email_format": "Enter a valid email address"
-        },
-        "editable_email_help_text": "This email address is used for login and order updates."
-      },
-      "profile_update_confirmation_message": "The profile has been updated",
-      "verify_new_email_modal": {
-        "title": "Confirm email address",
-        "email_resend_button_accessibility_label": "Resend confirmation code",
-        "verify_button": "Confirm",
-        "verify_button_accessibility_label": "Confirm one-time code",
-        "cancel_button_accessibility_label": "Cancel editing of email address",
-        "email_resend_button_success_toast_message": "The confirmation code has been sent",
-        "email_resend_button_error_banner_message": "The confirmation code could not be sent"
-      },
-      "email_update_success_modal": {
-        "title": "Confirm email address",
-        "description": "Email address was updated. Redirecting to login."
-      },
-      "email_update_confirmation_message": "The email address has been updated to {{email}}"
-    },
-    "orders": {
-      "list_layout_accessibility_label": "Layout settings",
-      "order_list": {
-        "column_headers": {
-          "total": "In total"
-        },
-        "delivered": "Delivered on {{date}}",
-        "empty_state_order_source_description": "Only orders placed by {{email}} are shown here.",
-        "empty_state_subtitle": "Go to the store to place an order.",
-        "order_link": "See order {{name}}",
-        "pagination": {
-          "nav_accessibility_label": "Navigation buttons for orders",
-          "previous": "Previous"
-        },
-        "sort_hide_options_accessibility_label": "Hide sorting options for confirmed orders.",
-        "sort_show_options_accessibility_label": "Show sorting options for confirmed orders.",
-        "sort": {
-          "location": {
-            "descending": "Location (Å-A)"
-          },
-          "order_total": {
-            "ascending": "Orders in total (low to high)",
-            "descending": "Orders in total (high to low)"
-          }
-        },
-        "one_images_accessibility_label": "The order contains {{lineItemName1}}",
-        "two_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}",
-        "three_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
-        "four_images_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
-        "estimated_shortform": "Expected on {{date}}",
-        "payment_status": {
-          "list_view": {
-            "overdue": "Expired",
-            "due": "Due on {{date}}",
-            "due_today": "Expires today",
-            "due_without_date": "Expired",
-            "due_on_fulfillment": "Expires upon preparation"
-          },
-          "gallery_view": {
-            "overdue": "Payment is delayed",
-            "due": "Overdue payment: {{date}}",
-            "due_today": "Payment is due today",
-            "due_on_fulfillment": "The payment is due upon preparation",
-            "payment_not_due": "The payment is not due yet"
-          }
-        },
-        "carousel": {
-          "one_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}})",
-          "two_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}})",
-          "three_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}})",
-          "four_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}})",
-          "five_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}})",
-          "six_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}}), {{lineItemName6}} (quantity {{lineItemQuantity6}})",
-          "six_and_more_products_accessibility_label": "The order contains {{lineItemName1}} (quantity {{lineItemQuantity1}}), {{lineItemName2}} (quantity {{lineItemQuantity2}}), {{lineItemName3}} (quantity {{lineItemQuantity3}}), {{lineItemName4}} (quantity {{lineItemQuantity4}}), {{lineItemName5}} (quantity {{lineItemQuantity5}}), {{lineItemName6}} (quantity {{lineItemQuantity6}}) and more",
-          "view_order_details": "See order details"
-        },
-        "show_order_actions_accessibility_label": "View order actions for order {{name}}",
-        "more_than_four_products_accessibility_label": "The order contains {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} and {{numberOfAdditionalProducts}} additional products",
-        "order_status_message": {
-          "list_view": {
-            "view_order_for_details": "See details on the order",
-            "last_updated": "Last updated on {{date}}"
-          }
-        },
-        "more_than_three_products_accessibility_label": "The order includes {{lineItemName1}}, {{lineItemName2}} and {{numberOfAdditionalProducts}} additional products.",
-        "filter": {
-          "apply": "Use",
-          "date": {
-            "custom": "Customized"
-          }
-        },
-        "no_order_banner": "Create an order to test your extension on the order status page.",
-        "location_filter_picker": {
-          "switch_view": "Change view"
-        }
-      },
-      "order_status": {
-        "canceled_label": "Cancelled",
-        "canceled_title": "Your order has been cancelled",
-        "come_back": "Return to this page to see updates on your shipment status.",
-        "in_review_label": "Under review",
-        "on_its_way_label": "On the way",
-        "submitted_label": "Sent",
-        "preparing_for_shipping_label": "Prepared for delivery",
-        "ready_for_pickup_description": "These items are ready for pickup. Bring your order confirmation when you pick up your order.",
-        "submitted_description": "Review the order and payment information.",
-        "last_updated": "Last updated on {{date}}",
-        "multiple_shipments_label": "More shipments",
-        "view_order_for_details": "See details on the order",
-        "confirmed_description_digital": "You will receive an email when your order is ready.",
-        "delivered_description_gift_card": {
-          "one": "The gift card was sent via email.",
-          "other": "The gift cards were sent via email."
-        },
-        "gift_card_label": {
-          "other": "Gift card"
-        },
-        "ready_for_pickup_location": "Your order is ready for pickup at the location",
-        "confirmed_description_pickup": "You will receive an email when your order is ready for pickup.",
-        "confirmed_gift_card_additional_description": {
-          "one": "Gift cards are sent in a separate email.",
-          "other": "Each gift card is sent in a separate email."
-        },
-        "confirmed_description_gift_card_text": "You will receive a text message when your order is ready.",
-        "delivered_description_gift_card_text": {
-          "one": "The gift card was sent via SMS.",
-          "other": "The gift cards were sent via SMS."
-        },
-        "confirmed_gift_card_additional_description_text": {
-          "one": "Gift cards are sent in a separate SMS..",
-          "other": "Each gift card is sent in a separate SMS."
-        },
-        "gift_resend_success": {
-          "one": "The gift card was sent again",
-          "other": "The gift cards were sent again"
-        },
-        "gift_resend_failure": {
-          "one": "There was a problem sending your gift card again. Please try again, or contact us.",
-          "other": "There was a problem sending your gift cards again. Please try again, or contact us."
-        },
-        "attempted_to_deliver_label": "Tried to deliver",
-        "there_was_a_problem_label": "A problem occurred",
-        "buy_with_prime_logo_accessibility_label": "Amazon's logo for Buy with Prime",
-        "complete_label": "Completed",
-        "delivery_promise": {
-          "promise_line": {
-            "single_brand_label": "Delivery supported by",
-            "mixed_brands_label": "Guaranteed delivery",
-            "modal_accessibility_button_label": "Information about delivery commitments"
-          },
-          "details_modal": {
-            "title": "Delivery supported by",
-            "modal_accessiblity_label": "Information about delivery commitments",
-            "delivery_by_label": "Delivery no later than {{date}}",
-            "delivery_guaranteed_by_label": "Delivery is guaranteed no later than {{date}}",
-            "shop_cash_claim": {
-              "may_be_eligible_label": "Shop Promise guarantees fast and reliable delivery. Send a review to Shop Cash if your order is delivered late.",
-              "may_be_eligible_not_authorized_label": "You may be eligible to claim Shop Cash because this order was delivered late. Log in to see details.",
-              "redeemed_label": "You have already claimed Shop Cash because this order was delivered late.",
-              "expired_label": "This order is not qualified for a claim for late delivery because the 30-day warranty has expired.",
-              "no_longer_guaranteed_label": "These goods are no longer supported by a delivery guarantee."
-            },
-            "delivery_guarantee_label": "Guarantee of delivery"
-          }
-        },
-        "delivery_promise_v2": {
-          "promise_line": {
-            "shop_promise_brand_label": "Guaranteed delivery of",
-            "external_promise_brand_label": "Delivery before",
-            "not_delivered_by_label": "Delivered after the {{date}}",
-            "delivery_guarantee_expired_label": "Guaranteed delivery has expired",
-            "modal_accessibility_button_label": "Information about delivery commitments"
-          },
-          "details_modal": {
-            "title": "Guarantee of delivery",
-            "active_delivery_guarantee_label": "Delivery no later than {{date}}",
-            "expired_delivery_guarantee_description": "This order's 30-day Shop Promise guarantee has expired.",
-            "order_includes_guarantees_label": "Your order includes {{deliveryAgreementsCount}} warranties",
-            "order_includes_guarantees_description": "Shop Promise guarantees fast and reliable delivery. Claim Shop Cash if your order arrives after {{date}}.",
-            "delivered_after_label": "Delivered after the {{date}}",
-            "delivered_after_description": "Since your order arrived late, you are qualified to claim {{amount}} Shop Cash.",
-            "claimed_shop_cash_description": "Since your order arrived late, you have claimed {{amount}} Shop Cash.",
-            "eligible_to_claim_shop_cash_description": "Since your order arrived late, you are qualified to claim {{amount}} Shop Cash.",
-            "view_balance_in_shop_button_label": "See balance in Shop",
-            "scan_to_claim_shop_cash_label": "Scan to claim {{amount}} in Shop Cash"
-          }
-        },
-        "gift_card_resend_button": {
-          "one": "Send gift card again",
-          "other": "Send gift card again"
-        },
-        "expected_by": "Expected no later than {{date}}",
-        "was_expected_by": "Was expected no later than {{date}}"
-      },
-      "fulfillment_status_title": "Preparation status: {{status}}",
-      "list_title_confirmed_orders_accessibility_label": "Orders: Confirmed",
-      "list_title_pending_orders_accessibility_label": "Orders: Pending",
-      "switch_order_type_pending_orders_accessibility_label": "Change order type, currently showing pending orders",
-      "switch_order_type_confirmed_orders_accessibility_label": "Change order type, currently showing confirmed orders"
-    },
-    "order_details": {
-      "addresses_section_title": "Billing and delivery",
-      "card_ending_with": "Ends with {{lastDigits}}",
-      "loading": "Loading order information",
-      "loading_finished_accessibility_message": "The order information has been loaded",
-      "payment": {
-        "status_in_review": "The payment is due after the review",
-        "status_unpaid": "Payment is due on {{date}}",
-        "card_payment_details": "that ends with {{lastDigits}} – {{formattedTransactionAmount}}",
-        "shop_pay_installments": {
-          "paid_in_installments": "Paid with Shop Pay Installments",
-          "view_schedule": "See schedule"
-        },
-        "gift_card_payment_details": "that ends with {{lastDigits}} – {{formattedTransactionAmount}}",
-        "manual_payment_methods": {
-          "money_order": "Postal order - {{formattedTransactionAmount}}",
-          "cash_on_delivery": "Cash on delivery (Cash On Deliver, COD) - {{formattedTransactionAmount}}",
-          "bank_deposit": "Bank deposit - {{formattedTransactionAmount}}",
-          "manual": "Manual – {{formattedTransactionAmount}}"
-        },
-        "store_credit_payment_details": "Store credit – {{formattedTransactionAmount}}",
-        "transactions": {
-          "show_less": "Show fewer",
-          "payment_details": "Payment information"
-        },
-        "payment_type": {
-          "store_credit": "Voucher",
-          "money_order": "Postal order",
-          "cash_on_delivery": "Cash on delivery",
-          "bank_deposit": "Bank deposit"
-        }
-      },
-      "shipping": {
-        "address": "Delivery address",
-        "address_map_marker": "Delivery address",
-        "method": "Delivery method",
-        "summary": "Delivery",
-        "free_shipping_discount": "Free delivery",
-        "one_time": "One-time delivery",
-        "subscription": "Subscription delivery"
-      },
-      "subtitle": "Confirmed on {{date}}",
-      "summary_list_title_accessibility_label": "Made-to-order items",
-      "summary_title": "Order overview",
-      "summary_totals_title_accessibility_label": "The order in total",
-      "total": "In total",
-      "unit_price": "{{price}}/pcs.",
-      "not_applicable": "I/R",
-      "returns": {
-        "return_and_refund_modal_header": "Reimbursement policy",
-        "ineligible_return_message": "No items in this order are eligible for a return.",
-        "ineligible_return_message_when_returned": "No further items in this order are eligible for a return.",
-        "exchange_header": "Exchange goods",
-        "exchange_subheader": "Exchange items will be added to the order once the return has been completed."
-      },
-      "request_return_failed": "A problem occurred while processing your request. Please try again.",
-      "mobile_summary_toggle_button": {
-        "open": "View order summary"
-      },
-      "shipment_timeline": {
-        "expand_events_accessibility_label": "View the order's shipping information",
-        "hide_events_accessibility_label": "Hide the order's shipping information"
-      },
-      "show_order_summary": "View order summary",
-      "marketing_description": "You will receive marketing emails You can unsubscribe at any time.",
-      "marketing_checkbox_label": "Send me emails about news and offers",
-      "marketing_checkmark_label": "You are subscribed to receive news and offers via email",
-      "image_gallery": {
-        "product_name_and_quantity": "{{productName}}, {{quantity}} pcs."
-      },
-      "shop_order_tracking": {
-        "download_shop_to_track": "Download Shop to track packages",
-        "real_time_delivery_updates": "Shop sends you real-time updates about your delivery when your order has been shipped."
-      },
-      "shop_pay": {
-        "order_completed_with": "The order was completed with"
-      },
-      "edit_summary": {
-        "return_line_item_removed_with_quantities": "Removed {{delta}} from the return"
-      },
-      "pickup": {
-        "pickup_point": "Pickup location"
-      },
-      "paid_with_shop_pay_installments_card": {
-        "description": "Keep track of your payment plan with reminders in the Shop app.",
-        "desktop_qr_code_content": {
-          "description": "Get reminders about your installment payments with Shop."
-        }
-      },
-      "order_details": "Order information",
-      "login_to_view_all_order_details": "Log in to see all order details.",
-      "log_in": "Log in",
-      "order_details_skeleton_accessibility_label": "Log in to see all order details.",
-      "logged_in_account_no_permission_to_order": "You are logged in as {{email}}. This account does not have permission to manage this order.",
-      "log_in_to_a_different_account": "Log in to another account",
-      "duties": "Customs",
-      "ok_duties_tooltip": "This order is shipped from another country, so customs duties have been added to your total order.",
-      "error_duties_tooltip": "This order is shipped from another country, so customs duties and taxes may be charged upon delivery.",
-      "zero_duties_tooltip": "This order is shipped from another country. No customs duties are charged upon delivery.",
-      "fees": {
-        "restocking_fee": "Return fee",
-        "return_shipping_fee": "Return delivery"
-      },
-      "taxes_included": "Including {{amount}} in tax",
-      "duties_and_taxes_included": "The total amount includes customs and taxes. No additional fees upon delivery.",
-      "grouped_view_components": {
-        "line_item_summary_accessibility_label": "{{productTitle}}, quantity: {{refundableQuantity}}",
-        "line_item_summary_list_accessibility_label": "Items in the bundle {{productTitle}}"
-      },
-      "cash_rounding": "Settlement in cash",
-      "adjusted_total": "Adjusted total amount",
-      "login_card": {
-        "log_in": "Log in",
-        "link_expired": "The link has expired",
-        "resend_link_only": "To view your order details, you must have a new link sent to the email or phone number used during payment.",
-        "resend_link_and_login": "To view your order details, you must log in or send a new link to the email address or phone number used at checkout."
-      },
-      "link_sent": "The link has been sent",
-      "due_on_date": "Due on {{date}}",
-      "due_on_fulfillment": "Expires upon preparation",
-      "due_on_receipt": "Due upon receipt"
-    },
-    "addresses": {
-      "address_deleted_notification": "The address was deleted",
-      "cancel_deletion_button_accessibility_label": "Cancel deletion of {{address}}",
-      "default_address": {
-        "title": "Standard address",
-        "title_accessibility_label": "Standard address: {{address}}"
-      },
-      "delete_confirmation_message": "Do you want to delete the address? Existing orders will not be affected.",
-      "loading_finished_accessibility_message": "A new page with addresses has been loaded",
-      "loading_shipping_accessibility_message": "Loading delivery address",
-      "delete_confirmation_title": "Do you want to delete the address?",
-      "edit_modal_title": {
-        "shipping": "Edit delivery address"
-      },
-      "add_address_banner": "Add addresses to be used for payment",
-      "back_button_accessibility_label": "Back to editing the address {{address}}",
-      "no_addresses_banner": "No addresses have been added"
-    },
-    "address_form": {
-      "auto_complete_title": "Recommendations",
-      "cancel_accessibility_label": "Cancel editing of the address {{address}}",
-      "creation_success_notification": "The address was added",
-      "default_address_creation_success_notification": "The standard address was added",
-      "default_address_update_success_notification": "The standard address was updated",
-      "loading_edit_form_accessibility_message": "Loading form for address change",
-      "loading_finished_accessibility_message": "The address form is loaded",
-      "save_accessibility_label": "Save the address {{address}}",
-      "update_success_notification": "The address was updated",
-      "attention": "Note",
-      "attention_company": "Company/att."
-    },
-    "B2B": {
-      "locations": {
-        "contact_email": "Email address",
-        "contact_list_title": "Persons",
-        "location_picker_label": "Name of location",
-        "net_payment_terms_description": "{{name}}: Payments are due in {{numberOfDays}} days",
-        "payment_details_title": "Payment information",
-        "payment_terms": "Payment deadlines",
-        "shipping_address_required": "Add a delivery address to this location to start placing orders.",
-        "tax_details_title": "Tax information",
-        "multiple_tax_exemptions_and": "and ",
-        "tax_exemption_not_applicable": "I/R",
-        "tax_exemptions_modal_button_accessibility_label": "See all tax exemptions",
-        "staff_and_permissions_title": "Employees and permissions",
-        "deposit_percentage": "{{percentage}} in deposit"
-      },
-      "location_selection": {
-        "description": "If you already have items in your cart, changing the location may affect prices and quantities in the cart.",
-        "list_accessibility_label": "Location list",
-        "list_loading_finished_accessibility_message": "The list of locations has been loaded",
-        "loading_store_accessibility_message": "Goes to store",
-        "no_location_title": "Only personal orders",
-        "no_locations_found": "No locations were found",
-        "search": "Search for locations",
-        "search_location_title": "Choose a location",
-        "description_switch_later": "You can always change later"
-      },
-      "addresses": {
-        "add_shipping_address_button": "Add delivery address",
-        "add_shipping_address_section_accessibility_label": "Add delivery address",
-        "cancel_adding_shipping_address_accessibility_label": "Cancel adding delivery address",
-        "save_new_shipping_address_accessibility_label": "Save delivery address",
-        "shipping_address_card_title": "Delivery address"
-      },
-      "orders": {
-        "draft_order_list": {
-          "hide_all_accessibility_label": "Hide all orders under review",
-          "show_all_accessibility_label": "Show all orders under review",
-          "pagination": {
-            "nav_accessibility_label": "Navigation buttons for orders under review"
-          },
-          "show_all_orders_in_review": "Show all orders under review",
-          "show_less_orders_in_review": "Show fewer orders under review",
-          "pending_tab_accessibility_label": {
-            "pending_orders": {
-              "one": "You have {{count}} pending orders"
-            }
-          },
-          "pending_orders_count_more_than_pagination_length": "More than {{count}}"
-        }
-      },
-      "draft_order_details": {
-        "loading": "Loading order information",
-        "loading_finished_accessibility_message": "The order information has been loaded",
-        "payment_status": {
-          "draft": {
-            "description": "The payment details are determined when the order is confirmed.",
-            "title": "The payment is not due yet",
-            "in_review": {
-              "description": "The payment details are determined when the order is confirmed.",
-              "title": "The payment is not due yet"
-            },
-            "submitted": {
-              "deposit": {
-                "title": "The payment is overdue",
-                "due_later": "The terms for the balance are in accordance with {{translatedName}}, and the balance is due {{dueDate}}.",
-                "due_on_fulfillment": "The balance is due when all items in this order are prepared.",
-                "due_on_receipt": "You will receive an invoice for the remaining balance.",
-                "due_on_date": "The balance is due {{dueDate}}."
-              }
-            },
-            "deposit": {
-              "due_later": "{{depositAmount}} must be paid when your order is confirmed. The payment terms for the balance will be {{translatedName}}.",
-              "due_on_fulfillment": "{{depositAmount}} must be paid when your order is confirmed. The balance is due when the order is ready.",
-              "due_on_receipt": "{{depositAmount}} must be paid when your order is confirmed. The remaining balance is due later.",
-              "due_on_date": "{{depositAmount}} must be paid when your order is confirmed. The remaining balance is due {{dueDate}}."
-            }
-          },
-          "paid": {
-            "title_with_date": "Paid on {{date}}"
-          },
-          "pending": {
-            "banner_overdue": {
-              "one": "Your payment is overdue by {{count}} day",
-              "other": "Your payment is overdue by {{count}} days"
-            },
-            "title_with_date": "Overdue payment: {{date}}",
-            "description_overdue": "Your payment is overdue.",
-            "description_partially_paid": "This order was partially paid. You have an outstanding balance.",
-            "description_authorized": "Your payment method will be charged on the due date. You can also choose to pay now.",
-            "title_due_on_receipt": "The payment is not due yet",
-            "description_due_on_receipt": "You will receive an invoice when the payment is due.",
-            "title_due_on_fulfillment": "The payment is due upon preparation",
-            "description_due_on_fulfillment": "Payment is due when all items in this order are prepared.",
-            "description_waiting_for_manual_payment": "This order has a pending payment. The balance will be updated when the payment is received.",
-            "description_due_on_receipt_partially_paid": "This order was partially paid. You have an outstanding balance. You will receive an invoice when the payment is due.",
-            "description_due_on_fulfillment_partially_paid": "This order was partially paid. You have an outstanding balance. Payment is due when all items in this order are prepared."
-          },
-          "refund": {
-            "title_with_date": "Refunded on {{date}}"
-          },
-          "canceled": {
-            "title": "Payment cancelled",
-            "description": "You have not been charged."
-          },
-          "pay_now_accessibility_label": "Pay now for the order {{orderName}}"
-        },
-        "subtitle": "Sent on {{date}}",
-        "order_timeline": {
-          "expand_events_accessibility_label": "View the order draft's information",
-          "hide_events_accessibility_label": "Hide the order draft's information"
-        }
-      },
-      "payment_methods": {
-        "payment_delete": {
-          "description_with_replacement": "If you delete this payment method, it will affect pre-approved payments for this location. Replace it with an alternative payment method to continue receiving upcoming orders."
-        },
-        "payment_details": {
-          "draft_label": "Order draft {{name}}"
-        }
-      },
-      "purchase_order_number": {
-        "add_accessibility_label": "Add purchase order number",
-        "add_modal_title": "Add purchase order number",
-        "close_modal_accessibility_label": "Close mode with purchase order number",
-        "discard": "Undo",
-        "discard_changes_modal_title": "Do you want to discard the changes?",
-        "edit_accessibility_label": "Edit purchase order number",
-        "edit_modal_title": "Edit purchase order number",
-        "empty_state": "No purchase order number",
-        "modal_po_number_input_label": "Purchase order number",
-        "modal_po_number_input_max_length_error": "Purchase order numbers may be at most {{maxLength}} characters long.",
-        "title": "Purchase order no. {{poNumber}}"
-      }
-    },
-    "errors": {
-      "address_deletion_error": {
-        "description": "There was a problem deleting this address. Please try again, or refresh the page."
-      },
-      "banner_title": {
-        "one": "There are {{count}} errors"
-      },
-      "failed_address_creation": {
-        "description": "There was a problem creating your address. Refresh the page, or check your internet connection."
-      },
-      "failed_address_update": {
-        "description": "There was a problem updating your address. Refresh the page, or check your internet connection."
-      },
-      "no_access_to_locations": {
-        "description": "You do not have access to any locations."
-      },
-      "not_found": {
-        "description": "Check the web address, or try again in a few minutes.",
-        "title": "An error occurred while loading this page"
-      },
-      "order_not_found": {
-        "description": "This order does not exist, or you do not have permission to view it.",
-        "title": "The order was not found"
-      },
-      "profile_update_error": {
-        "description": "There was a problem updating your profile. Refresh the page, or check your internet connection."
-      },
-      "retry_action_label": "Try again",
-      "load_orders_error": {
-        "title": "Could not load orders",
-        "description": "Try again, or come back later.",
-        "retry_button": "Try again"
-      },
-      "load_paypal_error": {
-        "description": "There is a problem loading PayPal. Please try again."
-      },
-      "load_extension_error": {
-        "description": "Refresh the page, or try again in a few minutes."
-      },
-      "logout_everywhere": {
-        "description": "Something went wrong during logout. Please try again."
-      },
-      "resend_link": {
-        "too_many_requests": "Too many requests. Please try again later."
-      },
-      "profile_name_update_error": {
-        "description": "There was a problem updating your name. Refresh the page, or check your internet connection."
-      },
-      "load_address_form_error": {
-        "title": "The address form was not loaded",
-        "description": "The address form was not loaded.",
-        "refresh_button": "Refresh the page"
-      }
-    },
-    "payment_methods": {
-      "payment_details": {
-        "title": "Information about payment method",
-        "payment_method_expiring_on": "Expires {{expiryDate}}",
-        "preauthorized_payments": "Pre-approved payments",
-        "close_payment_modal_accessibility_label": "Close the window with payment method information",
-        "payment_method_not_found_error": "The payment method could not be found",
-        "payment_details_loading": "Loading information about the payment method",
-        "pre_authorized_payments": "Pre-approved payments",
-        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} items in total, showing {{totalItemsToDisplay}} items.",
-        "next_payment_due": "Next due payment: {{dueDateInMonthDayYear}}",
-        "edit_payment_method_button_accessibility_label": "Edit the payment method ending in {{lastDigits}}",
-        "credit_card_details_accessibility_label": "that ends with {{lastDigits}}",
-        "payment_method_expired_on": "Expires on {{expiryDate}}",
-        "checkout_card_banner": "This payment method can only be used for pre-approved payments. It will not be displayed at checkout if you are logged in to this store."
-      },
-      "generic_card": "Short",
-      "payment_delete": {
-        "description_with_replacement": "If you delete this payment method, it will affect pre-approved payments. You can also choose to replace it with another payment method to continue receiving upcoming orders.",
-        "payment_method_selector_placeholder": "Choose a replacement payment method (optional)",
-        "error_when_deleting": "We are sorry, but something went wrong, and we could not delete this payment method. Please try again later, or refresh the page.",
-        "delete_and_replace_button_accessibility_label": "Delete {{currentPaymentMethodName}}, and replace it with {{newPaymentMethodName}}.",
-        "deleted_successfully": "The payment method was deleted.",
-        "warning_message_with_replacement": {
-          "with_pending_orders_and_subscriptions": "If you delete this payment method, it will affect pre-approved payments. This payment method will still be charged outstanding balances for existing orders unless you choose an alternative payment method. If you choose an alternative payment method, you will have the option to select upcoming subscription orders without interruption.",
-          "with_pending_orders": "If you delete this payment method, it will be removed from your account and will no longer be available for future purchases. It will still be charged for outstanding balances on existing orders unless you choose an alternative payment method.",
-          "with_subscriptions": "If you delete this payment method, it will affect pre-approved payments. Replace it with an alternative payment method to continue receiving upcoming orders."
-        },
-        "warning_message_without_replacement": {
-          "with_pending_orders_and_subscriptions": "If you delete this payment method, it will affect pre-approved payments. This payment method will still be charged outstanding balances for existing orders, but you will not receive upcoming subscription orders. Add an alternative payment method to continue receiving subscription orders.",
-          "with_pending_orders": "If you delete this payment method, it will be removed from your account and will no longer be available for future purchases. It will still be charged for outstanding balances on existing orders.",
-          "with_subscriptions": "If you delete this payment method, it will affect pre-approved payments. Add an alternative payment method to continue receiving upcoming orders."
-        }
-      },
-      "edit_payment_method": {
-        "title": "Edit the payment method",
-        "payment_method_updated_toast": "The payment method has been updated",
-        "billing_address_choose_from_list": "Select from the list",
-        "future_purchases_notice": "This payment method is saved for future purchases.",
-        "generic_error": "There was a problem with the update. Please try again."
-      },
-      "card_fields": {
-        "name_on_card_label": "Name of the card",
-        "name_on_card_placeholder": "Name of the card",
-        "card_expiry_label": "Expiration date (MM/YY)",
-        "card_expiry_placeholder": "Expiration date (MM/YY)",
-        "tooltip": {
-          "tooltip_accessibility_label": "For further information",
-          "card_verification_value_explanation": "3-digit security code, which you can usually find on the back of your card. American Express cards have a 4-digit code on the front."
-        },
-        "field_errors": {
-          "credit_card_name_invalid": "Enter your name exactly as it appears on your card",
-          "credit_card_expiry_invalid": "Enter valid card expiration date",
-          "credit_card_verification_value_blank": "Enter CVV or security code on your card"
-        },
-        "unavailable": {
-          "text": "Payments with credit/debit cards are not available at the moment.",
-          "link_text": "Update this page",
-          "suffix": "or try again later"
-        }
-      },
-      "add_payment_method": {
-        "payment_method_added_confirmation": "The payment method has been added",
-        "billing_address": {
-          "choose_billing_address_from_list_button": "Select from the list",
-          "choose_billing_address_from_list_button_accessibility_label": "Select a billing address from the list",
-          "missing_billing_address_error_message": "Specify a billing address"
-        },
-        "replace_mode_warning": "If you delete this payment method, it will affect subscriptions or pre-orders. Replace it with an alternative payment method to continue receiving upcoming orders.",
-        "choose_from_list": "Select from the list"
-      },
-      "expires_soon": "This card expires soon",
-      "expired": "This card has expired",
-      "card_update_consent": "This payment method is saved for future purchases.",
-      "digital_wallet_title": "Digital wallet",
-      "credit_or_debit_card_title": "Credit card or debit card",
-      "google_pay": {
-        "errors": {
-          "generic": "There was a problem with Google Pay. Please try again, or use another payment method.",
-          "missing_billing_address": "Google Pay requires a billing address. You need to add one to your account."
-        },
-        "iframe_title_accessibility_label": "Add the payment method Google Pay"
-      },
-      "apple_pay": {
-        "errors": {
-          "generic": "There was a problem with Apple Pay. Please try again, or use another payment method.",
-          "missing_billing_address": "Apple Pay requires a billing address. You need to add one to your account."
-        }
-      },
-      "add_payment_method_banner": "Add payment method for faster payment or pre-approved services",
-      "edit_payment_method_button_accessibility_label": "Edit {{paymentMethodName}} ending with {{lastDigits}}",
-      "expiration_warning_button_accessibility_label": "Show expiration warning for {{paymentMethodName}}, ending with {{lastDigits}}",
-      "no_payment_methods_banner": "No payment methods have been added",
-      "default": "Standard",
-      "store_credit": {
-        "label": "Voucher",
-        "accesibility_label": "Voucher – {{formattedBalance}}",
-        "expirable_amounts_button": "Show amount that can expire",
-        "details_modal": {
-          "title": "Voucher, which can expire",
-          "expirable_balance_info": "Some of your balance expires in the future",
-          "expirable_amount_label": "Total amount that can be redeemed",
-          "expirable_amounts_info": "Amounts that expire first are used first for payment",
-          "expired_amounts_button": "Show amount that has expired",
-          "pagination": {
-            "load_more_accessibility_label": "Load more amounts that can expire"
-          },
-          "expirable_amounts_button": "See",
-          "events": {
-            "order_refund": "Refund of order",
-            "payment_failure": "Payment error",
-            "order_cancellation": "Cancellation of order",
-            "tax_finalization": "Final processing of tax"
-          }
-        },
-        "expirable_amounts_label": "Amounts that may expire"
-      },
-      "pay_pal": {
-        "iframe_title_accessibility_label": "Add the payment method PayPal"
-      },
-      "card_update_consent_subscriptions": "This payment method is saved for future purchases and can be used for recurring or deferred purchases.",
-      "replacement_payment_method_title": "Compensation payment method",
-      "bank_account": {
-        "loading_accessibility_message": "Button for bank account is loading",
-        "iframe_title_accessibility_label": "Setting up a bank account"
-      },
-      "generic_error": "An error occurred. Please try again."
-    },
-    "payment_method_brands": {
-      "forbrugsforeningen": "The Consumer Association",
-      "storecredit": "Voucher",
-      "bogus": "Fictional"
-    },
-    "enable_javascript": "To view your account, you must enable JavaScript in your browser settings or log in using a different browser.",
-    "ui_components": {
-      "expandNotification": "See more",
-      "submit": "Send",
-      "processing": "Therapist …",
-      "decrease": "Lower {{type}}",
-      "minimumReached": "You have reached the minimum limit of {{value}}",
-      "maximumReached": "You have reached the maximum limit of {{value}}",
-      "mondayAbbreviation": "Ma",
-      "tuesdayAbbreviation": "Ten",
-      "wednesdayAbbreviation": "On",
-      "thursdayAbbreviation": "To",
-      "saturdayAbbreviation": "Run",
-      "sundayAbbreviation": "Lake",
-      "rangeStart": "Start of interval",
-      "inRange": "Within the range",
-      "rangeEnd": "End of interval",
-      "mapClusterTitle": {
-        "one": "A cluster of {{number}} markers",
-        "other": "A cluster of {{number}} markers"
-      },
-      "dropzoneInvalidFileType": "The file type is not supported",
-      "clipboardFailedToCopy": "Could not copy"
-    },
-    "profile_preview_bar": {
-      "hide_bar": "Hide beam",
-      "navigate_to_admin": "Navigate to the administrator",
-      "previewing": "You are viewing a preview of:",
-      "saved_at": "Saved on {{date}} at {{time}}",
-      "viewing": "You see:",
-      "not_available": "Profile data is not available"
-    },
-    "settings": {
-      "loading_accessibility_message": "Loading the page with settings",
-      "log_out_everywhere": {
-        "title": "Log out everywhere",
-        "description": "If you have lost a device or have security concerns, you should log out everywhere to protect your account.",
-        "button": "Log out everywhere",
-        "warning_message": "You will also be logged out on this device."
-      }
-    },
-    "date": {
-      "humanize": {
-        "lessThanOneMinuteAgo": "Right now"
-      }
-    },
-    "active_inspector": {
-      "extension": {
-        "unselect": "Deselect the extension named {{extensionName}}",
-        "move_down": "Move the extension to the next location",
-        "move_up": "Move the extension to the previous location",
-        "remove": "Remove the extension",
-        "move_down_tooltip": "Move to next location",
-        "move_up_tooltip": "Move to previous location"
-      }
-    },
-    "editor": {
-      "link_new_tab_confirmation": "This link cannot be opened in the editor. It will open in a new window ({{resolved_to_link}}). Click OK to continue."
-    },
-    "throttle": {
-      "too_many_attempts": {
-        "description": "Try again in a few minutes"
-      }
-    },
-    "knowledge_base": {
-      "self_serve_returns": {
-        "disabled": "Customers must contact the shop owner to request a return."
-      }
-    },
-    "announcement_bar": {
-      "expand_label": "Expand message bar",
-      "collapse_label": "Hide message bar",
-      "close_label": "Close message bar"
-    },
-    "subscriptions": {
-      "update_payment_instrument": {
-        "no_payment_methods_available": "No available payment methods",
-        "select_new_payment_method": "Choose a new payment method",
-        "success": "The payment method has been updated"
-      },
-      "subscription_contracts": {
-        "contracts_update_failed": "Some subscription agreements were not updated",
-        "more_items": {
-          "one": "and {{count}} additional product",
-          "other": "and {{count}} additional products"
-        }
-      },
-      "contracts_update_failed": "Some subscription agreements could not be updated",
-      "updating_contracts": {
-        "one": "Updating {{count}} subscription agreement …",
-        "other": "Updating {{count}} subscription agreements …"
-      },
-      "contracts_updated": {
-        "one": "{{count}} subscription agreement was updated",
-        "other": "{{count}} subscription agreements were updated"
-      }
-    },
-    "sign_in": {
-      "brand_logo_alt_text": "%{shop_name}-logo",
-      "step_one": {
-        "page_title": "Log in – %{shop_name}",
-        "heading": "Log in",
-        "subheading": "Enter your email, and we will send you a confirmation code",
-        "input_field_label": "Mail",
-        "subheading_with_sign_in_options": "Choose how you want to log in"
-      },
-      "step_two": {
-        "page_title": "Enter code – %{shop_name}",
-        "restart_link": "Log in with another email",
-        "button": "Send"
-      },
-      "processing": "Treats…"
     }
   },
   "breadcrumbs": {
