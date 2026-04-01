@@ -158,20 +158,20 @@
       {% if section.settings.help_text != blank %}
         <div class="header-help-dropdown desktop-only">
           <button class="help-button" aria-label="{{ 'accessibility.help' | t }}">
-            {{ section.settings.help_text }}
+            {{ 'sections.new_header.help_button' | t }}
           </button>
           <div class="help-dropdown-menu">
             <div class="help-dropdown-content">
               {% if section.settings.help_section1_title != blank %}
                 <div class="help-section">
-                  <h3 class="help-section-title">{{ section.settings.help_section1_title }}</h3>
+                  <h3 class="help-section-title">{{ 'sections.new_header.help_contact_title' | t }}</h3>
                   <div class="help-section-links">
                     {% if section.settings.help_section1_link1_text != blank %}
                       <a href="{{ section.settings.help_section1_link1_url }}" class="help-link-item">
                         {% if section.settings.help_section1_link1_icon != blank %}
                           <i class="{{ section.settings.help_section1_link1_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section1_link1_text }}</span>
+                        <span>{{ 'sections.new_header.help_live_chat' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section1_link2_text != blank %}
@@ -195,7 +195,7 @@
                         {% if section.settings.help_section1_link4_icon != blank %}
                           <i class="{{ section.settings.help_section1_link4_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section1_link4_text }}</span>
+                        <span>{{ 'sections.new_header.help_contact_form' | t }}</span>
                       </a>
                     {% endif %}
                   </div>
@@ -204,14 +204,14 @@
 
               {% if section.settings.help_section2_title != blank %}
                 <div class="help-section">
-                  <h3 class="help-section-title">{{ section.settings.help_section2_title }}</h3>
+                  <h3 class="help-section-title">{{ 'sections.new_header.help_faq_title' | t }}</h3>
                   <div class="help-section-links">
                     {% if section.settings.help_section2_link1_text != blank %}
                       <a href="{{ section.settings.help_section2_link1_url }}" class="help-link-item">
                         {% if section.settings.help_section2_link1_icon != blank %}
                           <i class="{{ section.settings.help_section2_link1_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link1_text }}</span>
+                        <span>{{ 'sections.new_header.help_security_safes' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section2_link2_text != blank %}
@@ -219,7 +219,7 @@
                         {% if section.settings.help_section2_link2_icon != blank %}
                           <i class="{{ section.settings.help_section2_link2_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link2_text }}</span>
+                        <span>{{ 'sections.new_header.help_fire_safety' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section2_link3_text != blank %}
@@ -227,7 +227,7 @@
                         {% if section.settings.help_section2_link3_icon != blank %}
                           <i class="{{ section.settings.help_section2_link3_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link3_text }}</span>
+                        <span>{{ 'sections.new_header.help_safety_mirrors' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section2_link4_text != blank %}
@@ -235,7 +235,7 @@
                         {% if section.settings.help_section2_link4_icon != blank %}
                           <i class="{{ section.settings.help_section2_link4_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link4_text }}</span>
+                        <span>{{ 'sections.new_header.help_retail_security' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section2_link5_text != blank %}
@@ -243,7 +243,7 @@
                         {% if section.settings.help_section2_link5_icon != blank %}
                           <i class="{{ section.settings.help_section2_link5_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link5_text }}</span>
+                        <span>{{ 'sections.new_header.help_safe_lock' | t }}</span>
                       </a>
                     {% endif %}
                     {% if section.settings.help_section2_link6_text != blank %}
@@ -251,7 +251,7 @@
                         {% if section.settings.help_section2_link6_icon != blank %}
                           <i class="{{ section.settings.help_section2_link6_icon }}"></i>
                         {% endif %}
-                        <span>{{ section.settings.help_section2_link6_text }}</span>
+                        <span>{{ 'sections.new_header.help_order_process' | t }}</span>
                       </a>
                     {% endif %}
                   </div>

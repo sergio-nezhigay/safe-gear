@@ -3748,6 +3748,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Información de contacto",
+      "help_faq_title": "FAQ",
+      "help_button": "AYUDA",
+      "help_live_chat": "Chat en vivo",
+      "help_contact_form": "Formulario de contacto",
+      "help_security_safes": "Cajas fuertes de seguridad",
+      "help_fire_safety": "Seguridad contra incendios",
+      "help_safety_mirrors": "Espejos de seguridad",
+      "help_retail_security": "Seguridad en tiendas",
+      "help_safe_lock": "Cerradura de caja fuerte",
+      "help_order_process": "Proceso de pedido"
     }
   }
 }

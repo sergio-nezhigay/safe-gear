@@ -3797,6 +3797,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Contactinformatie",
+      "help_faq_title": "FAQ",
+      "help_button": "HELP",
+      "help_live_chat": "Live chat",
+      "help_contact_form": "Contactformulier",
+      "help_security_safes": "Veiligheidskluis",
+      "help_fire_safety": "Brandveiligheid",
+      "help_safety_mirrors": "Veiligheidsspiegels",
+      "help_retail_security": "Winkelbeveiliging",
+      "help_safe_lock": "Kluisslot",
+      "help_order_process": "Bestelproces"
     }
   }
 }

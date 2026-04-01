@@ -3846,6 +3846,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Kontaktinformationen",
+      "help_faq_title": "FAQ",
+      "help_button": "HILFE",
+      "help_live_chat": "Live-Chat",
+      "help_contact_form": "Kontaktformular",
+      "help_security_safes": "Sicherheitstresore",
+      "help_fire_safety": "Brandschutz",
+      "help_safety_mirrors": "Sicherheitsspiegel",
+      "help_retail_security": "Einzelhandelssicherheit",
+      "help_safe_lock": "Tresorschloss",
+      "help_order_process": "Bestellprozess"
     }
   }
 }

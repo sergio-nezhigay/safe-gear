@@ -392,6 +392,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Søg produkter..."
+    },
+    "new_header": {
+      "help_contact_title": "Kontaktoplysninger",
+      "help_faq_title": "FAQ",
+      "help_button": "HJÆLP",
+      "help_live_chat": "Live chat",
+      "help_contact_form": "Kontaktformular",
+      "help_security_safes": "Sikkerhedspengeskabe",
+      "help_fire_safety": "Brandsikkerhed",
+      "help_safety_mirrors": "Sikkerhedsspejle",
+      "help_retail_security": "Detailhandelssikkerhed",
+      "help_safe_lock": "Pengeskabslås",
+      "help_order_process": "Bestillingsproces"
     }
   }
 }

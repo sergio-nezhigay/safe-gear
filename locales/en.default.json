@@ -3278,6 +3278,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Contact Information",
+      "help_faq_title": "FAQ",
+      "help_button": "HELP",
+      "help_live_chat": "Live Chat",
+      "help_contact_form": "Contact Form",
+      "help_security_safes": "Security Safes",
+      "help_fire_safety": "Fire Safety",
+      "help_safety_mirrors": "Safety Mirrors",
+      "help_retail_security": "Retail Security",
+      "help_safe_lock": "Safe Lock",
+      "help_order_process": "Order process"
     }
   }
 }

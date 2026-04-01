@@ -51,7 +51,11 @@
       "Bash(git commit:*)",
       "Skill(keybindings-help)",
       "Bash(python3:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(done)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/projects/safe-gear/locales/**)"
     ],
     "deny": [],
     "ask": []

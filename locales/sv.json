@@ -3648,6 +3648,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Kontaktinformation",
+      "help_faq_title": "FAQ",
+      "help_button": "HJÄLP",
+      "help_live_chat": "Livechatt",
+      "help_contact_form": "Kontaktformulär",
+      "help_security_safes": "Säkerhetsskåp",
+      "help_fire_safety": "Brandsäkerhet",
+      "help_safety_mirrors": "Säkerhetsspeglar",
+      "help_retail_security": "Butikssäkerhet",
+      "help_safe_lock": "Kassaskåpslås",
+      "help_order_process": "Beställningsprocess"
     }
   }
 }

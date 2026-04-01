@@ -394,6 +394,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Informações de contacto",
+      "help_faq_title": "FAQ",
+      "help_button": "AJUDA",
+      "help_live_chat": "Chat ao vivo",
+      "help_contact_form": "Formulário de contacto",
+      "help_security_safes": "Cofres de segurança",
+      "help_fire_safety": "Segurança contra incêndios",
+      "help_safety_mirrors": "Espelhos de segurança",
+      "help_retail_security": "Segurança no retalho",
+      "help_safe_lock": "Fechadura de cofre",
+      "help_order_process": "Processo de encomenda"
     }
   }
 }

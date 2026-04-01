@@ -3904,6 +3904,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Informations de contact",
+      "help_faq_title": "FAQ",
+      "help_button": "AIDE",
+      "help_live_chat": "Chat en direct",
+      "help_contact_form": "Formulaire de contact",
+      "help_security_safes": "Coffres-forts de sécurité",
+      "help_fire_safety": "Sécurité incendie",
+      "help_safety_mirrors": "Miroirs de sécurité",
+      "help_retail_security": "Sécurité commerciale",
+      "help_safe_lock": "Serrure de coffre",
+      "help_order_process": "Processus de commande"
     }
   }
 }

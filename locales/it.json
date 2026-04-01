@@ -394,6 +394,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Informazioni di contatto",
+      "help_faq_title": "FAQ",
+      "help_button": "AIUTO",
+      "help_live_chat": "Chat dal vivo",
+      "help_contact_form": "Modulo di contatto",
+      "help_security_safes": "Casseforti di sicurezza",
+      "help_fire_safety": "Sicurezza antincendio",
+      "help_safety_mirrors": "Specchi di sicurezza",
+      "help_retail_security": "Sicurezza per negozi",
+      "help_safe_lock": "Serratura cassaforte",
+      "help_order_process": "Processo d'ordine"
     }
   }
 }

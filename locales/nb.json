@@ -388,6 +388,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Kontaktinformasjon",
+      "help_faq_title": "FAQ",
+      "help_button": "HJELP",
+      "help_live_chat": "Live-chat",
+      "help_contact_form": "Kontaktskjema",
+      "help_security_safes": "Sikkerhetssafer",
+      "help_fire_safety": "Brannsikkerhet",
+      "help_safety_mirrors": "Sikkerhetssp­eiler",
+      "help_retail_security": "Butikksikkerhet",
+      "help_safe_lock": "Safelås",
+      "help_order_process": "Bestillingsprosess"
     }
   }
 }

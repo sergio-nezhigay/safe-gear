@@ -388,6 +388,19 @@
     },
     "banner_help_center": {
       "search_placeholder": "Search products..."
+    },
+    "new_header": {
+      "help_contact_title": "Yhteystiedot",
+      "help_faq_title": "FAQ",
+      "help_button": "APUA",
+      "help_live_chat": "Live-chat",
+      "help_contact_form": "Yhteydenottolomake",
+      "help_security_safes": "Turvasäilöt",
+      "help_fire_safety": "Paloturvallisuus",
+      "help_safety_mirrors": "Turvallisuuspeilit",
+      "help_retail_security": "Myymäläturvallisuus",
+      "help_safe_lock": "Kassakaapin lukko",
+      "help_order_process": "Tilausprosessi"
     }
   }
 }
