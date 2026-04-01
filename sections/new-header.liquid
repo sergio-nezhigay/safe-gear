@@ -423,10 +423,10 @@
           {% if section.settings.help_text != blank %}
             {% if section.settings.help_link != blank %}
               <a href="{{ section.settings.help_link }}" class="mobile-contact-help">
-                {{- section.settings.help_text -}}
+                {{- 'sections.new_header.help_button' | t -}}
               </a>
             {% else %}
-              <span class="mobile-contact-help">{{ section.settings.help_text }}</span>
+              <span class="mobile-contact-help">{{ 'sections.new_header.help_button' | t }}</span>
             {% endif %}
           {% endif %}
         </div>
