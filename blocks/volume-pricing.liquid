@@ -3,6 +3,40 @@
   Shows a button to open the volume pricing contact form modal.
 {% endcomment %}
 
+{% liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign button_text = block.settings.button_text
+
+  case locale_code
+    when 'da'
+      assign locale_button_text = 'Forespørgsel om mængdepriser'
+    when 'de'
+      assign locale_button_text = 'Mengenpreise anfragen'
+    when 'es'
+      assign locale_button_text = 'Consultar precios por volumen'
+    when 'fi'
+      assign locale_button_text = 'Kysy määräalennushinnoista'
+    when 'fr'
+      assign locale_button_text = 'Demander un prix de volume'
+    when 'it'
+      assign locale_button_text = 'Richiedi prezzi quantità'
+    when 'nb'
+      assign locale_button_text = 'Forespør volumpriser'
+    when 'nl'
+      assign locale_button_text = 'Vraag volumekorting aan'
+    when 'pt-PT'
+      assign locale_button_text = 'Pedir preços por volume'
+    when 'sv'
+      assign locale_button_text = 'Fråga om volympriser'
+    else
+      assign locale_button_text = 'Inquire About Volume Pricing'
+  endcase
+
+  if button_text == blank or button_text == 'Inquire About Volume Pricing'
+    assign button_text = locale_button_text
+  endif
+%}
+
 <div class="volume-pricing-block" {{ block.shopify_attributes }}>
   <div class="volume-pricing-content">
     <button
@@ -10,7 +44,7 @@
       class="volume-pricing-link button {{ block.settings.button_style }}"
       on:click="#volume-pricing-modal/showDialog"
     >
-      {{ block.settings.button_text }}
+      {{ button_text }}
     </button>
   </div>
 </div>

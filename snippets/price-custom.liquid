@@ -9,6 +9,43 @@
 {% endstylesheet %}
 
 {%- liquid
+  assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en'
+  assign vat_included_label = 'inc. VAT'
+  assign vat_excluded_label = 'exc. VAT'
+
+  case locale_code
+    when 'da'
+      assign vat_included_label = 'inkl. moms'
+      assign vat_excluded_label = 'ekskl. moms'
+    when 'de'
+      assign vat_included_label = 'inkl. MwSt.'
+      assign vat_excluded_label = 'zzgl. MwSt.'
+    when 'es'
+      assign vat_included_label = 'IVA incl.'
+      assign vat_excluded_label = 'IVA excl.'
+    when 'fi'
+      assign vat_included_label = 'sis. ALV'
+      assign vat_excluded_label = 'alv. ei sis.'
+    when 'fr'
+      assign vat_included_label = 'TVA incl.'
+      assign vat_excluded_label = 'TVA excl.'
+    when 'it'
+      assign vat_included_label = 'IVA incl.'
+      assign vat_excluded_label = 'IVA escl.'
+    when 'nb'
+      assign vat_included_label = 'inkl. mva'
+      assign vat_excluded_label = 'ekskl. mva'
+    when 'nl'
+      assign vat_included_label = 'incl. btw'
+      assign vat_excluded_label = 'excl. btw'
+    when 'pt-PT'
+      assign vat_included_label = 'IVA incl.'
+      assign vat_excluded_label = 'IVA excl.'
+    when 'sv'
+      assign vat_included_label = 'inkl. moms'
+      assign vat_excluded_label = 'exkl. moms'
+  endcase
+
   if use_variant
     assign target = product.selected_or_first_available_variant
   elsif placeholder
@@ -67,6 +104,8 @@
       data-variant-price="{{ target.price }}"
       data-variant-compare-price="{{ target.compare_at_price }}"
       data-variant-available="{{ target.available }}"
+      data-vat-included-label="{{ vat_included_label | escape }}"
+      data-vat-excluded-label="{{ vat_excluded_label | escape }}"
     >
       <div class="price__regular" style="text-align: left">
         {%- if product.quantity_price_breaks_configured? -%}
@@ -101,7 +140,7 @@
           <span class="visually-hidden visually-hidden--inline">
             {{ 'products.product.price.regular_price' | t }}
           </span>
-          <span class="price-item price-item--regular"> {{ money_price }} exc. VAT </span>
+          <span class="price-item price-item--regular"> {{ money_price }} {{ vat_excluded_label }} </span>
         {%- endif -%}
       </div>
 
@@ -129,7 +168,7 @@
             {{ 'products.product.price.sale_price' | t }}
           </span>
           <span class="price-item price-item--sale price-item--last" style="color: var(--color-price-text)">
-             {{ money_price }} inc. VAT
+             {{ money_price }} {{ vat_included_label }}
            </span>
         </span>
       </div>

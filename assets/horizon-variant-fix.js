@@ -163,6 +163,8 @@
     priceElements.forEach(priceElement => {
       const priceContainer = priceElement.querySelector('[ref="priceContainer"]');
       if (priceContainer) {
+        const vatIncludedLabel = priceContainer.dataset.vatIncludedLabel || 'inc. VAT';
+        const vatExcludedLabel = priceContainer.dataset.vatExcludedLabel || 'exc. VAT';
         priceContainer.setAttribute('data-variant-id', variantData.id);
         priceContainer.setAttribute('data-variant-price', variantData.price);
         priceContainer.setAttribute('data-variant-available', variantData.available);
@@ -176,12 +178,12 @@
         
         if (regularPrice && variantData.price) {
           const formattedPrice = formatPrice(variantData.price);
-          regularPrice.textContent = `${formattedPrice} exc. VAT`;
+          regularPrice.textContent = `${formattedPrice} ${vatExcludedLabel}`;
         }
         
         if (salePrice && variantData.price) {
           const formattedPrice = formatPrice(variantData.price);
-          salePrice.textContent = `${formattedPrice} inc. VAT`;
+          salePrice.textContent = `${formattedPrice} ${vatIncludedLabel}`;
         }
       }
     });

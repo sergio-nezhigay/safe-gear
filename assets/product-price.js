@@ -70,6 +70,8 @@ class ProductPrice extends HTMLElement {
   updatePriceFromVariant(variant) {
     const priceContainer = this.querySelector('[ref="priceContainer"]');
     if (!priceContainer) return;
+    const vatIncludedLabel = priceContainer.dataset.vatIncludedLabel || 'inc. VAT';
+    const vatExcludedLabel = priceContainer.dataset.vatExcludedLabel || 'exc. VAT';
 
     // Update variant ID attributes for B2B apps
     priceContainer.setAttribute('bss-b2b-variant-id', variant.id);
@@ -86,7 +88,7 @@ class ProductPrice extends HTMLElement {
         // Keep range format for products with quantity breaks
         return;
       } else {
-        regularPriceElement.textContent = `${formattedPrice} exc. VAT111`;
+        regularPriceElement.textContent = `${formattedPrice} ${vatExcludedLabel}`;
       }
     }
 
@@ -94,7 +96,7 @@ class ProductPrice extends HTMLElement {
     const salePriceElement = priceContainer.querySelector('.price-item--sale');
     if (salePriceElement && variant.price !== undefined) {
       const formattedPrice = this.formatPrice(variant.price);
-      salePriceElement.textContent = `${formattedPrice} inc. VAT`;
+      salePriceElement.textContent = `${formattedPrice} ${vatIncludedLabel}`;
     }
 
     // Update compare at price if available
