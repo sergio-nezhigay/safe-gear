@@ -382,13 +382,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Altezza",
+      "width_display_label": "Larghezza",
+      "depth_display_label": "Profondità",
+      "weight_display_label": "Peso",
+      "bolting_display_label": "Tassellatura",
+      "price_from_label": "da",
+      "view_product_text": "Vedi prodotto",
+      "incl_vat": "IVA incl.",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -407,6 +408,13 @@
       "help_retail_security": "Sicurezza per negozi",
       "help_safe_lock": "Serratura cassaforte",
       "help_order_process": "Processo d'ordine"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "A x L x P",
+      "weight_label": "Peso",
+      "view_product": "Vedi prodotto"
     }
   }
 }

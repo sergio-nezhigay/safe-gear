@@ -376,13 +376,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Korkeus",
+      "width_display_label": "Leveys",
+      "depth_display_label": "Syvyys",
+      "weight_display_label": "Paino",
+      "bolting_display_label": "Ankkurointi",
+      "price_from_label": "alkaen",
+      "view_product_text": "Näytä tuote",
+      "incl_vat": "sis. ALV",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -401,6 +402,13 @@
       "help_retail_security": "Myymäläturvallisuus",
       "help_safe_lock": "Kassakaapin lukko",
       "help_order_process": "Tilausprosessi"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "K x L x S",
+      "weight_label": "Paino",
+      "view_product": "Näytä tuote"
     }
   }
 }

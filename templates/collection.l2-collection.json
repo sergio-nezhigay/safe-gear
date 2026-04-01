@@ -92,11 +92,7 @@
         "show_more_categories_text": "Show more categories",
         "show_less_categories_text": "Show less categories",
         "results_count_text": "Show all collections",
-        "height_display_label": "Height",
-        "width_display_label": "Width",
-        "depth_display_label": "Depth",
-        "weight_display_label": "Weight",
-        "bolting_display_label": "Bolting",
+
         "collections_per_page": 24,
         "show_pagination": true
       }

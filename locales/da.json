@@ -387,6 +387,7 @@
       "bolting_display_label": "Fastgørelse",
       "price_from_label": "fra",
       "view_product_text": "Se produkt",
+      "incl_vat": "inkl. moms",
       "view_collection_text": "Se kollektion",
       "empty_text": "Ingen kollektioner fundet"
     },
@@ -405,6 +406,13 @@
       "help_retail_security": "Detailhandelssikkerhed",
       "help_safe_lock": "Pengeskabslås",
       "help_order_process": "Bestillingsproces"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "H x B x D",
+      "weight_label": "Vægt",
+      "view_product": "Se produkt"
     }
   }
 }

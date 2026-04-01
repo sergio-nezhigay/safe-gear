@@ -85,9 +85,7 @@
         "show_more_categories_text": "Show More Categories",
         "show_less_categories_text": "Show Less Categories",
         "results_count_text": "Showing all collections",
-        "height_display_label": "Height",
-        "width_display_label": "Width",
-        "depth_display_label": "Depth",
+
         "collections_per_page": 12,
         "show_pagination": true
       }

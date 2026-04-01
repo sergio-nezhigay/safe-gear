@@ -1244,7 +1244,7 @@
                                 {{- 'content.price' | t }}
                                 {%- if section.settings.price_label != blank -%}{{ section.settings.price_label }}{%- else -%}{{ 'sections.collection_list.price_from_label' | t }}{%- endif -%}
                               </span>
-                              <span class="price-value">{{ collection_min_price | money }} incl. VAT</span>
+                              <span class="price-value">{{ collection_min_price | money }} {{ 'sections.collection_list.incl_vat' | t }}</span>
                             </div>
                           {% endif %}
                         </div>

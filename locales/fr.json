@@ -3892,13 +3892,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Hauteur",
+      "width_display_label": "Largeur",
+      "depth_display_label": "Profondeur",
+      "weight_display_label": "Poids",
+      "bolting_display_label": "Fixation",
+      "price_from_label": "à partir de",
+      "view_product_text": "Voir le produit",
+      "incl_vat": "TVA incluse",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -3917,6 +3918,13 @@
       "help_retail_security": "Sécurité commerciale",
       "help_safe_lock": "Serrure de coffre",
       "help_order_process": "Processus de commande"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "H x L x P",
+      "weight_label": "Poids",
+      "view_product": "Voir le produit"
     }
   }
 }

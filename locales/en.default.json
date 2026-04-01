@@ -3273,6 +3273,7 @@
       "bolting_display_label": "Bolting",
       "price_from_label": "from",
       "view_product_text": "View Product",
+      "incl_vat": "incl. VAT",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -3291,6 +3292,13 @@
       "help_retail_security": "Retail Security",
       "help_safe_lock": "Safe Lock",
       "help_order_process": "Order process"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "H x W x D",
+      "weight_label": "Weight",
+      "view_product": "View Product"
     }
   }
 }

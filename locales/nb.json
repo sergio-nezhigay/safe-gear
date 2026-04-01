@@ -376,13 +376,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Høyde",
+      "width_display_label": "Bredde",
+      "depth_display_label": "Dybde",
+      "weight_display_label": "Vekt",
+      "bolting_display_label": "Forankring",
+      "price_from_label": "fra",
+      "view_product_text": "Se produkt",
+      "incl_vat": "inkl. MVA",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -401,6 +402,13 @@
       "help_retail_security": "Butikksikkerhet",
       "help_safe_lock": "Safelås",
       "help_order_process": "Bestillingsprosess"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "H x B x D",
+      "weight_label": "Vekt",
+      "view_product": "Se produkt"
     }
   }
 }

@@ -3785,13 +3785,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Hoogte",
+      "width_display_label": "Breedte",
+      "depth_display_label": "Diepte",
+      "weight_display_label": "Gewicht",
+      "bolting_display_label": "Verankering",
+      "price_from_label": "vanaf",
+      "view_product_text": "Product bekijken",
+      "incl_vat": "incl. BTW",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -3810,6 +3811,13 @@
       "help_retail_security": "Winkelbeveiliging",
       "help_safe_lock": "Kluisslot",
       "help_order_process": "Bestelproces"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "H x B x D",
+      "weight_label": "Gewicht",
+      "view_product": "Product bekijken"
     }
   }
 }

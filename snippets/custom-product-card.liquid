@@ -80,7 +80,7 @@
       <div class="spec-table">
         {% if height > 0 or width > 0 or depth > 0 %}
           <div class="spec-row">
-            <span class="spec-label">H x W x D</span>
+            <span class="spec-label">{{ 'snippets.custom_product_card.dimensions_label' | t }}</span>
             <span class="spec-value">
               {% if height > 0 %}{{ height }}{% else %}-{% endif %} x
               {% if width > 0 %}{{ width }}{% else %}-{% endif %} x
@@ -91,7 +91,7 @@
 
         {% if max_weight > 0 %}
           <div class="spec-row">
-            <span class="spec-label">Weight</span>
+            <span class="spec-label">{{ 'snippets.custom_product_card.weight_label' | t }}</span>
             <span class="spec-value">
               {% if min_weight == max_weight %}
                 {{ min_weight | round: 1 }} kg
@@ -113,7 +113,7 @@
 
     <div class="product-action">
       <span class="product-btn">
-        View Product
+        {{ 'snippets.custom_product_card.view_product' | t }}
       </span>
     </div>
   </div>

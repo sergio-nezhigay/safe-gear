@@ -382,13 +382,14 @@
       "show_more_categories": "Show More Categories",
       "clear_all_filters_text": "Clear All Filters",
       "results_count_text": "Showing all collections",
-      "height_display_label": "Height",
-      "width_display_label": "Width",
-      "depth_display_label": "Depth",
-      "weight_display_label": "Weight",
-      "bolting_display_label": "Bolting",
-      "price_from_label": "from",
-      "view_product_text": "View Product",
+      "height_display_label": "Altura",
+      "width_display_label": "Largura",
+      "depth_display_label": "Profundidade",
+      "weight_display_label": "Peso",
+      "bolting_display_label": "Fixação",
+      "price_from_label": "a partir de",
+      "view_product_text": "Ver produto",
+      "incl_vat": "IVA incl.",
       "view_collection_text": "View Collection",
       "empty_text": "No collections found"
     },
@@ -407,6 +408,13 @@
       "help_retail_security": "Segurança no retalho",
       "help_safe_lock": "Fechadura de cofre",
       "help_order_process": "Processo de encomenda"
+    }
+  },
+  "snippets": {
+    "custom_product_card": {
+      "dimensions_label": "A x L x P",
+      "weight_label": "Peso",
+      "view_product": "Ver produto"
     }
   }
 }

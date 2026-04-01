@@ -55,7 +55,11 @@
       "Bash(done)",
       "Bash(for f:*)",
       "Bash(do echo:*)",
-      "Read(//c/projects/safe-gear/locales/**)"
+      "Read(//c/projects/safe-gear/locales/**)",
+      "Bash(do)",
+      "Bash(echo \"=== $f last 5 lines ===\")",
+      "Bash(echo \"=== $f ===\")",
+      "Bash(grep -A8 '\"\"snippets\"\"' \"C:/projects/safe-gear/locales/en.default.json\" \"C:/projects/safe-gear/locales/de.json\" \"C:/projects/safe-gear/locales/fr.json\" \"C:/projects/safe-gear/locales/es.json\" \"C:/projects/safe-gear/locales/it.json\" \"C:/projects/safe-gear/locales/nl.json\" \"C:/projects/safe-gear/locales/nb.json\" \"C:/projects/safe-gear/locales/da.json\" \"C:/projects/safe-gear/locales/sv.json\" \"C:/projects/safe-gear/locales/fi.json\" \"C:/projects/safe-gear/locales/pt-PT.json\")"
     ],
     "deny": [],
     "ask": []
