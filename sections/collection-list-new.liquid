@@ -1171,10 +1171,30 @@
                             or has_bolting_data
                           %}
                             <div class="collection-dimensions">
+                              {% assign height_display_label = section.settings.height_display_label %}
+                              {% if height_display_label == blank or height_display_label == 'Height' %}
+                                {% assign height_display_label = 'sections.collection_list.height_display_label' | t %}
+                              {% endif %}
+                              {% assign width_display_label = section.settings.width_display_label %}
+                              {% if width_display_label == blank or width_display_label == 'Width' %}
+                                {% assign width_display_label = 'sections.collection_list.width_display_label' | t %}
+                              {% endif %}
+                              {% assign depth_display_label = section.settings.depth_display_label %}
+                              {% if depth_display_label == blank or depth_display_label == 'Depth' %}
+                                {% assign depth_display_label = 'sections.collection_list.depth_display_label' | t %}
+                              {% endif %}
+                              {% assign weight_display_label = section.settings.weight_display_label %}
+                              {% if weight_display_label == blank or weight_display_label == 'Weight' %}
+                                {% assign weight_display_label = 'sections.collection_list.weight_display_label' | t %}
+                              {% endif %}
+                              {% assign bolting_display_label = section.settings.bolting_display_label %}
+                              {% if bolting_display_label == blank or bolting_display_label == 'Bolting' %}
+                                {% assign bolting_display_label = 'sections.collection_list.bolting_display_label' | t %}
+                              {% endif %}
                               {% if has_height_data %}
                                 <div class="dimension-row">
                                   <span class="dimension-label">
-                                    {%- if section.settings.height_display_label != blank -%}{{ section.settings.height_display_label }}{%- else -%}{{ 'sections.collection_list.height_display_label' | t }}{%- endif -%}
+                                    {{ height_display_label }}
                                   </span>
                                   <span class="dimension-value">
                                     {% if min_height == max_height %}
@@ -1188,7 +1208,7 @@
                               {% if has_width_data %}
                                 <div class="dimension-row">
                                   <span class="dimension-label">
-                                    {%- if section.settings.width_display_label != blank -%}{{ section.settings.width_display_label }}{%- else -%}{{ 'sections.collection_list.width_display_label' | t }}{%- endif -%}
+                                    {{ width_display_label }}
                                   </span>
                                   <span class="dimension-value">
                                     {% if min_width == max_width %}
@@ -1202,7 +1222,7 @@
                               {% if has_depth_data %}
                                 <div class="dimension-row">
                                   <span class="dimension-label">
-                                    {%- if section.settings.depth_display_label != blank -%}{{ section.settings.depth_display_label }}{%- else -%}{{ 'sections.collection_list.depth_display_label' | t }}{%- endif -%}
+                                    {{ depth_display_label }}
                                   </span>
                                   <span class="dimension-value">
                                     {% if min_depth == max_depth %}
@@ -1216,7 +1236,7 @@
                               {% if has_weight_data %}
                                 <div class="dimension-row">
                                   <span class="dimension-label">
-                                    {%- if section.settings.weight_display_label != blank -%}{{ section.settings.weight_display_label }}{%- else -%}{{ 'sections.collection_list.weight_display_label' | t }}{%- endif -%}
+                                    {{ weight_display_label }}
                                   </span>
                                   <span class="dimension-value">
                                     {% if min_weight == max_weight %}
@@ -1230,7 +1250,7 @@
                               {% if has_bolting_data %}
                                 <div class="dimension-row">
                                   <span class="dimension-label">
-                                    {%- if section.settings.bolting_display_label != blank -%}{{ section.settings.bolting_display_label }}{%- else -%}{{ 'sections.collection_list.bolting_display_label' | t }}{%- endif -%}
+                                    {{ bolting_display_label }}
                                   </span>
                                   <span class="dimension-value">{{ bolting_labels }}</span>
                                 </div>

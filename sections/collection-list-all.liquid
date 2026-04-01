@@ -558,9 +558,21 @@
                   <div class="collection-details">
                     {% if first_depth > 0 or first_width > 0 or first_height > 0 %}
                       <div class="collection-dimensions">
-                        {% if first_height > 0 %}<div class="dimension-line">{%- if section.settings.height_display_label != blank -%}{{ section.settings.height_display_label }}{%- else -%}{{ 'sections.collection_list.height_display_label' | t }}{%- endif -%}: {{ first_height }}mm</div>{% endif %}
-                        {% if first_width > 0 %}<div class="dimension-line">{%- if section.settings.width_display_label != blank -%}{{ section.settings.width_display_label }}{%- else -%}{{ 'sections.collection_list.width_display_label' | t }}{%- endif -%}: {{ first_width }}mm</div>{% endif %}
-                        {% if first_depth > 0 %}<div class="dimension-line">{%- if section.settings.depth_display_label != blank -%}{{ section.settings.depth_display_label }}{%- else -%}{{ 'sections.collection_list.depth_display_label' | t }}{%- endif -%}: {{ first_depth }}mm</div>{% endif %}
+                        {% assign height_display_label = section.settings.height_display_label %}
+                        {% if height_display_label == blank or height_display_label == 'Height' %}
+                          {% assign height_display_label = 'sections.collection_list.height_display_label' | t %}
+                        {% endif %}
+                        {% assign width_display_label = section.settings.width_display_label %}
+                        {% if width_display_label == blank or width_display_label == 'Width' %}
+                          {% assign width_display_label = 'sections.collection_list.width_display_label' | t %}
+                        {% endif %}
+                        {% assign depth_display_label = section.settings.depth_display_label %}
+                        {% if depth_display_label == blank or depth_display_label == 'Depth' %}
+                          {% assign depth_display_label = 'sections.collection_list.depth_display_label' | t %}
+                        {% endif %}
+                        {% if first_height > 0 %}<div class="dimension-line">{{ height_display_label }}: {{ first_height }}mm</div>{% endif %}
+                        {% if first_width > 0 %}<div class="dimension-line">{{ width_display_label }}: {{ first_width }}mm</div>{% endif %}
+                        {% if first_depth > 0 %}<div class="dimension-line">{{ depth_display_label }}: {{ first_depth }}mm</div>{% endif %}
                       </div>
                     {% endif %}
 
