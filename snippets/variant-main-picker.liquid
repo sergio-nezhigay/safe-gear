@@ -145,8 +145,10 @@
                         # Create mapping between Danish variant names and English metafield names
                         assign match_found = false
 
-                        # Direct match first
-                        if product_option_value == type_lock.name
+                        # Direct match first (strip whitespace to handle trailing spaces in metaobject names)
+                        assign type_lock_name_stripped = type_lock.name | strip
+                        assign option_value_stripped = product_option_value | strip
+                        if option_value_stripped == type_lock_name_stripped
                           assign match_found = true
                         endif
 
