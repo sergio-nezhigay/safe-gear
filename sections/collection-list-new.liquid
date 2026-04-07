@@ -59,9 +59,6 @@
       for p in collection.products
         for c in p.collections
           assign excluded_handles = section.settings.excluded_collection_handles
-          if excluded_handles == blank
-            assign excluded_handles = 'pengeskabe,vaerdiskabe,dokumentskabe,dataskabe,computerskabe,indmuringsboks,deponeringsskabe,noegleskabe,vaabenskabe,kemiskabe,batteriopbevaring,medicinskab,alle-vaerdiskabe,alle_vaerdiskabe,brandskabe,safestorage,fireproof-safes'
-          endif
           if c.handle != collection.handle and c.handle != 'frontpage'
             unless seen_child contains c.handle or excluded_handles contains c.handle
               assign seen_child = seen_child | append: ',' | append: c.handle
@@ -1829,7 +1826,7 @@
       "id": "excluded_collection_handles",
       "label": "Excluded collection handles",
       "info": "Comma-separated collection handles to exclude from the sub-collection grid. Add category-level collections here to prevent them appearing as series cards.",
-      "default": "pengeskabe,vaerdiskabe,dokumentskabe,dataskabe,computerskabe,indmuringsboks,deponeringsskabe,noegleskabe,vaabenskabe,kemiskabe,batteriopbevaring,medicinskab,alle-vaerdiskabe,alle_vaerdiskabe,brandskabe,safestorage,fireproof-safes"
+      "default": "pengeskabe,vaerdiskabe,dokumentskabe,dataskabe,computerskabe,indmuringsboks,deponeringsskabe,noegleskabe,vaabenskabe,kemiskabe,batteriopbevaring,medicinskab,alle-vaerdiskabe,alle_vaerdiskabe,brandskabe,safestorage,fireproof-safes,security-safes"
     }
   ],
   "presets": [{ "name": "Collection List with Filters" }]
