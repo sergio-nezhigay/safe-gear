@@ -61,7 +61,10 @@
       "Bash(echo \"=== $f ===\")",
       "Bash(grep -A8 '\"\"snippets\"\"' \"C:/projects/safe-gear/locales/en.default.json\" \"C:/projects/safe-gear/locales/de.json\" \"C:/projects/safe-gear/locales/fr.json\" \"C:/projects/safe-gear/locales/es.json\" \"C:/projects/safe-gear/locales/it.json\" \"C:/projects/safe-gear/locales/nl.json\" \"C:/projects/safe-gear/locales/nb.json\" \"C:/projects/safe-gear/locales/da.json\" \"C:/projects/safe-gear/locales/sv.json\" \"C:/projects/safe-gear/locales/fi.json\" \"C:/projects/safe-gear/locales/pt-PT.json\")",
       "WebFetch(domain:community.shopify.com)",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "WebFetch(domain:f1what-2r.myshopify.com)",
+      "WebFetch(domain:safe-gear.eu)",
+      "Bash(curl -s \"https://f1what-2r.myshopify.com/collections/pharmacy-safes/products.json?limit=250\")"
     ],
     "deny": [],
     "ask": []
