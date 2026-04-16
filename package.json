@@ -6,7 +6,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "shopify theme dev --store=f1what-2r.myshopify.com --theme 185002983750",
     "push": "shopify theme push --store=f1what-2r.myshopify.com --theme 185002983750",
-    "pull": "shopify theme pull --store=f1what-2r.myshopify.com --theme 185002983750"
+    "pull": "shopify theme pull --store=f1what-2r.myshopify.com --theme 185002983750",
+    "get-token": "node scripts/get-token.js",
+    "test-graphql": "node scripts/test-graphql.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
   },
   "repository": {
     "type": "git",
