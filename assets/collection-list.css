@@ -203,6 +203,25 @@ html {
   border: 1px solid #ddd;
 }
 
+.collection-description-toggle {
+  display: none;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: var(--color-text-link, #4b81bf);
+  color: var(--color-button-text, #fff);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+}
+
+.collection-description-toggle:hover {
+  opacity: 0.9;
+}
+
 .filters-container {
   background: var(--background-light);
   border: 1px solid var(--border-color);
@@ -1133,6 +1152,10 @@ html {
   display: contents;
 }
 
+.collection-card-title--above {
+  display: none;
+}
+
 .collection-card-bottom {
   display: flex;
   flex-direction: column;
@@ -1191,9 +1214,9 @@ html {
   }
 
   .collection-card {
-    flex-direction: row;
-    padding: var(--spacing-sm);
-    gap: var(--spacing-sm);
+    flex-direction: column;
+    padding: 12px;
+    gap: 10px;
     height: fit-content;
     border-radius: var(--border-radius);
     width: 100%;
@@ -1204,10 +1227,24 @@ html {
     overflow: hidden;
   }
 
+  .collection-card-title--above {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #202223;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .collection-card-title--inline {
+    display: none;
+  }
+
   .collection-card-top {
     display: flex;
-    gap: var(--spacing-sm);
-    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    align-items: flex-start;
     flex: 1;
     min-width: 0;
   }
@@ -1220,108 +1257,93 @@ html {
   }
 
   .collection-image {
-    flex: 0 0 80px;
-    width: 80px;
-    height: 80px;
+    flex: 0 0 130px;
+    width: 130px;
+    height: 160px;
     border-radius: var(--border-radius);
   }
 
   .collection-info {
     flex: 1;
     min-width: 0;
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .collection-card-title a {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .collection-description {
-    font-size: 0.8rem;
-    line-height: 1.3;
-    margin-top: 2px;
+    display: none;
   }
 
-  .collection-description-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .collection-details {
-    display: block;
-    margin-top: 4px;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .collection-details .collection-dimensions {
-    display: flex;
+  .collection-content-wrapper {
+    flex-direction: column;
     gap: 6px;
-    flex-wrap: wrap;
   }
 
-  .collection-details .dimension-row {
-    display: inline-flex;
-    gap: 3px;
-    align-items: baseline;
+  .collection-dimensions {
+    display: grid;
+    grid-template-columns: min-content auto;
+    column-gap: 12px;
+    row-gap: 2px;
   }
 
-  .collection-details .dimension-label,
-  .collection-details .dimension-value {
-    font-size: 0.7rem;
-    color: var(--text-secondary);
+  .dimension-row {
+    display: contents;
+  }
+
+  .dimension-label,
+  .dimension-value {
+    font-size: 13px;
+    color: #000;
     white-space: nowrap;
-    font-weight: 400;
   }
 
-  .collection-details .collection-price {
-    margin: 4px 0 0 0;
+  .collection-price {
+    font-size: 14px;
+    margin: 4px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
   }
 
-  .collection-details .price-value {
-    font-size: 0.9rem;
+  .price-value {
+    font-size: 14px;
     font-weight: 700;
-    color: var(--success-color);
   }
 
   .collection-badges {
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     margin-left: 0;
     flex-shrink: 0;
     width: auto;
   }
 
   .collection-card .badge {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
   }
 
   .badge-info-line {
-    font-size: 9px;
+    font-size: 10px;
     padding: 1px 4px;
     border-width: 1px;
   }
 
-  .collection-price {
-    font-size: 0.9rem;
-    margin: 4px 0;
-  }
-
-  .price-value {
-    font-size: 1rem;
-    font-weight: 700;
+  .collection-action {
+    width: 100%;
+    margin-top: 4px;
   }
 
   .collection-btn {
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    white-space: nowrap;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    white-space: normal;
+    border-radius: 6px;
+    box-sizing: border-box;
   }
 
   .safe-view-image {
@@ -1359,13 +1381,13 @@ html {
   }
 
   .collection-image {
-    flex: 0 0 70px;
-    width: 70px;
-    height: 70px;
+    flex: 0 0 110px;
+    width: 110px;
+    height: 140px;
   }
 
   .collection-description {
-    font-size: 0.75rem;
+    display: none;
   }
 
   .collection-description-text {

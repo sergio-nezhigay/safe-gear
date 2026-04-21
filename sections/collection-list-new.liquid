@@ -706,7 +706,15 @@
             <h1 class="collection-title">{{ collection.title }}</h1>
           {% endif %}
           {% if collection.description != blank %}
-            <div class="collection-description"><!-- DEBUG: collection-list-new.liquid line 709 -->{{ collection.description }}</div>
+            <div class="collection-description" id="collection-desc-{{ section.id }}">{{ collection.description }}</div>
+            <button
+              class="collection-description-toggle"
+              id="collection-desc-toggle-{{ section.id }}"
+              data-more-text="{{ section.settings.description_read_more_text | default: 'Read More' }}"
+              data-less-text="{{ section.settings.description_read_less_text | default: 'Show Less' }}"
+              aria-expanded="false"
+              aria-controls="collection-desc-{{ section.id }}"
+            >{{ section.settings.description_read_more_text | default: 'Read More' }}</button>
           {% endif %}
           {% if burglary_grade != blank or fire_resistance != blank %}
             <div class="collection-header__features">
@@ -1123,6 +1131,9 @@
                   data-height-max="{{ max_height | default: '0' }}"
                   data-link-url="{{ link_url }}"
                 >
+                  <h3 class="collection-card-title collection-card-title--above">
+                    {{ col.title | escape }}
+                  </h3>
                   <div class="collection-card-top">
                     <div class="collection-image">
                       <a href="{{ link_url }}" aria-label="{{ col.title | escape }}">
@@ -1147,7 +1158,7 @@
                     </div>
 
                     <div class="collection-info">
-                      <h3 class="collection-card-title">
+                      <h3 class="collection-card-title collection-card-title--inline">
                         {{ col.title | escape }}
                       </h3>
 
@@ -1598,6 +1609,52 @@
   </div>
 </div>
 
+<script>
+(function () {
+  var COLLAPSED_HEIGHT = 150;
+  var MOBILE_MAX = 768;
+  function isMobile() { return window.innerWidth <= MOBILE_MAX; }
+
+  document.querySelectorAll('.collection-description').forEach(function (desc) {
+    var sectionId = desc.id.replace('collection-desc-', '');
+    var btn = document.getElementById('collection-desc-toggle-' + sectionId);
+    if (!btn) return;
+    var expanded = false;
+
+    function init() {
+      if (isMobile() && desc.scrollHeight > COLLAPSED_HEIGHT + 20) {
+        desc.style.maxHeight = COLLAPSED_HEIGHT + 'px';
+        desc.style.overflow = 'hidden';
+        desc.style.transition = 'max-height 0.3s ease-out';
+        btn.style.display = 'block';
+      } else {
+        desc.style.maxHeight = '';
+        desc.style.overflow = '';
+        btn.style.display = 'none';
+        expanded = false;
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = btn.dataset.moreText;
+      }
+    }
+
+    btn.addEventListener('click', function () {
+      expanded = !expanded;
+      btn.setAttribute('aria-expanded', String(expanded));
+      if (expanded) {
+        desc.style.maxHeight = desc.scrollHeight + 'px';
+        btn.textContent = btn.dataset.lessText;
+      } else {
+        desc.style.maxHeight = COLLAPSED_HEIGHT + 'px';
+        btn.textContent = btn.dataset.moreText;
+      }
+    });
+
+    init();
+    window.addEventListener('resize', init);
+  });
+})();
+</script>
+
 {% schema %}
 {
   "name": "Collection List",
@@ -1827,7 +1884,11 @@
       "label": "Excluded collection handles",
       "info": "Comma-separated collection handles to exclude from the sub-collection grid. Add category-level collections here to prevent them appearing as series cards.",
       "default": "pengeskabe,vaerdiskabe,dokumentskabe,dataskabe,computerskabe,indmuringsboks,deponeringsskabe,noegleskabe,vaabenskabe,kemiskabe,batteriopbevaring,medicinskab,alle-vaerdiskabe,alle_vaerdiskabe,brandskabe,safestorage,fireproof-safes,security-safes"
-    }
+    },
+
+    { "type": "header", "content": "Description Read More (Mobile)" },
+    { "type": "text", "id": "description_read_more_text", "label": "Read More button text", "default": "Read More" },
+    { "type": "text", "id": "description_read_less_text", "label": "Show Less button text", "default": "Show Less" }
   ],
   "presets": [{ "name": "Collection List with Filters" }]
 }
