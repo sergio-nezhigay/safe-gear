@@ -1160,6 +1160,10 @@ html {
   display: none;
 }
 
+.collection-badges-wrapper--mobile {
+  display: none;
+}
+
 .collection-card-bottom {
   display: flex;
   flex-direction: column;
@@ -1349,6 +1353,26 @@ html {
     white-space: normal;
     border-radius: 6px;
     box-sizing: border-box;
+  }
+
+  /* Mobile-only full-width badges at card level */
+  .collection-badges-wrapper--mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .collection-badges-wrapper--mobile .collection-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Hide the inline (desktop) badges inside collection-info on mobile */
+  .collection-badges-wrapper:not(.collection-badges-wrapper--mobile) {
+    display: none;
   }
 
   /* Mobile-only full-width button at bottom of card */

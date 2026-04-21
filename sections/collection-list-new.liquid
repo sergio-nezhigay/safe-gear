@@ -1277,7 +1277,7 @@
                           {% endif %}
                         </div>
 
-                        <div class="collection-badges-wrapper">
+                        {% capture badges_content %}
                           <div class="collection-badges">
                             {% assign show_fire_badge = true %}
                             {% if fire_resistance == 'Ingen klassificering'
@@ -1543,7 +1543,10 @@
                               </div>
                             {% endif %}
                           </div>
+                        {% endcapture %}
 
+                        <div class="collection-badges-wrapper">
+                          {{ badges_content }}
                           {% if section.settings.show_button %}
                             <div class="collection-action target">
                               <a
@@ -1562,6 +1565,9 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div class="collection-badges-wrapper collection-badges-wrapper--mobile">
+                    {{ badges_content }}
                   </div>
                   {% if section.settings.show_button %}
                     <div class="collection-action collection-action--mobile target">
