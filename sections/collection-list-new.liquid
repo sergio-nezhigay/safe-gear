@@ -1282,11 +1282,13 @@
                             {% assign show_fire_badge = true %}
                             {% if fire_resistance == 'Ingen klassificering'
                               or fire_resistance == 'Ikke Brandisoleret'
+                              or fire_resistance == 'Not Fire-Resistant'
+                              or fire_resistance == 'Not Fireproof'
                             %}
                               {% assign show_fire_badge = false %}
                             {% endif %}
 
-                            {% if fire_resistance != blank and show_fire_badge and fire_resistance != 'Not Fireproof' %}
+                            {% if fire_resistance != blank and show_fire_badge %}
                               <div class="badge-with-info">
                                 <div
                                   class="badge fire-badge"
@@ -1561,6 +1563,21 @@
                       </div>
                     </div>
                   </div>
+                  {% if section.settings.show_button %}
+                    <div class="collection-action collection-action--mobile target">
+                      <a
+                        href="{{ link_url }}"
+                        class="collection-btn"
+                        aria-label="View {{ col.title | escape }} {% if cheapest_product %}product{% else %}collection{% endif %}"
+                      >
+                        {% if cheapest_product %}
+                          {%- if section.settings.product_button_text != blank -%}{{ section.settings.product_button_text }}{%- else -%}{{ 'sections.collection_list.view_product_text' | t }}{%- endif -%}
+                        {% else %}
+                          {%- if section.settings.button_text != blank -%}{{ section.settings.button_text }}{%- else -%}{{ 'sections.collection_list.view_collection_text' | t }}{%- endif -%}
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% endif %}
                 </div>
               {% endif %}
             {% endfor %}
