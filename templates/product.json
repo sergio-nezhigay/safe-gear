@@ -317,27 +317,6 @@
                 "addedCssClassNames": "wishlist-inline-button",
                 "addedContainerStyles": ""
               }
-            },
-            "ymq_b2b_wholesale_solution_qb_table_ac89pa": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/qb-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
-              "disabled": true,
-              "settings": {
-                "product": "{{closest.product}}"
-              }
-            },
-            "ymq_b2b_wholesale_solution_ol_notification_VJpCFm": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ol-notification/ef8663e7-9d07-4952-bb17-2e62f084164e",
-              "disabled": true,
-              "settings": {
-                "product": "{{closest.product}}"
-              }
-            },
-            "ymq_b2b_wholesale_solution_ef_table_qiwFcb": {
-              "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/ef-table/ef8663e7-9d07-4952-bb17-2e62f084164e",
-              "disabled": true,
-              "settings": {
-                "product": "{{closest.product}}"
-              }
             }
           },
           "block_order": [
@@ -393,17 +372,17 @@
         "delivery_time_badge": "1-2 weeks",
         "show_installation_option_1": false,
         "installation_option_1_label": "Delivered to final location",
-        "installation_option_1_price": "DKK 4 000",
+        "installation_option_1_price": "NOK 4 000",
         "show_installation_option_2": false,
         "installation_option_2_label": "Delivered to final location with bolting to floor/wall",
-        "installation_option_2_price": "DKK 5 000",
+        "installation_option_2_price": "NOK 5 000",
         "show_delivery_option_1": false,
         "delivery_option_1_label": "Curbside Delivery",
-        "delivery_option_1_price": "DKK 400",
+        "delivery_option_1_price": "NOK 400",
         "delivery_option_1_description": "Delivery to the edge of your property, where the item will be left for you to bring inside.",
         "show_delivery_option_2": false,
         "delivery_option_2_label": "Collection from SafeGear warehouse",
-        "delivery_option_2_price": "DKK 0",
+        "delivery_option_2_price": "NOK 0",
         "delivery_option_2_description": "",
         "show_delivery_option_3": false,
         "delivery_option_3_label": "",
@@ -464,13 +443,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Model",
-            "metafield_namespace": "custom",
-            "metafield_key": "model",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Malli",
             "label_de": "Modell",
             "label_da": "Model",
@@ -480,7 +452,14 @@
             "label_fr": "Modèle",
             "label_es": "Modelo",
             "label_it": "Modello",
-            "label_pt": "Modelo"
+            "label_pt": "Modelo",
+            "metafield_namespace": "custom",
+            "metafield_key": "model",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_mtCWr6": {
@@ -489,13 +468,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Model Series",
-            "metafield_namespace": "custom",
-            "metafield_key": "model_series",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Mallisarja",
             "label_de": "Modellreihe",
             "label_da": "Modelserie",
@@ -505,7 +477,14 @@
             "label_fr": "Série de modèles",
             "label_es": "Serie de modelos",
             "label_it": "Serie di modelli",
-            "label_pt": "Série de modelos"
+            "label_pt": "Série de modelos",
+            "metafield_namespace": "custom",
+            "metafield_key": "model_series",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_rjRfCY": {
@@ -514,13 +493,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Safe Type",
-            "metafield_namespace": "custom",
-            "metafield_key": "safe_kind",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Kassakaapin tyyppi",
             "label_de": "Tresortyp",
             "label_da": "Kassettetype",
@@ -530,7 +502,14 @@
             "label_fr": "Type de coffre-fort",
             "label_es": "Tipo de caja fuerte",
             "label_it": "Tipo di cassaforte",
-            "label_pt": "Tipo de cofre"
+            "label_pt": "Tipo de cofre",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_kind",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_HDT3UM": {
@@ -539,13 +518,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Safe Purpose",
-            "metafield_namespace": "custom",
-            "metafield_key": "safe_purpose",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Käyttötarkoitus",
             "label_de": "Verwendungszweck",
             "label_da": "Anvendelsesformål",
@@ -555,7 +527,14 @@
             "label_fr": "Usage prévu",
             "label_es": "Propósito de uso",
             "label_it": "Scopo d'uso",
-            "label_pt": "Finalidade de uso"
+            "label_pt": "Finalidade de uso",
+            "metafield_namespace": "custom",
+            "metafield_key": "safe_purpose",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_V4U3tF": {
@@ -564,13 +543,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Bolting",
-            "metafield_namespace": "custom",
-            "metafield_key": "bolting",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Ankkurointi",
             "label_de": "Verankerung",
             "label_da": "Forankring",
@@ -580,7 +552,14 @@
             "label_fr": "Fixation",
             "label_es": "Anclaje",
             "label_it": "Ancoraggio",
-            "label_pt": "Ancoragem"
+            "label_pt": "Ancoragem",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolting",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_mWAUUV": {
@@ -589,13 +568,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Bolts included",
-            "metafield_namespace": "custom",
-            "metafield_key": "bolts_included",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Ja",
-            "false_text": "Nej",
-            "is_variant_metafield": false,
             "label_fi": "Ankkuripultit mukana",
             "label_de": "Befestigungsschrauben inklusive",
             "label_da": "Ankerskruer inkluderet",
@@ -605,7 +577,14 @@
             "label_fr": "Boulons d'ancrage inclus",
             "label_es": "Pernos de anclaje incluidos",
             "label_it": "Bulloni di ancoraggio inclusi",
-            "label_pt": "Parafusos de ancoragem incluídos"
+            "label_pt": "Parafusos de ancoragem incluídos",
+            "metafield_namespace": "custom",
+            "metafield_key": "bolts_included",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Ja",
+            "false_text": "Nej",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_yaDae9": {
@@ -614,13 +593,6 @@
           "settings": {
             "group_name": "Specifications",
             "label": "Color",
-            "metafield_namespace": "custom",
-            "metafield_key": "color",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Väri",
             "label_de": "Farbe",
             "label_da": "Farve",
@@ -630,7 +602,14 @@
             "label_fr": "Couleur",
             "label_es": "Color",
             "label_it": "Colore",
-            "label_pt": "Cor"
+            "label_pt": "Cor",
+            "metafield_namespace": "custom",
+            "metafield_key": "color",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_npk77M": {
@@ -639,13 +618,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Burglary Certication",
-            "metafield_namespace": "custom",
-            "metafield_key": "burglary_classification",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Murtosuojausluokitus",
             "label_de": "Einbruchschutzklasse",
             "label_da": "Indbrudssikringsklasse",
@@ -655,7 +627,14 @@
             "label_fr": "Classe anti-effraction",
             "label_es": "Clase antiintrusión",
             "label_it": "Classe antieffrazione",
-            "label_pt": "Classe antirroubo"
+            "label_pt": "Classe antirroubo",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_classification",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_FYTRQb": {
@@ -678,13 +657,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Burglary Cash Rating",
-            "metafield_namespace": "custom",
-            "metafield_key": "cash_rating",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Rahavakuutusarvo",
             "label_de": "Bargeldwert",
             "label_da": "Kontantværdi",
@@ -694,7 +666,14 @@
             "label_fr": "Valeur assurable en espèces",
             "label_es": "Valor asegurable en efectivo",
             "label_it": "Valore assicurabile in contanti",
-            "label_pt": "Valor segurável em dinheiro"
+            "label_pt": "Valor segurável em dinheiro",
+            "metafield_namespace": "custom",
+            "metafield_key": "cash_rating",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_9CPahG": {
@@ -717,13 +696,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Burglary Certification Method",
-            "metafield_namespace": "custom",
-            "metafield_key": "burglary_test_method",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Murtosuojaustestausmenetelmä",
             "label_de": "Einbruchschutz-Prüfmethode",
             "label_da": "Indbrudssikrings-testmetode",
@@ -733,7 +705,14 @@
             "label_fr": "Méthode de test anti-effraction",
             "label_es": "Método de prueba antiintrusión",
             "label_it": "Metodo di prova antieffrazione",
-            "label_pt": "Método de teste antirroubo"
+            "label_pt": "Método de teste antirroubo",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_method",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_EjK4NL": {
@@ -742,13 +721,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Burglary Certification Body",
-            "metafield_namespace": "custom",
-            "metafield_key": "burglary_test_center",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Murtosuojaustestauslaitos",
             "label_de": "Einbruchschutz-Prüfinstitut",
             "label_da": "Indbrudssikrings-testcenter",
@@ -758,7 +730,14 @@
             "label_fr": "Organisme de test anti-effraction",
             "label_es": "Centro de prueba antiintrusión",
             "label_it": "Istituto di prova antieffrazione",
-            "label_pt": "Instituto de teste antirroubo"
+            "label_pt": "Instituto de teste antirroubo",
+            "metafield_namespace": "custom",
+            "metafield_key": "burglary_test_center",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_3yQHj7": {
@@ -767,13 +746,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Fire Resistance",
-            "metafield_namespace": "custom",
-            "metafield_key": "fire_duration",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Palonkestävyys",
             "label_de": "Feuerwiderstand",
             "label_da": "Brandmodstand",
@@ -783,7 +755,14 @@
             "label_fr": "Résistance au feu",
             "label_es": "Resistencia al fuego",
             "label_it": "Resistenza al fuoco",
-            "label_pt": "Resistência ao fogo"
+            "label_pt": "Resistência ao fogo",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_duration",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_zjfxPX": {
@@ -792,13 +771,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Fire Resistance Classification",
-            "metafield_namespace": "custom",
-            "metafield_key": "fire_classification",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Palonkestävyysluokitus",
             "label_de": "Feuerwiderstandsklasse",
             "label_da": "Brandmodstandsklasse",
@@ -808,7 +780,14 @@
             "label_fr": "Classe de résistance au feu",
             "label_es": "Clase de resistencia al fuego",
             "label_it": "Classe di resistenza al fuoco",
-            "label_pt": "Classe de resistência ao fogo"
+            "label_pt": "Classe de resistência ao fogo",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_classification",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_Y4LLt9": {
@@ -817,13 +796,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Fire Resistance Method",
-            "metafield_namespace": "custom",
-            "metafield_key": "fire_test_method",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Palotestausmenetelmä",
             "label_de": "Brandschutz-Prüfmethode",
             "label_da": "Brandtest-metode",
@@ -833,7 +805,14 @@
             "label_fr": "Méthode de test feu",
             "label_es": "Método de prueba contra incendios",
             "label_it": "Metodo di prova antincendio",
-            "label_pt": "Método de teste contra incêndio"
+            "label_pt": "Método de teste contra incêndio",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_test_method",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_dMiHPt": {
@@ -842,13 +821,6 @@
           "settings": {
             "group_name": "Certifications",
             "label": "Fire Certification Body",
-            "metafield_namespace": "custom",
-            "metafield_key": "fire_test_center",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Palotestauslaitos",
             "label_de": "Brandschutz-Prüfinstitut",
             "label_da": "Brandtest-center",
@@ -858,7 +830,14 @@
             "label_fr": "Organisme de test feu",
             "label_es": "Centro de prueba contra incendios",
             "label_it": "Istituto di prova antincendio",
-            "label_pt": "Instituto de teste contra incêndio"
+            "label_pt": "Instituto de teste contra incêndio",
+            "metafield_namespace": "custom",
+            "metafield_key": "fire_test_center",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_weight_variant": {
@@ -867,13 +846,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Weight",
-            "metafield_namespace": "variant",
-            "metafield_key": "weight",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Paino",
             "label_de": "Gewicht",
             "label_da": "Vægt",
@@ -883,7 +855,14 @@
             "label_fr": "Poids",
             "label_es": "Peso",
             "label_it": "Peso",
-            "label_pt": "Peso"
+            "label_pt": "Peso",
+            "metafield_namespace": "variant",
+            "metafield_key": "weight",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_4MrxM4": {
@@ -892,13 +871,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Height - External (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_height",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Korkeus - ulkomitat (mm)",
             "label_de": "Höhe - Außenmaß (mm)",
             "label_da": "Højde - udvendigt (mm)",
@@ -908,7 +880,14 @@
             "label_fr": "Hauteur - extérieur (mm)",
             "label_es": "Altura - exterior (mm)",
             "label_it": "Altezza - esterno (mm)",
-            "label_pt": "Altura - exterior (mm)"
+            "label_pt": "Altura - exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_zbcXnB": {
@@ -917,13 +896,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Width - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Leveys - ulkomitat (mm)",
             "label_de": "Breite - Außenmaß (mm)",
             "label_da": "Bredde - udvendigt (mm)",
@@ -933,7 +905,14 @@
             "label_fr": "Largeur - extérieur (mm)",
             "label_es": "Anchura - exterior (mm)",
             "label_it": "Larghezza - esterno (mm)",
-            "label_pt": "Largura - exterior (mm)"
+            "label_pt": "Largura - exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_xrggqX": {
@@ -942,13 +921,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Depth - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Syvyys - ulkomitat (mm)",
             "label_de": "Tiefe - Außenmaß (mm)",
             "label_da": "Dybde - udvendigt (mm)",
@@ -958,7 +930,14 @@
             "label_fr": "Profondeur - extérieur (mm)",
             "label_es": "Profundidad - exterior (mm)",
             "label_it": "Profondità - esterno (mm)",
-            "label_pt": "Profundidade - exterior (mm)"
+            "label_pt": "Profundidade - exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_WEPjAR": {
@@ -967,13 +946,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Depth - Lock / Handle (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "lock_depth",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Syvyys - lukko/kahva (mm)",
             "label_de": "Tiefe - Schloss/Griff (mm)",
             "label_da": "Dybde - lås/håndtag (mm)",
@@ -983,7 +955,14 @@
             "label_fr": "Profondeur - serrure/poignée (mm)",
             "label_es": "Profundidad - cerradura/manija (mm)",
             "label_it": "Profondità - serratura/maniglia (mm)",
-            "label_pt": "Profundidade - fechadura/maçaneta (mm)"
+            "label_pt": "Profundidade - fechadura/maçaneta (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "lock_depth",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_acxAjD": {
@@ -992,13 +971,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Depth incl. Lock / Handle",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth_incl_lock_handle",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Syvyys sis. lukko/kahva",
             "label_de": "Tiefe inkl. Schloss/Griff",
             "label_da": "Dybde inkl. lås/håndtag",
@@ -1008,7 +980,14 @@
             "label_fr": "Profondeur incl. serrure/poignée",
             "label_es": "Profundidad incl. cerradura/manija",
             "label_it": "Profondità incl. serratura/maniglia",
-            "label_pt": "Profundidade incl. fechadura/maçaneta"
+            "label_pt": "Profundidade incl. fechadura/maçaneta",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_incl_lock_handle",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_K8de4F": {
@@ -1017,13 +996,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Height - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_height_interior",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Korkeus - sisämitat (mm)",
             "label_de": "Höhe - Innenmaß (mm)",
             "label_da": "Højde - indvendigt (mm)",
@@ -1033,7 +1005,14 @@
             "label_fr": "Hauteur - intérieur (mm)",
             "label_es": "Altura - interior (mm)",
             "label_it": "Altezza - interno (mm)",
-            "label_pt": "Altura - interior (mm)"
+            "label_pt": "Altura - interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_height_interior",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_wXT3qc": {
@@ -1042,13 +1021,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Depth - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_depth_interior",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Syvyys - sisämitat (mm)",
             "label_de": "Tiefe - Innenmaß (mm)",
             "label_da": "Dybde - indvendigt (mm)",
@@ -1058,7 +1030,14 @@
             "label_fr": "Profondeur - intérieur (mm)",
             "label_es": "Profundidad - interior (mm)",
             "label_it": "Profondità - interno (mm)",
-            "label_pt": "Profundidade - interior (mm)"
+            "label_pt": "Profundidade - interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_depth_interior",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_mBmVnt": {
@@ -1067,13 +1046,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Width - Interior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "new_width_interior",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Leveys - sisämitat (mm)",
             "label_de": "Breite - Innenmaß (mm)",
             "label_da": "Bredde - indvendigt (mm)",
@@ -1083,7 +1055,14 @@
             "label_fr": "Largeur - intérieur (mm)",
             "label_es": "Anchura - interior (mm)",
             "label_it": "Larghezza - interno (mm)",
-            "label_pt": "Largura - interior (mm)"
+            "label_pt": "Largura - interior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "new_width_interior",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_4qEVgg": {
@@ -1092,13 +1071,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Width - Door Open 180 degrees (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "width_door_open_180",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Leveys - ovi auki 180 astetta (mm)",
             "label_de": "Breite - Tür 180° geöffnet (mm)",
             "label_da": "Bredde - dør åben 180 grader (mm)",
@@ -1108,7 +1080,14 @@
             "label_fr": "Largeur - porte ouverte 180° (mm)",
             "label_es": "Anchura - puerta abierta 180° (mm)",
             "label_it": "Larghezza - porta aperta 180° (mm)",
-            "label_pt": "Largura - porta aberta 180° (mm)"
+            "label_pt": "Largura - porta aberta 180° (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "width_door_open_180",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_CUWhdA": {
@@ -1117,13 +1096,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Depth - Door open 90 degrees (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "depth_door_open_90",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Syvyys - ovi auki 90 astetta (mm)",
             "label_de": "Tiefe - Tür 90° geöffnet (mm)",
             "label_da": "Dybde - dør åben 90 grader (mm)",
@@ -1133,7 +1105,14 @@
             "label_fr": "Profondeur - porte ouverte 90° (mm)",
             "label_es": "Profundidad - puerta abierta 90° (mm)",
             "label_it": "Profondità - porta aperta 90° (mm)",
-            "label_pt": "Profundidade - porta aberta 90° (mm)"
+            "label_pt": "Profundidade - porta aberta 90° (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "depth_door_open_90",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_khXeaY": {
@@ -1142,13 +1121,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Customizable size (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "custom_range",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Mukautuva koko (mm)",
             "label_de": "Individualisierbare Größe (mm)",
             "label_da": "Tilpasset størrelse (mm)",
@@ -1158,7 +1130,14 @@
             "label_fr": "Taille personnalisable (mm)",
             "label_es": "Tamaño personalizable (mm)",
             "label_it": "Dimensione personalizzabile (mm)",
-            "label_pt": "Tamanho personalizável (mm)"
+            "label_pt": "Tamanho personalizável (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "custom_range",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_CwL3bQ": {
@@ -1167,13 +1146,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Frame Height - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "height_exterior_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Oviaukon korkeus - ulkomitat (mm)",
             "label_de": "Türrahmen Höhe - Außenmaß (mm)",
             "label_da": "Dørramme højde - udvendigt (mm)",
@@ -1183,7 +1155,14 @@
             "label_fr": "Cadre de porte hauteur - extérieur (mm)",
             "label_es": "Marco de puerta altura - exterior (mm)",
             "label_it": "Telaio porta altezza - esterno (mm)",
-            "label_pt": "Aro de porta altura - exterior (mm)"
+            "label_pt": "Aro de porta altura - exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "height_exterior_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_RGPyV7": {
@@ -1192,13 +1171,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Frame Width - Exterior (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "width_exterior_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Oviaukon leveys - ulkomitat (mm)",
             "label_de": "Türrahmen Breite - Außenmaß (mm)",
             "label_da": "Dørramme bredde - udvendigt (mm)",
@@ -1208,7 +1180,14 @@
             "label_fr": "Cadre de porte largeur - extérieur (mm)",
             "label_es": "Marco de puerta anchura - exterior (mm)",
             "label_it": "Telaio porta larghezza - esterno (mm)",
-            "label_pt": "Aro de porta largura - exterior (mm)"
+            "label_pt": "Aro de porta largura - exterior (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "width_exterior_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_n9VaTe": {
@@ -1217,13 +1196,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Wall Opening Height - (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "height_interior_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Seinäaukon korkeus (mm)",
             "label_de": "Wandöffnung Höhe (mm)",
             "label_da": "Vægåbning højde (mm)",
@@ -1233,7 +1205,14 @@
             "label_fr": "Ouverture murale hauteur (mm)",
             "label_es": "Apertura en pared altura (mm)",
             "label_it": "Apertura parete altezza (mm)",
-            "label_pt": "Abertura na parede altura (mm)"
+            "label_pt": "Abertura na parede altura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "height_interior_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_VtCkaM": {
@@ -1242,13 +1221,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Wall Opening Width - (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "width_interior_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Seinäaukon leveys (mm)",
             "label_de": "Wandöffnung Breite (mm)",
             "label_da": "Vægåbning bredde (mm)",
@@ -1258,7 +1230,14 @@
             "label_fr": "Ouverture murale largeur (mm)",
             "label_es": "Apertura en pared anchura (mm)",
             "label_it": "Apertura parete larghezza (mm)",
-            "label_pt": "Abertura na parede largura (mm)"
+            "label_pt": "Abertura na parede largura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "width_interior_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_H6CGbH": {
@@ -1267,13 +1246,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Clear opening Height - (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_light_height_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Vapaa aukko - korkeus (mm)",
             "label_de": "Lichte Öffnung Höhe (mm)",
             "label_da": "Fri åbning højde (mm)",
@@ -1283,7 +1255,14 @@
             "label_fr": "Ouverture libre hauteur (mm)",
             "label_es": "Apertura libre altura (mm)",
             "label_it": "Apertura libera altezza (mm)",
-            "label_pt": "Abertura livre altura (mm)"
+            "label_pt": "Abertura livre altura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_height_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_UmYDx8": {
@@ -1292,13 +1271,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Light Width - (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_light_width_mm",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": true,
             "label_fi": "Vapaa aukko - leveys (mm)",
             "label_de": "Lichte Öffnung Breite (mm)",
             "label_da": "Fri åbning bredde (mm)",
@@ -1308,7 +1280,14 @@
             "label_fr": "Ouverture libre largeur (mm)",
             "label_es": "Apertura libre anchura (mm)",
             "label_it": "Apertura libera larghezza (mm)",
-            "label_pt": "Abertura livre largura (mm)"
+            "label_pt": "Abertura livre largura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_light_width_mm",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": true
           }
         },
         "metafield_row_acnDMi": {
@@ -1317,13 +1296,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Opening - Height (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_opening_height",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Ovenpidike - korkeus (mm)",
             "label_de": "Türöffnung - Höhe (mm)",
             "label_da": "Døråbning - højde (mm)",
@@ -1333,7 +1305,14 @@
             "label_fr": "Ouverture de porte - hauteur (mm)",
             "label_es": "Apertura de puerta - altura (mm)",
             "label_it": "Apertura porta - altezza (mm)",
-            "label_pt": "Abertura de porta - altura (mm)"
+            "label_pt": "Abertura de porta - altura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_height",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_VbJy88": {
@@ -1342,13 +1321,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Opening - Width (mm)",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_opening_width",
-            "unit": "",
-            "rounding": "integer",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Ovenpidike - leveys (mm)",
             "label_de": "Türöffnung - Breite (mm)",
             "label_da": "Døråbning - bredde (mm)",
@@ -1358,7 +1330,14 @@
             "label_fr": "Ouverture de porte - largeur (mm)",
             "label_es": "Apertura de puerta - anchura (mm)",
             "label_it": "Apertura porta - larghezza (mm)",
-            "label_pt": "Abertura de porta - largura (mm)"
+            "label_pt": "Abertura de porta - largura (mm)",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_width",
+            "unit": "",
+            "rounding": "integer",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_hNT9Aj": {
@@ -1367,13 +1346,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Hinges",
-            "metafield_namespace": "custom",
-            "metafield_key": "hinges",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Saranat",
             "label_de": "Türscharniere",
             "label_da": "Hængsler",
@@ -1383,7 +1355,14 @@
             "label_fr": "Charnières",
             "label_es": "Bisagras",
             "label_it": "Cerniere",
-            "label_pt": "Dobradiças"
+            "label_pt": "Dobradiças",
+            "metafield_namespace": "custom",
+            "metafield_key": "hinges",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_FjpJgF": {
@@ -1392,13 +1371,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door - Angle and Hinges",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_opening_angle",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Ovi - avautumiskulma ja saranat",
             "label_de": "Tür - Öffnungswinkel und Scharniere",
             "label_da": "Dør - åbningsvinkel og hængsler",
@@ -1408,7 +1380,14 @@
             "label_fr": "Porte - angle d'ouverture et charnières",
             "label_es": "Puerta - ángulo de apertura y bisagras",
             "label_it": "Porta - angolo di apertura e cerniere",
-            "label_pt": "Porta - ângulo de abertura e dobradiças"
+            "label_pt": "Porta - ângulo de abertura e dobradiças",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_opening_angle",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_PKycAB": {
@@ -1417,13 +1396,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - Liter",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_liter",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - litraa",
             "label_de": "Kapazität - Liter",
             "label_da": "Kapacitet - liter",
@@ -1433,7 +1405,14 @@
             "label_fr": "Capacité - litres",
             "label_es": "Capacidad - litros",
             "label_it": "Capacità - litri",
-            "label_pt": "Capacidade - litros"
+            "label_pt": "Capacidade - litros",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_liter",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_aF3KFt": {
@@ -1442,13 +1421,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - Binders",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_binder",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - mappeja",
             "label_de": "Kapazität - Ordner",
             "label_da": "Kapacitet - ringbind",
@@ -1458,7 +1430,14 @@
             "label_fr": "Capacité - classeurs",
             "label_es": "Capacidad - archivadores",
             "label_it": "Capacità - raccoglitori",
-            "label_pt": "Capacidade - dossiers"
+            "label_pt": "Capacidade - dossiers",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_binder",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_R7pUaF": {
@@ -1467,13 +1446,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - Keys",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_keys",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - avaimia",
             "label_de": "Kapazität - Schlüssel",
             "label_da": "Kapacitet - nøgler",
@@ -1483,7 +1455,14 @@
             "label_fr": "Capacité - clés",
             "label_es": "Capacidad - llaves",
             "label_it": "Capacità - chiavi",
-            "label_pt": "Capacidade - chaves"
+            "label_pt": "Capacidade - chaves",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_keys",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_ibtRjB": {
@@ -1492,13 +1471,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - LTO Tapes",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_data_lto",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - LTO-nauhat",
             "label_de": "Kapazität - LTO-Bänder",
             "label_da": "Kapacitet - LTO-bånd",
@@ -1508,7 +1480,14 @@
             "label_fr": "Capacité - bandes LTO",
             "label_es": "Capacidad - cintas LTO",
             "label_it": "Capacità - nastri LTO",
-            "label_pt": "Capacidade - fitas LTO"
+            "label_pt": "Capacidade - fitas LTO",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_data_lto",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_xCi9BR": {
@@ -1517,13 +1496,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - Laptops",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_laptops",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - kannettavat tietokoneet",
             "label_de": "Kapazität - Laptops",
             "label_da": "Kapacitet - bærbare",
@@ -1533,7 +1505,14 @@
             "label_fr": "Capacité - ordinateurs portables",
             "label_es": "Capacidad - portátiles",
             "label_it": "Capacità - laptop",
-            "label_pt": "Capacidade - portáteis"
+            "label_pt": "Capacidade - portáteis",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_laptops",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_hGGf8t": {
@@ -1542,13 +1521,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Capacity - Guns",
-            "metafield_namespace": "custom",
-            "metafield_key": "capacity_guns",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Tilavuus - aseet",
             "label_de": "Kapazität - Waffen",
             "label_da": "Kapacitet - skydevåben",
@@ -1558,7 +1530,14 @@
             "label_fr": "Capacité - armes à feu",
             "label_es": "Capacidad - armas",
             "label_it": "Capacità - armi",
-            "label_pt": "Capacidade - armas"
+            "label_pt": "Capacidade - armas",
+            "metafield_namespace": "custom",
+            "metafield_key": "capacity_guns",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_TtLyni": {
@@ -1567,13 +1546,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Door Structure",
-            "metafield_namespace": "custom",
-            "metafield_key": "door_structure",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Oven rakenne",
             "label_de": "Türaufbau",
             "label_da": "Dørstruktur",
@@ -1583,7 +1555,14 @@
             "label_fr": "Structure de porte",
             "label_es": "Estructura de la puerta",
             "label_it": "Struttura della porta",
-            "label_pt": "Estrutura da porta"
+            "label_pt": "Estrutura da porta",
+            "metafield_namespace": "custom",
+            "metafield_key": "door_structure",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_AWKmbN": {
@@ -1592,13 +1571,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Body Structure",
-            "metafield_namespace": "custom",
-            "metafield_key": "body_structure",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Rungon rakenne",
             "label_de": "Gehäuseaufbau",
             "label_da": "Korpusstruktur",
@@ -1608,7 +1580,14 @@
             "label_fr": "Structure du corps",
             "label_es": "Estructura del cuerpo",
             "label_it": "Struttura del corpo",
-            "label_pt": "Estrutura do corpo"
+            "label_pt": "Estrutura do corpo",
+            "metafield_namespace": "custom",
+            "metafield_key": "body_structure",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_RktYAg": {
@@ -1617,13 +1596,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Shelves included",
-            "metafield_namespace": "custom",
-            "metafield_key": "shelf_number",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Hyllyjä mukana",
             "label_de": "Einlegeböden inklusive",
             "label_da": "Hylder inkluderet",
@@ -1633,7 +1605,14 @@
             "label_fr": "Étagères incluses",
             "label_es": "Estantes incluidos",
             "label_it": "Ripiani inclusi",
-            "label_pt": "Prateleiras incluídas"
+            "label_pt": "Prateleiras incluídas",
+            "metafield_namespace": "custom",
+            "metafield_key": "shelf_number",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_k4bEbU": {
@@ -1642,13 +1621,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Drawers included",
-            "metafield_namespace": "custom",
-            "metafield_key": "drawer_amounts",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Laatikoita mukana",
             "label_de": "Schubladen inklusive",
             "label_da": "Skuffer inkluderet",
@@ -1658,7 +1630,14 @@
             "label_fr": "Tiroirs inclus",
             "label_es": "Cajones incluidos",
             "label_it": "Cassetti inclusi",
-            "label_pt": "Gavetas incluídas"
+            "label_pt": "Gavetas incluídas",
+            "metafield_namespace": "custom",
+            "metafield_key": "drawer_amounts",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         },
         "metafield_row_UDzTQp": {
@@ -1667,13 +1646,6 @@
           "settings": {
             "group_name": "Dimensions",
             "label": "Drawers maximum",
-            "metafield_namespace": "custom",
-            "metafield_key": "drawers_max",
-            "unit": "",
-            "rounding": "none",
-            "true_text": "Yes",
-            "false_text": "No",
-            "is_variant_metafield": false,
             "label_fi": "Laatikoita enintään",
             "label_de": "Schubladen maximal",
             "label_da": "Skuffer maksimalt",
@@ -1683,7 +1655,14 @@
             "label_fr": "Tiroirs maximum",
             "label_es": "Cajones máximo",
             "label_it": "Cassetti massimi",
-            "label_pt": "Gavetas máximo"
+            "label_pt": "Gavetas máximo",
+            "metafield_namespace": "custom",
+            "metafield_key": "drawers_max",
+            "unit": "",
+            "rounding": "none",
+            "true_text": "Yes",
+            "false_text": "No",
+            "is_variant_metafield": false
           }
         }
       },
