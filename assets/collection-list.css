@@ -34,6 +34,12 @@ html {
   color: var(--color-text-default);
 }
 
+@media (max-width: 768px) {
+  .collection-header .collection-title {
+    margin-bottom: 23px;
+  }
+}
+
 .collection-list-section {
   padding: var(--spacing-xl) 20px;
   scroll-margin-top: 15px;
@@ -1327,7 +1333,8 @@ html {
   }
 
   .collection-header .collection-title {
-    font-size: 24px;
+    font-size: 22px;
+    color:#202223
   }
 }
 

@@ -8,6 +8,12 @@
   /* transition: top 0s ease; */
 }
 
+@media screen and (max-width: 768px) {
+  .breadcrumbs {
+  background: #fff;
+}
+}
+
 .breadcrumbs .breadcrumb-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -99,6 +105,19 @@
   background: color-mix(in oklab, var(--breadcrumb-hover) 60%, transparent);
   padding: 4px 6px;
   border-radius: 6px;
+}
+
+
+
+@media (max-width: 767px) {
+  .breadcrumbs .breadcrumb-current .breadcrumb-text,
+.breadcrumbs .breadcrumb-current [itemprop='name'],
+.breadcrumbs .breadcrumb-item[aria-current='page'] .breadcrumb-text {
+  background: transparent;
+}
+.breadcrumbs {
+  border-bottom-color: transparent;
+}
 }
 
 .breadcrumbs .breadcrumb-back {
