@@ -1181,7 +1181,7 @@ html {
 
 @media (max-width: 768px) {
   .collection-list-section {
-    padding: var(--spacing-xl) 15px;
+    padding: var(--spacing-xl) 10px;
     padding-top: 16px !important;
   }
 
@@ -1335,9 +1335,10 @@ html {
   }
 
   .badge-info-line {
-    font-size: 10px;
+    font-size: 14px;
     padding: 1px 4px;
     border-width: 1px;
+    line-height: 1.2;
   }
 
   .collection-action {
@@ -1358,7 +1359,6 @@ html {
 
   /* Mobile-only full-width badges at card level */
   .collection-badges-wrapper--mobile {
-    display: flex;
     flex-direction: column;
     gap: 8px;
     width: 100%;
@@ -1499,6 +1499,21 @@ html {
   }
 }
 
+@media (min-width: 769px) {
+  .collection-badges-wrapper--mobile.collection-badges-wrapper {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+.products-grid .product-card {
+  /* outline: 1px dotted green; */
+  padding: 8px 0;
+}
+}
+
 .dimension-range-labels span {
   font-size: 12px !important;
 }
@@ -1524,7 +1539,7 @@ html {
 @media (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 20px;
   }
 }
 
@@ -1685,7 +1700,7 @@ a.product-card * {
 
 @media (max-width: 768px) {
   .product-info {
-    padding: var(--spacing-sm);
+    padding: 8px 0;
   }
 
   .product-title {
@@ -1822,6 +1837,18 @@ a.product-card * {
   .collection-content-wrapper {
     flex-direction: column;
   }
+  .collection-list-section   .product-card .product-info .product-title {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+  .collection-list-section .product-card .spec-row .spec-label,
+  .collection-list-section .product-card .spec-row .spec-value {
+    font-size: 10px !important;
+    font-weight: 600 !important;
+        line-height: 1.5 !important;
+  }
+
 }
 
 /* Overrides for smaller text in collection-list-new cards */
@@ -1841,4 +1868,10 @@ a.product-card * {
 
 .collection-list-section .product-card .product-btn {
   font-size: 12px !important;
+}
+
+@media (max-width: 480px) {
+  .collection-list-section .product-card .product-btn {
+    font-size: 14px !important;
+  }
 }
