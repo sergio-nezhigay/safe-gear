@@ -739,7 +739,7 @@ html {
 .mobile-filter-content {
   padding: var(--spacing-lg);
   overflow-y: auto;
-  max-height: calc(85vh - 140px);
+  max-height: calc(85vh - 171px);
 }
 
 .mobile-filter-footer {
